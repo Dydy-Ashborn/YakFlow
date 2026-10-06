@@ -190,7 +190,7 @@ code#code{display:block;padding:18px;margin:14px 0 4px;background:var(--bg-2);bo
     <p id="resultEmail"></p>
     <code id="code"></code>
     <p id="expires"></p>
-    <div class="actions"><button class="btn primary" id="copyCode"><i class="fa-regular fa-copy"></i>Copier le code</button><button class="btn" id="copyEmail"><i class="fa-regular fa-envelope"></i>Copier l’email</button><button class="btn" id="reply"><i class="fa-solid fa-paper-plane"></i>Préparer le mail</button></div>
+    <div class="actions"><button class="btn primary" id="copyCode"><i class="fa-regular fa-copy"></i>Copier le code</button><button class="btn" id="copyEmail"><i class="fa-regular fa-envelope"></i>Copier l’email</button><button class="btn" id="reply"><i class="fa-regular fa-clipboard"></i>Copier l’email à envoyer</button></div>
   </section>
 
   <section class="card">
@@ -228,7 +228,7 @@ code#code{display:block;padding:18px;margin:14px 0 4px;background:var(--bg-2);bo
     $('reply').onclick=()=>{if(!last)return;const subject='Ton accès YakFlow';const body=last.type==='trial'?
       `Bonjour,\n\nVoici ton code d’essai YakFlow, valable 24 h après sa création :\n\n${last.code}\n\nOuvre YakFlow et saisis ce code sur l’écran d’accueil.\n\nÀ bientôt !`:
       `Bonjour,\n\nVoici ton code premium YakFlow :\n\n${last.code}\n\nOuvre YakFlow et saisis ce code sur l’écran d’accueil.\n\nÀ bientôt !`;
-      location.href='mailto:'+last.email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body)};
+      navigator.clipboard.writeText(body).then(()=>toast('Email copié : colle-le dans ta messagerie (objet : '+subject+').'),()=>toast('Copie impossible : sélectionne le code à la main.'))};
     $('revoke').onclick=async()=>{const b=$('revoke');b.disabled=true;$('revokeStatus').textContent='Désactivation…';try{
       const data=await call('deactivate',{code:$('revokeCode').value});$('revokeStatus').textContent='Code de '+data.email+' désactivé dans Firebase.';
     }catch(e){$('revokeStatus').textContent=e.message}finally{b.disabled=false}};

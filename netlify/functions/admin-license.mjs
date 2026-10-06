@@ -99,7 +99,21 @@ async function handle(request) {
     }
     return json({ message: 'Action inconnue.' }, 400);
   } catch (error) {
-    console.error('admin-license:', error.message);
-    return json({ message: 'Opération impossible. Vérifie la configuration Firebase.' }, 503);
+    console.error('admin-license:', error.code, error.message);
+    return json({ message: firebaseHint(error) }, 503);
   }
+}
+
+// YAKFLOW_FIREBASE_DIAG_V14 : message précis réservé à l'admin (déjà authentifié par la clé secrète)
+function firebaseHint(error) {
+  const m = String(error?.message ?? ''), c = error?.code;
+  if (/FIREBASE_SERVICE_ACCOUNT_JSON manque/.test(m)) return 'Firebase : la variable FIREBASE_SERVICE_ACCOUNT_JSON est absente sur Netlify (ou le site n’a pas été redéployé après son ajout).';
+  if (error instanceof SyntaxError || /JSON/.test(m)) return 'Firebase : FIREBASE_SERVICE_ACCOUNT_JSON n’est pas un JSON valide. Colle le contenu complet du fichier .json du compte de service, de { à }.';
+  if (/Projet Firebase inattendu/.test(m)) return 'Firebase : le compte de service appartient à un autre projet que yakflow-e4d30.';
+  if (/private key|PEM|DECODER|asn1/i.test(m)) return 'Firebase : la clé privée du compte de service est abîmée (retours à la ligne). Recolle le fichier .json tel quel.';
+  if (c === 5 || /NOT_FOUND|does not exist/i.test(m)) return 'Firebase : aucune base Firestore dans le projet yakflow-e4d30. Crée-la dans la console Firebase (Firestore Database, mode natif).';
+  if (c === 7 || /PERMISSION_DENIED|permission/i.test(m)) return 'Firebase : le compte de service n’a pas le droit d’écrire dans Firestore. Donne-lui le rôle « Cloud Datastore User » (ou génère la clé depuis Paramètres du projet > Comptes de service).';
+  if (c === 16 || /UNAUTHENTICATED|invalid_grant|revoked/i.test(m)) return 'Firebase : la clé du compte de service est refusée (supprimée ou expirée). Génère une nouvelle clé privée et remplace la variable.';
+  if (c === 9 || /FAILED_PRECONDITION|Datastore Mode/i.test(m)) return 'Firebase : Firestore est en mode Datastore ou un index manque. Il faut une base Firestore en mode natif.';
+  return 'Firebase : opération impossible (' + (c ?? 'erreur') + ' — ' + m.slice(0, 160) + ').';
 }

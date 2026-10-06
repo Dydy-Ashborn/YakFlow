@@ -6,7 +6,8 @@ function app() {
   if (getApps().length) return getApps()[0];
   const json = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
   if (!json) throw new Error('FIREBASE_SERVICE_ACCOUNT_JSON manque dans les variables Netlify.');
-  const account = JSON.parse(json);
+  const account = JSON.parse(json.trim());
+  if (typeof account.private_key === 'string') account.private_key = account.private_key.replace(/\\n/g, '\n');
   if (account.project_id !== 'yakflow-e4d30') throw new Error('Projet Firebase inattendu.');
   return initializeApp({ credential: cert(account), projectId: account.project_id });
 }
