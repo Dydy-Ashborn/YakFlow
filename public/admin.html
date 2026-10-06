@@ -225,10 +225,35 @@ code#code{display:block;padding:18px;margin:14px 0 4px;background:var(--bg-2);bo
     }catch(e){$('status').textContent=e.message}finally{b.disabled=false}};
     $('copyCode').onclick=()=>last&&navigator.clipboard.writeText(last.code).then(()=>toast('Code copié.'));
     $('copyEmail').onclick=()=>last&&navigator.clipboard.writeText(last.email).then(()=>toast('Email copié.'));
-    $('reply').onclick=()=>{if(!last)return;const subject='Ton accès YakFlow';const body=last.type==='trial'?
-      `Bonjour,\n\nVoici ton code d’essai YakFlow, valable 24 h après sa création :\n\n${last.code}\n\nOuvre YakFlow et saisis ce code sur l’écran d’accueil.\n\nÀ bientôt !`:
-      `Bonjour,\n\nVoici ton code premium YakFlow :\n\n${last.code}\n\nOuvre YakFlow et saisis ce code sur l’écran d’accueil.\n\nÀ bientôt !`;
-      navigator.clipboard.writeText(body).then(()=>toast('Email copié : colle-le dans ta messagerie (objet : '+subject+').'),()=>toast('Copie impossible : sélectionne le code à la main.'))};
+    /* YAKFLOW_EMAIL_HTML_V14 : email mis en forme (HTML + texte) copié dans le presse-papiers, prêt à coller dans Gmail ou Mail */
+    function accessEmail(rec){
+      const site=location.origin, link=site+'/?code='+encodeURIComponent(rec.code), trial=rec.type==='trial';
+      const intro=trial?'Voici ton code d’essai YakFlow. Il est valable 24 h : profites-en pour lancer ta première vidéo.':'Merci pour ton abonnement ! Voici ton code premium YakFlow.';
+      const text=`Bonjour,\n\n${intro}\n\nTon code : ${rec.code}\n\nActive ton accès en un clic : ${link}\n(ou ouvre ${site} et colle le code sur l’écran d’accueil)\n\nÀ bientôt sur YakFlow !`;
+      const html=`<meta charset="utf-8"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f1ec;padding:24px 0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"><tr><td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#111317;border-radius:20px;overflow:hidden">
+<tr><td style="padding:28px 32px 8px"><table role="presentation" cellpadding="0" cellspacing="0"><tr>
+<td><img src="${site}/yakflow-icon-192.png" width="44" height="44" alt="YakFlow" style="display:block;border-radius:12px"></td>
+<td style="padding-left:12px;font-size:22px;font-weight:800;letter-spacing:-0.5px;color:#ffffff"><span style="color:#ffb224">YAK</span>FLOW<div style="font-size:10px;font-weight:600;letter-spacing:2px;color:#7a756d;text-transform:uppercase">Studio de création IA</div></td>
+</tr></table></td></tr>
+<tr><td style="padding:20px 32px 0;color:#f5f2ec;font-size:22px;font-weight:700">${trial?'Ton essai est prêt':'Bienvenue dans YakFlow'}</td></tr>
+<tr><td style="padding:10px 32px 0;color:#b3ada3;font-size:15px;line-height:1.6">Bonjour,<br>${intro}</td></tr>
+<tr><td style="padding:22px 32px 0"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0c0d10;border:1px dashed #a8741a;border-radius:14px"><tr><td align="center" style="padding:18px 12px">
+<div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#7a756d;text-transform:uppercase;padding-bottom:8px">${trial?'Code d’essai · 24 h':'Code premium'}</div>
+<div style="font-family:'SF Mono',Menlo,Consolas,monospace;font-size:20px;font-weight:700;letter-spacing:2px;color:#ffc757">${rec.code}</div></td></tr></table></td></tr>
+<tr><td align="center" style="padding:24px 32px 6px"><a href="${link}" style="display:inline-block;background:#ffb224;background-image:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00);color:#1d1200;text-decoration:none;font-size:16px;font-weight:800;padding:15px 30px;border-radius:12px">Activer mon accès YakFlow</a></td></tr>
+<tr><td align="center" style="padding:6px 32px 0;color:#7a756d;font-size:12.5px;line-height:1.5">Le bouton ouvre YakFlow et active ton code automatiquement.<br>Sinon, ouvre <a href="${site}" style="color:#ffc757">${site.replace(/^https?:\/\//,'')}</a> et colle le code ci-dessus.</td></tr>
+<tr><td style="padding:26px 32px 28px;color:#58544e;font-size:12px;line-height:1.5;border-top:1px solid #1d2127">${trial?'Ton code expire 24 h après sa création.':'Ton code reste actif tant que ton abonnement est en cours.'} Garde cet email : le code te sera redemandé sur un nouvel appareil.<br>À bientôt sur YakFlow !</td></tr>
+</table></td></tr></table>`;
+      return {text,html};
+    }
+    $('reply').onclick=async()=>{if(!last)return;const subject='Ton accès YakFlow';const m=accessEmail(last);
+      try{
+        if(window.ClipboardItem&&navigator.clipboard.write){await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([m.html],{type:'text/html'}),'text/plain':new Blob([m.text],{type:'text/plain'})})]);}
+        else await navigator.clipboard.writeText(m.text);
+        toast('Email mis en forme copié : colle-le dans Gmail ou Mail (objet : '+subject+').');
+      }catch(_){try{await navigator.clipboard.writeText(m.text);toast('Email copié en texte simple.')}catch(__){toast('Copie impossible : sélectionne le code à la main.')}}
+    };
     $('revoke').onclick=async()=>{const b=$('revoke');b.disabled=true;$('revokeStatus').textContent='Désactivation…';try{
       const data=await call('deactivate',{code:$('revokeCode').value});$('revokeStatus').textContent='Code de '+data.email+' désactivé dans Firebase.';
     }catch(e){$('revokeStatus').textContent=e.message}finally{b.disabled=false}};
