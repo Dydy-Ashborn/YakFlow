@@ -1,7 +1,7 @@
 import { checkLicense } from '../lib/firebase.mjs';
 import { json } from '../lib/http.mjs';
 
-const HOST_SUFFIXES = ['.agnes-ai.cn', '.agnes-ai.com', '.myqcloud.com'];
+const HOST_SUFFIXES = ['.agnes-ai.cn', '.agnes-ai.com', '.agnes-ai.space', '.myqcloud.com'];
 
 function allowed(raw) {
   try {
