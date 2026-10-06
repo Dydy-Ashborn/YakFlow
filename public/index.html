@@ -820,6 +820,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
       <label class="ck"><input type="checkbox" id="sFondus"> <span><b>Fondus enchaînés courts</b> (0,2 s) entre deux plans du même décor. Coupe franche quand le décor change.</span></label>
       <label class="ck"><input type="checkbox" id="sDisk"> <span><b>Ranger tout sur le disque</b> au fil de l'eau : <code>Téléchargements/AgnesStudio/&lt;projet&gt;/</code>.</span></label>
       <label class="ck"><input type="checkbox" id="sAutoDl"> <span><b>Télécharger la vidéo montée</b> dès qu'elle est prête.</span></label>
+      <div class="ck" id="exportDirBox" style="align-items:flex-start"><i class="fa-solid fa-folder-tree" style="margin-top:3px;color:var(--brand)"></i> <span style="flex:1"><b>Dossier d'export</b> : la vidéo montée, la couverture et les infos de publication sont rangées dans <code>YakFlow/A publier/&lt;titre&gt;/</code>.<br><span class="hint" id="exportDirName" style="margin:4px 0 8px;display:block">Aucun dossier choisi.</span><button type="button" class="btn sm" id="exportDirPick"><i class="fa-solid fa-folder-open"></i>Choisir un dossier</button> <button type="button" class="btn sm ghost" id="exportDirClear" hidden><i class="fa-solid fa-xmark"></i>Retirer</button></span></div>
       <label class="ck"><input type="checkbox" id="sHook"> <span>Afficher l'<b>accroche</b> du projet en texte pendant les 3 premières secondes du montage.</span></label>
     </div>
     <div class="grid2">
@@ -2037,7 +2038,8 @@ async function doMontage(p, manual) {
     log('Montage terminé : ' + p.titre + ' (' + Math.round(res.seconds) + ' s)');
     phone('Vidéo montée', p.titre + ' · ' + Math.round(res.seconds) + ' s, prête à publier', 4);
     toast('« ' + p.titre + ' » est monté.', 'ok');
-    if (S.autoDl || (manual && !(PROXY && S.disk))) downloadBuf(res.buffer, p.id + '.mp4', 'video/mp4');
+    const exported = window.yfExportEpisode ? await window.yfExportEpisode(p, res.buffer) : false;
+    if (!exported && (S.autoDl || (manual && !(PROXY && S.disk)))) downloadBuf(res.buffer, p.id + '.mp4', 'video/mp4');
 
     // Export Google Drive automatique dès que le montage est terminé.
     if (PROXY) setTimeout(() => publishDrive(p), 0);
@@ -3372,6 +3374,55 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
     if (act && !act.hidden) document.querySelector('.yfRequestBtn[data-access="' + (a === 'complet' ? 'complet' : 'test') + '"]')?.click();
     history.replaceState(null, '', location.pathname);
   }, 900);
+})();
+</script>
+<script>
+/* YAKFLOW_EXPORT_DIR_V16 : dossier d'export choisi une fois (YakFlow/A publier/<titre>/), écrit directement par le navigateur */
+(function(){
+  const OK = 'showDirectoryPicker' in window;
+  const DB = 'yakflow-fs', ST = 'h';
+  function idb(mode, fn){ return new Promise((res, rej) => { const r = indexedDB.open(DB, 1); r.onupgradeneeded = () => r.result.createObjectStore(ST); r.onerror = () => rej(r.error);
+    r.onsuccess = () => { const tx = r.result.transaction(ST, mode); const q = fn(tx.objectStore(ST)); tx.oncomplete = () => res(q && q.result); tx.onerror = () => rej(tx.error); }; }); }
+  const getH = () => idb('readonly', (s) => s.get('export')).catch(() => null);
+  const setH = (h) => idb('readwrite', (s) => h ? s.put(h, 'export') : s.delete('export'));
+  const clean = (t) => String(t || 'episode').replace(/[\\/:*?"<>|]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 80) || 'episode';
+  async function perm(h){
+    const o = { mode: 'readwrite' };
+    if (await h.queryPermission(o) === 'granted') return true;
+    const go = await yfConfirm({ title: "Dossier d'export", message: 'Autoriser YakFlow à ranger la vidéo dans « ' + h.name + ' » ? Choisis « Autoriser à chaque visite » pour ne plus avoir à le refaire.', okLabel: 'Autoriser', okIcon: 'fa-folder-open', icon: 'fa-folder-open' });
+    if (!go) return false;
+    try { return (await h.requestPermission(o)) === 'granted'; } catch (e) { return false; }
+  }
+  async function write(dir, name, data){ const f = await dir.getFileHandle(name, { create: true }); const w = await f.createWritable(); await w.write(data); await w.close(); }
+  async function target(h){ let d = h; if (h.name.toLowerCase() !== 'yakflow') d = await d.getDirectoryHandle('YakFlow', { create: true }); return d.getDirectoryHandle('A publier', { create: true }); }
+  window.yfExportEpisode = async function(p, buf){
+    if (!OK) return false;
+    const h = await getH(); if (!h) return false;
+    try {
+      if (!(await perm(h))) { toast("Dossier d'export non autorisé : vidéo téléchargée à la place.", 'warn'); return false; }
+      const ep = await (await target(h)).getDirectoryHandle(clean(p.titre), { create: true });
+      await write(ep, safeName(p.id) + '.mp4', new Blob([buf], { type: 'video/mp4' }));
+      const cover = p.etapes.find((s) => s.type === 'couverture' && s.img && s.img.st === 'fini');
+      if (cover) { const im = await mGet(imgKey(p, cover)); if (im) { const j = await toJpeg(im, 1280); await write(ep, safeName(p.id) + '-couverture.jpg', await (await fetch(j.data)).blob()); } }
+      await write(ep, 'infos-publication.txt', new Blob([infos(p)], { type: 'text/plain;charset=utf-8' }));
+      log('Rangé : ' + h.name + ' / YakFlow / A publier / ' + clean(p.titre));
+      toast('« ' + p.titre + ' » rangé dans A publier.', 'ok');
+      return true;
+    } catch (e) { log('Export dossier impossible : ' + e.message); toast("Export dans le dossier impossible : " + e.message, 'err'); return false; }
+  };
+  async function paint(){
+    const lab = document.getElementById('exportDirName'); if (!lab) return;
+    if (!OK) { lab.textContent = 'Non disponible dans ce navigateur : utilise Chrome ou Edge sur ordinateur.'; document.getElementById('exportDirPick').disabled = true; return; }
+    const h = await getH();
+    lab.textContent = h ? 'Dossier : « ' + h.name + ' » → ' + (h.name.toLowerCase() === 'yakflow' ? '' : 'YakFlow / ') + 'A publier / <titre>' : 'Aucun dossier choisi : la vidéo est téléchargée normalement.';
+    document.getElementById('exportDirClear').hidden = !h;
+  }
+  document.getElementById('exportDirPick')?.addEventListener('click', async () => {
+    try { const h = await window.showDirectoryPicker({ id: 'yakflow-export', mode: 'readwrite', startIn: 'downloads' }); await setH(h); await paint(); toast("Dossier d'export enregistré.", 'ok'); }
+    catch (e) { if (e.name !== 'AbortError') toast('Choix du dossier impossible : ' + e.message, 'err'); }
+  });
+  document.getElementById('exportDirClear')?.addEventListener('click', async () => { await setH(null); await paint(); });
+  paint();
 })();
 </script>
 </body>
