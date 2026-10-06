@@ -761,7 +761,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
         <div>Tu paies uniquement l’accès à YakFlow. Les quotas et disponibilités gratuits d’Agnes restent ceux du fournisseur.</div>
         <div class="yfAgnesKeysHelp">
           <b><i class="fa-solid fa-key"></i> À faire une seule fois</b>
-          <span>Crée de 1 à 5 clés API Agnes puis colle-les dans YakFlow, séparées par des virgules. YakFlow peut répartir la production entre tes clés.</span>
+          <span>Crée une clé API dans ton compte Agnes et colle-la dans YakFlow. Toutes les clés d’un même compte partagent la même limite (en gratuit : 1 clip/min et 5 images 2K/min) : en créer plusieurs n’accélère rien. Une clé Token Plan, elle, a sa propre limite et peut s’ajouter à la clé gratuite.</span>
           <div><a class="btn sm" href="https://agnes-ai.com/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i>Créer mes clés Agnes</a><button type="button" class="btn sm primary" id="yfOpenAgnesKeys"><i class="fa-solid fa-plus"></i>Ajouter mes clés dans YakFlow</button></div>
         </div>
       </div></div>
@@ -779,7 +779,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
           <small>Coche puis choisis une heure. Si cette heure est déjà passée aujourd'hui, Agnes attendra demain. Laisse YakFlow ouvert et l'ordinateur éveillé.</small>
         </label>
         <label class="f"><span>Modèle image</span><select id="sImgModel"><option value="agnes-image-2.5-flash">Agnes Image 2.5 Flash (meilleure qualité)</option><option value="agnes-image-2.1-flash">Agnes Image 2.1 Flash</option><option value="agnes-image-2.0-flash">Agnes Image 2.0 Flash</option></select></label>
-        <label class="f"><span>Taille image</span><select id="sImgSize"><option value="1K">1K (rapide)</option><option value="2K">2K (plus rapide)</option><option value="3K">3K</option><option value="4K">4K (définition maximale, plus lent)</option></select></label>
+        <label class="f"><span>Taille image</span><select id="sImgSize"><option value="1K">1K · 10 images/min en gratuit</option><option value="2K">2K · recommandé · 5 images/min</option><option value="3K">3K · 1 image/min</option><option value="4K">4K · 1 image/min, le plus lent</option></select><small>Limites du compte gratuit Agnes. La vidéo sort en 720P : 2K suffit largement, même pour la couverture.</small></label>
         <!-- AGNES_GROK_BRIDGE_V1 -->
         <label class="f"><span>Moteur vidéo</span><select id="sVidEngine"><option value="agnes">Agnes Video</option><option value="grok">Grok Imagine — navigateur</option></select><small>Grok utilise les onglets grok.com/imagine équipés du Pont Grok.</small></label>
         <label class="f"><span>Grok en parallèle</span><select id="sGrokPar"><option value="1">1 onglet</option><option value="2">2 onglets</option><option value="3">3 onglets</option><option value="4">4 onglets</option><option value="5">5 onglets</option></select><small>Ouvre autant d’onglets Grok. Chaque onglet prend un clip différent.</small></label>
@@ -807,13 +807,14 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
     <section class="panel" aria-label="État des clés API">
       <div class="row"><div class="panel-h" style="margin:0;flex:1"><i class="fa-solid fa-key"></i><span id="keyCount"></span></div><button type="button" class="btn sm" id="sCheckKeys">Vérifier le suivi</button></div>
       <p class="hint" id="keyCapacity"></p>
-      <p class="hint">Choisis « Token Plan » seulement pour la clé de l’abonnement. Les clés d’un même compte Agnes partagent leur limite ; YakFlow ne peut pas reconnaître leur compte automatiquement.</p>
+      <p class="hint">Choisis « Token Plan » seulement pour la clé de l’abonnement (5 clips/min au lieu de 1). Les clés gratuites d’un même compte partagent la même limite : YakFlow ne peut pas le détecter, donc n’en mets qu’une par compte.</p>
       <div id="keyStatuses" aria-live="polite" style="display:grid;gap:8px;margin-top:12px"></div>
       <p class="hint">« Vérifier le suivi » consulte une vidéo existante, sans prouver qu’une nouvelle génération est possible. « Tester un clip » lance une vraie scène prête du projet actif, peut consommer du quota et conserve le clip accepté. Une acceptation confirme la soumission ; seule la réception du clip confirme la réussite. Les pauses d’Agnes restent respectées.</p>
     </section>
 
     <h4 class="subhead">Production &amp; montage</h4>
     <div class="toggles">
+      <label class="ck"><input type="checkbox" id="sKeepFirst"> <span><b>Verrouiller la continuité des clips Agnes.</b> Ajoute au prompt vidéo la consigne de partir exactement de l’image de la scène (mêmes visages, tenues, décor, sans texte à l’écran).</span></label>
       <label class="ck"><input type="checkbox" id="sGate"> <span><b>Valider chaque image avant son clip.</b> Décoché, tout s'enchaîne seul (idéal la nuit).</span></label>
       <label class="ck"><input type="checkbox" id="sAutoMont"> <span><b>Monter la vidéo automatiquement</b> quand tous les clips d'un projet sont prêts.</span></label>
       <label class="ck"><input type="checkbox" id="sFondus"> <span><b>Fondus enchaînés courts</b> (0,2 s) entre deux plans du même décor. Coupe franche quand le décor change.</span></label>
@@ -945,12 +946,14 @@ $('#log').textContent = logLines.slice().reverse().join('\n');
 $('#copyLog').onclick = () => { navigator.clipboard.writeText(logLines.join('\n')); toast('Journal copié.', 'ok'); };
 
 /* ---- réglages ---- */
-const DEFSET = { vidEngine: 'agnes', grokPar: 5, fondus: true, key: '', imgSrc: 'chatgpt', chatPar: 2, imgSrcV: 2, imgModel: 'agnes-image-2.5-flash', imgModelV: 3, imgSize: '4K', imgSizeV: 2, disk: true, vidModel: 'agnes-video-2.5-flash', vidSize: '720P', par: 'auto', gap: 8, parV: 3,
+const DEFSET = { vidEngine: 'agnes', grokPar: 5, fondus: true, key: '', imgSrc: 'chatgpt', chatPar: 2, imgSrcV: 2, imgModel: 'agnes-image-2.5-flash', imgModelV: 3, imgSize: '2K', imgSizeV: 3, keepFirst: true, disk: true, vidModel: 'agnes-video-2.5-flash', vidSize: '720P', par: 'auto', gap: 8, parV: 3,
   gate: false, autoMont: true, autoDl: false, hook: false, cut: 'auto', ntfy: '', imgStartEnabled: false, imgStartTime: '23:55', imgStartAt: 0};
 let S = Object.assign({}, DEFSET);
 let storedS = {}; try { storedS = JSON.parse(localStorage.getItem('as_settings') || '{}'); Object.assign(S, storedS); } catch (e) {}
 if (storedS.imgModelV !== 3) { if (!storedS.imgModel || storedS.imgModel === 'agnes-image-2.1-flash') S.imgModel = 'agnes-image-2.5-flash'; S.imgModelV = 3; }
-if (storedS.imgSizeV !== 2) { if (!storedS.imgSize || storedS.imgSize === '2K') S.imgSize = '4K'; S.imgSizeV = 2; }
+// YAKFLOW_AGNES_OPTIM_V13 : doc Agnes (Token Plan FAQ) — en gratuit, 4K et 3K = 1 image/min, 2K = 5/min, 1K = 10/min.
+// La vidéo sort en 720P et les références sont réduites à 1024 px : au-delà de 2K, on paie en débit sans gain visible.
+if (storedS.imgSizeV !== 3) { if (!storedS.imgSize || ['3K', '4K'].includes(storedS.imgSize)) S.imgSize = '2K'; S.imgSizeV = 3; }
 if (!apiKeys().length) { try { S.key = localStorage.getItem('agnes_key') || ''; } catch (e) {} }
 if (!['chatgpt', 'agnes', 'import'].includes(S.imgSrc)) S.imgSrc = 'chatgpt';
 S.imgSrcV = 2;
@@ -1326,7 +1329,7 @@ function imagePrompt(s) {
     ? prompt + '\n\n' + PHONE_GEOMETRY_RULE : prompt;
 }
 function imgAttempts(fmt) {
-  return ['url', 'b64_json'].map(rf => ({ size: S.imgSize || '4K', ratio: fmt, rf }));
+  return ['url', 'b64_json'].map(rf => ({ size: S.imgSize || '2K', ratio: fmt, rf }));
 }
 function imgBody(s, refs, a) {
   const b = { model: S.imgModel, prompt: imagePrompt(s), size: a.size, ratio: a.ratio, extra_body: { response_format: a.rf } };
@@ -1506,12 +1509,21 @@ function videoPromptFor(s, engine) {
 }
 
 /* ---- vidéos ---- */
+// YAKFLOW_AGNES_OPTIM_V13 : Agnes Video n'accepte que 21:9, 16:9, 4:3, 1:1, 3:4 et 9:16 (un 2:3 ou 3:2 donnait une erreur 400)
+const VIDEO_RATIO = { '9:16': '9:16', '16:9': '16:9', '1:1': '1:1', '4:3': '4:3', '3:4': '3:4', '21:9': '21:9', '2:3': '3:4', '3:2': '4:3' };
+const VIDEO_PX = { '9:16': [720, 1280], '16:9': [1280, 704], '1:1': [720, 720], '4:3': [960, 720], '3:4': [720, 960], '21:9': [1680, 720] };
+const FIRST_FRAME_RULE = 'Start exactly from the provided first frame and animate it: keep the same characters, faces, outfits, colors, framing and setting as the first frame. No on-screen text or subtitles.';
+function agnesVideoPrompt(s) {
+  const prompt = videoPromptFor(s, 'agnes');
+  if (S.keepFirst === false || /first[- ]frame|premi[eè]re image/i.test(prompt)) return prompt;
+  return prompt + '\n\n' + FIRST_FRAME_RULE;
+}
 async function videoBody(p, s) {
   const img = await mGet(imgKey(p, s));
-  const first = fmtOf(s) === '9:16' ? await cropTo(img, 9 / 16, 1280) : (await toJpeg(img, 1920)).data;
-  const b = { model: S.vidModel, prompt: videoPromptFor(s, 'agnes'), mode: 'keyframe', first_frame: first,
-    size: S.vidModel === 'agnes-video-2.5-flash' ? '720P' : S.vidSize, aspect_ratio: fmtOf(s) === '9:16' ? '9:16' : fmtOf(s), seconds: String(clampSec(s.secondes)), n: 1 };
-  return b;
+  const ratio = VIDEO_RATIO[fmtOf(s)] || '9:16', [w, h] = VIDEO_PX[ratio];
+  const first = await cropTo(img, w / h, h);   // première image recadrée au format exact de la vidéo
+  return { model: S.vidModel, prompt: agnesVideoPrompt(s), mode: 'keyframe', first_frame: first,
+    size: S.vidModel === 'agnes-video-2.5-flash' ? '720P' : S.vidSize, aspect_ratio: ratio, seconds: String(clampSec(s.secondes)), n: 1 };
 }
 
 /* =====================================================================
@@ -2845,7 +2857,7 @@ function openSettings() {
   if (document.getElementById('yfActivation')?.hidden === false) return;
   $('#sVidEngine').value = S.vidEngine || 'agnes'; $('#sGrokPar').value = S.grokPar || 5; $('#sKey').value = S.key; $('#sFondus').checked = S.fondus !== false; $('#sImgSrc').value = S.imgSrc; $('#sChatPar').value = S.chatPar; $('#sImgStartEnabled').checked = !!S.imgStartEnabled; $('#sImgStartTime').value = S.imgStartTime || '23:55'; $('#sImgModel').value = S.imgModel; $('#sImgSize').value = S.imgSize; $('#sDisk').checked = S.disk; $('#sVidModel').value = S.vidModel; $('#sVidSize').value = S.vidSize;
   $('#sPar').value = S.par; $('#sGap').value = S.gap; $('#sGate').checked = S.gate; $('#sAutoMont').checked = S.autoMont; $('#sAutoDl').checked = S.autoDl;
-  $('#sHook').checked = S.hook; $('#sCut').value = S.cut; $('#sNtfy').value = S.ntfy; renderKeyStatus(); if (window.yfSyncMode) yfSyncMode(); dlgSet.showModal();
+  $('#sHook').checked = S.hook; $('#sKeepFirst').checked = S.keepFirst !== false; $('#sCut').value = S.cut; $('#sNtfy').value = S.ntfy; renderKeyStatus(); if (window.yfSyncMode) yfSyncMode(); dlgSet.showModal();
 }
 $('#sKey').addEventListener('input', renderKeyStatus);
 $('#sPar').addEventListener('change', renderKeyStatus);
@@ -2859,7 +2871,7 @@ $('#repReset').onclick = async () => { if (await yfConfirm({ title: 'Remettre le
 $('#sGo').onclick = () => {
   Object.assign(S, { vidEngine: $('#sVidEngine').value, grokPar: +$('#sGrokPar').value || 5, fondus: $('#sFondus').checked, imgSrc: $('#sImgSrc').value, chatPar: +$('#sChatPar').value, imgStartEnabled: $('#sImgStartEnabled').checked, imgStartTime: $('#sImgStartTime').value || '23:55', key: $('#sKey').value.trim(), imgModel: $('#sImgModel').value, imgModelV: 3, imgSize: $('#sImgSize').value, imgSizeV: 2, disk: $('#sDisk').checked, vidModel: $('#sVidModel').value, vidSize: $('#sVidSize').value,
     par: $('#sPar').value, parV: 3, gap: Math.max(5, +$('#sGap').value || 8), gate: $('#sGate').checked, autoMont: $('#sAutoMont').checked, autoDl: $('#sAutoDl').checked,
-    hook: $('#sHook').checked, cut: $('#sCut').value, ntfy: $('#sNtfy').value.trim() });
+    hook: $('#sHook').checked, keepFirst: $('#sKeepFirst').checked, cut: $('#sCut').value, ntfy: $('#sNtfy').value.trim() });
   for (const lane of keyLanes.values()) { lane.refused = false; lane.imageRefused = false; }
   // AGNES_IMAGE_SCHEDULE_V1
   if (S.imgStartEnabled && S.imgStartTime) {
@@ -3172,7 +3184,7 @@ form?.addEventListener('submit',async e=>{e.preventDefault();const submit=form.q
   <div class="yfGuideCallout"><b>Le principe :</b><span class="flow">Importe <i class="fa-solid fa-chevron-right"></i> choisis ton mode <i class="fa-solid fa-chevron-right"></i> vérifie les connexions <i class="fa-solid fa-chevron-right"></i> coche le projet <i class="fa-solid fa-chevron-right"></i> <b>Lancer</b></span></div>
   <div class="yfGuideGrid">
     <div class="yfGuideCard"><b><span class="step-n">1</span>Choisis ton mode</b><p>Dans Réglages, sélectionne le preset correspondant aux outils que tu veux utiliser.</p></div>
-    <div class="yfGuideCard"><b><span class="step-n">2</span>Configure une seule fois</b><p>Mode gratuit : ajoute 1 à 10 clés API Agnes. Modes GPT/Grok sur PC : installe les ponts navigateur.</p></div>
+    <div class="yfGuideCard"><b><span class="step-n">2</span>Configure une seule fois</b><p>Mode gratuit : ajoute ta clé API Agnes. Modes GPT/Grok sur PC : installe les ponts navigateur.</p></div>
     <div class="yfGuideCard"><b><span class="step-n">3</span>Importe ton projet</b><p>Utilise Importer pour charger le JSON. YakFlow crée les étapes image, clip et montage.</p></div>
     <div class="yfGuideCard"><b><span class="step-n">4</span>Lance</b><p>Coche le projet puis clique sur Lancer. YakFlow enchaîne la production.</p></div>
   </div>
@@ -3180,7 +3192,7 @@ form?.addEventListener('submit',async e=>{e.preventDefault();const submit=form.q
 </div>
 
 <div class="yfGuidePage" data-page="modes"><div class="yfGuideGrid">
-  <div class="yfGuideCard"><b><i class="fa-solid fa-bolt"></i>Gratuit · Agnes <i class="fa-solid fa-arrow-right-long" style="color:var(--text-4);width:auto;font-size:.8em"></i> Agnes</b><p>Images et clips via Agnes. Sur mobile/PWA : aucun Tampermonkey. Ajoute de 1 à 10 clés API Agnes.</p></div>
+  <div class="yfGuideCard"><b><i class="fa-solid fa-bolt"></i>Gratuit · Agnes <i class="fa-solid fa-arrow-right-long" style="color:var(--text-4);width:auto;font-size:.8em"></i> Agnes</b><p>Images et clips via Agnes. Sur mobile/PWA : aucun Tampermonkey. Ajoute ta clé API Agnes.</p></div>
   <div class="yfGuideCard"><b><i class="fa-solid fa-wand-magic-sparkles"></i>GPT <i class="fa-solid fa-arrow-right-long" style="color:var(--text-4);width:auto;font-size:.8em"></i> Agnes</b><p>ChatGPT fabrique les images, Agnes anime. Sur PC, le pont ChatGPT doit être connecté.</p></div>
   <div class="yfGuideCard"><b><i class="fa-solid fa-film"></i>Agnes <i class="fa-solid fa-arrow-right-long" style="color:var(--text-4);width:auto;font-size:.8em"></i> Grok</b><p>Agnes fabrique les images, Grok anime. Sur PC, utilise les workers Grok avec le pont.</p></div>
   <div class="yfGuideCard"><b><i class="fa-solid fa-rocket"></i>GPT <i class="fa-solid fa-arrow-right-long" style="color:var(--text-4);width:auto;font-size:.8em"></i> Grok</b><p>Images GPT + animations Grok. Ce mode utilise les deux ponts navigateur.</p></div>
@@ -3198,7 +3210,7 @@ form?.addEventListener('submit',async e=>{e.preventDefault();const submit=form.q
 <div class="yfGuidePage" data-page="production"><div class="yfGuideGrid">
   <div class="yfGuideCard"><b><i class="fa-solid fa-list-check"></i>Avant Lancer</b><p>Vérifie : mode correct, clés ou ponts connectés, projet coché.</p></div>
   <div class="yfGuideCard"><b><i class="fa-solid fa-diagram-project"></i>Parallélisme</b><p>Plusieurs images et clips peuvent partir ensemble selon les clés, workers et limites des fournisseurs.</p></div>
-  <div class="yfGuideCard"><b><i class="fa-solid fa-key"></i>1 à 10 clés Agnes</b><p>Colle les clés séparées par des virgules. YakFlow en utilise au maximum dix.</p></div>
+  <div class="yfGuideCard"><b><i class="fa-solid fa-key"></i>Clés Agnes</b><p>Une clé par compte suffit : les clés d’un même compte partagent la limite. Gratuit : 1 clip/min, Token Plan : 5 clips/min.</p></div>
   <div class="yfGuideCard"><b><i class="fa-solid fa-clone"></i>Évite les doublons</b><p>En cas de réseau ou quota, lis l’état et le journal avant de relancer.</p></div>
 </div></div>
 
@@ -3284,7 +3296,7 @@ const act=$('yfActivation');if(act)new MutationObserver(maybeFirst).observe(act,
 <script>
 /* YAKFLOW_JSON_HELP_LOGO_V10 */
 (function(){
-const AI_PROMPT='Crée-moi un fichier JSON compatible avec YakFlow à partir de mon scénario.\n\nRÈGLES STRICTES :\n- Réponds uniquement avec du JSON valide, sans Markdown ni texte avant/après.\n- Racine : "id", "titre", "etapes".\n- Toutes les fiches personnages/décors sont de vraies entrées dans "etapes" avec "type":"fiche".\n- Ajoute ensuite une entrée "type":"couverture".\n- Puis les plans dans l\'ordre avec "type":"scene".\n- Chaque étape doit avoir : "id", "type", "nom", "joindre", "promptImage".\n- Chaque scène doit aussi avoir "promptVideo" et "secondes" entre 4 et 12.\n- "joindre" est un tableau d\'IDs de fiches à utiliser comme références.\n- Utilise uniquement les types exacts : "fiche", "couverture", "scene".\n- Ne mets jamais les fiches dans une section séparée : elles doivent être dans "etapes".\n- Ordre : toutes les fiches, puis couverture, puis scènes.\n- Les prompts doivent être complets et directement exploitables.\n- Garde l\'identité visuelle et la continuité cohérentes.\n\nFORMAT MINIMAL :\n{"id":"ma-video-01","titre":"Ma vidéo","etapes":[\n{"id":"fiche-heros","type":"fiche","nom":"Fiche du héros","joindre":[],"promptImage":"..."},\n{"id":"couverture","type":"couverture","nom":"Couverture","joindre":["fiche-heros"],"promptImage":"..."},\n{"id":"scene-1","type":"scene","nom":"Hook","joindre":["fiche-heros"],"promptImage":"...","promptVideo":"...","secondes":7}\n]}\n\nVoici maintenant mon scénario / ma demande :\n[COLLE ICI TON SCÉNARIO]';
+const AI_PROMPT='Crée-moi un fichier JSON compatible avec YakFlow à partir de mon scénario.\n\nRÈGLES STRICTES DU JSON :\n- Réponds uniquement avec du JSON valide, sans Markdown ni texte avant/après.\n- Racine : "id", "titre", "etapes".\n- Toutes les fiches personnages/décors sont de vraies entrées dans "etapes" avec "type":"fiche".\n- Ajoute ensuite une entrée "type":"couverture".\n- Puis les plans dans l\'ordre avec "type":"scene".\n- Chaque étape doit avoir : "id", "type", "nom", "joindre", "promptImage".\n- Chaque scène doit aussi avoir "promptVideo" et "secondes" (entier entre 4 et 12).\n- "joindre" est un tableau d\'IDs de fiches à utiliser comme références.\n- Utilise uniquement les types exacts : "fiche", "couverture", "scene".\n- Ordre : toutes les fiches, puis couverture, puis scènes.\n\nPROMPTS IMAGE ("promptImage", en anglais) :\n- Structure : sujet + décor + style + lumière + composition + exigences de qualité.\n- Les scènes sont en format vertical 9:16 : cadre pour un écran de téléphone, personnages lisibles dans le tiers central.\n- Quand une fiche est jointe, dis à quoi elle sert ("same character as the reference sheet: face, hair, outfit").\n\nPROMPTS VIDÉO ("promptVideo", en anglais, pour Agnes Video) :\n- La vidéo part de l\'image de la scène (première image). Ne redécris pas toute l\'image : décris ce qui BOUGE à partir d\'elle.\n- Ordre : 1) sujet et action principale, 2) évolution de la scène, 3) mouvement de caméra (slow push-in, tracking shot, pan, tilt, static shot, plan serré/large), 4) style et lumière, 5) son, 6) ce qui doit rester identique.\n- Une seule action principale pour 4 à 6 s, deux au maximum pour 8 à 12 s.\n- Son : décris l\'ambiance et les bruits d\'action. Pour un dialogue, écris la réplique entre guillemets, en français, avec la voix (ex. : a young man says in French, excited: "On l\'a fait !"). Compte environ 2,5 mots par seconde pour choisir "secondes".\n- Termine par la continuité : "keep the same face, outfit and setting as the first frame".\n- Interdit : texte à l\'écran, sous-titres, logos, changements de plan multiples dans un même clip.\n\nFORMAT MINIMAL :\n{"id":"ma-video-01","titre":"Ma vidéo","etapes":[\n{"id":"fiche-heros","type":"fiche","nom":"Fiche du héros","joindre":[],"promptImage":"..."},\n{"id":"couverture","type":"couverture","nom":"Couverture","joindre":["fiche-heros"],"promptImage":"..."},\n{"id":"scene-1","type":"scene","nom":"Hook","joindre":["fiche-heros"],"promptImage":"...","promptVideo":"The hero slowly raises his head and smiles at the camera, wind moving his hair; slow push-in; warm sunset light; he says in French, confident: \\"Regarde bien.\\" with soft wind ambience; keep the same face, outfit and setting as the first frame.","secondes":6}\n]}\n\nVoici maintenant mon scénario / ma demande :\n[COLLE ICI TON SCÉNARIO]';
 function copyPrompt(e){
  const b=e&&e.currentTarget;
  navigator.clipboard.writeText(AI_PROMPT).then(()=>{if(b&&!b.dataset.busy){const old=b.innerHTML;b.dataset.busy='1';b.innerHTML='<i class="fa-solid fa-check"></i>Prompt copié';setTimeout(()=>{b.innerHTML=old;delete b.dataset.busy},1600)}if(typeof toast==='function')toast('Prompt copié dans le presse-papiers.','ok')}).catch(()=>window.yfCopyModal('Copie ce prompt pour ton IA',AI_PROMPT));
