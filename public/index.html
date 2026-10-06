@@ -377,7 +377,7 @@ dialog{border-radius:18px!important;box-shadow:0 30px 90px rgba(0,0,0,.45)!impor
 </style>
 </head>
 <body>
-<div id="yfActivation" class="yfActivation" hidden>
+<div id="yfActivation" class="yfActivation">
   <div class="yfActShell">
     <section class="yfActHero">
       <div class="yfActLogo">YF</div><div class="yfActEyebrow">YAKFLOW · STUDIO VIDÉO IA</div>
@@ -2738,6 +2738,7 @@ document.addEventListener('drop', async (e) => {
 });
 
 function openSettings() {
+  if (document.getElementById('yfActivation')?.hidden === false) return;
   $('#sVidEngine').value = S.vidEngine || 'agnes'; $('#sGrokPar').value = S.grokPar || 5; $('#sKey').value = S.key; $('#sFondus').checked = S.fondus !== false; $('#sImgSrc').value = S.imgSrc; $('#sChatPar').value = S.chatPar; $('#sImgStartEnabled').checked = !!S.imgStartEnabled; $('#sImgStartTime').value = S.imgStartTime || '23:55'; $('#sImgModel').value = S.imgModel; $('#sImgSize').value = S.imgSize; $('#sDisk').checked = S.disk; $('#sVidModel').value = S.vidModel; $('#sVidSize').value = S.vidSize;
   $('#sPar').value = S.par; $('#sGap').value = S.gap; $('#sGate').checked = S.gate; $('#sAutoMont').checked = S.autoMont; $('#sAutoDl').checked = S.autoDl;
   $('#sHook').checked = S.hook; $('#sCut').value = S.cut; $('#sNtfy').value = S.ntfy; renderKeyStatus(); dlgSet.showModal();
@@ -3015,12 +3016,16 @@ setInterval(agnesPushRemoteStatus, 3000);
  const overlay=document.getElementById('yfActivation'),input=document.getElementById('yfLicenseCode'),btn=document.getElementById('yfActivateBtn'),status=document.getElementById('yfActStatus');
  const norm=v=>String(v||'').trim().toUpperCase().replace(/[^A-Z0-9-]/g,'');
  function show(m,t){status.textContent=m||'';status.className='yfActStatus '+(t||'')}
+ function showAccess(){
+   document.querySelectorAll('dialog[open]').forEach(dialog=>dialog.close());
+   overlay.hidden=false;
+ }
  async function verify(code){const r=await fetch(cfg.verifyUrl||'/.netlify/functions/verify-license',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})});const d=await r.json().catch(()=>({}));if(!r.ok||!d.valid)throw new Error(d.message||'Code invalide ou abonnement inactif.');return d}
- async function activate(code,quiet){code=norm(code);if(!code)throw new Error('Entre ton code YakFlow.');if(!quiet){btn.disabled=true;show('Vérification…','')}try{await verify(code);localStorage.setItem('yakflowLicenseCode',code);overlay.hidden=true}catch(e){overlay.hidden=false;localStorage.removeItem('yakflowLicenseCode');show(e.message,'err');throw e}finally{btn.disabled=false}}
- async function boot(){if(!required){overlay.hidden=true;return}overlay.hidden=false;const saved=localStorage.getItem('yakflowLicenseCode');if(saved){input.value=saved;try{await activate(saved,true);return}catch(_){}}input.focus()}
+ async function activate(code,quiet){code=norm(code);if(!code)throw new Error('Entre ton code YakFlow.');if(!quiet){btn.disabled=true;show('Vérification…','')}try{await verify(code);localStorage.setItem('yakflowLicenseCode',code);overlay.hidden=true}catch(e){showAccess();localStorage.removeItem('yakflowLicenseCode');show(e.message,'err');throw e}finally{btn.disabled=false}}
+ async function boot(){if(!required){overlay.hidden=true;return}showAccess();const saved=localStorage.getItem('yakflowLicenseCode');if(saved){input.value=saved;try{await activate(saved,true);return}catch(_){}}input.focus()}
  btn?.addEventListener('click',()=>activate(input.value,false).catch(()=>{}));input?.addEventListener('keydown',e=>{if(e.key==='Enter')btn.click()});
  const manage=document.getElementById('yfManageSub');if(manage){manage.hidden=!cfg.stripePortalUrl;manage.addEventListener('click',()=>{if(cfg.stripePortalUrl)window.open(cfg.stripePortalUrl,'_blank','noopener')})}
- if(required)setInterval(async()=>{const code=localStorage.getItem('yakflowLicenseCode');if(!code)return;try{await verify(code)}catch(e){overlay.hidden=false;localStorage.removeItem('yakflowLicenseCode');show(e.message,'err')}},300000);
+ if(required)setInterval(async()=>{const code=localStorage.getItem('yakflowLicenseCode');if(!code)return;try{await verify(code)}catch(e){showAccess();localStorage.removeItem('yakflowLicenseCode');show(e.message,'err')}},300000);
  if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
