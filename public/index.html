@@ -625,7 +625,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
       <div class="yfCodeField"><i class="fa-solid fa-key"></i><input id="yfLicenseCode" autocomplete="one-time-code" spellcheck="false" placeholder="YKF-XXXXX-XXXXX-XXXXX-XXXXX"></div>
       <button id="yfActivateBtn" class="btn primary lg block"><i class="fa-solid fa-unlock"></i>Activer YakFlow</button>
       <div id="yfActStatus" class="yfActStatus" role="status"></div>
-      <div class="yfActPrice"><i class="fa-solid fa-rocket"></i><div><small>Prix de lancement</small><b>2,99 € <em>/ mois</em></b></div><div class="then">Essai 24 h offert<br>puis 4,99 € / mois</div></div>
+      <div class="yfActPrice"><i class="fa-solid fa-rocket"></i><div><small>Prix de lancement</small><b>2,99 € <em>/ mois</em></b></div><div class="then">Essai 24 h<br>offert</div></div>
       <div class="yfNoCode"><span>Pas encore de code ?</span>
         <button class="yfRequestBtn" type="button" data-access="test"><i class="fa-regular fa-clock"></i>Essai gratuit<small>Accès complet 24 h</small></button>
         <button class="yfRequestBtn full" type="button" data-access="complet"><i class="fa-solid fa-crown"></i>Accès complet<small>Abonnement mensuel</small></button>
@@ -814,7 +814,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
 
     <h4 class="subhead">Production &amp; montage</h4>
     <div class="toggles">
-      <label class="ck"><input type="checkbox" id="sKeepFirst"> <span><b>Verrouiller la continuité des clips Agnes.</b> Ajoute au prompt vidéo la consigne de partir exactement de l’image de la scène (mêmes visages, tenues, décor, sans texte à l’écran).</span></label>
+      <label class="ck"><input type="checkbox" id="sKeepFirst"> <span><b>Verrouiller la continuité des clips Agnes.</b> Ajoute au prompt vidéo la consigne de partir exactement de l’image de la scène (mêmes visages, tenues, décor, sans ajouter de texte). Ignorée si ton prompt parle déjà de « first frame ».</span></label>
       <label class="ck"><input type="checkbox" id="sGate"> <span><b>Valider chaque image avant son clip.</b> Décoché, tout s'enchaîne seul (idéal la nuit).</span></label>
       <label class="ck"><input type="checkbox" id="sAutoMont"> <span><b>Monter la vidéo automatiquement</b> quand tous les clips d'un projet sont prêts.</span></label>
       <label class="ck"><input type="checkbox" id="sFondus"> <span><b>Fondus enchaînés courts</b> (0,2 s) entre deux plans du même décor. Coupe franche quand le décor change.</span></label>
@@ -1006,7 +1006,7 @@ function normStep(e, i) {
     promptVideoGrok: type === 'scene' ? (e.promptVideoGrok || e.promptGrok || e.promptVideo || e.promptAnimation || '') : '',
     promptVideo: type === 'scene' ? (e.promptVideo || e.promptVideoAgnes || e.promptAgnes || e.promptAnimation || '') : '',
     secondes: type === 'scene' ? clampSec(e.secondes || e.duree || e.dureeGrok || 10) : 0,
-    garder: e.garder || '', format: e.format || '', muet: !!e.muet, transition: e.transition || 'cut', imageDe: e.imageDe ? String(e.imageDe) : '',
+    garder: e.garder || '', format: e.format || '', muet: !!e.muet, transition: e.transition || 'cut', imageDe: e.imageDe ? String(e.imageDe) : '', imageFin: e.imageFin ? String(e.imageFin) : '',
     img: { st: 'attente' }, clip: { st: type === 'scene' ? 'attente' : 'aucun' }, ok: false,
   };
 }
@@ -1059,7 +1059,7 @@ async function importProjects(list, montageOnly) {
       const sameImg = o.promptImage === s.promptImage && o.joindre.join() === s.joindre.join() && o.format === s.format && (o.imageDe || '') === (s.imageDe || '');
       if (sameImg) { s.img = o.img; s.ok = o.ok; keptI++; }
       else if (!/^fiche-serie-/.test(s.id)) await mDel(imgKey(old, o));
-      const sameClip = sameImg && (o.promptVideoAgnes||o.promptVideo||'') === (s.promptVideoAgnes||s.promptVideo||'') && (o.promptVideoGrok||o.promptVideo||'') === (s.promptVideoGrok||s.promptVideo||'') && o.secondes === s.secondes;
+      const sameClip = sameImg && (o.promptVideoAgnes||o.promptVideo||'') === (s.promptVideoAgnes||s.promptVideo||'') && (o.promptVideoGrok||o.promptVideo||'') === (s.promptVideoGrok||s.promptVideo||'') && o.secondes === s.secondes && (o.imageFin || '') === (s.imageFin || '');
       if (sameClip) { s.clip = o.clip; keptC++; } else await mDel(clipKey(old, o));
     }
     for (const o of old.etapes) if (!np.etapes.find((x) => x.id === o.id)) { if (!/^fiche-serie-/.test(o.id)) await mDel(imgKey(old, o)); await mDel(clipKey(old, o)); }
@@ -1512,7 +1512,7 @@ function videoPromptFor(s, engine) {
 // YAKFLOW_AGNES_OPTIM_V13 : Agnes Video n'accepte que 21:9, 16:9, 4:3, 1:1, 3:4 et 9:16 (un 2:3 ou 3:2 donnait une erreur 400)
 const VIDEO_RATIO = { '9:16': '9:16', '16:9': '16:9', '1:1': '1:1', '4:3': '4:3', '3:4': '3:4', '21:9': '21:9', '2:3': '3:4', '3:2': '4:3' };
 const VIDEO_PX = { '9:16': [720, 1280], '16:9': [1280, 704], '1:1': [720, 720], '4:3': [960, 720], '3:4': [720, 960], '21:9': [1680, 720] };
-const FIRST_FRAME_RULE = 'Start exactly from the provided first frame and animate it: keep the same characters, faces, outfits, colors, framing and setting as the first frame. No on-screen text or subtitles.';
+const FIRST_FRAME_RULE = 'Start exactly from the provided first frame and animate it: keep the same characters, faces, outfits, colors and setting as the first frame. Do not add new text or subtitles.';
 function agnesVideoPrompt(s) {
   const prompt = videoPromptFor(s, 'agnes');
   if (S.keepFirst === false || /first[- ]frame|premi[eè]re image/i.test(prompt)) return prompt;
@@ -1522,7 +1522,10 @@ async function videoBody(p, s) {
   const img = await mGet(imgKey(p, s));
   const ratio = VIDEO_RATIO[fmtOf(s)] || '9:16', [w, h] = VIDEO_PX[ratio];
   const first = await cropTo(img, w / h, h);   // première image recadrée au format exact de la vidéo
-  return { model: S.vidModel, prompt: agnesVideoPrompt(s), mode: 'keyframe', first_frame: first,
+  const finStep = s.imageFin && p.etapes.find((x) => x.id === s.imageFin);
+  const finImg = finStep && await mGet(imgKey(p, finStep));
+  const extra = finImg ? { last_frame: await cropTo(finImg, w / h, h) } : {};
+  return { model: S.vidModel, prompt: agnesVideoPrompt(s), mode: 'keyframe', first_frame: first, ...extra,
     size: S.vidModel === 'agnes-video-2.5-flash' ? '720P' : S.vidSize, aspect_ratio: ratio, seconds: String(clampSec(s.secondes)), n: 1 };
 }
 
@@ -1739,16 +1742,18 @@ async function nextImageJob() {
   }
   return null;
 }
+// YAKFLOW_IMAGE_FIN_V14 : « imageFin » = id d'une étape dont l'image sert de dernière image (keyframe first_frame + last_frame)
+function finReady(p, s) { if (!s.imageFin) return true; const f = p.etapes.find((x) => x.id === s.imageFin); return !!(f && hasImg(p, f)); }
 function readyClips() {   // clips prêts à partir (image faite, validés) qui attendent leur tour
   let n = 0;
-  for (const p of projects) { if (!p.actif) continue; for (const s of p.etapes) if (s.type === 'scene' && videoPromptFor(s) && hasImg(p, s) && (!S.gate || s.ok) && (s.clip.st === 'attente' || s.clip.st === 'file')) n++; }
+  for (const p of projects) { if (!p.actif) continue; for (const s of p.etapes) if (s.type === 'scene' && videoPromptFor(s) && hasImg(p, s) && finReady(p, s) && (!S.gate || s.ok) && (s.clip.st === 'attente' || s.clip.st === 'file')) n++; }
   return n;
 }
 function nextClipJob(manualTest = false) {
   for (const p of byDate()) {
     if (!p.actif) continue;
     for (const s of p.etapes) {
-      if (s.type !== 'scene' || !hasImg(p, s) || !videoPromptFor(s)) continue;
+      if (s.type !== 'scene' || !hasImg(p, s) || !finReady(p, s) || !videoPromptFor(s)) continue;
       if (S.gate && !s.ok) continue;
       if (s.clip.st === 'attente' || (s.clip.st === 'file' && (manualTest || now() >= (s.clip.retryAt || 0)))) return [p, s];
     }

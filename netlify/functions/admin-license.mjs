@@ -11,13 +11,51 @@ function isAdmin(request) {
   return timingSafeEqual(a, b);
 }
 
+// YAKFLOW_ADMIN_CORS_V14 : le site d'administration séparé (autre dépôt, autre domaine) appelle cette fonction.
+// Origines autorisées : variable Netlify YAKFLOW_ADMIN_ORIGINS (ex. https://yakflow-admin.netlify.app), séparées par des virgules.
+function corsHeaders(request) {
+  const origin = request.headers.get('Origin') ?? '';
+  const allowed = String(process.env.YAKFLOW_ADMIN_ORIGINS ?? '').split(',').map((x) => x.trim().replace(/\/$/, '')).filter(Boolean);
+  if (!origin || !allowed.includes(origin)) return {};
+  return {
+    'Access-Control-Allow-Origin': origin,
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, X-Yakflow-Admin',
+    'Access-Control-Max-Age': '600',
+    Vary: 'Origin',
+  };
+}
+
 export default async function handler(request) {
+  const cors = corsHeaders(request);
+  if (request.method === 'OPTIONS') return new Response(null, { status: cors['Access-Control-Allow-Origin'] ? 204 : 403, headers: cors });
+  const response = await handle(request);
+  for (const [k, v] of Object.entries(cors)) response.headers.set(k, v);
+  return response;
+}
+
+async function handle(request) {
   if (request.method !== 'POST') return json({ message: 'Méthode refusée.' }, 405);
   if (!isAdmin(request)) return json({ message: 'Accès administrateur refusé.' }, 401);
   try {
     const body = await smallJson(request);
     const action = String(body.action ?? 'create');
     const store = licenses();
+    if (action === 'whoami') return json({ ok: true });
+    if (action === 'list') {
+      // 100 derniers codes, sans le code lui-même (seule son empreinte est stockée)
+      const snap = await store.orderBy('createdAt', 'desc').limit(100).get();
+      return json({ items: snap.docs.map((doc) => { const r = doc.data(); return { id: doc.id, email: r.email, type: r.type, active: r.active === true, createdAt: r.createdAt, expiresAt: r.expiresAt ?? null, deactivatedAt: r.deactivatedAt ?? null, note: r.note ?? '' }; }) });
+    }
+    if (action === 'deactivate-id' || action === 'reactivate-id') {
+      const id = String(body.id ?? '');
+      if (!/^[a-f0-9]{64}$/.test(id)) return json({ message: 'Identifiant invalide.' }, 400);
+      const ref = store.doc(id), snap = await ref.get();
+      if (!snap.exists) return json({ message: 'Code introuvable.' }, 404);
+      if (action === 'deactivate-id') await ref.update({ active: false, deactivatedAt: new Date().toISOString() });
+      else await ref.update({ active: true, deactivatedAt: null });
+      return json({ id, email: snap.data().email, active: action === 'reactivate-id' });
+    }
     if (action === 'create') {
       const email = String(body.email ?? '').trim().toLowerCase();
       const type = body.type === 'trial' ? 'trial' : body.type === 'premium' ? 'premium' : '';

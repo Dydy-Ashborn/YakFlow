@@ -167,13 +167,14 @@ code#code{display:block;padding:18px;margin:14px 0 4px;background:var(--bg-2);bo
 </div>
 <main>
   <h1>Codes d’accès</h1>
-  <p>La clé secrète reste dans cet onglet et n’est jamais enregistrée dans le navigateur.</p>
+  <p>La clé secrète peut être mémorisée sur cet appareil : utilise cette option uniquement sur ton ordinateur personnel.</p>
 
   <section class="card">
     <h2><i class="fa-solid fa-key"></i>Générer un code</h2>
     <p>Crée un code d’essai 24 h ou un code premium pour un client.</p>
     <div class="fields">
       <label class="f"><span>Clé secrète administrateur</span><input id="secret" type="password" autocomplete="off" spellcheck="false"></label>
+      <div class="actions" style="margin-top:10px;gap:14px"><label style="display:flex;align-items:center;gap:8px;margin:0;font-weight:500;color:var(--text-2);cursor:pointer"><input type="checkbox" id="remember" style="width:18px;height:18px;min-height:0;accent-color:#ffb224"> Se souvenir de la clé sur cet appareil</label><button type="button" class="btn ghost sm" id="forget" hidden><i class="fa-solid fa-trash-can"></i>Oublier la clé</button></div>
       <div class="row2">
         <label class="f"><span>Email du client</span><input id="email" type="email" autocomplete="off" placeholder="client@email.com"></label>
         <label class="f"><span>Type d’accès</span><select id="type"><option value="trial">Essai · 24 h</option><option value="premium">Premium · abonnement vérifié</option></select></label>
@@ -206,10 +207,16 @@ code#code{display:block;padding:18px;margin:14px 0 4px;background:var(--bg-2);bo
   </script>
   <script>
     const $=id=>document.getElementById(id);let last=null;
+    /* clé admin mémorisée sur cet appareil (localStorage), seulement si la case est cochée */
+    const KEY='yakflowAdminSecret';
+    try{const saved=localStorage.getItem(KEY);if(saved){$('secret').value=saved;$('remember').checked=true;$('forget').hidden=false}}catch(_){}
+    function keepSecret(){try{if($('remember').checked){localStorage.setItem(KEY,$('secret').value.trim());$('forget').hidden=false}else{localStorage.removeItem(KEY);$('forget').hidden=true}}catch(_){}}
+    $('remember').onchange=()=>{if(!$('remember').checked)keepSecret()};
+    $('forget').onclick=()=>{try{localStorage.removeItem(KEY)}catch(_){}$('secret').value='';$('remember').checked=false;$('forget').hidden=true;toast('Clé oubliée sur cet appareil.')};
     const params=new URLSearchParams(location.search);if(params.get('email'))$('email').value=params.get('email');if(['trial','premium'].includes(params.get('kind')))$('type').value=params.get('kind');
     async function call(action,body){const secret=$('secret').value.trim();if(!secret)throw Error('Saisis la clé secrète.');
       const r=await fetch('/.netlify/functions/admin-license',{method:'POST',headers:{'Content-Type':'application/json','X-Yakflow-Admin':secret},body:JSON.stringify({action,...body})});
-      const data=await r.json().catch(()=>({}));if(!r.ok)throw Error(data.message||'Opération impossible.');return data}
+      const data=await r.json().catch(()=>({}));if(r.status===401){try{localStorage.removeItem(KEY)}catch(_){}$('forget').hidden=true}if(!r.ok)throw Error(data.message||'Opération impossible.');keepSecret();return data}
     $('create').onclick=async()=>{const b=$('create');b.disabled=true;$('status').textContent='Création…';try{
       last=await call('create',{email:$('email').value,type:$('type').value,note:$('note').value});
       $('result').hidden=false;$('resultEmail').textContent=last.email+' · '+(last.type==='trial'?'Essai 24 h':'Premium');$('code').textContent=last.code;
