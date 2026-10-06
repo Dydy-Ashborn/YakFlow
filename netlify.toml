@@ -3,6 +3,11 @@
   functions = "netlify/functions"
 
 [[redirects]]
+  from = "/decouvrir"
+  to = "/decouvrir.html"
+  status = 200
+
+[[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/agnes-api/:splat"
   status = 200

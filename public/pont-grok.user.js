@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         YakFlow — Pont Grok Imagine
 // @namespace    yakflow
-// @version      4.0.0
-// @description  Pont YakFlow en ligne ↔ Grok Imagine, multi-onglets et transfert MP4.
+// @version      4.1.0
+// @description  Pont entre YakFlow en ligne et Grok Imagine, multi-onglets et transfert MP4.
 // @match        https://grok.com/imagine*
 // @match        https://grok.com/supergrok/imagine*
 // @grant        GM_xmlhttpRequest
@@ -20,12 +20,73 @@
 'use strict';
 
 let BASE=GM_getValue('yakflow_site',''), LICENSE=GM_getValue('yakflow_code','');
-if(!BASE)BASE=prompt('Adresse HTTPS de ton site YakFlow (ex. https://yakflow.netlify.app) :')||'';
-if(!LICENSE)LICENSE=prompt('Ton code d’accès YakFlow :')||'';
-try{BASE=new URL(BASE).origin;if(!BASE.startsWith('https://'))throw 0}catch(_){alert('Adresse YakFlow invalide. Recharge la page pour configurer le pont.');return}
-if(!LICENSE)return;
-GM_setValue('yakflow_site',BASE);GM_setValue('yakflow_code',LICENSE);
-GM_registerMenuCommand('YakFlow · changer le site ou le code',()=>{GM_setValue('yakflow_site','');GM_setValue('yakflow_code','');location.reload()});
+
+  /* YAKFLOW_BRIDGE_SETUP_V12 : configuration du pont dans une modale (plus de prompt/alert natifs). Icônes : Font Awesome Free (CC BY 4.0). */
+  function yfSetup(site, code, title) {
+    const ICONS = {"key": ["0 0 512 512", "M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17l0 80c0 13.3 10.7 24 24 24l80 0c13.3 0 24-10.7 24-24l0-40 40 0c13.3 0 24-10.7 24-24l0-40 40 0c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"], "link": ["0 0 640 512", "M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"], "xmark": ["0 0 384 512", "M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"], "circle-check": ["0 0 512 512", "M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"], "triangle-exclamation": ["0 0 512 512", "M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"], "paw": ["0 0 512 512", "M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5l0 1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3l0-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"]};
+    const NS = 'http://www.w3.org/2000/svg';
+    const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+    const ic = (name) => { const [vb, d] = ICONS[name], s = document.createElementNS(NS, 'svg'), p = document.createElementNS(NS, 'path'); s.setAttribute('viewBox', vb); s.setAttribute('aria-hidden', 'true'); p.setAttribute('d', d); p.setAttribute('fill', 'currentColor'); s.appendChild(p); return s; };
+    const CSS = ':host{all:initial}*{box-sizing:border-box}' +
+      '.bd{position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:16px;background:rgba(3,4,6,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:14px/1.5 Inter,-apple-system,system-ui,"Segoe UI",sans-serif;color:#f5f2ec;animation:f .2s}' +
+      '.m{width:min(440px,100%);background:#111317;border:1px solid rgba(255,255,255,.12);border-radius:22px;box-shadow:0 24px 64px rgba(0,0,0,.55);overflow:hidden;animation:p .25s cubic-bezier(.2,.8,.2,1)}' +
+      '.h{display:flex;gap:14px;align-items:flex-start;padding:20px 22px 14px}.mi{width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00);color:#1d1200}.mi svg{width:18px;height:18px}' +
+      'h3{margin:0;font-size:17px;font-weight:700;letter-spacing:-.01em}.h p{margin:3px 0 0;color:#7a756d;font-size:13px}' +
+      '.x{margin-left:auto;width:32px;height:32px;border:0;border-radius:8px;background:transparent;color:#7a756d;cursor:pointer;display:grid;place-items:center}.x:hover{background:#1d2127;color:#fff}.x svg{width:13px;height:13px}' +
+      '.b{padding:6px 22px 18px;display:grid;gap:14px}label{display:grid;gap:6px;font-size:12px;font-weight:600;color:#b3ada3}' +
+      '.f{position:relative}.f svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:13px;height:13px;color:#58544e}' +
+      'input{width:100%;min-height:44px;padding:10px 12px 10px 36px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0c0d10;color:#fff;font:inherit;outline:none}input:focus{border-color:#ffb224;box-shadow:0 0 0 3px rgba(255,178,36,.15)}' +
+      'input.code{font-family:ui-monospace,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase}' +
+      '.st{display:none;gap:9px;align-items:flex-start;padding:10px 12px;border-radius:9px;font-size:13px}.st svg{width:14px;height:14px;flex:none;margin-top:2px}.st.err{display:flex;color:#ffb3ad;background:rgba(255,90,78,.1);border:1px solid rgba(255,90,78,.28)}.st.ok{display:flex;color:#9ff0c6;background:rgba(61,214,140,.1);border:1px solid rgba(61,214,140,.25)}.st.wait{display:flex;color:#b3ada3;background:#16191e;border:1px solid rgba(255,255,255,.07)}' +
+      '.ft{display:flex;justify-content:flex-end;gap:8px;padding:14px 22px;border-top:1px solid rgba(255,255,255,.07);background:#0c0d10}' +
+      'button.btn{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 16px;border-radius:9px;border:1px solid rgba(255,255,255,.12);background:#16191e;color:#f5f2ec;font:600 13px Inter,-apple-system,system-ui,sans-serif;cursor:pointer}button.btn:hover{background:#1d2127}' +
+      'button.pr{background:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00);color:#1d1200;border-color:transparent;font-weight:700}button.pr:hover{filter:brightness(1.06);background:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00)}button:disabled{opacity:.5;cursor:wait}' +
+      '@keyframes f{from{opacity:0}}@keyframes p{from{opacity:0;transform:translateY(12px) scale(.97)}}';
+    return new Promise((resolve) => {
+      const host = el('div'); host.id = 'yakflow-setup';
+      const root = host.attachShadow({ mode: 'closed' });
+      try { const sh = new CSSStyleSheet(); sh.replaceSync(CSS); root.adoptedStyleSheets = [sh]; } catch (_) { root.appendChild(el('style', null, CSS)); }
+      const bd = el('div', 'bd'), m = el('div', 'm'); m.setAttribute('role', 'dialog'); m.setAttribute('aria-modal', 'true');
+      const h = el('div', 'h'), mi = el('div', 'mi'); mi.appendChild(ic('paw'));
+      const ht = el('div'); ht.append(el('h3', null, title || 'Connecter ce pont à YakFlow'), el('p', null, 'À faire une seule fois sur cet ordinateur.'));
+      const x = el('button', 'x'); x.type = 'button'; x.setAttribute('aria-label', 'Fermer'); x.appendChild(ic('xmark'));
+      h.append(mi, ht, x);
+      const b = el('div', 'b');
+      const field = (lbl, iconName, val, ph, cls) => { const l = el('label', null, lbl), f = el('div', 'f'), i = el('input', cls); i.value = val || ''; i.placeholder = ph; i.spellcheck = false; i.autocomplete = 'off'; f.append(ic(iconName), i); l.appendChild(f); b.appendChild(l); return i; };
+      const iSite = field('Adresse de ton site YakFlow', 'link', site, 'https://yakflow.netlify.app');
+      const iCode = field('Ton code d’accès', 'key', code, 'YKF-XXXXX-XXXXX-XXXXX-XXXXX', 'code');
+      const st = el('div', 'st'); b.appendChild(st);
+      const ft = el('div', 'ft'), cancel = el('button', 'btn', 'Plus tard'), ok = el('button', 'btn pr', 'Connecter le pont');
+      cancel.type = ok.type = 'button'; ft.append(cancel, ok);
+      m.append(h, b, ft); bd.appendChild(m); root.appendChild(bd);
+      (document.body || document.documentElement).appendChild(host);
+      const show = (cls, msg, name) => { st.className = 'st ' + cls; st.replaceChildren(); if (name) st.appendChild(ic(name)); st.appendChild(el('span', null, msg)); };
+      const close = (v) => { host.remove(); resolve(v); };
+      x.onclick = cancel.onclick = () => close(null);
+      bd.addEventListener('keydown', (e) => { e.stopPropagation(); if (e.key === 'Escape') close(null); if (e.key === 'Enter') ok.click(); });
+      ok.onclick = () => {
+        let origin = '';
+        try { const raw = iSite.value.trim(); origin = new URL(/^https?:\/\//i.test(raw) ? raw : 'https://' + raw).origin; } catch (_) {}
+        if (!origin || !origin.startsWith('https://')) { show('err', 'Adresse invalide : indique l’adresse https de ton site YakFlow.', 'triangle-exclamation'); iSite.focus(); return; }
+        const c = iCode.value.trim().toUpperCase().replace(/[^A-Z0-9-]/g, '');
+        if (!c) { show('err', 'Indique ton code d’accès YakFlow.', 'triangle-exclamation'); iCode.focus(); return; }
+        ok.disabled = true; show('wait', 'Vérification du code…');
+        GM_xmlhttpRequest({ method: 'POST', url: origin + '/.netlify/functions/verify-license', data: JSON.stringify({ code: c }), headers: { 'Content-Type': 'application/json' }, responseType: 'json', timeout: 20000,
+          onload: (r) => {
+            let d = r.response; if (!d || typeof d !== 'object') { try { d = JSON.parse(r.responseText); } catch (_) { d = {}; } }
+            if (r.status >= 200 && r.status < 300 && d.valid) { show('ok', 'Code valide. Le pont démarre…', 'circle-check'); setTimeout(() => close({ site: origin, code: c }), 700); }
+            else { ok.disabled = false; show('err', d.message || (r.status === 404 ? 'Site YakFlow introuvable à cette adresse.' : 'Code invalide ou abonnement inactif.'), 'triangle-exclamation'); }
+          },
+          onerror: () => { ok.disabled = false; show('err', 'Impossible de joindre ce site. Vérifie l’adresse.', 'triangle-exclamation'); },
+          ontimeout: () => { ok.disabled = false; show('err', 'Le site ne répond pas. Réessaie dans un instant.', 'triangle-exclamation'); } });
+      };
+      setTimeout(() => (iSite.value ? iCode : iSite).focus(), 50);
+    });
+  }
+const saveSetup=v=>{if(!v)return;GM_setValue('yakflow_site',v.site);GM_setValue('yakflow_code',v.code);location.reload()};
+GM_registerMenuCommand('YakFlow · changer le site ou le code',()=>yfSetup(BASE,LICENSE,'Modifier la connexion YakFlow').then(saveSetup));
+try{if(BASE)BASE=new URL(BASE).origin}catch(_){BASE=''}
+if(!BASE||!LICENSE||!BASE.startsWith('https://')){yfSetup(BASE,LICENSE).then(saveSetup);return}
 const K_ON='agnes_grok_on'; // conservé pour compatibilité avec les installations existantes
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const worker=sessionStorage.getItem('agnesGrokWorker') ||
