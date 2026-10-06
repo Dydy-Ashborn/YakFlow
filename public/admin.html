@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>YakFlow · Codes d’accès</title>
+  <style>
+    :root{color-scheme:dark;font-family:Inter,system-ui,-apple-system,sans-serif}*{box-sizing:border-box}
+    body{margin:0;background:#0b0d12;color:#f6f7fb}main{max-width:760px;margin:0 auto;padding:36px 18px 80px}
+    h1{font-size:clamp(30px,5vw,48px);letter-spacing:-.04em;margin:0 0 8px}p{color:#aab1c0;line-height:1.5}
+    section{background:#141923;border:1px solid #2b3442;border-radius:20px;padding:22px;margin:20px 0}
+    label{display:block;font-weight:700;font-size:14px;margin:16px 0 6px}input,select,textarea{width:100%;border:1px solid #3a4657;border-radius:10px;background:#0c1017;color:#fff;padding:12px;font:inherit}
+    button{border:0;border-radius:10px;padding:12px 16px;background:#8667ff;color:#fff;font:inherit;font-weight:800;cursor:pointer;margin:16px 8px 0 0}
+    button.secondary{background:#2b3442}button:disabled{opacity:.55;cursor:wait}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    code{display:block;padding:16px;background:#090c12;border:1px dashed #60718a;border-radius:10px;font-size:20px;letter-spacing:.07em;overflow-wrap:anywhere}
+    #result{display:none}#status{min-height:24px;color:#ffbe6b}a{color:#bcaeff}@media(max-width:580px){.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body><main>
+  <h1>Codes YakFlow</h1>
+  <p>Page d’administration. La clé secrète reste dans cet onglet et n’est jamais enregistrée dans le navigateur.</p>
+  <section>
+    <label for="secret">Clé secrète administrateur</label><input id="secret" type="password" autocomplete="off" spellcheck="false">
+    <div class="row"><div><label for="email">Email du client</label><input id="email" type="email" autocomplete="off"></div>
+    <div><label for="type">Type d’accès</label><select id="type"><option value="trial">Essai · 24 h</option><option value="premium">Premium · abonnement vérifié</option></select></div></div>
+    <label for="note">Note privée (facultatif)</label><input id="note" maxlength="300" placeholder="Référence de paiement, par exemple">
+    <p>Avant de créer un code premium, vérifie le paiement dans Stripe. La création du code ne déclenche aucun paiement.</p>
+    <button id="create">Générer le code</button><span id="status" role="status"></span>
+  </section>
+  <section id="result"><h2>Code prêt</h2><p id="resultEmail"></p><code id="code"></code>
+    <button id="copyCode">Copier le code</button><button id="copyEmail" class="secondary">Copier l’email</button><button id="reply" class="secondary">Préparer le mail</button>
+    <p id="expires"></p></section>
+  <section><h2>Désactiver un code</h2><p>À utiliser après résiliation ou erreur d’attribution. L’accès sera refusé à la prochaine vérification.</p>
+    <label for="revokeCode">Code à désactiver</label><input id="revokeCode" autocomplete="off" spellcheck="false" placeholder="YKF-…">
+    <button id="revoke" class="secondary">Désactiver</button><span id="revokeStatus" role="status"></span>
+    <label for="revokeEmail">Ou désactiver tous les codes premium actifs de cet email</label><input id="revokeEmail" type="email" autocomplete="off" placeholder="client@email.com">
+    <button id="revokeByEmail" class="secondary">Désactiver par email</button><span id="revokeEmailStatus" role="status"></span>
+  </section>
+  <script>
+    const $=id=>document.getElementById(id);let last=null;
+    const params=new URLSearchParams(location.search);if(params.get('email'))$('email').value=params.get('email');if(['trial','premium'].includes(params.get('kind')))$('type').value=params.get('kind');
+    async function call(action,body){const secret=$('secret').value.trim();if(!secret)throw Error('Saisis la clé secrète.');
+      const r=await fetch('/.netlify/functions/admin-license',{method:'POST',headers:{'Content-Type':'application/json','X-Yakflow-Admin':secret},body:JSON.stringify({action,...body})});
+      const data=await r.json().catch(()=>({}));if(!r.ok)throw Error(data.message||'Opération impossible.');return data}
+    $('create').onclick=async()=>{const b=$('create');b.disabled=true;$('status').textContent='Création…';try{
+      last=await call('create',{email:$('email').value,type:$('type').value,note:$('note').value});
+      $('result').style.display='block';$('resultEmail').textContent=last.email+' · '+(last.type==='trial'?'Essai 24 h':'Premium');$('code').textContent=last.code;
+      $('expires').textContent=last.expiresAt?'Expire le '+new Date(last.expiresAt).toLocaleString('fr-FR'):'Valide tant que tu ne le désactives pas.';
+      $('status').textContent='Code créé dans Firebase.';$('result').scrollIntoView({behavior:'smooth'});
+    }catch(e){$('status').textContent=e.message}finally{b.disabled=false}};
+    $('copyCode').onclick=()=>last&&navigator.clipboard.writeText(last.code);
+    $('copyEmail').onclick=()=>last&&navigator.clipboard.writeText(last.email);
+    $('reply').onclick=()=>{if(!last)return;const subject='Ton accès YakFlow';const body=last.type==='trial'?
+      `Bonjour,\n\nVoici ton code d’essai YakFlow, valable 24 h après sa création :\n\n${last.code}\n\nOuvre YakFlow et saisis ce code sur l’écran d’accueil.\n\nÀ bientôt !`:
+      `Bonjour,\n\nVoici ton code premium YakFlow :\n\n${last.code}\n\nOuvre YakFlow et saisis ce code sur l’écran d’accueil.\n\nÀ bientôt !`;
+      location.href='mailto:'+last.email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body)};
+    $('revoke').onclick=async()=>{const b=$('revoke');b.disabled=true;$('revokeStatus').textContent='Désactivation…';try{
+      const data=await call('deactivate',{code:$('revokeCode').value});$('revokeStatus').textContent='Code de '+data.email+' désactivé dans Firebase.';
+    }catch(e){$('revokeStatus').textContent=e.message}finally{b.disabled=false}};
+    $('revokeByEmail').onclick=async()=>{const b=$('revokeByEmail');b.disabled=true;$('revokeEmailStatus').textContent='Désactivation…';try{
+      const data=await call('deactivate-email',{email:$('revokeEmail').value});$('revokeEmailStatus').textContent=data.deactivated+' code(s) premium désactivé(s) dans Firebase.';
+    }catch(e){$('revokeEmailStatus').textContent=e.message}finally{b.disabled=false}};
+  </script>
+</main></body></html>

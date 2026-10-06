@@ -1,0 +1,40 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/agnes-api/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/ping"
+  to = "/.netlify/functions/ping"
+  status = 200
+
+[[redirects]]
+  from = "/dl"
+  to = "/.netlify/functions/download-media"
+  status = 200
+
+[[redirects]]
+  from = "/bridge/*"
+  to = "/.netlify/functions/cloud-bridge/bridge/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/grok/*"
+  to = "/.netlify/functions/cloud-bridge/grok/:splat"
+  status = 200
+
+[[headers]]
+  for = "/admin.html"
+  [headers.values]
+    Cache-Control = "no-store"
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
