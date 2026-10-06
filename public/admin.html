@@ -158,6 +158,56 @@ code#code{display:block;padding:18px;margin:14px 0 4px;background:var(--bg-2);bo
 .toast{position:fixed;bottom:20px;right:20px;display:flex;gap:10px;align-items:center;padding:12px 16px;border-radius:var(--r-md);background:var(--s2);border:1px solid var(--border-2);box-shadow:var(--sh-3);font-size:13px;animation:up .25s}
 .toast i{color:var(--success)}
 @media(max-width:580px){.row2{grid-template-columns:1fr}}
+/* YAKFLOW_CLIENTS_V14 */
+main{max-width:980px}
+.cl-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.cl-head h2{margin:0;flex:1}
+.cl-count{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--s3);color:var(--text-2)}
+.cl-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0}
+.cl-search{position:relative;flex:1;min-width:220px}
+.cl-search i{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-4);font-size:13px;pointer-events:none}
+.cl-search input{padding-left:38px}
+.seg{display:flex;padding:3px;border-radius:10px;background:var(--bg-2);border:1px solid var(--border-2);flex-wrap:wrap}
+.seg button{margin:0;border:0;background:transparent;color:var(--text-3);padding:7px 11px;border-radius:7px;font-weight:600;font-size:12.5px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.seg button.on{background:var(--s3);color:var(--text)}
+.seg em{font-style:normal;font-size:11px;padding:1px 6px;border-radius:999px;background:var(--s4);color:var(--text-2)}
+.seg button.on em{background:var(--brand-soft);color:var(--brand-2)}
+.cl-list{display:grid;gap:8px}
+.cl{border:1px solid var(--border);border-radius:var(--r-md);background:var(--s2);transition:border-color .15s}
+.cl:hover{border-color:var(--border-2)}
+.cl.open{border-color:var(--brand-line)}
+.cl-row{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;cursor:pointer}
+.av{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:15px;background:var(--s4);color:var(--text-2);text-transform:uppercase}
+.av.premium{background:var(--grad);color:var(--brand-ink)}.av.trial{background:rgba(122,167,255,.15);color:#9dbcff}
+.cl-main{min-width:0}
+.cl-mail{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cl-meta{font-size:12px;color:var(--text-3);display:flex;gap:6px 12px;flex-wrap:wrap;margin-top:2px}
+.cl-meta .nt{max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cl-side{display:flex;align-items:center;gap:8px}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.tag.premium{background:var(--brand-soft);color:var(--brand-2)}.tag.trial{background:rgba(122,167,255,.1);color:#9dbcff}
+.tag.expired{background:rgba(255,159,67,.1);color:var(--warning)}.tag.off{background:var(--s3);color:var(--text-3)}
+.tag.on{background:var(--success-soft);color:var(--success)}
+.ib{margin:0;width:32px;height:32px;padding:0;border-radius:8px;border:1px solid transparent;background:transparent;color:var(--text-3);cursor:pointer;display:grid;place-items:center}
+.ib:hover{background:var(--s3);color:var(--text);border-color:var(--border)}
+.chev{transition:transform .2s;color:var(--text-4)}.cl.open .chev{transform:rotate(180deg)}
+.cl-codes{display:none;border-top:1px solid var(--border);padding:8px 14px 14px}
+.cl.open .cl-codes{display:block}
+.cd{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px}
+.cd:last-child{border-bottom:0}
+.cd .when{color:var(--text-3)}
+.cd .btn{margin:0}
+.cl-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.cl-acts .btn{margin:0}
+.cl-empty{text-align:center;color:var(--text-3);padding:36px 10px}
+.cl-empty i{display:block;font-size:22px;margin-bottom:10px;opacity:.5}
+@media(max-width:620px){.cl-row{grid-template-columns:40px minmax(0,1fr)}.cl-side{grid-column:1/-1;justify-content:flex-end}.cd{grid-template-columns:1fr 1fr}}
+dialog#clDlg{background:var(--s1);color:var(--text);border:1px solid var(--border-2);border-radius:20px;padding:0;width:min(420px,calc(100vw - 24px));box-shadow:var(--sh-3)}
+dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
+#clDlg .h{display:flex;gap:12px;align-items:center;padding:20px 22px 6px}#clDlg .h i{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--danger-soft);color:var(--danger)}
+#clDlg h3{margin:0;font-size:16px}#clDlg p{margin:0;padding:6px 22px 18px;color:var(--text-2)}
+#clDlg .f2{display:flex;justify-content:flex-end;gap:8px;padding:12px 22px;border-top:1px solid var(--border);background:var(--bg-2)}#clDlg .btn{margin:0}
+
   </style>
 </head>
 <body>
@@ -202,6 +252,23 @@ code#code{display:block;padding:18px;margin:14px 0 4px;background:var(--bg-2);bo
     <label class="f"><span>Ou désactiver tous les codes premium actifs de cet email</span><input id="revokeEmail" type="email" autocomplete="off" placeholder="client@email.com"></label>
     <div class="actions"><button id="revokeByEmail" class="btn danger"><i class="fa-solid fa-user-slash"></i>Désactiver par email</button><span id="revokeEmailStatus" class="st" role="status"></span></div>
   </section>
+
+  <!-- YAKFLOW_CLIENTS_V14 -->
+  <section class="card" id="clients">
+    <div class="cl-head"><h2><i class="fa-solid fa-users"></i>Clients</h2><span class="cl-count" id="clCount">—</span><button class="btn sm" id="clLoad"><i class="fa-solid fa-rotate"></i>Charger la liste</button></div>
+    <p>Regroupés par email à partir des 100 derniers codes. Clique sur un client pour voir ses codes.</p>
+    <div class="cl-tools">
+      <div class="cl-search"><i class="fa-solid fa-magnifying-glass"></i><input id="clQ" type="text" placeholder="Rechercher un email ou une note…" autocomplete="off"></div>
+      <div class="seg" id="clSeg">
+        <button type="button" data-f="all" class="on">Tous <em>0</em></button>
+        <button type="button" data-f="premium">Premium <em>0</em></button>
+        <button type="button" data-f="trial">Essais <em>0</em></button>
+        <button type="button" data-f="inactive">Inactifs <em>0</em></button>
+      </div>
+    </div>
+    <div class="cl-list" id="clList"><div class="cl-empty"><i class="fa-solid fa-key"></i>Entre la clé secrète puis clique sur « Charger la liste ».</div></div>
+  </section>
+  <dialog id="clDlg"><div class="h"><i class="fa-solid fa-triangle-exclamation"></i><h3 id="clDlgT"></h3></div><p id="clDlgM"></p><div class="f2"><button class="btn ghost" id="clDlgNo">Annuler</button><button class="btn danger" id="clDlgOk" style="background:var(--danger);color:#fff;border-color:transparent">Confirmer</button></div></dialog>
   <script>
     function toast(m){const t=document.createElement('div');t.className='toast';t.innerHTML='<i class="fa-solid fa-circle-check"></i>';t.append(m);document.body.append(t);setTimeout(()=>t.remove(),2200)}
   </script>
@@ -260,5 +327,88 @@ code#code{display:block;padding:18px;margin:14px 0 4px;background:var(--bg-2);bo
     $('revokeByEmail').onclick=async()=>{const b=$('revokeByEmail');b.disabled=true;$('revokeEmailStatus').textContent='Désactivation…';try{
       const data=await call('deactivate-email',{email:$('revokeEmail').value});$('revokeEmailStatus').textContent=data.deactivated+' code(s) premium désactivé(s) dans Firebase.';
     }catch(e){$('revokeEmailStatus').textContent=e.message}finally{b.disabled=false}};
+  </script>
+
+  <script>
+  /* YAKFLOW_CLIENTS_V14 : liste des clients (groupés par email) avec recherche et filtres */
+  (function(){
+    let codes=[], filter='all';
+    const fmt=v=>v?new Date(v).toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'2-digit'}):'—';
+    const expired=c=>c.expiresAt&&Date.parse(c.expiresAt)<=Date.now();
+    const codeState=c=>!c.active?'off':expired(c)?'expired':'on';
+    function ask(title,text,ok){return new Promise(res=>{const d=$('clDlg');$('clDlgT').textContent=title;$('clDlgM').textContent=text;$('clDlgOk').textContent=ok||'Confirmer';
+      const done=v=>{d.close();res(v)};$('clDlgOk').onclick=()=>done(true);$('clDlgNo').onclick=()=>done(false);d.oncancel=e=>{e.preventDefault();done(false)};d.showModal()})}
+    function group(){
+      const m=new Map();
+      for(const c of codes){if(!m.has(c.email))m.set(c.email,{email:c.email,codes:[]});m.get(c.email).codes.push(c)}
+      return [...m.values()].map(g=>{
+        g.codes.sort((a,b)=>String(b.createdAt).localeCompare(String(a.createdAt)));
+        const act=g.codes.filter(c=>codeState(c)==='on');
+        g.status=act.some(c=>c.type==='premium')?'premium':act.some(c=>c.type==='trial')?'trial':g.codes.some(c=>c.active&&expired(c))?'expired':'off';
+        g.since=g.codes[g.codes.length-1].createdAt; g.last=g.codes[0].createdAt;
+        g.note=(g.codes.find(c=>c.note)||{}).note||'';
+        return g;
+      }).sort((a,b)=>String(b.last).localeCompare(String(a.last)));
+    }
+    const LABEL={premium:'Premium actif',trial:'Essai en cours',expired:'Essai expiré',off:'Inactif'};
+    const match=(g)=>filter==='all'||(filter==='premium'&&g.status==='premium')||(filter==='trial'&&g.status==='trial')||(filter==='inactive'&&(g.status==='off'||g.status==='expired'));
+    function render(){
+      const all=group(), q=$('clQ').value.trim().toLowerCase();
+      $('clCount').textContent=all.length+' client'+(all.length>1?'s':'');
+      const n={all:all.length,premium:all.filter(g=>g.status==='premium').length,trial:all.filter(g=>g.status==='trial').length,inactive:all.filter(g=>g.status==='off'||g.status==='expired').length};
+      document.querySelectorAll('#clSeg button').forEach(b=>{b.classList.toggle('on',b.dataset.f===filter);b.querySelector('em').textContent=n[b.dataset.f]});
+      const rows=all.filter(g=>match(g)&&(!q||(g.email+' '+g.codes.map(c=>c.note||'').join(' ')).toLowerCase().includes(q)));
+      const box=$('clList');
+      if(!rows.length){box.innerHTML='<div class="cl-empty"><i class="fa-solid fa-'+(q?'magnifying-glass':'user')+'"></i>'+(q?'Aucun client ne correspond à cette recherche.':all.length?'Aucun client dans ce filtre.':'Aucun client pour l’instant.')+'</div>';return}
+      box.replaceChildren(...rows.map(g=>{
+        const el=document.createElement('div');el.className='cl';
+        const row=document.createElement('div');row.className='cl-row';
+        const av=document.createElement('div');av.className='av '+g.status;av.textContent=g.email[0]||'?';
+        const main=document.createElement('div');main.className='cl-main';
+        const mail=document.createElement('div');mail.className='cl-mail';mail.textContent=g.email;
+        const meta=document.createElement('div');meta.className='cl-meta';
+        meta.innerHTML='<span><i class="fa-regular fa-calendar"></i> client depuis le '+fmt(g.since)+'</span><span><i class="fa-solid fa-key"></i> '+g.codes.length+' code'+(g.codes.length>1?'s':'')+'</span>';
+        if(g.note){const nt=document.createElement('span');nt.className='nt';nt.title=g.note;nt.innerHTML='<i class="fa-regular fa-note-sticky"></i> ';nt.append(g.note);meta.append(nt)}
+        main.append(mail,meta);
+        const side=document.createElement('div');side.className='cl-side';
+        side.innerHTML='<span class="tag '+g.status+'">'+LABEL[g.status]+'</span>';
+        const cp=document.createElement('button');cp.className='ib';cp.title='Copier l’email';cp.innerHTML='<i class="fa-regular fa-copy"></i>';
+        cp.onclick=e=>{e.stopPropagation();navigator.clipboard.writeText(g.email).then(()=>toast('Email copié.'))};
+        const ch=document.createElement('i');ch.className='fa-solid fa-chevron-down chev';
+        side.append(cp,ch);row.append(av,main,side);
+        const det=document.createElement('div');det.className='cl-codes';
+        for(const c of g.codes){
+          const st=codeState(c), r=document.createElement('div');r.className='cd';
+          r.innerHTML='<span class="tag '+(c.type==='premium'?'premium':'trial')+'">'+(c.type==='premium'?'Premium':'Essai 24 h')+'</span><span class="tag '+st+'">'+({on:'Actif',expired:'Expiré',off:'Désactivé'})[st]+'</span><span class="when">créé le '+fmt(c.createdAt)+(c.deactivatedAt?' · coupé le '+fmt(c.deactivatedAt):c.expiresAt?' · fin '+fmt(c.expiresAt):' · illimité')+'</span>';
+          const b=document.createElement('button');b.className='btn sm '+(c.active?'danger':'');b.innerHTML=c.active?'<i class="fa-solid fa-ban"></i>Désactiver':'<i class="fa-solid fa-rotate-left"></i>Réactiver';
+          b.onclick=async()=>{if(c.active&&!(await ask('Désactiver ce code ?',g.email+' perdra cet accès à la prochaine vérification.','Désactiver')))return;
+            b.disabled=true;try{await call(c.active?'deactivate-id':'reactivate-id',{id:c.id});toast(c.active?'Code désactivé.':'Code réactivé.');await load(g.email)}catch(e){toast(e.message);b.disabled=false}};
+          r.append(b);det.append(r);
+        }
+        const acts=document.createElement('div');acts.className='cl-acts';
+        const nw=document.createElement('button');nw.className='btn sm';nw.innerHTML='<i class="fa-solid fa-plus"></i>Nouveau code pour ce client';
+        nw.onclick=()=>{$('email').value=g.email;$('email').scrollIntoView({behavior:'smooth',block:'center'});$('email').focus()};
+        acts.append(nw);
+        if(g.status==='premium'){const off=document.createElement('button');off.className='btn sm danger';off.innerHTML='<i class="fa-solid fa-user-slash"></i>Couper tous ses accès premium';
+          off.onclick=async()=>{if(!(await ask('Couper ses accès premium ?','Tous les codes premium actifs de '+g.email+' seront désactivés (résiliation).','Tout couper')))return;
+            try{const d=await call('deactivate-email',{email:g.email});toast(d.deactivated+' code(s) désactivé(s).');await load(g.email)}catch(e){toast(e.message)}};acts.append(off)}
+        det.append(acts);
+        row.onclick=()=>el.classList.toggle('open');
+        el.dataset.email=g.email;el.append(row,det);return el;
+      }));
+    }
+    async function load(keepOpen){
+      const b=$('clLoad');b.disabled=true;
+      try{codes=(await call('list')).items||[];render();if(keepOpen)document.querySelector('.cl[data-email="'+CSS.escape(keepOpen)+'"]')?.classList.add('open')}
+      catch(e){$('clList').innerHTML='';const d=document.createElement('div');d.className='cl-empty';d.innerHTML='<i class="fa-solid fa-triangle-exclamation"></i>';d.append(e.message);$('clList').append(d)}
+      finally{b.disabled=false;b.innerHTML='<i class="fa-solid fa-rotate"></i>Actualiser'}
+    }
+    $('clLoad').onclick=()=>load();
+    $('clQ').oninput=render;
+    document.querySelectorAll('#clSeg button').forEach(b=>b.onclick=()=>{filter=b.dataset.f;render()});
+    // après une création de code, la liste se met à jour
+    const create=$('create');if(create)create.addEventListener('click',()=>setTimeout(()=>{if(codes.length)load()},1500));
+    if($('secret').value.trim())load();
+  })();
   </script>
 </main></body></html>

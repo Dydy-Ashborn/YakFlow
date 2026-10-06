@@ -1,0 +1,310 @@
+{
+  "id": "foot-d-actu-2026-10-06",
+  "version": "v17-agnes-keyframes-pace-pronunciation",
+  "titre": "Foot d’Actu — 6 octobre 2026",
+  "typePublication": "TikTok vertical 9:16 — actu foot animée",
+  "description": "Foot d’Actu — trois actualités football racontées comme un mini-film d’animation 3D stylisé.",
+  "datePublication": "2026-10-06",
+  "heurePublicationConseillee": "12:30-14:00",
+  "dureeCible": "44 secondes générées, environ 40 au montage",
+  "voixNarrateur": "French male sports-news narrator, energetic and conversational, medium-low voice, crisp diction, fast but perfectly understandable, confident without shouting. Exact same voice in every clip.",
+  "styleGlobal": "STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM. Mature natural athletic adult anatomy combined with clearly stylized animated-feature faces and materials. Simplified sculpted facial planes, expressive animated eyes, smooth matte skin with ZERO pores, sculpted hair masses, polished soft materials, colorful cinematic lighting. Never photorealistic, never live action, never sports-game CGI, never uncanny valley.",
+  "reglesGlobales": {
+    "proportions": "Adult footballers keep mature natural athletic anatomy, approximately 7 to 7.5 heads tall. Normal necks, shoulders, hands and limbs. No bobble-head, no chibi, no childlike proportions.",
+    "visages": "Faces remain strongly stylized even when the body proportions are natural. No pores, no photographic skin, no individual photographic hair strands.",
+    "identite": "Every identifiable footballer must preserve the attached master character sheet. Never replace one player with another and never create a generic identifiable player.",
+    "agnes": "The supplied image is the exact first frame and visual truth. Agnes animates the existing image; it must not redesign the scene.",
+    "silence": "OFF-SCREEN NARRATOR ONLY. Every visible footballer, coach, staff member and crowd member stays silent with mouth closed and zero lip-sync.",
+    "texte": "Existing scoreboard and readable text remain unchanged during the video. Never generate new readable text during animation.",
+    "camera": "One motivated camera movement per clip. No random orbit, no handheld shake, no impossible camera move.",
+    "continuite": "No new players, no face morphing, no kit changes, no number changes, no invented POV."
+  },
+  "reglesMatch": {
+    "FranceBelgique": {
+      "score": "France 4-1 Belgique",
+      "lieu": "Stade de France",
+      "buteurs": [
+        "Dodi Lukebakio 35e — Belgique",
+        "Désiré Doué 77e — France",
+        "Rayan Cherki 81e — France",
+        "Michael Olise 88e et 90+1e — France"
+      ],
+      "entrantsUtilisesDansLaVideo": [
+        "Désiré Doué",
+        "Rayan Cherki",
+        "Michael Olise"
+      ],
+      "maillotFrance": "France 2026 home kit: dark royal/navy blue shirt with subtle brighter-blue graphics, white shorts, red socks, France rooster crest with TWO championship stars mandatory. Doué number 20, Cherki number 9, Olise number 11.",
+      "interdictions": "Mbappé does not participate in France-Belgique. Never show him as a player in this match."
+    }
+  },
+  "etapes": [
+    {
+      "id": "fiche-01",
+      "type": "fiche",
+      "nom": "Fiche personnage — Michael Olise",
+      "personnage": "Michael Olise",
+      "joindre": [],
+      "promptImage": "STYLE LOCK — STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM, NEVER PHOTOREALISTIC. Represent Michael Olise as a recognizable but clearly designed animated-feature character. Simplified sculpted facial planes, expressive animated eyes, softened nose and jaw, smooth matte skin with ZERO pores, sculpted hair masses, no photographic texture. Keep mature natural athletic proportions, approximately 7 to 7.5 heads tall; head NOT oversized. One vertical studio reference sheet on neutral light background. LEFT: large full-body three-quarter front view, head to feet. RIGHT: exactly three large head close-ups of the same identity: three-quarter left, front, three-quarter right. Neutral generic sportswear only, no club kit, no national-team kit, no logo, no text."
+    },
+    {
+      "id": "fiche-02",
+      "type": "fiche",
+      "nom": "Fiche personnage — Désiré Doué",
+      "personnage": "Désiré Doué",
+      "joindre": [],
+      "promptImage": "STYLE LOCK — STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM, NEVER PHOTOREALISTIC. Represent Désiré Doué as a recognizable but clearly designed animated-feature character. Simplified sculpted facial planes, expressive animated eyes, smooth matte skin with ZERO pores, sculpted hair masses. Mature natural athletic proportions, approximately 7 to 7.5 heads tall. Vertical studio reference sheet. LEFT: full-body three-quarter front view. RIGHT: exactly three head close-ups: three-quarter left, front, three-quarter right. Same identity in every view. Neutral generic sportswear, no team branding, no text."
+    },
+    {
+      "id": "fiche-03",
+      "type": "fiche",
+      "nom": "Fiche personnage — Rayan Cherki",
+      "personnage": "Rayan Cherki",
+      "joindre": [],
+      "promptImage": "STYLE LOCK — STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM, NEVER PHOTOREALISTIC. Represent Rayan Cherki as a recognizable animated-feature character. Simplified sculpted face, expressive eyes, smooth poreless skin, sculpted hair, polished stylized materials. Mature natural athletic anatomy, normal-sized head. Vertical studio reference sheet. LEFT full body; RIGHT exactly three face views. Neutral generic sportswear, no club or country kit, no text."
+    },
+    {
+      "id": "fiche-04",
+      "type": "fiche",
+      "nom": "Fiche personnage — Kylian Mbappé",
+      "personnage": "Kylian Mbappé",
+      "joindre": [],
+      "promptImage": "STYLE LOCK — STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM, NEVER PHOTOREALISTIC. Represent Kylian Mbappé as a recognizable animated-feature character while preserving his distinctive face shape, hairstyle, skin tone and athletic build. Smooth poreless stylized skin, expressive animated eyes, sculpted hair masses. Mature natural adult athletic anatomy, head NOT oversized. Vertical studio sheet with one large full-body view left and exactly three head close-ups right. Neutral generic sportswear, no branding or text."
+    },
+    {
+      "id": "fiche-05",
+      "type": "fiche",
+      "nom": "Fiche personnage — Zinedine Zidane",
+      "personnage": "Zinedine Zidane",
+      "joindre": [],
+      "promptImage": "STYLE LOCK — STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM, NEVER PHOTOREALISTIC. Represent Zinedine Zidane as a recognizable animated-feature character. Simplified sculpted face, expressive eyes, smooth poreless skin and clean stylized materials. Mature natural adult anatomy with normal head proportions. Vertical studio reference sheet: one full-body three-quarter view left and exactly three head close-ups right. Neutral coaching/sportswear only. No team branding, no decorative text."
+    },
+    {
+      "id": "fiche-06",
+      "type": "fiche",
+      "nom": "Fiche personnage — Luka Modrić",
+      "personnage": "Luka Modrić",
+      "libraryKey": "croatia-luka-modric",
+      "joindre": [],
+      "promptImage": "STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM. Luka Modrić master identity sheet. Recognizable face and hairstyle translated into an animated-feature design. Smooth poreless skin, expressive animated eyes, sculpted hair masses, mature natural athletic anatomy. Vertical studio reference sheet with one full body view and exactly three face close-ups. Neutral generic sportswear. No logos or text."
+    },
+    {
+      "id": "fiche-07",
+      "type": "fiche",
+      "nom": "Fiche personnage — Joško Gvardiol",
+      "personnage": "Joško Gvardiol",
+      "libraryKey": "croatia-josko-gvardiol",
+      "joindre": [],
+      "promptImage": "STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM. Joško Gvardiol master identity sheet. Recognizable identity translated into animated-feature facial shapes and materials. Mature natural athletic body proportions, normal-sized head, smooth poreless skin, sculpted hair. One full body and exactly three head views. Neutral generic sportswear. No logos or text."
+    },
+    {
+      "id": "fiche-08",
+      "type": "fiche",
+      "nom": "Fiche personnage — Lamine Yamal",
+      "personnage": "Lamine Yamal",
+      "libraryKey": "spain-lamine-yamal",
+      "joindre": [],
+      "promptImage": "STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM. Lamine Yamal master identity sheet. Preserve recognizable facial identity while keeping the rendering clearly animated and non-photorealistic. Mature athletic anatomy, expressive stylized eyes, smooth skin without pores, sculpted hair. One full-body view and exactly three head views. Neutral generic sportswear. No logos or decorative text."
+    },
+    {
+      "id": "fiche-09",
+      "type": "fiche",
+      "nom": "Fiche personnage — Pedri",
+      "personnage": "Pedri",
+      "libraryKey": "spain-pedri",
+      "joindre": [],
+      "promptImage": "STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM. Pedri master identity sheet. Recognizable identity, strongly stylized animated-feature face and materials, natural mature athletic anatomy, smooth poreless skin, sculpted hair. One full body three-quarter view and exactly three large head close-ups. Neutral generic sportswear. No logos or text."
+    },
+    {
+      "id": "couverture",
+      "type": "couverture",
+      "nom": "Couverture TikTok",
+      "joindre": [
+        "fiche-01"
+      ],
+      "promptImage": "Vertical 9:16 TikTok cover. STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM, never photorealistic. Michael Olise in France's dark-blue 2026 home kit, number 11, TWO stars above the France rooster crest, foreground after scoring at the Stade de France at night. Mature athletic natural anatomy, clearly stylized animated-feature face and materials. Huge stadium scoreboard behind him reads exactly FRANCE 4 — 1 BELGIQUE. Dramatic blue stadium lighting, roaring blurred crowd. Strong low-angle hero composition. Large phone-readable title in upper safe area: FOOT D'ACTU. No collage, no split screen."
+    },
+    {
+      "id": "plan-01",
+      "type": "scene",
+      "nom": "Hook + CTA auditif",
+      "duree": "7 s",
+      "secondes": 7,
+      "joindre": [
+        "fiche-01"
+      ],
+      "promptImage": "STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM, never photorealistic. Native vertical 9:16. Stade de France at night. Michael Olise in France's accurate dark-blue 2026 home kit, number 11, TWO stars above the rooster crest. He is foreground just after scoring, energized but natural. Behind him the stadium scoreboard is large and perfectly readable: FRANCE 4 — 1 BELGIQUE. Mature natural athletic anatomy, strongly stylized animated face, smooth skin without pores, sculpted hair. No collage, no split screen.",
+      "garder": "0-6.5 s",
+      "promptVideoAgnes": "Michael Olisé (number 11) roars and pumps both fists, then turns toward teammates outside the frame; flags wave in the blurred crowd, camera flashes sparkle. Camera: fast crane pull-back from the 4–1 scoreboard filling the upper frame to a wide hero shot of Olisé and the packed Stade de France. End exactly on the provided last frame. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 6: \"Quatre buts en quatorze minutes ! Abonne-toi, je te résume les trois actu foot du jour.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideo": "Michael Olisé (number 11) roars and pumps both fists, then turns toward teammates outside the frame; flags wave in the blurred crowd, camera flashes sparkle. Camera: fast crane pull-back from the 4–1 scoreboard filling the upper frame to a wide hero shot of Olisé and the packed Stade de France. End exactly on the provided last frame. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 6: \"Quatre buts en quatorze minutes ! Abonne-toi, je te résume les trois actu foot du jour.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideoGrok": "Use the supplied image as the exact first frame. Michael Olisé (number 11) roars and pumps both fists, then turns toward teammates outside the frame; flags wave in the blurred crowd, camera flashes sparkle. Camera: fast crane pull-back from the 4–1 scoreboard filling the upper frame to a wide hero shot of Olisé and the packed Stade de France. Off-screen French narrator only, energetic, about three words per second: \"Quatre buts en quatorze minutes ! Abonne-toi, je te résume les trois actu foot du jour.\" Visible people stay silent with mouths closed.",
+      "narration": "Quatre buts en quatorze minutes ! Abonne-toi, je te résume les trois actu foot du jour.",
+      "imageFin": "fin-plan-01"
+    },
+    {
+      "id": "fin-plan-01",
+      "type": "fiche",
+      "nom": "Fin plan 01 · plan large Olisé",
+      "format": "9:16",
+      "joindre": [
+        "plan-01",
+        "fiche-01"
+      ],
+      "promptImage": "Use the first attached image as the starting shot to continue; the other attached image is the player reference sheet. LAST FRAME of a fast crane pull-back from the attached first image: wide heroic low-angle shot of the packed Stade de France at night, Michael Olisé smaller in the lower third with both fists raised, France dark-blue 2026 home kit, number 11, TWO stars above the rooster crest. The stadium scoreboard is still readable in the upper part and reads exactly FRANCE 4 — 1 BELGIQUE. Waving flags and camera flashes in the crowd. STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM, never photorealistic; mature natural athletic anatomy, stylized animated faces, poreless materials; preserve the attached player sheet identity exactly. Native vertical 9:16, single continuous image. No readable text other than what is listed."
+    },
+    {
+      "id": "plan-02",
+      "type": "scene",
+      "nom": "France menée",
+      "duree": "7 s",
+      "secondes": 7,
+      "joindre": [
+        "fiche-05"
+      ],
+      "promptImage": "STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM, never photorealistic. Native vertical 9:16. Stade de France during France versus Belgium. Existing stadium scoreboard clearly reads 0 — 1 and 35e. French starters appear frustrated on the pitch but background players are not individually emphasized unless verified. Zinedine Zidane stands near the technical area studying the match. France kit dark blue with TWO stars. Mature natural adult anatomy with strongly stylized animated faces and poreless materials. No invented identifiable footballers.",
+      "garder": "0-6.5 s",
+      "promptVideoAgnes": "French players drop their heads and put hands on hips; Zinedine Zidane, arms crossed near the technical area, frowns and slowly tilts his head while studying the pitch. Camera: slow dolly-in toward Zidane, the frozen 0–1 / 35e scoreboard soft in the background. Tense crowd murmur. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 6: \"Hier soir, la France était encore menée par la Belgique à treize minutes de la fin.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideo": "French players drop their heads and put hands on hips; Zinedine Zidane, arms crossed near the technical area, frowns and slowly tilts his head while studying the pitch. Camera: slow dolly-in toward Zidane, the frozen 0–1 / 35e scoreboard soft in the background. Tense crowd murmur. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 6: \"Hier soir, la France était encore menée par la Belgique à treize minutes de la fin.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideoGrok": "Use the supplied image as the exact first frame. French players drop their heads and put hands on hips; Zinedine Zidane, arms crossed near the technical area, frowns and slowly tilts his head while studying the pitch. Camera: slow dolly-in toward Zidane, the frozen 0–1 / 35e scoreboard soft in the background. Tense crowd murmur. Off-screen French narrator only, energetic, about three words per second: \"Hier soir, la France était encore menée par la Belgique à treize minutes de la fin.\" Visible people stay silent with mouths closed.",
+      "narration": "Hier soir, la France était encore menée par la Belgique à treize minutes de la fin."
+    },
+    {
+      "id": "plan-03",
+      "type": "scene",
+      "nom": "Les entrants renversent tout",
+      "duree": "6 s",
+      "secondes": 6,
+      "joindre": [
+        "fiche-01",
+        "fiche-02",
+        "fiche-03"
+      ],
+      "promptImage": "STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM. Vertical 9:16, Stade de France at night. Désiré Doué number 20, Rayan Cherki number 9 and Michael Olise number 11 are the three clear verified French players in frame, wearing the accurate dark-blue France 2026 kit with TWO stars. Dynamic celebration after the comeback. Mature natural athletic anatomy, strongly stylized animated faces and materials. No generic identifiable teammates. Anonymous background players may be blurred silhouettes only. Existing scoreboard shows France ahead, without extra invented text.",
+      "garder": "0-5.5 s",
+      "promptVideoAgnes": "Doué (#20) sprints in with arms wide, Cherki (#9) jumps onto him, Olisé (#11) slides on his knees into the celebration; confetti-like rain sparkles in the stadium lights. Camera: energetic lateral tracking shot across the three players, ending close on Olisé's joyful face. End exactly on the provided last frame. Huge crowd roar. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 5: \"Puis Doué, Cherki et Olisé sont entrés… et ils ont complètement retourné le match.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideo": "Doué (#20) sprints in with arms wide, Cherki (#9) jumps onto him, Olisé (#11) slides on his knees into the celebration; confetti-like rain sparkles in the stadium lights. Camera: energetic lateral tracking shot across the three players, ending close on Olisé's joyful face. End exactly on the provided last frame. Huge crowd roar. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 5: \"Puis Doué, Cherki et Olisé sont entrés… et ils ont complètement retourné le match.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideoGrok": "Use the supplied image as the exact first frame. Doué (#20) sprints in with arms wide, Cherki (#9) jumps onto him, Olisé (#11) slides on his knees into the celebration; confetti-like rain sparkles in the stadium lights. Camera: energetic lateral tracking shot across the three players, ending close on Olisé's joyful face. Huge crowd roar. Off-screen French narrator only, energetic, about three words per second: \"Puis Doué, Cherki et Olisé sont entrés… et ils ont complètement retourné le match.\" Visible people stay silent with mouths closed.",
+      "narration": "Puis Doué, Cherki et Olisé sont entrés… et ils ont complètement retourné le match.",
+      "imageFin": "fin-plan-03"
+    },
+    {
+      "id": "fin-plan-03",
+      "type": "fiche",
+      "nom": "Fin plan 03 · gros plan Olisé",
+      "format": "9:16",
+      "joindre": [
+        "plan-03",
+        "fiche-01"
+      ],
+      "promptImage": "Use the first attached image as the starting shot to continue; the other attached image is the player reference sheet. LAST FRAME of a lateral tracking shot along the attached first image: close shot of Michael Olisé (France #11, dark-blue kit, TWO stars) on his knees on the grass, mouth closed in a huge joyful grin, Doué's and Cherki's arms blurred at the frame edge as they jump on him, stadium lights and sparkling rain behind. STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM, never photorealistic; mature natural athletic anatomy, stylized animated faces, poreless materials; preserve the attached player sheet identity exactly. Native vertical 9:16, single continuous image. No readable text other than what is listed."
+    },
+    {
+      "id": "plan-04",
+      "type": "scene",
+      "nom": "Olise et Zidane",
+      "duree": "7 s",
+      "secondes": 7,
+      "joindre": [
+        "fiche-01",
+        "fiche-05"
+      ],
+      "promptImage": "STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM. Vertical 9:16. Stade de France after the comeback. Michael Olise number 11 foreground after scoring, Zinedine Zidane visible near technical area in the same coaching outfit established earlier. Preserve exact master identities. Blue stadium night light, animated-feature faces, mature natural anatomy, no photorealism. Other people are blurred anonymous silhouettes.",
+      "garder": "0-6.5 s",
+      "promptVideoAgnes": "Olisé, foreground, finishes a short celebration and points to the sky; behind him Zidane allows himself a small satisfied smile and claps twice. Camera: starts sharp on Olisé, then racks focus and pushes gently toward Zidane. Applause and chants. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 6: \"Premier succès à domicile pour Zidane, et un final complètement fou signé par ses remplaçants.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideo": "Olisé, foreground, finishes a short celebration and points to the sky; behind him Zidane allows himself a small satisfied smile and claps twice. Camera: starts sharp on Olisé, then racks focus and pushes gently toward Zidane. Applause and chants. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 6: \"Premier succès à domicile pour Zidane, et un final complètement fou signé par ses remplaçants.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideoGrok": "Use the supplied image as the exact first frame. Olisé, foreground, finishes a short celebration and points to the sky; behind him Zidane allows himself a small satisfied smile and claps twice. Camera: starts sharp on Olisé, then racks focus and pushes gently toward Zidane. Applause and chants. Off-screen French narrator only, energetic, about three words per second: \"Premier succès à domicile pour Zidane, et un final complètement fou signé par ses remplaçants.\" Visible people stay silent with mouths closed.",
+      "narration": "Premier succès à domicile pour Zidane, et un final complètement fou signé par ses remplaçants."
+    },
+    {
+      "id": "plan-05",
+      "type": "scene",
+      "nom": "Mbappé reprend",
+      "duree": "5 s",
+      "secondes": 5,
+      "joindre": [
+        "fiche-04"
+      ],
+      "promptImage": "STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM. Vertical 9:16. Kylian Mbappé at an individual Real Madrid training session, wearing a verified/current neutral Real Madrid training outfit appropriate to the reported session rather than a match kit. He is alone performing a controlled running/dribbling exercise on the training pitch. Preserve master identity. Mature natural athletic anatomy, strongly stylized face, smooth poreless animated materials, sculpted hair, no photorealism. Background staff only anonymous and blurred if needed. No injury dramatization, no invented medical equipment.",
+      "garder": "0-4.5 s",
+      "promptVideoAgnes": "Kylian Mbappé jogs, accelerates over three quick strides and taps the ball already at his feet forward, controlled and relaxed, like a progressive return to training. Camera: smooth side tracking shot at his pace, low angle, morning light on the training pitch. Studs on grass, ball touch. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 4: \"Autre actu : Mbappé a repris l'entraînement individuel avec le Real Madrid.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideo": "Kylian Mbappé jogs, accelerates over three quick strides and taps the ball already at his feet forward, controlled and relaxed, like a progressive return to training. Camera: smooth side tracking shot at his pace, low angle, morning light on the training pitch. Studs on grass, ball touch. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 4: \"Autre actu : Mbappé a repris l'entraînement individuel avec le Real Madrid.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideoGrok": "Use the supplied image as the exact first frame. Kylian Mbappé jogs, accelerates over three quick strides and taps the ball already at his feet forward, controlled and relaxed, like a progressive return to training. Camera: smooth side tracking shot at his pace, low angle, morning light on the training pitch. Studs on grass, ball touch. Off-screen French narrator only, energetic, about three words per second: \"Autre actu : Mbappé a repris l'entraînement individuel avec le Real Madrid.\" Visible people stay silent with mouths closed.",
+      "narration": "Autre actu : Mbappé a repris l'entraînement individuel avec le Real Madrid."
+    },
+    {
+      "id": "plan-06",
+      "type": "scene",
+      "nom": "Croatie Espagne ce soir",
+      "duree": "7 s",
+      "secondes": 7,
+      "joindre": [
+        "fiche-06",
+        "fiche-07",
+        "fiche-08",
+        "fiche-09"
+      ],
+      "promptImage": "STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM, native vertical 9:16. Pre-match cinematic scene for Croatia versus Spain. Luka Modrić and Joško Gvardiol represent Croatia; Lamine Yamal and Pedri represent Spain. Preserve the four attached master identities exactly. Players stand in two opposing visual groups without fighting or physical contact, ready for the match. Correct national-team color logic, but avoid unreadable micro-details if uncertain. Mature natural athletic anatomy, strongly stylized animated faces and poreless materials. Dramatic stadium lights, crowd blurred. No fake score and no invented result.",
+      "garder": "0-6.5 s",
+      "promptVideoAgnes": "Pre-match tension: Modrić fixes Spain with a calm stare, Gvardiol rolls his shoulders, Lamine Yamal bounces lightly on his toes, Pedri tightens his sleeve. No contact, no ball action. Camera: slow dolly forward between the two groups, ending centered between Croatia and Spain. Stadium anthem swelling. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 6: \"Et ce soir, gros rendez-vous avec Croatie-Espagne. Un match à surveiller de très près.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideo": "Pre-match tension: Modrić fixes Spain with a calm stare, Gvardiol rolls his shoulders, Lamine Yamal bounces lightly on his toes, Pedri tightens his sleeve. No contact, no ball action. Camera: slow dolly forward between the two groups, ending centered between Croatia and Spain. Stadium anthem swelling. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 6: \"Et ce soir, gros rendez-vous avec Croatie-Espagne. Un match à surveiller de très près.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideoGrok": "Use the supplied image as the exact first frame. Pre-match tension: Modrić fixes Spain with a calm stare, Gvardiol rolls his shoulders, Lamine Yamal bounces lightly on his toes, Pedri tightens his sleeve. No contact, no ball action. Camera: slow dolly forward between the two groups, ending centered between Croatia and Spain. Stadium anthem swelling. Off-screen French narrator only, energetic, about three words per second: \"Et ce soir, gros rendez-vous avec Croatie-Espagne. Un match à surveiller de très près.\" Visible people stay silent with mouths closed.",
+      "narration": "Et ce soir, gros rendez-vous avec Croatie-Espagne. Un match à surveiller de très près."
+    },
+    {
+      "id": "plan-07",
+      "type": "scene",
+      "nom": "Outro rendez-vous",
+      "duree": "5 s",
+      "secondes": 5,
+      "joindre": [
+        "fiche-01"
+      ],
+      "promptImage": "STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM. Vertical 9:16. Michael Olise walking away from the pitch tunnel after the France-Belgium match, number 11 still visible, Stade de France lights behind him. Calm satisfied energy rather than exaggerated celebration. Mature athletic anatomy and strongly stylized animated-feature face/materials. No new readable text, no collage.",
+      "garder": "0-4.5 s",
+      "promptVideoAgnes": "Olisé walks calmly toward the tunnel, then glances back over his shoulder with a confident half-smile toward the camera. Camera: slow follow from behind, the stadium lights flaring as he reaches the tunnel. End exactly on the provided last frame. Fading crowd. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 4: \"Je te retrouve demain pour les trois prochaines actu foot.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideo": "Olisé walks calmly toward the tunnel, then glances back over his shoulder with a confident half-smile toward the camera. Camera: slow follow from behind, the stadium lights flaring as he reaches the tunnel. End exactly on the provided last frame. Fading crowd. Off-screen narrator only (French male sports-news narrator, energetic, medium-low voice, crisp diction), brisk energetic pace of about three words per second, no long pauses, finishes by second 4: \"Je te retrouve demain pour les trois prochaines actu foot.\" Pronunciation: say \"Olisé\" as o-li-zé (stressed final é); \"actu\" is singular, never pronounce a final s; \"Doué\" as dou-é; \"Cherki\" as chèr-ki. Every visible person keeps the mouth closed: no lip-sync, no speech. Keep the same strongly stylized premium 3D animated-feature look, faces, kits, numbers, scoreboard and stadium as the first frame; never increase realism.",
+      "promptVideoGrok": "Use the supplied image as the exact first frame. Olisé walks calmly toward the tunnel, then glances back over his shoulder with a confident half-smile toward the camera. Camera: slow follow from behind, the stadium lights flaring as he reaches the tunnel. Fading crowd. Off-screen French narrator only, energetic, about three words per second: \"Je te retrouve demain pour les trois prochaines actu foot.\" Visible people stay silent with mouths closed.",
+      "narration": "Je te retrouve demain pour les trois prochaines actu foot.",
+      "imageFin": "fin-plan-07"
+    },
+    {
+      "id": "fin-plan-07",
+      "type": "fiche",
+      "nom": "Fin plan 07 · tunnel",
+      "format": "9:16",
+      "joindre": [
+        "plan-07",
+        "fiche-01"
+      ],
+      "promptImage": "Use the first attached image as the starting shot to continue; the other attached image is the player reference sheet. LAST FRAME of a slow follow shot from the attached first image: Michael Olisé (number 11 visible on his back) reaching the dark tunnel entrance, looking back over his shoulder with a confident half-smile, mouth closed, bright stadium lights flaring behind him. STRONGLY STYLIZED PREMIUM 3D ANIMATED FEATURE FILM, never photorealistic; mature natural athletic anatomy, stylized animated faces, poreless materials; preserve the attached player sheet identity exactly. Native vertical 9:16, single continuous image. No readable text other than what is listed."
+    }
+  ],
+  "videoPromptRouting": {
+    "Agnes": "promptVideoAgnes",
+    "Grok": "promptVideoGrok",
+    "legacy": "promptVideo"
+  },
+  "recommendedVideoEngine": "agnes",
+  "agnesVideoPolicy": {
+    "sourceFrame": "absolute first frame and visual truth",
+    "oneClip": "one continuous action plus one simple camera move",
+    "narration": "off-screen narrator only; every visible person silent, mouth closed, zero lip-sync",
+    "text": "existing text and scoreboards remain fixed; never create new readable text during video",
+    "facts": "facts not visible in source are carried by narration instead of invented visual events",
+    "continuity": "no new players, no wardrobe changes, no face morphing, no invented POV",
+    "duration": "durée calée sur la narration : ~3,3 mots/s + 1 s, fin de phrase imposée dans le prompt",
+    "keyframes": "imageFin sur les plans 01 (crane pull-back), 03 (tracking jusqu'à Olisé) et 07 (sortie tunnel) ; les autres plans en image de départ seule"
+  },
+  "descriptionTikTok": "La France renverse la Belgique, Olise se montre encore décisif, Mbappé reprend l’entraînement et Croatie–Espagne arrive 👀⚽ #ActuFoot #EquipeDeFrance #MichaelOlise #KylianMbappe #CroatieEspagne",
+  "hashtags": [
+    "#ActuFoot",
+    "#EquipeDeFrance",
+    "#MichaelOlise",
+    "#KylianMbappe",
+    "#CroatieEspagne"
+  ],
+  "prononciation": {
+    "Olise": "écrit « Olisé » dans les narrations pour obtenir o-li-zé",
+    "actus": "écrit « actu » (sans s) dans les narrations pour éviter « actusse »"
+  }
+}

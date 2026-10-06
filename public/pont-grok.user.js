@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow — Pont Grok Imagine
 // @namespace    yakflow
-// @version      4.1.0
+// @version      4.1.1
 // @description  Pont entre YakFlow en ligne et Grok Imagine, multi-onglets et transfert MP4.
 // @match        https://grok.com/imagine*
 // @match        https://grok.com/supergrok/imagine*
@@ -27,9 +27,9 @@ let BASE=GM_getValue('yakflow_site',''), LICENSE=GM_getValue('yakflow_code','');
     const NS = 'http://www.w3.org/2000/svg';
     const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
     const ic = (name) => { const [vb, d] = ICONS[name], s = document.createElementNS(NS, 'svg'), p = document.createElementNS(NS, 'path'); s.setAttribute('viewBox', vb); s.setAttribute('aria-hidden', 'true'); p.setAttribute('d', d); p.setAttribute('fill', 'currentColor'); s.appendChild(p); return s; };
-    const CSS = ':host{all:initial}*{box-sizing:border-box}' +
-      '.bd{position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:16px;background:rgba(3,4,6,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:14px/1.5 Inter,-apple-system,system-ui,"Segoe UI",sans-serif;color:#f5f2ec;animation:f .2s}' +
-      '.m{width:min(440px,100%);background:#111317;border:1px solid rgba(255,255,255,.12);border-radius:22px;box-shadow:0 24px 64px rgba(0,0,0,.55);overflow:hidden;animation:p .25s cubic-bezier(.2,.8,.2,1)}' +
+    const CSS = ':where(*:not(svg):not(path)){all:revert}:where(*){box-sizing:border-box}:where(svg){display:block;flex:none;overflow:visible}:where(path){fill:currentColor}' +
+      '.bd{position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:16px;background:rgba(3,4,6,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:14px/1.5 Inter,-apple-system,system-ui,"Segoe UI",sans-serif;color:#f5f2ec;animation:yfF .2s}' +
+      '.m{width:min(440px,100%);background:#111317;border:1px solid rgba(255,255,255,.12);border-radius:22px;box-shadow:0 24px 64px rgba(0,0,0,.55);overflow:hidden;animation:yfP .25s cubic-bezier(.2,.8,.2,1)}' +
       '.h{display:flex;gap:14px;align-items:flex-start;padding:20px 22px 14px}.mi{width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00);color:#1d1200}.mi svg{width:18px;height:18px}' +
       'h3{margin:0;font-size:17px;font-weight:700;letter-spacing:-.01em}.h p{margin:3px 0 0;color:#7a756d;font-size:13px}' +
       '.x{margin-left:auto;width:32px;height:32px;border:0;border-radius:8px;background:transparent;color:#7a756d;cursor:pointer;display:grid;place-items:center}.x:hover{background:#1d2127;color:#fff}.x svg{width:13px;height:13px}' +
@@ -41,11 +41,20 @@ let BASE=GM_getValue('yakflow_site',''), LICENSE=GM_getValue('yakflow_code','');
       '.ft{display:flex;justify-content:flex-end;gap:8px;padding:14px 22px;border-top:1px solid rgba(255,255,255,.07);background:#0c0d10}' +
       'button.btn{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 16px;border-radius:9px;border:1px solid rgba(255,255,255,.12);background:#16191e;color:#f5f2ec;font:600 13px Inter,-apple-system,system-ui,sans-serif;cursor:pointer}button.btn:hover{background:#1d2127}' +
       'button.pr{background:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00);color:#1d1200;border-color:transparent;font-weight:700}button.pr:hover{filter:brightness(1.06);background:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00)}button:disabled{opacity:.5;cursor:wait}' +
-      '@keyframes f{from{opacity:0}}@keyframes p{from{opacity:0;transform:translateY(12px) scale(.97)}}';
+      '@keyframes yfF{from{opacity:0}}@keyframes yfP{from{opacity:0;transform:translateY(12px) scale(.97)}}';
     return new Promise((resolve) => {
       const host = el('div'); host.id = 'yakflow-setup';
-      const root = host.attachShadow({ mode: 'closed' });
-      try { const sh = new CSSStyleSheet(); sh.replaceSync(CSS); root.adoptedStyleSheets = [sh]; } catch (_) { root.appendChild(el('style', null, CSS)); }
+      // Pas de shadow DOM : ChatGPT/Grok renvoient la frappe et le collage vers leur zone de saisie quand le focus
+      // n'est pas sur un vrai champ de la page. Ici les champs sont de vrais <input>, et on bloque les événements.
+      const root = host;
+      const scoped = CSS.replace(/(^|})\s*([^{}@][^{]*)\{/g, (m, a, sel) => a + sel.split(',').map((x) => '#yakflow-setup ' + x.trim()).join(',') + '{');
+      let sheet = null;
+      try { sheet = new CSSStyleSheet(); sheet.replaceSync(scoped); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet]; }
+      catch (_) { sheet = null; root.appendChild(el('style', null, scoped)); }
+      const STOP = ['keydown', 'keyup', 'keypress', 'beforeinput', 'input', 'paste', 'copy', 'cut', 'drop'];
+      STOP.forEach((t) => host.addEventListener(t, (e) => e.stopPropagation()));
+      const guard = (e) => { if (!host.isConnected) return; if (!host.contains(e.target)) { e.stopImmediatePropagation(); setTimeout(() => (last || iSite).focus(), 0); } };
+      let last = null;
       const bd = el('div', 'bd'), m = el('div', 'm'); m.setAttribute('role', 'dialog'); m.setAttribute('aria-modal', 'true');
       const h = el('div', 'h'), mi = el('div', 'mi'); mi.appendChild(ic('paw'));
       const ht = el('div'); ht.append(el('h3', null, title || 'Connecter ce pont à YakFlow'), el('p', null, 'À faire une seule fois sur cet ordinateur.'));
@@ -60,8 +69,10 @@ let BASE=GM_getValue('yakflow_site',''), LICENSE=GM_getValue('yakflow_code','');
       cancel.type = ok.type = 'button'; ft.append(cancel, ok);
       m.append(h, b, ft); bd.appendChild(m); root.appendChild(bd);
       (document.body || document.documentElement).appendChild(host);
+      [iSite, iCode].forEach((i) => i.addEventListener('focus', () => { last = i; }));
+      document.addEventListener('focusin', guard, true);
       const show = (cls, msg, name) => { st.className = 'st ' + cls; st.replaceChildren(); if (name) st.appendChild(ic(name)); st.appendChild(el('span', null, msg)); };
-      const close = (v) => { host.remove(); resolve(v); };
+      const close = (v) => { document.removeEventListener('focusin', guard, true); host.remove(); if (sheet) try { document.adoptedStyleSheets = document.adoptedStyleSheets.filter((x) => x !== sheet); } catch (_) {} resolve(v); };
       x.onclick = cancel.onclick = () => close(null);
       bd.addEventListener('keydown', (e) => { e.stopPropagation(); if (e.key === 'Escape') close(null); if (e.key === 'Enter') ok.click(); });
       ok.onclick = () => {

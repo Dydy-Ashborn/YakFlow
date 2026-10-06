@@ -1,0 +1,281 @@
+{
+  "id": "le-dragon-pompier-nilo-1",
+  "version": "v2-agnes-keyframes-pace",
+  "titre": "Le Dragon Pompier",
+  "typePublication": "TikTok vertical 9:16 — court métrage animation 3D",
+  "description": "Nilo, un minuscule dragon qui rêve de devenir pompier, découvre que sa petite taille peut sauver une vie quand aucun adulte ne peut atteindre un chaton prisonnier d'un appartement enfumé.",
+  "datePublication": "2026-10-06",
+  "dureeCible": "38 secondes générées",
+  "styleGlobal": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Original character designs, warm expressive shapes, polished soft materials, clear silhouettes, cinematic but playful lighting, strong readable facial acting and natural physical contact. Native vertical 9:16. Never photorealistic, no realistic scales, fur or skin, no existing franchise resemblance, no copied logo, no watermark.",
+  "personnages": {
+    "NILO": "Very small young dragon, approximately knee-high to Captain Alma. Compact rounded teal-blue body, cream belly and muzzle, two short swept-back ivory horns, large amber eyes, tiny folded wings, three fingers on each small hand, one short thick tail. Miniature dark-navy firefighter jacket with two simple yellow reflective bands, tan boots and bright red firefighter helmet visibly one size too big. Same face, scales, proportions, colors and clothing in every scene.",
+    "CAPTAIN_ALMA": "Adult female anthropomorphic grey wolf, tall upright human body proportions, silver-grey fur, pale muzzle, warm brown eyes, strong brows, competent demeanor, initially skeptical but kind. Dark-navy firefighter turnout coat with two yellow reflective bands, navy trousers, black boots and red helmet. Fur-covered human-shaped hands with five fingers. Same age, voice, markings, uniform and helmet in every scene.",
+    "KITTEN": "Tiny ordinary four-legged orange tabby kitten, cream muzzle, green eyes. No speech and no human behavior. Same stripe pattern and size throughout. After being inside the smoky room, one small white feather remains visibly caught high in its back fur until the sneeze scene."
+  },
+  "reglesRealisation": {
+    "premiereImage": "Every scene image is the EXACT FIRST FRAME of its video clip, never a montage and never an earlier or later event.",
+    "agnes": "Agnes animates the supplied source image only. The source image defines all characters, hands, objects, architecture, positions and camera geometry.",
+    "geometrie": "Every physical object needed for the action must already exist in the first frame. Agnes must never invent a hand, opening, ladder, door, tool or character.",
+    "continuite": "Preserve character identity, scale, clothing, architecture and screen direction exactly.",
+    "contact": "Hands, feet and props remain physically contact-correct. No floating feet, intersecting bodies, duplicate limbs or extra fingers.",
+    "niloTaille": "Nilo remains very small in every shot, roughly knee-high to Alma. Never enlarge him to child-human size.",
+    "niloMains": "Nilo always has exactly THREE fingers on each hand.",
+    "almaMains": "Alma always has human-shaped fur-covered FIVE-finger hands.",
+    "chaton": "Kitten always remains an ordinary four-legged kitten and never acts anthropomorphic.",
+    "camera": "One motivated camera move maximum per clip. No random orbit or impossible repositioning.",
+    "dialogue": "Only the explicitly designated speaker talks. Every other visible character has mouth closed and zero lip-sync.",
+    "incendie": "Fire remains modest and contained, never engulfing Nilo or the kitten. Smoke mostly stays higher in the room so the rescue path remains readable.",
+    "style": "Never increase realism during animation."
+  },
+  "etapes": [
+    {
+      "id": "fiche-nilo",
+      "type": "fiche",
+      "nom": "Fiche Nilo",
+      "joindre": [],
+      "promptImage": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Original character design, never photorealistic. Generate a clean studio character reference sheet of NILO: a very small young dragon, compact rounded teal-blue body, cream belly and muzzle, two short swept-back ivory horns, large amber eyes, tiny folded wings, exactly three fingers on each hand and one short thick tail. He wears a miniature dark-navy firefighter jacket with two simple yellow reflective bands, tan boots and a bright red firefighter helmet visibly one size too big. LEFT: one full-body three-quarter front pose. RIGHT: exactly three large head close-ups, front, three-quarter left and three-quarter right. Exact same identity, colors and proportions in every view. Neutral pale-grey studio background. No other character, no scenery and no text."
+    },
+    {
+      "id": "fiche-alma",
+      "type": "fiche",
+      "nom": "Fiche Capitaine Alma",
+      "joindre": [],
+      "promptImage": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Generate a clean studio reference sheet for CAPTAIN ALMA: adult female anthropomorphic grey wolf, tall upright human body proportions, silver-grey fur, pale muzzle, warm brown eyes, strong brows, competent but kind expression. Dark-navy firefighter turnout coat with two yellow reflective bands, navy trousers, black boots and red helmet. Fur-covered human-shaped hands with exactly five fingers. LEFT: one full-body three-quarter front pose. RIGHT: exactly three large head close-ups, front, three-quarter left, three-quarter right. Exact same identity and uniform in every view. Neutral pale-grey background. No other characters, scene or text."
+    },
+    {
+      "id": "fiche-chaton",
+      "type": "fiche",
+      "nom": "Fiche chaton",
+      "joindre": [],
+      "promptImage": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Clean studio reference sheet of one tiny ordinary orange tabby kitten with cream muzzle, green eyes, consistent orange stripe pattern and four normal feline legs. The kitten is NOT anthropomorphic and never stands like a human. Show a full-body three-quarter view plus three close-ups showing the same stripe pattern and face. Neutral light background. No collar, no clothing, no text."
+    },
+    {
+      "id": "decor-caserne",
+      "type": "fiche",
+      "nom": "Décor caserne",
+      "joindre": [],
+      "promptImage": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Empty firefighter station engine bay reference. Polished but practical concrete floor with marked parking lines, fire engine parked deep in the bay, desk/counter near one side, equipment racks and warm overhead practical lighting. Establish stable architecture and camera geography for later scenes. No characters, no text, no logos."
+    },
+    {
+      "id": "decor-appartement",
+      "type": "fiche",
+      "nom": "Décor appartement du sauvetage",
+      "joindre": [],
+      "promptImage": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Empty location reference image. Modest French apartment building at night viewed from the street. One ground-floor room with a narrow partly open side window that fits a knee-high dragon but not an adult wolf, and a separate door visibly blocked by a fallen wooden beam. The same room interior has a short clear floor path from the window to the future kitten position, thin light smoke high in the room and a modest distant contained fire glow. Red rescue truck can park street side. Establish matching exterior/interior geography in one reference image. No characters, no text."
+    },
+    {
+      "id": "couverture",
+      "type": "couverture",
+      "nom": "Couverture — Le Dragon Pompier",
+      "joindre": [
+        "fiche-nilo",
+        "fiche-alma",
+        "fiche-chaton",
+        "decor-caserne"
+      ],
+      "promptImage": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Native vertical 9:16 cover image, one continuous composition, no collage. Nilo foreground under his oversized red firefighter helmet, earnest and slightly worried. Captain Alma behind him holds the safe orange kitten and looks surprised and proud. Fire station engine and warm dramatic light establish the firehouse. Preserve exact attached character designs. Large title in upper safe area, exact words: LE DRAGON POMPIER. No subtitle, no other text, no flames and no extra characters. Faces and title must remain readable as a phone thumbnail."
+    },
+    {
+      "id": "scene-01",
+      "type": "scene",
+      "nom": "Nilo veut devenir pompier",
+      "secondes": 5,
+      "joindre": [
+        "fiche-nilo",
+        "fiche-alma",
+        "decor-caserne"
+      ],
+      "promptImage": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Native vertical 9:16. Exact first frame. Inside the established fire station engine bay. Captain Alma is SCREEN LEFT at adult height, looking down at tiny Nilo SCREEN RIGHT. Nilo stands on the marked concrete floor in his oversized red helmet and miniature firefighter jacket, earnest chin lifted. Alma keeps one hand resting naturally on the existing desk/counter edge and the other at her side. Fire engine deep behind them. No fire and no other people. Medium two-shot at approximately Nilo eye level while retaining Alma's upper body and station geography. Their mouths are at rest at frame zero. All necessary physical elements already visible. No extra hands, characters or props.",
+      "garder": "0-4.5 s",
+      "promptVideoAgnes": "Nilo lifts his chin, takes one tiny confident step forward; his oversized red helmet slips over his eyes and he pushes it back up with one small hand. Alma looks down at him, one eyebrow rising in surprise. Camera: low-angle push-in at Nilo's eye level, Alma towering in the frame. Echoing fire-station ambience. Only Nilo (small young dragon, bright childlike voice, natural French accent) speaks, in French, sincere and determined: \"Je veux devenir pompier.\" He speaks at a brisk, natural pace of about three words per second and finishes by second 3. Alma keeps the mouth closed. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame.",
+      "promptVideo": "Nilo lifts his chin, takes one tiny confident step forward; his oversized red helmet slips over his eyes and he pushes it back up with one small hand. Alma looks down at him, one eyebrow rising in surprise. Camera: low-angle push-in at Nilo's eye level, Alma towering in the frame. Echoing fire-station ambience. Only Nilo (small young dragon, bright childlike voice, natural French accent) speaks, in French, sincere and determined: \"Je veux devenir pompier.\" He speaks at a brisk, natural pace of about three words per second and finishes by second 3. Alma keeps the mouth closed. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame."
+    },
+    {
+      "id": "scene-02",
+      "type": "scene",
+      "nom": "Alma doute de lui",
+      "secondes": 4,
+      "imageDe": "scene-01",
+      "joindre": [],
+      "promptImage": "",
+      "garder": "0-3.5 s",
+      "promptVideoAgnes": "Alma bends slightly toward Nilo, looking at his tiny body and big helmet, concerned rather than mean; Nilo puffs out his chest and stands on his tiptoes to look taller. Camera: slow push-in over Nilo's shoulder toward Alma's face. Only Captain Alma (adult female wolf, warm composed French voice) speaks, in French, kind but doubtful: \"Tu es vraiment très petit pour ce métier.\" She speaks at a brisk, natural pace of about three words per second and finishes by second 4. Nilo keeps the mouth closed. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame.",
+      "promptVideo": "Alma bends slightly toward Nilo, looking at his tiny body and big helmet, concerned rather than mean; Nilo puffs out his chest and stands on his tiptoes to look taller. Camera: slow push-in over Nilo's shoulder toward Alma's face. Only Captain Alma (adult female wolf, warm composed French voice) speaks, in French, kind but doubtful: \"Tu es vraiment très petit pour ce métier.\" She speaks at a brisk, natural pace of about three words per second and finishes by second 4. Nilo keeps the mouth closed. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame."
+    },
+    {
+      "id": "scene-03",
+      "type": "scene",
+      "nom": "L'intervention",
+      "secondes": 5,
+      "joindre": [
+        "fiche-nilo",
+        "fiche-alma",
+        "fiche-chaton",
+        "decor-appartement"
+      ],
+      "promptImage": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Exact first frame, native vertical 9:16. Night exterior of the established apartment building from the established street side. Rescue truck with warning lights parked in view. Captain Alma stands SCREEN LEFT with tiny Nilo close to her boots SCREEN RIGHT, both looking at one ground-floor room. Its door is visibly blocked by a fallen wooden beam/panel. The same narrow side window is already partly open and visibly large enough for Nilo but too narrow for Alma. The tiny orange kitten is clearly visible inside behind this opening; one small white feather is already caught high in its upper-back fur. Thin smoke drifts from room, modest controlled glow deeper inside, no flames around kitten. Hose/firefighter may exist only as anonymous background silhouette. Keep kitten, blocked door and usable window simultaneously readable. No extra opening or characters.",
+      "garder": "0-4.5 s",
+      "promptVideoAgnes": "Alma glances at the blocked door, then at the narrow open window, then down at Nilo; Nilo follows her gaze, sees the kitten and his eyes widen with understanding. Inside, the kitten shrinks back on its four paws. Smoke stays high, the fire glow distant. Camera: quick dolly toward the window between Alma and Nilo, keeping the kitten visible. Sirens, crackling. Only Captain Alma (adult female wolf, warm composed French voice) speaks, in French, urgent: \"La porte est bloquée… et cette fenêtre est trop étroite pour moi.\" She speaks at a brisk, natural pace of about three words per second and finishes by second 5. Nilo keeps the mouth closed. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame.",
+      "promptVideo": "Alma glances at the blocked door, then at the narrow open window, then down at Nilo; Nilo follows her gaze, sees the kitten and his eyes widen with understanding. Inside, the kitten shrinks back on its four paws. Smoke stays high, the fire glow distant. Camera: quick dolly toward the window between Alma and Nilo, keeping the kitten visible. Sirens, crackling. Only Captain Alma (adult female wolf, warm composed French voice) speaks, in French, urgent: \"La porte est bloquée… et cette fenêtre est trop étroite pour moi.\" She speaks at a brisk, natural pace of about three words per second and finishes by second 5. Nilo keeps the mouth closed. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame."
+    },
+    {
+      "id": "scene-04",
+      "type": "scene",
+      "nom": "Nilo passe par la fenêtre",
+      "secondes": 6,
+      "joindre": [
+        "fiche-nilo",
+        "fiche-alma",
+        "fiche-chaton",
+        "decor-appartement"
+      ],
+      "promptImage": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Exact first frame. Same ground-floor apartment window and same street side as scene 03, tighter continuous view. Nilo is already at the sill, both small three-finger hands gripping the visible lower frame, one boot braced on the existing wall ledge; his red helmet and folded wings fit through the narrow partly open gap. Alma is just behind him, one five-finger hand near his back but not pushing. The kitten and its small white feather are visible a short distance inside through the window. Thin smoke drifts toward the opening, low contained glow remains deep in room. Blocked door remains visible at edge. No new opening or tool.",
+      "garder": "0-5.5 s",
+      "promptVideoAgnes": "Nilo pulls himself through the narrow window opening using the grip and foothold already visible, tucks his tiny wings, his big helmet bumps the frame and tilts crooked but stays on; his boots and short tail slide in last. Alma keeps her hand near his back for safety without pushing. Camera: slight push toward the window from the street side; it never enters the room. End exactly on the provided last frame. Distant siren, soft crackling, no dialogue. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame.",
+      "promptVideo": "Nilo pulls himself through the narrow window opening using the grip and foothold already visible, tucks his tiny wings, his big helmet bumps the frame and tilts crooked but stays on; his boots and short tail slide in last. Alma keeps her hand near his back for safety without pushing. Camera: slight push toward the window from the street side; it never enters the room. End exactly on the provided last frame. Distant siren, soft crackling, no dialogue. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame.",
+      "imageFin": "fin-scene-04"
+    },
+    {
+      "id": "fin-scene-04",
+      "type": "fiche",
+      "nom": "Fin scène 04 · Nilo est passé",
+      "format": "9:16",
+      "joindre": [
+        "scene-04",
+        "fiche-nilo",
+        "fiche-alma"
+      ],
+      "promptImage": "Use the first attached image as the starting shot to continue; the other attached images are character references. LAST FRAME of the attached first image, same street-side view slightly closer: Nilo has almost completely passed through the narrow window; only his short thick tail and one tan boot are still visible on the sill, his crooked red helmet seen through the gap inside. Captain Alma leans close to the window, one five-finger hand near the sill, worried. Thin smoke high, distant contained glow. PREMIUM STYLIZED 3D ANIMATED FEATURE FILM, never photorealistic. Preserve the attached character sheets exactly (Nilo knee-high to Alma, three fingers per hand; Alma five fingers; ordinary four-legged kitten). Native vertical 9:16, single continuous image, no text."
+    },
+    {
+      "id": "scene-05",
+      "type": "scene",
+      "nom": "Nilo récupère le chaton",
+      "secondes": 5,
+      "joindre": [
+        "fiche-nilo",
+        "fiche-alma",
+        "fiche-chaton",
+        "decor-appartement"
+      ],
+      "promptImage": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Exact first frame. Interior of the SAME ground-floor room, camera facing the SAME partly open side window at SCREEN LEFT and the same kitten at SCREEN RIGHT, only a short arm's reach from Nilo. Nilo stands on the floor between kitten and window, both three-finger hands free and already reaching gently toward kitten. Small white feather remains lodged high on kitten's back. Window and sill fully visible for exit, Alma's silver-grey face and one five-finger hand visible outside through opening. Thin smoke hangs high, floor path clear, small contained fire glow distant and never between Nilo and window. No new door, vent, person or prop.",
+      "garder": "0-4.5 s",
+      "promptVideoAgnes": "Inside, Nilo takes two careful steps along the clear floor, crouches with open palms; the kitten hesitates, then lets him scoop it gently with both hands under its chest and hindquarters. The white feather stays caught on its back. Alma watches through the window. Camera: slow push-in toward Nilo and the kitten, the window still visible. End exactly on the provided last frame. Soft meow. Only Nilo (small young dragon, bright childlike voice, natural French accent) speaks, in French, quietly reassuring: \"Viens… je te ramène dehors.\" He speaks at a brisk, natural pace of about three words per second and finishes by second 3. Alma keeps the mouth closed. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame.",
+      "promptVideo": "Inside, Nilo takes two careful steps along the clear floor, crouches with open palms; the kitten hesitates, then lets him scoop it gently with both hands under its chest and hindquarters. The white feather stays caught on its back. Alma watches through the window. Camera: slow push-in toward Nilo and the kitten, the window still visible. End exactly on the provided last frame. Soft meow. Only Nilo (small young dragon, bright childlike voice, natural French accent) speaks, in French, quietly reassuring: \"Viens… je te ramène dehors.\" He speaks at a brisk, natural pace of about three words per second and finishes by second 3. Alma keeps the mouth closed. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame.",
+      "imageFin": "fin-scene-05"
+    },
+    {
+      "id": "fin-scene-05",
+      "type": "fiche",
+      "nom": "Fin scène 05 · le chaton dans les bras",
+      "format": "9:16",
+      "joindre": [
+        "scene-05",
+        "fiche-nilo",
+        "fiche-chaton"
+      ],
+      "promptImage": "Use the first attached image as the starting shot to continue; the other attached images are character references. LAST FRAME of the attached first image, closer: Nilo holds the orange tabby kitten safely against his chest with both three-finger hands under its chest and hindquarters, the small white feather still caught high on its back; Nilo has turned toward the window, determined; Alma's face visible outside through the opening. Smoke high, clear path. PREMIUM STYLIZED 3D ANIMATED FEATURE FILM, never photorealistic. Preserve the attached character sheets exactly (Nilo knee-high to Alma, three fingers per hand; Alma five fingers; ordinary four-legged kitten). Native vertical 9:16, single continuous image, no text."
+    },
+    {
+      "id": "scene-06",
+      "type": "scene",
+      "nom": "Le sauvetage réussi",
+      "secondes": 4,
+      "joindre": [
+        "fiche-nilo",
+        "fiche-alma",
+        "fiche-chaton",
+        "decor-appartement"
+      ],
+      "promptImage": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Exact first frame. Exterior just outside the SAME ground-floor window, rescue now complete. Captain Alma kneels SCREEN LEFT on original street side, holding the same safe orange kitten in one arm; its white feather remains visibly caught high on its back. Tiny Nilo stands SCREEN RIGHT in same slightly soot-dusted but intact miniature jacket and red helmet, looking up at Alma. Alma's other visible five-finger hand is already lightly touching the rim of Nilo's helmet, positioned to straighten it. In background, pre-existing crew and hose are already dousing modest remaining glow; water stream from visible nozzle never crosses foreground faces. Blocked door, same window and fire truck remain spatially consistent. No new crowd.",
+      "garder": "0-3.5 s",
+      "promptVideoAgnes": "Alma straightens Nilo's crooked helmet with the hand already on its rim; her face turns from disbelief to proud warmth. Nilo looks up, exhausted but happy; the kitten settles in her arm, feather still on its back. Crew hosing the last glow in the background. Camera: gentle emotional push toward Alma and Nilo. End exactly on the provided last frame. Hose hiss, calmer ambience. Only Captain Alma (adult female wolf, warm composed French voice) speaks, in French, warm and moved: \"Je crois que j'avais tort.\" She speaks at a brisk, natural pace of about three words per second and finishes by second 3. Nilo keeps the mouth closed. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame.",
+      "promptVideo": "Alma straightens Nilo's crooked helmet with the hand already on its rim; her face turns from disbelief to proud warmth. Nilo looks up, exhausted but happy; the kitten settles in her arm, feather still on its back. Crew hosing the last glow in the background. Camera: gentle emotional push toward Alma and Nilo. End exactly on the provided last frame. Hose hiss, calmer ambience. Only Captain Alma (adult female wolf, warm composed French voice) speaks, in French, warm and moved: \"Je crois que j'avais tort.\" She speaks at a brisk, natural pace of about three words per second and finishes by second 3. Nilo keeps the mouth closed. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame.",
+      "imageFin": "scene-07"
+    },
+    {
+      "id": "scene-07",
+      "type": "scene",
+      "nom": "La plume",
+      "secondes": 5,
+      "joindre": [
+        "fiche-nilo",
+        "fiche-alma",
+        "fiche-chaton",
+        "decor-appartement"
+      ],
+      "promptImage": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Exact first frame. SAME exterior rescue position immediately after scene 06, same side of camera axis. Alma still kneeling SCREEN LEFT holding kitten; Nilo remains SCREEN RIGHT beside her, helmet straightened, smiling. Small white feather is visibly loose at top of kitten's back fur, touching air near Nilo's nose as kitten begins to shake. Alma's supporting arm and free hand already positioned to pull kitten closer to her. Nilo's mouth closed at frame zero and nostrils near feather. Background crew, same window, fire truck and extinguished building hold previous places. No new flame.",
+      "garder": "0-4.5 s",
+      "promptVideoAgnes": "The kitten gives one little shake; the single white feather floats a few centimeters onto Nilo's nose. Nilo's eyes cross, his nostrils twitch, then ONE tiny sneeze pops a small harmless orange puff, no longer than his forearm, touching nothing. Alma pulls the kitten closer and raises an eyebrow; Nilo freezes, embarrassed under his helmet. Camera: locked medium shot so the feather-to-nose gag reads clearly. End exactly on the provided last frame. Kitten shake, tiny sneeze, comic puff. No dialogue. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame.",
+      "promptVideo": "The kitten gives one little shake; the single white feather floats a few centimeters onto Nilo's nose. Nilo's eyes cross, his nostrils twitch, then ONE tiny sneeze pops a small harmless orange puff, no longer than his forearm, touching nothing. Alma pulls the kitten closer and raises an eyebrow; Nilo freezes, embarrassed under his helmet. Camera: locked medium shot so the feather-to-nose gag reads clearly. End exactly on the provided last frame. Kitten shake, tiny sneeze, comic puff. No dialogue. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame.",
+      "imageFin": "fin-scene-07"
+    },
+    {
+      "id": "fin-scene-07",
+      "type": "fiche",
+      "nom": "Fin scène 07 · après l'éternuement",
+      "format": "9:16",
+      "joindre": [
+        "scene-07",
+        "fiche-nilo",
+        "fiche-alma",
+        "fiche-chaton"
+      ],
+      "promptImage": "Use the first attached image as the starting shot to continue; the other attached images are character references. LAST FRAME of the attached first image, same framing: a tiny wisp of grey smoke drifts away in front of Nilo's nose, the white feather is gone from the kitten; Nilo looks embarrassed, ears down under his big helmet; Alma, still kneeling, holds the kitten a little closer and raises one eyebrow at him with an amused half-smile. No flame. PREMIUM STYLIZED 3D ANIMATED FEATURE FILM, never photorealistic. Preserve the attached character sheets exactly (Nilo knee-high to Alma, three fingers per hand; Alma five fingers; ordinary four-legged kitten). Native vertical 9:16, single continuous image, no text."
+    },
+    {
+      "id": "scene-08",
+      "type": "scene",
+      "nom": "Bienvenue dans l'équipe",
+      "secondes": 4,
+      "joindre": [
+        "fiche-nilo",
+        "fiche-alma",
+        "fiche-chaton",
+        "decor-caserne"
+      ],
+      "promptImage": "PREMIUM STYLIZED 3D ANIMATED FEATURE FILM. Native vertical 9:16, exact first frame. Back inside established fire station after the rescue. Tiny Nilo stands foreground in his same miniature uniform and oversized red helmet, now clean enough to read but with subtle rescue soot continuity. Captain Alma stands beside him holding the safe orange kitten. Alma is smiling proudly at Nilo. Fire engine behind them under warm station lighting. Preserve exact size difference and character designs. No other firefighters, no text.",
+      "garder": "0-3.5 s",
+      "promptVideoAgnes": "Alma crouches and gives Nilo's oversized helmet one affectionate tap with her hand; Nilo looks up, surprised, then breaks into a huge relieved smile. The kitten purrs calmly in her other arm. Camera: slow final push-in onto Nilo's face, Alma and the kitten still in frame. End exactly on the provided last frame. Warm swell of music. Only Captain Alma (adult female wolf, warm composed French voice) speaks, in French, proud and warm: \"Bienvenue dans l'équipe, Nilo.\" She speaks at a brisk, natural pace of about three words per second and finishes by second 3. Nilo keeps the mouth closed. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame.",
+      "promptVideo": "Alma crouches and gives Nilo's oversized helmet one affectionate tap with her hand; Nilo looks up, surprised, then breaks into a huge relieved smile. The kitten purrs calmly in her other arm. Camera: slow final push-in onto Nilo's face, Alma and the kitten still in frame. End exactly on the provided last frame. Warm swell of music. Only Captain Alma (adult female wolf, warm composed French voice) speaks, in French, proud and warm: \"Bienvenue dans l'équipe, Nilo.\" She speaks at a brisk, natural pace of about three words per second and finishes by second 3. Nilo keeps the mouth closed. Keep the same premium stylized 3D animated-feature look, characters, sizes (Nilo knee-high to Alma), three-finger hands for Nilo, five-finger hands for Alma, ordinary four-legged kitten, and the same setting as the first frame.",
+      "imageFin": "fin-scene-08"
+    },
+    {
+      "id": "fin-scene-08",
+      "type": "fiche",
+      "nom": "Fin scène 08 · bienvenue",
+      "format": "9:16",
+      "joindre": [
+        "scene-08",
+        "fiche-nilo",
+        "fiche-alma"
+      ],
+      "promptImage": "Use the first attached image as the starting shot to continue; the other attached images are character references. LAST FRAME of a slow push-in on the attached first image: close shot of Nilo's face beaming with a huge relieved smile under his oversized red helmet, Alma's five-finger hand resting on top of the helmet, her proud smiling face and the calm kitten partly in frame. Warm fire-station light. PREMIUM STYLIZED 3D ANIMATED FEATURE FILM, never photorealistic. Preserve the attached character sheets exactly (Nilo knee-high to Alma, three fingers per hand; Alma five fingers; ordinary four-legged kitten). Native vertical 9:16, single continuous image, no text."
+    }
+  ],
+  "videoPromptRouting": {
+    "Agnes": "promptVideoAgnes",
+    "legacy": "promptVideo"
+  },
+  "recommendedVideoEngine": "agnes",
+  "agnesPolicy": {
+    "sourceFrame": "absolute first frame and visual truth",
+    "geometry": "all required geometry must exist in source image",
+    "identity": "never redesign Nilo, Alma or kitten",
+    "scale": "Nilo remains knee-high to Alma",
+    "hands": "Nilo three fingers per hand; Alma five fingers per hand",
+    "kitten": "ordinary quadruped kitten only",
+    "camera": "maximum one simple motivated camera movement",
+    "speech": "seul le personnage désigné parle, débit ~3 mots/s, fin de réplique imposée",
+    "continuity": "no invented doors, windows, ladders, hands, props or characters",
+    "keyframes": "imageFin dédiée sur 04, 05, 07, 08 ; 06 finit sur l'image de 07 (plan continu)"
+  },
+  "hashtags": [
+    "#animation",
+    "#dragon",
+    "#pompier",
+    "#histoire",
+    "#pourtoi"
+  ],
+  "commentaire": "Tu aurais laissé Nilo passer par la fenêtre ?"
+}
