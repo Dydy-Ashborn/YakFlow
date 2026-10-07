@@ -2676,7 +2676,7 @@ async function render() {
         : readyForMontage(p) ? 'Tous les clips sont prêts.' : 'Le montage se fait quand tous les clips des scènes sont prêts (' + c.c + ' / ' + c.nc + ').') + '</p>' +
       '<p class="hint">Découpe : ' + ({ auto: 'auto autour de la voix', garder: 'portion « garder » de chaque scène', entier: 'clips entiers' })[S.cut] + '. À changer dans les réglages.</p>' +
       '<div class="row" style="margin-top:10px"><button class="btn primary" id="pMont"' + (readyForMontage(p) && !montBusy ? '' : ' disabled') + '><i class="fa-solid fa-scissors"></i>' + (mst === 'fini' ? 'Remonter' : 'Monter maintenant') + '</button>' +
-      (mst === 'fini' ? '<button class="btn" id="pMdl"><i class="fa-solid fa-download"></i>Télécharger la vidéo</button>' + (PROXY ? '<button class="btn primary" id="pPub"><i class="fa-brands fa-google-drive"></i>Envoyer sur Drive</button>' : '') : '') + '</div>' +
+      (mst === 'fini' ? '<button class="btn" id="pMdl"><i class="fa-solid fa-download"></i>Télécharger vidéo, couverture et infos</button>' + (PROXY ? '<button class="btn primary" id="pPub"><i class="fa-brands fa-google-drive"></i>Envoyer sur Drive</button>' : '') : '') + '</div>' +
       (mst === 'fini' ? '<p class="hint" id="pubState">' + (PROXY ? esc(p.publish?.status === 'brouillon' ? 'Brouillon TikTok confirmé.' : p.publish?.message || 'Le montage terminé est envoyé automatiquement sur Google Drive.') : 'La vidéo est prête. Télécharge-la depuis ton navigateur.') + '</p>' : '') +
       (p.description || p.commentaire ? '<div class="pub"><div class="sec" style="margin:14px 0 6px">Publication</div>' +
         [['Description', pubDescription(p)], ['Accroche', p.accroche], ['Commentaire épinglé', p.commentaire]].filter((x) => x[1]).map((x, i) =>
@@ -2715,7 +2715,16 @@ async function render() {
   m.querySelectorAll('[data-copy]').forEach((b) => b.onclick = () => { navigator.clipboard.writeText(pubs[+b.dataset.copy][1]); toast(pubs[+b.dataset.copy][0] + ' copié.', 'ok'); });
   $('#pReq').onclick = () => { $('#reqPre').textContent = lastReq ? lastReq.path + '  (' + fmtT(lastReq.at) + ')\n\n' + JSON.stringify(lastReq.body, null, 2) : 'Aucune requête envoyée depuis l\'ouverture du studio.'; dlgReq.showModal(); };
   $('#pMont').onclick = () => doMontage(p, true);
-  if ($('#pMdl')) $('#pMdl').onclick = async () => downloadBuf(await mGet(montKey(p)), p.id + '.mp4', 'video/mp4');
+  if ($('#pMdl')) $('#pMdl').onclick = async () => {
+    /* YAKFLOW_EXPORT_DIR_V16 : vidéo + couverture + infos, dans le dossier d'export s'il est choisi, sinon trois téléchargements */
+    const buf = await mGet(montKey(p));
+    if (!buf) return toast('Vidéo montée introuvable dans ce navigateur.', 'err');
+    if (window.yfExportEpisode && await window.yfExportEpisode(p, buf)) return;
+    downloadBuf(buf, safeName(p.id) + '.mp4', 'video/mp4');
+    const cover = p.etapes.find((s) => s.type === 'couverture' && s.img && s.img.st === 'fini');
+    if (cover) { const im = await mGet(imgKey(p, cover)); if (im) { const j = await toJpeg(im, 1280); setTimeout(() => downloadData(j.data, safeName(p.id) + '-couverture.jpg'), 400); } }
+    setTimeout(() => downloadBuf(new TextEncoder().encode(infos(p)), safeName(p.id) + '-infos-publication.txt', 'text/plain;charset=utf-8'), 800);
+  };
   if ($('#pPub')) $('#pPub').onclick = () => publishDrive(p);
   $('#pDel').onclick = async () => {
     if (!(await yfConfirm({ title: 'Supprimer ce projet ?', message: '« ' + p.titre + ' » et toutes ses images et clips seront supprimés.\nLes fiches de série restent en mémoire.', okLabel: 'Supprimer', okIcon: 'fa-trash', danger: true }))) return;
@@ -3133,12 +3142,12 @@ setInterval(agnesPushRemoteStatus, 3000);
    document.querySelectorAll('dialog[open]').forEach(dialog=>dialog.close());
    overlay.hidden=false;
  }
- async function verify(code){const r=await fetch(cfg.verifyUrl||'/.netlify/functions/verify-license',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})});const d=await r.json().catch(()=>({}));if(!r.ok||!d.valid)throw new Error(d.message||'Code invalide ou abonnement inactif.');return d}
- async function activate(code,quiet){code=norm(code);if(!code)throw new Error('Entre ton code YakFlow.');if(!quiet){btn.disabled=true;btn.classList.add('is-loading');show('Vérification…','')}try{await verify(code);localStorage.setItem('yakflowLicenseCode',code);overlay.hidden=true}catch(e){showAccess();localStorage.removeItem('yakflowLicenseCode');show(e.message,'err');throw e}finally{btn.disabled=false;btn.classList.remove('is-loading')}}
+ async function verify(code){/* YAKFLOW_LICENSE_KEEP_V16 : une panne serveur ne doit jamais effacer le code */let r;try{r=await fetch(cfg.verifyUrl||'/.netlify/functions/verify-license',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})})}catch(_){const e=new Error('Vérification impossible : connexion indisponible. Réessaie dans un instant.');e.temp=true;throw e}const d=await r.json().catch(()=>({}));if(r.status>=500||r.status===429){const e=new Error((d.message||'Vérification momentanément indisponible.')+' Ton code est conservé.');e.temp=true;throw e}if(!r.ok||!d.valid)throw new Error(d.message||'Code invalide ou abonnement inactif.');return d}
+ async function activate(code,quiet){code=norm(code);if(!code)throw new Error('Entre ton code YakFlow.');if(!quiet){btn.disabled=true;btn.classList.add('is-loading');show('Vérification…','')}try{await verify(code);localStorage.setItem('yakflowLicenseCode',code);overlay.hidden=true}catch(e){if(e.temp&&quiet&&localStorage.getItem('yakflowLicenseCode')===code){overlay.hidden=true;return}showAccess();if(!e.temp)localStorage.removeItem('yakflowLicenseCode');show(e.message,'err');throw e}finally{btn.disabled=false;btn.classList.remove('is-loading')}}
  async function boot(){/* YAKFLOW_CODE_LINK_V14 : lien reçu par email /?code=YKF-… */const linkCode=norm(new URLSearchParams(location.search).get('code'));if(linkCode){const u=new URL(location.href);u.searchParams.delete('code');history.replaceState(null,'',u.pathname+u.search+u.hash)}if(!required){overlay.hidden=true;return}showAccess();if(linkCode){input.value=linkCode;try{await activate(linkCode,false);return}catch(_){}}const saved=localStorage.getItem('yakflowLicenseCode');if(saved){input.value=saved;try{await activate(saved,true);return}catch(_){}}input.focus()}
  btn?.addEventListener('click',()=>activate(input.value,false).catch(()=>{}));input?.addEventListener('keydown',e=>{if(e.key==='Enter')btn.click()});
  const manage=document.getElementById('yfManageSub');if(manage){manage.hidden=!cfg.stripePortalUrl;manage.addEventListener('click',()=>{if(cfg.stripePortalUrl)window.open(cfg.stripePortalUrl,'_blank','noopener')})}
- if(required)setInterval(async()=>{const code=localStorage.getItem('yakflowLicenseCode');if(!code)return;try{await verify(code)}catch(e){showAccess();localStorage.removeItem('yakflowLicenseCode');show(e.message,'err')}},300000);
+ if(required)setInterval(async()=>{const code=localStorage.getItem('yakflowLicenseCode');if(!code)return;try{await verify(code)}catch(e){if(e.temp)return;showAccess();localStorage.removeItem('yakflowLicenseCode');show(e.message,'err')}},300000);
  if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();

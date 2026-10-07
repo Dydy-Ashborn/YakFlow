@@ -1,6 +1,6 @@
 import { timingSafeEqual } from 'node:crypto';
 import { codeId, newCode, normalizeCode } from '../lib/license-core.mjs';
-import { licenses } from '../lib/firebase.mjs';
+import { forgetLicense, licenses } from '../lib/firebase.mjs';
 import { json, smallJson } from '../lib/http.mjs';
 
 function isAdmin(request) {
@@ -54,6 +54,7 @@ async function handle(request) {
       if (!snap.exists) return json({ message: 'Code introuvable.' }, 404);
       if (action === 'deactivate-id') await ref.update({ active: false, deactivatedAt: new Date().toISOString() });
       else await ref.update({ active: true, deactivatedAt: null });
+      await forgetLicense(id);
       return json({ id, email: snap.data().email, active: action === 'reactivate-id' });
     }
     if (action === 'create') {
@@ -70,6 +71,7 @@ async function handle(request) {
         };
         try {
           await store.doc(codeId(code)).create(record);
+          await forgetLicense(codeId(code));
           return json({ code, email, type, createdAt: record.createdAt, expiresAt });
         } catch (error) {
           if (error.code !== 6) throw error;
@@ -83,7 +85,7 @@ async function handle(request) {
       const ref = store.doc(codeId(code));
       const snap = await ref.get();
       if (!snap.exists) return json({ message: 'Code introuvable.' }, 404);
-      if (action === 'deactivate') await ref.update({ active: false, deactivatedAt: new Date().toISOString() });
+      if (action === 'deactivate') { await ref.update({ active: false, deactivatedAt: new Date().toISOString() }); await forgetLicense(codeId(code)); }
       return json({ email: snap.data().email, type: snap.data().type, active: action === 'deactivate' ? false : snap.data().active, expiresAt: snap.data().expiresAt });
     }
     if (action === 'deactivate-email') {
@@ -95,6 +97,7 @@ async function handle(request) {
       const batch = store.firestore.batch();
       for (const doc of premium) batch.update(doc.ref, { active: false, deactivatedAt: new Date().toISOString() });
       await batch.commit();
+      for (const doc of premium) await forgetLicense(doc.id);
       return json({ email, deactivated: premium.length });
     }
     return json({ message: 'Action inconnue.' }, 400);
@@ -114,6 +117,7 @@ function firebaseHint(error) {
   if (c === 5 || /NOT_FOUND|does not exist/i.test(m)) return 'Firebase : aucune base Firestore dans le projet yakflow-e4d30. Crée-la dans la console Firebase (Firestore Database, mode natif).';
   if (c === 7 || /PERMISSION_DENIED|permission/i.test(m)) return 'Firebase : le compte de service n’a pas le droit d’écrire dans Firestore. Donne-lui le rôle « Cloud Datastore User » (ou génère la clé depuis Paramètres du projet > Comptes de service).';
   if (c === 16 || /UNAUTHENTICATED|invalid_grant|revoked/i.test(m)) return 'Firebase : la clé du compte de service est refusée (supprimée ou expirée). Génère une nouvelle clé privée et remplace la variable.';
+  if (c === 8 || /RESOURCE_EXHAUSTED|quota/i.test(m)) return 'Firebase : quota gratuit Firestore dépassé pour aujourd’hui (50 000 lectures/jour). Il se remet à zéro vers 9 h (heure de Paris). Le cache de licence V16 évite que ça se reproduise.';
   if (c === 9 || /FAILED_PRECONDITION|Datastore Mode/i.test(m)) return 'Firebase : Firestore est en mode Datastore ou un index manque. Il faut une base Firestore en mode natif.';
   return 'Firebase : opération impossible (' + (c ?? 'erreur') + ' — ' + m.slice(0, 160) + ').';
 }
