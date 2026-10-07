@@ -392,5 +392,18 @@ a{text-decoration:none}
 /* menu fixe : ombre au défilement */
 (function(){const n=document.querySelector('.lnav');const f=()=>n.classList.toggle('scrolled',scrollY>8);addEventListener('scroll',f,{passive:true});f();})();
 </script>
+<dialog id="dlDlg" style="background:#111317;color:#f5f2ec;border:1px solid rgba(255,178,36,.35);border-radius:20px;padding:0;width:min(460px,calc(100vw - 32px));box-shadow:0 24px 64px rgba(0,0,0,.55)">
+  <div style="padding:24px 24px 8px;display:flex;gap:12px;align-items:center"><img src="/yakflow-logo.webp" alt="" width="40" height="40" style="border-radius:10px"><div><b style="font-size:17px">Téléchargement lancé</b><div style="color:#b3ada3;font-size:13px">Ton essai gratuit se lance depuis YakFlow, en 3 étapes.</div></div></div>
+  <ol style="margin:8px 0 0;padding:0 24px 0 44px;color:#b3ada3;line-height:1.6">
+    <li style="margin:8px 0"><b style="color:#f5f2ec">Dézippe</b> le fichier YakFlow.zip (dans Documents, par exemple).</li>
+    <li style="margin:8px 0"><b style="color:#f5f2ec">Lance « Lancer YakFlow »</b>. Sur Mac, la première fois : clic droit, puis Ouvrir. Sur Windows : « Lancer YakFlow (Windows) ».</li>
+    <li style="margin:8px 0"><b style="color:#f5f2ec">Entre ton email</b> et clique sur « Lancer mon essai gratuit » : tout est débloqué 24 h, sans carte bancaire.</li>
+  </ol>
+  <p style="margin:12px 24px 0;color:#7a756d;font-size:12.5px">Python 3 est nécessaire : le lanceur t’aide à l’installer s’il manque. Le téléchargement ne démarre pas ? <a href="/telecharger/YakFlow.zip" download style="color:#ffc757">Relance-le ici</a>.</p>
+  <div style="display:flex;justify-content:flex-end;padding:16px 24px 20px"><button class="btn primary" type="button" onclick="document.getElementById('dlDlg').close()">Compris</button></div>
+</dialog>
+<script>
+document.addEventListener('click',e=>{const a=e.target.closest('a[href="/telecharger/YakFlow.zip"]');if(!a||a.closest('#dlDlg'))return;setTimeout(()=>{const d=document.getElementById('dlDlg');if(d&&!d.open)d.showModal()},300)});
+</script>
 </body>
 </html>
