@@ -385,12 +385,17 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
             b.disabled=true;try{await call(c.active?'deactivate-id':'reactivate-id',{id:c.id});toast(c.active?'Code désactivé.':'Code réactivé.');await load(g.email)}catch(e){toast(e.message);b.disabled=false}};
           if(c.machine){const rm=document.createElement('button');rm.className='btn sm';rm.innerHTML='<i class="fa-solid fa-laptop"></i>Réinitialiser l’ordinateur';
             rm.onclick=async()=>{if(!(await ask('Libérer ce code ?','Le client pourra activer ce code sur un nouvel ordinateur.','Réinitialiser')))return;rm.disabled=true;try{await call('reset-machine',{id:c.id});toast('Ordinateur réinitialisé.');await load(g.email)}catch(e){toast(e.message);rm.disabled=false}};r.append(rm)}
+          if(!c.active||st==='expired'){const del=document.createElement('button');del.className='btn sm danger';del.innerHTML='<i class="fa-solid fa-trash-can"></i>Supprimer';
+            del.onclick=async()=>{if(!(await ask('Supprimer ce code ?','Le code sera effacé définitivement de Firebase.','Supprimer')))return;del.disabled=true;try{await call('delete-id',{id:c.id});toast('Code supprimé.');await load(g.email)}catch(e){toast(e.message);del.disabled=false}};r.append(del)}
           r.append(b);det.append(r);
         }
         const acts=document.createElement('div');acts.className='cl-acts';
         const nw=document.createElement('button');nw.className='btn sm';nw.innerHTML='<i class="fa-solid fa-plus"></i>Nouveau code pour ce client';
         nw.onclick=()=>{$('email').value=g.email;$('email').scrollIntoView({behavior:'smooth',block:'center'});$('email').focus()};
         acts.append(nw);
+        const dead=g.codes.filter(c=>!c.active||codeState(c)==='expired');
+        if(dead.length){const clean=document.createElement('button');clean.className='btn sm danger';clean.innerHTML='<i class="fa-solid fa-broom"></i>Supprimer les '+dead.length+' code'+(dead.length>1?'s':'')+' désactivé'+(dead.length>1?'s':'');
+          clean.onclick=async()=>{if(!(await ask('Faire le ménage ?',dead.length+' code(s) désactivé(s) ou expiré(s) de '+g.email+' seront effacés définitivement. Les codes actifs sont conservés.','Supprimer')))return;clean.disabled=true;let n=0;for(const c of dead){try{await call('delete-id',{id:c.id});n++}catch(_){}}toast(n+' code(s) supprimé(s).');await load(g.email)};acts.append(clean)}
         if(g.status==='premium'){const off=document.createElement('button');off.className='btn sm danger';off.innerHTML='<i class="fa-solid fa-user-slash"></i>Couper tous ses accès premium';
           off.onclick=async()=>{if(!(await ask('Couper ses accès premium ?','Tous les codes premium actifs de '+g.email+' seront désactivés (résiliation).','Tout couper')))return;
             try{const d=await call('deactivate-email',{email:g.email});toast(d.deactivated+' code(s) désactivé(s).');await load(g.email)}catch(e){toast(e.message)}};acts.append(off)}

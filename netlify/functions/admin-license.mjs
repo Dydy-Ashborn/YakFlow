@@ -48,6 +48,17 @@ async function handle(request) {
       const snap = await store.orderBy('createdAt', 'desc').limit(100).get();
       return json({ items: snap.docs.map((doc) => { const r = doc.data(); return { id: doc.id, email: r.email, type: r.type, active: r.active === true, createdAt: r.createdAt, expiresAt: r.expiresAt ?? null, deactivatedAt: r.deactivatedAt ?? null, note: r.note ?? '', machine: r.machine ? r.machine.slice(0, 8) : '', lastCheckAt: r.lastCheckAt ?? null, validUntil: r.validUntil ?? null, stripe: !!r.stripeSubscriptionId }; }) });
     }
+    if (action === 'delete-id') {
+      // suppression définitive, réservée aux codes déjà désactivés (ou essais expirés)
+      const id = String(body.id ?? '');
+      if (!/^[a-f0-9]{64}$/.test(id)) return json({ message: 'Identifiant invalide.' }, 400);
+      const ref = store.doc(id), snap = await ref.get();
+      if (!snap.exists) return json({ message: 'Code introuvable.' }, 404);
+      const r = snap.data(), expired = r.expiresAt && Date.parse(r.expiresAt) <= Date.now();
+      if (r.active === true && !expired) return json({ message: 'Désactive d’abord ce code avant de le supprimer.' }, 409);
+      await ref.delete();
+      return json({ id, deleted: true });
+    }
     if (action === 'reset-machine') {
       const id = String(body.id ?? '');
       if (!/^[a-f0-9]{64}$/.test(id)) return json({ message: 'Identifiant invalide.' }, 400);
