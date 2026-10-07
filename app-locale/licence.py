@@ -10,6 +10,7 @@ import base64, hashlib, json, os, platform, re, subprocess, sys, threading, time
 
 VERSION = "1.0.0"
 API = os.environ.get("YAKFLOW_LICENCE_URL", "https://yakflow.netlify.app/.netlify/functions/licence")
+TRIAL_API = os.environ.get("YAKFLOW_TRIAL_URL", API.rsplit("/", 1)[0] + "/trial")
 GRACE = 3 * 24 * 3600 * 1000          # tolérance hors ligne après la fin de période (ms)
 RETRY_AFTER = 10 * 60                 # après un échec réseau, on ne réessaie pas avant 10 min (s)
 DIR = os.path.join(os.path.expanduser("~"), ".yakflow")
@@ -128,10 +129,11 @@ def _save(data):
     os.replace(tmp, FILE)
 
 
-def _post(payload):
+def _post(payload, url=None):
+    url = url or API
     """Appel au serveur de licences. Renvoie (statut HTTP, json). Statut 0 = réseau indisponible."""
     data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(API, data=data, method="POST",
+    req = urllib.request.Request(url, data=data, method="POST",
                                  headers={"Content-Type": "application/json", "User-Agent": "YakFlow/" + VERSION})
     try:
         with urllib.request.urlopen(req, timeout=20) as r:
@@ -146,7 +148,7 @@ def _post(payload):
         if "CERTIFICATE" not in str(e).upper() and "SSL" not in str(e).upper():
             return 0, {"message": "Connexion impossible : %s" % e}
         out = _run(["curl", "-sS", "-m", "20", "-X", "POST", "-H", "Content-Type: application/json",
-                    "-d", data.decode("utf-8"), "-w", "\n%{http_code}", API])
+                    "-d", data.decode("utf-8"), "-w", "\n%{http_code}", url])
         try:
             text, code = out.rsplit("\n", 1)
             return int(code), json.loads(text or "{}")
@@ -186,6 +188,26 @@ def activate(code):
     if status == 0:
         return _public(False, message=data.get("message") or "Pas de connexion Internet. L'activation demande Internet une seule fois.")
     return _public(False, message=data.get("message") or "Activation refusée (HTTP %s)." % status)
+
+
+def trial(email):
+    """Essai gratuit 24 h, créé directement depuis l'écran d'accueil (un par ordinateur et par email)."""
+    email = str(email or "").strip()
+    if "@" not in email:
+        return _public(False, message="Entre ton adresse email pour lancer l'essai.")
+    machine = machine_id()
+    status, data = _post({"email": email, "machine": machine, "version": VERSION}, url=TRIAL_API)
+    if status == 200 and data.get("ok"):
+        lic = _verify(data.get("token", ""))
+        if not lic or lic.get("m") != machine:
+            return _public(False, message="Réponse du serveur de licences invalide.")
+        _save({"code": data.get("code", ""), "token": data["token"], "saved": int(time.time())})
+        with _lock:
+            _state.update(status=_public(True, lic), checked=time.time())
+        return _public(True, lic)
+    if status == 0:
+        return _public(False, message=data.get("message") or "Pas de connexion Internet.")
+    return _public(False, message=data.get("message") or "Essai refusé (HTTP %s)." % status)
 
 
 def forget():

@@ -224,6 +224,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             d = self._json_body(4096) or {}
             res = licence.activate(d.get("code"))
             return self._send(200 if res.get("ok") else 403, json.dumps(res, ensure_ascii=False).encode("utf-8"))
+        if self.path.startswith("/licence/trial") and method == "POST":
+            d = self._json_body(4096) or {}
+            res = licence.trial(d.get("email"))
+            return self._send(200 if res.get("ok") else 403, json.dumps(res, ensure_ascii=False).encode("utf-8"))
         if self.path.startswith("/licence/forget") and method == "POST":
             licence.forget()
             return self._send(200, b'{"ok":true}')

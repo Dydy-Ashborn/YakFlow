@@ -9,8 +9,8 @@
 
 [[redirects]]
   from = "/decouvrir"
-  to = "/decouvrir.html"
-  status = 200
+  to = "/"
+  status = 301
 
 [[redirects]]
   from = "/api/*"

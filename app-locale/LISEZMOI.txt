@@ -17,6 +17,10 @@ LANCER YAKFLOW
 - YakFlow s'ouvre dans ton navigateur sur http://127.0.0.1:8765
 - Laisse la fenêtre noire ouverte pendant que tu travailles. La fermer arrête YakFlow.
 
+ESSAI GRATUIT 24 H
+- Sur l'écran d'accueil, entre ton email puis « Lancer mon essai gratuit » : tout est débloqué 24 h, sans carte bancaire.
+- Un essai par ordinateur. Pour continuer ensuite : « S'abonner · 2,99 € / mois ».
+
 ACTIVER TON CODE
 - Au premier lancement, colle le code reçu après ton paiement (YKF-XXXXX-XXXXX-XXXXX-XXXXX), puis « Activer YakFlow ».
 - Le code est lié à cet ordinateur. Il se renouvelle tout seul chaque mois tant que ton abonnement est actif :

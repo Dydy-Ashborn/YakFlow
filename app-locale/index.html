@@ -317,6 +317,7 @@ dialog{border-radius:18px!important;box-shadow:0 30px 90px rgba(0,0,0,.45)!impor
 <script src="/yakflow-config.js"></script>
 <style>
 /* YAKFLOW_ACTIVATION_UI_V6 */
+.yfTrialBox{display:grid;gap:8px;padding:14px;border:1px solid rgba(255,178,36,.4);border-radius:12px;background:rgba(255,178,36,.06)}.yfTrialBox b{color:#ffc757}.yfTrialBox small{color:#9aa1ae;font-size:12px}.yfTrialBox input{width:100%;padding:11px 12px;border-radius:10px;border:1px solid #303645;background:#0b0d12;color:#f5f6fa;font:inherit}.yfTrialBtn{padding:11px;border-radius:10px;border:1px solid #ffb224;background:transparent;color:#ffc757;font-weight:800;cursor:pointer}.yfTrialBtn:hover{background:rgba(255,178,36,.1)}.yfTrialBtn:disabled{opacity:.6;cursor:wait}
 .yfBeginner{border-color:rgba(255,178,36,.45)!important;background:rgba(255,178,36,.07)!important}.yfBeginner b i{color:#ffb224;margin-right:4px}
 .yfBuyBtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border-radius:10px;background:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00);color:#1d1200;font-weight:800;text-decoration:none}.yfBuyBtn:hover{filter:brightness(1.06)}
 .yfActivation{position:fixed;inset:0;z-index:99999;overflow:auto;background:#0b0d12;color:#f6f7fb;font-family:Inter,system-ui,-apple-system,sans-serif}.yfActivation[hidden]{display:none!important}
@@ -397,8 +398,11 @@ dialog{border-radius:18px!important;box-shadow:0 30px 90px rgba(0,0,0,.45)!impor
       <div class="yfActBadge">Accès YakFlow</div><h2>Active ton studio</h2><p>Entre le code reçu après ton abonnement.</p>
       <label>Code d’accès</label><input id="yfLicenseCode" autocomplete="one-time-code" spellcheck="false" placeholder="YKF-XXXXX-XXXXX-XXXXX-XXXXX">
       <button id="yfActivateBtn" class="yfActPrimary">Activer YakFlow</button><div id="yfActStatus" class="yfActStatus"></div>
-      <div class="yfActPrice"><b>2,99 € / mois · prix de lancement</b><span>Tarif futur prévu : 4,99 € / mois.</span></div>
+      <div class="yfActPrice"><b>2,99 € / mois · prix de lancement</b><span>Sans engagement · résiliable à tout moment.</span></div>
       <div class="yfNoCode"><span>Pas encore de code ?</span>
+        <div class="yfTrialBox"><b><i class="fa-regular fa-clock"></i> Essai gratuit 24 h</b><small>Tout est débloqué tout de suite, sans carte bancaire. Un essai par ordinateur.</small>
+          <input id="yfTrialEmail" type="email" autocomplete="email" placeholder="ton@email.com">
+          <button id="yfTrialBtn" class="yfTrialBtn" type="button">Lancer mon essai gratuit</button></div>
         <a id="yfBuy" class="yfBuyBtn" href="#" target="_blank" rel="noopener"><i class="fa-solid fa-bolt"></i> S’abonner · 2,99 € / mois</a>
       </div>
       <button id="yfManageSub" class="yfActLink" type="button">Gérer ou résilier mon abonnement</button>
@@ -3019,9 +3023,16 @@ setInterval(agnesPushRemoteStatus, 3000);
   try{const r=await fetch('/licence/activate',{method:'POST',headers:{'X-Studio':'1','Content-Type':'application/json'},body:JSON.stringify({code})});const d=await r.json().catch(()=>({}));
    if(!d.ok)throw new Error(d.message||'Activation refusée.');show('YakFlow est activé sur cet ordinateur.','ok');setTimeout(()=>{overlay.hidden=true;location.reload()},700)}
   catch(e){show(e.message,'err')}finally{btn.disabled=false;btn.classList.remove('is-loading')}}
+ function trialBar(d){if(document.getElementById('yfTrialBar'))return;const el=document.createElement('div');el.id='yfTrialBar';el.style.cssText='position:fixed;left:16px;bottom:16px;z-index:9000;display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:#16191e;border:1px solid rgba(255,178,36,.45);color:#f5f2ec;font:600 13px Inter,system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.4)';const end=new Date(d.until).toLocaleString('fr-FR',{weekday:'long',hour:'2-digit',minute:'2-digit'});el.innerHTML='<i class="fa-regular fa-clock" style="color:#ffb224"></i><span>Essai gratuit jusqu’à '+end+'</span>';if(cfg.stripeCheckoutUrl){const a=document.createElement('a');a.href=cfg.stripeCheckoutUrl;a.target='_blank';a.rel='noopener';a.textContent='S’abonner';a.style.cssText='color:#1d1200;background:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00);padding:6px 10px;border-radius:8px;text-decoration:none;font-weight:800';el.append(a)}document.body.append(el)}
  async function boot(){const link=norm(new URLSearchParams(location.search).get('code'));if(link){input.value=link;const u=new URL(location.href);u.searchParams.delete('code');history.replaceState(null,'',u.pathname+u.search+u.hash)}
-  try{const d=await current(false);if(d.ok){overlay.hidden=true;if(d.offline&&typeof toast==='function')toast(d.message,'warn');return}lock(d.message);if(link)activate()}
+  try{const d=await current(false);if(d.ok){overlay.hidden=true;if(d.type==='trial')trialBar(d);if(d.offline&&typeof toast==='function')toast(d.message,'warn');return}lock(d.message);if(link)activate()}
   catch(_){lock('Le serveur YakFlow ne répond pas : lance « Lancer YakFlow » puis recharge la page.')}}
+ async function startTrial(){const tb=document.getElementById('yfTrialBtn'),email=String(document.getElementById('yfTrialEmail').value||'').trim();if(!email){show('Entre ton email pour lancer l’essai.','err');return}
+  tb.disabled=true;show('Création de ton essai…','');
+  try{const r=await fetch('/licence/trial',{method:'POST',headers:{'X-Studio':'1','Content-Type':'application/json'},body:JSON.stringify({email})});const d=await r.json().catch(()=>({}));
+   if(!d.ok)throw new Error(d.message||'Essai refusé.');show('Essai activé pour 24 h. Bonne création !','ok');setTimeout(()=>{overlay.hidden=true;location.reload()},900)}
+  catch(e){show(e.message,'err')}finally{tb.disabled=false}}
+ document.getElementById('yfTrialBtn')?.addEventListener('click',startTrial);document.getElementById('yfTrialEmail')?.addEventListener('keydown',e=>{if(e.key==='Enter')startTrial()});
  btn?.addEventListener('click',activate);input?.addEventListener('keydown',e=>{if(e.key==='Enter')activate()});
  document.getElementById('yfManageSub')?.addEventListener('click',()=>{if(cfg.stripePortalUrl)window.open(cfg.stripePortalUrl,'_blank','noopener');else show('Pour gérer ou résilier, utilise le lien du reçu Stripe reçu par email.','')});
  setInterval(async()=>{try{const d=await current(false);if(!d.ok)lock(d.message)}catch(_){}} ,30*60*1000);
