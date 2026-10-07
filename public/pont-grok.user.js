@@ -1,7 +1,9 @@
 // ==UserScript==
 // @name         YakFlow — Pont Grok Imagine
 // @namespace    yakflow
-// @version      4.1.1
+// @version      4.2.0
+// @updateURL    https://yakflow.netlify.app/pont-grok.user.js
+// @downloadURL  https://yakflow.netlify.app/pont-grok.user.js
 // @description  Pont entre YakFlow en ligne et Grok Imagine, multi-onglets et transfert MP4.
 // @match        https://grok.com/imagine*
 // @match        https://grok.com/supergrok/imagine*
@@ -345,20 +347,26 @@ async function doJob(job){
   location.assign('https://grok.com/imagine');
 }
 
+let lastBeat=0;
 async function heartbeat(){
+  if(Date.now()-lastBeat<25000)return; lastBeat=Date.now();
   try{await api('POST','heartbeat?info='+encodeURIComponent(document.title||'Grok Imagine'));}catch(_){}
 }
 async function loop(){
   draw();
-  setInterval(heartbeat,8000);heartbeat();
+  setInterval(heartbeat,25000);heartbeat();
+  let idle=0;
   for(;;){
-    await sleep(1600);
+    // YAKFLOW_POLL_V16 : 1,6 s quand il y a du travail, jusqu'à 30 s quand la file est vide
+    await sleep(Math.min(30000,1600+idle*3200));
     if(busy||!GM_getValue(K_ON,true)||Date.now()<pauseUntil)continue;
     if(!/\/imagine/.test(location.pathname)){setState('ouvre Grok Imagine');continue;}
     let r;
     try{r=await api('POST','take?info='+encodeURIComponent(document.title||'Grok Imagine'));}
     catch(e){lastErr='YakFlow en ligne non joignable ou code expiré.';setState('pont hors ligne');draw();continue;}
-    if(!r?.job){lastErr='';setState('en attente d’un clip');draw();continue;}
+    lastBeat=Date.now();
+    if(!r?.job){idle=Math.min(idle+1,9);lastErr='';setState('en attente d’un clip');draw();continue;}
+    idle=0;
     const job=r.job;busy=true;lastErr='';
     try{await doJob(job);}
     catch(e){

@@ -1,7 +1,9 @@
 // ==UserScript==
 // @name         YakFlow — Pont ChatGPT
 // @namespace    https://db-digital.studio/agnes-studio
-// @version      2.1.1
+// @version      2.2.0
+// @updateURL    https://yakflow.netlify.app/pont-chatgpt.user.js
+// @downloadURL  https://yakflow.netlify.app/pont-chatgpt.user.js
 // @description  Fabrique dans ChatGPT les images demandées par YakFlow en ligne.
 // @author       DB Digital
 // @match        https://chatgpt.com/*
@@ -429,10 +431,12 @@
     await postResult({ id: job.id, data });
   }
 
+  let lastBeat = 0;
   async function loop() {
-    let pauseUntil = 0, genSince = 0, serverReady = false;
+    let pauseUntil = 0, genSince = 0, serverReady = false, idle = 0;
     for (;;) {
-      await sleep(4000);
+      // YAKFLOW_POLL_V16 : 4 s quand il y a du travail, puis on ralentit jusqu'à 30 s quand il n'y a rien à faire
+      await sleep(Math.min(30000, 4000 + idle * 3000));
       draw();
       if (!serverReady) {
         try {
@@ -468,7 +472,9 @@
       let job;
       try { job = (await call('GET', withWorker('/bridge/peek?info=' + encodeURIComponent(info)))).job; lastErr = ''; }
       catch (e) { say('studio non joignable'); lastErr = 'Lance serveur.py (Agnes Studio).'; continue; }
-      if (!job) { say('rien à faire'); continue; }
+      lastBeat = Date.now();
+      if (!job) { idle = Math.min(idle + 1, 9); say('rien à faire'); continue; }
+      idle = 0;
       dbg('travail reçu', { id: job.id, nom: job.nom });
       if (late && job.id === late.id) { say('j\'attends encore l\'image de ' + late.nom); continue; }   // ne pas la redessiner tout de suite
       // une conversation neuve pour CHAQUE image : aucune autre image ne peut être prise pour le résultat
@@ -496,6 +502,7 @@
     }
   }
   draw();
-  setInterval(() => call('POST', withWorker('/bridge/heartbeat?info=' + encodeURIComponent(info))).catch(() => {}), 10000);
+  // signal de vie seulement quand la boucle n'a pas déjà parlé au serveur (pendant qu'une image se dessine, surtout)
+  setInterval(() => { if (Date.now() - lastBeat < 25000) return; lastBeat = Date.now(); call('POST', withWorker('/bridge/heartbeat?info=' + encodeURIComponent(info))).catch(() => {}); }, 25000);
   loop();
 })();

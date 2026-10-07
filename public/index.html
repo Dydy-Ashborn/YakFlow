@@ -1428,7 +1428,7 @@ async function genChatGPT(p, s) {
   await bridge('POST', 'push', job);
   let lastMsg = '';
   for (;;) {
-    await sleep(3000);
+    await sleep(6000);   // YAKFLOW_POLL_V16 : une image ChatGPT prend ~4 min, inutile de demander toutes les 3 s
     const cur = (P(p.id) || { etapes: [] }).etapes.find((x) => x.id === s.id);
     if (!cur || cur.img.st !== 'calcul') { bridge('POST', 'forget?id=' + encodeURIComponent(id)).catch(() => {}); return { cancel: true }; }
     let st;
@@ -1454,7 +1454,9 @@ async function refreshChatStatus() {
   catch { chatAlive = false; chatInfo = ''; chatWorkers = 0; chatProtocol = 0; }
   renderStatus();
 }
-setInterval(refreshChatStatus, 8000);
+/* YAKFLOW_POLL_V16 : statut du pont ChatGPT toutes les 8 s pendant la fabrication, 45 s au repos ou onglet caché */
+(function chatLoop(d) { setTimeout(async () => { await refreshChatStatus(); chatLoop(running && !document.hidden ? 8000 : 45000); }, d); })(1500);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshChatStatus(); });
 
 async function fetchAsData(url) {
   const r = await fetch('/dl?url=' + encodeURIComponent(url) + '&name=image', { headers: { 'X-Studio': '1', 'X-Yakflow-License': localStorage.getItem('yakflowLicenseCode') || '' } });
@@ -1499,8 +1501,10 @@ async function refreshGrokStatus() {
   el.textContent = g.workers ? ('Grok ' + g.workers + ' onglet' + (g.workers>1?'s':'') + (g.running?' · '+g.running+' clip'+(g.running>1?'s':''):'') ) : 'Grok ?';
   el.className = 'pill ' + (g.workers ? 'ok' : 'off');
 }
-setInterval(refreshGrokStatus, 5000);
-setTimeout(refreshGrokStatus, 800);
+/* YAKFLOW_POLL_V16 : on n'interroge le pont Grok que si le moteur Grok est utilisé (ou qu'un clip Grok est en cours) */
+function grokInUse() { return S.vidEngine === 'grok' || projects.some((p) => p.etapes.some((s) => s.clip && s.clip.grok && ['calcul', 'dl'].includes(s.clip.st))); }
+(function grokLoop(d) { setTimeout(async () => { const u = grokInUse(); if (u) await refreshGrokStatus(); grokLoop(u && running && !document.hidden ? 10000 : 60000); }, d); })(2000);
+setTimeout(() => { if (grokInUse()) refreshGrokStatus(); }, 800);
 
 /* YAKFLOW_DUAL_VIDEO_PROMPTS_V11 */
 function videoPromptFor(s, engine) {
@@ -1925,7 +1929,7 @@ async function pollClip(p, s) {
   // AGNES_GROK_BRIDGE_V1
   if (s.clip && s.clip.grok) {
     if (s.clip.nextPoll && now() < s.clip.nextPoll) return;
-    s.clip.nextPoll = now()+3000;
+    s.clip.nextPoll = now()+8000;
     let r;
     try { r=await grokBridge('GET','job?id='+encodeURIComponent(s.clip.videoId)); }
     catch(e){
