@@ -28,7 +28,17 @@ PREMIERS PAS
    Tes clés restent sur ton ordinateur, YakFlow ne les voit jamais.
 2. « + Importer » : importe le JSON de ton épisode (demande à ton IA un « JSON compatible YakFlow »).
 3. « Lancer » : fiches, images des scènes, clips, puis montage automatique.
-4. Tout est rangé dans Téléchargements/AgnesStudio/<projet>/ : images, clips, vidéo montée.
+4. Dès qu'une vidéo est montée, elle part toute seule sur ton Google Drive.
+
+PUBLIER DEPUIS TON TÉLÉPHONE (Google Drive)
+- Installe Google Drive pour ordinateur (gratuit) : https://www.google.com/drive/download/
+  et connecte-toi avec ton compte Google.
+- À chaque vidéo montée, YakFlow dépose dans Mon Drive > Agnes Studio > A publier > <titre de l'épisode> :
+  video.mp4, couverture.jpg et description.txt.
+- Ouvre l'application Google Drive sur ton téléphone : tout y est, prêt à publier sur TikTok.
+- La couverture de l'épisode doit être faite pour que l'envoi parte. Sinon, bouton « Envoyer sur Drive » sur le projet.
+- Sans Google Drive, la vidéo reste disponible avec « Télécharger la vidéo », et dans Téléchargements/AgnesStudio/<projet>/
+  si l'option « Ranger tout sur le disque » est cochée dans les Réglages.
 
 MODES IMAGES CHATGPT ET ANIMATION GROK (facultatif)
 - Installe l'extension Tampermonkey dans Chrome, puis les ponts depuis les Réglages de YakFlow
