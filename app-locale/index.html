@@ -639,7 +639,7 @@ dialog{border-radius:18px!important;box-shadow:0 30px 90px rgba(0,0,0,.45)!impor
       <option value="auto">Auto : coupe les blancs autour de la voix</option>
       <option value="garder">Portion « garder » de chaque scène (sinon auto)</option>
       <option value="entier">Clips entiers</option></select></label>
-    <label class="f"><span>Sujet ntfy (notifications PC/local, facultatif)</span><input id="sNtfy" type="text" class="mono" placeholder="le même sujet secret que pour la Régie" spellcheck="false"></label>
+    <label class="f"><span>Sujet ntfy (notifications sur téléphone, facultatif)</span><input id="sNtfy" type="text" class="mono" placeholder="Ton sujet privé dans l’appli ntfy" spellcheck="false"></label>
     <p class="hint" style="margin:0">Sépare les clés par des virgules. En mode Auto, plusieurs clés permettent jusqu’à trois clips en cours par clé, avec des envois simultanés selon les disponibilités d’Agnes. L’écart entre envois s’applique à chaque clé. Les clés restent enregistrées dans ce navigateur.</p>
   </div>
   <div class="foot"><button class="btn ghost" id="sTest">Tester la notif</button><button class="btn primary" id="sGo">Enregistrer</button></div>
@@ -1446,7 +1446,8 @@ function pubDescription(p) {
    ===================================================================== */
 function phone(title, message, prio) {
   if (!S.ntfy) return Promise.resolve(false);
-  return fetch('https://ntfy.sh/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ topic: S.ntfy, title, message, priority: prio || 3, tags: ['clapper'] }) })
+  const tags = /raté|refusé|bloqué|attente|pause/i.test(title) ? ['warning'] : /prêt|montée|Drive|terminée/i.test(title) ? ['white_check_mark'] : ['clapper'];
+  return fetch('https://ntfy.sh/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ topic: S.ntfy, title: 'YakFlow · ' + title, message, priority: prio || 3, tags }) })
     .then(r => { if (!r.ok) { log('ntfy a refusé la notif (HTTP ' + r.status + ').'); return false; } return true; })
     .catch(e => { log('ntfy injoignable : ' + e.message); return false; });
 }
@@ -1675,7 +1676,7 @@ async function doImage(p, s, lane) {
     if (isBusy(r)) { const retryAt = out.retryAt || now() + 60000; setImg(p, s, { st: 'file', retryAt, msg: 'Clés Agnes occupées, nouvel essai à ' + fmtT(retryAt) + ' (essai ' + tries + ')' }); return; }
     if (/sensitive|safety|moderation|content/i.test(errText(r)) && tries < 2) { setImg(p, s, { st: 'file', retryAt: now() + 5000, msg: 'Refus de contenu, je réessaie une fois' }); return; }
     setImg(p, s, { st: 'echec', msg: 'Refusé (HTTP ' + r._err + ') : ' + (errText(r) || 'réponse vide') }); log('Image refusée : ' + s.nom + ' → HTTP ' + r._err + ' ' + (errText(r) || '(réponse vide)'));
-    phone('Image refusée', p.titre + ' · ' + s.nom + ' : ' + errText(r).slice(0, 120), 4);
+    phone('Image refusée', 'Projet : ' + p.titre + '\nÉtape : ' + s.nom + '\nMotif : ' + errText(r).slice(0, 120), 4);
   } catch (e) {
     if (projects.some(q => q === p && q.etapes.includes(s)) && s.img.st === 'calcul' && s.img.runId === runId) setImg(p, s, { st: 'file', retryAt: now() + 60000, msg: 'Erreur : ' + e.message + ', nouvel essai dans 1 min' });
   } finally { if (source === 'chatgpt') chatInFlight = Math.max(0, chatInFlight - 1); if (lane) lane.imageBusy = false; lastImg = now(); curStep.delete(s); renderStatus(); }
@@ -1779,7 +1780,7 @@ async function submitClip(p, s, lane) {
     const mine = projects.reduce((n, q) => n + q.etapes.filter((x) => x.clip.st === 'calcul').length, 0);
     if (qfull && mine === 0) { qEmptySince = qEmptySince || now(); } else qEmptySince = 0;
     const quota = qfull && qEmptySince && now() - qEmptySince > 40 * 60000;
-    if (quota && !quotaSent) { quotaSent = true; log('Agnes refuse tout depuis ' + fmtDur(now() - qEmptySince) + ' alors qu\'aucun clip ne tourne (saturation générale ou quota) : j\'essaie toutes les 15 min.'); phone('Agnes bloquée', 'Plus aucun clip accepté depuis ' + fmtDur(now() - qEmptySince) + '. J\'essaie toutes les 15 min, les images continuent.', 4); }
+    if (quota && !quotaSent) { quotaSent = true; log('Agnes refuse tout depuis ' + fmtDur(now() - qEmptySince) + ' alors qu\'aucun clip ne tourne (saturation générale ou quota) : j\'essaie toutes les 15 min.'); phone('Clips en attente', 'Agnes n’a accepté aucun clip depuis ' + fmtDur(now() - qEmptySince) + '.\nNouvel essai toutes les 15 min. Les images continuent.', 4); }
     const wait = quota ? 15 * 60000 : qfull ? Math.min(60000, 20000 + 10000 * ((owner.fullStreak || 1) - 1)) :
       r._err === 429 ? Math.min(180000, 60000 * (owner.rateStreak || 1)) : 60000;
     okStreak = 0;
@@ -1798,7 +1799,7 @@ async function submitClip(p, s, lane) {
   }
   stat.fail('clip', s.nom, 'refusé ' + r._err + ' ' + errText(r));
   setClip(p, s, { st: 'echec', msg: 'Refusé (' + r._err + ') : ' + errText(r) }); log('Clip refusé : ' + s.nom + ' → ' + errText(r));
-  phone('Clip refusé', p.titre + ' · ' + s.nom + ' : ' + errText(r).slice(0, 120), 4);
+  phone('Clip refusé', 'Projet : ' + p.titre + '\nÉtape : ' + s.nom + '\nMotif : ' + errText(r).slice(0, 120), 4);
 }
 async function pollClip(p, s) {
   // AGNES_GROK_BRIDGE_V1
@@ -1839,10 +1840,10 @@ async function pollClip(p, s) {
     cancelStreak++; const back = now() + (cancelStreak >= 2 ? 60 : 30) * 60000;
     setClip(p, s, { st: 'file', retryAt: back, msg: 'Annulé par Agnes (quota du jour ?), nouvel essai à ' + fmtT(back) });
     stat.fail('clip', s.nom, 'annulé par Agnes'); log('Clip annulé par Agnes : ' + s.nom + (cancelStreak >= 2 ? ' · ' + cancelStreak + ' annulations de suite, pause des clips jusqu\'à ' + fmtT(back) : ''));
-    if (cancelStreak >= 2) { clipPauseUntil = back; if (!quotaSent) { quotaSent = true; phone('Agnes en pause', 'Agnes annule les clips (quota du jour ?). Je réessaie à ' + fmtT(back) + ', les images continuent.', 4); } }
+    if (cancelStreak >= 2) { clipPauseUntil = back; if (!quotaSent) { quotaSent = true; phone('Clips en pause', 'Agnes annule les clips (quota du jour ?).\nReprise prévue à ' + fmtT(back) + '. Les images continuent.', 4); } }
     return;
   }
-  if (['failed', 'error'].includes(st)) { setClip(p, s, { st: 'echec', msg: 'Échec chez Agnes : ' + errText(r.error ? { detail: r.error } : r) }); stat.fail('clip', s.nom, 'échec chez Agnes'); log('Clip raté : ' + s.nom); phone('Clip raté', p.titre + ' · ' + s.nom, 4); return; }
+  if (['failed', 'error'].includes(st)) { setClip(p, s, { st: 'echec', msg: 'Échec chez Agnes : ' + errText(r.error ? { detail: r.error } : r) }); stat.fail('clip', s.nom, 'échec chez Agnes'); log('Clip raté : ' + s.nom); phone('Clip raté', 'Projet : ' + p.titre + '\nÉtape : ' + s.nom, 4); return; }
   const m = 'Calcul en cours' + (pr ? ' · ' + pr + ' %' : ' (en attente de démarrage)');
   if (m !== s.clip.msg) setClip(p, s, { progress: pr, msg: m });
 }
@@ -1863,7 +1864,7 @@ async function fetchClip(p, s) {
     const owner = await clipLane(s);
     if (owner) recordKeyHealth(owner.key, { label: 'Clip reçu — génération réussie', tone: 'ok' }, true);
     lastProgress = now(); log('Clip prêt : ' + p.titre + ' · ' + s.nom);
-    phone('Clip prêt', p.titre + ' · ' + s.nom, 2); cancelStreak = 0; quotaSent = false; qEmptySince = 0;
+    phone('Clip prêt', 'Projet : ' + p.titre + '\nÉtape : ' + s.nom + '\nDurée totale : ' + fmtDur(totalMs), 2); cancelStreak = 0; quotaSent = false; qEmptySince = 0;
   } catch (e) { setClip(p, s, { st: 'dl', msg: 'Téléchargement raté (' + e.message + '), je réessaie · ' + String(s.clip.url || '').slice(0, 80), nextPoll: now() + 30000 }); }
 }
 
@@ -1893,7 +1894,7 @@ async function doMontage(p, manual) {
     if (await disk(safeName(p.id) + '/' + safeName(p.id) + '.mp4', res.buffer, 'video/mp4')) { disk(safeName(p.id) + '/infos-publication.txt', infos(p)); log('Rangé : Téléchargements/AgnesStudio/' + safeName(p.id) + '/'); }
     p.montage = { st: 'fini', seconds: res.seconds, done: now(), size: res.buffer.byteLength, msg: 'Vidéo de ' + Math.round(res.seconds) + ' s' };
     log('Montage terminé : ' + p.titre + ' (' + Math.round(res.seconds) + ' s)');
-    phone('Vidéo montée', p.titre + ' · ' + Math.round(res.seconds) + ' s, prête à publier', 4);
+    phone('Vidéo prête', 'Projet : ' + p.titre + '\nDurée : ' + Math.round(res.seconds) + ' s\nPrête à publier.', 4);
     toast('« ' + p.titre + ' » est monté.', 'ok');
     if (S.autoDl || (manual && !(PROXY && S.disk))) downloadBuf(res.buffer, p.id + '.mp4', 'video/mp4');
 
@@ -1901,7 +1902,7 @@ async function doMontage(p, manual) {
     setTimeout(() => publishDrive(p), 0);
   } catch (e) {
     p.montage = { st: 'echec', msg: 'Montage raté : ' + e.message }; log('Montage raté : ' + p.titre + ' → ' + e.message);
-    phone('Montage raté', p.titre + ' : ' + e.message, 4);
+    phone('Montage raté', 'Projet : ' + p.titre + '\nMotif : ' + e.message, 4);
   } finally { montBusy = false; saveProjects(); render(); }
 }
 
@@ -2053,7 +2054,7 @@ async function publishDrive(p) {
     toast('« ' + p.titre + ' » est disponible sur Google Drive.', 'ok');
     phone(
       'Disponible sur Drive',
-      p.titre + ' · vidéo, couverture et description',
+      'Projet : ' + p.titre + '\nVidéo, couverture et description disponibles.',
       4
     );
   } catch (e) {
@@ -2112,7 +2113,7 @@ async function tick() {
       const pending = projects.some((p) => p.actif && p.etapes.some((s) => S.imgSrc !== 'import' && ['attente', 'file', 'calcul', 'envoi', 'dl'].includes(s.img.st) && s.promptImage && s.img.msg !== 'Image jointe introuvable'
         || (s.type === 'scene' && videoPromptFor(s) && (!S.gate || s.ok) && ['attente', 'file', 'calcul', 'envoi', 'dl'].includes(s.clip.st))));
       if (!pending && !imagesBusy() && !montBusy && !projects.some((p) => p.actif && S.autoMont && p.montage.st === 'attente' && readyForMontage(p))) {
-        stop(); log('Plus rien à fabriquer.'); stat.toDisk(true); phone('Agnes Studio', 'Tout est fabriqué. ' + stat.short(), 3); toast('Tout est fabriqué.', 'ok');
+        stop(); log('Plus rien à fabriquer.'); stat.toDisk(true); phone('Production terminée', 'Tout est fabriqué.\n' + stat.short(), 3); toast('Tout est fabriqué.', 'ok');
       }
       // état résumé dans le journal (uniquement quand il change), avec la raison quand des clips attendent
       if (now() - lastSummary > 20000) {
@@ -2137,7 +2138,7 @@ async function tick() {
       }
       // alerte si rien n'avance pendant 45 min (hors file pleine)
       const stuck = now() - lastProgress > 45 * 60000 && !projects.some((p) => p.etapes.some((s) => s.clip.st === 'file' || s.img.st === 'file'));
-      if (stuck && !stuckSent) { stuckSent = true; phone('Agnes Studio bloqué ?', 'Rien n\'a avancé depuis 45 min.', 5); log('Rien n\'a avancé depuis 45 min.'); }
+      if (stuck && !stuckSent) { stuckSent = true; phone('Production bloquée', 'Aucune étape n’a avancé depuis 45 min.\nOuvre YakFlow pour vérifier le journal.', 5); log('Rien n\'a avancé depuis 45 min.'); }
       if (!stuck) stuckSent = false;
     }
   } catch (e) { log('Erreur interne : ' + e.message); }
@@ -2814,7 +2815,7 @@ $('#sGo').onclick = () => {
 
   saveSettings(); lanes().then(renderStatus); dlgSet.close(); render(); toast('Réglages enregistrés.', 'ok');
 };
-$('#sTest').onclick = async () => { S.ntfy = $('#sNtfy').value.trim(); if (!S.ntfy) return toast('Indique d\'abord un sujet.', 'warn'); const ok = await phone('Agnes Studio', 'Test : les notifications marchent.', 3); toast(ok ? 'Envoyée à ntfy. Si rien sur le téléphone : abonne-toi au sujet « ' + S.ntfy + ' » dans l\'appli ntfy.' : 'Échec : ntfy n\'a pas reçu la notif (voir le journal).', ok ? 'ok' : 'warn'); };
+$('#sTest').onclick = async () => { S.ntfy = $('#sNtfy').value.trim(); if (!S.ntfy) return toast('Indique d\'abord un sujet.', 'warn'); const ok = await phone('Test des notifications', 'YakFlow peut t’envoyer les étapes importantes de ta production ici.', 3); toast(ok ? 'Envoyée à ntfy. Si rien sur le téléphone : abonne-toi au sujet « ' + S.ntfy + ' » dans l\'appli ntfy.' : 'Échec : ntfy n\'a pas reçu la notif (voir le journal).', ok ? 'ok' : 'warn'); };
 
 /* =====================================================================
    DÉMARRAGE
