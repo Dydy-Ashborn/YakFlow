@@ -1413,6 +1413,7 @@ async function genImage(p, s, assignedLane) {
 /* ---- images par ChatGPT, via le pont (script Tampermonkey dans un onglet chatgpt.com) ---- */
 let chatAlive = null, chatInfo = '', chatWorkers = 0, chatProtocol = 0;
 async function bridge(method, path, body) {
+  if (!localStorage.getItem('yakflowLicenseCode')) throw new Error('pont : code YakFlow pas encore chargé');   // YAKFLOW_POLL_V16 : pas d'appel avant l'activation du code
   const r = await fetch('/bridge/' + path, { method, headers: { 'X-Studio': '1', 'Content-Type': 'application/json', 'X-Yakflow-License': localStorage.getItem('yakflowLicenseCode') || '' }, body: body ? JSON.stringify(body) : undefined });
   if (!r.ok) throw new Error('pont HTTP ' + r.status);
   return r.json();
@@ -1468,6 +1469,7 @@ async function fetchAsData(url) {
 
 /* AGNES_GROK_BRIDGE_V1 */
 async function grokBridge(method, path, body) {
+  if (!localStorage.getItem('yakflowLicenseCode')) { const e = new Error('Pont Grok : code YakFlow pas encore chargé'); e.status = 0; e.noLicense = true; throw e; }
   const opt = { method, headers: { 'X-Studio': '1', 'X-Yakflow-License': localStorage.getItem('yakflowLicenseCode') || '' } };
   if (body !== undefined) { opt.headers['Content-Type']='application/json'; opt.body=JSON.stringify(body); }
   const r = await fetch('/grok/' + path, opt);
@@ -1933,6 +1935,7 @@ async function pollClip(p, s) {
     let r;
     try { r=await grokBridge('GET','job?id='+encodeURIComponent(s.clip.videoId)); }
     catch(e){
+      if (e.noLicense) return;
       if (e.status === 404 || /inconnu|introuvable/i.test(e.message)) {
         requeueGrokClip(p, s, 'Le pont Grok a perdu ce travail : clip remis en file' + (S.vidEngine === 'grok' ? '.' : ' pour Agnes.'));
         log('Clip Grok perdu par le pont, remis en file : ' + p.titre + ' · ' + s.nom); return;
