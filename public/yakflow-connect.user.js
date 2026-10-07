@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.0.0
+// @version      3.0.1
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -26,7 +26,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.0.0';
+  const CONNECT_VERSION = '3.0.1';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -199,7 +199,8 @@
     housekeeping();
     const hello = () => window.postMessage({ __yf: 'hello', version: CONNECT_VERSION }, '*');
     window.addEventListener('message', async (e) => {
-      if (e.source !== window || !e.data) return;
+      // YAKFLOW_CONNECT_301 : dans Tampermonkey, « window » est un bac à sable : on filtre par origine, pas par source
+      if (e.origin !== location.origin || !e.data || typeof e.data !== 'object') return;
       const d = e.data;
       if (d.__yf === 'ping') return hello();
       if (d.__yf !== 'req') return;
