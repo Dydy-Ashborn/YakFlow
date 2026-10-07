@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agnes Studio · Labo clip</title>
+<style>
+  :root {
+    --ink: #0c0d0f; --ink2: #141619; --ink3: #1c1f23; --ink4: #262a30;
+    --line: rgba(255,255,255,.07); --line2: rgba(255,255,255,.13);
+    --txt: #f3f0e9; --sub: #aaa59b; --dim: #6f6b63;
+    --amber: #ffb224; --amber2: #ffc85c; --tally: #ff4134; --cool: #8fb4ff;
+    --ok: #3fd08a; --warn: #ff9a3c; --err: #ff4b3e;
+    --grad: linear-gradient(180deg, #ffc348 0%, #ffa514 100%);
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--ink); color: var(--txt); font: 14px/1.5 var(--font); -webkit-font-smoothing: antialiased; }
+  body { min-height: 100vh; background: linear-gradient(180deg, rgba(255,178,36,.05), transparent 260px), var(--ink); }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  .ic { width: 1em; height: 1em; display: inline-block; vertical-align: -.12em; }
+
+  /* ---------- en-tête ---------- */
+  header { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 14px; padding: 14px 22px;
+    background: rgba(12,13,15,.86); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .logo { width: 34px; height: 34px; flex: none; }
+  .brand { display: flex; flex-direction: column; line-height: 1.15; }
+  .eyebrow { font: 600 9.5px/1.2 var(--mono); letter-spacing: .2em; text-transform: uppercase; color: var(--dim); }
+  .wordmark { font-size: 20px; font-weight: 800; letter-spacing: -.025em; }
+  .wordmark b { color: var(--amber); }
+  .grow { flex: 1; }
+  .pill { display: inline-flex; align-items: center; gap: 7px; font: 700 10px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase;
+    padding: 7px 10px; border-radius: 7px; border: 1px solid var(--line2); color: var(--sub); background: rgba(255,255,255,.03); }
+  .pill::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 8px currentColor; }
+  .pill.ok { color: var(--ok); border-color: rgba(63,208,138,.3); }
+  .pill.warn { color: var(--warn); border-color: rgba(255,154,60,.35); }
+  .pill.off { color: var(--dim); }
+  .pill.live { color: var(--tally); border-color: rgba(255,65,52,.4); }
+  .pill.live::before { animation: blink 1.2s ease-in-out infinite; }
+  @keyframes blink { 50% { opacity: .25; } }
+
+  /* ---------- mise en page ---------- */
+  main { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 20px; padding: 20px 22px 40px; max-width: 1500px; margin: 0 auto; }
+  @media (max-width: 1050px) { main { grid-template-columns: 1fr; } }
+  .col { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .card { background: var(--ink2); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; position: relative; }
+  .card h2 { margin: 0 0 12px; display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 750; letter-spacing: -.01em; }
+  .card h2 .ic { color: var(--amber); }
+  .card h2 .step { font: 700 10px/1 var(--mono); color: var(--ink); background: var(--amber); border-radius: 5px; padding: 4px 6px; }
+  .card h2 .grow + * { font-weight: 500; }
+  .hint { color: var(--dim); font-size: 12px; margin: 6px 0 0; }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  @media (max-width: 640px) { .grid4 { grid-template-columns: 1fr 1fr; } .grid2 { grid-template-columns: 1fr; } }
+
+  label.f { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+  label.f > span { font: 700 9.5px/1.2 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--dim); }
+  input[type=text], input[type=password], input[type=number], select, textarea {
+    width: 100%; background: #08090a; border: 1px solid var(--line2); border-radius: 8px; padding: 9px 10px; outline: none; color-scheme: dark; }
+  textarea { resize: vertical; min-height: 60px; line-height: 1.45; }
+  textarea.mono, .mono { font-family: var(--mono); font-size: 12px; }
+  input:focus, select:focus, textarea:focus { border-color: var(--amber); box-shadow: 0 0 0 3px rgba(255,178,36,.14); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 1px solid var(--line2); background: rgba(255,255,255,.04);
+    color: var(--txt); border-radius: 8px; padding: 9px 13px; font-weight: 650; font-size: 13px; cursor: pointer; transition: all .15s; white-space: nowrap; }
+  .btn:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.26); }
+  .btn:active { transform: translateY(1px); }
+  .btn:disabled { opacity: .35; cursor: not-allowed; }
+  .btn.primary { background: var(--grad); color: #1c1200; border-color: rgba(0,0,0,.3); font-weight: 750; box-shadow: 0 6px 18px rgba(255,165,20,.2), inset 0 1px 0 rgba(255,255,255,.4); }
+  .btn.primary:hover { filter: brightness(1.06); }
+  .btn.danger { color: #ff8a80; border-color: rgba(255,75,62,.3); background: transparent; }
+  .btn.danger:hover { background: rgba(255,75,62,.1); }
+  .btn.ghost { background: transparent; }
+  .btn.sm { padding: 6px 9px; font-size: 12px; }
+  .btn.big { padding: 12px 18px; font-size: 14px; }
+
+  .seg { display: inline-flex; background: #08090a; border: 1px solid var(--line2); border-radius: 9px; padding: 3px; gap: 2px; }
+  .seg button { border: 0; background: transparent; color: var(--sub); padding: 7px 12px; border-radius: 6px; cursor: pointer; font-weight: 650; font-size: 12.5px; }
+  .seg button.on { background: var(--ink4); color: var(--txt); box-shadow: inset 0 0 0 1px var(--line2); }
+  .seg button.on .dot { background: var(--amber); }
+
+  /* ---------- images ---------- */
+  .drops { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+  .drop { position: relative; aspect-ratio: 9/16; border: 1.5px dashed var(--line2); border-radius: 10px; background: #08090a; display: flex;
+    flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: var(--dim); font-size: 11.5px; text-align: center; padding: 8px;
+    cursor: pointer; overflow: hidden; transition: border-color .15s, background .15s; }
+  .drop:hover, .drop.over { border-color: var(--amber); background: rgba(255,178,36,.05); color: var(--sub); }
+  .drop .ic { width: 22px; height: 22px; }
+  .drop img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .drop .tag { position: absolute; left: 6px; top: 6px; z-index: 2; font: 700 9px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase;
+    background: rgba(0,0,0,.7); color: var(--amber2); padding: 4px 6px; border-radius: 4px; }
+  .drop .x { position: absolute; right: 6px; top: 6px; z-index: 2; width: 24px; height: 24px; border-radius: 6px; border: 0; background: rgba(0,0,0,.7);
+    color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .drop.filled { border-style: solid; border-color: var(--line2); }
+
+  /* ---------- prompt ---------- */
+  details.builder { border: 1px solid var(--line); border-radius: 10px; background: rgba(0,0,0,.18); }
+  details.builder > summary { cursor: pointer; padding: 10px 12px; font-weight: 650; font-size: 13px; color: var(--sub); list-style: none; display: flex; align-items: center; gap: 8px; }
+  details.builder > summary::-webkit-details-marker { display: none; }
+  details.builder > summary::before { content: '▸'; color: var(--amber); transition: transform .15s; }
+  details.builder[open] > summary::before { transform: rotate(90deg); }
+  .bbody { padding: 4px 12px 12px; display: flex; flex-direction: column; gap: 10px; }
+  .count { font: 600 11px var(--mono); color: var(--dim); }
+  .count.warn { color: var(--warn); }
+
+  /* ---------- file d'attente ---------- */
+  .runbar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .stats { display: flex; gap: 14px; font: 600 11px var(--mono); color: var(--sub); letter-spacing: .03em; }
+  .stats b { color: var(--txt); font-weight: 700; }
+  .jobs { display: flex; flex-direction: column; gap: 10px; }
+  .job { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 12px; background: var(--ink3); border: 1px solid var(--line); border-radius: 12px; padding: 10px; position: relative; overflow: hidden; }
+  .job::before { content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 0 3px 3px 0; background: var(--dim); }
+  .job.s-attente::before { background: var(--sub); }
+  .job.s-file::before { background: var(--warn); }
+  .job.s-envoye::before, .job.s-calcul::before { background: var(--tally); box-shadow: 0 0 10px var(--tally); }
+  .job.s-fini::before { background: var(--ok); }
+  .job.s-echec::before { background: var(--err); }
+  .thumb { width: 64px; aspect-ratio: 9/16; border-radius: 7px; background: #08090a center/cover no-repeat; border: 1px solid var(--line2); display: flex; align-items: center; justify-content: center; color: var(--dim); }
+  .jhead { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .jname { font-weight: 700; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .badge { font: 700 9.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: 5px 7px; border-radius: 5px; border: 1px solid var(--line2); color: var(--sub); white-space: nowrap; }
+  .badge.s-file { color: var(--warn); border-color: rgba(255,154,60,.35); }
+  .badge.s-envoye, .badge.s-calcul { color: var(--tally); border-color: rgba(255,65,52,.4); }
+  .badge.s-fini { color: var(--ok); border-color: rgba(63,208,138,.35); }
+  .badge.s-echec { color: var(--err); border-color: rgba(255,75,62,.4); }
+  .jmeta { font: 500 11px var(--mono); color: var(--dim); margin-top: 3px; }
+  .jmsg { font-size: 12px; color: var(--sub); margin-top: 4px; }
+  .jmsg.err { color: #ff9188; }
+  .bar { height: 5px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; margin-top: 7px; }
+  .bar i { display: block; height: 100%; background: repeating-linear-gradient(90deg, var(--amber) 0 5px, transparent 5px 7px); transition: width .4s; }
+  .jact { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .empty { text-align: center; color: var(--dim); padding: 26px 10px; border: 1px dashed var(--line2); border-radius: 12px; }
+
+  /* ---------- galerie ---------- */
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
+  .vid { background: var(--ink3); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .vid video { width: 100%; aspect-ratio: 9/16; background: #000; display: block; object-fit: contain; }
+  .vid .vb { padding: 8px 10px; display: flex; flex-direction: column; gap: 6px; }
+  .vid .vt { font-weight: 650; font-size: 12.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ---------- journal / toast ---------- */
+  .log { max-height: 180px; overflow: auto; background: #08090a; border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; font: 11px/1.6 var(--mono); color: var(--sub); white-space: pre-wrap; }
+  .toasts { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; gap: 8px; z-index: 50; pointer-events: none; }
+  .toast { pointer-events: auto; background: #141619; border: 1px solid var(--line2); border-left: 3px solid var(--amber); border-radius: 10px; padding: 11px 15px;
+    box-shadow: 0 18px 40px rgba(0,0,0,.55); font-weight: 600; font-size: 13px; animation: up .22s ease-out; max-width: min(560px, 92vw); }
+  .toast.ok { border-left-color: var(--ok); } .toast.err { border-left-color: var(--err); } .toast.warn { border-left-color: var(--warn); }
+  @keyframes up { from { opacity: 0; transform: translateY(8px); } }
+
+  .banner { display: none; gap: 12px; align-items: flex-start; margin: 16px 22px 0; padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,154,60,.4);
+    background: rgba(255,154,60,.08); color: #ffd0a0; font-size: 13px; }
+  .banner.show { display: flex; }
+  .banner code { background: #08090a; padding: 2px 6px; border-radius: 5px; color: var(--amber2); font-family: var(--mono); font-size: 12px; }
+  kbd { font: 600 11px var(--mono); background: var(--ink4); border: 1px solid var(--line2); border-radius: 4px; padding: 1px 5px; }
+
+  dialog { background: var(--ink2); color: var(--txt); border: 1px solid var(--line2); border-radius: 14px; padding: 18px; width: min(720px, 94vw); box-shadow: 0 30px 80px rgba(0,0,0,.7); }
+  dialog::backdrop { background: rgba(4,5,6,.75); backdrop-filter: blur(6px); }
+  dialog pre { white-space: pre-wrap; word-break: break-word; max-height: 60vh; overflow: auto; background: #08090a; border: 1px solid var(--line); border-radius: 8px; padding: 12px; font: 11.5px/1.55 var(--mono); color: var(--sub); }
+</style>
+</head>
+<body>
+
+<header>
+  <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+    <defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc348"/><stop offset="1" stop-color="#ffa514"/></linearGradient></defs>
+    <rect x="4.5" y="8.5" width="39" height="27" rx="6" fill="none" stroke="url(#lg)" stroke-width="3"/>
+    <path d="M17 41.5h14M24 36v5.5" fill="none" stroke="url(#lg)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M20 16.5v11l9-5.5z" fill="#ff4134"/>
+  </svg>
+  <div class="brand"><span class="eyebrow">Régie · générateur vidéo</span><span class="wordmark">Agnes <b>Studio</b></span></div>
+  <a class="btn ghost" href="index.html" style="margin-left:12px">← Retour au studio</a>
+  <div class="grow"></div>
+  <span id="pillMode" class="pill off">Connexion…</span>
+  <span id="pillRun" class="pill off">À l'arrêt</span>
+</header>
+
+<div id="corsBanner" class="banner">
+  <svg class="ic" viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;flex:none;margin-top:1px"><path d="M12 2 1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z"/></svg>
+  <div><b>Le navigateur bloque les appels directs à Agnes.</b> Ouvre plutôt le studio via le petit serveur local fourni :
+    <code>python3 ~/Downloads/agnes-studio/serveur.py</code> — il s'ouvre tout seul sur <code>http://127.0.0.1:8765</code>.</div>
+</div>
+
+<main>
+  <!-- ====================== COLONNE GAUCHE : CRÉER ====================== -->
+  <div class="col">
+
+    <section class="card">
+      <h2><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14a5 5 0 1 1 4.9-6H22v4h-2v3h-3v-3h-5.1A5 5 0 0 1 7 14zm0-3a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>Connexion<span class="grow"></span></h2>
+      <div class="grid2">
+        <label class="f"><span>Clé API Agnes</span><input id="apiKey" type="password" placeholder="sk-…" autocomplete="off" spellcheck="false"></label>
+        <label class="f"><span>Modèle</span>
+          <select id="model">
+            <option value="agnes-video-2.5-flash">Agnes Video 2.5 Flash — 720p, gratuit (promo)</option>
+            <option value="agnes-video-2.5">Agnes Video 2.5 — jusqu'en 2K, payant</option>
+            <option value="agnes-video-v2.0">Agnes Video 2.0 — ancien modèle</option>
+          </select></label>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <label class="row" style="gap:7px;cursor:pointer;color:var(--sub);font-size:12.5px"><input id="remember" type="checkbox" checked> Retenir la clé sur cet ordinateur</label>
+        <span class="grow"></span>
+        <button class="btn sm ghost" id="testKey">Tester la connexion</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="step">1</span>Images<span class="grow"></span>
+        <div class="seg" id="modeSeg">
+          <button data-mode="keyframe" class="on">Image de départ</button>
+          <button data-mode="reference">Référence</button>
+          <button data-mode="text">Texte seul</button>
+        </div></h2>
+      <div id="dropsKeyframe" class="drops">
+        <div class="drop" data-slot="first"><span class="tag">Début</span><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"/></svg>Image de départ<br><small>glisser ou cliquer</small></div>
+        <div class="drop" data-slot="last"><span class="tag">Fin</span><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"/></svg>Image de fin<br><small>facultative</small></div>
+      </div>
+      <div id="dropsReference" class="drops" hidden></div>
+      <p class="hint" id="modeHint">La vidéo démarre exactement sur ton image : c'est le mode qui garde le mieux les visages. N'ajoute une image de fin que si la caméra ne bouge pas.</p>
+      <input type="file" id="filePick" accept="image/*" hidden>
+    </section>
+
+    <section class="card">
+      <h2><span class="step">2</span>Prompt<span class="grow"></span><button class="btn sm ghost" id="resetBuilder">Remettre les réglages Odyssée</button></h2>
+      <label class="f" style="margin-bottom:10px"><span>Nom du clip</span><input id="jobName" type="text" placeholder="ex. P1 · Scène 3 — Cinq minutes"></label>
+
+      <details class="builder" open>
+        <summary>Assistant (ordre recommandé par Agnes)</summary>
+        <div class="bbody">
+          <label class="f"><span>1 · Sujet et décor</span><textarea id="b_subject" rows="3"></textarea></label>
+          <label class="f"><span>2 · Action</span><textarea id="b_action" rows="2"></textarea></label>
+          <div class="grid2">
+            <label class="f"><span>3 · Caméra</span>
+              <select id="b_camera">
+                <option value="at the very first frame, a sudden fast snap zoom straight onto the speaker's face, then the camera stays close">Zoom brutal (accroche)</option>
+                <option value="one continuous quick straight push-in toward the speaker's face">Zoom avant rapide</option>
+                <option value="one continuous smooth straight push-in toward the speaker's face" selected>Zoom avant normal</option>
+                <option value="one continuous slow gentle straight push-in toward the speaker's face">Zoom avant lent (émotion)</option>
+                <option value="the camera stays almost still with a barely visible push-in">Presque fixe (chute comique)</option>
+                <option value="a slow straight push-in on the whole scene">Avancée lente sur toute la scène (plan large)</option>
+                <option value="a gentle short straight pull-back, only revealing what is already visible">Léger recul</option>
+              </select></label>
+            <label class="f"><span>Voix de</span>
+              <select id="b_voice"></select></label>
+          </div>
+          <label class="f"><span>4 · Style</span><textarea id="b_style" rows="2" class="mono"></textarea></label>
+          <label class="f"><span>5 · Réplique en français <span id="wordCount" class="count"></span></span><textarea id="b_line" rows="2" placeholder="Chef, on rentre, d'accord. Mais on a combien de jours de bouffe ?"></textarea></label>
+          <label class="f"><span>Ambiance sonore</span><input id="b_ambient" type="text"></label>
+          <label class="f"><span>6 · Cohérence</span><textarea id="b_keep" rows="2" class="mono"></textarea></label>
+        </div>
+      </details>
+
+      <label class="f" style="margin-top:12px"><span>Prompt final envoyé <span class="count" id="promptCount"></span></span>
+        <textarea id="prompt" rows="7" class="mono"></textarea></label>
+      <div class="row" style="margin-top:6px">
+        <label class="row" style="gap:7px;cursor:pointer;color:var(--sub);font-size:12.5px"><input id="freeEdit" type="checkbox"> Édition libre (l'assistant ne réécrit plus le prompt)</label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="step">3</span>Format</h2>
+      <div class="grid4">
+        <label class="f"><span>Format</span><select id="ratio">
+          <option>9:16</option><option>16:9</option><option>3:4</option><option>4:3</option><option>1:1</option><option>21:9</option></select></label>
+        <label class="f"><span>Résolution</span><select id="size"></select></label>
+        <label class="f"><span>Durée (s)</span><select id="seconds"></select></label>
+        <label class="f"><span>Graine</span><input id="seed" type="number" placeholder="aléatoire"></label>
+      </div>
+      <div class="row" style="margin-top:14px">
+        <span class="hint" id="costHint" style="margin:0"></span>
+        <span class="grow"></span>
+        <button class="btn" id="previewBtn">Voir la requête</button>
+        <button class="btn primary big" id="addBtn">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"/></svg>Ajouter à la file</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ====================== COLONNE DROITE : FABRIQUER ====================== -->
+  <div class="col">
+    <section class="card">
+      <h2><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h10v2H4z"/></svg>File de fabrication<span class="grow"></span>
+        <div class="stats" id="stats"></div></h2>
+      <div class="runbar">
+        <button class="btn primary" id="runBtn"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Lancer</button>
+        <label class="f" style="flex-direction:row;align-items:center;gap:8px"><span>En parallèle</span>
+          <select id="parallel" style="width:auto"><option value="1">1 (gratuit)</option><option value="2">2</option><option value="3">3</option><option value="5">5 (abonnement)</option></select></label>
+        <span class="grow"></span>
+        <button class="btn sm ghost" id="clearDone">Vider les terminés</button>
+      </div>
+      <p class="hint">Quand la file d'Agnes est pleine, le studio patiente et réessaie tout seul. Tu peux laisser l'onglet ouvert toute la nuit (garde le Mac éveillé).</p>
+      <div class="jobs" id="jobs" style="margin-top:12px"></div>
+    </section>
+
+    <section class="card">
+      <h2><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg>Clips terminés</h2>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <section class="card">
+      <h2><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4h18v2H3zm0 4h12v2H3zm0 4h18v2H3zm0 4h12v2H3z"/></svg>Journal<span class="grow"></span><button class="btn sm ghost" id="copyLog">Copier</button></h2>
+      <div class="log" id="log"></div>
+    </section>
+  </div>
+</main>
+
+<dialog id="dlg"><h3 style="margin:0 0 10px;font-size:15px">Requête envoyée à Agnes</h3><pre id="dlgPre"></pre>
+  <div class="row" style="justify-content:flex-end;margin-top:12px"><button class="btn" onclick="dlg.close()">Fermer</button></div></dialog>
+<div class="toasts" id="toasts"></div>
+
+<script>
+'use strict';
+/* =====================================================================
+   RÉGLAGES
+   ===================================================================== */
+const $ = (s) => document.querySelector(s);
+const PROXY = location.protocol.startsWith('http') && ['127.0.0.1', 'localhost'].includes(location.hostname);
+const API = PROXY ? '/api' : 'https://apihub.agnes-ai.com';
+const LS = { key: 'agnes_key', jobs: 'agnes_jobs', form: 'agnes_form', parallel: 'agnes_parallel' };
+const MODELS = {
+  'agnes-video-2.5-flash': { sizes: ['720P'], min: 4, max: 12, def: 10, price: { '720P': 0 }, v25: true },
+  'agnes-video-2.5': { sizes: ['720P', '1080P', '2K'], min: 4, max: 12, def: 10, price: { '720P': .025, '1080P': .04, '2K': .055 }, v25: true },
+  'agnes-video-v2.0': { sizes: ['480p', '720p', '1080p'], min: 2, max: 18, def: 10, price: {}, v25: false },
+};
+const VEND = 'with a natural French-from-France accent, at a natural conversational pace, each sentence ending on a falling pitch, perfect lip sync, starting at the very first second';
+const VOICES = {
+  'Ulysse': 'Ulysses, a calm, dry, ironic medium-low male voice in his forties',
+  'Polytès': 'Polytes, a laid-back, slightly whiny, warm medium-low male voice in his thirties',
+  'Elpénor': 'Elpenor, an enthusiastic, naive young male voice about twenty, medium timbre',
+  'Euryloque': 'Eurylochus, a pedantic, grumpy, slightly nasal medium male voice in his forties',
+  'Phaéna': 'Phaena, a dry, sarcastic, confident medium-low female voice in her thirties',
+  'Antiphos': 'Antiphos, a gentle, cheerful, fatherly warm low male voice in his fifties',
+  'Kléon': 'Kleon, a talkative, indignant, gravelly medium-low male voice in his fifties with a thick rustic French countryside accent',
+  'Timos': 'Timos, a deadpan, laconic, flat low male voice in his forties with a thick rustic French countryside accent',
+  'Athéna (voix off)': 'an off-screen narrator, Athena, a calm, amused, ancient medium female voice, speaking softly to the viewer, no visible character speaks',
+  'Ulysse (pensée)': 'Ulysses\'s inner thoughts as a voice-over, a calm medium-low male voice in his forties, his lips stay sealed and never move',
+  'Autre (écrire dans l\'action)': '',
+};
+const DEF = {
+  subject: 'On the deck of a single ancient Greek war galley, late autumn, grey-green choppy sea, low heavy grey clouds, cold wind, sea spray, only one ship in the whole video, nothing but sea and sky beyond its rails. ',
+  action: 'Only the speaker speaks, all other characters keep their mouths closed the whole time and stay in their exact place.',
+  style: 'Style: stylized 3D animated feature film, high-end animation studio quality, expressive faces, rich cinematic colors, dramatic natural light, exactly like the first frame, not photorealistic, not live action.',
+  ambient: 'cold wind, creaking wood, waves against the hull',
+  keep: 'Consistency: keep every face, beard, outfit and the art style exactly identical to the first frame until the last frame, no new character appears, the background stays the same.',
+};
+
+/* =====================================================================
+   OUTILS
+   ===================================================================== */
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const now = () => Date.now();
+const uid = () => Math.random().toString(36).slice(2, 10);
+const words = (t) => (t.trim().match(/[\p{L}\p{N}'’-]+/gu) || []).length;
+const fmtT = (t) => new Date(t).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+function toast(msg, type) {
+  const t = document.createElement('div'); t.className = 'toast ' + (type || ''); t.textContent = msg;
+  $('#toasts').appendChild(t); setTimeout(() => t.remove(), type === 'err' ? 9000 : 4500);
+}
+let logLines = [];
+function log(msg) {
+  logLines.push(fmtT(now()) + '  ' + msg); logLines = logLines.slice(-300);
+  const el = $('#log'); el.textContent = logLines.slice().reverse().join('\n');
+}
+function esc(s) { const d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML; }
+
+/* ---- IndexedDB pour les images (localStorage est trop petit) ---- */
+const idb = new Promise((res, rej) => {
+  const r = indexedDB.open('agnes_studio', 1);
+  r.onupgradeneeded = () => r.result.createObjectStore('img');
+  r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+});
+async function imgPut(k, v) { const db = await idb; return new Promise((res, rej) => { const tx = db.transaction('img', 'readwrite'); tx.objectStore('img').put(v, k); tx.oncomplete = res; tx.onerror = () => rej(tx.error); }); }
+async function imgGet(k) { const db = await idb; return new Promise((res) => { const tx = db.transaction('img'); const q = tx.objectStore('img').get(k); q.onsuccess = () => res(q.result || null); q.onerror = () => res(null); }); }
+async function imgDel(k) { const db = await idb; return new Promise((res) => { const tx = db.transaction('img', 'readwrite'); tx.objectStore('img').delete(k); tx.oncomplete = res; tx.onerror = res; }); }
+
+/* ---- image → data URI JPEG (réduite si énorme) ---- */
+function fileToData(file) {
+  return new Promise((res, rej) => {
+    const fr = new FileReader();
+    fr.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const maxSide = 2048, sc = Math.min(1, maxSide / Math.max(img.width, img.height));
+        if (sc === 1 && file.size < 4e6 && /jpe?g/.test(file.type)) return res(fr.result);
+        const c = document.createElement('canvas'); c.width = Math.round(img.width * sc); c.height = Math.round(img.height * sc);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); res(c.toDataURL('image/jpeg', .92));
+      };
+      img.onerror = rej; img.src = fr.result;
+    };
+    fr.onerror = rej; fr.readAsDataURL(file);
+  });
+}
+
+/* =====================================================================
+   FORMULAIRE
+   ===================================================================== */
+const form = { mode: 'keyframe', first: null, last: null, refs: [] };
+const F = ['b_subject', 'b_action', 'b_camera', 'b_voice', 'b_style', 'b_line', 'b_ambient', 'b_keep', 'model', 'ratio', 'size', 'seconds', 'seed', 'jobName', 'freeEdit', 'prompt'];
+
+function fillVoices() {
+  const s = $('#b_voice');
+  Object.keys(VOICES).forEach((k) => { const o = document.createElement('option'); o.value = k; o.textContent = k; s.appendChild(o); });
+}
+function fillModelOptions() {
+  const m = MODELS[$('#model').value];
+  const sz = $('#size'), cur = sz.value; sz.innerHTML = '';
+  m.sizes.forEach((v) => { const o = document.createElement('option'); o.value = v; o.textContent = v.toUpperCase(); sz.appendChild(o); });
+  if (m.sizes.includes(cur)) sz.value = cur; else sz.value = m.v25 ? (m.sizes.includes('1080P') ? '1080P' : '720P') : '1080p';
+  const sc = $('#seconds'), cs = sc.value; sc.innerHTML = '';
+  for (let i = m.min; i <= m.max; i++) { const o = document.createElement('option'); o.value = i; o.textContent = i + ' s'; sc.appendChild(o); }
+  sc.value = (cs && +cs >= m.min && +cs <= m.max) ? cs : m.def;
+  $('#modeSeg').querySelector('[data-mode=reference]').disabled = !m.v25;
+  if (!m.v25 && form.mode === 'reference') setMode('keyframe');
+  updateCost();
+}
+function updateCost() {
+  const m = MODELS[$('#model').value], p = m.price[$('#size').value], s = +$('#seconds').value;
+  $('#costHint').textContent = p === 0 ? 'Gratuit en ce moment (promotion Agnes, peut changer).'
+    : p ? ('Environ ' + (p * s).toFixed(2).replace('.', ',') + ' $ ce clip (' + String(p).replace('.', ',') + ' $/s).') : 'Ancien modèle : quota selon ton offre.';
+}
+function buildPrompt() {
+  const v = VOICES[$('#b_voice').value], line = $('#b_line').value.trim();
+  let audio = '';
+  if (line) audio = v ? ('Audio: ' + (v.startsWith('an off-screen') || v.includes('inner thoughts') ? v : 'only ' + v.split(',')[0] + ' speaks, with ' + v.slice(v.indexOf(',') + 2)) + ', in French, ' + VEND + ': "' + line + '".')
+                     : ('Audio: in French, ' + VEND + ': "' + line + '".');
+  else audio = 'Audio: no dialogue, nobody speaks.';
+  const lead = form.mode === 'keyframe' ? 'The video starts exactly on the provided first frame. '
+             : form.mode === 'reference' ? 'Use <Picture 1> as the exact character and art style reference. ' : '';
+  return [lead + $('#b_subject').value.trim(), $('#b_action').value.trim(), 'Camera: ' + $('#b_camera').value + ', no cut, no pan, no rotation, the camera only moves in a straight line.',
+    $('#b_style').value.trim(), audio, 'Ambient sound: ' + $('#b_ambient').value.trim() + '. No music.', $('#b_keep').value.trim()]
+    .filter(Boolean).join(' ').replace(/\s+/g, ' ');
+}
+function syncPrompt() {
+  if (!$('#freeEdit').checked) $('#prompt').value = buildPrompt();
+  const n = words($('#prompt').value); const c = $('#promptCount');
+  c.textContent = n + ' mots'; c.className = 'count' + (n > 330 ? ' warn' : '');
+  const w = words($('#b_line').value); const wc = $('#wordCount');
+  wc.textContent = w ? '· ' + w + ' mots, environ ' + Math.ceil(w / 2.5) + ' s' : ''; wc.className = 'count' + (w > 20 ? ' warn' : '');
+  saveForm();
+}
+function saveForm() {
+  const o = {}; F.forEach((id) => { const el = $('#' + id); o[id] = el.type === 'checkbox' ? el.checked : el.value; }); o.mode = form.mode;
+  try { localStorage.setItem(LS.form, JSON.stringify(o)); } catch (e) {}
+}
+function loadForm() {
+  let o = null; try { o = JSON.parse(localStorage.getItem(LS.form) || 'null'); } catch (e) {}
+  if (!o) { resetBuilder(false); return; }
+  ['model'].forEach((id) => { if (o[id]) $('#' + id).value = o[id]; });
+  fillModelOptions();
+  F.forEach((id) => { if (o[id] === undefined) return; const el = $('#' + id); if (el.type === 'checkbox') el.checked = o[id]; else el.value = o[id]; });
+  if (o.mode) setMode(o.mode);
+}
+function resetBuilder(withSave = true) {
+  $('#b_subject').value = DEF.subject; $('#b_action').value = DEF.action; $('#b_style').value = DEF.style;
+  $('#b_ambient').value = DEF.ambient; $('#b_keep').value = DEF.keep; $('#freeEdit').checked = false;
+  if (withSave) { syncPrompt(); toast('Réglages Odyssée remis.', 'ok'); }
+}
+
+/* ---- modes et cases d'images ---- */
+function setMode(m) {
+  form.mode = m;
+  document.querySelectorAll('#modeSeg button').forEach((b) => b.classList.toggle('on', b.dataset.mode === m));
+  $('#dropsKeyframe').hidden = m !== 'keyframe';
+  $('#dropsReference').hidden = m !== 'reference';
+  $('#modeHint').textContent = m === 'keyframe'
+    ? 'La vidéo démarre exactement sur ton image : c\'est le mode qui garde le mieux les visages. N\'ajoute une image de fin que si la caméra ne bouge pas.'
+    : m === 'reference' ? 'Jusqu\'à 5 images de référence (personnages, style). Le modèle peut recomposer la scène : moins fidèle que l\'image de départ. Dans le prompt : <Picture 1>, <Picture 2>…'
+    : 'Aucune image : tout vient du prompt. Utile pour tester une ambiance, pas pour garder un personnage.';
+  renderRefs(); syncPrompt();
+}
+function slotEl(slot) { return document.querySelector('.drop[data-slot="' + slot + '"]'); }
+function paintSlot(el, data, label) {
+  el.querySelectorAll('img,.x').forEach((n) => n.remove());
+  el.classList.toggle('filled', !!data);
+  if (!data) return;
+  const img = document.createElement('img'); img.src = data; el.appendChild(img);
+  const x = document.createElement('button'); x.className = 'x'; x.title = 'Retirer'; x.textContent = '✕'; el.appendChild(x);
+  x.addEventListener('click', (ev) => { ev.stopPropagation(); setSlot(el.dataset.slot, null); });
+}
+function setSlot(slot, data) {
+  if (slot === 'first' || slot === 'last') { form[slot] = data; paintSlot(slotEl(slot), data); }
+  else { const i = +slot.slice(4); if (data) form.refs[i] = data; else form.refs.splice(i, 1); form.refs = form.refs.filter(Boolean); renderRefs(); }
+}
+function renderRefs() {
+  const box = $('#dropsReference'); box.innerHTML = '';
+  const n = Math.min(5, form.refs.length + 1);
+  for (let i = 0; i < n; i++) {
+    const d = document.createElement('div'); d.className = 'drop'; d.dataset.slot = 'ref-' + i;
+    d.innerHTML = '<span class="tag">Picture ' + (i + 1) + '</span><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"/></svg>Référence ' + (i + 1);
+    box.appendChild(d); wireDrop(d); if (form.refs[i]) paintSlot(d, form.refs[i]);
+  }
+}
+let pickSlot = null;
+function wireDrop(el) {
+  el.addEventListener('click', () => { pickSlot = el.dataset.slot; $('#filePick').value = ''; $('#filePick').click(); });
+  el.addEventListener('dragover', (e) => { e.preventDefault(); el.classList.add('over'); });
+  el.addEventListener('dragleave', () => el.classList.remove('over'));
+  el.addEventListener('drop', async (e) => {
+    e.preventDefault(); el.classList.remove('over');
+    const f = [...e.dataTransfer.files].find((x) => x.type.startsWith('image/')); if (!f) return;
+    setSlot(el.dataset.slot, await fileToData(f));
+    if (!$('#jobName').value) { $('#jobName').value = f.name.replace(/\.[^.]+$/, ''); saveForm(); }
+  });
+}
+
+/* =====================================================================
+   API
+   ===================================================================== */
+function key() { return $('#apiKey').value.trim(); }
+async function api(method, path, body) {
+  let r;
+  try {
+    r = await fetch(API + path, { method, headers: { 'Authorization': 'Bearer ' + key(), 'Content-Type': 'application/json', 'X-Studio': '1' }, body: body ? JSON.stringify(body) : undefined });
+  } catch (e) {
+    if (!PROXY) $('#corsBanner').classList.add('show');
+    return { _err: 'reseau', detail: 'Connexion impossible (' + e.message + ')' };
+  }
+  let data = null; const txt = await r.text();
+  try { data = JSON.parse(txt); } catch (e) { data = { detail: txt }; }
+  if (!r.ok) return Object.assign({ _err: r.status }, data || {});
+  return data;
+}
+function errText(r) {
+  const d = r.detail != null ? r.detail : r.message || r.error;
+  if (typeof d === 'string') { try { const j = JSON.parse(d); return j.message || j.code || d; } catch (e) { return d; } }
+  return JSON.stringify(d);
+}
+function isBusy(r) {
+  const t = JSON.stringify(r);
+  return /queue_full|queue is full/i.test(t) || [429, 500, 502, 503, 520, 599, 'reseau'].includes(r._err);
+}
+function requestBody(job, imgs) {
+  const m = MODELS[job.model];
+  if (m.v25) {
+    const b = { model: job.model, prompt: job.prompt, mode: job.mode, size: job.size, aspect_ratio: job.ratio, seconds: String(job.seconds), n: 1 };
+    if (job.seed !== '' && job.seed != null) b.seed = +job.seed;
+    if (job.mode === 'keyframe') { if (imgs.first) b.first_frame = imgs.first; if (imgs.last) b.last_frame = imgs.last; }
+    if (job.mode === 'reference') b.images = imgs.refs;
+    return b;
+  }
+  let nf = Math.round(job.seconds * 24); nf = Math.min(441, Math.round((nf - 1) / 8) * 8 + 1);
+  const b = { model: job.model, prompt: job.prompt, ratio: job.ratio, resolution: job.size, num_frames: nf, frame_rate: 24,
+    negative_prompt: 'photorealistic, live action, real humans, ugly, blurry, jittery, distorted, inconsistent appearance, extra people, music' };
+  if (imgs.first) b.image = imgs.first;
+  if (job.seed !== '' && job.seed != null) b.seed = +job.seed;
+  return b;
+}
+function pollPath(job) {
+  return '/agnesapi?video_id=' + encodeURIComponent(job.videoId) + (MODELS[job.model].v25 ? '&model_name=' + encodeURIComponent(job.model) : '');
+}
+
+/* =====================================================================
+   FILE DE FABRICATION
+   ===================================================================== */
+let jobs = [];
+try { jobs = JSON.parse(localStorage.getItem(LS.jobs) || '[]'); } catch (e) { jobs = []; }
+let running = false, lastSubmit = 0, ticking = false;
+const LABEL = { attente: 'En attente', file: 'File Agnes pleine', envoye: 'Envoyé', calcul: 'Calcul', fini: 'Terminé', echec: 'Échec' };
+
+function saveJobs() { try { localStorage.setItem(LS.jobs, JSON.stringify(jobs)); } catch (e) {} }
+function upd(job, patch) { Object.assign(job, patch); saveJobs(); renderJobs(); }
+
+async function addJob() {
+  if (!key()) { toast('Colle d\'abord ta clé API.', 'warn'); $('#apiKey').focus(); return; }
+  syncPrompt();
+  const prompt = $('#prompt').value.trim();
+  if (!prompt) { toast('Le prompt est vide.', 'warn'); return; }
+  if (form.mode === 'keyframe' && !form.first && !form.last) { toast('Ajoute au moins une image de départ (ou passe en « Texte seul »).', 'warn'); return; }
+  if (form.mode === 'reference' && !form.refs.length) { toast('Ajoute au moins une image de référence.', 'warn'); return; }
+  const job = { id: uid(), name: $('#jobName').value.trim() || ('Clip ' + (jobs.length + 1)), model: $('#model').value, mode: form.mode,
+    size: $('#size').value, ratio: $('#ratio').value, seconds: +$('#seconds').value, seed: $('#seed').value, prompt,
+    status: 'attente', tries: 0, created: now(), progress: 0 };
+  await imgPut(job.id, { first: form.mode === 'keyframe' ? form.first : null, last: form.mode === 'keyframe' ? form.last : null, refs: form.mode === 'reference' ? form.refs.slice(0, 5) : [] });
+  jobs.push(job); saveJobs(); renderJobs();
+  log('Ajouté : ' + job.name + ' (' + job.model + ', ' + job.seconds + ' s, ' + job.ratio + ' ' + job.size + ')');
+  toast('« ' + job.name + ' » ajouté à la file.', 'ok');
+  if (!running) toast('Clique sur « Lancer » pour démarrer la fabrication.');
+}
+
+async function submit(job) {
+  const imgs = await imgGet(job.id) || { refs: [] };
+  upd(job, { status: 'envoye', msg: 'Envoi…', tries: (job.tries || 0) + 1 });
+  lastSubmit = now();
+  const r = await api('POST', '/v1/videos', requestBody(job, imgs));
+  if (r.video_id) { upd(job, { status: 'calcul', videoId: r.video_id, sent: now(), msg: 'Accepté par Agnes (' + (r.size || job.size) + ', ' + (r.seconds || job.seconds) + ' s)', progress: 0 }); log('Envoyé : ' + job.name); return; }
+  if (isBusy(r)) { upd(job, { status: 'file', retryAt: now() + 60000, msg: 'File pleine ou serveur occupé, nouvel essai à ' + fmtT(now() + 60000) + ' (essai ' + job.tries + ')' }); if (job.tries % 10 === 1) log('File pleine pour ' + job.name + ', j\'attends.'); return; }
+  if (r._err === 401 || r._err === 403) { upd(job, { status: 'attente', msg: 'Clé refusée' }); stopRun(); toast('Clé API refusée. Vérifie-la.', 'err'); log('Clé refusée (' + r._err + ').'); return; }
+  upd(job, { status: 'echec', msg: 'Refusé (' + r._err + ') : ' + errText(r) }); log('Refusé : ' + job.name + ' → ' + errText(r));
+}
+
+async function poll(job) {
+  if (job.nextPoll && now() < job.nextPoll) return;
+  job.nextPoll = now() + 8000;
+  const r = await api('GET', pollPath(job));
+  if (r._err) { if (r._err === 404) upd(job, { status: 'echec', msg: 'Vidéo introuvable (404)' }); return; }
+  const st = String(r.status || '').toLowerCase(), p = r.progress != null ? r.progress : job.progress;
+  if (['completed', 'succeeded', 'success', 'done'].includes(st) && r.url) {
+    upd(job, { status: 'fini', url: r.url, done: now(), progress: 100, msg: 'Terminé en ' + Math.max(1, Math.round((now() - (job.sent || now())) / 60000)) + ' min' });
+    log('Terminé : ' + job.name); toast('« ' + job.name + ' » est prêt.', 'ok'); renderGallery(); notifyDone(job); return;
+  }
+  if (['failed', 'error', 'cancelled'].includes(st)) { upd(job, { status: 'echec', msg: 'Échec : ' + errText(r.error || r) }); log('Échec : ' + job.name); return; }
+  if (p !== job.progress || job.msg.indexOf('Calcul') !== 0) upd(job, { progress: p, msg: 'Calcul en cours chez Agnes' + (p ? '' : ' (en attente de démarrage)') });
+}
+
+async function tick() {
+  if (ticking) return; ticking = true;
+  try {
+    const active = jobs.filter((j) => j.status === 'calcul');
+    for (const j of active) await poll(j);
+    if (running) {
+      const par = +$('#parallel').value, gap = par > 1 ? 13000 : 62000;
+      const inflight = jobs.filter((j) => j.status === 'calcul' || j.status === 'envoye').length;
+      const next = jobs.find((j) => (j.status === 'attente' && j.msg !== 'Clé refusée') || (j.status === 'file' && now() >= (j.retryAt || 0)));
+      if (next && inflight < par && now() - lastSubmit >= gap) await submit(next);
+      if (!next && !inflight && !jobs.some((j) => j.status === 'file')) { stopRun(); log('Plus rien à fabriquer.'); toast('File terminée.', 'ok'); }
+    }
+  } finally { ticking = false; renderStatus(); }
+}
+function startRun() {
+  if (!key()) { toast('Colle d\'abord ta clé API.', 'warn'); return; }
+  if (!jobs.some((j) => ['attente', 'file', 'calcul'].includes(j.status))) { toast('Rien dans la file.', 'warn'); return; }
+  running = true; lastSubmit = 0; log('Fabrication lancée.'); renderStatus(); tick();
+  if (Notification && Notification.permission === 'default') Notification.requestPermission();
+}
+function stopRun() { running = false; log('Fabrication en pause.'); renderStatus(); }
+function notifyDone(job) { try { if (Notification.permission === 'granted' && document.hidden) new Notification('Clip prêt', { body: job.name }); } catch (e) {} }
+
+/* =====================================================================
+   AFFICHAGE
+   ===================================================================== */
+function renderStatus() {
+  const b = $('#runBtn');
+  b.innerHTML = running ? '<svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>Pause'
+                        : '<svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Lancer';
+  b.className = running ? 'btn' : 'btn primary';
+  const p = $('#pillRun');
+  const waiting = jobs.some((j) => j.status === 'file');
+  p.className = 'pill ' + (running ? (waiting ? 'warn' : 'live') : 'off');
+  p.textContent = running ? (waiting ? 'File Agnes pleine · attente' : 'En fabrication') : 'À l\'arrêt';
+  const c = (s) => jobs.filter((j) => j.status === s).length;
+  $('#stats').innerHTML = '<span>attente <b>' + (c('attente') + c('file')) + '</b></span><span>calcul <b>' + (c('calcul') + c('envoye')) + '</b></span><span>prêts <b>' + c('fini') + '</b></span>' + (c('echec') ? '<span style="color:var(--err)">échecs <b>' + c('echec') + '</b></span>' : '');
+}
+const thumbs = {};
+async function thumbFor(job) {
+  if (thumbs[job.id] !== undefined) return thumbs[job.id];
+  const im = await imgGet(job.id); thumbs[job.id] = im ? (im.first || im.last || (im.refs || [])[0] || null) : null; return thumbs[job.id];
+}
+function renderJobs() {
+  const box = $('#jobs'), list = jobs.filter((j) => j.status !== 'fini');
+  renderStatus();
+  if (!list.length) { box.innerHTML = '<div class="empty">Aucun clip en cours. Prépare un clip à gauche, puis « Ajouter à la file ».</div>'; return; }
+  box.innerHTML = '';
+  list.forEach((j) => {
+    const el = document.createElement('div'); el.className = 'job s-' + j.status;
+    el.innerHTML = '<div class="thumb">' + (j.mode === 'text' ? 'T' : '') + '</div><div style="min-width:0">' +
+      '<div class="jhead"><span class="jname">' + esc(j.name) + '</span><span class="badge s-' + j.status + '">' + LABEL[j.status] + '</span></div>' +
+      '<div class="jmeta">' + esc(j.model.replace('agnes-video-', '')) + ' · ' + j.seconds + ' s · ' + j.ratio + ' ' + esc(j.size) + ' · ' + ({ keyframe: 'image de départ', reference: 'référence', text: 'texte' })[j.mode] + '</div>' +
+      (j.msg ? '<div class="jmsg' + (j.status === 'echec' ? ' err' : '') + '">' + esc(j.msg) + '</div>' : '') +
+      (j.status === 'calcul' ? '<div class="bar"><i style="width:' + Math.max(4, j.progress || 0) + '%"></i></div>' : '') +
+      '<div class="jact"></div></div>';
+    const act = el.querySelector('.jact');
+    const mk = (txt, cls, fn) => { const b = document.createElement('button'); b.className = 'btn sm ' + cls; b.textContent = txt; b.onclick = fn; act.appendChild(b); };
+    if (j.status === 'echec' || j.status === 'file') mk('Réessayer maintenant', '', () => { upd(j, { status: 'attente', retryAt: 0, msg: '' }); if (!running) startRun(); });
+    if (j.status === 'attente' || j.status === 'file') { const i = jobs.indexOf(j); if (i > 0) mk('↑ Monter', 'ghost', () => { jobs.splice(i, 1); jobs.splice(i - 1, 0, j); saveJobs(); renderJobs(); }); }
+    mk('Charger dans l\'éditeur', 'ghost', () => loadJobInEditor(j));
+    mk('Requête', 'ghost', async () => showRequest(j));
+    if (j.status !== 'calcul' && j.status !== 'envoye') mk('Retirer', 'danger', async () => { jobs = jobs.filter((x) => x !== j); await imgDel(j.id); saveJobs(); renderJobs(); });
+    box.appendChild(el);
+    thumbFor(j).then((t) => { if (t) el.querySelector('.thumb').style.backgroundImage = 'url(' + t + ')'; });
+  });
+}
+function renderGallery() {
+  const box = $('#gallery'), list = jobs.filter((j) => j.status === 'fini').sort((a, b) => b.done - a.done);
+  if (!list.length) { box.innerHTML = '<div class="empty" style="grid-column:1/-1">Les clips terminés apparaîtront ici.</div>'; return; }
+  box.innerHTML = '';
+  list.forEach((j) => {
+    const fname = j.name.replace(/[^\p{L}\p{N} _.-]+/gu, '').trim().replace(/\s+/g, '-') + '.mp4';
+    const el = document.createElement('div'); el.className = 'vid';
+    el.innerHTML = '<video controls preload="metadata" playsinline src="' + esc(j.url) + '"></video><div class="vb"><div class="vt" title="' + esc(j.name) + '">' + esc(j.name) + '</div>' +
+      '<div class="jmeta">' + fmtT(j.done) + ' · ' + j.seconds + ' s · ' + esc(j.size) + '</div><div class="row" style="gap:6px"></div></div>';
+    const row = el.querySelector('.row');
+    const dl = document.createElement('a'); dl.className = 'btn sm primary'; dl.textContent = 'Télécharger';
+    dl.href = PROXY ? '/dl?url=' + encodeURIComponent(j.url) + '&name=' + encodeURIComponent(fname) : j.url;
+    if (!PROXY) dl.target = '_blank'; dl.download = fname; row.appendChild(dl);
+    const re = document.createElement('button'); re.className = 'btn sm ghost'; re.textContent = 'Refaire'; re.title = 'Remettre ce clip dans la file avec une nouvelle graine';
+    re.onclick = async () => { const im = await imgGet(j.id); const n = Object.assign({}, j, { id: uid(), status: 'attente', url: null, videoId: null, msg: '', tries: 0, progress: 0, created: now(), name: j.name + ' (bis)', seed: '' }); await imgPut(n.id, im || { refs: [] }); jobs.push(n); saveJobs(); renderJobs(); toast('Remis dans la file.', 'ok'); if (!running) startRun(); };
+    row.appendChild(re);
+    const rm = document.createElement('button'); rm.className = 'btn sm danger'; rm.textContent = '✕'; rm.title = 'Retirer de la liste';
+    rm.onclick = async () => { jobs = jobs.filter((x) => x !== j); await imgDel(j.id); saveJobs(); renderGallery(); renderStatus(); };
+    row.appendChild(rm);
+    box.appendChild(el);
+  });
+  if (!PROXY) box.insertAdjacentHTML('beforeend', '<p class="hint" style="grid-column:1/-1">Astuce : via le serveur local, « Télécharger » enregistre directement le fichier. Ici, le lien s\'ouvre dans un onglet (clic droit → Enregistrer la vidéo).</p>');
+}
+async function loadJobInEditor(j) {
+  const im = await imgGet(j.id) || {};
+  $('#model').value = j.model; fillModelOptions(); $('#size').value = j.size; $('#ratio').value = j.ratio; $('#seconds').value = j.seconds; $('#seed').value = j.seed || '';
+  $('#jobName').value = j.name; setMode(j.mode);
+  form.first = im.first || null; form.last = im.last || null; form.refs = im.refs || [];
+  paintSlot(slotEl('first'), form.first); paintSlot(slotEl('last'), form.last); renderRefs();
+  $('#freeEdit').checked = true; $('#prompt').value = j.prompt; syncPrompt(); updateCost();
+  window.scrollTo({ top: 0, behavior: 'smooth' }); toast('Clip chargé (édition libre activée).', 'ok');
+}
+async function showRequest(j) {
+  const im = j ? (await imgGet(j.id) || { refs: [] }) : { first: form.first, last: form.last, refs: form.refs };
+  const job = j || { model: $('#model').value, mode: form.mode, size: $('#size').value, ratio: $('#ratio').value, seconds: +$('#seconds').value, seed: $('#seed').value, prompt: (syncPrompt(), $('#prompt').value) };
+  const b = requestBody(job, im);
+  const short = JSON.parse(JSON.stringify(b, (k, v) => (typeof v === 'string' && v.startsWith('data:image')) ? '[image ' + Math.round(v.length * .75 / 1024) + ' Ko]' : v));
+  $('#dlgPre').textContent = 'POST https://apihub.agnes-ai.com/v1/videos\n\n' + JSON.stringify(short, null, 2); dlg.showModal();
+}
+
+/* =====================================================================
+   DÉMARRAGE
+   ===================================================================== */
+fillVoices();
+['first', 'last'].forEach((s) => wireDrop(slotEl(s)));
+$('#filePick').addEventListener('change', async (e) => {
+  const f = e.target.files[0]; if (!f || !pickSlot) return;
+  setSlot(pickSlot, await fileToData(f));
+  if (!$('#jobName').value) { $('#jobName').value = f.name.replace(/\.[^.]+$/, ''); saveForm(); }
+});
+document.querySelectorAll('#modeSeg button').forEach((b) => b.addEventListener('click', () => !b.disabled && setMode(b.dataset.mode)));
+$('#model').addEventListener('change', () => { fillModelOptions(); saveForm(); });
+['size', 'seconds'].forEach((id) => $('#' + id).addEventListener('change', () => { updateCost(); saveForm(); }));
+['ratio', 'seed', 'jobName'].forEach((id) => $('#' + id).addEventListener('change', saveForm));
+['b_subject', 'b_action', 'b_camera', 'b_voice', 'b_style', 'b_line', 'b_ambient', 'b_keep'].forEach((id) => $('#' + id).addEventListener('input', syncPrompt));
+$('#freeEdit').addEventListener('change', syncPrompt);
+$('#prompt').addEventListener('input', () => { if (!$('#freeEdit').checked) { $('#freeEdit').checked = true; toast('Édition libre activée : l\'assistant ne réécrit plus le prompt.'); } syncPrompt(); });
+$('#resetBuilder').addEventListener('click', () => resetBuilder(true));
+$('#addBtn').addEventListener('click', addJob);
+$('#previewBtn').addEventListener('click', () => showRequest(null));
+$('#runBtn').addEventListener('click', () => running ? stopRun() : startRun());
+$('#clearDone').addEventListener('click', async () => { for (const j of jobs.filter((x) => x.status === 'fini')) await imgDel(j.id); jobs = jobs.filter((x) => x.status !== 'fini'); saveJobs(); renderJobs(); renderGallery(); });
+$('#copyLog').addEventListener('click', () => { navigator.clipboard.writeText(logLines.join('\n')); toast('Journal copié.', 'ok'); });
+$('#parallel').addEventListener('change', () => localStorage.setItem(LS.parallel, $('#parallel').value));
+$('#parallel').value = localStorage.getItem(LS.parallel) || '1';
+
+const savedKey = localStorage.getItem(LS.key); if (savedKey) $('#apiKey').value = savedKey;
+$('#apiKey').addEventListener('change', () => { if ($('#remember').checked) localStorage.setItem(LS.key, key()); });
+$('#remember').addEventListener('change', () => { if ($('#remember').checked) localStorage.setItem(LS.key, key()); else localStorage.removeItem(LS.key); });
+$('#testKey').addEventListener('click', async () => {
+  if (!key()) { toast('Colle d\'abord ta clé.', 'warn'); return; }
+  if ($('#remember').checked) localStorage.setItem(LS.key, key());
+  const r = await api('GET', '/agnesapi?video_id=video_test_connexion');
+  if (r._err === 401 || r._err === 403) { toast('Clé refusée.', 'err'); return; }
+  if (r._err === 'reseau') { toast('Agnes injoignable depuis le navigateur.', 'err'); return; }
+  toast('Connexion à Agnes OK.', 'ok');
+});
+
+$('#pillMode').className = 'pill ' + (PROXY ? 'ok' : 'warn');
+$('#pillMode').textContent = PROXY ? 'Serveur local' : 'Fichier direct';
+loadForm(); fillModelOptions(); syncPrompt(); renderRefs(); renderJobs(); renderGallery();
+log('Studio prêt' + (PROXY ? ' (via le serveur local).' : ' (fichier ouvert directement).'));
+jobs.forEach((j) => { if (j.status === 'envoye') j.status = j.videoId ? 'calcul' : 'attente'; });
+setInterval(tick, 3000);
+window.addEventListener('beforeunload', (e) => { if (running && jobs.some((j) => ['calcul', 'attente', 'file'].includes(j.status))) { e.preventDefault(); e.returnValue = ''; } });
+</script>
+</body>
+</html>

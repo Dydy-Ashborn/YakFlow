@@ -221,16 +221,16 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
 
   <section class="card">
     <h2><i class="fa-solid fa-key"></i>Générer un code</h2>
-    <p>Crée un code d’essai 24 h ou un code premium pour un client.</p>
+    <p>Les clients qui paient sur Stripe reçoivent leur code automatiquement. Ici : essais, cadeaux, partenaires et ton propre code.</p>
     <div class="fields">
       <label class="f"><span>Clé secrète administrateur</span><input id="secret" type="password" autocomplete="off" spellcheck="false"></label>
       <div class="actions" style="margin-top:10px;gap:14px"><label style="display:flex;align-items:center;gap:8px;margin:0;font-weight:500;color:var(--text-2);cursor:pointer"><input type="checkbox" id="remember" style="width:18px;height:18px;min-height:0;accent-color:#ffb224"> Se souvenir de la clé sur cet appareil</label><button type="button" class="btn ghost sm" id="forget" hidden><i class="fa-solid fa-trash-can"></i>Oublier la clé</button></div>
       <div class="row2">
         <label class="f"><span>Email du client</span><input id="email" type="email" autocomplete="off" placeholder="client@email.com"></label>
-        <label class="f"><span>Type d’accès</span><select id="type"><option value="trial">Essai · 24 h</option><option value="premium">Premium · abonnement vérifié</option></select></label>
+        <label class="f"><span>Type d’accès</span><select id="type"><option value="trial">Essai · 24 h</option><option value="premium">Premium · code manuel (revérifié chaque mois)</option><option value="owner">Propriétaire · illimité</option></select></label>
       </div>
       <label class="f"><span>Note privée <span style="color:var(--text-4);font-weight:400">(facultatif)</span></span><input id="note" maxlength="300" placeholder="Référence de paiement, par exemple"></label>
-      <div class="callout"><i class="fa-solid fa-circle-info"></i><span>Avant de créer un code premium, vérifie le paiement dans Stripe. La création du code ne déclenche aucun paiement.</span></div>
+      <div class="callout"><i class="fa-solid fa-circle-info"></i><span>Un code manuel n’est relié à aucun paiement : il reste actif tant que tu ne le désactives pas. Chaque code ne fonctionne que sur un seul ordinateur.</span></div>
     </div>
     <div class="actions"><button class="btn primary" id="create"><i class="fa-solid fa-wand-magic-sparkles"></i>Générer le code</button><span id="status" class="st" role="status"></span></div>
   </section>
@@ -286,17 +286,17 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
       const data=await r.json().catch(()=>({}));if(r.status===401){try{localStorage.removeItem(KEY)}catch(_){}$('forget').hidden=true}if(!r.ok)throw Error(data.message||'Opération impossible.');keepSecret();return data}
     $('create').onclick=async()=>{const b=$('create');b.disabled=true;$('status').textContent='Création…';try{
       last=await call('create',{email:$('email').value,type:$('type').value,note:$('note').value});
-      $('result').hidden=false;$('resultEmail').textContent=last.email+' · '+(last.type==='trial'?'Essai 24 h':'Premium');$('code').textContent=last.code;
-      $('expires').textContent=last.expiresAt?'Expire le '+new Date(last.expiresAt).toLocaleString('fr-FR'):'Valide tant que tu ne le désactives pas.';
+      $('result').hidden=false;$('resultEmail').textContent=last.email+' · '+({trial:'Essai 24 h',premium:'Premium',owner:'Propriétaire'}[last.type]||last.type);$('code').textContent=last.code;
+      $('expires').textContent=last.expiresAt?'Expire le '+new Date(last.expiresAt).toLocaleString('fr-FR'):'Valide tant que tu ne le désactives pas, sur un seul ordinateur.';
       $('status').textContent='Code créé dans Firebase.';$('result').scrollIntoView({behavior:'smooth'});
     }catch(e){$('status').textContent=e.message}finally{b.disabled=false}};
     $('copyCode').onclick=()=>last&&navigator.clipboard.writeText(last.code).then(()=>toast('Code copié.'));
     $('copyEmail').onclick=()=>last&&navigator.clipboard.writeText(last.email).then(()=>toast('Email copié.'));
     /* YAKFLOW_EMAIL_HTML_V14 : email mis en forme (HTML + texte) copié dans le presse-papiers, prêt à coller dans Gmail ou Mail */
     function accessEmail(rec){
-      const site=location.origin, link=site+'/?code='+encodeURIComponent(rec.code), trial=rec.type==='trial';
+      const site=location.origin, link=site+'/telecharger/YakFlow.zip', trial=rec.type==='trial';
       const intro=trial?'Voici ton code d’essai YakFlow. Il est valable 24 h : profites-en pour lancer ta première vidéo.':'Merci pour ton abonnement ! Voici ton code premium YakFlow.';
-      const text=`Bonjour,\n\n${intro}\n\nTon code : ${rec.code}\n\nActive ton accès en un clic : ${link}\n(ou ouvre ${site} et colle le code sur l’écran d’accueil)\n\nÀ bientôt sur YakFlow !`;
+      const text=`Bonjour,\n\n${intro}\n\nTon code : ${rec.code}\n\n1. Télécharge YakFlow : ${link}\n2. Dézippe-le et lance « Lancer YakFlow » (Mac) ou « Lancer YakFlow (Windows) ».\n3. Colle ton code sur l’écran d’accueil.\n\nÀ bientôt sur YakFlow !`;
       const html=`<meta charset="utf-8"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f1ec;padding:24px 0;font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"><tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#111317;border-radius:20px;overflow:hidden">
 <tr><td style="padding:28px 32px 8px"><table role="presentation" cellpadding="0" cellspacing="0"><tr>
@@ -308,9 +308,9 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
 <tr><td style="padding:22px 32px 0"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0c0d10;border:1px dashed #a8741a;border-radius:14px"><tr><td align="center" style="padding:18px 12px">
 <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#7a756d;text-transform:uppercase;padding-bottom:8px">${trial?'Code d’essai · 24 h':'Code premium'}</div>
 <div style="font-family:'SF Mono',Menlo,Consolas,monospace;font-size:20px;font-weight:700;letter-spacing:2px;color:#ffc757">${rec.code}</div></td></tr></table></td></tr>
-<tr><td align="center" style="padding:24px 32px 6px"><a href="${link}" style="display:inline-block;background:#ffb224;background-image:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00);color:#1d1200;text-decoration:none;font-size:16px;font-weight:800;padding:15px 30px;border-radius:12px">Activer mon accès YakFlow</a></td></tr>
-<tr><td align="center" style="padding:6px 32px 0;color:#7a756d;font-size:12.5px;line-height:1.5">Le bouton ouvre YakFlow et active ton code automatiquement.<br>Sinon, ouvre <a href="${site}" style="color:#ffc757">${site.replace(/^https?:\/\//,'')}</a> et colle le code ci-dessus.</td></tr>
-<tr><td style="padding:26px 32px 28px;color:#58544e;font-size:12px;line-height:1.5;border-top:1px solid #1d2127">${trial?'Ton code expire 24 h après sa création.':'Ton code reste actif tant que ton abonnement est en cours.'} Garde cet email : le code te sera redemandé sur un nouvel appareil.<br>À bientôt sur YakFlow !</td></tr>
+<tr><td align="center" style="padding:24px 32px 6px"><a href="${link}" style="display:inline-block;background:#ffb224;background-image:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00);color:#1d1200;text-decoration:none;font-size:16px;font-weight:800;padding:15px 30px;border-radius:12px">Télécharger YakFlow</a></td></tr>
+<tr><td align="center" style="padding:6px 32px 0;color:#7a756d;font-size:12.5px;line-height:1.5">Dézippe le dossier, lance « Lancer YakFlow », puis colle le code ci-dessus.<br>Le guide complet est dans le fichier LISEZMOI.txt.</td></tr>
+<tr><td style="padding:26px 32px 28px;color:#58544e;font-size:12px;line-height:1.5;border-top:1px solid #1d2127">${trial?'Ton code expire 24 h après sa création.':'Ton code reste actif tant que ton abonnement est en cours.'} Le code fonctionne sur un seul ordinateur : garde cet email.<br>À bientôt sur YakFlow !</td></tr>
 </table></td></tr></table>`;
       return {text,html};
     }
@@ -344,7 +344,7 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
       return [...m.values()].map(g=>{
         g.codes.sort((a,b)=>String(b.createdAt).localeCompare(String(a.createdAt)));
         const act=g.codes.filter(c=>codeState(c)==='on');
-        g.status=act.some(c=>c.type==='premium')?'premium':act.some(c=>c.type==='trial')?'trial':g.codes.some(c=>c.active&&expired(c))?'expired':'off';
+        g.status=act.some(c=>c.type!=='trial')?'premium':act.some(c=>c.type==='trial')?'trial':g.codes.some(c=>c.active&&expired(c))?'expired':'off';
         g.since=g.codes[g.codes.length-1].createdAt; g.last=g.codes[0].createdAt;
         g.note=(g.codes.find(c=>c.note)||{}).note||'';
         return g;
@@ -379,10 +379,12 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
         const det=document.createElement('div');det.className='cl-codes';
         for(const c of g.codes){
           const st=codeState(c), r=document.createElement('div');r.className='cd';
-          r.innerHTML='<span class="tag '+(c.type==='premium'?'premium':'trial')+'">'+(c.type==='premium'?'Premium':'Essai 24 h')+'</span><span class="tag '+st+'">'+({on:'Actif',expired:'Expiré',off:'Désactivé'})[st]+'</span><span class="when">créé le '+fmt(c.createdAt)+(c.deactivatedAt?' · coupé le '+fmt(c.deactivatedAt):c.expiresAt?' · fin '+fmt(c.expiresAt):' · illimité')+'</span>';
+          r.innerHTML='<span class="tag '+(c.type==='trial'?'trial':'premium')+'">'+({trial:'Essai 24 h',premium:c.stripe?'Stripe':'Premium',owner:'Propriétaire',lifetime:'À vie'}[c.type]||c.type)+'</span><span class="tag '+st+'">'+({on:'Actif',expired:'Expiré',off:'Désactivé'})[st]+'</span><span class="when">créé le '+fmt(c.createdAt)+(c.deactivatedAt?' · coupé le '+fmt(c.deactivatedAt):c.expiresAt?' · fin '+fmt(c.expiresAt):'')+(c.machine?' · PC '+c.machine+' · vérifié le '+fmt(c.lastCheckAt):' · pas encore activé')+'</span>';
           const b=document.createElement('button');b.className='btn sm '+(c.active?'danger':'');b.innerHTML=c.active?'<i class="fa-solid fa-ban"></i>Désactiver':'<i class="fa-solid fa-rotate-left"></i>Réactiver';
           b.onclick=async()=>{if(c.active&&!(await ask('Désactiver ce code ?',g.email+' perdra cet accès à la prochaine vérification.','Désactiver')))return;
             b.disabled=true;try{await call(c.active?'deactivate-id':'reactivate-id',{id:c.id});toast(c.active?'Code désactivé.':'Code réactivé.');await load(g.email)}catch(e){toast(e.message);b.disabled=false}};
+          if(c.machine){const rm=document.createElement('button');rm.className='btn sm';rm.innerHTML='<i class="fa-solid fa-laptop"></i>Réinitialiser l’ordinateur';
+            rm.onclick=async()=>{if(!(await ask('Libérer ce code ?','Le client pourra activer ce code sur un nouvel ordinateur.','Réinitialiser')))return;rm.disabled=true;try{await call('reset-machine',{id:c.id});toast('Ordinateur réinitialisé.');await load(g.email)}catch(e){toast(e.message);rm.disabled=false}};r.append(rm)}
           r.append(b);det.append(r);
         }
         const acts=document.createElement('div');acts.className='cl-acts';

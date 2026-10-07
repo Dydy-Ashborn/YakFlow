@@ -1,0 +1,41 @@
+YAKFLOW · STUDIO VIDÉO IA
+Des images aux vidéos en quelques clics, sur ton ordinateur.
+
+INSTALLATION (une seule fois)
+1. Dézippe le dossier YakFlow où tu veux (par exemple dans Documents).
+2. Il faut Python 3 (gratuit) :
+   - Mac : il est souvent déjà là. Sinon, le lanceur ouvre la page d'installation.
+   - Windows : installe-le depuis https://www.python.org/downloads/
+     et coche « Add python.exe to PATH » pendant l'installation.
+3. Utilise Chrome ou Edge (le montage vidéo en a besoin).
+
+LANCER YAKFLOW
+- Mac : double-clic sur « Lancer YakFlow.command ».
+  La toute première fois, macOS peut bloquer le fichier : fais clic droit > Ouvrir > Ouvrir.
+- Windows : double-clic sur « Lancer YakFlow (Windows).bat ».
+  Si Windows affiche « Windows a protégé votre ordinateur » : Informations complémentaires > Exécuter quand même.
+- YakFlow s'ouvre dans ton navigateur sur http://127.0.0.1:8765
+- Laisse la fenêtre noire ouverte pendant que tu travailles. La fermer arrête YakFlow.
+
+ACTIVER TON CODE
+- Au premier lancement, colle le code reçu après ton paiement (YKF-XXXXX-XXXXX-XXXXX-XXXXX), puis « Activer YakFlow ».
+- Le code est lié à cet ordinateur. Il se renouvelle tout seul chaque mois tant que ton abonnement est actif :
+  YakFlow a juste besoin d'Internet quelques secondes, une fois par mois.
+- Tu changes d'ordinateur ? Écris au support avec ton code : on le libère pour ta nouvelle machine.
+
+PREMIERS PAS
+1. Réglages : colle ta ou tes clés API Agnes (créées gratuitement sur https://agnes-ai.com/).
+   Tes clés restent sur ton ordinateur, YakFlow ne les voit jamais.
+2. « + Importer » : importe le JSON de ton épisode (demande à ton IA un « JSON compatible YakFlow »).
+3. « Lancer » : fiches, images des scènes, clips, puis montage automatique.
+4. Tout est rangé dans Téléchargements/AgnesStudio/<projet>/ : images, clips, vidéo montée.
+
+MODES IMAGES CHATGPT ET ANIMATION GROK (facultatif)
+- Installe l'extension Tampermonkey dans Chrome, puis les ponts depuis les Réglages de YakFlow
+  (Pont ChatGPT, Pont Grok).
+- Laisse un onglet chatgpt.com ou grok.com ouvert : YakFlow lui confie les images ou les animations.
+- Les limites de tes comptes Agnes, ChatGPT et Grok restent celles de ces services : respecte leurs conditions d'utilisation.
+
+ABONNEMENT
+- Gérer ou résilier : lien présent dans le reçu Stripe reçu par email.
+- Après résiliation, YakFlow fonctionne jusqu'à la fin du mois payé.

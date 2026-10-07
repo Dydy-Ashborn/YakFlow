@@ -1,4 +1,5 @@
 import { timingSafeEqual } from 'node:crypto';
+import { FieldValue } from 'firebase-admin/firestore';
 import { codeId, newCode, normalizeCode } from '../lib/license-core.mjs';
 import { forgetLicense, licenses } from '../lib/firebase.mjs';
 import { json, smallJson } from '../lib/http.mjs';
@@ -45,7 +46,15 @@ async function handle(request) {
     if (action === 'list') {
       // 100 derniers codes, sans le code lui-même (seule son empreinte est stockée)
       const snap = await store.orderBy('createdAt', 'desc').limit(100).get();
-      return json({ items: snap.docs.map((doc) => { const r = doc.data(); return { id: doc.id, email: r.email, type: r.type, active: r.active === true, createdAt: r.createdAt, expiresAt: r.expiresAt ?? null, deactivatedAt: r.deactivatedAt ?? null, note: r.note ?? '' }; }) });
+      return json({ items: snap.docs.map((doc) => { const r = doc.data(); return { id: doc.id, email: r.email, type: r.type, active: r.active === true, createdAt: r.createdAt, expiresAt: r.expiresAt ?? null, deactivatedAt: r.deactivatedAt ?? null, note: r.note ?? '', machine: r.machine ? r.machine.slice(0, 8) : '', lastCheckAt: r.lastCheckAt ?? null, validUntil: r.validUntil ?? null, stripe: !!r.stripeSubscriptionId }; }) });
+    }
+    if (action === 'reset-machine') {
+      const id = String(body.id ?? '');
+      if (!/^[a-f0-9]{64}$/.test(id)) return json({ message: 'Identifiant invalide.' }, 400);
+      const ref = store.doc(id), snap = await ref.get();
+      if (!snap.exists) return json({ message: 'Code introuvable.' }, 404);
+      await ref.update({ machine: FieldValue.delete(), machineBoundAt: FieldValue.delete(), machineResetAt: new Date().toISOString() });
+      return json({ id, email: snap.data().email, reset: true });
     }
     if (action === 'deactivate-id' || action === 'reactivate-id') {
       const id = String(body.id ?? '');
@@ -59,7 +68,7 @@ async function handle(request) {
     }
     if (action === 'create') {
       const email = String(body.email ?? '').trim().toLowerCase();
-      const type = body.type === 'trial' ? 'trial' : body.type === 'premium' ? 'premium' : '';
+      const type = ['trial', 'premium', 'owner'].includes(body.type) ? body.type : '';
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !type) return json({ message: 'Email ou type de code invalide.' }, 400);
       const createdAt = new Date();
       const expiresAt = type === 'trial' ? new Date(createdAt.getTime() + 24 * 60 * 60 * 1000).toISOString() : null;
@@ -92,7 +101,7 @@ async function handle(request) {
       const email = String(body.email ?? '').trim().toLowerCase();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ message: 'Email invalide.' }, 400);
       const snap = await store.where('email', '==', email).limit(30).get();
-      const premium = snap.docs.filter(doc => doc.data().type === 'premium' && doc.data().active === true);
+      const premium = snap.docs.filter(doc => doc.data().type !== 'trial' && doc.data().type !== 'owner' && doc.data().active === true);
       if (!premium.length) return json({ message: 'Aucun code premium actif pour cet email.' }, 404);
       const batch = store.firestore.batch();
       for (const doc of premium) batch.update(doc.ref, { active: false, deactivatedAt: new Date().toISOString() });

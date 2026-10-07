@@ -1,0 +1,39 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Bienvenue sur YakFlow</title><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/vendor/fonts/fonts.css"><link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css"><link rel="stylesheet" href="/_style.css"></head>
+<body><main>
+<div class="brand"><img src="/yakflow-logo.webp" alt=""><div class="word"><span class="y">YAK</span>FLOW<small>Studio de création IA</small></div></div>
+<h1>Merci, <span>bienvenue</span> dans YakFlow.</h1>
+<p class="lead">Ton abonnement est actif. Voici ton code personnel et les trois étapes pour démarrer.</p>
+<section class="card" id="codeCard">
+  <h2><i class="fa-solid fa-key"></i>Ton code YakFlow</h2>
+  <div id="state" class="muted">Confirmation du paiement…</div>
+  <div class="code" id="code" hidden></div>
+  <div class="row" id="codeActs" hidden><button class="btn primary" id="copy"><i class="fa-regular fa-copy"></i>Copier le code</button></div>
+  <p class="muted" id="emailLine" hidden></p>
+</section>
+<section class="card">
+  <h2><i class="fa-solid fa-download"></i>Installer YakFlow</h2>
+  <ol>
+    <li><b>Télécharge YakFlow</b> et dézippe le dossier (dans Documents, par exemple).</li>
+    <li><b>Lance-le</b> : « Lancer YakFlow » sur Mac (la première fois : clic droit, puis Ouvrir), « Lancer YakFlow (Windows) » sur PC. Python 3 est nécessaire : le lanceur t’aide à l’installer.</li>
+    <li><b>Colle ton code</b> sur l’écran d’accueil. Il est lié à cet ordinateur et se renouvelle tout seul chaque mois.</li>
+  </ol>
+  <div class="row"><a class="btn primary" href="/telecharger/YakFlow.zip" download><i class="fa-solid fa-download"></i>Télécharger YakFlow</a></div>
+  <p class="muted" style="margin-top:14px">Garde cette page ou note ton code. Pour gérer ou résilier ton abonnement, utilise le lien du reçu Stripe envoyé par email.</p>
+</section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const sid=new URLSearchParams(location.search).get('session_id')||'';
+function toast(m){const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),2200)}
+async function load(attempt){
+  if(!sid){$('state').innerHTML='Lien incomplet. Ouvre le lien reçu après le paiement, ou écris au support avec ton reçu Stripe.';$('state').className='err';return}
+  try{const r=await fetch('/.netlify/functions/claim?session_id='+encodeURIComponent(sid),{cache:'no-store'});const d=await r.json().catch(()=>({}));
+    if(r.status===402&&attempt<10){$('state').textContent='Paiement en cours de confirmation…';return setTimeout(()=>load(attempt+1),3000)}
+    if(!d.ok)throw new Error(d.message||'Code indisponible.');
+    $('state').hidden=true;$('code').hidden=false;$('code').textContent=d.code;$('codeActs').hidden=false;
+    if(d.email){$('emailLine').hidden=false;$('emailLine').textContent='Abonnement au nom de '+d.email+'.'}
+    $('copy').onclick=()=>navigator.clipboard.writeText(d.code).then(()=>toast('Code copié.'));
+  }catch(e){$('state').textContent=e.message;$('state').className='err'}}
+load(0);
+</script></body></html>

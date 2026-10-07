@@ -1,0 +1,17 @@
+{
+  "name": "YakFlow — Studio vidéo IA",
+  "short_name": "YakFlow",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0d12",
+  "theme_color": "#11131a",
+  "description": "Automatise la génération d’images, de clips et le montage de tes vidéos IA.",
+  "icons": [
+    {
+      "src": "/yakflow-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

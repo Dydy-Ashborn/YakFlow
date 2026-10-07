@@ -3,6 +3,11 @@
   functions = "netlify/functions"
 
 [[redirects]]
+  from = "/merci"
+  to = "/merci.html"
+  status = 200
+
+[[redirects]]
   from = "/decouvrir"
   to = "/decouvrir.html"
   status = 200
@@ -43,3 +48,8 @@
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/telecharger/*"
+  [headers.values]
+    Cache-Control = "no-cache"
