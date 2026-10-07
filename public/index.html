@@ -231,7 +231,7 @@ a{text-decoration:none}
     <nav class="lnav-links" aria-label="Sections">
       <a href="#fonctionnalites">Fonctionnalités</a><a href="#etapes">Comment ça marche</a><a href="#modes">Modes</a><a href="#tarifs">Tarifs</a><a href="#faq">FAQ</a>
     </nav>
-    <div class="lnav-cta"><a class="btn ghost" href="https://buy.stripe.com/cNidR90oq4aXfym3xF8so0a">S’abonner</a><a class="btn primary" href="/telecharger/YakFlow.zip" download>Essai gratuit</a></div>
+    <div class="lnav-cta"><a class="btn ghost" href="https://buy.stripe.com/cNidR90oq4aXfym3xF8so0a">S’abonner</a><a class="btn primary" href="#installer">Essai gratuit</a></div>
   </div>
 </header>
 
@@ -244,7 +244,7 @@ a{text-decoration:none}
         <h1>Ton studio de création IA.<br><span>Des images aux vidéos en quelques clics.</span></h1>
         <p class="lead">Importe ton scénario, clique sur Lancer : YakFlow génère les images, les anime et monte ta vidéo verticale. Il tourne sur ton ordinateur, sans quota, et dépose la vidéo finie sur ton téléphone. Pensé pour TikTok, Shorts et Reels.</p>
         <div class="hero-cta">
-          <a class="btn primary lg" href="/telecharger/YakFlow.zip" download><i class="fa-solid fa-download"></i>Télécharger et essayer 24 h</a>
+          <a class="btn primary lg" href="#installer"><i class="fa-solid fa-download"></i>Télécharger et essayer 24 h</a>
           <a class="btn lg" href="#etapes"><i class="fa-regular fa-circle-play"></i>Voir comment ça marche</a>
         </div>
         <ul class="hero-proof">
@@ -307,7 +307,7 @@ a{text-decoration:none}
     <div class="wrap">
       <div class="sect-h"><span class="eyebrow">Comment ça marche</span><h2>De zéro à ta première vidéo en 4 étapes</h2></div>
       <ol class="steps4">
-        <li><span class="n">1</span><h3>Télécharge YakFlow</h3><p>Dézippe le dossier et double-clique sur « Lancer YakFlow ». Il s’ouvre dans Chrome ou Edge. Python 3 est nécessaire : le lanceur t’aide à l’installer.</p></li>
+        <li><span class="n">1</span><h3>Télécharge YakFlow</h3><p>Colle une seule commande dans Terminal (Mac) ou PowerShell (Windows) : YakFlow s’installe, s’ouvre dans ton navigateur et ajoute un raccourci sur ton Bureau.</p></li>
         <li><span class="n">2</span><h3>Essaie 24 h gratuitement</h3><p>Clique sur « Lancer mon essai gratuit » dans YakFlow et entre ton email : c’est actif tout de suite. Ou colle le code reçu après ton abonnement.</p></li>
         <li><span class="n">3</span><h3>Écris avec ton IA</h3><p>Copie le prompt débutant dans ChatGPT, Claude ou Gemini : il t’aide à trouver ton idée et écrit le fichier à importer.</p></li>
         <li><span class="n">4</span><h3>Lance et publie</h3><p>Importe, clique sur Lancer. Images, clips et montage s’enchaînent, puis la vidéo finie arrive sur ton Drive.</p></li>
@@ -346,7 +346,7 @@ a{text-decoration:none}
             <li><i class="fa-solid fa-check"></i>Prompt débutant et mises à jour</li>
           </ul>
           <a class="btn primary lg block" href="https://buy.stripe.com/cNidR90oq4aXfym3xF8so0a"><i class="fa-solid fa-crown"></i>S’abonner · 2,99 € / mois</a>
-          <a class="btn lg block" href="/telecharger/YakFlow.zip" download><i class="fa-regular fa-clock"></i>Commencer par l’essai 24 h</a>
+          <a class="btn lg block" href="#installer"><i class="fa-regular fa-clock"></i>Commencer par l’essai 24 h</a>
           <small>Ton code s’affiche dès le paiement validé. Tu utilises tes propres comptes et clés pour les modèles IA ; en mode Agnes, les quotas gratuits restent ceux du fournisseur.</small>
         </div>
       </div>
@@ -376,7 +376,7 @@ a{text-decoration:none}
       <img src="/yakflow-logo.webp" alt="" width="72" height="72">
       <h2>Prêt à lancer ta première vidéo ?</h2>
       <p>24 h d’essai gratuit, sans carte bancaire. Suis aussi <a href="https://www.tiktok.com/@yak.film" target="_blank" rel="noopener" style="color:var(--brand-2)">@yak.film</a> sur TikTok pour voir ce qu’on fabrique avec.</p>
-      <div class="hero-cta" style="justify-content:center"><a class="btn primary lg" href="/telecharger/YakFlow.zip" download><i class="fa-solid fa-download"></i>Télécharger et essayer</a><a class="btn lg" href="https://buy.stripe.com/cNidR90oq4aXfym3xF8so0a"><i class="fa-solid fa-crown"></i>S’abonner · 2,99 € / mois</a></div>
+      <div class="hero-cta" style="justify-content:center"><a class="btn primary lg" href="#installer"><i class="fa-solid fa-download"></i>Télécharger et essayer</a><a class="btn lg" href="https://buy.stripe.com/cNidR90oq4aXfym3xF8so0a"><i class="fa-solid fa-crown"></i>S’abonner · 2,99 € / mois</a></div>
     </div>
   </section>
 </main>
@@ -392,18 +392,39 @@ a{text-decoration:none}
 /* menu fixe : ombre au défilement */
 (function(){const n=document.querySelector('.lnav');const f=()=>n.classList.toggle('scrolled',scrollY>8);addEventListener('scroll',f,{passive:true});f();})();
 </script>
-<dialog id="dlDlg" style="background:#111317;color:#f5f2ec;border:1px solid rgba(255,178,36,.35);border-radius:20px;padding:0;width:min(460px,calc(100vw - 32px));box-shadow:0 24px 64px rgba(0,0,0,.55)">
-  <div style="padding:24px 24px 8px;display:flex;gap:12px;align-items:center"><img src="/yakflow-logo.webp" alt="" width="40" height="40" style="border-radius:10px"><div><b style="font-size:17px">Téléchargement lancé</b><div style="color:#b3ada3;font-size:13px">Ton essai gratuit se lance depuis YakFlow, en 3 étapes.</div></div></div>
-  <ol style="margin:8px 0 0;padding:0 24px 0 44px;color:#b3ada3;line-height:1.6">
-    <li style="margin:8px 0"><b style="color:#f5f2ec">Dézippe</b> le fichier YakFlow.zip (dans Documents, par exemple).</li>
-    <li style="margin:8px 0"><b style="color:#f5f2ec">Lance « Lancer YakFlow »</b>. Sur Mac, la première fois, macOS le bloque : clique sur « Terminé », puis Réglages Système &gt; Confidentialité et sécurité &gt; « Ouvrir quand même ». Sur Windows : « Lancer YakFlow (Windows) ».</li>
-    <li style="margin:8px 0"><b style="color:#f5f2ec">Entre ton email</b> et clique sur « Lancer mon essai gratuit » : tout est débloqué 24 h, sans carte bancaire.</li>
-  </ol>
-  <p style="margin:12px 24px 0;color:#7a756d;font-size:12.5px">Python 3 est nécessaire : le lanceur t’aide à l’installer s’il manque. Le téléchargement ne démarre pas ? <a href="/telecharger/YakFlow.zip" download style="color:#ffc757">Relance-le ici</a>.</p>
-  <div style="display:flex;justify-content:flex-end;padding:16px 24px 20px"><button class="btn primary" type="button" onclick="document.getElementById('dlDlg').close()">Compris</button></div>
+<dialog id="dlDlg" style="background:#111317;color:#f5f2ec;border:1px solid rgba(255,178,36,.35);border-radius:20px;padding:0;width:min(560px,calc(100vw - 32px));box-shadow:0 24px 64px rgba(0,0,0,.55)">
+  <div style="padding:24px 24px 4px;display:flex;gap:12px;align-items:center"><img src="/yakflow-logo.webp" alt="" width="40" height="40" style="border-radius:10px"><div><b style="font-size:17px">Installer YakFlow</b><div style="color:#b3ada3;font-size:13px">Une commande à coller, YakFlow s’installe et s’ouvre tout seul.</div></div></div>
+  <div style="display:flex;gap:6px;padding:14px 24px 0" role="tablist">
+    <button type="button" class="btn sm instTab" data-os="mac" style="margin:0"><i class="fa-brands fa-apple"></i>Mac</button>
+    <button type="button" class="btn sm instTab" data-os="win" style="margin:0"><i class="fa-brands fa-windows"></i>Windows</button>
+  </div>
+  <div class="instPane" data-os="mac" style="padding:6px 24px 0">
+    <ol style="margin:8px 0 0;padding-left:20px;color:#b3ada3;line-height:1.6">
+      <li>Ouvre <b style="color:#f5f2ec">Terminal</b> (Cmd + Espace, tape « Terminal », Entrée).</li>
+      <li>Colle cette commande et appuie sur Entrée :</li>
+    </ol>
+    <div style="display:flex;gap:8px;align-items:center;margin:10px 0"><code id="cmdMac" style="flex:1;min-width:0;overflow-x:auto;white-space:nowrap;background:#0c0d10;border:1px dashed rgba(255,178,36,.45);border-radius:10px;padding:11px 12px;color:#ffc757;font:500 13px 'JetBrains Mono',Menlo,monospace">curl -fsSL https://yakflow.netlify.app/installer-mac.sh | bash</code><button type="button" class="btn sm primary instCopy" data-target="cmdMac" style="margin:0">Copier</button></div>
+  </div>
+  <div class="instPane" data-os="win" style="padding:6px 24px 0" hidden>
+    <ol style="margin:8px 0 0;padding-left:20px;color:#b3ada3;line-height:1.6">
+      <li>Ouvre <b style="color:#f5f2ec">PowerShell</b> (touche Windows, tape « PowerShell », Entrée).</li>
+      <li>Colle cette commande et appuie sur Entrée :</li>
+    </ol>
+    <div style="display:flex;gap:8px;align-items:center;margin:10px 0"><code id="cmdWin" style="flex:1;min-width:0;overflow-x:auto;white-space:nowrap;background:#0c0d10;border:1px dashed rgba(255,178,36,.45);border-radius:10px;padding:11px 12px;color:#ffc757;font:500 13px 'JetBrains Mono',Menlo,monospace">irm https://yakflow.netlify.app/installer-windows.ps1 | iex</code><button type="button" class="btn sm primary instCopy" data-target="cmdWin" style="margin:0">Copier</button></div>
+  </div>
+  <p style="margin:6px 24px 0;color:#b3ada3;font-size:13.5px">YakFlow s’ouvre dans ton navigateur : entre ton email et clique sur <b style="color:#f5f2ec">« Lancer mon essai gratuit »</b>. Ensuite, un raccourci <b style="color:#f5f2ec">YakFlow</b> sur ton Bureau le relance en un double-clic.</p>
+  <p style="margin:10px 24px 0;color:#7a756d;font-size:12.5px">Python 3 est nécessaire : la commande t’aide à l’installer s’il manque. Tu préfères le dossier ? <a href="/telecharger/YakFlow.zip" download style="color:#ffc757">Télécharger le zip</a> (macOS te demandera alors une autorisation dans Réglages Système).</p>
+  <div style="display:flex;justify-content:flex-end;padding:16px 24px 20px"><button class="btn primary" type="button" onclick="document.getElementById('dlDlg').close()">Fermer</button></div>
 </dialog>
 <script>
-document.addEventListener('click',e=>{const a=e.target.closest('a[href="/telecharger/YakFlow.zip"]');if(!a||a.closest('#dlDlg'))return;setTimeout(()=>{const d=document.getElementById('dlDlg');if(d&&!d.open)d.showModal()},300)});
+(function(){const d=document.getElementById('dlDlg');
+ function pick(os){d.querySelectorAll('.instPane').forEach(p=>p.hidden=p.dataset.os!==os);d.querySelectorAll('.instTab').forEach(b=>b.classList.toggle('primary',b.dataset.os===os))}
+ pick(/Win/i.test(navigator.userAgent)?'win':'mac');
+ d.querySelectorAll('.instTab').forEach(b=>b.onclick=()=>pick(b.dataset.os));
+ d.querySelectorAll('.instCopy').forEach(b=>b.onclick=()=>navigator.clipboard.writeText(document.getElementById(b.dataset.target).textContent).then(()=>{const o=b.textContent;b.textContent='Copié';setTimeout(()=>b.textContent=o,1500)}));
+ document.addEventListener('click',e=>{const a=e.target.closest('a[href="#installer"]');if(!a)return;e.preventDefault();d.showModal()});
+ if(location.hash==='#installer')d.showModal();})();
 </script>
 </body>
+
 </html>
