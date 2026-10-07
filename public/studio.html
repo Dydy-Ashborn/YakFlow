@@ -2704,7 +2704,7 @@ async function render() {
     '<section class="card"><div class="phead"><div style="flex:1;min-width:220px"><h1>' + esc(p.titre) + '</h1><div class="pid">' + esc(p.id) +
       (p.datePublication ? ' · publication ' + esc(p.datePublication) + ' ' + esc(p.heurePublication) : '') + ' · clips ' + c.sec + ' s au total</div></div>' +
       '<div class="row"><button class="btn sm" id="pImp" title="Range automatiquement des images ou des clips d\'après leur nom de fichier (…-scene-3.jpg)"><i class="fa-solid fa-upload"></i>Importer des fichiers</button>' +
-      (PROXY ? '<button class="btn sm" id="pOpen"><i class="fa-regular fa-folder"></i>Dossier</button>' : '') + '<button class="btn sm" id="pDl"><i class="fa-solid fa-download"></i>Tout télécharger</button><button class="btn sm" id="pReq"><i class="fa-solid fa-code"></i>Dernière requête</button><button class="btn sm danger" id="pDel"><i class="fa-regular fa-trash-can"></i>Supprimer</button></div></div>' +
+      (PROXY ? '<button class="btn sm" id="pOpen"><i class="fa-regular fa-folder"></i>Dossier</button>' : '') + '<button class="btn sm" id="pDl"><i class="fa-solid fa-download"></i>Tout télécharger</button><button class="btn sm" id="pJson" title="Retélécharger le fichier JSON de ce projet (prompts à jour)"><i class="fa-solid fa-file-code"></i>JSON</button><button class="btn sm" id="pReq"><i class="fa-solid fa-code"></i>Dernière requête</button><button class="btn sm danger" id="pDel"><i class="fa-regular fa-trash-can"></i>Supprimer</button></div></div>' +
       '<div class="meters"><div class="meter"><span><i class="fa-regular fa-image"></i>Images</span><b>' + c.i + '</b> / ' + c.ni + '<div class="bar' + (c.i === c.ni ? ' ok' : '') + '"><i style="width:' + (c.ni ? 100 * c.i / c.ni : 0) + '%"></i></div></div>' +
       '<div class="meter"><span><i class="fa-solid fa-film"></i>Clips</span><b>' + c.c + '</b> / ' + c.nc + '<div class="bar' + (c.c === c.nc ? ' ok' : '') + '"><i style="width:' + (c.nc ? 100 * c.c / c.nc : 0) + '%"></i></div></div>' +
       '<div class="meter"><span><i class="fa-solid fa-scissors"></i>Montage</span><b>' + (mst === 'fini' ? Math.round(p.montage.seconds) + ' s' : mst === 'calcul' ? '…' : '—') + '</b><div class="bar' + (mst === 'fini' ? ' ok' : '') + '"><i style="width:' + (mst === 'fini' ? 100 : mst === 'calcul' ? 50 : 0) + '%"></i></div></div></div></section>' +
@@ -2751,6 +2751,16 @@ async function render() {
   });
   $('#pImp').onclick = () => { const f = $('#fileMany'); f.value = ''; f.click(); };
   $('#pDl').onclick = () => downloadAll(p);
+  /* YAKFLOW_JSON_EXPORT_V1 : JSON du projet, au format d'import, avec les prompts modifiés dans le studio */
+  if ($('#pJson')) $('#pJson').onclick = () => {
+    const keep = ['id', 'type', 'nom', 'joindre', 'promptImage', 'promptVideoAgnes', 'promptVideoGrok', 'secondes', 'garder', 'format', 'muet', 'transition', 'imageDe', 'imageFin'];
+    const etapes = p.etapes.map((st) => { const o = {}; for (const k of keep) { const v = st[k]; if (v === '' || v == null || v === false || (k === 'transition' && v === 'cut') || (Array.isArray(v) && !v.length && k !== 'joindre') || (k === 'secondes' && st.type !== 'scene')) continue; o[k] = v; } return o; });
+    const out = { id: p.id, titre: p.titre };
+    for (const k of ['accroche', 'description', 'hashtags', 'commentaire', 'datePublication', 'heurePublication']) if (p[k]) out[k] = p[k];
+    out.etapes = etapes;
+    downloadBuf(new TextEncoder().encode(JSON.stringify(out, null, 2)), safeName(p.id) + '.json', 'application/json');
+    toast('JSON de « ' + p.titre + ' » téléchargé.', 'ok');
+  };
   if ($('#pOpen')) $('#pOpen').onclick = () => fetch('/open?path=' + encodeURIComponent(safeName(p.id)), { method: 'POST', headers: { 'X-Studio': '1' } }).then(() => toast('Dossier : Téléchargements/AgnesStudio/' + safeName(p.id), 'ok'));
   const pubs = [['Description', pubDescription(p)], ['Accroche', p.accroche], ['Commentaire épinglé', p.commentaire]].filter((x) => x[1]);
   m.querySelectorAll('[data-copy]').forEach((b) => b.onclick = () => { navigator.clipboard.writeText(pubs[+b.dataset.copy][1]); toast(pubs[+b.dataset.copy][0] + ' copié.', 'ok'); });
