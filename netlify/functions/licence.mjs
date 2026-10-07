@@ -18,7 +18,7 @@ export default async function handler(request) {
     const snap = await ref.get();
     if (!snap.exists) return json({ ok: false, message: 'Code inconnu. Vérifie qu’il est bien recopié.' }, 403);
     const record = snap.data();
-    if (record.machine && record.machine !== machine) return json({ ok: false, message: 'Ce code est déjà activé sur un autre ordinateur. Pour changer d’ordinateur, contacte le support YakFlow.' }, 409);
+    if (record.machine && record.machine !== machine) return json({ ok: false, message: 'Ce code est déjà activé sur un autre ordinateur ou navigateur. Pour changer, contacte le support YakFlow.' }, 409);
     const { until, message } = await validUntil(record, now);
     if (!until) return json({ ok: false, message }, 403);
     const update = { lastCheckAt: new Date(now).toISOString(), validUntil: new Date(until).toISOString(), checks: FieldValue.increment(1), appVersion: String(body.version ?? '').slice(0, 20) };
@@ -29,7 +29,7 @@ export default async function handler(request) {
         tx.update(ref, { ...update, machine, machineBoundAt: new Date(now).toISOString() });
         return true;
       });
-      if (!bound) return json({ ok: false, message: 'Ce code vient d’être activé sur un autre ordinateur.' }, 409);
+      if (!bound) return json({ ok: false, message: 'Ce code vient d’être activé sur un autre ordinateur ou navigateur.' }, 409);
     } else await ref.update(update);
     const token = signLicense({ v: 1, id, m: machine, t: record.type, u: until, i: now, e: record.email || '' });
     return json({ ok: true, token, type: record.type, until });

@@ -27,7 +27,7 @@ export default async function handler(request) {
           tx.create(byEmail, { machine, at: new Date(now).toISOString() });
           return { used: false };
         });
-        if (out.used) return json({ ok: false, message: 'L’essai gratuit a déjà été utilisé sur cet ordinateur ou avec cet email. Abonne-toi pour continuer.' }, 409);
+        if (out.used) return json({ ok: false, message: 'L’essai gratuit a déjà été utilisé sur ce navigateur ou avec cet email. Abonne-toi pour continuer.' }, 409);
         const until = now + DAY;
         const token = signLicense({ v: 1, id, m: machine, t: 'trial', u: until, i: now, e: email });
         return json({ ok: true, code, token, type: 'trial', until });

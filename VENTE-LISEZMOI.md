@@ -1,3 +1,12 @@
+# YakFlow · version en ligne (depuis le 7 octobre 2026)
+
+- **Studio** : https://yakflow.netlify.app/studio (`public/studio.html`). Licence signée délivrée une fois par mois, liée au navigateur.
+- **Relais Agnes** : Cloudflare Worker (`cloudflare/worker.js`), à mettre en ligne une fois : voir `CLOUDFLARE.md`, puis renseigner `workerUrl` dans `public/yakflow-config.js`.
+- **Ponts ChatGPT et Grok** : un seul script Tampermonkey, `public/yakflow-connect.user.js`. Les onglets se parlent dans le navigateur : aucune requête serveur.
+- **Drive** : dans les Réglages du studio, le client choisit une fois son dossier Google Drive (Chrome ou Edge).
+
+La version locale (`app-locale/`, zip) reste dans le dépôt mais n'est plus mise en avant.
+
 # YakFlow · vente de la version locale (Netlify)
 
 Le client paie sur Stripe, arrive sur `yakflow.netlify.app/merci` qui lui donne son code, télécharge YakFlow et l'active.
