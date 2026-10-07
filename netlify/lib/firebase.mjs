@@ -32,6 +32,10 @@ async function readRecord(id) {
 export async function checkLicense(code, { fresh = false } = {}) {
   const value = normalizeCode(code);
   if (!/^YKF[A-Z2-9]{20}$/.test(value)) return { valid: false, message: 'Code invalide.' };
+  // YAKFLOW_OWNER_CODES_V16 : codes du propriétaire (variable Netlify YAKFLOW_OWNER_CODES, séparés par des virgules).
+  // Toujours valides, sans lecture Firestore : l'accès d'Ash ne dépend ni du quota ni d'une panne Firebase.
+  const owners = String(process.env.YAKFLOW_OWNER_CODES ?? '').split(',').map(normalizeCode).filter((c) => /^YKF[A-Z2-9]{20}$/.test(c));
+  if (owners.includes(value)) return { valid: true, type: 'premium', expiresAt: null, owner: true };
   const id = codeId(value), now = Date.now();
   if (!fresh) {
     const m = MEM.get(id);
