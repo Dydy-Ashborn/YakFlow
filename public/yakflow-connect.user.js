@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.0.2
+// @version      3.0.3
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -32,7 +32,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.0.2';
+  const CONNECT_VERSION = '3.0.3';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -268,7 +268,9 @@
   function runChatGPT() {
   const VERSION = '2.1.1';
   // Un identifiant par chargement d'onglet : les conversations restent indépendantes.
-  const WORKER = (crypto.randomUUID ? crypto.randomUUID() : Date.now() + '-' + Math.random()).toString();
+  // YAKFLOW_CONNECT_303 : identifiant stable par onglet (survit au rechargement entre deux images) : un onglet = un worker
+  const WORKER = sessionStorage.getItem('yakflowChatWorker') || ('chat-' + (crypto.randomUUID ? crypto.randomUUID() : Date.now() + '-' + Math.random()));
+  sessionStorage.setItem('yakflowChatWorker', WORKER);
   const withWorker = (path) => path + (path.includes('?') ? '&' : '?') + 'worker=' + encodeURIComponent(WORKER);
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const dbg = (m, o) => { try { console.log('[Pont]', m, o || ''); } catch (e) { /* rien */ } };
@@ -591,7 +593,7 @@
     let pauseUntil = 0, genSince = 0, serverReady = false, idle = 0;
     for (;;) {
       // YAKFLOW_POLL_V16 : 4 s quand il y a du travail, puis on ralentit jusqu'à 30 s quand il n'y a rien à faire
-      await sleep(Math.min(30000, 4000 + idle * 3000));
+      await sleep(Math.min(10000, 3000 + idle * 1000));   // file locale : interroger souvent ne coûte rien
       draw();
       if (!serverReady) {
         try {
@@ -921,7 +923,7 @@ async function loop(){
   let idle=0;
   for(;;){
     // YAKFLOW_POLL_V16 : 1,6 s quand il y a du travail, jusqu'à 30 s quand la file est vide
-    await sleep(Math.min(30000,1600+idle*3200));
+    await sleep(Math.min(8000,1600+idle*1000));
     if(busy||!GM_getValue(K_ON,true)||Date.now()<pauseUntil)continue;
     if(!/\/imagine/.test(location.pathname)){setState('ouvre Grok Imagine');continue;}
     let r;
