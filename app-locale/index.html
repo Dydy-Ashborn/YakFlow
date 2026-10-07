@@ -315,6 +315,7 @@ dialog{border-radius:18px!important;box-shadow:0 30px 90px rgba(0,0,0,.45)!impor
 <link rel="apple-touch-icon" href="/yakflow-icon.svg">
 <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
 <script src="/yakflow-config.js"></script>
+<script src="/yf-backup.js" defer></script>
 <style>
 /* YAKFLOW_ACTIVATION_UI_V6 */
 .yfTrialBox{display:grid;gap:8px;padding:14px;border:1px solid rgba(255,178,36,.4);border-radius:12px;background:rgba(255,178,36,.06)}.yfTrialBox b{color:#ffc757}.yfTrialBox small{color:#9aa1ae;font-size:12px}.yfTrialBox input{width:100%;padding:11px 12px;border-radius:10px;border:1px solid #303645;background:#0b0d12;color:#f5f6fa;font:inherit}.yfTrialBtn{padding:11px;border-radius:10px;border:1px solid #ffb224;background:transparent;color:#ffc757;font-weight:800;cursor:pointer}.yfTrialBtn:hover{background:rgba(255,178,36,.1)}.yfTrialBtn:disabled{opacity:.6;cursor:wait}
@@ -630,7 +631,8 @@ dialog{border-radius:18px!important;box-shadow:0 30px 90px rgba(0,0,0,.45)!impor
     <label class="ck"><input type="checkbox" id="sGate"> <span><b>Valider chaque image avant son clip.</b> Décoché, tout s'enchaîne seul (idéal la nuit).</span></label>
     <label class="ck"><input type="checkbox" id="sAutoMont"> <span><b>Monter la vidéo automatiquement</b> quand tous les clips d'un projet sont prêts.</span></label>
     <label class="ck"><input type="checkbox" id="sFondus"> <span><b>Fondus enchaînés courts</b> (0,2 s) entre deux plans du même décor : ils masquent les petites différences entre deux images IA. Coupe franche quand le décor change.</span></label>
-    <label class="ck"><input type="checkbox" id="sDisk"> <span><b>Ranger tout sur le disque</b> au fil de l'eau : <code>Téléchargements/AgnesStudio/&lt;projet&gt;/</code> (images, clips, vidéo montée, infos de publication).</span></label>
+    <div class="row" style="margin:6px 0 10px"><button class="btn sm primary" type="button" data-yf-backup="export">Exporter mes projets (pour la version en ligne)</button></div>
+      <label class="ck"><input type="checkbox" id="sDisk"> <span><b>Ranger tout sur le disque</b> au fil de l'eau : <code>Téléchargements/AgnesStudio/&lt;projet&gt;/</code> (images, clips, vidéo montée, infos de publication).</span></label>
     <label class="ck"><input type="checkbox" id="sAutoDl"> <span><b>Télécharger la vidéo montée</b> dès qu'elle est prête.</span></label>
     <label class="ck"><input type="checkbox" id="sHook"> <span>Afficher l'<b>accroche</b> du projet en texte pendant les 3 premières secondes du montage.</span></label>
     <label class="f"><span>Découpe au montage</span><select id="sCut">

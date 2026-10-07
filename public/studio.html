@@ -16,6 +16,7 @@
 <meta name="apple-mobile-web-app-title" content="YakFlow">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script src="/yakflow-config.js"></script>
+<script src="/yf-backup.js" defer></script>
 <script>
 /* YAKFLOW_WEB_V2 : licence signée (1 appel par mois) + YakFlow Connect (ponts dans le navigateur) */
 window.yfToken=function(){try{const t=localStorage.getItem('yfToken')||'';if(!t)return '';const b=t.split('.')[0].replace(/-/g,'+').replace(/_/g,'/');const p=JSON.parse(decodeURIComponent(escape(atob(b+'='.repeat((4-b.length%4)%4)))));return p&&p.u&&Date.now()<p.u+3*864e5?t:''}catch(_){return ''}};
@@ -856,6 +857,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
       <label class="ck"><input type="checkbox" id="sFondus"> <span><b>Fondus enchaînés courts</b> (0,2 s) entre deux plans du même décor. Coupe franche quand le décor change.</span></label>
       <label class="ck"><input type="checkbox" id="sDisk"> <span><b>Ranger tout sur le disque</b> au fil de l'eau : <code>Téléchargements/AgnesStudio/&lt;projet&gt;/</code>.</span></label>
       <label class="ck"><input type="checkbox" id="sAutoDl"> <span><b>Télécharger la vidéo montée</b> dès qu'elle est prête.</span></label>
+      <div class="ck" style="align-items:flex-start"><i class="fa-solid fa-box-archive" style="margin-top:3px;color:var(--brand)"></i> <span style="flex:1"><b>Sauvegarde des projets</b> : récupère les projets de la version ordinateur ou d’un autre navigateur (projets, images, clips, montages et clés Agnes).<br><span style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><button type="button" class="btn sm primary" data-yf-backup="import"><i class="fa-solid fa-file-import"></i>Importer une sauvegarde</button><button type="button" class="btn sm" data-yf-backup="export"><i class="fa-solid fa-download"></i>Exporter mes projets</button></span></span></div>
       <div class="ck" id="exportDirBox" style="align-items:flex-start"><i class="fa-solid fa-folder-tree" style="margin-top:3px;color:var(--brand)"></i> <span style="flex:1"><b>Envoi sur Google Drive</b> : choisis une fois ton dossier <b>Mon Drive</b> (Google Drive pour ordinateur). Chaque vidéo montée y est rangée avec sa couverture et ses infos, dans <code>YakFlow/A publier/&lt;titre&gt;/</code>, et arrive sur ton téléphone.<br><span class="hint" id="exportDirName" style="margin:4px 0 8px;display:block">Aucun dossier choisi.</span><button type="button" class="btn sm" id="exportDirPick"><i class="fa-solid fa-folder-open"></i>Choisir un dossier</button> <button type="button" class="btn sm ghost" id="exportDirClear" hidden><i class="fa-solid fa-xmark"></i>Retirer</button></span></div>
       <label class="ck"><input type="checkbox" id="sHook"> <span>Afficher l'<b>accroche</b> du projet en texte pendant les 3 premières secondes du montage.</span></label>
     </div>
