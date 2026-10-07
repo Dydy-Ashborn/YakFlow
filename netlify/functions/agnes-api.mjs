@@ -1,4 +1,4 @@
-import { checkLicense } from '../lib/firebase.mjs';
+import { verifyToken } from '../lib/licence-locale.mjs';
 import { json } from '../lib/http.mjs';
 
 const PATHS = new Map([
@@ -9,8 +9,8 @@ const PATHS = new Map([
 
 export default async function handler(request) {
   try {
-    const state = await checkLicense(request.headers.get('X-Yakflow-License'));
-    if (!state.valid) return json(state, 403);
+    // YAKFLOW_TOKEN_V1 : licence signée, aucune lecture Firestore
+    if (!verifyToken(request.headers.get('X-Yakflow-Token'))) return json({ detail: 'Licence YakFlow invalide ou expirée. Recharge YakFlow.' }, 403);
     const url = new URL(request.url);
     const path = url.pathname.replace(/^.*?(?:\/api|\/agnes-api)/, '') || '/';
     if (!PATHS.has(`${request.method} ${path}`)) return json({ detail: 'Opération Agnes non autorisée.' }, 404);

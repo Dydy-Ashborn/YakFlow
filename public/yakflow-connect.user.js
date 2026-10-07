@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.0.1
+// @version      3.0.2
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -17,6 +17,12 @@
 // @grant        GM_listValues
 // @grant        GM_xmlhttpRequest
 // @grant        GM_registerMenuCommand
+// @connect      apihub.agnes-ai.com
+// @connect      apihub.agnes-ai.cn
+// @connect      agnes-ai.com
+// @connect      agnes-ai.cn
+// @connect      agnes-ai.space
+// @connect      myqcloud.com
 // @connect      grok.com
 // @connect      x.ai
 // @connect      *
@@ -26,7 +32,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.0.1';
+  const CONNECT_VERSION = '3.0.2';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -72,7 +78,7 @@
   function dropChunks(id, total) { for (let n = 0; n < (total || 100); n++) { if (get(ck(id, n)) == null && n >= (total || 0)) break; del(ck(id, n)); } }
   async function claim(kind, id, worker) {
     const k = kind + ':claim:' + fnv(String(id)), cur = get(k);
-    if (cur && cur.w !== worker && now() - cur.t < 30 * 60000) return false;
+    if (cur && cur.w !== worker && now() - cur.t < 15000) return false;   // YAKFLOW_CONNECT_302 : arbitrage de 15 s seulement
     set(k, { w: worker, t: now() });
     await sleep(250 + Math.random() * 250);
     const back = get(k);
@@ -195,14 +201,60 @@
   /* =====================================================================
      ONGLET YAKFLOW : répond aux demandes de la page (window.postMessage)
      ===================================================================== */
+
+  /* =====================================================================
+     RELAIS AGNES : l'appel part de la connexion de l'utilisateur (Agnes bloque Cloudflare, erreur 1015).
+     Exige une licence YakFlow signée et valide.
+     ===================================================================== */
+  const PUB = { kty: 'EC', crv: 'P-256', x: 'HHa1M8_6PFwWynyMX96HgfOGhWCK1Uktq0Vcjn7HcKM', y: 'rMI-Y3kGNf8wSuOTHaQDpWpbMGHnfy838ogn8kEARRk' };
+  const AGNES_PATHS = ['POST /v1/images/generations', 'POST /v1/videos', 'GET /agnesapi'];
+  const MEDIA_HOSTS = ['.agnes-ai.cn', '.agnes-ai.com', '.agnes-ai.space', '.myqcloud.com'];
+  let pubKey = null;
+  const b64u = (x) => Uint8Array.from(atob(x.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - (x.length % 4)) % 4)), (c) => c.charCodeAt(0));
+  async function tokenOk(tok) {
+    try {
+      const [body, sig] = String(tok || '').split('.');
+      if (!body || !sig) return false;
+      pubKey = pubKey || await crypto.subtle.importKey('jwk', PUB, { name: 'ECDSA', namedCurve: 'P-256' }, false, ['verify']);
+      if (!(await crypto.subtle.verify({ name: 'ECDSA', hash: 'SHA-256' }, pubKey, b64u(sig), b64u(body)))) return false;
+      const lic = JSON.parse(new TextDecoder().decode(b64u(body)));
+      return !!(lic && lic.u && Date.now() < lic.u + 3 * 864e5);
+    } catch (_) { return false; }
+  }
+  const mediaOk = (u) => { try { const x = new URL(u); return x.protocol === 'https:' && MEDIA_HOSTS.some((h) => x.hostname.toLowerCase().endsWith(h)); } catch (_) { return false; } };
+  function gmReq(o) {
+    return new Promise((res) => GM_xmlhttpRequest({ ...o,
+      onload: (r) => res(r), onerror: () => res({ status: 599, responseText: '{"detail":"réseau : Agnes injoignable"}', responseHeaders: '' }),
+      ontimeout: () => res({ status: 599, responseText: '{"detail":"délai dépassé chez Agnes"}', responseHeaders: '' }) }));
+  }
+  const header = (r, name) => { const m = String(r.responseHeaders || '').match(new RegExp('^' + name + ':\\s*(.*)$', 'im')); return m ? m[1].trim() : ''; };
+  async function agnesRelay(d) {
+    if (!(await tokenOk(d.token))) return { status: 403, text: '{"detail":"Licence YakFlow invalide ou expirée. Recharge YakFlow."}', ctype: 'application/json' };
+    if (d.kind === 'dl') {
+      if (!mediaOk(d.url)) return { status: 400, ctype: 'application/json' };
+      const r = await gmReq({ method: 'GET', url: d.url, responseType: 'arraybuffer', timeout: 300000 });
+      if (r.finalUrl && !mediaOk(r.finalUrl)) return { status: 400, ctype: 'application/json' };
+      return { status: r.status, ctype: header(r, 'content-type') || 'application/octet-stream', buf: r.status < 400 ? r.response : undefined };
+    }
+    const path = String(d.path || ''), base = path.split('?')[0];
+    if (!AGNES_PATHS.includes(String(d.method) + ' ' + base)) return { status: 404, text: '{"detail":"Opération Agnes non autorisée."}', ctype: 'application/json' };
+    let r;
+    for (const origin of ['https://apihub.agnes-ai.com', 'https://apihub.agnes-ai.cn']) {
+      r = await gmReq({ method: d.method, url: origin + path, headers: { Authorization: d.auth || '', 'Content-Type': 'application/json' }, data: d.body, timeout: 120000 });
+      if (!([404, 405].includes(r.status) && base === '/v1/images/generations')) break;
+    }
+    return { status: r.status, text: r.responseText || '', ctype: header(r, 'content-type') || 'application/json', retryAfter: header(r, 'retry-after') };
+  }
+
   function runStudio() {
     housekeeping();
-    const hello = () => window.postMessage({ __yf: 'hello', version: CONNECT_VERSION }, '*');
+    const hello = () => window.postMessage({ __yf: 'hello', version: CONNECT_VERSION, caps: ['agnes'] }, '*');
     window.addEventListener('message', async (e) => {
       // YAKFLOW_CONNECT_301 : dans Tampermonkey, « window » est un bac à sable : on filtre par origine, pas par source
       if (e.origin !== location.origin || !e.data || typeof e.data !== 'object') return;
       const d = e.data;
       if (d.__yf === 'ping') return hello();
+      if (d.__yf === 'agnes') { const r = await agnesRelay(d); const m = { __yf: 'res', rid: d.rid, ...r }; try { window.postMessage(m, '*', r.buf ? [r.buf] : []); } catch (_) { window.postMessage(m, '*'); } return; }
       if (d.__yf !== 'req') return;
       let r;
       try { r = await hub(d.kind === 'grok' ? 'grok' : 'bridge', d.method || 'GET', String(d.path || ''), d.body, 'studio'); }

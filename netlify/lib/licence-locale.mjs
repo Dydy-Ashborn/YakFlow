@@ -1,5 +1,5 @@
 // YAKFLOW_LICENCE_LOCALE_V1 : licences de la version locale (vendue). Un appel par client et par mois.
-import { createECDH, createPrivateKey, sign } from 'node:crypto';
+import { createECDH, createPrivateKey, createPublicKey, sign, verify } from 'node:crypto';
 import Stripe from 'stripe';
 
 export const DAY = 24 * 60 * 60 * 1000;
@@ -56,4 +56,17 @@ export async function validUntil(record, now) {
     return end > now ? { until: Math.min(end, now + MANUAL_PERIOD) } : { until: 0, message: 'Ce code a expiré.' };
   }
   return { until: now + MANUAL_PERIOD };
+}
+
+// Vérifie une licence signée (en-tête X-Yakflow-Token), sans aucune lecture Firestore.
+const PUBLIC_KEY = createPublicKey({ key: { kty: 'EC', crv: 'P-256', x: 'HHa1M8_6PFwWynyMX96HgfOGhWCK1Uktq0Vcjn7HcKM', y: 'rMI-Y3kGNf8wSuOTHaQDpWpbMGHnfy838ogn8kEARRk' }, format: 'jwk' });
+export function verifyToken(token) {
+  try {
+    const [body, sig] = String(token || '').split('.');
+    if (!body || !sig) return null;
+    const raw = Buffer.from(body, 'base64url');
+    if (!verify('sha256', raw, { key: PUBLIC_KEY, dsaEncoding: 'ieee-p1363' }, Buffer.from(sig, 'base64url'))) return null;
+    const lic = JSON.parse(raw.toString('utf8'));
+    return lic && lic.u && Date.now() < lic.u + 3 * DAY ? lic : null;
+  } catch { return null; }
 }

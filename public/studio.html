@@ -22,8 +22,19 @@
 window.yfToken=function(){try{const t=localStorage.getItem('yfToken')||'';if(!t)return '';const b=t.split('.')[0].replace(/-/g,'+').replace(/_/g,'/');const p=JSON.parse(decodeURIComponent(escape(atob(b+'='.repeat((4-b.length%4)%4)))));return p&&p.u&&Date.now()<p.u+3*864e5?t:''}catch(_){return ''}};
 window.yfWorker=function(){return String((window.YAKFLOW_CONFIG||{}).workerUrl||'').replace(/\/$/,'')};
 window.YFC={ready:false,version:'',n:0,pend:new Map()};
-addEventListener('message',function(e){if(e.source!==window||!e.data)return;var d=e.data;if(d.__yf==='hello'){YFC.ready=true;YFC.version=d.version||'';if(typeof renderStatus==='function')try{renderStatus()}catch(_){}}else if(d.__yf==='res'){var f=YFC.pend.get(d.rid);if(f){YFC.pend.delete(d.rid);f(d)}}});
+addEventListener('message',function(e){if(e.source!==window||!e.data)return;var d=e.data;if(d.__yf==='hello'){YFC.ready=true;YFC.version=d.version||'';YFC.agnes=Array.isArray(d.caps)&&d.caps.indexOf('agnes')>=0;if(typeof renderStatus==='function')try{renderStatus()}catch(_){}}else if(d.__yf==='res'){var f=YFC.pend.get(d.rid);if(f){YFC.pend.delete(d.rid);f(d)}}});
 postMessage({__yf:'ping'},'*');setTimeout(function(){postMessage({__yf:'ping'},'*')},1500);
+
+/* YAKFLOW_AGNES_DIRECT_V1 : Agnes refuse les appels venant de Cloudflare (erreur 1015). Avec YakFlow Connect,
+   les appels partent de la connexion de l'utilisateur (comme la version ordinateur) ; sinon relais Netlify. */
+window.yfConnectCall=function(msg,timeout){return new Promise(function(res,rej){var rid=++YFC.n;var t=setTimeout(function(){YFC.pend.delete(rid);rej(new Error('YakFlow Connect ne répond pas'))},timeout||180000);YFC.pend.set(rid,function(d){clearTimeout(t);res(d)});msg.__yf=msg.__yf||'agnes';msg.rid=rid;postMessage(msg,'*')})};
+window.yfAgnes=async function(method,path,auth,body){
+  if(YFC.ready&&YFC.agnes){const d=await yfConnectCall({kind:'api',method:method,path:path,auth:auth,body:body,token:yfToken()},150000);
+    const h={'Content-Type':d.ctype||'application/json'};if(d.retryAfter)h['Retry-After']=d.retryAfter;return new Response(d.status===204?null:(d.text||''),{status:d.status||599,headers:h})}
+  return fetch('/api'+path,{method:method,headers:{'Authorization':auth,'Content-Type':'application/json','X-Studio':'1','X-Yakflow-Token':yfToken()},body:body})};
+window.yfMedia=async function(url){
+  if(YFC.ready&&YFC.agnes){const d=await yfConnectCall({kind:'dl',url:url,token:yfToken()},320000);return new Response(d.buf||null,{status:d.status||599,headers:{'Content-Type':d.ctype||'application/octet-stream'}})}
+  return fetch('/dl?url='+encodeURIComponent(url),{headers:{'X-Studio':'1','X-Yakflow-Token':yfToken()}})};
 window.hubCall=function(kind,method,path,body){if(!YFC.ready){var e=new Error('YakFlow Connect n’est pas installé : installe-le dans Tampermonkey (Réglages > Ponts).');e.status=0;e.noConnect=true;return Promise.reject(e)}
  return new Promise(function(res,rej){var rid=++YFC.n;var t=setTimeout(function(){YFC.pend.delete(rid);rej(new Error('YakFlow Connect ne répond pas'))},60000);YFC.pend.set(rid,function(d){clearTimeout(t);res(d)});postMessage({__yf:'req',rid:rid,kind:kind,method:method,path:path,body:body},'*')})};
 </script>
@@ -965,7 +976,7 @@ const $ = (s, r) => (r || document).querySelector(s);
 const PROXY = location.protocol.startsWith('http') && ['127.0.0.1', 'localhost'].includes(location.hostname) && location.port === '8765';
 const API = yfWorker() + '/api';
 // ouvert par un autre serveur (Live Server, double-clic…) : le petit serveur de YakFlow ne répond pas
-fetch(yfWorker() + '/ping', { cache: 'no-store' }).then((r) => r.json()).then((j) => { if (!j || !j.ok) throw 0; }).catch(() => { $('#srvBanner').classList.add('show'); log('Le relais YakFlow ne répond pas.'); });
+fetch('/ping', { cache: 'no-store' }).then((r) => r.json()).then((j) => { if (!j || !j.ok) throw 0; }).catch(() => { $('#srvBanner').classList.add('show'); log('Le service YakFlow ne répond pas.'); });
 const now = () => Date.now();
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const fmtT = (t) => new Date(t).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
@@ -1331,7 +1342,7 @@ async function api(method, path, body, key = apiKeys()[0], signal) {
   if (now() < (keyRateUntil.get(key) || 0)) return { _err: 429, _local: true, detail: 'Pause locale après une limite de débit' };
   let r;
   try {
-    r = await fetch(API + path, { method, signal, headers: { 'Authorization': 'Bearer ' + (key || ''), 'Content-Type': 'application/json', 'X-Studio': '1', 'X-Yakflow-Token': yfToken() }, body: body ? JSON.stringify(body) : undefined });
+    r = await yfAgnes(method, path, 'Bearer ' + (key || ''), body ? JSON.stringify(body) : undefined);
   } catch (e) { return { _err: 'reseau', detail: 'Connexion impossible (' + e.message + ')' }; }
   if (r.status === 429) {
     const retry = r.headers.get('Retry-After');
@@ -1498,7 +1509,7 @@ async function refreshChatStatus() {
 document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshChatStatus(); });
 
 async function fetchAsData(url) {
-  const r = await fetch(yfWorker() + '/dl?url=' + encodeURIComponent(url) + '&name=image', { headers: { 'X-Studio': '1', 'X-Yakflow-Token': yfToken() } });
+  const r = await yfMedia(url);
   if (!r.ok) throw new Error('téléchargement image ' + r.status);
   const b = await r.blob();
   return fileData(new Blob([b], { type: 'image/png' }));
@@ -2031,8 +2042,7 @@ async function fetchClip(p, s) {
       }
       buf = await new Blob(parts, { type: 'video/mp4' }).arrayBuffer();
     } else {
-      const _clipUrl = yfWorker() + '/dl?url=' + encodeURIComponent(s.clip.url) + '&name=clip.mp4';
-      const response = await fetch(_clipUrl, { headers: licenseHeaders });
+      const response = await yfMedia(s.clip.url);
       if (!response.ok) throw new Error('HTTP ' + response.status);
       buf = await response.arrayBuffer();
     }

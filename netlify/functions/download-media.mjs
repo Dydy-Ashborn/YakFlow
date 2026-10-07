@@ -1,4 +1,4 @@
-import { checkLicense } from '../lib/firebase.mjs';
+import { verifyToken } from '../lib/licence-locale.mjs';
 import { json } from '../lib/http.mjs';
 
 const HOST_SUFFIXES = ['.agnes-ai.cn', '.agnes-ai.com', '.agnes-ai.space', '.myqcloud.com'];
@@ -15,8 +15,8 @@ function allowed(raw) {
 export default async function handler(request) {
   if (request.method !== 'GET') return json({ detail: 'Méthode refusée.' }, 405);
   try {
-    const state = await checkLicense(request.headers.get('X-Yakflow-License'));
-    if (!state.valid) return json(state, 403);
+    // YAKFLOW_TOKEN_V1 : licence signée, aucune lecture Firestore
+    if (!verifyToken(request.headers.get('X-Yakflow-Token'))) return json({ detail: 'Licence YakFlow invalide ou expirée. Recharge YakFlow.' }, 403);
     const url = new URL(request.url).searchParams.get('url');
     if (!allowed(url)) return json({ detail: 'Lien média non autorisé.' }, 400);
     let target = url;
