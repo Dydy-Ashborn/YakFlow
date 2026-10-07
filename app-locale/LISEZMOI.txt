@@ -10,6 +10,7 @@ INSTALLATION (une seule fois)
 3. Utilise Chrome ou Edge (le montage vidéo en a besoin).
 
 LANCER YAKFLOW
+- Le plus simple : ouvre « COMMENCE ICI.html » (dans ce dossier), tout est expliqué en images.
 - Mac : double-clic sur « Lancer YakFlow.command ».
   La toute première fois, macOS bloque le fichier (« Apple n'a pas pu confirmer… ») : clique sur « Terminé », puis
   Réglages Système > Confidentialité et sécurité > descends en bas > « Ouvrir quand même » à côté de « Lancer YakFlow.command »,
