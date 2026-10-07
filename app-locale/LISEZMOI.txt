@@ -23,6 +23,11 @@ ACTIVER TON CODE
   YakFlow a juste besoin d'Internet quelques secondes, une fois par mois.
 - Tu changes d'ordinateur ? Écris au support avec ton code : on le libère pour ta nouvelle machine.
 
+TU DÉBUTES ?
+- Ouvre PROMPT-DEBUTANT.txt (dans ce dossier), copie tout et colle-le dans ton IA habituelle (ChatGPT, Claude, Gemini…).
+  Elle apprend les outils, te pose quelques questions et t'aide à créer ta première vidéo, jusqu'au JSON à importer.
+- Le même bouton « Copier le prompt débutant » est dans YakFlow (fenêtre Importer et Guide).
+
 PREMIERS PAS
 1. Réglages : colle ta ou tes clés API Agnes (créées gratuitement sur https://agnes-ai.com/).
    Tes clés restent sur ton ordinateur, YakFlow ne les voit jamais.
