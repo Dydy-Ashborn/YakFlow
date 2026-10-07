@@ -11,7 +11,9 @@ INSTALLATION (une seule fois)
 
 LANCER YAKFLOW
 - Mac : double-clic sur « Lancer YakFlow.command ».
-  La toute première fois, macOS peut bloquer le fichier : fais clic droit > Ouvrir > Ouvrir.
+  La toute première fois, macOS bloque le fichier (« Apple n'a pas pu confirmer… ») : clique sur « Terminé », puis
+  Réglages Système > Confidentialité et sécurité > descends en bas > « Ouvrir quand même » à côté de « Lancer YakFlow.command »,
+  confirme avec ton mot de passe, puis relance le fichier. Ensuite, c'est un simple double-clic.
 - Windows : double-clic sur « Lancer YakFlow (Windows).bat ».
   Si Windows affiche « Windows a protégé votre ordinateur » : Informations complémentaires > Exécuter quand même.
 - YakFlow s'ouvre dans ton navigateur sur http://127.0.0.1:8765
