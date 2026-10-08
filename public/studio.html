@@ -1235,7 +1235,7 @@ async function checkKeys() {
       try {
         const r = await api('GET', path, undefined, key, AbortSignal.timeout(15000));
         recordKeyHealth(key, { ...keyResult(r, true), detail: r._err ? safeKeyError(r) : '' });
-        if (lane && isAuth(r)) lane.refused = true;
+        if (lane && isAuth(r)) { lane.refused = true; lane.refusedAt = now(); }
       } catch (e) { recordKeyHealth(key, { label: 'Vérification impossible', tone: 'warn' }); }
     }
   } finally { checkingKeys = false; renderKeyStatus(); }
@@ -1343,6 +1343,7 @@ async function api(method, path, body, key = apiKeys()[0], signal) {
   let r;
   try {
     r = await yfAgnes(method, path, 'Bearer ' + (key || ''), body ? JSON.stringify(body) : undefined);
+    if (r.status === 403) { const c = r.clone(); c.text().then((t) => { if (/Licence YakFlow/i.test(t)) onLicenceErr(); }).catch(() => {}); }
   } catch (e) { return { _err: 'reseau', detail: 'Connexion impossible (' + e.message + ')' }; }
   if (r.status === 429) {
     const retry = r.headers.get('Retry-After');
@@ -1363,7 +1364,14 @@ function errText(r) {
   return JSON.stringify(d);
 }
 const isBusy = (r) => /queue_full|queue is full|rate.?limit|too many/i.test(JSON.stringify(r)) || [429, 500, 502, 503, 504, 520, 599, 'reseau'].includes(r._err);
-const isAuth = (r) => r._err === 401 || r._err === 403;
+// YAKFLOW_KEY_REFUSED_V2 : une erreur de licence YakFlow n'est pas une clé Agnes refusée
+// une clé refusée est retestée au bout de 15 min (panne passagère, licence renouvelée…) au lieu d'être écartée jusqu'au rechargement
+setInterval(() => { for (const l of keyLanes.values()) { if ((l.refused || l.imageRefused) && now() - (l.refusedAt || 0) > 15 * 60000) { l.refused = false; l.imageRefused = false; l.refusedAt = 0; } } }, 60000);
+// licence expirée pendant la nuit : on la renouvelle (1 appel) au lieu de compter des erreurs
+let licenceRetryAt = 0;
+function onLicenceErr() { if (now() < licenceRetryAt) return; licenceRetryAt = now() + 10 * 60000; log('Licence YakFlow à renouveler : renouvellement automatique.'); try { localStorage.removeItem('yfToken'); } catch (_) {} if (window.yfRenewLicence) window.yfRenewLicence(); }
+const isLicenceErr = (r) => r._err === 403 && /Licence YakFlow/i.test(JSON.stringify(r));
+const isAuth = (r) => (r._err === 401 || r._err === 403) && !isLicenceErr(r);
 let lastReq = null;
 function remember(path, body) {
   const short = JSON.parse(JSON.stringify(body, (k, v) => typeof v === 'string' && v.startsWith('data:') ? v.slice(0, 40) + '…(' + Math.round(v.length / 1024) + ' Ko)' : v));
@@ -1445,7 +1453,7 @@ async function genImage(p, s, assignedLane) {
         return { data: await toJpeg(src, Infinity), refs: refs.length };
       }
       recordKeyHealth(lane.key, { ...keyResult(r), detail: safeKeyError(r) });
-      if (isAuth(r)) { lane.imageRefused = true; break; }
+      if (isAuth(r)) { lane.imageRefused = true; lane.refusedAt = now(); break; }
       if (isBusy(r)) {
         lane.imageUntil = Math.max(now() + 60000, keyRateUntil.get(lane.key) || 0);
         if (r._err === 'reseau' || r._err === 599) return { err: 'Connexion interrompue pendant la génération. Vérifie Agnes avant de relancer pour éviter un doublon.' };
@@ -1934,7 +1942,7 @@ async function submitClip(p, s, lane) {
     if (r._err === 429) lane.rateStreak = (lane.rateStreak || 0) + 1;
     const wait = qfull ? Math.min(60000, 20000 + 10000 * ((lane.fullStreak || 1) - 1)) :
       r._err === 429 ? Math.min(180000, 60000 * (lane.rateStreak || 1)) : 60000;
-    lane.refused = isAuth(r); lane.until = Math.max(now() + wait, keyRateUntil.get(lane.key) || 0);
+    lane.refused = isAuth(r); if (lane.refused) lane.refusedAt = now(); lane.until = Math.max(now() + wait, keyRateUntil.get(lane.key) || 0);
     setClip(p, s, { st: 'file', retryAt: lane.until, msg: lane.refused ? 'Clé refusée ; les autres clés continuent.' : 'Clé occupée, nouvel essai à ' + fmtT(lane.until) });
     stat.try(lane.refused ? 'err' : r._err === 429 ? 'r429' : qfull ? 'full' : 'err', inflight);
     if (lane.refused) log('Une clé Agnes a été refusée. Vérifie les clés dans les réglages.');
@@ -3229,6 +3237,7 @@ setInterval(agnesPushRemoteStatus, 3000);
    if((st===0||st>=500)&&p&&now<p.u+3*864e5){opened(p);return}
    window.__yfLicenceChecked=true;localStorage.removeItem('yfToken');lock(d.message||'Licence à renouveler.',true);return}
   window.__yfLicenceChecked=true;lock('');if(link)activate(link)}
+ window.yfRenewLicence=async function(){const code=localStorage.getItem('yakflowLicenseCode');if(!code)return;const {status:st,d}=await post('licence',{code,machine:device(),version:'web-2'});if(st===200&&d.ok&&d.token)keep(code,d.token);else if(st>0&&st<500)boot()};
  window.yfChangeCode=function(){localStorage.removeItem('yfToken');localStorage.removeItem('yakflowLicenseCode');document.getElementById('yfTrialBar')?.remove();input.value='';lock('Colle ton nouveau code YakFlow.');setTimeout(()=>input.focus(),80)};
  btn?.addEventListener('click',()=>activate());input?.addEventListener('keydown',e=>{if(e.key==='Enter')activate()});
  document.getElementById('yfTrialBtn')?.addEventListener('click',trial);document.getElementById('yfTrialEmail')?.addEventListener('keydown',e=>{if(e.key==='Enter')trial()});
