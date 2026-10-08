@@ -41,7 +41,7 @@ window.yfAgnes=async function(method,path,auth,body){
     if(d&&d.status&&d.status!==599){const h={'Content-Type':d.ctype||'application/json'};if(d.retryAfter)h['Retry-After']=d.retryAfter;return new Response(d.status===204?null:(d.text||''),{status:d.status,headers:h})}}
   return fetch('/api'+path,{method:method,headers:{'Authorization':auth,'Content-Type':'application/json','X-Studio':'1','X-Yakflow-Token':yfToken()},body:body})};
 window.yfMedia=async function(url){
-  try{const r=await fetch(url);if(r.ok)return r}catch(_){}
+  try{const r=await fetch(url);if(r.ok&&!/text\/html/i.test(r.headers.get('content-type')||''))return r}catch(_){}
   if(YFC.ready&&YFC.agnes){try{const d=await yfConnectCall({kind:'dl',url:url,token:yfToken()},320000);if(d&&d.status&&d.status!==599)return new Response(d.buf||null,{status:d.status,headers:{'Content-Type':d.ctype||'application/octet-stream'}})}catch(_){}}
   return fetch('/dl?url='+encodeURIComponent(url),{headers:{'X-Studio':'1','X-Yakflow-Token':yfToken()}})};
 /* licence : signature vérifiée dans le navigateur avant tout appel */
@@ -2068,6 +2068,8 @@ async function fetchClip(p, s) {
       buf = await response.arrayBuffer();
     }
     if (buf.byteLength < 10000) throw new Error('fichier trop petit');
+    // YAKFLOW_CLIP_CHECK_V1 : on ne garde qu'une vraie vidéo MP4 (jamais une page d'erreur)
+    { const h = new Uint8Array(buf, 0, 12); if (!(h[4] === 0x66 && h[5] === 0x74 && h[6] === 0x79 && h[7] === 0x70)) throw new Error('le fichier reçu n’est pas une vidéo'); }
     await mPut(clipKey(p, s), buf);
     diskClip(p, s, buf);
     const t = now(), c0 = s.clip.firstTry || s.clip.sent || t, c1 = s.clip.sent || t;
@@ -2080,7 +2082,11 @@ async function fetchClip(p, s) {
     if (owner) recordKeyHealth(owner.key, { label: 'Clip reçu — génération réussie', tone: 'ok' }, true);
     lastProgress = now(); log('Clip prêt : ' + p.titre + ' · ' + s.nom);
     phone('Clip prêt', 'Projet : ' + p.titre + '\nÉtape : ' + s.nom + '\nDurée totale : ' + fmtDur(totalMs), 2); cancelStreak = 0; quotaSent = false; qEmptySince = 0;
-  } catch (e) { setClip(p, s, { st: 'dl', msg: 'Téléchargement raté (' + e.message + '), je réessaie · ' + String(s.clip.url || '').slice(0, 80), nextPoll: now() + 30000 }); }
+  } catch (e) {
+    const fails = (s.clip.dlFails || 0) + 1;
+    if (fails >= 6 && !s.clip.grok) { setClip(p, s, { st: 'attente', dlFails: 0, videoId: '', url: '', msg: 'Lien Agnes expiré : le clip va être refait.' }); log('Clip introuvable chez Agnes, je le refais : ' + p.titre + ' · ' + s.nom); return; }
+    setClip(p, s, { st: 'dl', dlFails: fails, msg: 'Téléchargement raté (' + e.message + '), je réessaie (' + fails + '/6)', nextPoll: now() + 30000 });
+  }
 }
 
 function readyForMontage(p) {
@@ -3725,5 +3731,30 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 })();
 </script>
 
+<script>
+/* YAKFLOW_CLIP_REPAIR_V1 : retélécharge les clips enregistrés par erreur sous forme de page web */
+(function(){
+  if (localStorage.getItem('yf_cliprepair_v1')) return;
+  setTimeout(async function fix(){
+    if (!projects.length) return setTimeout(fix, 3000);
+    try{
+      let n=0;
+      for (const p of projects) for (const s of p.etapes) {
+        if (s.type!=='scene' || !s.clip || s.clip.st!=='fini') continue;
+        const b = await mGet(clipKey(p,s)); if (!b) continue;
+        const ab = b instanceof Blob ? await b.slice(0,12).arrayBuffer() : b;
+        const h = new Uint8Array(ab,0,12);
+        if (h[4]===0x66&&h[5]===0x74&&h[6]===0x79&&h[7]===0x70) continue;
+        n++;
+        if (s.clip.url && !s.clip.grok) setClip(p,s,{st:'dl',dlFails:0,nextPoll:0,msg:'Clip abîmé : nouveau téléchargement…'});
+        else setClip(p,s,{st:'attente',videoId:'',url:'',msg:'Clip abîmé : il va être refait.'});
+        if (p.montage && p.montage.st==='fini') { p.montage={st:'attente'}; }
+      }
+      localStorage.setItem('yf_cliprepair_v1','1');
+      if (n){ log(n+' clip(s) abîmé(s) retrouvé(s) : je les retélécharge.'); try{toast(n+' clip(s) abîmé(s) : je les retélécharge.','info')}catch(_){} saveProjects(); render(); }
+    }catch(e){ console.warn('réparation clips', e); }
+  }, 4000);
+})();
+</script>
 </body>
 </html>

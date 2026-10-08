@@ -1,1 +1,8 @@
-const C='yakflow-v16e';const CORE=['/','/index.html','/manifest.webmanifest','/yakflow-config.js','/yakflow-logo.webp','/favicon.png','/yakflow-icon-192.png','/vendor/fonts/fonts.css','/vendor/fontawesome/css/all.min.css','/vendor/fontawesome/webfonts/fa-solid-900.woff2','/vendor/fontawesome/webfonts/fa-regular-400.woff2'];self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;const u=new URL(e.request.url);if(u.pathname.startsWith('/.netlify/')||u.origin.includes('agnes-ai.com'))return;e.respondWith(fetch(e.request).then(r=>{const x=r.clone();caches.open(C).then(c=>c.put(e.request,x));return r}).catch(()=>caches.match(e.request).then(r=>r||caches.match('/index.html'))))});
+// YAKFLOW_SW_OFF_V1 : l'ancien service worker renvoyait la page du studio quand un téléchargement de clip échouait
+// (des « clips » de 265 Ko qui ne se lisent pas). Celui-ci ne fait plus rien : il vide ses caches et se désinstalle.
+self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', (e) => e.waitUntil((async () => {
+  for (const k of await caches.keys()) await caches.delete(k);
+  await self.registration.unregister();
+  for (const c of await self.clients.matchAll({ type: 'window' })) c.navigate(c.url).catch(() => {});
+})()));
