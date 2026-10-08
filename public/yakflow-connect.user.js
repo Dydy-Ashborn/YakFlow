@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.0.3
+// @version      3.0.4
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -32,7 +32,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.0.3';
+  const CONNECT_VERSION = '3.0.4';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -104,6 +104,7 @@
       const live = alive(kind);
       if (kind === 'grok') return ok({ alive: live.length > 0, workers: live.length, pending: waiting(kind).length, running: 0 });
       const out = { protocol: 2, alive: live.length > 0, workers: live.length, info: live[0] ? live[0].info : '' };
+      const pz = get('bridge:pause'); if (pz && now() < pz.until) Object.assign(out, { pauseUntil: pz.until, pauseWhy: pz.why || '', info: 'En pause jusqu’à ' + new Date(pz.until).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) + ' : ' + (pz.why || 'limite ChatGPT') });
       if (id) { const j = job(kind, id); if (j) Object.assign(out, { st: j.st, error: j.error || '', pos: 0, data: j.st === 'fini' ? get(rk(kind, id)) : null }); }
       return ok(out);
     }
@@ -155,6 +156,14 @@
       if (j.st === 'oublie') return ok({ ok: true, ignore: true });
       if (d.data) { set(rk(kind, d.id), String(d.data)); saveJob(kind, d.id, { st: 'fini', finishedAt: now(), error: '' }); }
       else saveJob(kind, d.id, { st: 'echec', finishedAt: now(), error: String(d.error || 'Erreur ChatGPT').slice(0, 500) });
+      return ok({ ok: true });
+    }
+    // YAKFLOW_RELEASE_V1 : l'onglet rend le travail à la file (limite passagère), sans le compter comme un échec
+    if (action === 'release' && method === 'POST') {
+      const d = body || {}; const j = job(kind, d.id);
+      if (!j) return err(404, 'Travail inconnu.');
+      if (j.worker && j.worker !== worker) return err(409, 'Autre onglet propriétaire.');
+      if (j.st === 'en cours') { saveJob(kind, d.id, { st: 'attente', worker: '', claimedAt: 0 }); del(kind + ':claim:' + fnv(String(d.id))); }
       return ok({ ok: true });
     }
     if (action === 'fail' && kind === 'grok' && method === 'POST') {
@@ -457,6 +466,21 @@
     return m.length ? m[m.length - 1] : null;
   }
   function lastAssistantText() { const m = lastAssistant(); return m ? m.innerText || '' : ''; }
+  // YAKFLOW_ATTACH_LIMIT_V1 : « Vous avez atteint le nombre maximal de pièces jointes… réessayer à 16:02 »
+  // limite du COMPTE ChatGPT : tous les onglets se mettent en pause jusqu'à l'heure indiquée, les images restent en file
+  function attachLimit() {
+    const re = /nombre maximal de pi[eè]ces jointes|maximum number of (file )?(uploads|attachments)|(file|attachment|upload) limit|limite de (t[ée]l[ée]versement|pi[eè]ces jointes)/i;
+    const el = [...document.querySelectorAll('body *')].find((e) => e.children.length < 6 && isVisible(e) && re.test(e.textContent || '') && (e.textContent || '').length < 400);
+    if (!el) return 0;
+    const box = (el.closest('div') && el.closest('div').parentElement) || el;
+    const txt = box.textContent || el.textContent || '';
+    const m = txt.match(/(\d{1,2})\s*[:h]\s*(\d{2})\s*(AM|PM)?/i);
+    if (!m) return Date.now() + 60 * 60000;
+    let h = +m[1]; const mi = +m[2]; if (m[3]) { if (/pm/i.test(m[3]) && h < 12) h += 12; if (/am/i.test(m[3]) && h === 12) h = 0; }
+    const d = new Date(); d.setHours(h, mi, 0, 0); if (d.getTime() < Date.now() - 60000) d.setDate(d.getDate() + 1);
+    return d.getTime() + 60000;
+  }
+  function attachError() { const until = attachLimit() || Date.now() + 60 * 60000; const e = new Error('limite de pièces jointes ChatGPT, pause jusqu’à ' + new Date(until).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })); e.attachUntil = until; return e; }
   const limitReached = () => /(limit|limite|quota|try again later|réessa)/i.test(lastAssistantText());
   // le tour de l'assistant est terminé quand ses boutons d'action (copier, j'aime…) sont apparus
   function turnDone() {
@@ -567,8 +591,9 @@
     const validate = async (img) => checkResult(await fetchBlob(imgSrc(img)), job, refHashes);
     // 1. les fiches d'abord (comme la Régie), en vérifiant que les vignettes apparaissent
     if (files.length) {
+      if (attachLimit()) throw attachError();
       say('ajout de ' + files.length + ' fiche(s) : ' + job.nom);
-      if (!(await attachAndCheck(files, field))) throw new Error('fiches non jointes (aucune vignette n\'apparaît)');
+      if (!(await attachAndCheck(files, field))) { if (attachLimit()) throw attachError(); throw new Error('fiches non jointes (aucune vignette n\'apparaît)'); }
       await sleep(2500);
     }
     // 2. puis le prompt, vérifié
@@ -605,6 +630,7 @@
         } catch (e) { say('studio non joignable'); lastErr = 'Lance serveur.py (Agnes Studio).'; continue; }
       }
       if (busy || !GM_getValue(K_ON, true) || Date.now() < pauseUntil) continue;
+      { const pz = get('bridge:pause'); if (pz && Date.now() < pz.until) { say('pause jusqu’à ' + new Date(pz.until).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) + ' (' + (pz.why || 'limite ChatGPT') + ')'); continue; } }
       if (late) {
         let img = !generating() && newImage(late.before);
         if (img && late.validate) { const why = await late.validate(img).catch(() => ''); if (why) { late.before.add(imgSrc(img)); img = null; } }
@@ -653,7 +679,11 @@
       catch (e) {
         lastErr = (job?.nom || 'Pont') + ' : ' + e.message;
         try { failDiag = { t: Date.now(), txt: diagnostic() }; } catch (x) { /* tant pis */ }
-        if (taken && !(late && late.id === job.id)) await call('POST', withWorker('/bridge/result'), { id: job.id, error: e.message }).catch(() => {});
+        if (e.attachUntil) {
+          set('bridge:pause', { until: e.attachUntil, why: 'limite de pièces jointes ChatGPT' });
+          if (taken) await call('POST', withWorker('/bridge/release'), { id: job.id }).catch(() => {});
+          say(e.message); lastErr = '';
+        } else if (taken && !(late && late.id === job.id)) await call('POST', withWorker('/bridge/result'), { id: job.id, error: e.message }).catch(() => {});
         if (/limite/.test(e.message)) { pauseUntil = Date.now() + 20 * 60000; say('pause 20 min (limite ChatGPT)'); }
       } finally { busy = false; }
     }

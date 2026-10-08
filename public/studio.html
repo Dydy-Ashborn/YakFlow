@@ -1482,7 +1482,7 @@ async function genImage(p, s, assignedLane) {
   return { r: lastResponse && isBusy(lastResponse) ? lastResponse : { _err: 429, _local: true, detail: 'Clés images temporairement en pause' }, retryAt };
 }
 /* ---- images par ChatGPT, via le pont (script Tampermonkey dans un onglet chatgpt.com) ---- */
-let chatAlive = null, chatInfo = '', chatWorkers = 0, chatProtocol = 0;
+let chatAlive = null, chatInfo = '', chatWorkers = 0, chatProtocol = 0, chatPauseUntil = 0;
 async function bridge(method, path, body) {
   const d = await hubCall('bridge', method, path, body);   // YAKFLOW_CONNECT : file locale dans le navigateur
   if (d.status >= 400) throw new Error('pont : ' + ((d.json && d.json.detail) || ('HTTP ' + d.status)));
@@ -1504,7 +1504,7 @@ async function genChatGPT(p, s) {
     if (!cur || cur.img.st !== 'calcul') { bridge('POST', 'forget?id=' + encodeURIComponent(id)).catch(() => {}); return { cancel: true }; }
     let st;
     try { st = await bridge('GET', 'status?id=' + encodeURIComponent(id)); } catch (e) { continue; }
-    chatAlive = st.alive; chatInfo = st.info || ''; chatWorkers = st.workers || 0; chatProtocol = st.protocol || 0;
+    chatAlive = st.alive; chatInfo = st.info || ''; chatWorkers = st.workers || 0; chatProtocol = st.protocol || 0; chatPauseUntil = st.pauseUntil || 0;
     if (!st.st) { await bridge('POST', 'push', job); continue; } // serveur relancé
     if (st.st === 'fini' && st.data) {
       bridge('POST', 'forget?id=' + encodeURIComponent(id)).catch(() => {});
@@ -1521,7 +1521,7 @@ async function genChatGPT(p, s) {
   }
 }
 async function refreshChatStatus() {
-  try { const st = await bridge('GET', 'status'); chatAlive = st.alive; chatInfo = st.info || ''; chatWorkers = st.workers || 0; chatProtocol = st.protocol || 0; }
+  try { const st = await bridge('GET', 'status'); chatAlive = st.alive; chatInfo = st.info || ''; chatWorkers = st.workers || 0; chatProtocol = st.protocol || 0; chatPauseUntil = st.pauseUntil || 0; }
   catch { chatAlive = false; chatInfo = ''; chatWorkers = 0; chatProtocol = 0; }
   renderStatus();
 }
@@ -2579,6 +2579,7 @@ function renderStatus() {
   pc.hidden = S.imgSrc !== 'chatgpt';
   pc.className = 'pill ' + (chatAlive && chatProtocol < 2 ? 'warn' : chatAlive ? 'ok' : chatAlive === false ? 'warn' : 'off');
   pc.textContent = chatAlive === null ? 'ChatGPT : vérification…' : chatAlive && chatProtocol < 2 ? 'Pont ChatGPT à mettre à jour' : chatAlive ? 'ChatGPT · ' + chatInFlight + ' image' + (chatInFlight > 1 ? 's' : '') + ' · ' + chatWorkers + ' onglet' + (chatWorkers > 1 ? 's' : '') : 'ChatGPT absent';
+  if (chatAlive && chatPauseUntil > now()) { pc.className = 'pill warn'; pc.textContent = 'ChatGPT en pause jusqu’à ' + fmtT(chatPauseUntil) + ' (pièces jointes)'; }
   pc.title = chatAlive ? (chatInfo || 'Le script Pont ChatGPT répond') : 'Ouvre un onglet chatgpt.com avec le script « Pont ChatGPT » installé dans Tampermonkey';
 }
 
