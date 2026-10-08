@@ -1,0 +1,45 @@
+LE FORMAT YAKFLOW · pour ceux qui ont déjà leur méthode (offert par YakFlow, yakflow.netlify.app)
+
+Tu écris déjà mes scripts de vidéos. À partir de maintenant, quand je te demande « en JSON YakFlow », tu transformes le script (celui que tu viens d'écrire ou celui que je colle) en un fichier que mon studio YakFlow importe tel quel. YakFlow génère les images, les anime en clips de 4 à 12 secondes et monte la vidéo finale. Ne change pas mon histoire : tu la découpes et tu écris les prompts.
+
+RÉPONSE
+- Uniquement du JSON valide, dans un seul bloc de code, sans commentaire.
+- Prompts d'image et de clip en anglais (les modèles les comprennent mieux), dialogues dans la langue de la vidéo.
+
+RACINE
+- "id" : minuscules et tirets, unique (ex. "chat-detective-01").
+- "titre" : titre de la vidéo.
+- Facultatif : "accroche" (texte à l'écran au début, 8 mots max), "description", "hashtags", "commentaire" (commentaire épinglé).
+- "etapes" : la liste des étapes, dans cet ordre : les fiches personnages et décors, puis la couverture, puis les scènes (les images de fin juste après leur scène).
+
+LES ÉTAPES
+Champs communs : "id" (unique), "type" ("fiche", "couverture" ou "scene"), "nom" (court, lisible), "joindre" (liste des id de fiches à donner comme références visuelles), "promptImage".
+- fiche : un personnage ou un décor seul, sur fond neutre, vu en entier. Une fiche par personnage récurrent et par décor important. Elles servent à garder la même apparence dans toutes les scènes : joins-les à chaque scène où ils apparaissent.
+- couverture : l'image de couverture de la vidéo, verticale, accrocheuse, sans texte.
+- scene : l'image de départ du plan, plus "promptVideo" (ce qui bouge : action, caméra, dialogue éventuel avec qui parle) et "secondes" (entier de 4 à 12).
+
+CHAMPS AVANCÉS (facultatifs, seulement si utiles)
+- "promptVideoAgnes" / "promptVideoGrok" : une version du prompt de clip propre à chaque moteur, à la place de "promptVideo".
+- "imageFin" : id d'une image qui sert de dernière image du clip (le clip va de son image de départ à celle-ci). Pour un plan qui bouge beaucoup, crée une fiche "fin-scene-N" placée juste après la scène N, qui joint "scene-N" en premier, avec un promptImage du type « Use the first attached image as the starting shot to continue: … » décrivant la fin du plan.
+- "imageDe" : id d'une étape dont l'image est réutilisée comme départ, sans nouvelle image. Ex. la scène suivante part de "fin-scene-N" pour un enchaînement sans coupure.
+- "muet": true pour un plan sans parole (gardé en entier au montage).
+- "garder" : la portion du clip à garder au montage, en secondes, ex. "0.5-6".
+- "transition": "fondu" pour un fondu avec le plan précédent (sinon coupe franche).
+- "format" : "9:16" par défaut ; aussi "16:9", "1:1", "4:3", "3:4".
+
+BONNES PRATIQUES
+- Une réplique tient dans la durée du clip (environ 3 mots par seconde) et finit une seconde avant la fin.
+- Dans chaque promptImage de scène, décris le cadrage, le décor, la lumière et qui est visible ; rappelle le style visuel de la vidéo.
+- Pas de personnages protégés, pas de vraies personnes, rien de choquant (conditions d'Agnes, d'OpenAI et de xAI).
+
+EXEMPLE MINIMAL
+{"id":"ma-video-01","titre":"Ma vidéo","accroche":"Il n'avait qu'une seule chance","etapes":[
+{"id":"fiche-heros","type":"fiche","nom":"Fiche du héros","joindre":[],"promptImage":"..."},
+{"id":"fiche-cuisine","type":"fiche","nom":"Décor cuisine","joindre":[],"promptImage":"..."},
+{"id":"couverture","type":"couverture","nom":"Couverture","joindre":["fiche-heros"],"promptImage":"..."},
+{"id":"scene-1","type":"scene","nom":"Accroche","joindre":["fiche-heros","fiche-cuisine"],"promptImage":"...","promptVideo":"...","secondes":7,"imageFin":"fin-scene-1"},
+{"id":"fin-scene-1","type":"fiche","nom":"Fin de la scène 1","joindre":["scene-1","fiche-heros"],"promptImage":"Use the first attached image as the starting shot to continue: ..."},
+{"id":"scene-2","type":"scene","nom":"Suite directe","joindre":["fiche-heros"],"imageDe":"fin-scene-1","promptVideo":"...","secondes":6}
+]}
+
+Si tu as compris, réponds juste « Prêt pour YakFlow » et attends mon script.

@@ -3643,7 +3643,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
     }
     if (id === 'start') {
       html = head('Ta première vidéo', 'Tout est prêt', 'Il te faut maintenant un scénario au format YakFlow. Le plus simple :') + '<div class="yfs-todo">' +
-        item(1, 'Copie le prompt débutant', 'Colle-le dans ton IA habituelle (ChatGPT, Claude, Gemini…). Elle te pose quelques questions et écrit ta vidéo.', '<div class="yfs-row"><button class="yfs-btn pr yfCopyBeginner" type="button"><i class="fa-regular fa-copy"></i>Copier le prompt débutant</button></div>') +
+        item(1, 'Copie le Coach YakFlow', 'Le prompt qui t’apprend à prompter. Colle-le dans ton IA habituelle (ChatGPT, Claude, Gemini…) : il te pose quelques questions, écrit ta vidéo avec toi et t’explique ses choix.', '<div class="yfs-row"><button class="yfs-btn pr yfCopyBeginner" type="button"><i class="fa-regular fa-copy"></i>Copier le Coach YakFlow</button><button class="yfs-btn yfCopyBeginner" data-url="/format-yakflow.txt" type="button"><i class="fa-solid fa-code"></i>J’ai déjà ma méthode : copier le Format YakFlow</button></div>') +
         item(2, 'Importe le fichier JSON', 'Bouton « + Importer » du studio : colle le JSON ou choisis le fichier.') +
         item(3, 'Clique sur « Lancer »', 'Images, clips puis montage s’enchaînent tout seuls. Tu peux fermer cette fenêtre.') + '</div>';
     }
@@ -3706,8 +3706,8 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
   // copie du prompt débutant
   document.addEventListener('click', async (e) => {
     const b = e.target.closest('.yfCopyBeginner'); if (!b) return;
-    try { const t = await (await fetch('/prompt-debutant.txt', { cache: 'no-store' })).text(); await navigator.clipboard.writeText(t); const o = b.innerHTML; b.textContent = 'Copié, colle-le dans ton IA'; setTimeout(() => (b.innerHTML = o), 2200); }
-    catch (_) { window.open('/prompt-debutant.txt', '_blank'); }
+    try { const t = await (await fetch(b.dataset.url || '/prompt-debutant.txt', { cache: 'no-store' })).text(); await navigator.clipboard.writeText(t); const o = b.innerHTML; b.textContent = 'Copié, colle-le dans ton IA'; setTimeout(() => (b.innerHTML = o), 2200); }
+    catch (_) { window.open(b.dataset.url || '/prompt-debutant.txt', '_blank'); }
   });
   // bouton dans le Guide pour rouvrir l'installation
   function addReopen() {
