@@ -28,13 +28,26 @@ postMessage({__yf:'ping'},'*');setTimeout(function(){postMessage({__yf:'ping'},'
 /* YAKFLOW_AGNES_DIRECT_V1 : Agnes refuse les appels venant de Cloudflare (erreur 1015). Avec YakFlow Connect,
    les appels partent de la connexion de l'utilisateur (comme la version ordinateur) ; sinon relais Netlify. */
 window.yfConnectCall=function(msg,timeout){return new Promise(function(res,rej){var rid=++YFC.n;var t=setTimeout(function(){YFC.pend.delete(rid);rej(new Error('YakFlow Connect ne répond pas'))},timeout||180000);YFC.pend.set(rid,function(d){clearTimeout(t);res(d)});msg.__yf=msg.__yf||'agnes';msg.rid=rid;postMessage(msg,'*')})};
+/* YAKFLOW_AGNES_DIRECT_V3 : Agnes accepte les appels directs du navigateur (CORS ouvert). Chaque client appelle Agnes
+   depuis sa propre connexion : aucun serveur, aucune limite côté YakFlow, marche aussi sur téléphone.
+   Secours si le navigateur refuse : YakFlow Connect, puis relais Netlify. Les appels exigent une licence signée valide. */
+window.YF_AGNES=['https://apihub.agnes-ai.com','https://apihub.agnes-ai.cn'];
 window.yfAgnes=async function(method,path,auth,body){
-  if(YFC.ready&&YFC.agnes){const d=await yfConnectCall({kind:'api',method:method,path:path,auth:auth,body:body,token:yfToken()},150000);
-    const h={'Content-Type':d.ctype||'application/json'};if(d.retryAfter)h['Retry-After']=d.retryAfter;return new Response(d.status===204?null:(d.text||''),{status:d.status||599,headers:h})}
+  if(!window.__yfLicenceOk){const e={error:{message:'Licence YakFlow à vérifier : recharge YakFlow.'}};return new Response(JSON.stringify(e),{status:403,headers:{'Content-Type':'application/json'}})}
+  const base=path.split('?')[0];
+  try{let r;for(const o of YF_AGNES){r=await fetch(o+path,{method:method,headers:{'Authorization':auth,'Content-Type':'application/json'},body:body});if(!([404,405].includes(r.status)&&base==='/v1/images/generations'))break}return r}
+  catch(_){/* réseau ou CORS : on passe par un relais */}
+  if(YFC.ready&&YFC.agnes&&method==='GET'){let d=null;try{d=await yfConnectCall({kind:'api',method:method,path:path,auth:auth,body:body,token:yfToken()},150000)}catch(_){d=null}
+    if(d&&d.status&&d.status!==599){const h={'Content-Type':d.ctype||'application/json'};if(d.retryAfter)h['Retry-After']=d.retryAfter;return new Response(d.status===204?null:(d.text||''),{status:d.status,headers:h})}}
   return fetch('/api'+path,{method:method,headers:{'Authorization':auth,'Content-Type':'application/json','X-Studio':'1','X-Yakflow-Token':yfToken()},body:body})};
 window.yfMedia=async function(url){
-  if(YFC.ready&&YFC.agnes){const d=await yfConnectCall({kind:'dl',url:url,token:yfToken()},320000);return new Response(d.buf||null,{status:d.status||599,headers:{'Content-Type':d.ctype||'application/octet-stream'}})}
+  try{const r=await fetch(url);if(r.ok)return r}catch(_){}
+  if(YFC.ready&&YFC.agnes){try{const d=await yfConnectCall({kind:'dl',url:url,token:yfToken()},320000);if(d&&d.status&&d.status!==599)return new Response(d.buf||null,{status:d.status,headers:{'Content-Type':d.ctype||'application/octet-stream'}})}catch(_){}}
   return fetch('/dl?url='+encodeURIComponent(url),{headers:{'X-Studio':'1','X-Yakflow-Token':yfToken()}})};
+/* licence : signature vérifiée dans le navigateur avant tout appel */
+window.yfCheckSig=async function(t){try{const [b,s]=String(t||'').split('.');if(!b||!s)return null;const u=x=>Uint8Array.from(atob(x.replace(/-/g,'+').replace(/_/g,'/')+'='.repeat((4-x.length%4)%4)),c=>c.charCodeAt(0));
+  const k=await crypto.subtle.importKey('jwk',{kty:'EC',crv:'P-256',x:'HHa1M8_6PFwWynyMX96HgfOGhWCK1Uktq0Vcjn7HcKM',y:'rMI-Y3kGNf8wSuOTHaQDpWpbMGHnfy838ogn8kEARRk'},{name:'ECDSA',namedCurve:'P-256'},false,['verify']);
+  if(!(await crypto.subtle.verify({name:'ECDSA',hash:'SHA-256'},k,u(s),u(b))))return null;const p=JSON.parse(new TextDecoder().decode(u(b)));return p&&p.u&&Date.now()<p.u+3*864e5?p:null}catch(_){return null}};
 window.hubCall=function(kind,method,path,body){if(!YFC.ready){var e=new Error('YakFlow Connect n’est pas installé : installe-le dans Tampermonkey (Réglages > Ponts).');e.status=0;e.noConnect=true;return Promise.reject(e)}
  return new Promise(function(res,rej){var rid=++YFC.n;var t=setTimeout(function(){YFC.pend.delete(rid);rej(new Error('YakFlow Connect ne répond pas'))},60000);YFC.pend.set(rid,function(d){clearTimeout(t);res(d)});postMessage({__yf:'req',rid:rid,kind:kind,method:method,path:path,body:body},'*')})};
 </script>
@@ -2994,7 +3007,7 @@ $('#sTest').onclick = async () => { S.ntfy = $('#sNtfy').value.trim(); if (!S.nt
   curId = projects[0] && projects[0].id;
   render();
   refreshChatStatus();
-  if (S.vidEngine !== 'grok' && !apiKeys().length) setTimeout(function waitAccess() { const g = document.getElementById('yfActivation'); if (!window.__yfLicenceChecked || (g && !g.hidden)) return setTimeout(waitAccess, 1000); openSettings(); }, 1200);
+  if (S.vidEngine !== 'grok' && !apiKeys().length) setTimeout(function waitAccess() { const g = document.getElementById('yfActivation'); if (!window.__yfLicenceChecked || (g && !g.hidden)) return setTimeout(waitAccess, 1000); if (window.yfSetupNeeded && (window.yfSetupNeeded() || !document.getElementById('yfSetup').hidden)) return; openSettings(); }, 1200);
 })();
 
 // AGNES_REMOTE_STATUS_CLIENT_V1
@@ -3214,7 +3227,7 @@ setInterval(agnesPushRemoteStatus, 3000);
  function keep(code,token){localStorage.setItem('yfToken',token);if(code)localStorage.setItem('yakflowLicenseCode',code)}
  function lock(msg,err){document.querySelectorAll('dialog[open]').forEach(x=>x.close());overlay.hidden=false;if(msg)show(msg,err?'err':'');setTimeout(()=>(document.getElementById('yfTrialEmail')||input).focus(),50)}
  function trialBar(p){if(document.getElementById('yfTrialBar'))return;const el=document.createElement('div');el.id='yfTrialBar';el.style.cssText='position:fixed;left:16px;bottom:16px;z-index:9000;display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:#16191e;border:1px solid rgba(255,178,36,.45);color:#f5f2ec;font:600 13px Inter,system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.4)';const end=new Date(p.u).toLocaleString('fr-FR',{weekday:'long',hour:'2-digit',minute:'2-digit'});el.innerHTML='<i class="fa-regular fa-clock" style="color:#ffb224"></i><span>Essai gratuit jusqu’à '+end+'</span>';if(cfg.stripeCheckoutUrl){const a=document.createElement('a');a.href=cfg.stripeCheckoutUrl;a.target='_blank';a.rel='noopener';a.textContent='S’abonner';a.style.cssText='color:#1d1200;background:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00);padding:6px 10px;border-radius:8px;text-decoration:none;font-weight:800';el.append(a)}const ch=document.createElement('button');ch.type='button';ch.textContent='J’ai un code';ch.style.cssText='background:none;border:0;color:#ffc757;font:600 12px Inter,system-ui,sans-serif;cursor:pointer;padding:0 2px';ch.onclick=()=>window.yfChangeCode();el.append(ch);document.body.append(el)}
- function opened(p){overlay.hidden=true;window.__yfLicenceChecked=true;if(p&&p.t==='trial')trialBar(p)}
+ function opened(p){window.__yfLicenceOk=true;overlay.hidden=true;window.__yfLicenceChecked=true;if(p&&p.t==='trial')trialBar(p)}
  async function activate(code){code=norm(code||input.value);if(!code){show('Entre ton code YakFlow.','err');return}
   btn.disabled=true;show('Activation…','');
   const {status:st,d}=await post('licence',{code,machine:device(),version:'web-2'});
@@ -3230,11 +3243,11 @@ setInterval(agnesPushRemoteStatus, 3000);
  async function boot(){
   const link=norm(new URLSearchParams(location.search).get('code'));if(link){input.value=link;const u=new URL(location.href);u.searchParams.delete('code');history.replaceState(null,'',u.pathname+u.search+u.hash)}
   const t=localStorage.getItem('yfToken')||'',p=t?payload(t):null,now=Date.now();
-  if(!link&&p&&p.m===device()&&now<p.u){opened(p);return}
+  if(!link&&p&&p.m===device()&&now<p.u&&await yfCheckSig(t)){opened(p);return}
   const code=localStorage.getItem('yakflowLicenseCode');
   if(code&&!link){const {status:st,d}=await post('licence',{code,machine:device(),version:'web-2'});
    if(st===200&&d.ok&&d.token){keep(code,d.token);opened(payload(d.token));return}
-   if((st===0||st>=500)&&p&&now<p.u+3*864e5){opened(p);return}
+   if((st===0||st>=500)&&p&&now<p.u+3*864e5&&await yfCheckSig(t)){opened(p);return}
    window.__yfLicenceChecked=true;localStorage.removeItem('yfToken');lock(d.message||'Licence à renouveler.',true);return}
   window.__yfLicenceChecked=true;lock('');if(link)activate(link)}
  window.yfRenewLicence=async function(){const code=localStorage.getItem('yakflowLicenseCode');if(!code)return;const {status:st,d}=await post('licence',{code,machine:device(),version:'web-2'});if(st===200&&d.ok&&d.token)keep(code,d.token);else if(st>0&&st<500)boot()};
@@ -3377,7 +3390,7 @@ const steps=[
 function endTour(){ $('yfTourLayer').hidden=true;localStorage.setItem('yf_onboarding_v1_done','1') }
 function place(){const s=steps[ti],el=[...document.querySelectorAll(s.sel)].find(x=>x.getClientRects().length);if(!el){if(ti<steps.length-1){ti++;place()}return}el.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>{const r=el.getBoundingClientRect(),pad=7,spot=$('yfTourSpot'),x=Math.max(6,r.left-pad),y=Math.max(6,r.top-pad),w=Math.min(innerWidth-12,r.width+pad*2),hh=Math.min(innerHeight-12,r.height+pad*2);Object.assign(spot.style,{left:x+'px',top:y+'px',width:w+'px',height:hh+'px'});const box=$('yfTourBox'),bw=Math.min(360,innerWidth-24),below=y+hh+12,top=below+230<innerHeight?below:Math.max(12,y-245),left=Math.min(innerWidth-bw-12,Math.max(12,x));Object.assign(box.style,{left:left+'px',top:top+'px'});$('yfTourStep').textContent=`Étape ${ti+1} / ${steps.length}`;$('yfTourTitle').textContent=s.title;$('yfTourText').textContent=s.text;$('yfTourPrev').style.visibility=ti?'visible':'hidden';$('yfTourNext').innerHTML=ti===steps.length-1?'<i class="fa-solid fa-check"></i>Terminer':'Suivant<i class="fa-solid fa-arrow-right"></i>'},220)}
 function startTour(){const a=$('yfActivation');if(a&&!a.hidden){dlg.close();return}if(dlg.open)dlg.close();ti=0;$('yfTourLayer').hidden=false;place()}$('yfStartTour').onclick=startTour;$('yfTourNext').onclick=()=>{if(ti===steps.length-1)return endTour();ti++;place()};$('yfTourPrev').onclick=()=>{if(ti){ti--;place()}};$('yfTourQuit').onclick=endTour;addEventListener('resize',()=>{if(!$('yfTourLayer').hidden)place()});
-function maybeFirst(){if(localStorage.getItem('yf_onboarding_v1_done'))return;const act=$('yfActivation');if(act&&!act.hidden)return;if(document.querySelector('dialog[open]'))return;setTimeout(()=>{if(!localStorage.getItem('yf_onboarding_v1_done')&&(!$('yfActivation')||$('yfActivation').hidden))openGuide('start')},600)}
+function maybeFirst(){if(localStorage.getItem('yf_onboarding_v1_done'))return;if(window.yfSetupNeeded&&window.yfSetupNeeded())return;const act=$('yfActivation');if(act&&!act.hidden)return;if(document.querySelector('dialog[open]'))return;setTimeout(()=>{if(!localStorage.getItem('yf_onboarding_v1_done')&&(!$('yfActivation')||$('yfActivation').hidden))openGuide('start')},600)}
 const act=$('yfActivation');if(act)new MutationObserver(maybeFirst).observe(act,{attributes:true,attributeFilter:['hidden','style','class']});setTimeout(maybeFirst,1200);
 })();
 </script>
@@ -3528,5 +3541,189 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
   paint();
 })();
 </script>
+<!-- YAKFLOW_SETUP_WIZARD_V1 : installation guidée, étape par étape, avec vérifications en direct -->
+<style>
+#yfSetup{position:fixed;inset:0;z-index:99990;display:grid;place-items:center;padding:16px;background:rgba(3,4,6,.78);backdrop-filter:blur(8px);font:14px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#f5f2ec}
+#yfSetup[hidden]{display:none!important}
+#yfSetup *{box-sizing:border-box}
+.yfs-box{width:min(620px,100%);max-height:calc(100vh - 32px);overflow:auto;background:#111317;border:1px solid rgba(255,255,255,.1);border-radius:22px;box-shadow:0 30px 90px rgba(0,0,0,.55)}
+.yfs-top{display:flex;align-items:center;gap:12px;padding:20px 22px 0}.yfs-top img{width:40px;height:40px;border-radius:11px}
+.yfs-top b{font:800 18px/1.1 "Baloo 2",Inter,sans-serif}.yfs-top small{display:block;color:#7a756d;font-size:12px}
+.yfs-x{margin-left:auto;width:34px;height:34px;border-radius:9px;border:0;background:transparent;color:#7a756d;cursor:pointer;font-size:16px}.yfs-x:hover{background:#1d2127;color:#fff}
+.yfs-dots{display:flex;gap:6px;padding:16px 22px 0}.yfs-dots i{flex:1;height:5px;border-radius:9px;background:#252a31}.yfs-dots i.on{background:linear-gradient(90deg,#ffd06a,#ff8a00)}.yfs-dots i.done{background:#3dd68c}
+.yfs-body{padding:18px 22px 6px}
+.yfs-step{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#ffc757}
+.yfs-body h3{font:800 22px/1.15 "Baloo 2",Inter,sans-serif;margin:6px 0 8px}
+.yfs-body p{color:#b3ada3;margin:0 0 12px}.yfs-body p b{color:#f5f2ec}
+.yfs-modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:6px 0 4px}
+.yfs-mode{text-align:left;padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:#0c0d10;color:#f5f2ec;cursor:pointer;font:inherit}
+.yfs-mode:hover{border-color:rgba(255,178,36,.5)}.yfs-mode.on{border-color:#ffb224;background:rgba(255,178,36,.08);box-shadow:0 0 0 3px rgba(255,178,36,.15)}
+.yfs-mode i{color:#ffb224;font-size:17px}.yfs-mode b{display:block;margin:6px 0 2px}.yfs-mode span{display:block;color:#7a756d;font-size:12.5px}
+.yfs-mode .yfs-tag{display:inline-block;width:auto;margin-left:6px;padding:1px 7px;border-radius:99px;background:rgba(61,214,140,.12);color:#3dd68c;font-size:10.5px;font-weight:800;vertical-align:middle}
+.yfs-todo{display:grid;gap:10px;margin:8px 0}
+.yfs-item{display:grid;grid-template-columns:28px 1fr;gap:4px 12px;align-items:start;background:#0c0d10;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:13px}
+.yfs-n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#252a31;color:#b3ada3;font-weight:800;font-size:13px}
+.yfs-item.ok .yfs-n{background:#3dd68c;color:#06120c}.yfs-item.ok .yfs-n::after{content:"✓"}.yfs-item.ok .yfs-n span{display:none}
+.yfs-item b{color:#f5f2ec}.yfs-item small{display:block;color:#7a756d;font-size:12.5px;margin-top:2px}
+.yfs-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}
+.yfs-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:#16191e;color:#f5f2ec;font:700 13px Inter,sans-serif;text-decoration:none;cursor:pointer}.yfs-btn:hover{border-color:rgba(255,178,36,.5)}
+.yfs-btn.pr{background:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00);color:#1d1200;border-color:transparent}
+.yfs-in{width:100%;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:#08090b;color:#f5f2ec;font:500 13px "JetBrains Mono",ui-monospace,Menlo,monospace;outline:none;margin-top:9px}.yfs-in:focus{border-color:#ffb224}
+.yfs-code{display:flex;gap:8px;align-items:center;margin-top:8px}.yfs-code code{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;background:#08090b;border:1px dashed rgba(255,178,36,.4);border-radius:9px;padding:8px 10px;color:#ffc757;font:500 12px "JetBrains Mono",Menlo,monospace}
+.yfs-live{font-size:12.5px;margin-top:8px;color:#7a756d}.yfs-live.ok{color:#3dd68c}.yfs-live.err{color:#ff7a70}.yfs-live.wait::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#ffb224;margin-right:7px;animation:yfsP 1.2s infinite}
+@keyframes yfsP{50%{opacity:.25}}
+.yfs-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:14px 22px 20px}
+.yfs-foot .yfs-skip{background:none;border:0;color:#7a756d;font:inherit;font-size:12.5px;cursor:pointer}
+</style>
+<div id="yfSetup" hidden role="dialog" aria-modal="true" aria-label="Installation de YakFlow">
+  <div class="yfs-box">
+    <div class="yfs-top"><img src="/yakflow-logo.webp" alt=""><div><b>Installation de YakFlow</b><small>Quelques minutes, une seule fois.</small></div><button class="yfs-x" type="button" data-yfs="close" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="yfs-dots" id="yfsDots"></div>
+    <div class="yfs-body" id="yfsBody"></div>
+    <div class="yfs-foot"><button class="yfs-skip" type="button" data-yfs="prev">Retour</button><span style="display:flex;gap:8px"><button class="yfs-btn" type="button" data-yfs="later">Plus tard</button><button class="yfs-btn pr" type="button" data-yfs="next" id="yfsNext">Continuer</button></span></div>
+  </div>
+</div>
+<script>
+(function(){
+  const $s = (id) => document.getElementById(id);
+  const isEdge = /Edg\//.test(navigator.userAgent), isMac = /Mac/.test(navigator.platform || navigator.userAgent);
+  const TM = isEdge ? 'https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd' : 'https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo';
+  const EXT = isEdge ? 'edge://extensions/?id=iikmkjmpaadaobahmlepeloendndfphd' : 'chrome://extensions/?id=dhdgffkkebhmkfjojejmpbldmpobfkfo';
+  let step = 0, mode = 'agnes', timer = null;
+  const needsConnect = () => mode !== 'agnes';
+  const steps = () => ['mode', ...(mode !== 'gptgrok' ? ['agnes'] : []), ...(needsConnect() ? ['connect', 'tabs'] : []), 'drive', 'start'];
+  function guessMode() { try { if (S.imgSrc === 'chatgpt' && S.vidEngine === 'grok') return 'gptgrok'; if (S.imgSrc === 'chatgpt') return 'gpt'; if (S.vidEngine === 'grok') return 'grok'; } catch (_) {} return 'agnes'; }
+  function applyMode() {
+    try {
+      S.imgSrc = (mode === 'gpt' || mode === 'gptgrok') ? 'chatgpt' : 'agnes';
+      S.vidEngine = (mode === 'grok' || mode === 'gptgrok') ? 'grok' : 'agnes';
+      saveSettings(); if (typeof renderStatus === 'function') renderStatus();
+    } catch (_) {}
+  }
+  const copy = (t, b) => navigator.clipboard.writeText(t).then(() => { const o = b.textContent; b.textContent = 'Copié'; setTimeout(() => (b.textContent = o), 1400); });
+  function item(n, title, sub, inner, ok) { return '<div class="yfs-item' + (ok ? ' ok' : '') + '"><div class="yfs-n"><span>' + n + '</span></div><div><b>' + title + '</b>' + (sub ? '<small>' + sub + '</small>' : '') + (inner || '') + '</div></div>'; }
+  function render() {
+    clearInterval(timer);
+    const list = steps(); step = Math.max(0, Math.min(step, list.length - 1));
+    const id = list[step];
+    $s('yfsDots').innerHTML = list.map((_, i) => '<i class="' + (i < step ? 'done' : i === step ? 'on' : '') + '"></i>').join('');
+    $s('yfsNext').textContent = id === 'start' ? 'C’est parti' : 'Continuer';
+    document.querySelector('#yfSetup [data-yfs="prev"]').style.visibility = step ? 'visible' : 'hidden';
+    const head = (t, h, p) => '<div class="yfs-step">Étape ' + (step + 1) + ' sur ' + list.length + ' · ' + t + '</div><h3>' + h + '</h3>' + (p ? '<p>' + p + '</p>' : '');
+    let html = '';
+    if (id === 'mode') {
+      const m = (k, ic, t, s, tag) => '<button type="button" class="yfs-mode' + (mode === k ? ' on' : '') + '" data-mode="' + k + '"><i class="fa-solid fa-' + ic + '"></i><b>' + t + (tag ? '<span class="yfs-tag">' + tag + '</span>' : '') + '</b><span>' + s + '</span></button>';
+      html = head('Ton mode', 'Avec quels outils veux-tu créer ?', 'Tu pourras changer plus tard dans les Réglages. <b>Le mode Gratuit</b> est le plus simple pour commencer.') +
+        '<div class="yfs-modes">' + m('agnes', 'bolt', 'Gratuit', 'Images et animation avec Agnes. Rien d’autre à installer.', 'conseillé') + m('gpt', 'wand-magic-sparkles', 'Images ChatGPT', 'ChatGPT dessine, Agnes anime. Il faut un compte ChatGPT.') +
+        m('grok', 'film', 'Animation Grok', 'Agnes dessine, Grok anime. Il faut un compte Grok.') + m('gptgrok', 'rocket', 'ChatGPT + Grok', 'Les deux. Le plus créatif.') + '</div>';
+    }
+    if (id === 'agnes') {
+      const has = (() => { try { return apiKeys().length > 0; } catch (_) { return false; } })();
+      html = head('Agnes', 'Ta clé Agnes', 'Agnes génère les images et les clips gratuitement. Il te faut une clé API, gratuite.') + '<div class="yfs-todo">' +
+        item(1, 'Crée ton compte et ta clé Agnes', 'Sur la page qui s’ouvre : connecte-toi, puis « Créer une clé » (Create API key), et copie-la.', '<div class="yfs-row"><a class="yfs-btn pr" href="https://platform.agnes-ai.com/settings/apiKeys" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i>Ouvrir Agnes</a></div>') +
+        item(2, 'Colle ta clé ici', 'Plusieurs clés ? Sépare-les par des virgules.', '<input class="yfs-in" id="yfsKey" placeholder="sk-…" spellcheck="false" autocomplete="off" value="' + (has ? '••••••• clé déjà enregistrée' : '') + '"><div class="yfs-row"><button class="yfs-btn" type="button" id="yfsKeyBtn"><i class="fa-solid fa-check"></i>Vérifier et enregistrer</button></div><div class="yfs-live' + (has ? ' ok' : '') + '" id="yfsKeyLive">' + (has ? 'Clé enregistrée.' : '') + '</div>', has) + '</div>';
+    }
+    if (id === 'connect') {
+      html = head('Ponts ChatGPT et Grok', 'Installe YakFlow Connect', 'Un petit script qui relie YakFlow à tes onglets ChatGPT et Grok. À faire une seule fois.') + '<div class="yfs-todo">' +
+        item(1, 'Installe l’extension Tampermonkey', 'Clique, puis « Ajouter à ' + (isEdge ? 'Edge' : 'Chrome') + ' ».', '<div class="yfs-row"><a class="yfs-btn pr" href="' + TM + '" target="_blank" rel="noopener"><i class="fa-solid fa-puzzle-piece"></i>Installer Tampermonkey</a></div>') +
+        item(2, 'Autorise les scripts', 'Sur les navigateurs récents : ouvre cette adresse dans un nouvel onglet, puis active « Autoriser les scripts utilisateur » (ou le « Mode développeur » en haut à droite).', '<div class="yfs-code"><code>' + EXT + '</code><button class="yfs-btn" type="button" data-copy="' + EXT + '">Copier</button></div>') +
+        item(3, 'Installe YakFlow Connect', 'Tampermonkey ouvre une page : clique sur « Installer ». Puis recharge cette page (' + (isMac ? 'Cmd' : 'Ctrl') + ' + R) : tu reviendras ici.', '<div class="yfs-row"><a class="yfs-btn pr" href="/yakflow-connect.user.js" target="_blank" rel="noopener"><i class="fa-solid fa-plug"></i>Installer YakFlow Connect</a></div><div class="yfs-live" id="yfsConLive"></div>', YFC.ready) + '</div>';
+    }
+    if (id === 'tabs') {
+      const gpt = mode === 'gpt' || mode === 'gptgrok', grok = mode === 'grok' || mode === 'gptgrok';
+      html = head('Tes onglets', 'Ouvre tes onglets de travail', 'Chaque onglet ouvert travaille pour YakFlow. Laisse-les ouverts pendant la fabrication, connectés à ton compte.') + '<div class="yfs-todo">' +
+        (gpt ? item(1, 'Ouvre ChatGPT', '1 à 5 onglets. Un badge « Pont YakFlow » apparaît en bas à droite.', '<div class="yfs-row"><a class="yfs-btn pr" href="https://chatgpt.com/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i>Ouvrir ChatGPT</a></div><div class="yfs-live" id="yfsGptLive"></div>') : '') +
+        (grok ? item(gpt ? 2 : 1, 'Ouvre Grok Imagine', '1 à 5 onglets, connecté à ton compte Grok.', '<div class="yfs-row"><a class="yfs-btn pr" href="https://grok.com/imagine" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i>Ouvrir Grok Imagine</a></div><div class="yfs-live" id="yfsGrokLive"></div>') : '') + '</div>';
+    }
+    if (id === 'drive') {
+      html = head('Téléphone', 'Retrouve tes vidéos sur ton téléphone', 'Chaque vidéo montée est téléchargée (vidéo, couverture et description). Pour qu’elle arrive toute seule sur ton téléphone :') + '<div class="yfs-todo">' +
+        item(1, 'Installe Google Drive pour ordinateur', 'Gratuit, connecte-toi avec ton compte Google.', '<div class="yfs-row"><a class="yfs-btn" href="https://www.google.com/drive/download/" target="_blank" rel="noopener"><i class="fa-brands fa-google-drive"></i>Télécharger Google Drive</a></div>') +
+        item(2, 'Synchronise ton dossier Téléchargements', 'Dans Google Drive : Préférences > Mon ordinateur > Ajouter un dossier > Téléchargements > « Synchroniser avec Google Drive ».') +
+        item(3, 'Sur ton téléphone', 'App Google Drive, rubrique « Ordinateurs » : tes vidéos sont là, prêtes à publier. Au premier montage, autorise le navigateur à « télécharger plusieurs fichiers ».') + '</div><p style="font-size:12.5px">Étape facultative : tu peux aussi récupérer tes vidéos dans le dossier Téléchargements.</p>';
+    }
+    if (id === 'start') {
+      html = head('Ta première vidéo', 'Tout est prêt', 'Il te faut maintenant un scénario au format YakFlow. Le plus simple :') + '<div class="yfs-todo">' +
+        item(1, 'Copie le prompt débutant', 'Colle-le dans ton IA habituelle (ChatGPT, Claude, Gemini…). Elle te pose quelques questions et écrit ta vidéo.', '<div class="yfs-row"><button class="yfs-btn pr yfCopyBeginner" type="button"><i class="fa-regular fa-copy"></i>Copier le prompt débutant</button></div>') +
+        item(2, 'Importe le fichier JSON', 'Bouton « + Importer » du studio : colle le JSON ou choisis le fichier.') +
+        item(3, 'Clique sur « Lancer »', 'Images, clips puis montage s’enchaînent tout seuls. Tu peux fermer cette fenêtre.') + '</div>';
+    }
+    $s('yfsBody').innerHTML = html;
+    bind(id);
+  }
+  function live(el, ok, txtOk, txtWait) { if (!el) return; el.className = 'yfs-live ' + (ok ? 'ok' : 'wait'); el.textContent = ok ? txtOk : txtWait; }
+  function bind(id) {
+    $s('yfsBody').querySelectorAll('[data-mode]').forEach((b) => b.onclick = () => { mode = b.dataset.mode; applyMode(); render(); });
+    $s('yfsBody').querySelectorAll('[data-copy]').forEach((b) => b.onclick = () => copy(b.dataset.copy, b));
+    if (id === 'agnes') {
+      const inp = $s('yfsKey'); inp.onfocus = () => { if (/^•/.test(inp.value)) inp.value = ''; }; inp.onpaste = () => setTimeout(() => $s('yfsKeyBtn').click(), 50);
+      $s('yfsKeyBtn').onclick = async () => {
+        const raw = inp.value.trim(), out = $s('yfsKeyLive');
+        if (!raw || /^•/.test(raw)) { out.className = 'yfs-live err'; out.textContent = 'Colle ta clé Agnes.'; return; }
+        out.className = 'yfs-live wait'; out.textContent = 'Vérification auprès d’Agnes…';
+        const first = raw.split(',')[0].trim();
+        try {
+          const r = await yfAgnes('GET', '/agnesapi?video_id=verification&model_name=' + encodeURIComponent(S.vidModel || ''), 'Bearer ' + first);
+          if (r.status === 401) { out.className = 'yfs-live err'; out.textContent = 'Agnes refuse cette clé : vérifie que tu l’as copiée en entier.'; return; }
+          S.key = raw; saveSettings(); try { renderKeyStatus(); } catch (_) {}
+          out.className = 'yfs-live ok'; out.textContent = 'Clé valide et enregistrée.';
+          inp.closest('.yfs-item').classList.add('ok');
+        } catch (e) { out.className = 'yfs-live err'; out.textContent = 'Vérification impossible : ' + e.message; }
+      };
+    }
+    if (id === 'connect') {
+      const tick = () => { postMessage({ __yf: 'ping' }, '*'); live($s('yfsConLive'), YFC.ready, 'YakFlow Connect est installé et relié.', 'En attente de YakFlow Connect… (recharge cette page après l’installation)'); if (YFC.ready) $s('yfsConLive').closest('.yfs-item').classList.add('ok'); };
+      tick(); timer = setInterval(tick, 1500);
+    }
+    if (id === 'tabs') {
+      const tick = async () => {
+        try { await refreshChatStatus(); } catch (_) {}
+        let g = null; try { g = await grokWorkers(); } catch (_) {}
+        const gptEl = $s('yfsGptLive'), grokEl = $s('yfsGrokLive');
+        live(gptEl, (typeof chatWorkers !== 'undefined') && chatWorkers > 0, 'ChatGPT relié : ' + (typeof chatWorkers !== 'undefined' ? chatWorkers : 0) + ' onglet(s).', 'En attente d’un onglet ChatGPT…');
+        live(grokEl, !!(g && g.alive), 'Grok relié : ' + (g ? g.workers : 0) + ' onglet(s).', 'En attente d’un onglet Grok Imagine…');
+        if (gptEl && chatWorkers > 0) gptEl.closest('.yfs-item').classList.add('ok');
+        if (grokEl && g && g.alive) grokEl.closest('.yfs-item').classList.add('ok');
+      };
+      tick(); timer = setInterval(tick, 4000);
+    }
+  }
+  function close(done) { clearInterval(timer); $s('yfSetup').hidden = true; try { localStorage.setItem('yf_onboarding_v1_done', '1'); if (done) localStorage.setItem('yf_setup_v1', 'done'); else localStorage.setItem('yf_setup_v1', 'later'); } catch (_) {} }
+  document.querySelector('#yfSetup').addEventListener('click', (e) => {
+    const a = e.target.closest('[data-yfs]'); if (!a) return;
+    const list = steps();
+    if (a.dataset.yfs === 'next') { if (list[step] === 'mode') applyMode(); if (step >= list.length - 1) return close(true); step++; try { localStorage.setItem('yf_setup_step', JSON.stringify({ step, mode })); } catch (_) {} render(); }
+    if (a.dataset.yfs === 'prev') { step--; render(); }
+    if (a.dataset.yfs === 'close' || a.dataset.yfs === 'later') close(false);
+  });
+  window.yfSetupOpen = function () {
+    mode = window.yfSetupNeeded() && !localStorage.getItem('yf_setup_step') ? 'agnes' : guessMode(); step = 0;
+    try { const saved = JSON.parse(localStorage.getItem('yf_setup_step') || 'null'); if (saved && localStorage.getItem('yf_setup_v1') !== 'done') { step = saved.step || 0; mode = saved.mode || mode; } } catch (_) {}
+    document.querySelectorAll('dialog[open]').forEach((d) => d.close());
+    try { localStorage.setItem('yf_onboarding_v1_done', '1'); } catch (_) {}
+    $s('yfSetup').hidden = false; render();
+  };
+  window.yfSetupNeeded = function () { try { if (localStorage.getItem('yf_setup_v1')) return false; if (localStorage.getItem('yf_setup_step')) return true; return !apiKeys().length && !localStorage.getItem('yf_onboarding_v1_done'); } catch (_) { return false; } };
+  // copie du prompt débutant
+  document.addEventListener('click', async (e) => {
+    const b = e.target.closest('.yfCopyBeginner'); if (!b) return;
+    try { const t = await (await fetch('/prompt-debutant.txt', { cache: 'no-store' })).text(); await navigator.clipboard.writeText(t); const o = b.innerHTML; b.textContent = 'Copié, colle-le dans ton IA'; setTimeout(() => (b.innerHTML = o), 2200); }
+    catch (_) { window.open('/prompt-debutant.txt', '_blank'); }
+  });
+  // bouton dans le Guide pour rouvrir l'installation
+  function addReopen() {
+    const g = document.querySelector('[data-guide]'); if (!g || document.getElementById('yfsReopen')) return;
+    const b = document.createElement('button'); b.type = 'button'; b.id = 'yfsReopen'; b.className = g.className.replace(/\bon\b/, '');
+    b.innerHTML = '<i class="fa-solid fa-screwdriver-wrench"></i> Installation guidée'; b.onclick = () => window.yfSetupOpen(); g.parentNode.appendChild(b);
+  }
+  // ouverture automatique au premier lancement, une fois l'accès validé
+  (function wait(n) {
+    addReopen();
+    const act = document.getElementById('yfActivation');
+    if (!window.__yfLicenceChecked || (act && !act.hidden)) return n < 600 && setTimeout(() => wait(n + 1), 1000);
+    if (window.yfSetupNeeded()) window.yfSetupOpen();
+  })(0);
+})();
+</script>
+
 </body>
 </html>
