@@ -29,8 +29,9 @@ postMessage({__yf:'ping'},'*');setTimeout(function(){postMessage({__yf:'ping'},'
    les appels partent de la connexion de l'utilisateur (comme la version ordinateur) ; sinon relais Netlify. */
 window.yfConnectCall=function(msg,timeout){return new Promise(function(res,rej){var rid=++YFC.n;var t=setTimeout(function(){YFC.pend.delete(rid);rej(new Error('YakFlow Connect ne répond pas'))},timeout||180000);YFC.pend.set(rid,function(d){clearTimeout(t);res(d)});msg.__yf=msg.__yf||'agnes';msg.rid=rid;postMessage(msg,'*')})};
 window.yfAgnes=async function(method,path,auth,body){
-  if(YFC.ready&&YFC.agnes){const d=await yfConnectCall({kind:'api',method:method,path:path,auth:auth,body:body,token:yfToken()},150000);
-    const h={'Content-Type':d.ctype||'application/json'};if(d.retryAfter)h['Retry-After']=d.retryAfter;return new Response(d.status===204?null:(d.text||''),{status:d.status||599,headers:h})}
+  /* YAKFLOW_AGNES_FALLBACK_V2 : les envois (POST) passent par le relais Netlify, qui marche ; le suivi (GET, très fréquent) par YakFlow Connect. Si Connect échoue, relais Netlify. */
+  if(YFC.ready&&YFC.agnes&&method==='GET'){let d=null;try{d=await yfConnectCall({kind:'api',method:method,path:path,auth:auth,body:body,token:yfToken()},150000)}catch(_){d=null}
+    if(d&&d.status&&d.status!==599){const h={'Content-Type':d.ctype||'application/json'};if(d.retryAfter)h['Retry-After']=d.retryAfter;return new Response(d.status===204?null:(d.text||''),{status:d.status,headers:h})}}
   return fetch('/api'+path,{method:method,headers:{'Authorization':auth,'Content-Type':'application/json','X-Studio':'1','X-Yakflow-Token':yfToken()},body:body})};
 window.yfMedia=async function(url){
   if(YFC.ready&&YFC.agnes){const d=await yfConnectCall({kind:'dl',url:url,token:yfToken()},320000);return new Response(d.buf||null,{status:d.status||599,headers:{'Content-Type':d.ctype||'application/octet-stream'}})}
