@@ -883,7 +883,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
       <label class="ck"><input type="checkbox" id="sAutoDl"> <span><b>Télécharger la vidéo montée</b> dès qu'elle est prête.</span></label>
       <div class="ck" style="align-items:flex-start"><i class="fa-solid fa-box-archive" style="margin-top:3px;color:var(--brand)"></i> <span style="flex:1"><b>Sauvegarde des projets</b> : récupère les projets de la version ordinateur ou d’un autre navigateur (projets, images, clips, montages et clés Agnes).<br><span style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><button type="button" class="btn sm primary" data-yf-backup="import"><i class="fa-solid fa-file-import"></i>Importer une sauvegarde</button><button type="button" class="btn sm" data-yf-backup="export"><i class="fa-solid fa-download"></i>Exporter mes projets</button></span></span></div>
       <div class="ck" style="align-items:flex-start"><i class="fa-solid fa-key" style="margin-top:3px;color:var(--brand)"></i> <span style="flex:1"><b>Accès YakFlow</b> : tu as reçu un nouveau code (abonnement, code offert) ?<br><button type="button" class="btn sm" style="margin-top:8px" onclick="document.getElementById('dlgSet')?.close();window.yfChangeCode&&window.yfChangeCode()"><i class="fa-solid fa-rotate"></i>Changer de code</button></span></div>
-      <div class="ck" id="exportDirBox" style="align-items:flex-start"><i class="fa-solid fa-folder-tree" style="margin-top:3px;color:var(--brand)"></i> <span style="flex:1"><b>Envoi sur Google Drive</b> : choisis une fois ton dossier <b>Mon Drive</b> (Google Drive pour ordinateur). Chaque vidéo montée y est rangée avec sa couverture et ses infos, dans <code>YakFlow/A publier/&lt;titre&gt;/</code>, et arrive sur ton téléphone.<br><span class="hint" id="exportDirName" style="margin:4px 0 8px;display:block">Aucun dossier choisi.</span><button type="button" class="btn sm" id="exportDirPick"><i class="fa-solid fa-folder-open"></i>Choisir un dossier</button> <button type="button" class="btn sm ghost" id="exportDirClear" hidden><i class="fa-solid fa-xmark"></i>Retirer</button></span></div>
+      <div class="ck" id="exportDirBox" style="align-items:flex-start"><i class="fa-solid fa-folder-tree" style="margin-top:3px;color:var(--brand)"></i> <span style="flex:1"><b>Ranger chaque vidéo dans un dossier</b> : choisis une fois ton dossier <b>Téléchargements</b> (synchronisé avec Google Drive) ou <b>Mon Drive</b>. Chaque vidéo montée y est rangée avec sa couverture et sa description, dans <code>YakFlow/&lt;nom du projet&gt;/</code>, et arrive sur ton téléphone. Quand Chrome demande l'accès, choisis « Autoriser à chaque visite ».<br><span class="hint" id="exportDirName" style="margin:4px 0 8px;display:block">Aucun dossier choisi.</span><button type="button" class="btn sm" id="exportDirPick"><i class="fa-solid fa-folder-open"></i>Choisir un dossier</button> <button type="button" class="btn sm ghost" id="exportDirClear" hidden><i class="fa-solid fa-xmark"></i>Retirer</button></span></div>
       <label class="ck"><input type="checkbox" id="sHook"> <span>Afficher l'<b>accroche</b> du projet en texte pendant les 3 premières secondes du montage.</span></label>
     </div>
     <div class="grid2">
@@ -2118,7 +2118,7 @@ async function doMontage(p, manual) {
     log('Montage terminé : ' + p.titre + ' (' + Math.round(res.seconds) + ' s)');
     phone('Vidéo prête', 'Projet : ' + p.titre + '\nDurée : ' + Math.round(res.seconds) + ' s\nPrête à publier.', 4);
     toast('« ' + p.titre + ' » est monté.', 'ok');
-    const exported = window.yfExportEpisode ? await window.yfExportEpisode(p, res.buffer) : false;
+    const exported = window.yfExportEpisode ? await window.yfExportEpisode(p, res.buffer, !!manual) : false;
     if (!exported && (S.autoDl || (manual && !(PROXY && S.disk)))) await downloadEpisode(p, res.buffer);
 
     // Export Google Drive automatique dès que le montage est terminé.
@@ -3522,27 +3522,28 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
   const getH = () => idb('readonly', (s) => s.get('export')).catch(() => null);
   const setH = (h) => idb('readwrite', (s) => h ? s.put(h, 'export') : s.delete('export'));
   const clean = (t) => String(t || 'episode').replace(/[\\/:*?"<>|]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 80) || 'episode';
-  async function perm(h){
+  async function perm(h, interactive){
     const o = { mode: 'readwrite' };
     if (await h.queryPermission(o) === 'granted') return true;
+    if (!interactive) return false;   // montage automatique : pas de question bloquante, on télécharge à la place
     const go = await yfConfirm({ title: "Dossier d'export", message: 'Autoriser YakFlow à ranger la vidéo dans « ' + h.name + ' » ? Choisis « Autoriser à chaque visite » pour ne plus avoir à le refaire.', okLabel: 'Autoriser', okIcon: 'fa-folder-open', icon: 'fa-folder-open' });
     if (!go) return false;
     try { return (await h.requestPermission(o)) === 'granted'; } catch (e) { return false; }
   }
   async function write(dir, name, data){ const f = await dir.getFileHandle(name, { create: true }); const w = await f.createWritable(); await w.write(data); await w.close(); }
-  async function target(h){ let d = h; if (h.name.toLowerCase() !== 'yakflow') d = await d.getDirectoryHandle('YakFlow', { create: true }); return d.getDirectoryHandle('A publier', { create: true }); }
-  window.yfExportEpisode = async function(p, buf){
+  async function target(h){ return h.name.toLowerCase() === 'yakflow' ? h : h.getDirectoryHandle('YakFlow', { create: true }); }
+  window.yfExportEpisode = async function(p, buf, interactive = true){
     if (!OK) return false;
     const h = await getH(); if (!h) return false;
     try {
-      if (!(await perm(h))) { toast("Dossier d'export non autorisé : vidéo téléchargée à la place.", 'warn'); return false; }
+      if (!(await perm(h, interactive))) { toast(interactive ? "Dossier non autorisé : fichiers téléchargés à la place." : "Accès au dossier « " + h.name + " » à réautoriser (Réglages) : fichiers téléchargés à la place.", 'warn'); return false; }
       const ep = await (await target(h)).getDirectoryHandle(clean(p.titre), { create: true });
       await write(ep, safeName(p.id) + '.mp4', new Blob([buf], { type: 'video/mp4' }));
       const cover = p.etapes.find((s) => s.type === 'couverture' && s.img && s.img.st === 'fini');
       if (cover) { const im = await mGet(imgKey(p, cover)); if (im) { const j = await toJpeg(im, 1280); await write(ep, safeName(p.id) + '-couverture.jpg', await (await fetch(j.data)).blob()); } }
       await write(ep, 'infos-publication.txt', new Blob([infos(p)], { type: 'text/plain;charset=utf-8' }));
-      log('Rangé : ' + h.name + ' / YakFlow / A publier / ' + clean(p.titre));
-      toast('« ' + p.titre + ' » rangé dans A publier.', 'ok');
+      log('Rangé : ' + h.name + ' / YakFlow / ' + clean(p.titre));
+      toast('« ' + p.titre + ' » rangé dans ' + h.name + ' / YakFlow / ' + clean(p.titre) + '.', 'ok');
       return true;
     } catch (e) { log('Export dossier impossible : ' + e.message); toast("Export dans le dossier impossible : " + e.message, 'err'); return false; }
   };
@@ -3550,7 +3551,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
     const lab = document.getElementById('exportDirName'); if (!lab) return;
     if (!OK) { lab.textContent = 'Non disponible dans ce navigateur : utilise Chrome ou Edge sur ordinateur.'; document.getElementById('exportDirPick').disabled = true; return; }
     const h = await getH();
-    lab.textContent = h ? 'Dossier : « ' + h.name + ' » → ' + (h.name.toLowerCase() === 'yakflow' ? '' : 'YakFlow / ') + 'A publier / <titre>' : 'Aucun dossier choisi : la vidéo est téléchargée normalement.';
+    lab.textContent = h ? 'Dossier : « ' + h.name + ' » → ' + (h.name.toLowerCase() === 'yakflow' ? '' : 'YakFlow / ') + '<nom du projet>' : 'Aucun dossier choisi : les fichiers sont téléchargés en vrac.';
     document.getElementById('exportDirClear').hidden = !h;
   }
   document.getElementById('exportDirPick')?.addEventListener('click', async () => {
@@ -3659,7 +3660,8 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
       html = head('Téléphone', 'Retrouve tes vidéos sur ton téléphone', 'Chaque vidéo montée est téléchargée (vidéo, couverture et description). Pour qu’elle arrive toute seule sur ton téléphone :') + '<div class="yfs-todo">' +
         item(1, 'Installe Google Drive pour ordinateur', 'Gratuit, connecte-toi avec ton compte Google.', '<div class="yfs-row"><a class="yfs-btn" href="https://www.google.com/drive/download/" target="_blank" rel="noopener"><i class="fa-brands fa-google-drive"></i>Télécharger Google Drive</a></div>') +
         item(2, 'Synchronise ton dossier Téléchargements', 'Dans Google Drive : Préférences > Mon ordinateur > Ajouter un dossier > Téléchargements > « Synchroniser avec Google Drive ».') +
-        item(3, 'Sur ton téléphone', 'App Google Drive, rubrique « Ordinateurs » : tes vidéos sont là, prêtes à publier. Au premier montage, autorise le navigateur à « télécharger plusieurs fichiers ».') + '</div><p style="font-size:12.5px">Étape facultative : tu peux aussi récupérer tes vidéos dans le dossier Téléchargements.</p>';
+        item(3, 'Range chaque vidéo dans son dossier', 'Choisis ton dossier Téléchargements : chaque vidéo arrivera dans YakFlow / nom du projet, avec sa couverture et sa description. Choisis « Autoriser à chaque visite ».', '<div class="yfs-row"><button class="yfs-btn" type="button" id="yfsDir"><i class="fa-solid fa-folder-open"></i>Choisir le dossier</button></div>') +
+        item(4, 'Sur ton téléphone', 'App Google Drive, rubrique « Ordinateurs » : tes vidéos sont là, prêtes à publier. Au premier montage, autorise le navigateur à « télécharger plusieurs fichiers ».') + '</div><p style="font-size:12.5px">Étape facultative : tu peux aussi récupérer tes vidéos dans le dossier Téléchargements.</p>';
     }
     if (id === 'start') {
       html = head('Ta première vidéo', 'Tout est prêt', 'Il te faut maintenant un scénario au format YakFlow. Le plus simple :') + '<div class="yfs-todo">' +
@@ -3690,6 +3692,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
         } catch (e) { out.className = 'yfs-live err'; out.textContent = 'Vérification impossible : ' + e.message; }
       };
     }
+    if (id === 'drive' && $s('yfsDir')) $s('yfsDir').onclick = () => { const b = document.getElementById('exportDirPick'); if (b) b.click(); };
     if (id === 'connect') {
       const tick = () => { postMessage({ __yf: 'ping' }, '*'); live($s('yfsConLive'), YFC.ready, 'YakFlow Connect est installé et relié.', 'En attente de YakFlow Connect… (recharge cette page après l’installation)'); if (YFC.ready) $s('yfsConLive').closest('.yfs-item').classList.add('ok'); };
       tick(); timer = setInterval(tick, 1500);
