@@ -2119,7 +2119,7 @@ async function doMontage(p, manual) {
     phone('Vidéo prête', 'Projet : ' + p.titre + '\nDurée : ' + Math.round(res.seconds) + ' s\nPrête à publier.', 4);
     toast('« ' + p.titre + ' » est monté.', 'ok');
     const exported = window.yfExportEpisode ? await window.yfExportEpisode(p, res.buffer) : false;
-    if (!exported && (S.autoDl || (manual && !(PROXY && S.disk)))) downloadBuf(res.buffer, p.id + '.mp4', 'video/mp4');
+    if (!exported && (S.autoDl || (manual && !(PROXY && S.disk)))) await downloadEpisode(p, res.buffer);
 
     // Export Google Drive automatique dès que le montage est terminé.
     if (PROXY) setTimeout(() => publishDrive(p), 0);
@@ -2453,6 +2453,16 @@ $('#edGo').onclick = async () => {
 function downloadBuf(buf, name, type) {
   const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([buf], { type })); a.download = name;
   document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+}
+// YAKFLOW_DL_EPISODE_V1 : vidéo + couverture + description, toujours ensemble (montage auto et bouton Télécharger)
+async function downloadEpisode(p, buf) {
+  downloadBuf(buf, safeName(p.id) + '.mp4', 'video/mp4');
+  await sleep(700);
+  try {
+    const cover = p.etapes.find((s) => s.type === 'couverture' && s.img && s.img.st === 'fini');
+    if (cover) { const im = await mGet(imgKey(p, cover)); if (im) { const j = await toJpeg(im, 1280); downloadData(j.data, safeName(p.id) + '-couverture.jpg'); await sleep(700); } }
+  } catch (e) { log('Couverture non téléchargée : ' + e.message); }
+  downloadBuf(new TextEncoder().encode(infos(p)), safeName(p.id) + '-infos-publication.txt', 'text/plain;charset=utf-8');
 }
 function downloadData(data, name) { const a = document.createElement('a'); a.href = data; a.download = name; document.body.appendChild(a); a.click(); a.remove(); }
 const pad = (n) => String(n).padStart(2, '0');
@@ -2816,10 +2826,7 @@ async function render() {
     const buf = await mGet(montKey(p));
     if (!buf) return toast('Vidéo montée introuvable dans ce navigateur.', 'err');
     if (window.yfExportEpisode && await window.yfExportEpisode(p, buf)) return;
-    downloadBuf(buf, safeName(p.id) + '.mp4', 'video/mp4');
-    const cover = p.etapes.find((s) => s.type === 'couverture' && s.img && s.img.st === 'fini');
-    if (cover) { const im = await mGet(imgKey(p, cover)); if (im) { const j = await toJpeg(im, 1280); setTimeout(() => downloadData(j.data, safeName(p.id) + '-couverture.jpg'), 400); } }
-    setTimeout(() => downloadBuf(new TextEncoder().encode(infos(p)), safeName(p.id) + '-infos-publication.txt', 'text/plain;charset=utf-8'), 800);
+    await downloadEpisode(p, buf);
   };
   if ($('#pPub')) $('#pPub').onclick = () => publishDrive(p);
   $('#pDel').onclick = async () => {
