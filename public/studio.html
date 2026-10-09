@@ -1648,6 +1648,7 @@ function phone(title, message, prio) {
    ===================================================================== */
 let lastSummary = 0, lastLines = '';
 let autoPar = 3, okStreak = 0, ceilUntil = 0, rpmUntil = 0, cancelStreak = 0, clipPauseUntil = 0, quotaSent = false, qEmptySince = 0, lastBusyRaw = '';   // + pause si Agnes annule (quota du jour ?)   // parallélisme automatique
+let lastChatHeal = 0;
 let running = false, ticking = false, chatInFlight = 0, lastChatStart = 0, montBusy = false, lastSubmit = 0, lastImg = 0, lastProgress = now(), stuckSent = false;
 let imageRunSeq = 0;
 function imagesBusy() { return chatInFlight > 0 || [...keyLanes.values()].some(l => l.imageBusy); }
@@ -1863,7 +1864,7 @@ async function doImage(p, s, lane) {
       return;
     }
     const r = out.r || {};
-    if (out.err && source === 'chatgpt' && !out.noRetry && tries < 2) { setImg(p, s, { st: 'file', retryAt: now() + 10000, msg: out.err + ' · nouvel essai' }); log('Image ratée (' + s.nom + ') : ' + out.err + ', nouvel essai.'); return; }
+    if (out.err && source === 'chatgpt' && !out.noRetry && tries < 4) { const wait = tries === 1 ? 10000 : (tries - 1) * 5 * 60000; setImg(p, s, { st: 'file', retryAt: now() + wait, msg: out.err + ' · nouvel essai à ' + fmtT(now() + wait) + ' (' + tries + '/4)' }); log('Image ratée (' + s.nom + ') : ' + out.err + ', nouvel essai.'); return; }
     if (out.err) { stat.fail('image', s.nom, out.err); setImg(p, s, { st: 'echec', msg: out.err }); log('Image ratée : ' + s.nom + ' → ' + out.err); return; }
     if (isAuth(r)) { setImg(p, s, { st: 'echec', msg: 'Accès image refusé : vérifie les clés et le modèle.' }); return; }
     if (isBusy(r)) { const retryAt = out.retryAt || now() + 60000; setImg(p, s, { st: 'file', retryAt, msg: 'Clés Agnes occupées, nouvel essai à ' + fmtT(retryAt) + ' (essai ' + tries + ')' }); return; }
@@ -2360,6 +2361,11 @@ async function tick() {
       }
       // alerte si rien n'avance pendant 45 min (hors file pleine)
       const stuck = now() - lastProgress > 45 * 60000 && !projects.some((p) => p.etapes.some((s) => s.clip.st === 'file' || s.img.st === 'file'));
+      // YAKFLOW_CHAT_HEAL_V1 : rien n'avance depuis 20 min alors que des images ChatGPT attendent → on recharge les onglets ChatGPT
+      if (S.imgSrc === 'chatgpt' && now() - lastProgress > 20 * 60000 && now() - lastChatHeal > 25 * 60000 && chatPauseUntil < now() &&
+          projects.some((p) => p.actif && p.etapes.some((s) => s.promptImage && ['attente', 'calcul'].includes(s.img.st)))) {
+        lastChatHeal = now(); bridge('POST', 'reload').then(() => log('Aucune image depuis 20 min : je recharge les onglets ChatGPT.')).catch(() => {});
+      }
       if (stuck && !stuckSent) { stuckSent = true; phone('Production bloquée', 'Aucune étape n’a avancé depuis 45 min.\nOuvre YakFlow pour vérifier le journal.', 5); log('Rien n\'a avancé depuis 45 min.'); }
       if (!stuck) stuckSent = false;
     }

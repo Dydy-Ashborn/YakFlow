@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.0.6
+// @version      3.0.7
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -32,7 +32,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.0.6';
+  const CONNECT_VERSION = '3.0.7';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -152,6 +152,7 @@
       set(qk(kind), queue(kind).filter((x) => x !== jid).concat(jid));
       return ok({ ok: true, pos: waiting(kind).length });
     }
+    if (action === 'reload' && method === 'POST') { set(kind + ':reloadAt', now()); return ok({ ok: true }); }
     if (action === 'forget' && method === 'POST') {
       const j = job(kind, id);
       if (j) {
@@ -311,6 +312,7 @@
   sessionStorage.setItem('yakflowChatWorker', WORKER);
   const withWorker = (path) => path + (path.includes('?') ? '&' : '?') + 'worker=' + encodeURIComponent(WORKER);
   keepAwake();
+  const PAGE_T0 = Date.now(); let busySince = 0;
   const dbg = (m, o) => { try { console.log('[Pont]', m, o || ''); } catch (e) { /* rien */ } };
   const K_ON = 'pont_actif', K_PID = 'pont_pid';
   let busy = false, info = 'en attente', lastErr = '';
@@ -659,6 +661,8 @@
           lastErr = '';
         } catch (e) { say('studio non joignable'); lastErr = 'Lance serveur.py (Agnes Studio).'; continue; }
       }
+      // YAKFLOW_CHAT_HEAL_V1 : le studio demande une relance (rien n'avance) → on recharge l'onglet, sauf s'il dessine depuis moins de 20 min
+      { const ra = get('bridge:reloadAt', 0); if (ra > PAGE_T0 && (!busy || Date.now() - busySince > 20 * 60000)) { say('relance demandée par le studio'); await sleep(500); location.reload(); return; } }
       if (busy || !GM_getValue(K_ON, true) || Date.now() < pauseUntil) continue;
       { const pz = get('bridge:pause'); if (pz && Date.now() < pz.until) { say('pause jusqu’à ' + new Date(pz.until).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) + ' (' + (pz.why || 'limite ChatGPT') + ')'); continue; } }
       if (late) {
@@ -697,7 +701,7 @@
         location.assign('https://chatgpt.com/');
         return;
       }
-      busy = true;
+      busy = true; busySince = Date.now();
       let taken = false;
       try {
         // Attribution atomique : deux onglets ne peuvent pas recevoir la même image.
