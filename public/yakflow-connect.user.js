@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.0.4
+// @version      3.0.5
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -32,7 +32,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.0.4';
+  const CONNECT_VERSION = '3.0.5';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -40,7 +40,36 @@
      ===================================================================== */
   const P = 'yf2:';
   const now = () => Date.now();
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  /* YAKFLOW_KEEPAWAKE_V1 : Chrome ralentit fortement les onglets en arrière-plan (minuteries une fois par minute,
+     onglet gelé) : le pont semblait figé tant qu'on ne cliquait pas sur l'onglet. Les attentes passent par un
+     Worker (non ralenti), et l'onglet ChatGPT / Grok reste actif (son inaudible + verrou Web Lock). */
+  let timerWorker = null, twSeq = 0; const twPend = new Map();
+  try {
+    const src = 'onmessage=function(e){setTimeout(function(){postMessage(e.data[0])},e.data[1])}';
+    timerWorker = new Worker(URL.createObjectURL(new Blob([src], { type: 'text/javascript' })));
+    timerWorker.onmessage = (e) => { const f = twPend.get(e.data); if (f) { twPend.delete(e.data); f(); } };
+    timerWorker.onerror = () => { timerWorker = null; };
+  } catch (_) { timerWorker = null; }
+  const wakeSleep = (ms) => new Promise((r) => {
+    let done = false; const fin = () => { if (!done) { done = true; r(); } };
+    setTimeout(fin, ms + (timerWorker ? 1500 : 0));   // filet de sécurité si le Worker est bloqué
+    if (timerWorker) { const id = ++twSeq; twPend.set(id, fin); try { timerWorker.postMessage([id, ms]); } catch (_) { twPend.delete(id); } }
+  });
+  const sleep = wakeSleep;
+  let awakeCtx = null;
+  function keepAwake() {
+    const start = () => {
+      try {
+        if (!awakeCtx) { awakeCtx = new (window.AudioContext || window.webkitAudioContext)(); const o = awakeCtx.createOscillator(), g = awakeCtx.createGain(); o.frequency.value = 30; g.gain.value = 0.001; o.connect(g); g.connect(awakeCtx.destination); o.start(); }
+        if (awakeCtx.state !== 'running') awakeCtx.resume().catch(() => {});
+      } catch (_) {}
+    };
+    start();
+    ['pointerdown', 'keydown'].forEach((ev) => window.addEventListener(ev, start, { capture: true }));
+    setInterval(start, 30000);
+    try { if (navigator.locks) navigator.locks.request('yakflow-awake-' + Math.random().toString(36).slice(2), () => new Promise(() => {})); } catch (_) {}
+  }
+  const awake = () => !!(awakeCtx && awakeCtx.state === 'running');
   const get = (k, d = null) => { const v = GM_getValue(P + k, null); return v == null ? d : v; };
   const set = (k, v) => GM_setValue(P + k, v);
   const del = (k) => GM_deleteValue(P + k);
@@ -281,7 +310,7 @@
   const WORKER = sessionStorage.getItem('yakflowChatWorker') || ('chat-' + (crypto.randomUUID ? crypto.randomUUID() : Date.now() + '-' + Math.random()));
   sessionStorage.setItem('yakflowChatWorker', WORKER);
   const withWorker = (path) => path + (path.includes('?') ? '&' : '?') + 'worker=' + encodeURIComponent(WORKER);
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  keepAwake();
   const dbg = (m, o) => { try { console.log('[Pont]', m, o || ''); } catch (e) { /* rien */ } };
   const K_ON = 'pont_actif', K_PID = 'pont_pid';
   let busy = false, info = 'en attente', lastErr = '';
@@ -550,7 +579,8 @@
   function draw() {
     const on = GM_getValue(K_ON, true);
     badge.innerHTML = '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#ffb224;margin-right:6px;vertical-align:1px"></span>Pont YakFlow · ' + (on ? '' : '<b>en pause</b> · ') + info.replace(/[<>&]/g, '') +
-      (lastErr ? '<div style="color:#ff9188;font-weight:500;margin-top:3px">' + lastErr.replace(/[<>&]/g, '') + '</div>' : '');
+      (lastErr ? '<div style="color:#ff9188;font-weight:500;margin-top:3px">' + lastErr.replace(/[<>&]/g, '') + '</div>' : '') +
+      (awake() ? '' : '<div style="color:#ffc757;font-weight:500;margin-top:3px">Clique une fois dans cet onglet pour qu’il continue en arrière-plan.</div>');
     if (typeof dbtn !== 'undefined') badge.appendChild(dbtn);
   }
   function say(t) { info = t; draw(); }
@@ -697,7 +727,7 @@
 
   function runGrok() {
 const K_ON='yakflow_grok_on';
-const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+keepAwake();
 const worker=sessionStorage.getItem('agnesGrokWorker') ||
   ('grok-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7));
 sessionStorage.setItem('agnesGrokWorker',worker);
@@ -747,7 +777,7 @@ function draw(){
   }
   const on=GM_getValue(K_ON,true);
   box.innerHTML='<div style="display:flex;align-items:center;gap:8px"><b style="color:#ffb224">Pont Grok</b><span style="opacity:.55">'+worker.slice(-8)+'</span><button id="agnes-grok-toggle" style="margin-left:auto;border:0;border-radius:7px;padding:4px 7px;background:'+(on?'#2f8f63':'#555')+';color:white">'+(on?'ON':'OFF')+'</button></div>'+
-    '<div style="margin-top:6px">'+escapeHtml(state)+'</div>'+
+    '<div style="margin-top:6px">'+escapeHtml(state)+'</div>'+(awake()?'':'<div style="margin-top:4px;color:#ffc757">Clique une fois dans cet onglet pour qu’il continue en arrière-plan.</div>')+
     (current?'<div style="opacity:.7;margin-top:3px">'+escapeHtml(current)+'</div>':'')+
     (lastErr?'<div style="color:#ff8c82;margin-top:5px">'+escapeHtml(lastErr)+'</div>':'');
   box.querySelector('#agnes-grok-toggle').onclick=()=>{GM_setValue(K_ON,!on);lastErr='';draw();};
