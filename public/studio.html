@@ -3811,21 +3811,12 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
     b.textContent = 'YakFlow mis à jour · version ' + (short(e) || '?');
     b.style.color = '#ffc757'; setTimeout(() => b.remove(), 15000);
   }
-  function banner(){
-    if (document.getElementById('yfNewVer')) return;
-    const d = document.createElement('div'); d.id = 'yfNewVer';
-    d.style.cssText = 'position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:99980;display:flex;gap:12px;align-items:center;background:#16191e;border:1px solid rgba(255,178,36,.5);border-radius:12px;padding:10px 14px;color:#f5f2ec;font:600 13px Inter,system-ui,sans-serif;box-shadow:0 12px 40px rgba(0,0,0,.5)';
-    d.innerHTML = '<span>Nouvelle version de YakFlow en ligne.</span><button type="button" style="border:0;border-radius:8px;padding:7px 12px;background:linear-gradient(135deg,#ffd06a,#ff8a00);color:#1d1200;font:700 12.5px Inter,sans-serif;cursor:pointer">Recharger</button>';
-    d.querySelector('button').onclick = () => location.reload();
-    document.body.appendChild(d);
-  }
   (async function init(){
     loaded = await tag();
     const logo = document.querySelector('.yfBrand'); if (logo && loaded) logo.title = 'YakFlow · version ' + short(loaded);
     let prev = ''; try { prev = localStorage.getItem('yf_build') || ''; } catch (_) {}
-    if (loaded && prev && prev !== loaded) setTimeout(() => { badge(loaded); try { toast('YakFlow mis à jour (version ' + short(loaded) + '). ' + NOTES, 'ok'); } catch (_) {} log && log('YakFlow mis à jour : version ' + short(loaded) + '. ' + NOTES); }, 2500);
+    if (loaded && prev && prev !== loaded) setTimeout(() => { badge(loaded); log && log('YakFlow mis à jour : version ' + short(loaded) + '. ' + NOTES); }, 2500);
     if (loaded) try { localStorage.setItem('yf_build', loaded); } catch (_) {}
-    setInterval(async () => { if (document.hidden || !loaded) return; const now = await tag(); if (now && now !== loaded) banner(); }, 5 * 60000);
   })();
 })();
 </script>
