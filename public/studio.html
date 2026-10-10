@@ -1016,6 +1016,7 @@ const DEFSET = { perKey: 1, vidEngine: 'agnes', grokPar: 5, fondus: true, key: '
 let S = Object.assign({}, DEFSET);
 let storedS = {}; try { storedS = JSON.parse(localStorage.getItem('as_settings') || '{}'); Object.assign(S, storedS); } catch (e) {}
 // YAKFLOW_CLIPS_DEFAULTS_V1 : nouveaux réglages clips appliqués une fois au rechargement (1 clip par clé, parallèle en Auto)
+if (S.fastKeys) { delete S.fastKeys; try { localStorage.setItem('as_settings', JSON.stringify(S)); } catch (_) {} }   // ancienne formule « Rapide · 8 s » supprimée
 if (storedS.clipsDefV !== 1) { S.perKey = 1; S.par = 'auto'; S.clipsDefV = 1; try { localStorage.setItem('as_settings', JSON.stringify(S)); } catch (_) {} }
 if (storedS.imgModelV !== 3) { if (!storedS.imgModel || storedS.imgModel === 'agnes-image-2.1-flash') S.imgModel = 'agnes-image-2.5-flash'; S.imgModelV = 3; }
 // YAKFLOW_AGNES_OPTIM_V13 : doc Agnes (Token Plan FAQ) — en gratuit, 4K et 3K = 1 image/min, 2K = 5/min, 1K = 10/min.
@@ -1209,17 +1210,15 @@ function renderKeyStatus() {
     detail.textContent = active + '/' + perKey() + ' en cours' + (lane && lane.until > now() ? ' · prochain envoi après ' + fmtT(lane.until) : '') + (health && health.at ? ' · dernier résultat à ' + fmtT(health.at) : '');
     const plan = document.createElement('select'); plan.className = 'btn sm';
     plan.setAttribute('aria-label', 'Formule Agnes de la clé ' + (i + 1));
-    plan.append(new Option('Gratuite · 65 s', 'free'), new Option('Token Plan · 15 s', 'paid'), new Option('Rapide · 8 s', 'fast'));
-    plan.value = lane && isFastKey(lane) ? 'fast' : lane && (S.tokenPlanKeys || []).includes(lane.id) ? 'paid' : 'free';
-    plan.title = 'Rapide · 8 s : la clé essaie toutes les 8 s (au-delà de la limite d’une clé gratuite, Agnes peut répondre « limite de débit » : la clé attend alors le temps demandé).';
+    plan.append(new Option('Gratuite · 65 s', 'free'), new Option('Token Plan · 15 s', 'paid'));
+    plan.value = lane && (S.tokenPlanKeys || []).includes(lane.id) ? 'paid' : 'free';
     plan.disabled = !lane || raw.trim() !== String(S.key || '').trim();
     if (plan.disabled) plan.title = raw.trim() !== String(S.key || '').trim() ? 'Enregistre d’abord les clés (bouton Enregistrer des Réglages), puis choisis la formule.' : 'Préparation de la clé…';
     plan.onchange = () => {
       if (!lane) return;
-      const ids = new Set(S.tokenPlanKeys || []), fast = new Set(S.fastKeys || []);
+      const ids = new Set(S.tokenPlanKeys || []);
       if (plan.value === 'paid') ids.add(lane.id); else ids.delete(lane.id);
-      if (plan.value === 'fast') fast.add(lane.id); else fast.delete(lane.id);
-      S.tokenPlanKeys = [...ids]; S.fastKeys = [...fast]; saveSettings();
+      S.tokenPlanKeys = [...ids]; saveSettings();
       lane.until = Math.min(lane.until, now() + videoKeyGap(lane));
       renderKeyStatus();
     };
@@ -1289,10 +1288,7 @@ async function testKeyGeneration(key) {
 }
 const keyLanes = new Map();
 let lastVideoSubmit = 0;
-// YAKFLOW_FAST_SEND_V2 : formule par clé « Rapide · 8 s » (choisie dans la liste des clés)
-const isFastKey = (lane) => (S.fastKeys || []).includes(lane.id);
 function videoKeyGap(lane) {
-  if (isFastKey(lane)) return 8000;
   const planMs = (S.tokenPlanKeys || []).includes(lane.id) ? 15000 : 65000;
   return Math.max(5000, (+S.gap || 8) * 1000, planMs);
 }
@@ -1976,7 +1972,7 @@ async function submitClip(p, s, lane) {
     const inflight = videoInFlight(s);
     if (qfull) lane.fullStreak = (lane.fullStreak || 0) + 1;
     if (r._err === 429) lane.rateStreak = (lane.rateStreak || 0) + 1;
-    const wait = qfull ? (isFastKey(lane) ? videoKeyGap(lane) : Math.min(60000, 20000 + 10000 * ((lane.fullStreak || 1) - 1))) :
+    const wait = qfull ? Math.min(60000, 20000 + 10000 * ((lane.fullStreak || 1) - 1)) :
       r._err === 429 ? Math.min(180000, 60000 * (lane.rateStreak || 1)) : 60000;
     lane.refused = isAuth(r); if (lane.refused) lane.refusedAt = now(); lane.until = Math.max(now() + wait, keyRateUntil.get(lane.key) || 0);
     // YAKFLOW_SAME_CLIP_V1 : le clip refusé reste en tête et repart sur la prochaine clé libre (avant, il attendait la même clé et les autres restaient sans travail)
