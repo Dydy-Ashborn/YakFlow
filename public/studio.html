@@ -849,7 +849,6 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
         <label class="f"><span>Qualité vidéo</span><select id="sVidSize"><option>720P</option><option>1080P</option><option>2K</option></select></label>
         <label class="f"><span>Clips en parallèle (total toutes clés)</span><select id="sPar"><option value="auto">Auto — jusqu’à 3 clips par clé</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="5">5</option><option value="8">8</option></select></label>
         <label class="f"><span>Écart minimum par clé (s)</span><input id="sGap" type="number" min="5" step="1"></label>
-        <label class="ck" style="grid-column:1/-1"><input type="checkbox" id="sFast"> <span><b>Envoi rapide</b> : un essai Agnes toutes les 8 s, réparti sur toutes tes clés (au lieu d'un essai par clé et par minute). Plus de chances d'attraper une place quand la file se libère, mais au-delà d'environ 1 envoi par minute et par compte, Agnes répond « limite de débit » : YakFlow met alors la clé en pause le temps demandé.</span></label>
       </div>
     </details>
 
@@ -1204,15 +1203,17 @@ function renderKeyStatus() {
     detail.textContent = active + '/3 en cours' + (lane && lane.until > now() ? ' · prochain envoi après ' + fmtT(lane.until) : '') + (health && health.at ? ' · dernier résultat à ' + fmtT(health.at) : '');
     const plan = document.createElement('select'); plan.className = 'btn sm';
     plan.setAttribute('aria-label', 'Formule Agnes de la clé ' + (i + 1));
-    plan.append(new Option('Gratuite · 65 s', 'free'), new Option('Token Plan · 15 s', 'paid'));
-    plan.value = lane && (S.tokenPlanKeys || []).includes(lane.id) ? 'paid' : 'free';
+    plan.append(new Option('Gratuite · 65 s', 'free'), new Option('Token Plan · 15 s', 'paid'), new Option('Rapide · 8 s', 'fast'));
+    plan.value = lane && isFastKey(lane) ? 'fast' : lane && (S.tokenPlanKeys || []).includes(lane.id) ? 'paid' : 'free';
+    plan.title = 'Rapide · 8 s : la clé essaie toutes les 8 s (au-delà de la limite d’une clé gratuite, Agnes peut répondre « limite de débit » : la clé attend alors le temps demandé).';
     plan.disabled = !lane || raw.trim() !== String(S.key || '').trim();
     plan.onchange = () => {
       if (!lane) return;
-      const ids = new Set(S.tokenPlanKeys || []);
+      const ids = new Set(S.tokenPlanKeys || []), fast = new Set(S.fastKeys || []);
       if (plan.value === 'paid') ids.add(lane.id); else ids.delete(lane.id);
-      S.tokenPlanKeys = [...ids]; saveSettings();
-      lane.until = Math.max(lane.until, now() + videoKeyGap(lane));
+      if (plan.value === 'fast') fast.add(lane.id); else fast.delete(lane.id);
+      S.tokenPlanKeys = [...ids]; S.fastKeys = [...fast]; saveSettings();
+      lane.until = Math.min(lane.until, now() + videoKeyGap(lane));
       renderKeyStatus();
     };
     const test = document.createElement('button'); test.type = 'button'; test.className = 'btn sm'; test.textContent = 'Tester un clip';
@@ -1281,17 +1282,16 @@ async function testKeyGeneration(key) {
 }
 const keyLanes = new Map();
 let lastVideoSubmit = 0;
-// YAKFLOW_FAST_SEND_V1 : option « Envoi rapide » = un essai toutes les 8 s au total, réparti sur les clés
-const FAST_MS = 8000;
+// YAKFLOW_FAST_SEND_V2 : formule par clé « Rapide · 8 s » (choisie dans la liste des clés)
+const isFastKey = (lane) => (S.fastKeys || []).includes(lane.id);
 function videoKeyGap(lane) {
+  if (isFastKey(lane)) return 8000;
   const planMs = (S.tokenPlanKeys || []).includes(lane.id) ? 15000 : 65000;
-  if (S.fast) return Math.max(5000, Math.min(planMs, FAST_MS * Math.max(1, apiKeys().length)));
   return Math.max(5000, (+S.gap || 8) * 1000, planMs);
 }
 function videoGlobalGap(list) {
   if (!list.length) return 0;
-  const g = Math.ceil(1 / list.reduce((rate, lane) => rate + 1 / videoKeyGap(lane), 0));
-  return S.fast ? Math.max(FAST_MS, g) : Math.max(2000, g);
+  return Math.max(2000, Math.ceil(1 / list.reduce((rate, lane) => rate + 1 / videoKeyGap(lane), 0)));
 }
 function videoInFlight(exclude) {
   return projects.reduce((n, p) => n + p.etapes.filter(s => s !== exclude && ['envoi', 'calcul'].includes(s.clip.st)).length, 0);
@@ -1967,7 +1967,7 @@ async function submitClip(p, s, lane) {
     const inflight = videoInFlight(s);
     if (qfull) lane.fullStreak = (lane.fullStreak || 0) + 1;
     if (r._err === 429) lane.rateStreak = (lane.rateStreak || 0) + 1;
-    const wait = qfull ? (S.fast ? videoKeyGap(lane) : Math.min(60000, 20000 + 10000 * ((lane.fullStreak || 1) - 1))) :
+    const wait = qfull ? (isFastKey(lane) ? videoKeyGap(lane) : Math.min(60000, 20000 + 10000 * ((lane.fullStreak || 1) - 1))) :
       r._err === 429 ? Math.min(180000, 60000 * (lane.rateStreak || 1)) : 60000;
     lane.refused = isAuth(r); if (lane.refused) lane.refusedAt = now(); lane.until = Math.max(now() + wait, keyRateUntil.get(lane.key) || 0);
     setClip(p, s, { st: 'file', retryAt: lane.until, msg: lane.refused ? 'Clé refusée ; les autres clés continuent.' : 'Clé occupée, nouvel essai à ' + fmtT(lane.until) });
@@ -2988,7 +2988,7 @@ document.addEventListener('drop', async (e) => {
 function openSettings() {
   if (document.getElementById('yfActivation')?.hidden === false) return;
   $('#sVidEngine').value = S.vidEngine || 'agnes'; $('#sGrokPar').value = S.grokPar || 5; $('#sKey').value = S.key; $('#sFondus').checked = S.fondus !== false; $('#sImgSrc').value = S.imgSrc; $('#sChatPar').value = S.chatPar; $('#sImgStartEnabled').checked = !!S.imgStartEnabled; $('#sImgStartTime').value = S.imgStartTime || '23:55'; $('#sImgModel').value = S.imgModel; $('#sImgSize').value = S.imgSize; $('#sDisk').checked = S.disk; $('#sVidModel').value = S.vidModel; $('#sVidSize').value = S.vidSize;
-  $('#sPar').value = S.par; $('#sGap').value = S.gap; if ($('#sFast')) $('#sFast').checked = !!S.fast; $('#sGate').checked = S.gate; $('#sAutoMont').checked = S.autoMont; $('#sAutoDl').checked = S.autoDl;
+  $('#sPar').value = S.par; $('#sGap').value = S.gap; $('#sGate').checked = S.gate; $('#sAutoMont').checked = S.autoMont; $('#sAutoDl').checked = S.autoDl;
   $('#sHook').checked = S.hook; $('#sKeepFirst').checked = S.keepFirst !== false; $('#sCut').value = S.cut; $('#sNtfy').value = S.ntfy; renderKeyStatus(); if (window.yfSyncMode) yfSyncMode(); dlgSet.showModal();
 }
 $('#sKey').addEventListener('input', renderKeyStatus);
@@ -3002,7 +3002,7 @@ $('#repDisk').onclick = async () => { await stat.toDisk(true); toast('Rapport ra
 $('#repReset').onclick = async () => { if (await yfConfirm({ title: 'Remettre le rapport à zéro ?', message: 'Toutes les mesures du rapport seront effacées.', okLabel: 'Effacer', okIcon: 'fa-eraser', danger: true })) { stat.reset(); $('#repPre').textContent = stat.report(); } };
 $('#sGo').onclick = () => {
   Object.assign(S, { vidEngine: $('#sVidEngine').value, grokPar: +$('#sGrokPar').value || 5, fondus: $('#sFondus').checked, imgSrc: $('#sImgSrc').value, chatPar: +$('#sChatPar').value, imgStartEnabled: $('#sImgStartEnabled').checked, imgStartTime: $('#sImgStartTime').value || '23:55', key: $('#sKey').value.trim(), imgModel: $('#sImgModel').value, imgModelV: 3, imgSize: $('#sImgSize').value, imgSizeV: 2, disk: $('#sDisk').checked, vidModel: $('#sVidModel').value, vidSize: $('#sVidSize').value,
-    par: $('#sPar').value, parV: 3, gap: Math.max(5, +$('#sGap').value || 8), fast: !!($('#sFast') && $('#sFast').checked), gate: $('#sGate').checked, autoMont: $('#sAutoMont').checked, autoDl: $('#sAutoDl').checked,
+    par: $('#sPar').value, parV: 3, gap: Math.max(5, +$('#sGap').value || 8), gate: $('#sGate').checked, autoMont: $('#sAutoMont').checked, autoDl: $('#sAutoDl').checked,
     hook: $('#sHook').checked, keepFirst: $('#sKeepFirst').checked, cut: $('#sCut').value, ntfy: $('#sNtfy').value.trim() });
   for (const lane of keyLanes.values()) { lane.refused = false; lane.imageRefused = false; }
   // AGNES_IMAGE_SCHEDULE_V1
