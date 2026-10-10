@@ -847,7 +847,8 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
         <label class="f"><span>Grok en parallèle</span><select id="sGrokPar"><option value="1">1 onglet</option><option value="2">2 onglets</option><option value="3">3 onglets</option><option value="4">4 onglets</option><option value="5">5 onglets</option></select><small>Ouvre autant d’onglets Grok. Chaque onglet prend un clip différent.</small></label>
         <label class="f"><span>Modèle vidéo</span><select id="sVidModel"><option value="agnes-video-2.5-flash">Agnes Clip — Video 2.5 Flash · 720p · gratuit</option><option value="agnes-video-2.5">Agnes Video 2.5 — payant</option></select></label>
         <label class="f"><span>Qualité vidéo</span><select id="sVidSize"><option>720P</option><option>1080P</option><option>2K</option></select></label>
-        <label class="f"><span>Clips en parallèle (total toutes clés)</span><select id="sPar"><option value="auto">Auto — jusqu’à 3 clips par clé</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="5">5</option><option value="8">8</option></select></label>
+        <label class="f"><span>Clips en parallèle (total toutes clés)</span><select id="sPar"><option value="auto">Auto — selon « clips en cours par clé »</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="5">5</option><option value="8">8</option></select></label>
+        <label class="f"><span>Clips en cours par clé</span><select id="sPerKey"><option value="1">1 (conseillé) : une clé occupée laisse essayer les autres</option><option value="3">3 : plusieurs clips par clé</option></select></label>
         <label class="f"><span>Écart minimum par clé (s)</span><input id="sGap" type="number" min="5" step="1"></label>
       </div>
     </details>
@@ -1189,10 +1190,11 @@ function renderKeyStatus() {
   $('#keyCount').textContent = keys.length + ' clé' + (keys.length > 1 ? 's' : '') + ' utilisée' + (keys.length > 1 ? 's' : '') +
     (duplicates ? ' · ' + duplicates + ' doublon(s) ignoré(s)' : '') +
     (extras ? ' · ' + extras + ' clé(s) supplémentaire(s) ignorée(s) : maximum 10' : '');
-  const limit = $('#sPar').value === 'auto' ? keys.length * 3 : Math.min(keys.length * 3, +$('#sPar').value || 1);
+  const pk = $('#sPerKey') ? (+$('#sPerKey').value === 3 ? 3 : 1) : perKey();
+  const limit = $('#sPar').value === 'auto' ? keys.length * pk : Math.min(keys.length * pk, +$('#sPar').value || 1);
   const configuredLanes = keys.map(k => keyLanes.get(k)).filter(Boolean);
   const spacing = configuredLanes.length === keys.length && keys.length > 1 ? Math.ceil(videoGlobalGap(configuredLanes) / 1000) : 0;
-  $('#keyCapacity').textContent = 'Capacité des clés : ' + (keys.length * 3) + ' générations (3 par clé). Limite globale : ' + limit + ' — ' + ($('#sPar').value === 'auto' ? 'mode Auto.' : 'réglage « Clips en parallèle ». Sélectionne Auto pour utiliser toute la capacité.') + (spacing ? ' Envois répartis : au mieux un départ toutes les ' + spacing + ' s sur l’ensemble des clés.' : '') + (raw.trim() !== String(S.key || '').trim() ? ' Modifications à enregistrer.' : '');
+  $('#keyCapacity').textContent = 'Capacité des clés : ' + (keys.length * pk) + ' génération(s) (' + pk + ' par clé). Limite globale : ' + limit + ' — ' + ($('#sPar').value === 'auto' ? 'mode Auto.' : 'réglage « Clips en parallèle ». Sélectionne Auto pour utiliser toute la capacité.') + (spacing ? ' Envois répartis : au mieux un départ toutes les ' + spacing + ' s sur l’ensemble des clés.' : '') + (raw.trim() !== String(S.key || '').trim() ? ' Modifications à enregistrer.' : '');
   $('#sCheckKeys').disabled = checkingKeys || !keys.length;
   $('#sCheckKeys').textContent = checkingKeys ? 'Vérification…' : 'Vérifier le suivi';
   const rows = keys.map((key, i) => {
@@ -1202,7 +1204,7 @@ function renderKeyStatus() {
     const name = document.createElement('b'); name.textContent = 'Clé ' + (i + 1);
     const badge = document.createElement('span'); badge.className = 'pill ' + (health ? health.tone : 'off'); badge.textContent = health ? health.label : 'Non vérifiée';
     const detail = document.createElement('span'); detail.className = 'hint';
-    detail.textContent = active + '/3 en cours' + (lane && lane.until > now() ? ' · prochain envoi après ' + fmtT(lane.until) : '') + (health && health.at ? ' · dernier résultat à ' + fmtT(health.at) : '');
+    detail.textContent = active + '/' + perKey() + ' en cours' + (lane && lane.until > now() ? ' · prochain envoi après ' + fmtT(lane.until) : '') + (health && health.at ? ' · dernier résultat à ' + fmtT(health.at) : '');
     const plan = document.createElement('select'); plan.className = 'btn sm';
     plan.setAttribute('aria-label', 'Formule Agnes de la clé ' + (i + 1));
     plan.append(new Option('Gratuite · 65 s', 'free'), new Option('Token Plan · 15 s', 'paid'), new Option('Rapide · 8 s', 'fast'));
@@ -1321,7 +1323,9 @@ function activeKeyStats(steps) {
   if (used.has('legacy-first') && keyLanes.get(keys[0])) { used.delete('legacy-first'); used.add(keyLanes.get(keys[0]).id); }
   return { clips: clips.length, used: used.size, total: keys.length, missing };
 }
-function clipLimit() { const n = apiKeys().length; return n > 1 ? (S.par === 'auto' ? n * 3 : Math.min(n * 3, +S.par)) : Math.min(3, S.par === 'auto' ? autoPar : +S.par); }
+// YAKFLOW_ONE_PER_KEY_V1 : par défaut 1 clip en cours par clé (une clé occupée gaspillait ses essais en « file pleine »)
+function perKey() { return +S.perKey === 3 ? 3 : 1; }
+function clipLimit() { const n = apiKeys().length, k = perKey(); return n > 1 ? (S.par === 'auto' ? n * k : Math.min(n * k, +S.par)) : Math.min(k, S.par === 'auto' ? autoPar : +S.par); }
 async function clipLane(s) {
   const list = await lanes();
   return s.clip.keyId ? list.find(l => l.id === s.clip.keyId) : list[0];
@@ -1348,7 +1352,7 @@ async function dispatchClips() {
   const active = projects.flatMap(p => p.etapes).filter(s => ['calcul', 'envoi'].includes(s.clip.st) && !isGrokClip(s));
   if (active.length >= clipLimit()) return;
   const lane = list.filter(l => !l.refused && now() >= Math.max(l.until, keyRateUntil.get(l.key) || 0) &&
-    active.filter(s => s.clip.keyId === l.id || (!s.clip.keyId && l === list[0])).length < 3)
+    active.filter(s => s.clip.keyId === l.id || (!s.clip.keyId && l === list[0])).length < perKey())
     .sort((a, b) => a.until - b.until)[0];
   if (!lane) return;
   const j = nextClipJob();
@@ -1973,7 +1977,8 @@ async function submitClip(p, s, lane) {
     const wait = qfull ? (isFastKey(lane) ? videoKeyGap(lane) : Math.min(60000, 20000 + 10000 * ((lane.fullStreak || 1) - 1))) :
       r._err === 429 ? Math.min(180000, 60000 * (lane.rateStreak || 1)) : 60000;
     lane.refused = isAuth(r); if (lane.refused) lane.refusedAt = now(); lane.until = Math.max(now() + wait, keyRateUntil.get(lane.key) || 0);
-    setClip(p, s, { st: 'file', retryAt: lane.until, msg: lane.refused ? 'Clé refusée ; les autres clés continuent.' : 'Clé occupée, nouvel essai à ' + fmtT(lane.until) });
+    // YAKFLOW_SAME_CLIP_V1 : le clip refusé reste en tête et repart sur la prochaine clé libre (avant, il attendait la même clé et les autres restaient sans travail)
+    setClip(p, s, { st: 'file', retryAt: lane.refused ? lane.until : now(), msg: lane.refused ? 'Clé refusée ; les autres clés continuent.' : (qfull ? 'File Agnes pleine' : 'Clé en pause') + ', j’essaie la clé suivante (essai ' + (s.clip.tries || 1) + ')' });
     stat.try(lane.refused ? 'err' : r._err === 429 ? 'r429' : qfull ? 'full' : 'err', inflight);
     if (lane.refused) log('Une clé Agnes a été refusée. Vérifie les clés dans les réglages.');
     return;
@@ -2570,7 +2575,7 @@ function queueStatus() {
   const active = projects.flatMap(p => p.etapes).filter(s => ['calcul', 'envoi'].includes(s.clip.st));
   if (active.length < clipLimit()) {
     const keys = apiKeys();
-    const available = keys.map(k => keyLanes.get(k)).filter(l => l && !l.refused && active.filter(s => s.clip.keyId === l.id || (!s.clip.keyId && l.key === keys[0])).length < 3);
+    const available = keys.map(k => keyLanes.get(k)).filter(l => l && !l.refused && active.filter(s => s.clip.keyId === l.id || (!s.clip.keyId && l.key === keys[0])).length < perKey());
     const keyReady = Math.min(...available.map(l => Math.max(l.until, keyRateUntil.get(l.key) || 0)));
     const globalReady = keys.length > 1 ? lastVideoSubmit + videoGlobalGap(keys.map(k => keyLanes.get(k)).filter(Boolean)) : Math.max(rpmUntil, clipPauseUntil, lastSubmit + Math.max(5, +S.gap || 8) * 1000);
     for (const s of clips) if (videoPromptFor(s) && (!S.gate || s.ok)) times.push(Math.max(s.clip.retryAt || 0, keyReady, globalReady));
@@ -2991,11 +2996,12 @@ document.addEventListener('drop', async (e) => {
 function openSettings() {
   if (document.getElementById('yfActivation')?.hidden === false) return;
   $('#sVidEngine').value = S.vidEngine || 'agnes'; $('#sGrokPar').value = S.grokPar || 5; $('#sKey').value = S.key; $('#sFondus').checked = S.fondus !== false; $('#sImgSrc').value = S.imgSrc; $('#sChatPar').value = S.chatPar; $('#sImgStartEnabled').checked = !!S.imgStartEnabled; $('#sImgStartTime').value = S.imgStartTime || '23:55'; $('#sImgModel').value = S.imgModel; $('#sImgSize').value = S.imgSize; $('#sDisk').checked = S.disk; $('#sVidModel').value = S.vidModel; $('#sVidSize').value = S.vidSize;
-  $('#sPar').value = S.par; $('#sGap').value = S.gap; $('#sGate').checked = S.gate; $('#sAutoMont').checked = S.autoMont; $('#sAutoDl').checked = S.autoDl;
+  $('#sPar').value = S.par; $('#sGap').value = S.gap; if ($('#sPerKey')) $('#sPerKey').value = String(perKey()); $('#sGate').checked = S.gate; $('#sAutoMont').checked = S.autoMont; $('#sAutoDl').checked = S.autoDl;
   $('#sHook').checked = S.hook; $('#sKeepFirst').checked = S.keepFirst !== false; $('#sCut').value = S.cut; $('#sNtfy').value = S.ntfy; renderKeyStatus(); if (window.yfSyncMode) yfSyncMode(); dlgSet.showModal();
 }
 $('#sKey').addEventListener('input', renderKeyStatus);
 $('#sPar').addEventListener('change', renderKeyStatus);
+if ($('#sPerKey')) $('#sPerKey').addEventListener('change', renderKeyStatus);
 $('#sCheckKeys').onclick = checkKeys;
 setInterval(() => { if (dlgSet.open) renderKeyStatus(); }, 2000);
 $('#btnSettings').onclick = openSettings;
@@ -3005,7 +3011,7 @@ $('#repDisk').onclick = async () => { await stat.toDisk(true); toast('Rapport ra
 $('#repReset').onclick = async () => { if (await yfConfirm({ title: 'Remettre le rapport à zéro ?', message: 'Toutes les mesures du rapport seront effacées.', okLabel: 'Effacer', okIcon: 'fa-eraser', danger: true })) { stat.reset(); $('#repPre').textContent = stat.report(); } };
 $('#sGo').onclick = () => {
   Object.assign(S, { vidEngine: $('#sVidEngine').value, grokPar: +$('#sGrokPar').value || 5, fondus: $('#sFondus').checked, imgSrc: $('#sImgSrc').value, chatPar: +$('#sChatPar').value, imgStartEnabled: $('#sImgStartEnabled').checked, imgStartTime: $('#sImgStartTime').value || '23:55', key: $('#sKey').value.trim(), imgModel: $('#sImgModel').value, imgModelV: 3, imgSize: $('#sImgSize').value, imgSizeV: 2, disk: $('#sDisk').checked, vidModel: $('#sVidModel').value, vidSize: $('#sVidSize').value,
-    par: $('#sPar').value, parV: 3, gap: Math.max(5, +$('#sGap').value || 8), gate: $('#sGate').checked, autoMont: $('#sAutoMont').checked, autoDl: $('#sAutoDl').checked,
+    par: $('#sPar').value, parV: 3, gap: Math.max(5, +$('#sGap').value || 8), perKey: $('#sPerKey') ? +$('#sPerKey').value : 1, gate: $('#sGate').checked, autoMont: $('#sAutoMont').checked, autoDl: $('#sAutoDl').checked,
     hook: $('#sHook').checked, keepFirst: $('#sKeepFirst').checked, cut: $('#sCut').value, ntfy: $('#sNtfy').value.trim() });
   for (const lane of keyLanes.values()) { lane.refused = false; lane.imageRefused = false; }
   // AGNES_IMAGE_SCHEDULE_V1
