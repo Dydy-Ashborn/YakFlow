@@ -1011,10 +1011,12 @@ $('#log').textContent = logLines.slice().reverse().join('\n');
 $('#copyLog').onclick = () => { navigator.clipboard.writeText(logLines.join('\n')); toast('Journal copié.', 'ok'); };
 
 /* ---- réglages ---- */
-const DEFSET = { vidEngine: 'agnes', grokPar: 5, fondus: true, key: '', imgSrc: 'chatgpt', chatPar: 2, imgSrcV: 2, imgModel: 'agnes-image-2.5-flash', imgModelV: 3, imgSize: '2K', imgSizeV: 3, keepFirst: true, disk: true, vidModel: 'agnes-video-2.5-flash', vidSize: '720P', par: 'auto', gap: 8, parV: 3,
+const DEFSET = { perKey: 1, vidEngine: 'agnes', grokPar: 5, fondus: true, key: '', imgSrc: 'chatgpt', chatPar: 2, imgSrcV: 2, imgModel: 'agnes-image-2.5-flash', imgModelV: 3, imgSize: '2K', imgSizeV: 3, keepFirst: true, disk: true, vidModel: 'agnes-video-2.5-flash', vidSize: '720P', par: 'auto', gap: 8, parV: 3,
   gate: false, autoMont: true, autoDl: false, hook: false, cut: 'auto', ntfy: '', imgStartEnabled: false, imgStartTime: '23:55', imgStartAt: 0};
 let S = Object.assign({}, DEFSET);
 let storedS = {}; try { storedS = JSON.parse(localStorage.getItem('as_settings') || '{}'); Object.assign(S, storedS); } catch (e) {}
+// YAKFLOW_CLIPS_DEFAULTS_V1 : nouveaux réglages clips appliqués une fois au rechargement (1 clip par clé, parallèle en Auto)
+if (storedS.clipsDefV !== 1) { S.perKey = 1; S.par = 'auto'; S.clipsDefV = 1; try { localStorage.setItem('as_settings', JSON.stringify(S)); } catch (_) {} }
 if (storedS.imgModelV !== 3) { if (!storedS.imgModel || storedS.imgModel === 'agnes-image-2.1-flash') S.imgModel = 'agnes-image-2.5-flash'; S.imgModelV = 3; }
 // YAKFLOW_AGNES_OPTIM_V13 : doc Agnes (Token Plan FAQ) — en gratuit, 4K et 3K = 1 image/min, 2K = 5/min, 1K = 10/min.
 // La vidéo sort en 720P et les références sont réduites à 1024 px : au-delà de 2K, on paie en débit sans gain visible.
@@ -2044,7 +2046,8 @@ async function pollClip(p, s) {
   }
   if (s.clip.nextPoll && now() < s.clip.nextPoll) return;
   const nIn = projects.reduce((n, q) => n + q.etapes.filter((x) => x.clip.st === 'calcul').length, 0);
-  s.clip.nextPoll = now() + (s.clip.progress > 0 ? 15000 : 30000);   // mesuré : ~6 min de génération, un seul clip à la fois ; 15 s en cours, 30 s en réserve → ~6 requêtes/min, loin de la limite de 20/min (évite les 429)
+  // YAKFLOW_POLL_END_V1 : après 4 min (fin habituelle vers 5-6 min) on regarde toutes les 10 s pour libérer la clé plus vite
+  s.clip.nextPoll = now() + (now() - (s.clip.sent || now()) > 4 * 60000 ? 10000 : s.clip.progress > 0 ? 15000 : 30000);   // mesuré : ~6 min de génération, un seul clip à la fois ; 15 s en cours, 30 s en réserve → ~6 requêtes/min, loin de la limite de 20/min (évite les 429)
   const owner = await clipLane(s);
   if (!owner) { setClip(p, s, { msg: 'Suivi en pause : rétablis la clé utilisée pour cette vidéo.' }); return; }
   if (!s.clip.keyId) { s.clip.keyId = owner.id; saveProjects(); }
