@@ -538,6 +538,7 @@ dialog{border-radius:18px!important;box-shadow:0 30px 90px rgba(0,0,0,.45)!impor
       <label class="f"><span>Format image</span><select id="edFmt"><option value="">Auto</option><option>9:16</option><option>3:2</option><option>16:9</option><option>1:1</option><option>2:3</option></select></label>
     </div>
     <label class="f"><span>Images jointes (ids séparés par des virgules)</span><input id="edJoin" type="text" class="mono"></label>
+    <label class="f" id="edIdentityWrap"><span>Identité canonique (fiche de référence partagée)</span><input id="edIdentityRef" type="text" class="mono" placeholder="fiche-serie-money-farm-leo"><small>Nouvelle tenue : indiquer ici la fiche originale mémorisée. Le générateur reçoit sa vraie image, jamais uniquement sa description.</small></label>
     <p class="hint" style="margin:0">Changer le prompt image refait l'image puis le clip. Changer le prompt vidéo ou la durée refait seulement le clip.</p>
   </div>
   <div class="foot"><button class="btn ghost" onclick="dlgEdit.close()">Annuler</button><button class="btn primary" id="edGo">Enregistrer</button></div>
@@ -893,6 +894,65 @@ const imgKey = (p, s) => isFiche(s) && /^fiche-serie-/.test(s.id) ? 'fiche:' + s
 const clipKey = (p, s) => 'clip:' + p.id + ':' + s.id;
 const montKey = (p) => 'mont:' + p.id;
 const ficheMeta = {}; // id -> prompt de la fiche en mémoire
+/* YAKFLOW_CANON_IDENTITY_V1 : images d'identité réellement conservées en IndexedDB.
+   Toute nouvelle tenue part d'une image canonique approuvée, et jamais d'un seul texte. */
+const isSharedFicheId = (id) => /^fiche-serie-[a-z0-9][a-z0-9-]*$/.test(String(id || ''));
+function canonicalRefs(p, s) {
+  const raw = Array.isArray(s.joindre) ? s.joindre : [];
+  // Une fiche tenue reçoit toujours EN PREMIER la vraie image du visage P1.
+  if (s.type === 'fiche' && s.identiteDe) return [...new Set([s.identiteDe, ...raw])].slice(0, 3);
+  // Pour une scène, on privilégie les fiches des personnages visibles, puis leurs bases.
+  const base = [];
+  for (const id of raw) {
+    const st = p.etapes.find((x) => x.id === id);
+    if (st && st.type === 'fiche' && st.identiteDe) base.push(st.identiteDe);
+  }
+  const people = raw.filter((id) => /^fiche/i.test(id));
+  const other = raw.filter((id) => !/^fiche/i.test(id));
+  return [...new Set([...people, ...base, ...other])].slice(0, 3);
+}
+function referenceFile(p, id) {
+  return p.etapes.find((x) => x.id === id) || { id, type: /^fiche/i.test(id) ? 'fiche' : 'scene' };
+}
+async function memorizeIdentity(p, s) {
+  if (s.type !== 'fiche' || s.img.st !== 'fini') { toast('Termine ou importe la fiche approuvée avant de la mémoriser.', 'warn'); return; }
+  const src = await mGet(imgKey(p, s));
+  if (!src) { toast('Fichier image absent. Réimporte la fiche officielle.', 'warn'); return; }
+  const guess = /l[eé]o/i.test(s.nom + ' ' + s.id) ? 'fiche-serie-money-farm-leo' : 'fiche-serie-' + String(p.id + '-' + s.id).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const id = prompt('ID IMMUTABLE du personnage (le même dans tous les épisodes).\nAttention : ne mémorise que sa vraie fiche approuvée, jamais un visage approximatif.', guess);
+  if (id == null) return;
+  if (!isSharedFicheId(id)) { toast('ID invalide : utilise fiche-serie- puis lettres, chiffres et tirets.', 'warn'); return; }
+  const current = await mGet('fiche:' + id);
+  if (current && !confirm('Une identité existe déjà sous ' + id + '.\nLa remplacer change la référence pour TOUTE la série. Confirmer ?')) return;
+  await mPut('fiche:' + id, src);
+  if (current && current !== src) {
+    // Si l'image P1 approuvée change, les images dérivées doivent être revues.
+    for (const q of projects) {
+      const affected = new Set([id]);
+      let expanded = true;
+      while (expanded) {
+        expanded = false;
+        for (const t of q.etapes) {
+          if (affected.has(t.id)) continue;
+          const deps = [...(t.joindre || []), t.identiteDe, t.imageDe].filter(Boolean);
+          if (deps.some((x) => affected.has(x))) { affected.add(t.id); expanded = true; }
+        }
+      }
+      for (const t of q.etapes) if (affected.has(t.id) && t.id !== id) {
+        await mDel(imgKey(q, t)); await mDel(clipKey(q, t));
+        t.img = { st: 'attente', msg: 'Identité canonique actualisée : image à régénérer' };
+        if (t.type === 'scene') t.clip = { st: 'attente' };
+        t.ok = false;
+        q.montage = { st: 'attente' };
+      }
+    }
+  }
+  await kvPut('canon-meta:' + id, { id, sourceProjet: p.id, sourceFiche: s.id, date: new Date().toISOString() });
+  log('Identité canonique mémorisée : ' + id + ' ← ' + p.id + '/' + s.id);
+  toast('Identité protégée : ' + id, 'ok');
+  await syncFiches(); saveProjects(); render();
+}
+
 
 /* =====================================================================
    PROJETS
@@ -907,6 +967,8 @@ function normStep(e, i) {
   return {
     id: String(e.id || ('etape-' + (i + 1))), type, nom: e.nom || e.id || ('Étape ' + (i + 1)),
     joindre: Array.isArray(e.joindre) ? e.joindre.map(String) : [],
+    identiteDe: type === 'fiche' ? String(e.identiteDe || '') : '',
+    verrouIdentite: type === 'fiche' && !!e.verrouIdentite,
     promptImage: e.promptImage || e.prompt || '',
     promptVideoAgnes: type === 'scene' ? (e.promptVideoAgnes || e.promptAgnes || e.promptVideo || e.promptAnimation || '') : '',
     promptVideoGrok: type === 'scene' ? (e.promptVideoGrok || e.promptGrok || e.promptVideo || e.promptAnimation || '') : '',
@@ -957,12 +1019,30 @@ async function importProjects(list, montageOnly) {
       continue;
     }
     if (!old) { projects.push(np); log('Projet importé : ' + np.titre + ' (' + np.etapes.length + ' étapes)'); continue; }
+    // CONTINUITÉ : toute nouvelle identité/tenue invalide les images qui en dépendent.
+    // Une réimportation de JSON ne doit pas laisser des scènes avec l'ancien visage.
+    const dirty = new Set();
+    for (const st of np.etapes) {
+      const prev = old.etapes.find((x) => x.id === st.id);
+      if (!prev || prev.promptImage !== st.promptImage || prev.joindre.join() !== st.joindre.join() ||
+          (prev.identiteDe || '') !== (st.identiteDe || '') || !!prev.verrouIdentite !== !!st.verrouIdentite ||
+          (prev.imageDe || '') !== (st.imageDe || '') || prev.format !== st.format) dirty.add(st.id);
+    }
+    let again = true;
+    while (again) {
+      again = false;
+      for (const st of np.etapes) {
+        if (dirty.has(st.id)) continue;
+        const deps = [...(st.joindre || []), st.identiteDe, st.imageDe].filter(Boolean);
+        if (deps.some((id) => dirty.has(id))) { dirty.add(st.id); again = true; }
+      }
+    }
     // fusion : on garde ce qui n'a pas changé
     let keptI = 0, keptC = 0;
     for (const s of np.etapes) {
       const o = old.etapes.find((x) => x.id === s.id);
       if (!o) continue;
-      const sameImg = o.promptImage === s.promptImage && o.joindre.join() === s.joindre.join() && o.format === s.format && (o.imageDe || '') === (s.imageDe || '');
+      const sameImg = !dirty.has(s.id) && o.promptImage === s.promptImage && o.joindre.join() === s.joindre.join() && o.format === s.format && (o.imageDe || '') === (s.imageDe || '') && (o.identiteDe || '') === (s.identiteDe || '') && !!o.verrouIdentite === !!s.verrouIdentite;
       if (sameImg) { s.img = o.img; s.ok = o.ok; keptI++; }
       else if (!/^fiche-serie-/.test(s.id)) await mDel(imgKey(old, o));
       const sameClip = sameImg && (o.promptVideoAgnes||o.promptVideo||'') === (s.promptVideoAgnes||s.promptVideo||'') && (o.promptVideoGrok||o.promptVideo||'') === (s.promptVideoGrok||s.promptVideo||'') && o.secondes === s.secondes;
@@ -1230,7 +1310,7 @@ function remember(path, body) {
 const fmtOf = (s) => s.format || (s.type === 'fiche' ? '3:2' : '9:16');
 const PHONE_GEOMETRY_RULE = 'Phone geometry: the display and any glowing message are only on the FRONT glass face of the phone. If the message must be readable, use a three-quarter camera angle so both the character and the front screen can see it; the back of the phone is hidden. The BACK has only the camera lenses and plain casing, never a screen or text. If the phone is face-down, its screen is hidden. Keep the hand grip and screen orientation physically possible.';
 function imagePrompt(s) {
-  const prompt = s.promptImage || '';
+  const prompt = (s.identiteDe ? 'CRITICAL CANON IDENTITY LOCK: The FIRST attached reference image is the approved original identity. Preserve EXACT face, muzzle, eyes, head proportions, ears, hair/fur markings and age. Change OUTFIT ONLY. Never redesign the character.\n\n' : '') + (s.promptImage || '');
   return /\b(?:phone|smartphone|mobile phone|cell ?phone|telephone|téléphone)\b/i.test(prompt) && !prompt.includes('Phone geometry:')
     ? prompt + '\n\n' + PHONE_GEOMETRY_RULE : prompt;
 }
@@ -1266,8 +1346,8 @@ function fileData(f) { return new Promise((res, rej) => { const fr = new FileRea
 
 async function genImage(p, s, assignedLane) {
   const refs = [];
-  for (const id of s.joindre) {
-    const ref = p.etapes.find(x => x.id === id) || { id, type: /^fiche/.test(id) ? 'fiche' : 'scene' };
+  for (const id of canonicalRefs(p, s)) {
+    const ref = referenceFile(p, id);
     const d = await mGet(imgKey(p, ref));
     if (!d) return { err: 'Image de référence manquante : ' + id };
     refs.push((await toJpeg(d, 1536)).data);
@@ -1325,10 +1405,11 @@ async function bridge(method, path, body) {
 async function genChatGPT(p, s) {
   if (!PROXY) return { err: 'Le pont ChatGPT a besoin du serveur (serveur.py).' };
   const refs = [];
-  for (const id of s.joindre) {
-    const ref = p.etapes.find((x) => x.id === id) || { id, type: /^fiche/.test(id) ? 'fiche' : 'scene' };
+  for (const id of canonicalRefs(p, s)) {
+    const ref = referenceFile(p, id);
     const d = await mGet(imgKey(p, ref));
-    if (d) refs.push({ name: 'ref-' + (refs.length + 1) + '-' + id + '.jpg', data: (await toJpeg(d, 1536)).data });
+    if (!d) return { err: 'Image canonique manquante : ' + id + '. Import obligatoire avant génération.' };
+    refs.push({ name: 'ref-' + (refs.length + 1) + '-' + id + '.jpg', data: (await toJpeg(d, 1536)).data });
   }
   const id = p.id + '|' + s.id, job = { id, pid: p.id, nom: s.nom, titre: p.titre, prompt: imagePrompt(s), refs };
   await bridge('POST', 'push', job);
@@ -1584,7 +1665,7 @@ const stat = (() => {
 })();
 const hasImg = (p, s) => s.img.st === 'fini';
 async function refsReady(p, s) {
-  for (const id of s.joindre) {
+  for (const id of canonicalRefs(p, s)) {
     const ref = p.etapes.find((x) => x.id === id);
     if (ref) { if (!hasImg(p, ref)) return false; }
     else if (!(await mGet('fiche:' + id))) return 'manque';
@@ -1615,6 +1696,10 @@ async function nextImageJob() {
     if (!p.actif) continue;
     for (const s of p.etapes) {
       if (!s.promptImage || s.imageDe) continue;
+      if (s.type === 'fiche' && s.verrouIdentite) {
+        if (s.img.st !== 'fini' && s.img.msg !== 'Fiche canonique verrouillée : importe l’image P1 approuvée') setImg(p, s, { msg: 'Fiche canonique verrouillée : importe l’image P1 approuvée' });
+        continue;
+      }
       if (/^fiche-serie-/.test(s.id) && projects.some(q => q.etapes.some(t => t !== s && t.id === s.id && t.img.st === 'calcul'))) continue;
       const st = s.img.st;
       if (!(st === 'attente' || (st === 'file' && now() >= (s.img.retryAt || 0)))) continue;
@@ -2158,6 +2243,7 @@ window.addEventListener('beforeunload', (e) => { if (running || montBusy) { e.pr
    ACTIONS SUR LES ÉTAPES
    ===================================================================== */
 async function redoImage(p, s) {
+  if (s.verrouIdentite) { toast('Identité canonique verrouillée : importe une image approuvée plutôt que la régénérer.', 'warn'); return; }
   if (PROXY) bridge('POST', 'forget?id=' + encodeURIComponent(p.id + '|' + s.id)).catch(() => {});
   const users = /^fiche-serie-/.test(s.id) ? projects.filter((q) => q.etapes.some((t) => t.id === s.id)).map((q) => q.titre) : [];
   if (users.length <= 1 || confirm('Cette fiche sert aussi dans : ' + users.filter((t) => t !== p.titre).join(', ') + '.\nLa refaire la changera partout. Continuer ?')) {
@@ -2206,6 +2292,7 @@ function openEdit(p, s) {
   $('#edTitle').textContent = 'Modifier · ' + s.nom;
   $('#edImg').value = s.promptImage; $('#edVid').value = s.promptVideoAgnes || s.promptVideo || ''; $('#edVidGrok').value = s.promptVideoGrok || s.promptVideo || ''; $('#edSec').value = s.secondes || 10;
   $('#edKeep').value = s.garder; $('#edFmt').value = s.format; $('#edJoin').value = s.joindre.join(', ');
+  $('#edIdentityRef').value = s.identiteDe || ''; $('#edIdentityWrap').hidden = s.type !== 'fiche';
   const sc = s.type === 'scene';
   $('#edVidWrap').hidden = !sc; $('#edVidGrokWrap').hidden = !sc; $('#edSecWrap').hidden = !sc; $('#edKeepWrap').hidden = !sc;
   dlgEdit.showModal();
@@ -2214,9 +2301,11 @@ $('#edGo').onclick = async () => {
   const { p, s } = editing;
   const ni = $('#edImg').value.trim(), nv = $('#edVid').value.trim(), nvg = $('#edVidGrok').value.trim(), ns = clampSec($('#edSec').value), nf = $('#edFmt').value;
   const nj = $('#edJoin').value.split(',').map((x) => x.trim()).filter(Boolean);
-  const imgChanged = ni !== s.promptImage || nf !== s.format || nj.join() !== s.joindre.join();
+  const identityRef = s.type === 'fiche' ? $('#edIdentityRef').value.trim() : '';
+  if (identityRef && (!isSharedFicheId(identityRef) || identityRef === s.id)) { toast('Identité canonique invalide ou identique à la nouvelle fiche.', 'warn'); return; }
+  const imgChanged = ni !== s.promptImage || nf !== s.format || nj.join() !== s.joindre.join() || identityRef !== (s.identiteDe || '');
   const clipChanged = s.type === 'scene' && (nv !== (s.promptVideoAgnes||s.promptVideo||'') || nvg !== (s.promptVideoGrok||s.promptVideo||'') || ns !== s.secondes);
-  Object.assign(s, { promptImage: ni, promptVideoAgnes: s.type === 'scene' ? nv : '', promptVideoGrok: s.type === 'scene' ? nvg : '', promptVideo: s.type === 'scene' ? nv : '', secondes: s.type === 'scene' ? ns : 0, format: nf, joindre: nj, garder: $('#edKeep').value.trim() });
+  Object.assign(s, { promptImage: ni, promptVideoAgnes: s.type === 'scene' ? nv : '', promptVideoGrok: s.type === 'scene' ? nvg : '', promptVideo: s.type === 'scene' ? nv : '', secondes: s.type === 'scene' ? ns : 0, format: nf, joindre: nj, identiteDe: identityRef, garder: $('#edKeep').value.trim() });
   dlgEdit.close();
   if (imgChanged) await redoImage(p, s); else if (clipChanged) await redoClip(p, s);
   else { if (S.cut === 'garder') p.montage = { st: 'attente' }; saveProjects(); render(); }
@@ -2543,6 +2632,7 @@ function stepCard(p, s, i) {
       '<div class="acts">' +
         (sc && S.gate && s.img.st === 'fini' && !s.ok ? '<button class="btn sm primary" data-act="ok">Valider</button>' : '') +
         '<button class="btn sm" data-act="edit">Prompts</button>' +
+        (s.type === 'fiche' && s.img.st === 'fini' && !/^(decor|fin-)/i.test(s.id) ? '<button class="btn sm" data-act="canon" title="Sauvegarder le visage officiel pour tous les épisodes">Canoniser</button>' : '') +
         (s.promptImage && !s.imageDe ? '<button class="btn sm" data-act="redoImg">' + (s.img.st === 'fini' ? 'Refaire img' : 'Relancer img') + '</button>' : '') +
         (sc && s.img.st === 'fini' ? '<button class="btn sm" data-act="redoClip">' + (s.clip.st === 'fini' ? 'Refaire clip' : 'Relancer clip') + '</button>' : '') +
         /* YAKFLOW_SAFE_MANUAL_CLIP_IMPORT_V14 */
@@ -2625,6 +2715,7 @@ async function render() {
       const a = b.dataset.act;
       if (a === 'view') view(p, s, 'img'); else if (a === 'play') view(p, s, 'clip');
       else if (a === 'edit') openEdit(p, s); else if (a === 'redoImg') redoImage(p, s); else if (a === 'redoClip') redoClip(p, s);
+      else if (a === 'canon') memorizeIdentity(p, s);
       else if (a === 'fileImg') pickFile(p, s, 'image');
       else if (a === 'fileClip') pickFile(p, s, 'clip');
       else if (a === 'file') pickFile(p, s, 'image');
