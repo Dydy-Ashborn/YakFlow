@@ -20,7 +20,7 @@ Champs communs : "id" (unique), "type" ("fiche", "couverture" ou "scene"), "nom"
 
 CHAMPS AVANCÉS (facultatifs, seulement si utiles)
 - "promptVideoAgnes" / "promptVideoGrok" : une version du prompt de clip propre à chaque moteur, à la place de "promptVideo".
-- "imageFin" : id d'une image qui sert de dernière image du clip (le clip va de son image de départ à celle-ci). Pour un plan qui bouge beaucoup, crée une fiche "fin-scene-N" placée juste après la scène N, qui joint "scene-N" en premier, avec un promptImage du type « Use the first attached image as the starting shot to continue: … » décrivant la fin du plan.
+- "imageFin" : id d'une image qui sert de dernière image du clip (le clip va de son image de départ à celle-ci). Pour un plan qui bouge beaucoup, crée une fiche "fin-scene-N" placée juste après la scène N, qui joint uniquement "scene-N", avec un promptImage du type « Use the first attached image as the starting shot to continue: … » décrivant la fin du plan.
 - "imageDe" : id d'une étape dont l'image est réutilisée comme départ, sans nouvelle image. Ex. la scène suivante part de "fin-scene-N" pour un enchaînement sans coupure.
 - "muet": true pour un plan sans parole (gardé en entier au montage).
 - "garder" : la portion du clip à garder au montage, en secondes, ex. "0.5-6".
@@ -28,6 +28,7 @@ CHAMPS AVANCÉS (facultatifs, seulement si utiles)
 - "format" : "9:16" par défaut ; aussi "16:9", "1:1", "4:3", "3:4".
 
 BONNES PRATIQUES
+- 3 images jointes maximum par étape : seulement les fiches des personnages visibles, plus le décor pour un plan large.
 - Une réplique tient dans la durée du clip (environ 3 mots par seconde) et finit une seconde avant la fin.
 - Dans chaque promptImage de scène, décris le cadrage, le décor, la lumière et qui est visible ; rappelle le style visuel de la vidéo.
 - Pas de personnages protégés, pas de vraies personnes, rien de choquant (conditions d'Agnes, d'OpenAI et de xAI).
@@ -38,7 +39,7 @@ EXEMPLE MINIMAL
 {"id":"fiche-cuisine","type":"fiche","nom":"Décor cuisine","joindre":[],"promptImage":"..."},
 {"id":"couverture","type":"couverture","nom":"Couverture","joindre":["fiche-heros"],"promptImage":"..."},
 {"id":"scene-1","type":"scene","nom":"Accroche","joindre":["fiche-heros","fiche-cuisine"],"promptImage":"...","promptVideo":"...","secondes":7,"imageFin":"fin-scene-1"},
-{"id":"fin-scene-1","type":"fiche","nom":"Fin de la scène 1","joindre":["scene-1","fiche-heros"],"promptImage":"Use the first attached image as the starting shot to continue: ..."},
+{"id":"fin-scene-1","type":"fiche","nom":"Fin de la scène 1","joindre":["scene-1"],"promptImage":"Use the first attached image as the starting shot to continue: ..."},
 {"id":"scene-2","type":"scene","nom":"Suite directe","joindre":["fiche-heros"],"imageDe":"fin-scene-1","promptVideo":"...","secondes":6}
 ]}
 

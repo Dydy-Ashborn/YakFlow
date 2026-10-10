@@ -1488,9 +1488,17 @@ async function bridge(method, path, body) {
   if (d.status >= 400) throw new Error('pont : ' + ((d.json && d.json.detail) || ('HTTP ' + d.status)));
   return d.json;
 }
+// YAKFLOW_REF_CAP_V1 : moins de pièces jointes ChatGPT (limite du compte), sans perte de qualité :
+// une image de fin ne joint que l'image de sa scène (elle porte déjà personnages, tenues et décor) ; les autres images, 3 réfs maximum.
+function chatRefIds(p, s) {
+  const j = s.joindre || [];
+  const isFin = s.type === 'fiche' && (/^fin-/.test(s.id) || p.etapes.some((x) => x.imageFin === s.id));
+  if (isFin) { const sc = j.filter((id) => { const r = p.etapes.find((x) => x.id === id); return r && r.type === 'scene'; }); if (sc.length) return sc.slice(0, 1); }
+  return j.slice(0, 3);
+}
 async function genChatGPT(p, s) {
   const refs = [];
-  for (const id of s.joindre) {
+  for (const id of chatRefIds(p, s)) {
     const ref = p.etapes.find((x) => x.id === id) || { id, type: /^fiche/.test(id) ? 'fiche' : 'scene' };
     const d = await mGet(imgKey(p, ref));
     if (d) refs.push({ name: 'ref-' + (refs.length + 1) + '-' + id + '.jpg', data: (await toJpeg(d, PROXY ? 1536 : 1024)).data });
