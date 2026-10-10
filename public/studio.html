@@ -1672,7 +1672,16 @@ let imageRunSeq = 0;
 function imagesBusy() { return chatInFlight > 0 || [...keyLanes.values()].some(l => l.imageBusy); }
 const curStep = new Set();
 const P = (id) => projects.find((p) => p.id === id);
-function setImg(p, s, patch) { s.img = Object.assign({}, s.img, patch); saveProjects(); renderSoon(); }
+function setImg(p, s, patch) {
+  s.img = Object.assign({}, s.img, patch); saveProjects();
+  // simple changement de message (« ChatGPT dessine… », « En file… ») : on met à jour le texte sans tout redessiner
+  if (Object.keys(patch).every((k) => k === 'msg') && (P(curId) || projects[0]) === p) {
+    const card = $('#mainc') && $('#mainc').querySelector('.st[data-sid="' + CSS.escape(s.id) + '"]');
+    const showsImg = !(s.type === 'scene' && s.img.st === 'fini' && s.clip.st !== 'attente');
+    if (card && showsImg) { let el = card.querySelector('.sb > .msg'); if (!el && s.img.msg) { el = document.createElement('div'); el.className = 'msg'; const acts = card.querySelector('.sb > .warnline, .sb > .acts'); card.querySelector('.sb').insertBefore(el, acts); } if (el) el.textContent = s.img.msg || ''; return; }
+  }
+  renderSoon();
+}
 const fmtDur = (ms) => { const t = Math.max(0, Math.round(ms / 1000)), m = Math.floor(t / 60), sec = t % 60; return m ? m + ' min ' + String(sec).padStart(2, '0') + ' s' : sec + ' s'; };
 function setClip(p, s, patch) {
   const previous = s.clip.st;
@@ -2775,6 +2784,10 @@ async function render() {
   const fiches = p.etapes.filter((s) => s.type === 'fiche'), scenes = p.etapes.filter((s) => s.type === 'scene'), autres = p.etapes.filter((s) => s.type !== 'fiche' && s.type !== 'scene');
   const idx = (s) => p.etapes.indexOf(s);
   const mst = p.montage.st;
+  // YAKFLOW_NO_JUMP_V2 : on garde la vidéo montée et les vignettes déjà chargées, et la position de défilement
+  const vidKey = p.id + '|' + (p.montage.done || p.montage.size || '');
+  const keepVid = mst === 'fini' ? document.querySelector('#mvid video[data-k="' + CSS.escape(vidKey) + '"]') : null;
+  const keepY = window.scrollY;
   m.innerHTML =
     '<section class="card"><div class="phead"><div style="flex:1;min-width:220px"><h1>' + esc(p.titre) + '</h1><div class="pid">' + esc(p.id) +
       (p.datePublication ? ' · publication ' + esc(p.datePublication) + ' ' + esc(p.heurePublication) : '') + ' · clips ' + c.sec + ' s au total</div></div>' +
@@ -2799,6 +2812,13 @@ async function render() {
           '<div class="pubrow"><span class="k">' + esc(x[0]) + '</span><span class="v">' + esc(x[1]) + '</span><button class="btn sm" data-copy="' + i + '"><i class="fa-regular fa-copy"></i>Copier</button></div>').join('') + '</div>' : '') +
       '</div></div></section>';
 
+  if (keepVid) $('#mvid').replaceChildren(keepVid);
+  for (const s of p.etapes) {   // vignettes déjà en cache : posées tout de suite (sans trou ni saut)
+    if (s.img.st !== 'fini') continue;
+    const c = thumbCache.get(imgKey(p, s)), el = c && c.v === s.img.msg && c.d && m.querySelector('.st[data-sid="' + CSS.escape(s.id) + '"] .vis');
+    if (el) el.style.backgroundImage = 'url("' + c.d + '")';
+  }
+  if (Math.abs(window.scrollY - keepY) > 1) window.scrollTo(0, keepY);
   // vignettes
   for (const s of p.etapes) {
     if (s.img.st !== 'fini') continue;
@@ -2808,7 +2828,7 @@ async function render() {
   // vidéo montée
   if (mst === 'fini') {
     const buf = await mGet(montKey(p));
-    if (buf && curId === p.id) { const v = document.createElement('video'); v.controls = true; v.playsInline = true; v.src = URL.createObjectURL(new Blob([buf], { type: 'video/mp4' })); $('#mvid').replaceChildren(v); }
+    if (buf && curId === p.id && !keepVid) { const v = document.createElement('video'); v.dataset.k = vidKey; v.controls = true; v.playsInline = true; v.src = URL.createObjectURL(new Blob([buf], { type: 'video/mp4' })); $('#mvid').replaceChildren(v); }
   } else $('#mvid').innerHTML = '<div class="mph">' + (mst === 'calcul' ? '<span class="spin"></span>' : '<i class="fa-solid fa-film"></i>La vidéo apparaîtra ici') + '</div>';
 
   m.querySelectorAll('.st').forEach((card) => {
@@ -3002,7 +3022,7 @@ $('#sKey').addEventListener('input', renderKeyStatus);
 $('#sPar').addEventListener('change', renderKeyStatus);
 if ($('#sPerKey')) $('#sPerKey').addEventListener('change', renderKeyStatus);
 $('#sCheckKeys').onclick = checkKeys;
-setInterval(() => { if (dlgSet.open) renderKeyStatus(); }, 2000);
+setInterval(() => { const ks = $('#keyStatuses'); if (dlgSet.open && !(ks && ks.contains(document.activeElement))) renderKeyStatus(); }, 2000);   // pas pendant qu'un menu de formule est ouvert
 $('#btnSettings').onclick = openSettings;
 $('#btnReport').onclick = () => { $('#repPre').textContent = stat.report(); dlgRep.showModal(); };
 $('#repCopy').onclick = () => { navigator.clipboard.writeText(stat.report()); toast('Rapport copié.', 'ok'); };
