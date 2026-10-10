@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.0.7
+// @version      3.0.8
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -32,7 +32,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.0.7';
+  const CONNECT_VERSION = '3.0.8';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -313,6 +313,8 @@
   const withWorker = (path) => path + (path.includes('?') ? '&' : '?') + 'worker=' + encodeURIComponent(WORKER);
   keepAwake();
   const PAGE_T0 = Date.now(); let busySince = 0;
+  // 3.0.8 : lève une pause « pièces jointes » repoussée à tort au lendemain par la 3.0.4 à 3.0.7
+  if (!get('pauseFix308')) { set('pauseFix308', 1); const pz = get('bridge:pause'); if (pz && pz.until - Date.now() > 3 * 3600000) del('bridge:pause'); }
   const dbg = (m, o) => { try { console.log('[Pont]', m, o || ''); } catch (e) { /* rien */ } };
   const K_ON = 'pont_actif', K_PID = 'pont_pid';
   let busy = false, info = 'en attente', lastErr = '';
@@ -508,7 +510,10 @@
     const m = txt.match(/(\d{1,2})\s*[:h]\s*(\d{2})\s*(AM|PM)?/i);
     if (!m) return Date.now() + 60 * 60000;
     let h = +m[1]; const mi = +m[2]; if (m[3]) { if (/pm/i.test(m[3]) && h < 12) h += 12; if (/am/i.test(m[3]) && h === 12) h = 0; }
-    const d = new Date(); d.setHours(h, mi, 0, 0); if (d.getTime() < Date.now() - 60000) d.setDate(d.getDate() + 1);
+    const d = new Date(); d.setHours(h, mi, 0, 0);
+    // YAKFLOW_ATTACH_STALE_V1 : l'heure annoncée est passée → vieux message resté à l'écran, la limite est levée
+    // (avant : on repoussait au lendemain et tout restait bloqué 24 h)
+    if (d.getTime() < Date.now() - 60000) { if (Date.now() - d.getTime() < 20 * 3600000) return 0; d.setDate(d.getDate() + 1); }
     return d.getTime() + 60000;
   }
   function attachError() { const until = attachLimit() || Date.now() + 60 * 60000; const e = new Error('limite de pièces jointes ChatGPT, pause jusqu’à ' + new Date(until).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })); e.attachUntil = until; return e; }
