@@ -1181,6 +1181,8 @@ function recordKeyHealth(key, result, generation = false) {
 }
 function renderKeyStatus() {
   if (!$('#keyCount')) return;
+  // YAKFLOW_KEY_LANES_V1 : les clés pas encore utilisées n'avaient pas de « voie » : leur menu de formule restait grisé
+  if (apiKeys().some((k) => !keyLanes.has(k))) { lanes().then(() => renderKeyStatus()).catch(() => {}); }
   const raw = $('#sKey').value, keys = parseKeys(raw);
   const entered = String(raw).split(',').map(k => k.trim()).filter(Boolean);
   const unique = [...new Set(entered)], duplicates = entered.length - unique.length, extras = Math.max(0, unique.length - 10);
@@ -1207,6 +1209,7 @@ function renderKeyStatus() {
     plan.value = lane && isFastKey(lane) ? 'fast' : lane && (S.tokenPlanKeys || []).includes(lane.id) ? 'paid' : 'free';
     plan.title = 'Rapide · 8 s : la clé essaie toutes les 8 s (au-delà de la limite d’une clé gratuite, Agnes peut répondre « limite de débit » : la clé attend alors le temps demandé).';
     plan.disabled = !lane || raw.trim() !== String(S.key || '').trim();
+    if (plan.disabled) plan.title = raw.trim() !== String(S.key || '').trim() ? 'Enregistre d’abord les clés (bouton Enregistrer des Réglages), puis choisis la formule.' : 'Préparation de la clé…';
     plan.onchange = () => {
       if (!lane) return;
       const ids = new Set(S.tokenPlanKeys || []), fast = new Set(S.fastKeys || []);
