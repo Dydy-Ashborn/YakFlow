@@ -3808,7 +3808,8 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
   function badge(e){
     let b = document.getElementById('yfVersion');
     if (!b) { b = document.createElement('div'); b.id = 'yfVersion'; b.style.cssText = 'position:fixed;left:10px;bottom:8px;z-index:50;font:500 10.5px/1 Inter,system-ui,sans-serif;color:#7a756d;opacity:.75;pointer-events:none'; document.body.appendChild(b); }
-    b.textContent = 'YakFlow · version ' + (short(e) || '?');
+    b.textContent = 'YakFlow mis à jour · version ' + (short(e) || '?');
+    b.style.color = '#ffc757'; setTimeout(() => b.remove(), 15000);
   }
   function banner(){
     if (document.getElementById('yfNewVer')) return;
@@ -3819,9 +3820,10 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
     document.body.appendChild(d);
   }
   (async function init(){
-    loaded = await tag(); badge(loaded);
+    loaded = await tag();
+    const logo = document.querySelector('.yfBrand'); if (logo && loaded) logo.title = 'YakFlow · version ' + short(loaded);
     let prev = ''; try { prev = localStorage.getItem('yf_build') || ''; } catch (_) {}
-    if (loaded && prev && prev !== loaded) setTimeout(() => { try { toast('YakFlow mis à jour (version ' + short(loaded) + '). ' + NOTES, 'ok'); } catch (_) {} log && log('YakFlow mis à jour : version ' + short(loaded) + '. ' + NOTES); }, 2500);
+    if (loaded && prev && prev !== loaded) setTimeout(() => { badge(loaded); try { toast('YakFlow mis à jour (version ' + short(loaded) + '). ' + NOTES, 'ok'); } catch (_) {} log && log('YakFlow mis à jour : version ' + short(loaded) + '. ' + NOTES); }, 2500);
     if (loaded) try { localStorage.setItem('yf_build', loaded); } catch (_) {}
     setInterval(async () => { if (document.hidden || !loaded) return; const now = await tag(); if (now && now !== loaded) banner(); }, 5 * 60000);
   })();
