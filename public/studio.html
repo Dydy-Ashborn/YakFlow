@@ -3794,5 +3794,38 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
   }, 4000);
 })();
 </script>
+<script>
+/* YAKFLOW_VERSION_V1 : savoir si on est sur la dernière version.
+   - Au chargement : si la page a changé depuis la dernière visite → « YakFlow mis à jour » + ce qui change.
+   - Toutes les 5 min (onglet visible) : si une nouvelle version est en ligne → bandeau « Recharger ».
+   Requête HEAD légère (empreinte ETag de Netlify), pas de téléchargement de la page. */
+(function(){
+  const NOTES = 'Clips : 1 par clé, le même clip passe de clé libre en clé libre jusqu’à être accepté. Formule « Rapide 8 s » supprimée.';
+  const url = location.pathname + (location.pathname.endsWith('.html') ? '' : '');
+  let loaded = '';
+  async function tag(){ try { const r = await fetch(url, { method: 'HEAD', cache: 'no-store' }); return (r.headers.get('etag') || r.headers.get('last-modified') || '').replace(/^W\//, '').replace(/"/g, ''); } catch (_) { return ''; } }
+  const short = (e) => e ? e.replace(/[^a-z0-9]/gi, '').slice(-7) : '';
+  function badge(e){
+    let b = document.getElementById('yfVersion');
+    if (!b) { b = document.createElement('div'); b.id = 'yfVersion'; b.style.cssText = 'position:fixed;left:10px;bottom:8px;z-index:50;font:500 10.5px/1 Inter,system-ui,sans-serif;color:#7a756d;opacity:.75;pointer-events:none'; document.body.appendChild(b); }
+    b.textContent = 'YakFlow · version ' + (short(e) || '?');
+  }
+  function banner(){
+    if (document.getElementById('yfNewVer')) return;
+    const d = document.createElement('div'); d.id = 'yfNewVer';
+    d.style.cssText = 'position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:99980;display:flex;gap:12px;align-items:center;background:#16191e;border:1px solid rgba(255,178,36,.5);border-radius:12px;padding:10px 14px;color:#f5f2ec;font:600 13px Inter,system-ui,sans-serif;box-shadow:0 12px 40px rgba(0,0,0,.5)';
+    d.innerHTML = '<span>Nouvelle version de YakFlow en ligne.</span><button type="button" style="border:0;border-radius:8px;padding:7px 12px;background:linear-gradient(135deg,#ffd06a,#ff8a00);color:#1d1200;font:700 12.5px Inter,sans-serif;cursor:pointer">Recharger</button>';
+    d.querySelector('button').onclick = () => location.reload();
+    document.body.appendChild(d);
+  }
+  (async function init(){
+    loaded = await tag(); badge(loaded);
+    let prev = ''; try { prev = localStorage.getItem('yf_build') || ''; } catch (_) {}
+    if (loaded && prev && prev !== loaded) setTimeout(() => { try { toast('YakFlow mis à jour (version ' + short(loaded) + '). ' + NOTES, 'ok'); } catch (_) {} log && log('YakFlow mis à jour : version ' + short(loaded) + '. ' + NOTES); }, 2500);
+    if (loaded) try { localStorage.setItem('yf_build', loaded); } catch (_) {}
+    setInterval(async () => { if (document.hidden || !loaded) return; const now = await tag(); if (now && now !== loaded) banner(); }, 5 * 60000);
+  })();
+})();
+</script>
 </body>
 </html>
