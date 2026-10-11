@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.2.2
+// @version      3.2.3
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -32,7 +32,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.2.2';
+  const CONNECT_VERSION = '3.2.3';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -178,9 +178,10 @@
       const pz = get('bridge:pause'); if (pz && now() < pz.until) Object.assign(out, { pauseUntil: pz.until, pauseWhy: pz.why || '', info: 'En pause jusqu’à ' + new Date(pz.until).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) + ' : ' + (pz.why || 'limite ChatGPT') });
       if (id) { const j = job(kind, id); if (j) {
         const data = j.st === 'fini' ? readLarge(rk(kind, id)) : null;
+        const payload = get(pk(kind, id));
         Object.assign(out, { st: j.st === 'fini' && !data ? 'incertain' : j.st,
           error: j.st === 'fini' && !data ? 'Image enregistrée mais illisible dans le stockage Tampermonkey : récupération manuelle nécessaire.' : (j.error || ''),
-          pos: 0, data });
+          pos: 0, data, promptSig: payload?.prompt ? fnv(String(payload.prompt)) : '' });
       } }
       return ok(out);
     }
@@ -193,6 +194,10 @@
       if (!d.id || !d.prompt || (kind === 'grok' && !d.image)) return err(400, 'Travail invalide.');
       const jid = String(d.id).slice(0, 200), fp = fnv(JSON.stringify(d)), same = job(kind, jid);
       if (same && same.fingerprint === fp && ['attente', 'en cours', 'fini', 'incertain'].includes(same.st)) return ok({ ok: true, deja: true, st: same.st });
+      // v3.2.3 : ne pas remplacer une tâche encore en cours ou une image pas encore
+      // enregistrée dans YakFlow. Sinon un ancien rendu peut écraser le nouveau.
+      if (kind === 'bridge' && same && ['en cours', 'fini', 'incertain'].includes(same.st))
+        return err(409, 'Image précédente encore en cours ou récupérable : attendre sa réception automatique avant de changer le prompt.');
       set(pk(kind, jid), d);
       set(jk(kind, jid), { id: jid, st: 'attente', fingerprint: fp, createdAt: now(), worker: '', error: '' });
       del(kind + ':claim:' + fnv(jid));
@@ -203,11 +208,28 @@
     if (action === 'forget' && method === 'POST') {
       const j = job(kind, id);
       if (j) {
+        // v3.2.3 : le Studio peut changer de statut ou être réimporté pendant
+        // qu'une image ChatGPT est calculée. Dans ce cas il NE PEUT PAS annuler
+        // le rendu déjà envoyé : on préserve sa tâche et le résultat futur.
+        if (kind === 'bridge' && j.st === 'en cours') {
+          saveJob(kind, id, { detachedAt: now() });
+          return ok({ ok: true, preserved: true, st: 'en cours' });
+        }
         saveJob(kind, id, { st: 'oublie', forgottenAt: now() });
         set(qk(kind), queue(kind).filter((x) => x !== id));
         if (['fini', 'echec', 'attente'].includes(j.st)) { del(pk(kind, id)); if (kind === 'bridge') deleteLarge(rk(kind, id)); else del(rk(kind, id)); if (kind === 'grok') dropChunks(id, j.chunks); }
       }
       return ok({ ok: true });
+    }
+    if (action === 'ack' && kind === 'bridge' && method === 'POST') {
+      // L'ACK est envoyé SEULEMENT APRÈS écriture de l'image et du projet dans IndexedDB.
+      const j = job(kind, id);
+      if (!j || j.st === 'recu') return ok({ ok: true, deja: true });
+      if (j.st !== 'fini') return err(409, 'Image non prête : impossible de confirmer sa réception.');
+      del(pk(kind, id)); deleteLarge(rk(kind, id));
+      saveJob(kind, id, { st: 'recu', receivedAt: now(), error: '' });
+      set(qk(kind), queue(kind).filter((x) => x !== id));
+      return ok({ ok: true, received: true });
     }
     if (['hello', 'heartbeat'].includes(action) && method === 'POST') { beat(kind, worker, info); return ok({ ok: true }); }
     if (action === 'peek' && kind === 'bridge' && method === 'GET') {
@@ -230,7 +252,10 @@
       const d = body || {}; const j = job(kind, d.id);
       if (!j) return err(404, 'Travail inconnu.');
       if (j.worker && j.worker !== worker) return err(409, 'Autre onglet propriétaire.');
-      if (j.st === 'oublie') return ok({ ok: true, ignore: true });
+      // Récupération des images déjà perdues par v3.2.2 : une commande 'forget'
+      // envoyée trop tôt ne doit pas empêcher de stocker une image réellement produite.
+      // On accepte même une livraison tardive d'un travail 'oublie' par l'ancien pont.
+      if (j.st === 'oublie' && !d.data) return ok({ ok: true, ignore: true });
       if (d.data) {
         // 3.2.2 : transport identique au pont originel qui remontait les images.
         // Le mécanisme de protection v3.2.1 conserve, à part, une sauvegarde fragmentée
@@ -364,7 +389,7 @@
   }
 
   function runChatGPT() {
-  const VERSION = '2.1.1';
+  const VERSION = '2.1.2';
   // Un identifiant par chargement d'onglet : les conversations restent indépendantes.
   // YAKFLOW_CONNECT_303 : identifiant stable par onglet (survit au rechargement entre deux images) : un onglet = un worker
   const WORKER = sessionStorage.getItem('yakflowChatWorker') || ('chat-' + (crypto.randomUUID ? crypto.randomUUID() : Date.now() + '-' + Math.random()));
@@ -745,7 +770,7 @@
     // Sauvegarder l'image complète AVANT toute tentative de retour vers YakFlow.
     savePending(payload);
     const ack = await postResult(payload);
-    if (ack?.ignore) throw new Error('YakFlow a annulé ce travail : image conservée localement pour récupération manuelle.');
+    if (ack?.ignore) throw new Error('YakFlow ne confirme pas encore la réception : image conservée pour nouvelle tentative automatique.');
     clearPending();
     try { sessionStorage.removeItem(ACTIVE_KEY); } catch (_) {}
     return ack;

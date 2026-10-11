@@ -1586,6 +1586,12 @@ function chatRefIds(p, s) {
   if (isFin) { const sc = j.filter((id) => { const r = p.etapes.find((x) => x.id === id); return r && r.type === 'scene'; }); if (sc.length) return sc.slice(0, 1); }
   return j.slice(0, 3);
 }
+function chatPromptSig(value) {
+  let h = 0x811c9dc5;
+  const str = String(value || '');
+  for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; }
+  return h.toString(36) + str.length.toString(36);
+}
 async function genChatGPT(p, s) {
   const refs = [];
   for (const id of chatRefIds(p, s)) {
@@ -1600,18 +1606,26 @@ async function genChatGPT(p, s) {
   for (;;) {
     await sleep(6000);   // YAKFLOW_POLL_V16 : une image ChatGPT prend ~4 min, inutile de demander toutes les 3 s
     const cur = (P(p.id) || { etapes: [] }).etapes.find((x) => x.id === s.id);
-    if (!cur || cur.img.st !== 'calcul') { bridge('POST', 'forget?id=' + encodeURIComponent(id)).catch(() => {}); return { cancel: true }; }
+    if (!cur || cur.img.st !== 'calcul') {
+      // v3.2.3 : la génération ChatGPT est déjà partie. Laisser le pont
+      // conserver son résultat; le récupérateur l'associera à cette scène.
+      return { cancel: true };
+    }
     let st;
     try { st = await bridge('GET', 'status?id=' + encodeURIComponent(id)); } catch (e) { continue; }
     chatAlive = st.alive; chatInfo = st.info || ''; chatWorkers = st.workers || 0; chatProtocol = st.protocol || 0; chatPauseUntil = st.pauseUntil || 0;
     if (!st.st) { await bridge('POST', 'push', job); continue; } // serveur relancé
     if (st.st === 'fini' && st.data) {
+      // Ne jamais mettre une ancienne image dans une scène dont le prompt a changé.
+      if (st.promptSig && st.promptSig !== chatPromptSig(job.prompt))
+        return { err: 'Ancienne image du pont pour un autre prompt : génération conservée, aucun nouvel essai automatique.', noRetry: true };
       // Ne JAMAIS supprimer l'original du pont avant d'avoir enregistré l'image
       // ET son statut dans IndexedDB. Reprise automatique après une coupure.
       return { data: await toJpeg(st.data, 2048), refs: refs.length, bridgeResultId: id };
     }
     if (st.st === 'echec' || st.st === 'incertain') {
-      if (st.st !== 'incertain') bridge('POST', 'forget?id=' + encodeURIComponent(id)).catch(() => {});
+      // Pas de purge implicite : un résultat en retard doit rester récupérable.
+      // Le nettoyage est réservé à l'ACK après enregistrement définitif.
       if (st.st === 'incertain') return { err: st.error, noRetry: true };
       if (/limite|limit|quota|pièces jointes/i.test(st.error || '')) return { err: 'Quota ChatGPT : ' + st.error, noRetry: true };
       return { err: 'ChatGPT : ' + st.error };
@@ -1630,7 +1644,7 @@ async function refreshChatStatus() {
 }
 let bridgeRescueBusy = false, bridgeRescueCursor = 0;
 async function recoverImagesFromChatGPT() {
-  if (bridgeRescueBusy || !projects.length) return;
+  if (bridgeRescueBusy || !projects.length || S.imgSrc !== 'chatgpt') return;
   bridgeRescueBusy = true;
   try {
     const candidates = [];
@@ -1638,7 +1652,9 @@ async function recoverImagesFromChatGPT() {
       if (!s.promptImage || s.img.st === 'fini' || curStep.has(s)) continue;
       if (!['attente','echec'].includes(s.img.st)) continue;
       // Ne scanner que les images de ChatGPT, jamais les tâches Agnes.
-      if (s.img.via !== 'chatgpt' && !/ChatGPT|Repris après fermeture|Génération incertaine|image incertaine/i.test(s.img.msg || '')) continue;
+      // Après un réimport JSON, `via` et le message peuvent avoir disparu.
+      // Un état incomplet peut donc être sauvé avec son identifiant exact.
+      // Dans le mode ChatGPT seul un résultat effectivement présent dans le pont est pris.
       candidates.push([p,s]);
     }
     if (!candidates.length) return;
@@ -1648,6 +1664,9 @@ async function recoverImagesFromChatGPT() {
       const id = p.id + '|' + s.id;
       const reply = await bridge('GET','status?id='+encodeURIComponent(id));
       if (reply.st !== 'fini' || !reply.data) continue;
+      if (reply.promptSig && reply.promptSig !== chatPromptSig(imagePrompt(s))) {
+        log('Ancienne image conservée côté pont, prompt différent pour ' + s.nom); continue;
+      }
       if (s.img.st === 'fini' || curStep.has(s)) continue;
       const output = await toJpeg(reply.data, 2048);
       await mPut(imgKey(p,s), output.data);
@@ -1656,7 +1675,8 @@ async function recoverImagesFromChatGPT() {
       diskImage(p,s,output.data);
       if (/^fiche-serie-/.test(s.id)) for (const q of projects) for (const t of q.etapes) if (t !== s && t.id === s.id) { t.img = Object.assign({},s.img); t.ok = true; }
       log('Image ChatGPT récupérée après interruption : '+p.titre+' · '+s.nom);
-      await bridge('POST','forget?id='+encodeURIComponent(id));
+      await kvPut('projects', projects); // conserver sur disque AVANT accusé de réception
+      await bridge('POST','ack?id='+encodeURIComponent(id));
       saveProjects(); renderSoon();
     }
     bridgeRescueCursor = (bridgeRescueCursor + 5) % Math.max(1,candidates.length);
@@ -2012,7 +2032,7 @@ async function doImage(p, s, lane) {
         // Cette étape n'émet AUCUN nouveau prompt ou génération.
         try {
           await kvPut('projects', projects);
-          await bridge('POST', 'forget?id=' + encodeURIComponent(out.bridgeResultId));
+          await bridge('POST', 'ack?id=' + encodeURIComponent(out.bridgeResultId));
         } catch (e) { log('Image conservée côté pont pour récupération automatique : ' + e.message); }
       }
       // toute étape qui partage cette fiche la reçoit
