@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.0.8
+// @version      3.1.0
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -32,7 +32,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.0.8';
+  const CONNECT_VERSION = '3.1.0';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -103,7 +103,7 @@
   }
   const saveJob = (kind, id, patch) => { const j = { ...(get(jk(kind, id)) || {}), ...patch }; set(jk(kind, id), j); return j; };
   const queue = (kind) => get(qk(kind), []);
-  function waiting(kind) { return queue(kind).filter((id) => (job(kind, id) || {}).st === 'attente'); }
+  function waiting(kind) { return queue(kind).filter((id) => { const j = job(kind, id) || {}; return j.st === 'attente' && !(j.blockedUntil > now()); }); }
   function dropChunks(id, total) { for (let n = 0; n < (total || 100); n++) { if (get(ck(id, n)) == null && n >= (total || 0)) break; del(ck(id, n)); } }
   async function claim(kind, id, worker) {
     const k = kind + ':claim:' + fnv(String(id)), cur = get(k);
@@ -145,7 +145,7 @@
       const d = body || {};
       if (!d.id || !d.prompt || (kind === 'grok' && !d.image)) return err(400, 'Travail invalide.');
       const jid = String(d.id).slice(0, 200), fp = fnv(JSON.stringify(d)), same = job(kind, jid);
-      if (same && same.fingerprint === fp && ['attente', 'en cours', 'fini'].includes(same.st)) return ok({ ok: true, deja: true, st: same.st });
+      if (same && same.fingerprint === fp && ['attente', 'en cours', 'fini', 'incertain'].includes(same.st)) return ok({ ok: true, deja: true, st: same.st });
       set(pk(kind, jid), d);
       set(jk(kind, jid), { id: jid, st: 'attente', fingerprint: fp, createdAt: now(), worker: '', error: '' });
       del(kind + ':claim:' + fnv(jid));
@@ -185,7 +185,7 @@
       if (j.worker && j.worker !== worker) return err(409, 'Autre onglet propriétaire.');
       if (j.st === 'oublie') return ok({ ok: true, ignore: true });
       if (d.data) { set(rk(kind, d.id), String(d.data)); saveJob(kind, d.id, { st: 'fini', finishedAt: now(), error: '' }); }
-      else saveJob(kind, d.id, { st: 'echec', finishedAt: now(), error: String(d.error || 'Erreur ChatGPT').slice(0, 500) });
+      else saveJob(kind, d.id, { st: d.incertain ? 'incertain' : 'echec', finishedAt: now(), error: String(d.error || 'Erreur ChatGPT').slice(0, 500) });
       return ok({ ok: true });
     }
     // YAKFLOW_RELEASE_V1 : l'onglet rend le travail à la file (limite passagère), sans le compter comme un échec
@@ -193,7 +193,7 @@
       const d = body || {}; const j = job(kind, d.id);
       if (!j) return err(404, 'Travail inconnu.');
       if (j.worker && j.worker !== worker) return err(409, 'Autre onglet propriétaire.');
-      if (j.st === 'en cours') { saveJob(kind, d.id, { st: 'attente', worker: '', claimedAt: 0 }); del(kind + ':claim:' + fnv(String(d.id))); }
+      if (j.st === 'en cours') { saveJob(kind, d.id, { st: 'attente', worker: '', claimedAt: 0, blockedUntil: Math.max(now(), +(d.until || 0)) }); del(kind + ':claim:' + fnv(String(d.id))); }
       return ok({ ok: true });
     }
     if (action === 'fail' && kind === 'grok' && method === 'POST') {
@@ -313,9 +313,44 @@
   const withWorker = (path) => path + (path.includes('?') ? '&' : '?') + 'worker=' + encodeURIComponent(WORKER);
   keepAwake();
   const PAGE_T0 = Date.now(); let busySince = 0;
-  // 3.0.8 : lève une pause « pièces jointes » repoussée à tort au lendemain par la 3.0.4 à 3.0.7
-  if (!get('pauseFix308')) { set('pauseFix308', 1); const pz = get('bridge:pause'); if (pz && pz.until - Date.now() > 3 * 3600000) del('bridge:pause'); }
+  // Version 3.1.0 : ne bloque pas toute la file pour une limite de TELEVERSEMENT.
+  // Les scènes ne nécessitant pas de nouvelles pièces jointes peuvent encore être produites.
+  del('bridge:pause');
   const dbg = (m, o) => { try { console.log('[Pont]', m, o || ''); } catch (e) { /* rien */ } };
+  // YAKFLOW_CONNECT_REFS_V1 : une conversation peut produire plusieurs images.
+  // Les fiches identiques déjà jointes dans CE chat n'ont plus besoin d'être téléversées.
+  const REF_SESSION_KEY = 'yf-connect-refs-v1';
+  const ACTIVE_KEY = 'yf-connect-active-v1';
+  const PENDING_IMAGE_KEY = 'yf-connect-image-to-deliver-v1';
+  const ECONOMY_KEY = 'yf-connect-reuse-approved-character-references';
+  function loadRefSession() {
+    let c; try { c = JSON.parse(sessionStorage.getItem(REF_SESSION_KEY) || 'null'); } catch (_) {}
+    if (!c || !c.refs || !Array.isArray(c.refs)) c = { path: '', refs: [], sent: 0 };
+    const path = location.pathname;
+    const inChat = /^\/(?:c|g)\//.test(path);
+    if ((inChat && c.path && c.path !== path) || (!inChat && c.path && !hasConversation()))
+      c = { path: '', refs: [], sent: 0 };
+    if (inChat && !c.path) c.path = path;
+    try { sessionStorage.setItem(REF_SESSION_KEY, JSON.stringify(c)); } catch (_) {}
+    return c;
+  }
+  function saveRefSession(c) { try { if (/^\/(?:c|g)\//.test(location.pathname)) c.path = location.pathname; sessionStorage.setItem(REF_SESSION_KEY, JSON.stringify(c)); } catch (_) {} }
+  const isPersistentSheet = (r) => /^(?:ref-\d+-)?fiche(?:-serie)?-/i.test(String(r.name || ''));
+  const refFingerprint = (r) => fnv(String(r.data || ''));
+  function refPlan(refs) {
+    const mem = loadRefSession(), reuseOn = GM_getValue(ECONOMY_KEY, true);
+    const uploads = [], mapping = [], newly = [];
+    for (let i = 0; i < refs.length; i++) {
+      const r = refs[i], hash = refFingerprint(r), old = reuseOn && isPersistentSheet(r) && mem.refs.find(x => x.hash === hash);
+      if (old) mapping.push('RÉFÉRENCE ' + (i + 1) + ' = fiche ' + r.name + ' DÉJÀ JOINTE dans cette conversation, message YakFlow ' + old.job + '. REPRENDRE exactement cette image antérieure, pas une image générée ensuite.');
+      else { uploads.push(r); newly.push({ hash, name: r.name }); mapping.push('RÉFÉRENCE ' + (i + 1) + ' = fichier ' + r.name + ' joint à CE message.'); }
+    }
+    const suffix = refs.length ? '\n\nYAKFLOW — ORDRE IMMUTABLE DES RÉFÉRENCES POUR CETTE DEMANDE :\n' + mapping.join('\n') + '\nInterpréter FIRST / SECOND reference du prompt en suivant ces NUMÉROS, même lorsque la référence est attachée dans un message ANTÉRIEUR. Conserver strictement l’identité de la fiche approuvée. Les images déjà GÉNÉRÉES dans ce chat ne sont pas des références sauf mention explicite.' : '';
+    return { uploads, newly, suffix, mem, original: refs };
+  }
+  GM_registerMenuCommand('YakFlow Connect · réutilisation des fiches (ON/OFF)', () => { const v = !GM_getValue(ECONOMY_KEY, true); GM_setValue(ECONOMY_KEY, v); alert('Réutilisation des fiches approuvées : ' + (v ? 'ON' : 'OFF')); });
+  GM_registerMenuCommand('YakFlow Connect · effacer les références de ce chat', () => { sessionStorage.removeItem(REF_SESSION_KEY); alert('Références locales effacées ; prochaine demande : envoi des fichiers.' ); });
+  GM_registerMenuCommand('YakFlow Connect · état des pièces jointes', () => { const c = loadRefSession(); alert(c.refs.length + ' fiches distinctes retenues ; ' + c.sent + ' images envoyées depuis ce chat. Seules les fiches répétées sont réutilisées.'); });
   const K_ON = 'pont_actif', K_PID = 'pont_pid';
   let busy = false, info = 'en attente', lastErr = '';
 
@@ -473,7 +508,7 @@
     const snip = norm(sentPrompt).slice(0, 50); if (!snip) return null;
     const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
     let n, hit = null;
-    while ((n = w.nextNode())) { if (n.parentElement && !n.parentElement.closest('form') && norm(n.nodeValue).includes(snip.slice(0, 30))) { hit = n.parentElement; break; } }
+    while ((n = w.nextNode())) { if (n.parentElement && !n.parentElement.closest('form') && norm(n.nodeValue).includes(snip.slice(0, 30))) hit = n.parentElement; }
     if (!hit) return null;
     return hit.closest(ITEM_SEL) || hit.parentElement;
   }
@@ -485,8 +520,8 @@
     const users = document.querySelectorAll('[data-message-author-role="user"], [data-turn="user"]');
     const lastUser = userItem() || (users.length ? users[users.length - 1] : null);
     let after = lastUser ? i.filter((img) => !lastUser.contains(img) && (lastUser.compareDocumentPosition(img) & Node.DOCUMENT_POSITION_FOLLOWING)) : i;
-    // repli : la conversation est neuve à chaque image, donc toute image hors du message envoyé est la bonne
-    if (!after.length && lastUser) after = i.filter((img) => !lastUser.contains(img));
+    // Conversation RÉUTILISÉE : ne JAMAIS se rabattre sur une ancienne image d'un tour précédent.
+    // En l'absence d'image après le dernier prompt, on attend le résultat de ce prompt.
     return after.length ? after[after.length - 1] : null;
   }
   function findSendButton() {
@@ -503,7 +538,11 @@
   // limite du COMPTE ChatGPT : tous les onglets se mettent en pause jusqu'à l'heure indiquée, les images restent en file
   function attachLimit() {
     const re = /nombre maximal de pi[eè]ces jointes|maximum number of (file )?(uploads|attachments)|(file|attachment|upload) limit|limite de (t[ée]l[ée]versement|pi[eè]ces jointes)/i;
-    const el = [...document.querySelectorAll('body *')].find((e) => e.children.length < 6 && isVisible(e) && re.test(e.textContent || '') && (e.textContent || '').length < 400);
+    // IMPORTANT : nous réutilisons les conversations. Les anciens messages peuvent citer la limite.
+    // Ce n'est une erreur que dans une notification UI, pas dans l'historique des messages.
+    const el = [...document.querySelectorAll('[role="alert"], [data-sonner-toast], [role="status"], form [class*="error" i], [class*="toast" i]')]
+      .find((e) => !e.closest('[data-message-author-role], [data-turn], [data-local-conversation-item-target-ids]') && isVisible(e) &&
+        re.test(e.textContent || '') && (e.textContent || '').length < 500);
     if (!el) return 0;
     const box = (el.closest('div') && el.closest('div').parentElement) || el;
     const txt = box.textContent || el.textContent || '';
@@ -517,7 +556,7 @@
     return d.getTime() + 60000;
   }
   function attachError() { const until = attachLimit() || Date.now() + 60 * 60000; const e = new Error('limite de pièces jointes ChatGPT, pause jusqu’à ' + new Date(until).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })); e.attachUntil = until; return e; }
-  const limitReached = () => /(limit|limite|quota|try again later|réessa)/i.test(lastAssistantText());
+  const limitReached = () => /(limite.{0,35}(?:images|générations|atteinte)|image generation limit|you.ve reached your (?:image|generation) limit|quota (?:image|génération))/i.test(lastAssistantText());
   // le tour de l'assistant est terminé quand ses boutons d'action (copier, j'aime…) sont apparus
   function turnDone() {
     const m = lastAssistant(); if (!m) return false;
@@ -567,12 +606,61 @@
   async function postResult(body) {
     for (let i = 0; i < 4; i++) {
       try { return await call('POST', withWorker('/bridge/result'), body); }
-      catch (e) { if (/HTTP 404/.test(e.message)) return null; await sleep(5000); }
+      catch (e) { if (/travail inconnu|autre onglet propri[ée]taire|HTTP (?:404|409)/i.test(e.message)) throw e; await sleep(5000); }
     }
     throw new Error('le studio ne répond pas pour recevoir l\'image');
   }
-  // image arrivée en retard (après l'abandon) : on la rend quand même au studio
+  async function deliverSavedResult(payload) {
+    // Résultat de génération sauvegardé localement AVANT envoi à YakFlow.
+    set(PENDING_IMAGE_KEY, payload);
+    const ack = await postResult(payload);
+    if (ack?.ignore) throw new Error('YakFlow a annulé ce travail : image conservée localement pour récupération manuelle.');
+    del(PENDING_IMAGE_KEY);
+    try { sessionStorage.removeItem(ACTIVE_KEY); } catch (_) {}
+    return ack;
+  }
+  async function recoverSavedResult() {
+    const p = get(PENDING_IMAGE_KEY);
+    if (!p?.id || !p?.data) return false;
+    say('Image générée déjà sauvegardée : transfert en cours…');
+    try { await deliverSavedResult(p); lastErr = ''; }
+    catch (e) { lastErr = 'Image sauvée. Transfert non confirmé : ' + e.message; }
+    return true; // Ne pas lancer une nouvelle génération tant que l'ancien résultat est à transférer.
+  }
+  GM_registerMenuCommand('YakFlow Connect · enregistrer image récupérée sur disque', () => {
+    const p = get(PENDING_IMAGE_KEY);
+    if (!p?.data) return alert('Aucun résultat en attente de transfert.');
+    const a = document.createElement('a'); a.href = p.data; a.download = 'yakflow-image-recuperee-' + String(p.id).replace(/[^a-z0-9-]/gi,'-') + '.jpg'; document.body.appendChild(a); a.click(); a.remove();
+  });
+  // Image arrivée après un délai : ne jamais déclencher automatiquement une seconde génération.
   let late = null;
+  // Après un rechargement, les URLs des anciennes images peuvent changer.
+  // Ne JAMAIS attribuer automatiquement la dernière image affichée à la génération interrompue.
+  let recoveryBlocked = null;
+  try {
+    const old = JSON.parse(sessionStorage.getItem(ACTIVE_KEY) || 'null');
+    if (old && old.id && !get(PENDING_IMAGE_KEY)) recoveryBlocked = old;
+  } catch (_) {}
+  GM_registerMenuCommand('YakFlow Connect · récupérer une image après rechargement', async () => {
+    if (!recoveryBlocked) return alert('Aucune génération interrompue à récupérer.');
+    const img = findGeneratedImage();
+    if (!img) return alert('Aucune image générée visible dans cette conversation. Fais défiler jusqu’au résultat attendu.');
+    if (!confirm('ATTENTION : vérifie visuellement que la DERNIÈRE image affichée est bien celle de « ' + recoveryBlocked.nom + ' ». Le pont ne peut pas le prouver après un rechargement. Envoyer cette image à YakFlow ?')) return;
+    busy = true;
+    try {
+      const data = await blobToJpegDataUrl(await fetchBlob(imgSrc(img)));
+      await deliverSavedResult({ id: recoveryBlocked.id, data });
+      recoveryBlocked = null; lastErr = ''; say('Image récupérée manuellement et transmise au Studio.');
+    } catch (e) { lastErr = 'Récupération : ' + e.message; }
+    finally { busy = false; }
+  });
+  GM_registerMenuCommand('YakFlow Connect · marquer génération interrompue INCERTAINE', async () => {
+    if (!recoveryBlocked || !confirm('Marquer cette génération INCERTAINE sans la relancer ? Tu pourras inspecter la conversation et décider manuellement.')) return;
+    try { await call('POST', withWorker('/bridge/result'), { id: recoveryBlocked.id, error: 'Génération interrompue lors du rechargement ; vérification manuelle nécessaire.', incertain: true });
+      sessionStorage.removeItem(ACTIVE_KEY); recoveryBlocked = null; say('Image incertaine : pas de relance automatique.'); }
+    catch (e) { alert('Impossible de signaler le statut : ' + e.message); }
+  });
+
 
   /* ---------- badge ---------- */
   const badge = document.createElement('div');
@@ -622,7 +710,8 @@
     if (!field) throw new Error('zone de texte ChatGPT introuvable');
     sentPrompt = job.prompt;
     const before = new Set(generatedImages().map(imgSrc));
-    const files = (job.refs || []).map((r) => dataUrlToFile(r.data, r.name));
+    const rp = refPlan(job.refs || []);
+    const files = rp.uploads.map((r) => dataUrlToFile(r.data, r.name));
     const refHashes = [];
     for (const r of job.refs || []) { try { refHashes.push(hashOf(await bitmapOf(r.data))); } catch (e) { /* tant pis */ } }
     const validate = async (img) => checkResult(await fetchBlob(imgSrc(img)), job, refHashes);
@@ -634,11 +723,17 @@
       await sleep(2500);
     }
     // 2. puis le prompt, vérifié
-    if (!(await setPrompt(job.prompt))) throw new Error('impossible d\'écrire le prompt dans ChatGPT');
+    if (!(await setPrompt(job.prompt + rp.suffix))) throw new Error('impossible d\'écrire le prompt dans ChatGPT');
     if (files.length && attachedCount() < files.length) throw new Error('les fiches ont disparu après le prompt');
     const send = await waitFor(() => { const b = findSendButton(); return b && !b.disabled ? b : null; }, 120000, 1000);
     if (!send) throw new Error('bouton Envoyer introuvable (fiches pas encore chargées ?)');
+    // L'état est enregistré avant l'envoi : rechargement de l'onglet = récupération, jamais re-génération.
+    try { sessionStorage.setItem(ACTIVE_KEY, JSON.stringify({id:job.id,nom:job.nom,prompt:job.prompt,t:Date.now(),before:[...before]})); } catch (_) {}
+    job.submitted = true;
     send.click();
+    // Les pièces jointes sont maintenant présentes dans cette conversation, y compris si la génération échoue.
+    const c = rp.mem; for (const r of rp.newly) if (isPersistentSheet({name:r.name}) && !c.refs.some(x => x.hash === r.hash)) c.refs.push({...r,job:job.id});
+    c.sent++; c.refs = c.refs.slice(-75); saveRefSession(c);
     const img = await waitNewImage(before, 15 * 60000, 'ChatGPT dessine : ' + job.nom, validate);
     if (!img) {
       if (limitReached()) throw new Error('limite ChatGPT atteinte');
@@ -647,7 +742,7 @@
     }
     say('envoi au studio : ' + job.nom);
     const data = await blobToJpegDataUrl(await fetchBlob(imgSrc(img)));
-    await postResult({ id: job.id, data });
+    await deliverSavedResult({ id: job.id, data });
   }
 
   let lastBeat = 0;
@@ -669,21 +764,27 @@
       // YAKFLOW_CHAT_HEAL_V1 : le studio demande une relance (rien n'avance) → on recharge l'onglet, sauf s'il dessine depuis moins de 20 min
       { const ra = get('bridge:reloadAt', 0); if (ra > PAGE_T0 && (!busy || Date.now() - busySince > 20 * 60000)) { say('relance demandée par le studio'); await sleep(500); location.reload(); return; } }
       if (busy || !GM_getValue(K_ON, true) || Date.now() < pauseUntil) continue;
-      { const pz = get('bridge:pause'); if (pz && Date.now() < pz.until) { say('pause jusqu’à ' + new Date(pz.until).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) + ' (' + (pz.why || 'limite ChatGPT') + ')'); continue; } }
+      if (await recoverSavedResult()) continue;
+      // Refus d'import partiel = anciennes pièces jointes potentiellement coincées au brouillon.
+      // Ne jamais envoyer une autre scène avec ces fichiers résiduels.
+      if (!recoveryBlocked && !late && attachedCount() > 0) {
+        say('Pièces jointes restées dans le brouillon ChatGPT : retire-les avant de continuer.'); continue;
+      }
+      if (recoveryBlocked) { say('Après rechargement : récupère manuellement « ' + recoveryBlocked.nom + ' » via Tampermonkey, ou marque-la incertaine. Aucune nouvelle image envoyée.'); continue; }
       if (late) {
         let img = !generating() && newImage(late.before);
         if (img && late.validate) { const why = await late.validate(img).catch(() => ''); if (why) { late.before.add(imgSrc(img)); img = null; } }
         if (img) {
           busy = true;
-          try { const data = await blobToJpegDataUrl(await fetchBlob(imgSrc(img))); await postResult({ id: late.id, data }); say('image en retard rendue : ' + late.nom); lastErr = ''; }
+          try { const data = await blobToJpegDataUrl(await fetchBlob(imgSrc(img))); await deliverSavedResult({ id: late.id, data }); say('image en retard rendue : ' + late.nom); lastErr = ''; }
           catch (e) { lastErr = late.nom + ' : ' + e.message; }
           finally { late = null; busy = false; }
           continue;
         }
         if (Date.now() - late.t > 10 * 60000) {   // toujours rien : on le dit au studio, qui relancera l'image
-          await call('POST', withWorker('/bridge/result'), { id: late.id, error: 'aucune image reçue de ChatGPT' }).catch(() => {});
+          await call('POST', withWorker('/bridge/result'), { id: late.id, error: 'Image envoyée mais résultat non récupéré ; vérifier la conversation avant de relancer.', incertain: true }).catch(() => {});
           try { failDiag = { t: Date.now(), txt: diagnostic() }; } catch (x) { /* tant pis */ }
-          lastErr = late.nom + ' : aucune image reçue'; late = null;
+          lastErr = late.nom + ' : image incertaine, contrôler la conversation'; late = null; try { sessionStorage.removeItem(ACTIVE_KEY); } catch (_) {}
         } else { say('j\'attends encore l\'image de ' + late.nom); continue; }   // jamais deux images à la fois
       }
       // ChatGPT dessine encore (image en retard, ou autre) : on n'envoie RIEN tant qu'il n'a pas fini
@@ -699,13 +800,8 @@
       idle = 0;
       dbg('travail reçu', { id: job.id, nom: job.nom });
       if (late && job.id === late.id) { say('j\'attends encore l\'image de ' + late.nom); continue; }   // ne pas la redessiner tout de suite
-      // une conversation neuve pour CHAQUE image : aucune autre image ne peut être prise pour le résultat
-      if (hasConversation()) {
-        say('nouvelle conversation pour ' + job.nom);
-        await sleep(800);
-        location.assign('https://chatgpt.com/');
-        return;
-      }
+      // Réutiliser cette conversation évite de retéléverser les mêmes fiches personnage.
+      // L'identification de la nouvelle image se fait à partir des URL présentes AVANT cet envoi.
       busy = true; busySince = Date.now();
       let taken = false;
       try {
@@ -718,12 +814,15 @@
       catch (e) {
         lastErr = (job?.nom || 'Pont') + ' : ' + e.message;
         try { failDiag = { t: Date.now(), txt: diagnostic() }; } catch (x) { /* tant pis */ }
-        if (e.attachUntil) {
-          set('bridge:pause', { until: e.attachUntil, why: 'limite de pièces jointes ChatGPT' });
-          if (taken) await call('POST', withWorker('/bridge/release'), { id: job.id }).catch(() => {});
-          say(e.message); lastErr = '';
-        } else if (taken && !(late && late.id === job.id)) await call('POST', withWorker('/bridge/result'), { id: job.id, error: e.message }).catch(() => {});
-        if (/limite/.test(e.message)) { pauseUntil = Date.now() + 20 * 60000; say('pause 20 min (limite ChatGPT)'); }
+        if (e.attachUntil && !job.submitted) {
+          // Cette scène attend son quota d'UPLOAD ; les scènes utilisant les fiches déjà envoyées restent possibles.
+          if (taken) await call('POST', withWorker('/bridge/release'), { id: job.id, until: e.attachUntil }).catch(() => {});
+          say('Import bloqué jusqu’à ' + new Date(e.attachUntil).toLocaleTimeString('fr-FR') + ' ; autres scènes sans nouvelles pièces jointes autorisées.');
+        } else if (taken && !(late && late.id === job.id) && !get(PENDING_IMAGE_KEY)) {
+          await call('POST', withWorker('/bridge/result'), { id: job.id, error: job.submitted ? 'Génération incertaine : ' + e.message : e.message, incertain: !!job.submitted }).catch(() => {});
+          if (!job.submitted) { try { sessionStorage.removeItem(ACTIVE_KEY); } catch (_) {} }
+        }
+        if (!job.submitted && /limite (?:de g[ée]n[ée]ration|d.images)|image generation limit/i.test(e.message)) { pauseUntil = Date.now() + 20 * 60000; say('quota de génération ChatGPT atteint'); }
       } finally { busy = false; }
     }
   }
