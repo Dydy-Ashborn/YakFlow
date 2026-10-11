@@ -202,6 +202,12 @@ main{max-width:980px}
 .cl-empty{text-align:center;color:var(--text-3);padding:36px 10px}
 .cl-empty i{display:block;font-size:22px;margin-bottom:10px;opacity:.5}
 @media(max-width:620px){.cl-row{grid-template-columns:40px minmax(0,1fr)}.cl-side{grid-column:1/-1;justify-content:flex-end}.cd{grid-template-columns:auto auto 1fr}.cd .when{grid-column:1/-1}.cd-acts{grid-column:1/-1}}
+/* YAKFLOW_LIVE_PRIVACY_V1 — public streaming safe by default */
+.yf-live-toggle{display:inline-flex;gap:9px;align-items:center;padding:9px 14px;border:1px solid var(--brand-line);border-radius:11px;background:var(--brand-soft);color:var(--brand-2);font-weight:700;cursor:pointer}
+.yf-live-toggle[aria-pressed="false"]{background:var(--s2);color:var(--text-2);border-color:var(--border-2)}
+.yf-live-help{font-size:12px;color:var(--text-3);margin:8px 0 0}
+.yf-hidden-note{color:var(--text-3);font-size:12px}
+body.yf-live #code{filter:blur(7px);user-select:none} body.yf-live #code:hover{filter:blur(7px)}
 dialog#clDlg{background:var(--s1);color:var(--text);border:1px solid var(--border-2);border-radius:20px;padding:0;width:min(420px,calc(100vw - 24px));box-shadow:var(--sh-3)}
 dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
 #clDlg .h{display:flex;gap:12px;align-items:center;padding:20px 22px 6px}#clDlg .h i{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--danger-soft);color:var(--danger)}
@@ -216,7 +222,11 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
   <span class="badge"><i class="fa-solid fa-lock"></i>Accès privé</span>
 </div>
 <main>
-  <h1>Codes d’accès</h1>
+  <div style="display:flex;align-items:center;gap:14px;justify-content:space-between;flex-wrap:wrap">
+  <h1 style="margin:0">Codes d’accès</h1>
+  <button type="button" id="yfLiveMode" class="yf-live-toggle" aria-pressed="true"><i class="fa-solid fa-eye-slash"></i> Mode live : e-mails masqués</button>
+</div>
+<p class="yf-live-help">Masquage activé par défaut : adapté au partage d’écran. Les e-mails sont toujours copiables et utilisables pour la recherche.</p>
   <p>La clé secrète peut être mémorisée sur cet appareil : utilise cette option uniquement sur ton ordinateur personnel.</p>
 
   <section class="card">
@@ -245,7 +255,7 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
 
   <section class="card">
     <h2><i class="fa-solid fa-ban d"></i>Désactiver un code</h2>
-    <p>À utiliser après résiliation ou erreur d’attribution. L’accès sera refusé à la prochaine vérification.</p>
+    <p>Couper un code ne résilie pas l’abonnement Stripe. Pour arrêter les prélèvements, passer par le portail Stripe ou le tableau de bord Stripe.</p>
     <label class="f"><span>Code à désactiver</span><input id="revokeCode" autocomplete="off" spellcheck="false" placeholder="YKF-…"></label>
     <div class="actions"><button id="revoke" class="btn danger"><i class="fa-solid fa-ban"></i>Désactiver</button><span id="revokeStatus" class="st" role="status"></span></div>
     <div class="divider"></div>
@@ -274,6 +284,34 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
   </script>
   <script>
     const $=id=>document.getElementById(id);let last=null;
+    /* Privacy visible sur l'écran, y compris formulaires et confirmations. Activation par défaut à chaque chargement. */
+    let yfLive=true;
+    function yfMaskEmail(e){
+      const v=String(e||'').trim(); const a=v.indexOf('@');
+      if(a<1)return '••••••';
+      return '••••@'+v.slice(a+1).replace(/[^.]/g,'•');
+    }
+    function yfDisplayEmail(e){return yfLive?yfMaskEmail(e):String(e||'')}
+    function yfAdminInputPrivacy(){
+      for(const id of ['email','revokeEmail','clQ']){
+        const el=$(id);if(!el)continue;
+        const v=el.value, focused=document.activeElement===el;
+        el.type=yfLive?'password':(id==='clQ'?'text':'email');
+        el.value=v;
+        if(focused)el.focus();
+      }
+    }
+    function yfResultPrivacy(){if(last&&$('resultEmail'))$('resultEmail').textContent=yfDisplayEmail(last.email)+' · '+({trial:'Essai 24 h',premium:'Premium',owner:'Propriétaire'}[last.type]||last.type)}
+    function yfPrivacyRefresh(){
+      $('yfLiveMode').setAttribute('aria-pressed',String(yfLive));
+      $('yfLiveMode').innerHTML=yfLive?'<i class="fa-solid fa-eye-slash"></i> Mode live : e-mails masqués':'<i class="fa-solid fa-eye"></i> Afficher les e-mails';
+      document.body.classList.toggle('yf-live', yfLive);
+      yfAdminInputPrivacy();yfResultPrivacy();
+      $('clQ')?.dispatchEvent(new Event('input'));
+    }
+    $('yfLiveMode').onclick=()=>{yfLive=!yfLive;yfPrivacyRefresh()};
+    yfAdminInputPrivacy();
+
     /* clé admin mémorisée sur cet appareil (localStorage), seulement si la case est cochée */
     const KEY='yakflowAdminSecret';
     try{const saved=localStorage.getItem(KEY);if(saved){$('secret').value=saved;$('remember').checked=true;$('forget').hidden=false}}catch(_){}
@@ -286,7 +324,7 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
       const data=await r.json().catch(()=>({}));if(r.status===401){try{localStorage.removeItem(KEY)}catch(_){}$('forget').hidden=true}if(!r.ok)throw Error(data.message||'Opération impossible.');keepSecret();return data}
     $('create').onclick=async()=>{const b=$('create');b.disabled=true;$('status').textContent='Création…';try{
       last=await call('create',{email:$('email').value,type:$('type').value,note:$('note').value});
-      $('result').hidden=false;$('resultEmail').textContent=last.email+' · '+({trial:'Essai 24 h',premium:'Premium',owner:'Propriétaire'}[last.type]||last.type);$('code').textContent=last.code;
+      $('result').hidden=false;yfResultPrivacy();$('code').textContent=last.code;
       $('expires').textContent=last.expiresAt?'Expire le '+new Date(last.expiresAt).toLocaleString('fr-FR'):'Valide tant que tu ne le désactives pas, sur un seul ordinateur.';
       $('status').textContent='Code créé dans Firebase.';$('result').scrollIntoView({behavior:'smooth'});
     }catch(e){$('status').textContent=e.message}finally{b.disabled=false}};
@@ -322,7 +360,7 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
       }catch(_){try{await navigator.clipboard.writeText(m.text);toast('Email copié en texte simple.')}catch(__){toast('Copie impossible : sélectionne le code à la main.')}}
     };
     $('revoke').onclick=async()=>{const b=$('revoke');b.disabled=true;$('revokeStatus').textContent='Désactivation…';try{
-      const data=await call('deactivate',{code:$('revokeCode').value});$('revokeStatus').textContent='Code de '+data.email+' désactivé dans Firebase.';
+      const data=await call('deactivate',{code:$('revokeCode').value});$('revokeStatus').textContent='Code de '+yfDisplayEmail(data.email)+' désactivé dans Firebase.';
     }catch(e){$('revokeStatus').textContent=e.message}finally{b.disabled=false}};
     $('revokeByEmail').onclick=async()=>{const b=$('revokeByEmail');b.disabled=true;$('revokeEmailStatus').textContent='Désactivation…';try{
       const data=await call('deactivate-email',{email:$('revokeEmail').value});$('revokeEmailStatus').textContent=data.deactivated+' code(s) premium désactivé(s) dans Firebase.';
@@ -363,12 +401,12 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
       box.replaceChildren(...rows.map(g=>{
         const el=document.createElement('div');el.className='cl';
         const row=document.createElement('div');row.className='cl-row';
-        const av=document.createElement('div');av.className='av '+g.status;av.textContent=g.email[0]||'?';
+        const av=document.createElement('div');av.className='av '+g.status;av.textContent=yfLive?'•':(g.email[0]||'?');
         const main=document.createElement('div');main.className='cl-main';
-        const mail=document.createElement('div');mail.className='cl-mail';mail.textContent=g.email;
+        const mail=document.createElement('div');mail.className='cl-mail';mail.textContent=yfDisplayEmail(g.email);
         const meta=document.createElement('div');meta.className='cl-meta';
         meta.innerHTML='<span><i class="fa-regular fa-calendar"></i> client depuis le '+fmt(g.since)+'</span><span><i class="fa-solid fa-key"></i> '+g.codes.length+' code'+(g.codes.length>1?'s':'')+'</span>';
-        if(g.note){const nt=document.createElement('span');nt.className='nt';nt.title=g.note;nt.innerHTML='<i class="fa-regular fa-note-sticky"></i> ';nt.append(g.note);meta.append(nt)}
+        if(g.note&&!yfLive){const nt=document.createElement('span');nt.className='nt';nt.title=g.note;nt.innerHTML='<i class="fa-regular fa-note-sticky"></i> ';nt.append(g.note);meta.append(nt)}
         main.append(mail,meta);
         const side=document.createElement('div');side.className='cl-side';
         side.innerHTML='<span class="tag '+g.status+'">'+LABEL[g.status]+'</span>';
@@ -381,7 +419,7 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
           const st=codeState(c), r=document.createElement('div');r.className='cd'+(st==='on'?'':' dead');const acts2=document.createElement('div');acts2.className='cd-acts';
           r.innerHTML='<span class="tag '+(c.type==='trial'?'trial':'premium')+'">'+({trial:'Essai 24 h',premium:c.stripe?'Stripe':'Premium',owner:'Propriétaire',lifetime:'À vie'}[c.type]||c.type)+'</span><span class="tag '+st+'">'+({on:'Actif',expired:'Expiré',off:'Désactivé'})[st]+'</span><span class="when">créé le '+fmt(c.createdAt)+(c.deactivatedAt?' · coupé le '+fmt(c.deactivatedAt):c.expiresAt?' · fin '+fmt(c.expiresAt):'')+(c.machine?' · PC '+c.machine+(c.lastCheckAt?' · vérifié le '+fmt(c.lastCheckAt):''):' · pas encore activé')+'</span>';
           const b=document.createElement('button');b.className='btn sm '+(c.active?'danger':'');b.title=c.active?'Désactiver ce code':'Réactiver ce code';b.innerHTML=c.active?'<i class="fa-solid fa-ban"></i>Désactiver':'<i class="fa-solid fa-rotate-left"></i>Réactiver';
-          b.onclick=async()=>{if(c.active&&!(await ask('Désactiver ce code ?',g.email+' perdra cet accès à la prochaine vérification.','Désactiver')))return;
+          b.onclick=async()=>{if(c.active&&!(await ask('Désactiver ce code ?',yfDisplayEmail(g.email)+' perdra cet accès à la prochaine vérification.','Désactiver')))return;
             b.disabled=true;try{await call(c.active?'deactivate-id':'reactivate-id',{id:c.id});toast(c.active?'Code désactivé.':'Code réactivé.');await load(g.email)}catch(e){toast(e.message);b.disabled=false}};
           if(c.machine){const rm=document.createElement('button');rm.className='btn sm';rm.title='Libérer ce code pour un autre ordinateur';rm.innerHTML='<i class="fa-solid fa-laptop"></i>Libérer le PC';
             rm.onclick=async()=>{if(!(await ask('Libérer ce code ?','Le client pourra activer ce code sur un nouvel ordinateur.','Réinitialiser')))return;rm.disabled=true;try{await call('reset-machine',{id:c.id});toast('Ordinateur réinitialisé.');await load(g.email)}catch(e){toast(e.message);rm.disabled=false}};acts2.append(rm)}
@@ -396,8 +434,8 @@ dialog#clDlg::backdrop{background:rgba(3,4,6,.72);backdrop-filter:blur(8px)}
         const dead=g.codes.filter(c=>!c.active||codeState(c)==='expired');
         if(dead.length){const clean=document.createElement('button');clean.className='btn sm danger';clean.innerHTML='<i class="fa-solid fa-broom"></i>Supprimer les '+dead.length+' code'+(dead.length>1?'s':'')+' désactivé'+(dead.length>1?'s':'');
           clean.onclick=async()=>{if(!(await ask('Faire le ménage ?',dead.length+' code(s) désactivé(s) ou expiré(s) de '+g.email+' seront effacés définitivement. Les codes actifs sont conservés.','Supprimer')))return;clean.disabled=true;let n=0;for(const c of dead){try{await call('delete-id',{id:c.id});n++}catch(_){}}toast(n+' code(s) supprimé(s).');await load(g.email)};acts.append(clean)}
-        if(g.status==='premium'){const off=document.createElement('button');off.className='btn sm danger';off.innerHTML='<i class="fa-solid fa-user-slash"></i>Couper tous ses accès premium';
-          off.onclick=async()=>{if(!(await ask('Couper ses accès premium ?','Tous les codes premium actifs de '+g.email+' seront désactivés (résiliation).','Tout couper')))return;
+        if(g.status==='premium'){const off=document.createElement('button');off.className='btn sm danger';off.innerHTML='<i class="fa-solid fa-user-slash"></i>Couper accès (pas Stripe)';
+          off.onclick=async()=>{if(!(await ask('Couper ses accès premium ?','Les accès premium de '+yfDisplayEmail(g.email)+' seront désactivés dans YakFlow. ATTENTION : cette action ne résilie PAS l’abonnement Stripe et ne stoppe PAS les prélèvements !','Tout couper')))return;
             try{const d=await call('deactivate-email',{email:g.email});toast(d.deactivated+' code(s) désactivé(s).');await load(g.email)}catch(e){toast(e.message)}};acts.append(off)}
         det.append(acts);
         row.onclick=()=>el.classList.toggle('open');

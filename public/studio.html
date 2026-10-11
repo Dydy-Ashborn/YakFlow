@@ -911,7 +911,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
       <label class="ck"><input type="checkbox" id="sDisk"> <span><b>Ranger tout sur le disque</b> au fil de l'eau : <code>Téléchargements/AgnesStudio/&lt;projet&gt;/</code>.</span></label>
       <label class="ck"><input type="checkbox" id="sAutoDl"> <span><b>Télécharger la vidéo montée</b> dès qu'elle est prête.</span></label>
       <div class="ck" style="align-items:flex-start"><i class="fa-solid fa-box-archive" style="margin-top:3px;color:var(--brand)"></i> <span style="flex:1"><b>Sauvegarde des projets</b> : récupère les projets de la version ordinateur ou d’un autre navigateur (projets, images, clips, montages et clés Agnes).<br><span style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><button type="button" class="btn sm primary" data-yf-backup="import"><i class="fa-solid fa-file-import"></i>Importer une sauvegarde</button><button type="button" class="btn sm" data-yf-backup="export"><i class="fa-solid fa-download"></i>Exporter mes projets</button></span></span></div>
-      <div class="ck" style="align-items:flex-start"><i class="fa-solid fa-key" style="margin-top:3px;color:var(--brand)"></i> <span style="flex:1"><b>Accès YakFlow</b> : tu as reçu un nouveau code (abonnement, code offert) ?<br><button type="button" class="btn sm" style="margin-top:8px" onclick="document.getElementById('dlgSet')?.close();window.yfChangeCode&&window.yfChangeCode()"><i class="fa-solid fa-rotate"></i>Changer de code</button></span></div>
+      <div class="ck" style="align-items:flex-start"><i class="fa-solid fa-key" style="margin-top:3px;color:var(--brand)"></i> <span style="flex:1"><b>Accès YakFlow</b> : tu as reçu un nouveau code (abonnement, code offert) ?<br><button type="button" class="btn sm" style="margin-top:8px" onclick="document.getElementById('dlgSet')?.close();window.yfChangeCode&&window.yfChangeCode()"><i class="fa-solid fa-rotate"></i>Changer de code</button><button type="button" class="btn sm" data-yf-portal style="margin:8px 0 0 8px"><i class="fa-regular fa-credit-card"></i>Gérer mon abonnement</button></span></div>
       <div class="ck" id="exportDirBox" style="align-items:flex-start"><i class="fa-solid fa-folder-tree" style="margin-top:3px;color:var(--brand)"></i> <span style="flex:1"><b>Ranger chaque vidéo dans un dossier</b> : choisis une fois ton dossier <b>Téléchargements</b> (synchronisé avec Google Drive) ou <b>Mon Drive</b>. Chaque vidéo montée y est rangée avec sa couverture et sa description, dans <code>YakFlow/&lt;nom du projet&gt;/</code>, et arrive sur ton téléphone. Quand Chrome demande l'accès, choisis « Autoriser à chaque visite ».<br><span class="hint" id="exportDirName" style="margin:4px 0 8px;display:block">Aucun dossier choisi.</span><button type="button" class="btn sm" id="exportDirPick"><i class="fa-solid fa-folder-open"></i>Choisir un dossier</button> <button type="button" class="btn sm ghost" id="exportDirClear" hidden><i class="fa-solid fa-xmark"></i>Retirer</button></span></div>
       <label class="ck"><input type="checkbox" id="sHook"> <span>Afficher l'<b>accroche</b> du projet en texte pendant les 3 premières secondes du montage.</span></label>
     </div>
@@ -3689,7 +3689,32 @@ setInterval(agnesPushRemoteStatus, 3000);
  window.yfChangeCode=function(){localStorage.removeItem('yfToken');localStorage.removeItem('yakflowLicenseCode');document.getElementById('yfTrialBar')?.remove();input.value='';lock('Colle ton nouveau code YakFlow.');setTimeout(()=>input.focus(),80)};
  btn?.addEventListener('click',()=>activate());input?.addEventListener('keydown',e=>{if(e.key==='Enter')activate()});
  document.getElementById('yfTrialBtn')?.addEventListener('click',trial);document.getElementById('yfTrialEmail')?.addEventListener('keydown',e=>{if(e.key==='Enter')trial()});
- document.getElementById('yfManageSub')?.addEventListener('click',()=>{if(cfg.stripePortalUrl)window.open(cfg.stripePortalUrl,'_blank','noopener');else show('Pour gérer ou résilier, utilise le lien du reçu Stripe reçu par email.','')});
+ /* YAKFLOW_STRIPE_PORTAL_AUTH_V1 — aucune URL statique partagée entre plusieurs clients. */
+ async function manageStripeSubscription(button){
+   if(button?.disabled)return;
+   const old=button?.innerHTML;
+   const code=localStorage.getItem('yakflowLicenseCode')||'';
+   const token=localStorage.getItem('yfToken')||'';
+   if(!code||!token){const msg='Active ta licence Premium pour gérer ton abonnement Stripe.';if(overlay.hidden)alert(msg);else show(msg,'err');return}
+   // Ouvrir synchroniquement depuis le clic pour éviter le blocage pop-up après fetch.
+   const tab=window.open('about:blank','_blank');
+   if(tab){try{tab.opener=null;tab.document.title='YakFlow · abonnement';tab.document.body.textContent='Ouverture sécurisée de Stripe…'}catch(_){}}
+   if(button){button.disabled=true;button.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i>Connexion à Stripe…'}
+   try{
+     const r=await fetch('/.netlify/functions/billing-portal',{
+       method:'POST',credentials:'same-origin',cache:'no-store',
+       headers:{'Content-Type':'application/json','X-Yakflow-Token':token},
+       body:JSON.stringify({code,machine:device()})
+     });
+     const d=await r.json().catch(()=>({}));
+     if(!r.ok||!d.url)throw Error(d.message||'Portail Stripe indisponible.');
+     const url=new URL(d.url);if(url.protocol!=='https:'||url.hostname!=='billing.stripe.com')throw Error('Lien de gestion inattendu.');
+     if(tab){tab.location.replace(url.href)}else throw Error('Fenêtre Stripe bloquée : autorise les pop-ups pour YakFlow, puis réessaie sans quitter ton projet.');
+   }catch(e){if(tab)tab.close();const msg=e.message||'Réessaie dans un instant.'; if(overlay.hidden)alert(msg);else show(msg,'err')}
+   finally{if(button){button.disabled=false;button.innerHTML=old}}
+ }
+ document.getElementById('yfManageSub')?.addEventListener('click',e=>manageStripeSubscription(e.currentTarget));
+ document.querySelectorAll('[data-yf-portal]').forEach(b=>b.addEventListener('click',e=>manageStripeSubscription(e.currentTarget)));
  setInterval(()=>{const t=localStorage.getItem('yfToken')||'',p=t?payload(t):null;if(!p||Date.now()>p.u)boot()},30*60*1000);
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
