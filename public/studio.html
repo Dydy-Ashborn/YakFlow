@@ -2733,19 +2733,42 @@ async function linkCanonFromP1(p, s) {
   dlg.showModal();
 }
 
+/* HOTFIX CAGNOTTE HOST — première apparition réelle en P2. Aucun canon P1 inventé.
+   N'altère PAS les autres personnages canonisés. */
+const CAGNOTTE_P2_HOST_PROMPT = "FIRST VISUAL APPEARANCE — LA CAGNOTTE P2. New original adult male anthropomorphic raven hotel-game presenter, approximately 45 years old, upright lean adult humanlike silhouette, charcoal black stylized feathers with subtle blue sheen, matte graphite beak, expressive amber eyes, elegant dark midnight tailored suit, burgundy waistcoat, clean cream shirt, narrow dark tie, polished dark dress shoes. Calm professional composed expression, anthropomorphic feather-covered humanoid hands, hands empty. REFERENCE SHEET on neutral light gray studio backdrop: LEFT complete full body front, CENTER complete full body three-quarter, RIGHT face-and-shoulders portrait. Exactly identical beak, feather pattern, eye shape, age, costume and proportions in every view. Premium original 3D animated feature style, rounded appealing facial design, soft studio lighting, never photorealistic. Vertical 9:16 full-bleed, no words, currency labels, props, borders, cut-off head or feet.";
 async function unlockFirstAppearance(p, s) {
   if (s.type !== 'fiche' || !s.verrouIdentite || s.img.st === 'fini') return;
+  const actualHost = s.id === 'fiche-serie-cagnotte-animateur';
+  if (priorCanonRequired(s) && !actualHost) {
+    toast('Ce personnage existe déjà en P1 : utilise « Relier P1 » pour éviter de changer son visage.', 'warn');
+    return;
+  }
   if (/^fiche-serie-/.test(s.id) && await mGet('fiche:' + s.id)) {
     await syncFiches(); saveProjects(); render();
     toast('Fiche officielle déjà présente : elle a été réutilisée.', 'ok');
     return;
   }
-  if (!confirm('Première apparition de « ' + s.nom + ' » dans TOUTE la série ?\n\nOui : déverrouille uniquement cette fiche. Génère sa première image, vérifie le résultat, puis clique sur « Canoniser ».\n\nNon : pour un personnage déjà apparu (comme Léo), importe sa véritable fiche originale.')) return;
+  const accepted = await yfConfirm({
+    title: 'Première apparition réelle ?',
+    message: actualHost
+      ? 'La Cagnotte P1 ne contient pas de fiche canonique de cet animateur. YakFlow va supprimer la consigne incorrecte « CANON P1 », créer une nouvelle fiche P2 et conserver les autres personnages tels quels.'
+      : "Confirme que ce personnage n'a jamais été montré dans la série. Sa première fiche deviendra la référence canonique des prochains épisodes.",
+    okLabel: 'Créer cette première fiche', icon: 'fa-unlock',
+  });
+  if (!accepted) return;
+  if (actualHost) {
+    s.promptImage = CAGNOTTE_P2_HOST_PROMPT;
+    s.nom = 'Fiche — Animateur (première apparition P2)';
+    s.joindre = [];
+    s.identiteDe = '';
+  } else {
+    s.nom = s.nom.replace(/^Identité verrouillée — /, 'Fiche — ').replace(/\s*\(image approuvée à importer\)\s*$/, ' (première apparition)');
+  }
   s.verrouIdentite = false;
-  s.nom = s.nom.replace(/^Identité verrouillée — /, 'Fiche — ').replace(/\s*\(image approuvée à importer\)\s*$/, ' (première apparition)');
-  s.img = { st: 'attente', msg: 'Première apparition : génère puis valide la fiche, ensuite clique sur « Canoniser »' };
+  s.img = { st: 'attente', msg: 'Première apparition P2 : génère la fiche puis clique sur « Canoniser »' };
+  s.ok = false;
   saveProjects(); render();
-  toast('Fiche déverrouillée. Tu peux lancer sa génération.', 'ok');
+  toast('Fiche première apparition activée. Production automatique possible.', 'ok');
 }
 async function redoImage(p, s) {
   if (s.verrouIdentite) { toast('Identité canonique verrouillée : importe une image approuvée plutôt que la régénérer.', 'warn'); return; }
@@ -3087,7 +3110,7 @@ function stepCard(p, s, i) {
         (sc && S.gate && s.img.st === 'fini' && !s.ok ? '<button class="btn sm primary" data-act="ok"><i class="fa-solid fa-check"></i>Valider</button>' : '') +
         '<button class="btn sm" data-act="edit" title="Modifier les prompts"><i class="fa-solid fa-pen"></i>Prompts</button>' +
         (s.type === 'fiche' && (s.verrouIdentite || priorCanonRequired(s)) && s.img.st !== 'fini' ? '<button class="btn sm" data-act="linkCanon" title="Retrouver une fiche P1 validée dans ce navigateur"><i class="fa-solid fa-link"></i>Relier P1</button>' : '') +
-        (s.type === 'fiche' && s.verrouIdentite && !priorCanonRequired(s) && s.img.st !== 'fini' ? '<button class="btn sm primary" data-act="firstAppearance" title="Créer la fiche officielle à la première apparition"><i class="fa-solid fa-unlock"></i>Première apparition</button>' : '') +
+        (s.type === 'fiche' && s.verrouIdentite && (!priorCanonRequired(s) || s.id === 'fiche-serie-cagnotte-animateur') && s.img.st !== 'fini' ? '<button class="btn sm primary" data-act="firstAppearance" title="Créer la fiche officielle à la première apparition"><i class="fa-solid fa-unlock"></i>Première apparition</button>' : '') +
         (s.type === 'fiche' && s.img.st === 'fini' && !/^(decor|fin-)/i.test(s.id) ? '<button class="btn sm" data-act="canon" title="Sauvegarder le visage officiel pour tous les épisodes"><i class="fa-solid fa-lock"></i>Canoniser</button>' : '') +
         (s.promptImage && !s.imageDe && !s.verrouIdentite ? '<button class="btn sm" data-act="redoImg"><i class="fa-solid fa-rotate-right"></i>' + (s.img.st === 'fini' ? 'Refaire img' : 'Relancer img') + '</button>' : '') +
         (sc && s.img.st === 'fini' ? '<button class="btn sm" data-act="redoClip"><i class="fa-solid fa-rotate-right"></i>' + (s.clip.st === 'fini' ? 'Refaire clip' : 'Relancer clip') + '</button>' : '') +
