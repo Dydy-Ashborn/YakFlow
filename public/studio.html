@@ -1080,7 +1080,7 @@ async function memorizeIdentity(p, s) {
   if (s.type !== 'fiche' || s.img.st !== 'fini') { toast('Termine ou importe la fiche approuvée avant de la mémoriser.', 'warn'); return; }
   const src = await mGet(imgKey(p, s));
   if (!src) { toast('Fichier image absent. Réimporte la fiche officielle.', 'warn'); return; }
-  const guess = /l[eé]o/i.test(s.nom + ' ' + s.id) ? 'fiche-serie-money-farm-leo' : 'fiche-serie-' + String(p.id + '-' + s.id).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const guess = isSharedFicheId(s.id) ? s.id : (/l[eé]o/i.test(s.nom + ' ' + s.id) ? 'fiche-serie-money-farm-leo' : 'fiche-serie-' + String(p.id + '-' + s.id).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-'));
   const id = prompt('ID IMMUTABLE du personnage (le même dans tous les épisodes).\nAttention : ne mémorise que sa vraie fiche approuvée, jamais un visage approximatif.', guess);
   if (id == null) return;
   if (!isSharedFicheId(id)) { toast('ID invalide : utilise fiche-serie- puis lettres, chiffres et tirets.', 'warn'); return; }
@@ -1916,7 +1916,7 @@ async function nextImageJob() {
     for (const s of p.etapes) {
       if (!s.promptImage || s.imageDe) continue;
       if (s.type === 'fiche' && s.verrouIdentite) {
-        if (s.img.st !== 'fini' && s.img.msg !== 'Fiche canonique verrouillée : importe l’image P1 approuvée') setImg(p, s, { msg: 'Fiche canonique verrouillée : importe l’image P1 approuvée' });
+        if (s.img.st !== 'fini' && s.img.msg !== 'Fiche récurrente : importe son image approuvée, ou indique une première apparition') setImg(p, s, { msg: 'Fiche récurrente : importe son image approuvée, ou indique une première apparition' });
         continue;
       }
       if (/^fiche-serie-/.test(s.id) && projects.some(q => q.etapes.some(t => t !== s && t.id === s.id && t.img.st === 'calcul'))) continue;
@@ -2503,6 +2503,22 @@ window.addEventListener('beforeunload', (e) => { if (running || montBusy) { e.pr
 /* =====================================================================
    ACTIONS SUR LES ÉTAPES
    ===================================================================== */
+/* YAKFLOW_PREMIERE_APPARITION_V1 : aucune image de référence requise lors de la première apparition réelle.
+   Ne déverrouiller que la fiche explicitement choisie, sans réimport ni perte des scènes existantes. */
+async function unlockFirstAppearance(p, s) {
+  if (s.type !== 'fiche' || !s.verrouIdentite || s.img.st === 'fini') return;
+  if (/^fiche-serie-/.test(s.id) && await mGet('fiche:' + s.id)) {
+    await syncFiches(); saveProjects(); render();
+    toast('Fiche officielle déjà présente : elle a été réutilisée.', 'ok');
+    return;
+  }
+  if (!confirm('Première apparition de « ' + s.nom + ' » dans TOUTE la série ?\n\nOui : déverrouille uniquement cette fiche. Génère sa première image, vérifie le résultat, puis clique sur « Canoniser ».\n\nNon : pour un personnage déjà apparu (comme Léo), importe sa véritable fiche originale.')) return;
+  s.verrouIdentite = false;
+  s.nom = s.nom.replace(/^Identité verrouillée — /, 'Fiche — ').replace(/\s*\(image approuvée à importer\)\s*$/, ' (première apparition)');
+  s.img = { st: 'attente', msg: 'Première apparition : génère puis valide la fiche, ensuite clique sur « Canoniser »' };
+  saveProjects(); render();
+  toast('Fiche déverrouillée. Tu peux lancer sa génération.', 'ok');
+}
 async function redoImage(p, s) {
   if (s.verrouIdentite) { toast('Identité canonique verrouillée : importe une image approuvée plutôt que la régénérer.', 'warn'); return; }
   if (YFC.ready) bridge('POST', 'forget?id=' + encodeURIComponent(p.id + '|' + s.id)).catch(() => {});
@@ -2836,8 +2852,9 @@ function stepCard(p, s, i) {
       '<div class="acts">' +
         (sc && S.gate && s.img.st === 'fini' && !s.ok ? '<button class="btn sm primary" data-act="ok"><i class="fa-solid fa-check"></i>Valider</button>' : '') +
         '<button class="btn sm" data-act="edit" title="Modifier les prompts"><i class="fa-solid fa-pen"></i>Prompts</button>' +
+        (s.type === 'fiche' && s.verrouIdentite && s.img.st !== 'fini' ? '<button class="btn sm primary" data-act="firstAppearance" title="Créer la fiche officielle à la première apparition"><i class="fa-solid fa-unlock"></i>Première apparition</button>' : '') +
         (s.type === 'fiche' && s.img.st === 'fini' && !/^(decor|fin-)/i.test(s.id) ? '<button class="btn sm" data-act="canon" title="Sauvegarder le visage officiel pour tous les épisodes"><i class="fa-solid fa-lock"></i>Canoniser</button>' : '') +
-        (s.promptImage && !s.imageDe ? '<button class="btn sm" data-act="redoImg"><i class="fa-solid fa-rotate-right"></i>' + (s.img.st === 'fini' ? 'Refaire img' : 'Relancer img') + '</button>' : '') +
+        (s.promptImage && !s.imageDe && !s.verrouIdentite ? '<button class="btn sm" data-act="redoImg"><i class="fa-solid fa-rotate-right"></i>' + (s.img.st === 'fini' ? 'Refaire img' : 'Relancer img') + '</button>' : '') +
         (sc && s.img.st === 'fini' ? '<button class="btn sm" data-act="redoClip"><i class="fa-solid fa-rotate-right"></i>' + (s.clip.st === 'fini' ? 'Refaire clip' : 'Relancer clip') + '</button>' : '') +
         /* YAKFLOW_SAFE_MANUAL_CLIP_IMPORT_V14 */
         '<button class="btn sm ghost" data-act="fileImg" title="Importer une image" aria-label="Importer une image"><i class="fa-regular fa-file-image"></i></button>' +
@@ -2933,6 +2950,7 @@ async function render() {
       if (a === 'view') view(p, s, 'img'); else if (a === 'play') view(p, s, 'clip');
       else if (a === 'edit') openEdit(p, s); else if (a === 'redoImg') redoImage(p, s); else if (a === 'redoClip') redoClip(p, s);
       else if (a === 'canon') memorizeIdentity(p, s);
+      else if (a === 'firstAppearance') unlockFirstAppearance(p, s);
       else if (a === 'fileImg') pickFile(p, s, 'image');
       else if (a === 'fileClip') pickFile(p, s, 'clip');
       else if (a === 'file') pickFile(p, s, 'image');
