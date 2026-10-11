@@ -1623,6 +1623,43 @@ async function refreshChatStatus() {
   try { const st = await bridge('GET', 'status'); chatAlive = st.alive; chatInfo = st.info || ''; chatWorkers = st.workers || 0; chatProtocol = st.protocol || 0; chatPauseUntil = st.pauseUntil || 0; }
   catch { chatAlive = false; chatInfo = ''; chatWorkers = 0; chatProtocol = 0; }
   renderStatus();
+  // Sauvetage v3.2.1 : un onglet Studio rechargé ou une réception tardive
+  // ne doit JAMAIS obliger à regénérer une image déjà faite sur ChatGPT.
+  recoverImagesFromChatGPT().catch(e => log('Récupération image ChatGPT : ' + e.message));
+}
+let bridgeRescueBusy = false, bridgeRescueCursor = 0;
+async function recoverImagesFromChatGPT() {
+  if (bridgeRescueBusy || !projects.length) return;
+  bridgeRescueBusy = true;
+  try {
+    const candidates = [];
+    for (const p of projects) for (const s of p.etapes) {
+      if (!s.promptImage || s.img.st === 'fini' || curStep.has(s)) continue;
+      if (!['attente','echec'].includes(s.img.st)) continue;
+      // Ne scanner que les images de ChatGPT, jamais les tâches Agnes.
+      if (s.img.via !== 'chatgpt' && !/ChatGPT|Repris après fermeture|Génération incertaine|image incertaine/i.test(s.img.msg || '')) continue;
+      candidates.push([p,s]);
+    }
+    if (!candidates.length) return;
+    // Au plus 5 vérifications par cycle : aucune rafale ni téléversement.
+    for (let offset=0; offset<Math.min(5,candidates.length); offset++) {
+      const [p,s] = candidates[(bridgeRescueCursor+offset)%candidates.length];
+      const id = p.id + '|' + s.id;
+      const reply = await bridge('GET','status?id='+encodeURIComponent(id));
+      if (reply.st !== 'fini' || !reply.data) continue;
+      if (s.img.st === 'fini' || curStep.has(s)) continue;
+      const output = await toJpeg(reply.data, 2048);
+      await mPut(imgKey(p,s), output.data);
+      setImg(p,s,{ st:'fini', via:'chatgpt', msg:'Image récupérée sans nouvelle génération ('+output.w+'×'+output.h+')', src:'chatgpt', prompt:s.promptImage });
+      s.ok = !S.gate || isFiche(s) || s.type === 'couverture';
+      diskImage(p,s,output.data);
+      if (/^fiche-serie-/.test(s.id)) for (const q of projects) for (const t of q.etapes) if (t !== s && t.id === s.id) { t.img = Object.assign({},s.img); t.ok = true; }
+      log('Image ChatGPT récupérée après interruption : '+p.titre+' · '+s.nom);
+      await bridge('POST','forget?id='+encodeURIComponent(id));
+      saveProjects(); renderSoon();
+    }
+    bridgeRescueCursor = (bridgeRescueCursor + 5) % Math.max(1,candidates.length);
+  } finally { bridgeRescueBusy = false; }
 }
 /* YAKFLOW_POLL_V16 : statut du pont ChatGPT toutes les 8 s pendant la fabrication, 45 s au repos ou onglet caché */
 (function chatLoop(d) { setTimeout(async () => { await refreshChatStatus(); chatLoop(running && !document.hidden ? 8000 : 45000); }, d); })(1500);
@@ -3170,7 +3207,9 @@ $('#sTest').onclick = async () => { S.ntfy = $('#sNtfy').value.trim(); if (!S.nt
   for (const p of projects) {
     p.etapes = sortSteps(p.etapes);
     for (const s of p.etapes) {
-      if (s.img.st === 'calcul') s.img = s.img.via === 'agnes' ? { st: 'echec', msg: 'Envoi Agnes interrompu : vérifie si l’image existe avant de cliquer sur « Relancer img ».' } : { st: 'attente', msg: 'Repris après fermeture' };
+      if (s.img.st === 'calcul') s.img = s.img.via === 'agnes'
+        ? { ...s.img, st: 'echec', msg: 'Envoi Agnes interrompu : vérifie si l’image existe avant de cliquer sur « Relancer img ».' }
+        : { ...s.img, st: 'attente', via: 'chatgpt', msg: 'Repris après fermeture : récupération automatique ChatGPT en attente' };
       if (s.clip.st === 'envoi') s.clip = { st: 'attente' };
     }
     if (p.montage.st === 'calcul') p.montage = { st: 'attente' };
