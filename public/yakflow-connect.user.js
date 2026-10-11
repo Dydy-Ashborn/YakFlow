@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.2.3
+// @version      3.3.0
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -32,7 +32,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.2.3';
+  const CONNECT_VERSION = '3.2.4';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -125,11 +125,23 @@
   function beat(kind, worker, info) {
     if (!worker) return;
     set(kind + ':w:' + fnv(worker), { seenAt: now(), info: String(info || '').slice(0, 200) });
+    monoOwner(kind, worker, true);
   }
   function alive(kind) {
     const out = [];
     for (const k of keys(kind + ':w:')) { const w = get(k); if (!w || now() - w.seenAt > 10 * 60000) { del(k); continue; } if (now() - w.seenAt < ALIVE_MS) out.push(w); }
     return out;
+  }
+  // Un seul onglet producteur par service. La propriété expire seulement après
+  // deux minutes sans battement ; une génération active renouvelle son bail.
+  // Les autres onglets peuvent rester ouverts mais ne prennent aucun travail.
+  function monoOwner(kind, worker, acquire = false) {
+    if (!worker || worker === 'studio') return false;
+    const key = kind + ':single-worker-v1', current = get(key);
+    if (current && current.worker !== worker && now() - current.seenAt < 120000) return false;
+    if (!acquire && (!current || current.worker !== worker)) return false;
+    set(key, { worker, seenAt: now() });
+    return true;
   }
   function job(kind, id) {
     const j = get(jk(kind, id));
@@ -173,8 +185,10 @@
 
     if (action === 'status' && method === 'GET') {
       const live = alive(kind);
-      if (kind === 'grok') return ok({ alive: live.length > 0, workers: live.length, pending: waiting(kind).length, running: 0 });
-      const out = { protocol: 2, alive: live.length > 0, workers: live.length, info: live[0] ? live[0].info : '' };
+      const owner = get(kind + ':single-worker-v1');
+      const singleLive = owner && now() - owner.seenAt < 120000 ? live.slice(0, 1) : [];
+      if (kind === 'grok') return ok({ alive: singleLive.length > 0, workers: singleLive.length, pending: waiting(kind).length, running: 0 });
+      const out = { protocol: 2, alive: singleLive.length > 0, workers: singleLive.length, info: singleLive[0] ? singleLive[0].info : '' };
       const pz = get('bridge:pause'); if (pz && now() < pz.until) Object.assign(out, { pauseUntil: pz.until, pauseWhy: pz.why || '', info: 'En pause jusqu’à ' + new Date(pz.until).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) + ' : ' + (pz.why || 'limite ChatGPT') });
       if (id) { const j = job(kind, id); if (j) {
         const data = j.st === 'fini' ? readLarge(rk(kind, id)) : null;
@@ -234,12 +248,14 @@
     if (['hello', 'heartbeat'].includes(action) && method === 'POST') { beat(kind, worker, info); return ok({ ok: true }); }
     if (action === 'peek' && kind === 'bridge' && method === 'GET') {
       beat(kind, worker, info);
+      if (!monoOwner(kind, worker, true)) return ok({ job: null, singleWorker: true });
       const jid = waiting(kind)[0];
       return ok({ job: jid ? get(pk(kind, jid)) : null });
     }
     if (action === 'take' && method === 'POST') {
       if (!worker) return err(400, 'Onglet inconnu.');
       beat(kind, worker, info);
+      if (!monoOwner(kind, worker, true)) return ok({ job: null, singleWorker: true });
       for (const jid of waiting(kind)) {
         if (!(await claim(kind, jid, worker))) continue;
         const j = job(kind, jid); if (!j || j.st !== 'attente') continue;
@@ -432,12 +448,19 @@
     const mem = loadRefSession(), reuseOn = GM_getValue(ECONOMY_KEY, true);
     const qualityOn = GM_getValue(QUALITY_KEY, true);
     const importantFace = qualityOn && isFaceCritical(job);
+    // V3.2.4 : une fiche de CHANGEMENT DE TENUE doit recevoir une pièce jointe
+    // physique de sa BASE canonique, jamais un renvoi textuel vers un ancien tour.
+    // Même exigence pour Léo, personnage principal dont le visage dérivait.
+    const changingOutfit = /CANON IDENTITY LOCK|FIRST ATTACH THE APPROVED|Change OUTFIT ONLY|nouvelle tenue|new outfit|identity variation/i.test(String(job?.prompt || ''));
     const uploads = [], mapping = [], newly = [];
     for (let i = 0; i < refs.length; i++) {
       const r = refs[i], hash = refFingerprint(r);
-      const old = reuseOn && isPersistentSheet(r) && mem.refs.find(x => x.hash === hash);
+      const characterIsLeo = /fiche-serie-money-farm-leo(?:-tenue-[a-z0-9-]+)?\.jpg$/i.test(String(r.name || '')) || /fiche-serie-money-farm-leo(?:-tenue-[a-z0-9-]+)?/i.test(String(r.name || ''));
+      // Ne jamais promettre 'FIRST attached' si la fiche P1 a en réalité été omise.
+      const mustAttach = changingOutfit || characterIsLeo || importantFace;
+      const old = reuseOn && !mustAttach && isPersistentSheet(r) && mem.refs.find(x => x.hash === hash);
       const isFresh = old && Number.isInteger(old.attachedAt) && (mem.sent - old.attachedAt) <= REFRESH_AFTER_TURNS;
-      const canReuse = !!old && !importantFace && (!qualityOn || isFresh);
+      const canReuse = !!old && !mustAttach && (!qualityOn || isFresh);
       if (canReuse) {
         mapping.push('RÉFÉRENCE ' + (i + 1) + ' = fiche canonique ' + old.name + ' déjà jointe dans cette conversation (message YakFlow ' + old.job + '). UTILISER cette image EXACTE ; ne jamais substituer une autre version du personnage.');
       } else {

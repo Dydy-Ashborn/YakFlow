@@ -674,7 +674,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
       </div>
       <ul class="yfA-proof">
         <li><i class="fa-solid fa-check"></i>0 € de génération en mode Agnes</li>
-        <li><i class="fa-solid fa-check"></i>Jusqu’à 5 créations en parallèle</li>
+        <li><i class="fa-solid fa-check"></i>Production automatisée, sans multi-onglet</li>
         <li><i class="fa-solid fa-check"></i>Sans installation, dans ton navigateur</li>
       </ul>
     </section>
@@ -738,6 +738,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
     <button type="button" data-nav="report" class="rail-desk"><i class="fa-solid fa-chart-line"></i><span>Rapport</span></button>
     <button type="button" data-nav="settings" class="rail-desk"><i class="fa-solid fa-sliders"></i><span>Réglages</span></button>
     <button type="button" data-nav="guide" class="rail-desk"><i class="fa-regular fa-circle-question"></i><span>Guide</span></button>
+    <a href="/mes-prompts.html" id="yfFreePromptLink" style="display:flex;align-items:center;gap:10px;padding:10px 12px;color:#ffc757;text-decoration:none;font-weight:700;font-size:13px"><i class="fa-solid fa-gift"></i><span>Mes prompts gratuits</span></a>
   </nav>
   <aside class="side">
     <section class="card">
@@ -835,7 +836,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
       <div class="grid2">
         <label class="f"><span>Clés API Agnes</span><input id="sKey" type="password" placeholder="sk-…, sk-…, sk-…" autocomplete="off" spellcheck="false"></label>
         <label class="f"><span>Images</span><select id="sImgSrc"><option value="chatgpt">ChatGPT les génère (onglet + script Pont)</option><option value="agnes">Agnes Image — gratuit</option><option value="import">Je les importe moi-même</option></select></label>
-        <label class="f"><span>Images ChatGPT en parallèle</span><select id="sChatPar"><option value="1">1 onglet</option><option value="2">2 onglets</option><option value="3">3 onglets</option><option value="4">4 onglets</option><option value="5">5 onglets</option></select><small>Ouvre autant d’onglets chatgpt.com avec le Pont à jour. La limite du compte ChatGPT reste partagée.</small></label>
+        <label class="f"><span>Images ChatGPT — 1 seul onglet</span><select id="sChatPar"><option value="1">1 onglet (fiabilité)</option></select><small>Un seul onglet ChatGPT connecté : références réutilisées, génération séquentielle et suivi automatique.</small></label>
         <label class="f">
           <span>Démarrer les images ChatGPT à</span>
           <div class="yfImgSchedule"><input id="sImgStartEnabled" type="checkbox"><input id="sImgStartTime" type="time" value="23:55"></div>
@@ -845,7 +846,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
         <label class="f"><span>Taille image</span><select id="sImgSize"><option value="1K">1K · 10 images/min en gratuit</option><option value="2K">2K · recommandé · 5 images/min</option><option value="3K">3K · 1 image/min</option><option value="4K">4K · 1 image/min, le plus lent</option></select><small>Limites du compte gratuit Agnes. La vidéo sort en 720P : 2K suffit largement, même pour la couverture.</small></label>
         <!-- AGNES_GROK_BRIDGE_V1 -->
         <label class="f"><span>Moteur vidéo</span><select id="sVidEngine"><option value="agnes">Agnes Video</option><option value="grok">Grok Imagine — navigateur</option></select><small>Grok utilise les onglets grok.com/imagine équipés du Pont Grok.</small></label>
-        <label class="f"><span>Grok en parallèle</span><select id="sGrokPar"><option value="1">1 onglet</option><option value="2">2 onglets</option><option value="3">3 onglets</option><option value="4">4 onglets</option><option value="5">5 onglets</option></select><small>Ouvre autant d’onglets Grok. Chaque onglet prend un clip différent.</small></label>
+        <label class="f"><span>Grok — 1 seul onglet</span><select id="sGrokPar"><option value="1">1 onglet (fiabilité)</option></select><small>Un seul onglet Grok Imagine connecté : clips traités successivement et transférés automatiquement.</small></label>
         <label class="f"><span>Modèle vidéo</span><select id="sVidModel"><option value="agnes-video-2.5-flash">Agnes Clip — Video 2.5 Flash · 720p · gratuit</option><option value="agnes-video-2.5">Agnes Video 2.5 — payant</option></select></label>
         <label class="f"><span>Qualité vidéo</span><select id="sVidSize"><option>720P</option><option>1080P</option><option>2K</option></select></label>
         <label class="f"><span>Clips en parallèle (total toutes clés)</span><select id="sPar"><option value="auto">Auto — selon « clips en cours par clé »</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="5">5</option><option value="8">8</option></select></label>
@@ -859,7 +860,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
       <div class="row" style="gap:10px">
         <div style="min-width:200px;flex:1">
           <div class="panel-h"><i class="fa-solid fa-plug"></i>Ponts navigateur</div>
-          <div class="hint" style="margin:0">Installe Tampermonkey puis YakFlow Connect (un seul script). Un onglet ChatGPT ou Grok ouvert = un worker.</div>
+          <div class="hint" style="margin:0">Installe Tampermonkey puis YakFlow Connect (un seul script). Un onglet ChatGPT et, si utilisé, un onglet Grok : un worker actif par service.</div>
         </div>
         <a class="btn sm" href="https://www.tampermonkey.net/" target="_blank" rel="noopener noreferrer"><span class="step-n" style="width:18px;height:18px;font-size:10px">1</span>Tampermonkey</a>
         <a class="btn sm" href="/yakflow-connect.user.js" target="_blank" rel="noopener"><span class="step-n" style="width:18px;height:18px;font-size:10px">2</span>YakFlow Connect</a>
@@ -912,10 +913,10 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
         <p class="hint">Un seul script pour ChatGPT et Grok. Tampermonkey ouvre l’installation : valide avec « Installer », puis recharge cette page. Il se met à jour tout seul.</p>
         <div class="row"><a class="btn sm primary" href="/yakflow-connect.user.js" target="_blank" rel="noopener"><i class="fa-solid fa-download"></i>Installer YakFlow Connect</a></div></section>
       <section class="panel"><div class="panel-h"><span class="step-n">3</span>Ouvre les workers</div>
-        <p class="hint">Images : ouvre 1 à 5 onglets ChatGPT. Vidéos : ouvre 1 à 5 onglets Grok Imagine. Rien à configurer : les onglets se relient tout seuls à YakFlow. Chaque onglet prend automatiquement un travail différent.</p>
+        <p class="hint">Images : garde un seul onglet ChatGPT ouvert. Vidéos Grok : un seul onglet Grok Imagine. YakFlow enchaîne automatiquement les travaux, sans multiplication des onglets.</p>
         <div class="row"><a class="btn sm" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i>Ouvrir ChatGPT</a><a class="btn sm" href="https://grok.com/imagine" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i>Ouvrir Grok Imagine</a></div></section>
       <section class="panel"><div class="panel-h"><span class="step-n">4</span>Vérifie puis lance</div>
-        <p class="hint">Les témoins ChatGPT / Grok en haut de YakFlow passent au vert quand les workers répondent. Choisis le nombre d’onglets dans Réglages, puis clique sur « Lancer ».</p></section>
+        <p class="hint">Les témoins ChatGPT / Grok en haut de YakFlow passent au vert quand les workers répondent. Laisse un seul onglet ouvert par service, puis clique sur « Lancer ».</p></section>
     </div>
   </div>
   <div class="foot"><button type="button" class="btn primary" onclick="dlgPonts.close()"><i class="fa-solid fa-check"></i>Compris</button></div>
@@ -1012,7 +1013,7 @@ $('#log').textContent = logLines.slice().reverse().join('\n');
 $('#copyLog').onclick = () => { navigator.clipboard.writeText(logLines.join('\n')); toast('Journal copié.', 'ok'); };
 
 /* ---- réglages ---- */
-const DEFSET = { perKey: 1, vidEngine: 'agnes', grokPar: 5, fondus: true, key: '', imgSrc: 'chatgpt', chatPar: 2, imgSrcV: 2, imgModel: 'agnes-image-2.5-flash', imgModelV: 3, imgSize: '2K', imgSizeV: 3, keepFirst: true, disk: true, vidModel: 'agnes-video-2.5-flash', vidSize: '720P', par: 'auto', gap: 8, parV: 3,
+const DEFSET = { perKey: 1, vidEngine: 'agnes', grokPar: 1, fondus: true, key: '', imgSrc: 'chatgpt', chatPar: 1, imgSrcV: 2, imgModel: 'agnes-image-2.5-flash', imgModelV: 3, imgSize: '2K', imgSizeV: 3, keepFirst: true, disk: true, vidModel: 'agnes-video-2.5-flash', vidSize: '720P', par: 'auto', gap: 8, parV: 3,
   gate: false, autoMont: true, autoDl: false, hook: false, cut: 'auto', ntfy: '', imgStartEnabled: false, imgStartTime: '23:55', imgStartAt: 0};
 let S = Object.assign({}, DEFSET);
 let storedS = {}; try { storedS = JSON.parse(localStorage.getItem('as_settings') || '{}'); Object.assign(S, storedS); } catch (e) {}
@@ -1076,6 +1077,34 @@ function canonicalRefs(p, s) {
 function referenceFile(p, id) {
   return p.etapes.find((x) => x.id === id) || { id, type: /^fiche/i.test(id) ? 'fiche' : 'scene' };
 }
+/* V3.2.4 : quand une image de fiche partagée est corrigée, ses anciennes
+   scènes, images de fin et clips doivent être invalidés, y compris dans P5/P6.
+   La fiche source et les scènes d'autres personnages restent intactes. */
+async function invalidateCharacterDependents(sourceId, reason) {
+  for (const q of projects) {
+    const affected = new Set([sourceId]);
+    let expanded = true;
+    while (expanded) {
+      expanded = false;
+      for (const t of q.etapes) {
+        if (affected.has(t.id)) continue;
+        const deps = [...(t.joindre || []), t.identiteDe, t.imageDe].filter(Boolean);
+        if (deps.some((x) => affected.has(x))) { affected.add(t.id); expanded = true; }
+      }
+    }
+    let changed = false;
+    for (const t of q.etapes) {
+      if (t.id === sourceId || !affected.has(t.id)) continue;
+      await mDel(imgKey(q, t));
+      await mDel(clipKey(q, t));
+      t.img = { st: 'attente', msg: reason || 'Identité corrigée : régénération nécessaire' };
+      if (t.type === 'scene') t.clip = { st: 'attente' };
+      t.ok = false;
+      changed = true;
+    }
+    if (changed) { q.montage = { st: 'attente' }; await mDel(montKey(q)); }
+  }
+}
 async function memorizeIdentity(p, s) {
   if (s.type !== 'fiche' || s.img.st !== 'fini') { toast('Termine ou importe la fiche approuvée avant de la mémoriser.', 'warn'); return; }
   const src = await mGet(imgKey(p, s));
@@ -1084,6 +1113,7 @@ async function memorizeIdentity(p, s) {
   const id = prompt('ID IMMUTABLE du personnage (le même dans tous les épisodes).\nAttention : ne mémorise que sa vraie fiche approuvée, jamais un visage approximatif.', guess);
   if (id == null) return;
   if (!isSharedFicheId(id)) { toast('ID invalide : utilise fiche-serie- puis lettres, chiffres et tirets.', 'warn'); return; }
+  if (s.identiteDe && id === s.identiteDe) { toast('Impossible : une nouvelle tenue ne peut pas écraser le visage original. Canonise-la avec son propre ID de tenue.', 'warn'); return; }
   const current = await mGet('fiche:' + id);
   if (current && !confirm('Une identité existe déjà sous ' + id + '.\nLa remplacer change la référence pour TOUTE la série. Confirmer ?')) return;
   await mPut('fiche:' + id, src);
@@ -1412,7 +1442,7 @@ async function dispatchClips() {
   // AGNES_GROK_BRIDGE_V1
   if (S.vidEngine === 'grok') {
     const gs = await grokWorkers();
-    const cap = Math.min(Math.max(1,+S.grokPar||1), Math.max(0,gs.workers||0));
+    const cap = Math.min(1, Math.max(0,gs.workers||0));
     if (!cap) return;
     let active = projects.flatMap(p=>p.etapes).filter(s=>['calcul','envoi'].includes(s.clip.st) && (isGrokClip(s) || !s.clip.videoId)).length;
     const jobs = [];
@@ -1593,6 +1623,14 @@ function chatPromptSig(value) {
   return h.toString(36) + str.length.toString(36);
 }
 async function genChatGPT(p, s) {
+  // Un verrou sémantique empêche de prendre la fiche P3 comme identité P1.
+  // L'image canonique doit d'abord être mémorisée dans la vraie P1.
+  if (s.type === 'fiche' && s.identiteDe === 'fiche-serie-money-farm-leo') {
+    const origin = await kvGet('canon-meta:' + s.identiteDe);
+    if (origin && /(?:^|[-_])(?:p3|partie-3|3)(?:$|[-_])/i.test(String(origin.sourceProjet || ''))) {
+      return { err: 'Mauvaise identité mémorisée : le visage canonique de Léo provient de P3 (' + origin.sourceProjet + '), pas de P1. Canonise sa vraie fiche P1 puis régénère la tenue P4.', noRetry: true };
+    }
+  }
   const refs = [];
   for (const id of chatRefIds(p, s)) {
     const ref = referenceFile(p, id);
@@ -2086,7 +2124,7 @@ async function dispatchImages() {
   if (!imageScheduleReady()) return;
   if (S.imgSrc === 'import') return;
   if (S.imgSrc === 'chatgpt') {
-    const capacity = Math.min(Math.max(1, +S.chatPar || 1), Math.max(1, chatWorkers));
+    const capacity = Math.min(1, Math.max(1, chatWorkers));
     if (chatInFlight < capacity && now() - lastChatStart > 2000 && now() - lastImg > 2000) {
       const job = await nextImageJob();
       if (job) doImage(job[0], job[1]);
@@ -2590,6 +2628,7 @@ async function redoImage(p, s) {
   if (YFC.ready) bridge('POST', 'forget?id=' + encodeURIComponent(p.id + '|' + s.id)).catch(() => {});
   const users = /^fiche-serie-/.test(s.id) ? projects.filter((q) => q.etapes.some((t) => t.id === s.id)).map((q) => q.titre) : [];
   if (users.length <= 1 || await yfConfirm({ title: 'Refaire cette fiche partout ?', message: 'Cette fiche sert aussi dans : ' + users.filter((t) => t !== p.titre).join(', ') + '.\nLa refaire la changera dans tous ces projets.', okLabel: 'Refaire partout', okIcon: 'fa-rotate-right', icon: 'fa-clone' })) {
+    if (s.type === 'fiche' && isSharedFicheId(s.id)) await invalidateCharacterDependents(s.id, 'Fiche personnage modifiée : image et clip dépendants à régénérer');
     await mDel(imgKey(p, s)); await mDel(clipKey(p, s));
     for (const q of projects) for (const t of q.etapes) if (t === s || (/^fiche-serie-/.test(s.id) && t.id === s.id)) { t.img = { st: 'attente' }; t.ok = false; }
     if (s.type === 'scene') s.clip = { st: 'attente' };
@@ -2608,8 +2647,13 @@ async function attachFile(p, s, f) {
     s.clip = { st: 'fini', src: 'import', msg: 'Clip importé (' + f.name + ')' }; p.montage = { st: 'attente' };
   } else {
     const j = await toJpeg(await fileData(f));
+    const sharedFiche = s.type === 'fiche' && isSharedFicheId(s.id);
+    const previous = sharedFiche ? await mGet(imgKey(p, s)) : null;
     await mPut(imgKey(p, s), j.data); diskImage(p, s, j.data);
-    for (const q of projects) for (const t of q.etapes) if (t === s || (/^fiche-serie-/.test(s.id) && t.id === s.id)) { t.img = { st: 'fini', src: 'import', msg: 'Image importée (' + f.name + ')', prompt: s.promptImage }; t.ok = true; }
+    if (sharedFiche && previous && previous !== j.data) {
+      await invalidateCharacterDependents(s.id, 'Fiche canonique remplacée : ancienne image et anciens clips à refaire');
+    }
+    for (const q of projects) for (const t of q.etapes) if (t === s || (sharedFiche && t.id === s.id)) { t.img = { st: 'fini', src: 'import', msg: 'Image importée (' + f.name + ')', prompt: s.promptImage }; t.ok = true; }
     if (s.type === 'scene' && s.clip.st !== 'fini') s.clip = { st: 'attente' };
     if (s.type === 'couverture') p.publish = null;
   }
@@ -2754,7 +2798,7 @@ function queueStatus() {
   if (S.imgSrc === 'agnes') {
     const available = apiKeys().map(k => keyLanes.get(k)).filter(l => l && !l.imageBusy && !l.refused && !l.imageRefused);
     for (const s of images) for (const lane of available) times.push(Math.max(s.img.retryAt || 0, lane.imageUntil || 0, keyRateUntil.get(lane.key) || 0));
-  } else if (chatInFlight < Math.min(Math.max(1, +S.chatPar || 1), Math.max(1, chatWorkers))) for (const s of images) times.push(Math.max(s.img.retryAt || 0, lastChatStart + 2000, lastImg + 2000));
+  } else if (chatInFlight < Math.min(1, Math.max(1, chatWorkers))) for (const s of images) times.push(Math.max(s.img.retryAt || 0, lastChatStart + 2000, lastImg + 2000));
   const active = projects.flatMap(p => p.etapes).filter(s => ['calcul', 'envoi'].includes(s.clip.st));
   if (active.length < clipLimit()) {
     const keys = apiKeys();
@@ -3193,7 +3237,7 @@ document.addEventListener('drop', async (e) => {
 
 function openSettings() {
   if (document.getElementById('yfActivation')?.hidden === false) return;
-  $('#sVidEngine').value = S.vidEngine || 'agnes'; $('#sGrokPar').value = S.grokPar || 5; $('#sKey').value = S.key; $('#sFondus').checked = S.fondus !== false; $('#sImgSrc').value = S.imgSrc; $('#sChatPar').value = S.chatPar; $('#sImgStartEnabled').checked = !!S.imgStartEnabled; $('#sImgStartTime').value = S.imgStartTime || '23:55'; $('#sImgModel').value = S.imgModel; $('#sImgSize').value = S.imgSize; $('#sDisk').checked = S.disk; $('#sVidModel').value = S.vidModel; $('#sVidSize').value = S.vidSize;
+  $('#sVidEngine').value = S.vidEngine || 'agnes'; $('#sGrokPar').value = 1; $('#sKey').value = S.key; $('#sFondus').checked = S.fondus !== false; $('#sImgSrc').value = S.imgSrc; $('#sChatPar').value = 1; $('#sImgStartEnabled').checked = !!S.imgStartEnabled; $('#sImgStartTime').value = S.imgStartTime || '23:55'; $('#sImgModel').value = S.imgModel; $('#sImgSize').value = S.imgSize; $('#sDisk').checked = S.disk; $('#sVidModel').value = S.vidModel; $('#sVidSize').value = S.vidSize;
   $('#sPar').value = S.par; $('#sGap').value = S.gap; if ($('#sPerKey')) $('#sPerKey').value = String(perKey()); $('#sGate').checked = S.gate; $('#sAutoMont').checked = S.autoMont; $('#sAutoDl').checked = S.autoDl;
   $('#sHook').checked = S.hook; $('#sKeepFirst').checked = S.keepFirst !== false; $('#sCut').value = S.cut; $('#sNtfy').value = S.ntfy; renderKeyStatus(); if (window.yfSyncMode) yfSyncMode(); dlgSet.showModal();
 }
@@ -3208,7 +3252,7 @@ $('#repCopy').onclick = () => { navigator.clipboard.writeText(stat.report()); to
 $('#repDisk').onclick = async () => { await stat.toDisk(true); toast('Rapport rangé dans Téléchargements/AgnesStudio/_rapports/', 'ok'); };
 $('#repReset').onclick = async () => { if (await yfConfirm({ title: 'Remettre le rapport à zéro ?', message: 'Toutes les mesures du rapport seront effacées.', okLabel: 'Effacer', okIcon: 'fa-eraser', danger: true })) { stat.reset(); $('#repPre').textContent = stat.report(); } };
 $('#sGo').onclick = () => {
-  Object.assign(S, { vidEngine: $('#sVidEngine').value, grokPar: +$('#sGrokPar').value || 5, fondus: $('#sFondus').checked, imgSrc: $('#sImgSrc').value, chatPar: +$('#sChatPar').value, imgStartEnabled: $('#sImgStartEnabled').checked, imgStartTime: $('#sImgStartTime').value || '23:55', key: $('#sKey').value.trim(), imgModel: $('#sImgModel').value, imgModelV: 3, imgSize: $('#sImgSize').value, imgSizeV: 2, disk: $('#sDisk').checked, vidModel: $('#sVidModel').value, vidSize: $('#sVidSize').value,
+  Object.assign(S, { vidEngine: $('#sVidEngine').value, grokPar: 1, fondus: $('#sFondus').checked, imgSrc: $('#sImgSrc').value, chatPar: 1, imgStartEnabled: $('#sImgStartEnabled').checked, imgStartTime: $('#sImgStartTime').value || '23:55', key: $('#sKey').value.trim(), imgModel: $('#sImgModel').value, imgModelV: 3, imgSize: $('#sImgSize').value, imgSizeV: 2, disk: $('#sDisk').checked, vidModel: $('#sVidModel').value, vidSize: $('#sVidSize').value,
     par: $('#sPar').value, parV: 3, gap: Math.max(5, +$('#sGap').value || 8), perKey: $('#sPerKey') ? +$('#sPerKey').value : 1, gate: $('#sGate').checked, autoMont: $('#sAutoMont').checked, autoDl: $('#sAutoDl').checked,
     hook: $('#sHook').checked, keepFirst: $('#sKeepFirst').checked, cut: $('#sCut').value, ntfy: $('#sNtfy').value.trim() });
   for (const lane of keyLanes.values()) { lane.refused = false; lane.imageRefused = false; }
@@ -3466,10 +3510,10 @@ setInterval(agnesPushRemoteStatus, 3000);
  function device(){let d='';try{d=localStorage.getItem('yfDevice')||''}catch(_){}if(!/^[a-f0-9]{40}$/.test(d)){const a=new Uint8Array(20);crypto.getRandomValues(a);d=[...a].map(x=>x.toString(16).padStart(2,'0')).join('');try{localStorage.setItem('yfDevice',d)}catch(_){}}return d}
  function payload(t){try{const b=t.split('.')[0].replace(/-/g,'+').replace(/_/g,'/');return JSON.parse(decodeURIComponent(escape(atob(b+'='.repeat((4-b.length%4)%4)))))}catch(_){return null}}
  async function post(fn,body){let r;try{r=await fetch('/.netlify/functions/'+fn,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})}catch(_){return{status:0,d:{message:'Pas de connexion Internet.'}}}return{status:r.status,d:await r.json().catch(()=>({}))}}
- function keep(code,token){localStorage.setItem('yfToken',token);if(code)localStorage.setItem('yakflowLicenseCode',code)}
+ function keep(code,token){localStorage.setItem('yfToken',token);if(code)localStorage.setItem('yakflowLicenseCode',code);localStorage.setItem('yfFreePromptsUnlocked','1')}
  function lock(msg,err){document.querySelectorAll('dialog[open]').forEach(x=>x.close());overlay.hidden=false;if(msg)show(msg,err?'err':'');setTimeout(()=>(document.getElementById('yfTrialEmail')||input).focus(),50)}
  function trialBar(p){if(document.getElementById('yfTrialBar'))return;const el=document.createElement('div');el.id='yfTrialBar';el.style.cssText='position:fixed;left:16px;bottom:16px;z-index:9000;display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background:#16191e;border:1px solid rgba(255,178,36,.45);color:#f5f2ec;font:600 13px Inter,system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.4)';const end=new Date(p.u).toLocaleString('fr-FR',{weekday:'long',hour:'2-digit',minute:'2-digit'});el.innerHTML='<i class="fa-regular fa-clock" style="color:#ffb224"></i><span>Essai gratuit jusqu’à '+end+'</span>';if(cfg.stripeCheckoutUrl){const a=document.createElement('a');a.href=cfg.stripeCheckoutUrl;a.target='_blank';a.rel='noopener';a.textContent='S’abonner';a.style.cssText='color:#1d1200;background:linear-gradient(135deg,#ffd06a,#ffb224 45%,#ff8a00);padding:6px 10px;border-radius:8px;text-decoration:none;font-weight:800';el.append(a)}const ch=document.createElement('button');ch.type='button';ch.textContent='J’ai un code';ch.style.cssText='background:none;border:0;color:#ffc757;font:600 12px Inter,system-ui,sans-serif;cursor:pointer;padding:0 2px';ch.onclick=()=>window.yfChangeCode();el.append(ch);document.body.append(el)}
- function opened(p){window.__yfLicenceOk=true;overlay.hidden=true;window.__yfLicenceChecked=true;if(p&&p.t==='trial')trialBar(p)}
+ function opened(p){localStorage.setItem('yfFreePromptsUnlocked','1');window.__yfLicenceOk=true;overlay.hidden=true;window.__yfLicenceChecked=true;if(p&&p.t==='trial')trialBar(p)}
  async function activate(code){code=norm(code||input.value);if(!code){show('Entre ton code YakFlow.','err');return}
   btn.disabled=true;show('Activation…','');
   const {status:st,d}=await post('licence',{code,machine:device(),version:'web-2'});
@@ -3561,7 +3605,7 @@ form?.addEventListener('submit',async e=>{e.preventDefault();const submit=form.q
   <div class="yfGuideCard"><b><i class="fa-solid fa-wand-magic-sparkles"></i>GPT <i class="fa-solid fa-arrow-right-long" style="color:var(--text-4);width:auto;font-size:.8em"></i> Agnes</b><p>ChatGPT fabrique les images, Agnes anime. Sur PC, le pont ChatGPT doit être connecté.</p></div>
   <div class="yfGuideCard"><b><i class="fa-solid fa-film"></i>Agnes <i class="fa-solid fa-arrow-right-long" style="color:var(--text-4);width:auto;font-size:.8em"></i> Grok</b><p>Agnes fabrique les images, Grok anime. Sur PC, utilise les workers Grok avec le pont.</p></div>
   <div class="yfGuideCard"><b><i class="fa-solid fa-rocket"></i>GPT <i class="fa-solid fa-arrow-right-long" style="color:var(--text-4);width:auto;font-size:.8em"></i> Grok</b><p>Images GPT + animations Grok. Ce mode utilise les deux ponts navigateur.</p></div>
-  <div class="yfGuideCard"><b><i class="fa-solid fa-gauge-high"></i>Jusqu’à ×10</b><p>YakFlow peut distribuer plusieurs tâches en parallèle. ×5 décrit le parallélisme maximal, pas un temps garanti divisé par cinq.</p></div>
+  <div class="yfGuideCard"><b><i class="fa-solid fa-gauge-high"></i>Automatisation fiable</b><p>Un onglet ChatGPT et un onglet Grok au maximum, avec suivi et récupération des résultats. Aucune promesse de vitesse multipliée.</p></div>
   <div class="yfGuideCard"><b><i class="fa-solid fa-sliders"></i>Réglages avancés</b><p>Modèles, formats, parallélisme et options restent disponibles, mais les presets suffisent dans la majorité des cas.</p></div>
 </div></div>
 
@@ -3574,7 +3618,7 @@ form?.addEventListener('submit',async e=>{e.preventDefault();const submit=form.q
 
 <div class="yfGuidePage" data-page="production"><div class="yfGuideGrid">
   <div class="yfGuideCard"><b><i class="fa-solid fa-list-check"></i>Avant Lancer</b><p>Vérifie : mode correct, clés ou ponts connectés, projet coché.</p></div>
-  <div class="yfGuideCard"><b><i class="fa-solid fa-diagram-project"></i>Parallélisme</b><p>Plusieurs images et clips peuvent partir ensemble selon les clés, workers et limites des fournisseurs.</p></div>
+  <div class="yfGuideCard"><b><i class="fa-solid fa-diagram-project"></i>Production</b><p>ChatGPT et Grok traitent les travaux par service dans un seul onglet ; les clés API Agnes suivent indépendamment leurs quotas.</p></div>
   <div class="yfGuideCard"><b><i class="fa-solid fa-key"></i>Clés Agnes</b><p>Une clé par compte suffit : les clés d’un même compte partagent la limite. Gratuit : 1 clip/min, Token Plan : 5 clips/min.</p></div>
   <div class="yfGuideCard"><b><i class="fa-solid fa-clone"></i>Évite les doublons</b><p>En cas de réseau ou quota, lis l’état et le journal avant de relancer.</p></div>
 </div></div>
@@ -3867,16 +3911,16 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
         item(2, 'Colle ta clé ici', 'Plusieurs clés ? Sépare-les par des virgules.', '<input class="yfs-in" id="yfsKey" placeholder="sk-…" spellcheck="false" autocomplete="off" value="' + (has ? '••••••• clé déjà enregistrée' : '') + '"><div class="yfs-row"><button class="yfs-btn" type="button" id="yfsKeyBtn"><i class="fa-solid fa-check"></i>Vérifier et enregistrer</button></div><div class="yfs-live' + (has ? ' ok' : '') + '" id="yfsKeyLive">' + (has ? 'Clé enregistrée.' : '') + '</div>', has) + '</div>';
     }
     if (id === 'connect') {
-      html = head('Ponts ChatGPT et Grok', 'Installe YakFlow Connect', 'Un petit script qui relie YakFlow à tes onglets ChatGPT et Grok. À faire une seule fois.') + '<div class="yfs-todo">' +
+      html = head('Ponts ChatGPT et Grok', 'Installe YakFlow Connect', 'Un script qui relie YakFlow à un onglet ChatGPT et un onglet Grok. À faire une seule fois.') + '<div class="yfs-todo">' +
         item(1, 'Installe l’extension Tampermonkey', 'Clique, puis « Ajouter à ' + (isEdge ? 'Edge' : 'Chrome') + ' ».', '<div class="yfs-row"><a class="yfs-btn pr" href="' + TM + '" target="_blank" rel="noopener"><i class="fa-solid fa-puzzle-piece"></i>Installer Tampermonkey</a></div>') +
         item(2, 'Autorise les scripts', 'Sur les navigateurs récents : ouvre cette adresse dans un nouvel onglet, puis active « Autoriser les scripts utilisateur » (ou le « Mode développeur » en haut à droite).', '<div class="yfs-code"><code>' + EXT + '</code><button class="yfs-btn" type="button" data-copy="' + EXT + '">Copier</button></div>') +
         item(3, 'Installe YakFlow Connect', 'Tampermonkey ouvre une page : clique sur « Installer ». Puis recharge cette page (' + (isMac ? 'Cmd' : 'Ctrl') + ' + R) : tu reviendras ici.', '<div class="yfs-row"><a class="yfs-btn pr" href="/yakflow-connect.user.js" target="_blank" rel="noopener"><i class="fa-solid fa-plug"></i>Installer YakFlow Connect</a></div><div class="yfs-live" id="yfsConLive"></div>', YFC.ready) + '</div>';
     }
     if (id === 'tabs') {
       const gpt = mode === 'gpt' || mode === 'gptgrok', grok = mode === 'grok' || mode === 'gptgrok';
-      html = head('Tes onglets', 'Ouvre tes onglets de travail', 'Chaque onglet ouvert travaille pour YakFlow. Laisse-les ouverts pendant la fabrication, connectés à ton compte.') + '<div class="yfs-todo">' +
-        (gpt ? item(1, 'Ouvre ChatGPT', '1 à 5 onglets. Un badge « Pont YakFlow » apparaît en bas à droite.', '<div class="yfs-row"><a class="yfs-btn pr" href="https://chatgpt.com/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i>Ouvrir ChatGPT</a></div><div class="yfs-live" id="yfsGptLive"></div>') : '') +
-        (grok ? item(gpt ? 2 : 1, 'Ouvre Grok Imagine', '1 à 5 onglets, connecté à ton compte Grok.', '<div class="yfs-row"><a class="yfs-btn pr" href="https://grok.com/imagine" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i>Ouvrir Grok Imagine</a></div><div class="yfs-live" id="yfsGrokLive"></div>') : '') + '</div>';
+      html = head('Tes onglets', 'Ouvre tes onglets de travail', 'Un seul onglet par service travaille pour YakFlow. Laisse-les ouverts pendant la fabrication, connectés à ton compte.') + '<div class="yfs-todo">' +
+        (gpt ? item(1, 'Ouvre ChatGPT', 'Un seul onglet ChatGPT. Le badge YakFlow Connect apparaît en bas à droite.', '<div class="yfs-row"><a class="yfs-btn pr" href="https://chatgpt.com/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i>Ouvrir ChatGPT</a></div><div class="yfs-live" id="yfsGptLive"></div>') : '') +
+        (grok ? item(gpt ? 2 : 1, 'Ouvre Grok Imagine', 'Un seul onglet Grok Imagine, connecté à ton compte.', '<div class="yfs-row"><a class="yfs-btn pr" href="https://grok.com/imagine" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i>Ouvrir Grok Imagine</a></div><div class="yfs-live" id="yfsGrokLive"></div>') : '') + '</div>';
     }
     if (id === 'drive') {
       html = head('Téléphone', 'Retrouve tes vidéos sur ton téléphone', 'Chaque vidéo montée est téléchargée (vidéo, couverture et description). Pour qu’elle arrive toute seule sur ton téléphone :') + '<div class="yfs-todo">' +
