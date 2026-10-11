@@ -52,8 +52,8 @@ def grok_cleanup():
 def phash(d):
     """Empreinte d'un travail : même prompt + mêmes fiches jointes = même image (ex. un décor partagé entre deux épisodes)."""
     import hashlib
-    refs = ",".join(sorted(r.get("name", "") for r in (d.get("refs") or [])))
-    return hashlib.sha1((d.get("prompt", "") + "|" + refs).encode("utf-8")).hexdigest()[:12]
+    refs = ",".join(sorted(hashlib.sha256((r.get("name", "") + ":" + r.get("data", "")).encode("utf-8")).hexdigest() for r in (d.get("refs") or [])))
+    return hashlib.sha256((d.get("prompt", "") + "|" + refs).encode("utf-8")).hexdigest()[:24]
 
 
 def blog(msg):
@@ -416,8 +416,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 if not d or not d.get("id") or not d.get("prompt"):
                     return self._send(400, b'{"detail":"travail invalide"}')
                 old = B["jobs"].get(d["id"])
-                if old and old["st"] in ("attente", "en cours") and old["prompt"] == d["prompt"]:
+                if old and old["st"] in ("attente", "en cours", "incertain", "fini") and old.get("h") == phash(d):
                     return self._send(200, b'{"ok":true,"deja":true}')
+                if old and old["st"] == "en cours":
+                    return self._send(409, b'{"detail":"generation deja en cours : ne pas envoyer deux fois"}')
                 h, now = phash(d), time.time()
                 job = {"id": d["id"], "pid": d.get("pid", ""), "nom": d.get("nom", ""), "titre": d.get("titre", ""),
                        "prompt": d["prompt"], "refs": d.get("refs") or [], "st": "attente", "pushed": now, "h": h}
@@ -518,11 +520,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 if not j:
                     blog("result %s : travail inconnu" % rid)
                     return self._send(404, b'{"detail":"travail inconnu"}')
+                if j.get("st") == "fini":
+                    return self._send(200, b'{"ok":true,"deja":true}')
                 if d.get("data"):
                     j["st"], j["data"] = "fini", d["data"]
                     blog("result %s : image reçue (%d Ko)" % (rid, len(d["data"]) // 1024))
                 else:
-                    j["st"], j["error"] = "echec", (d.get("error") or "erreur inconnue")[:300]
+                    msg = (d.get("error") or "erreur inconnue")[:300]
+                    j["st"], j["error"] = ("incertain" if msg.lower().startswith("incertain :") else "echec"), msg
                     blog("result %s : ÉCHEC : %s" % (rid, j["error"]))
                 if j["id"] in B["order"]:
                     B["order"].remove(j["id"])

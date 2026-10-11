@@ -1610,9 +1610,9 @@ async function genChatGPT(p, s) {
       return { data: await toJpeg(st.data, 2048), refs: refs.length };
     }
     if (st.st === 'echec' || st.st === 'incertain') {
-      bridge('POST', 'forget?id=' + encodeURIComponent(id)).catch(() => {});
+      if (st.st !== 'incertain') bridge('POST', 'forget?id=' + encodeURIComponent(id)).catch(() => {});
       if (st.st === 'incertain') return { err: st.error, noRetry: true };
-      if (/limite|limit/i.test(st.error || '')) return { r: { _err: 429, detail: 'Limite ChatGPT : ' + st.error } };
+      if (/limite|limit|quota|pièces jointes/i.test(st.error || '')) return { err: 'Quota ChatGPT : ' + st.error, noRetry: true };
       return { err: 'ChatGPT : ' + st.error };
     }
     const m = !st.alive ? 'En attente de l\'onglet ChatGPT (ouvre chatgpt.com avec YakFlow Connect)' : st.st === 'en cours' ? 'ChatGPT dessine…' : 'En file pour ChatGPT (n° ' + st.pos + ')';
@@ -1976,7 +1976,8 @@ async function doImage(p, s, lane) {
       return;
     }
     const r = out.r || {};
-    if (out.err && source === 'chatgpt' && !out.noRetry && tries < 4) { const wait = tries === 1 ? 10000 : (tries - 1) * 5 * 60000; setImg(p, s, { st: 'file', retryAt: now() + wait, msg: out.err + ' · nouvel essai à ' + fmtT(now() + wait) + ' (' + tries + '/4)' }); log('Image ratée (' + s.nom + ') : ' + out.err + ', nouvel essai.'); return; }
+    // YakFlow anti-gaspillage : aucun essai automatique ChatGPT après échec ou résultat incertain.
+    // Vérifier le pont et la conversation avant de relancer MANUELLEMENT.
     if (out.err) { stat.fail('image', s.nom, out.err); setImg(p, s, { st: 'echec', msg: out.err }); log('Image ratée : ' + s.nom + ' → ' + out.err); return; }
     if (isAuth(r)) { setImg(p, s, { st: 'echec', msg: 'Accès image refusé : vérifie les clés et le modèle.' }); return; }
     if (isBusy(r)) { const retryAt = out.retryAt || now() + 60000; setImg(p, s, { st: 'file', retryAt, msg: 'Clés Agnes occupées, nouvel essai à ' + fmtT(retryAt) + ' (essai ' + tries + ')' }); return; }
@@ -1984,7 +1985,10 @@ async function doImage(p, s, lane) {
     setImg(p, s, { st: 'echec', msg: 'Refusé (HTTP ' + r._err + ') : ' + (errText(r) || 'réponse vide') }); log('Image refusée : ' + s.nom + ' → HTTP ' + r._err + ' ' + (errText(r) || '(réponse vide)'));
     phone('Image refusée', 'Projet : ' + p.titre + '\nÉtape : ' + s.nom + '\nMotif : ' + errText(r).slice(0, 120), 4);
   } catch (e) {
-    if (projects.some(q => q === p && q.etapes.includes(s)) && s.img.st === 'calcul' && s.img.runId === runId) setImg(p, s, { st: 'file', retryAt: now() + 60000, msg: 'Erreur : ' + e.message + ', nouvel essai dans 1 min' });
+    if (projects.some(q => q === p && q.etapes.includes(s)) && s.img.st === 'calcul' && s.img.runId === runId) {
+      if (source === 'chatgpt') setImg(p, s, { st: 'echec', msg: 'Pont ChatGPT : ' + e.message + ' — génération non relancée automatiquement' });
+      else setImg(p, s, { st: 'file', retryAt: now() + 60000, msg: 'Erreur : ' + e.message + ', nouvel essai dans 1 min' });
+    }
   } finally { if (source === 'chatgpt') chatInFlight = Math.max(0, chatInFlight - 1); if (lane) lane.imageBusy = false; lastImg = now(); curStep.delete(s); renderStatus(); }
 }
 

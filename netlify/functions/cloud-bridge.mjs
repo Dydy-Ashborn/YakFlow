@@ -115,7 +115,8 @@ async function run(request) {
     const jid = String(data.id).slice(0, 200);
     const same = (await getJob(owner, kind, jid))?.data;
     const fingerprint = hash(JSON.stringify(data));
-    if (same && same.fingerprint === fingerprint && ['attente', 'en cours', 'fini'].includes(same.st)) return json({ ok: true, deja: true, st: same.st });
+    if (same && same.fingerprint === fingerprint && ['attente', 'en cours', 'fini', 'incertain'].includes(same.st)) return json({ ok: true, deja: true, st: same.st });
+    if (same?.st === 'en cours') return json({ detail: 'Une image est déjà en génération pour cette étape. Attends son résultat ou vérifie ChatGPT.' }, 409);
     await dropQueue(same);
     const createdAt = Date.now();
     const qKey = queuePrefix(owner, kind) + String(createdAt).padStart(15, '0') + '-' + hash(jid).slice(0, 16);
@@ -170,10 +171,11 @@ async function run(request) {
     if (!cur) return json({ detail: 'Travail inconnu.' }, 404);
     if (cur.worker && cur.worker !== worker) return json({ detail: 'Autre onglet propriétaire.' }, 409);
     if (cur.st === 'oublie') return json({ ok: true, ignore: true });
+    if (cur.st === 'fini') return json({ ok: true, deja: true });
     if (data.data) {
       await store.set(resultKey(owner, kind, data.id), String(data.data));
       await patchJob(owner, kind, data.id, { st: 'fini', finishedAt: Date.now(), error: '' });
-    } else await patchJob(owner, kind, data.id, { st: 'echec', finishedAt: Date.now(), error: String(data.error || 'Erreur ChatGPT').slice(0, 500) });
+    } else await patchJob(owner, kind, data.id, { st: /^incertain\s*:/i.test(data.error || '') ? 'incertain' : 'echec', finishedAt: Date.now(), error: String(data.error || 'Erreur ChatGPT').slice(0, 500) });
     return json({ ok: true });
   }
   if (action === 'fail' && kind === 'grok' && request.method === 'POST') {
