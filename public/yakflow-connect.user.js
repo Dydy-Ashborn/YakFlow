@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.2.1
+// @version      3.2.2
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -32,7 +32,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.2.1';
+  const CONNECT_VERSION = '3.2.2';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -232,8 +232,16 @@
       if (j.worker && j.worker !== worker) return err(409, 'Autre onglet propriétaire.');
       if (j.st === 'oublie') return ok({ ok: true, ignore: true });
       if (d.data) {
-        try { storeLarge(rk(kind, d.id), String(d.data)); }
-        catch (e) { return err(507, 'Transfert image impossible : ' + e.message); }
+        // 3.2.2 : transport identique au pont originel qui remontait les images.
+        // Le mécanisme de protection v3.2.1 conserve, à part, une sauvegarde fragmentée
+        // AVANT cette opération, donc une coupure n'entraîne aucune nouvelle génération.
+        try {
+          const value = String(d.data);
+          if (!value.startsWith('data:image/') || value.length < 1000) throw new Error('résultat image non valide');
+          set(rk(kind, d.id), value);
+          const back = get(rk(kind, d.id));
+          if (back !== value) throw new Error('résultat non relisible');
+        } catch (e) { return err(507, 'Transfert image impossible : ' + e.message); }
         saveJob(kind, d.id, { st: 'fini', finishedAt: now(), error: '' });
       }
       else saveJob(kind, d.id, { st: d.incertain ? 'incertain' : 'echec', finishedAt: now(), error: String(d.error || 'Erreur ChatGPT').slice(0, 500) });
@@ -575,13 +583,32 @@
   const norm = (t) => String(t || '').replace(/\s+/g, ' ').trim();
   // le bloc du message que NOUS venons d'envoyer (retrouvé par son texte : fiable quelle que soit l'interface)
   function userItem() {
+    // v3.2.2 : chaque résultat doit être associé au message utilisateur exact.
+    // La nouvelle interface ChatGPT utilise souvent un h4[data-conversation-role=user].
+    // On commence par tous les véritables messages USER, jamais par un texte
+    // repris dans la réponse de l'assistant ou dans une carte de galerie.
     const root = document.querySelector('main') || document.body;
-    const snip = norm(sentPrompt).slice(0, 50); if (!snip) return null;
+    const snip = norm(sentPrompt).slice(0, 45); if (!snip) return null;
+    const candidates = [...root.querySelectorAll('[data-message-author-role="user"], [data-turn="user"], [data-local-conversation-item-target-ids]')]
+      .filter(el => {
+        if (el.matches('[data-local-conversation-item-target-ids]')) {
+          const h = el.querySelector('h4[data-conversation-role]');
+          const role = h?.getAttribute('data-conversation-role') || '';
+          if (role && !/user/i.test(role)) return false;
+          if (!h && el.querySelector('[data-message-author-role="assistant"], [data-turn="assistant"]')) return false;
+        }
+        return norm(el.innerText || el.textContent).includes(snip.slice(0, 30));
+      });
+    if (candidates.length) return candidates[candidates.length - 1];
+    // Compatibilité de l'ancien pont pour les versions ChatGPT sans rôle explicite.
     const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
     let n, hit = null;
-    while ((n = w.nextNode())) { if (n.parentElement && !n.parentElement.closest('form') && norm(n.nodeValue).includes(snip.slice(0, 30))) hit = n.parentElement; }
-    if (!hit) return null;
-    return hit.closest(ITEM_SEL) || hit.parentElement;
+    while ((n = w.nextNode())) if (n.parentElement && !n.parentElement.closest('form') && norm(n.nodeValue).includes(snip.slice(0, 30))) {
+      const candidate = n.parentElement.closest(ITEM_SEL);
+      if (candidate && (candidate.matches('[data-message-author-role="user"], [data-turn="user"]') ||
+          /user/i.test(candidate.querySelector('h4[data-conversation-role]')?.getAttribute('data-conversation-role') || ''))) hit = candidate;
+    }
+    return hit;
   }
   function findGeneratedImage() {
     const all = generatedImages();
@@ -646,20 +673,19 @@
     if (/cr[ée]ation de l.image|creating image|making|almost done|presque/i.test(t) && !generatedImages().length) return true;
     return !!m.querySelector('[data-testid*="image-gen" i], [class*="image-gen" i], [class*="loading-shimmer" i], [class*="result-thinking" i], [aria-busy="true"]');
   }
-  // L'ancienne méthode inspectait SEULEMENT la dernière image après le dernier message
-  // utilisateur. Si le DOM ChatGPT changeait, elle ignorait le résultat pourtant présent.
-  // Désormais comparer toutes les nouvelles images et privilégier la galerie GENERATED.
+  // v3.2.2 : detection de production historique + garde-fou pour conversations réutilisées.
+  // La nouvelle image doit être apparue APRES le prompt de ce travail ET ne pas faire
+  // partie de l'inventaire pris AVANT l'envoi. Aucune décision fondée sur la « dernière
+  // image du chat » : ce serait une source de mélange de scènes.
   const newImage = (before) => {
-    const fresh = generatedImages().filter(img => !before.has(imgSrc(img)));
+    const anchor = userItem();
+    const fresh = generatedImages().filter(img => !before.has(imgSrc(img)) &&
+      (!anchor || (!anchor.contains(img) && !!(anchor.compareDocumentPosition(img) & Node.DOCUMENT_POSITION_FOLLOWING))));
     if (!fresh.length) return null;
-    const explicit = fresh.filter(img =>
-      img.closest('[data-testid="generated-image-gallery"], [data-testid="generated-image-preview"]') ||
+    const gallery = fresh.filter(img => img.closest('[data-testid="generated-image-gallery"], [data-testid="generated-image-preview"]') ||
       /image g[ée]n[ée]r[ée]e|generated image/i.test(img.alt || ''));
-    if (explicit.length) return explicit[explicit.length - 1];
-    const lastUser = userItem();
-    const after = lastUser ? fresh.filter(img => !lastUser.contains(img) &&
-      !!(lastUser.compareDocumentPosition(img) & Node.DOCUMENT_POSITION_FOLLOWING)) : fresh;
-    return after.length ? after[after.length - 1] : null;
+    // Stable historical choice: final generated image in the newest assistant turn.
+    return (gallery.length ? gallery : fresh).slice(-1)[0];
   };
   const REFUS = /système de sécurité|bloqué la génération|ne (peux|pouvons) pas (générer|créer|t'aider|vous aider)|politique de contenu|règles de contenu|enfreint|n'est pas autorisé|content polic|violat|can't (help|create|generate)|cannot (create|generate)|unable to (create|generate)|safety system/i;
   async function waitNewImage(before, timeout, label, validate) {
@@ -740,13 +766,56 @@
   });
   // Image arrivée après un délai : ne jamais déclencher automatiquement une seconde génération.
   let late = null;
-  // Après un rechargement, les URLs des anciennes images peuvent changer.
-  // Ne JAMAIS attribuer automatiquement la dernière image affichée à la génération interrompue.
+  // Après un rechargement, reprendre AUTOMATIQUEMENT la génération déjà envoyée.
+  // Attribution sûre uniquement depuis le message utilisateur correspondant au prompt.
+  // Tant que le résultat n'est pas identifié, ne jamais relancer ChatGPT ou mélanger
+  // l'image d'un autre tour. Aucun clic requis durant un fonctionnement normal.
   let recoveryBlocked = null;
   try {
     const old = JSON.parse(sessionStorage.getItem(ACTIVE_KEY) || 'null');
     if (old && old.id && !pending()) recoveryBlocked = old;
   } catch (_) {}
+  async function recoverAfterReload() {
+    if (!recoveryBlocked) return false;
+    const job = recoveryBlocked;
+    // Le résultat peut déjà avoir été correctement remis au pont juste avant
+    // le rechargement. Dans ce cas, ne pas reconstituer une image une seconde fois.
+    try {
+      const state = await call('GET', withWorker('/bridge/status?id=' + encodeURIComponent(job.id)));
+      if (state.st === 'fini' && state.data) {
+        recoveryBlocked = null;
+        sessionStorage.removeItem(ACTIVE_KEY);
+        say('Image déjà enregistrée dans le pont ; YakFlow va la récupérer automatiquement.');
+        return true;
+      }
+      if (!state.st || state.st === 'oublie') {
+        recoveryBlocked = null;
+        sessionStorage.removeItem(ACTIVE_KEY);
+        say('Travail clôturé ; retour à la file YakFlow.');
+        return true;
+      }
+    } catch (_) { /* le pont réessaiera lors du prochain passage */ }
+    sentPrompt = job.prompt || '';
+    const anchor = userItem();
+    if (!anchor) { say('Récupération automatique : attente du message ChatGPT de « ' + job.nom + ' »'); return true; }
+    const candidates = generatedImages().filter(img => !anchor.contains(img) &&
+      !!(anchor.compareDocumentPosition(img) & Node.DOCUMENT_POSITION_FOLLOWING));
+    const last = candidates[candidates.length - 1];
+    if (!last || generating()) { say('Récupération automatique : ChatGPT termine « ' + job.nom + ' »'); return true; }
+    // Check the image shape, without guessing the association using a generic gallery.
+    let reason = '';
+    try { reason = await checkResult(await fetchBlob(imgSrc(last)), { prompt: job.prompt || '' }, []); }
+    catch (e) { reason = 'résultat non lisible : ' + e.message; }
+    if (reason) { lastErr = 'Image retrouvée non attribuée (' + reason + ')'; return true; }
+    busy = true;
+    try {
+      const data = await blobToJpegDataUrl(await fetchBlob(imgSrc(last)));
+      await deliverSavedResult({ id: job.id, data });
+      recoveryBlocked = null; lastErr = ''; say('Image récupérée automatiquement après actualisation : ' + job.nom);
+    } catch (e) { lastErr = 'Récupération automatique : ' + e.message; }
+    finally { busy = false; }
+    return true;
+  }
   GM_registerMenuCommand('YakFlow Connect · récupérer une image après rechargement', async () => {
     if (!recoveryBlocked) return alert('Aucune génération interrompue à récupérer.');
     const img = findGeneratedImage();
@@ -900,12 +969,13 @@
       { const ra = get('bridge:reloadAt', 0); if (ra > PAGE_T0 && (!busy || Date.now() - busySince > 20 * 60000)) { say('relance demandée par le studio'); await sleep(500); location.reload(); return; } }
       if (busy || !GM_getValue(K_ON, true) || Date.now() < pauseUntil) continue;
       if (await recoverSavedResult()) continue;
+      if (await recoverAfterReload()) continue;
       // Refus d'import partiel = anciennes pièces jointes potentiellement coincées au brouillon.
       // Ne jamais envoyer une autre scène avec ces fichiers résiduels.
       if (!recoveryBlocked && !late && attachedCount() > 0) {
         say('Pièces jointes restées dans le brouillon ChatGPT : retire-les avant de continuer.'); continue;
       }
-      if (recoveryBlocked) { say('Après rechargement : récupère manuellement « ' + recoveryBlocked.nom + ' » via Tampermonkey, ou marque-la incertaine. Aucune nouvelle image envoyée.'); continue; }
+      if (recoveryBlocked) { say('Récupération automatique en cours : ' + recoveryBlocked.nom); continue; }
       if (late) {
         let img = !generating() && newImage(late.before);
         if (img && late.validate) { const why = await late.validate(img).catch(() => ''); if (why) { late.before.add(imgSrc(img)); img = null; } }
@@ -916,11 +986,11 @@
           finally { late = null; busy = false; }
           continue;
         }
-        if (Date.now() - late.t > 10 * 60000) {   // toujours rien : on le dit au studio, qui relancera l'image
-          await call('POST', withWorker('/bridge/result'), { id: late.id, error: 'Image envoyée mais résultat non récupéré ; vérifier la conversation avant de relancer.', incertain: true }).catch(() => {});
-          try { failDiag = { t: Date.now(), txt: diagnostic() }; } catch (x) { /* tant pis */ }
-          lastErr = late.nom + ' : image incertaine, contrôler la conversation'; late = null; try { sessionStorage.removeItem(ACTIVE_KEY); } catch (_) {}
-        } else { say('j\'attends encore l\'image de ' + late.nom); continue; }   // jamais deux images à la fois
+        // Une image retardée n'entraîne plus d'échec automatique ni de nouveau rendu.
+        // Continuer à surveiller le résultat existant, même après 10 minutes.
+        say("Récupération automatique de l'image en retard : " + late.nom);
+        continue;
+
       }
       // ChatGPT dessine encore (image en retard, ou autre) : on n'envoie RIEN tant qu'il n'a pas fini
       if (hasConversation() && generating()) {

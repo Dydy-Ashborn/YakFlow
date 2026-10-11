@@ -1606,8 +1606,9 @@ async function genChatGPT(p, s) {
     chatAlive = st.alive; chatInfo = st.info || ''; chatWorkers = st.workers || 0; chatProtocol = st.protocol || 0; chatPauseUntil = st.pauseUntil || 0;
     if (!st.st) { await bridge('POST', 'push', job); continue; } // serveur relancé
     if (st.st === 'fini' && st.data) {
-      bridge('POST', 'forget?id=' + encodeURIComponent(id)).catch(() => {});
-      return { data: await toJpeg(st.data, 2048), refs: refs.length };
+      // Ne JAMAIS supprimer l'original du pont avant d'avoir enregistré l'image
+      // ET son statut dans IndexedDB. Reprise automatique après une coupure.
+      return { data: await toJpeg(st.data, 2048), refs: refs.length, bridgeResultId: id };
     }
     if (st.st === 'echec' || st.st === 'incertain') {
       if (st.st !== 'incertain') bridge('POST', 'forget?id=' + encodeURIComponent(id)).catch(() => {});
@@ -2006,6 +2007,14 @@ async function doImage(p, s, lane) {
       setImg(p, s, { st: 'fini', msg: 'Image faite en ' + fmtDur(Math.max(1000, now() - s.img.sent)) + ' (' + out.data.w + '×' + out.data.h + (out.refs ? ', ' + out.refs + ' réf.' : '') + ')', src: 'agnes', prompt: s.promptImage });
       diskImage(p, s, out.data.data);
       s.ok = !S.gate || isFiche(s) || s.type === 'couverture';
+      if (out.bridgeResultId) {
+        // Commit réellement enregistré dans YakFlow AVANT purge du résultat ChatGPT.
+        // Cette étape n'émet AUCUN nouveau prompt ou génération.
+        try {
+          await kvPut('projects', projects);
+          await bridge('POST', 'forget?id=' + encodeURIComponent(out.bridgeResultId));
+        } catch (e) { log('Image conservée côté pont pour récupération automatique : ' + e.message); }
+      }
       // toute étape qui partage cette fiche la reçoit
       if (/^fiche-serie-/.test(s.id)) for (const q of projects) for (const t of q.etapes) if (t !== s && t.id === s.id) { t.img = Object.assign({}, s.img); t.ok = true; }
       stat.img(now() - s.img.sent, tries);
