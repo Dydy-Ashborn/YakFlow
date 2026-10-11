@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.3.1
+// @version      3.3.3
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -15,6 +15,7 @@
 // @grant        GM_setValue
 // @grant        GM_deleteValue
 // @grant        GM_listValues
+// @grant        GM_addValueChangeListener
 // @grant        GM_xmlhttpRequest
 // @grant        GM_registerMenuCommand
 // @connect      apihub.agnes-ai.com
@@ -32,7 +33,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.3.1';
+  const CONNECT_VERSION = '3.3.3';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -119,6 +120,9 @@
   }
   const ck = (id, n) => 'grok:chunk:' + fnv(String(id)) + ':' + n;
   const qk = (kind) => kind + ':queue';
+  // Signal inter-onglets : un clic ChatGPT réveille immédiatement le Studio, sans effacer la file.
+  const RESUME_REQUEST_KEY = 'bridge:force-resume-request-v1';
+  const RESUME_ACK_KEY = 'bridge:force-resume-ack-v1';
   const b64 = (buf) => { const u = new Uint8Array(buf); let s = ''; for (let i = 0; i < u.length; i += 0x8000) s += String.fromCharCode.apply(null, u.subarray(i, i + 0x8000)); return btoa(s); };
   const unb64 = (s) => { const bin = atob(s), u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u.buffer; };
 
@@ -195,7 +199,7 @@
         const payload = get(pk(kind, id));
         Object.assign(out, { st: j.st === 'fini' && !data ? 'incertain' : j.st,
           error: j.st === 'fini' && !data ? 'Image enregistrée mais illisible dans le stockage Tampermonkey : récupération manuelle nécessaire.' : (j.error || ''),
-          pos: 0, data, promptSig: payload?.prompt ? fnv(String(payload.prompt)) : '' });
+          pos: 0, data, detachedAt: j.detachedAt || 0, worker: j.worker || '', claimedAt: j.claimedAt || 0, promptSig: payload?.prompt ? fnv(String(payload.prompt)) : '' });
       } }
       return ok(out);
     }
@@ -401,11 +405,33 @@
       window.postMessage({ __yf: 'res', rid: d.rid, status: r.status, json: r.json, buf: r.buf }, '*', r.buf ? [r.buf] : []);
     });
     hello();
+    // V3.3.2 : reprise demandée par l'utilisateur depuis le bouton dans ChatGPT.
+    // Les valeurs Tampermonkey sont partagées entre les deux sites ; la réaction
+    // sur changement de valeur évite le délai des boucles de polling.
+    let lastResumeToken = '';
+    const relayForceResume = (req) => {
+      if (!req || typeof req.token !== 'string' || req.token === lastResumeToken ||
+          typeof req.at !== 'number' || Math.abs(now() - req.at) > 60000) return;
+      lastResumeToken = req.token;
+      window.postMessage({ __yf: 'force-resume', token: req.token, at: req.at }, location.origin);
+    };
+    if (typeof GM_addValueChangeListener === 'function') {
+      GM_addValueChangeListener(P + RESUME_REQUEST_KEY, (_name, _old, req) => relayForceResume(req));
+    }
+    // Secours pour les versions de Tampermonkey qui ne relaient pas les changements.
+    setInterval(() => relayForceResume(get(RESUME_REQUEST_KEY)), 1500);
+    window.addEventListener('message', (e) => {
+      if (e.source !== window || e.origin !== location.origin || !e.data ||
+          e.data.__yf !== 'force-resume-ack') return;
+      const reply = e.data;
+      if (reply.token !== lastResumeToken) return;
+      set(RESUME_ACK_KEY, { ...reply, at: now() });
+    });
     setInterval(housekeeping, 30 * 60000);
   }
 
   function runChatGPT() {
-  const VERSION = '2.1.3';
+  const VERSION = CONNECT_VERSION; // le diagnostic affiche la vraie version installée
   // Un identifiant par chargement d'onglet : les conversations restent indépendantes.
   // YAKFLOW_CONNECT_303 : identifiant stable par onglet (survit au rechargement entre deux images) : un onglet = un worker
   const WORKER = sessionStorage.getItem('yakflowChatWorker') || ('chat-' + (crypto.randomUUID ? crypto.randomUUID() : Date.now() + '-' + Math.random()));
@@ -803,7 +829,26 @@
     // Stable historical choice: final generated image in the newest assistant turn.
     return (gallery.length ? gallery : fresh).slice(-1)[0];
   };
-  const REFUS = /système de sécurité|bloqué la génération|ne (peux|pouvons) pas (générer|créer|t'aider|vous aider)|politique de contenu|règles de contenu|enfreint|n'est pas autorisé|content polic|violat|can't (help|create|generate)|cannot (create|generate)|unable to (create|generate)|safety system/i;
+  const REFUS = /syst[eè]me de s[eé]curit[eé]|bloqu[eé] la g[eé]n[eé]ration|ne (?:peux|pouvons) pas (?:g[eé]n[eé]rer|cr[eé]er|t'aider|vous aider)|politique de contenu|r[eè]gles de contenu|enfreint|n'est pas autoris[eé]|content polic|violat|can[’']?t (?:help|create|generate|make|produce)|cannot (?:help|create|generate|make|produce)|unable to (?:create|generate|make|produce)|not able to (?:create|generate)|safety system|i (?:can[’']?t|cannot) generate this/i;
+  const prettyRefusal = (txt) => 'ChatGPT a refusé cette image : ' + String(txt || '').replace(/\s+/g, ' ').slice(0, 240);
+  const refusalError = (txt) => { const e = new Error(prettyRefusal(txt)); e.refused = true; return e; };
+  // Sans message USER identifiable, n'associer un refus à l'ancien travail que
+  // si au moins deux mots distinctifs sont présents dans la réponse. Un refus
+  // d'une autre scène ne doit pas annuler ce travail.
+  function refusalMatchesJob(j, text, anchor) {
+    if (!REFUS.test(text) || generating()) return false;
+    const reply = lastAssistant();
+    if (anchor && reply && !!(anchor.compareDocumentPosition(reply) & Node.DOCUMENT_POSITION_FOLLOWING)) return true;
+    if (anchor) return false;
+    const normalize = (v) => String(v || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const tokens = [...new Set(normalize(j?.nom || '').match(/[a-z0-9]{2,}/g) || [])]
+      .filter(w => !/^(de|du|des|le|la|les|une|un|et|en|image|fin|scene|fiche|nouveau|nouvelle|ancien|conserve|pas|salon|vote|pour|avec)$/.test(w));
+    const haystack = normalize(text);
+    const hits = tokens.filter(t => haystack.includes(t));
+    // P1+hall, Sam+P1, etc. Le libellé général « Décor » ne compte pas.
+    return hits.length >= 2;
+  }
+
   async function waitNewImage(before, timeout, label, validate) {
     const t0 = Date.now(); let last = null, stable = 0, idle = 0, lastText = '';
     while (Date.now() - t0 < timeout) {
@@ -823,7 +868,7 @@
       } else {
         stable = 0; last = null;
         // refus de sécurité de ChatGPT : on le dit tout de suite au studio au lieu d'attendre 5 min pour rien
-        if (!b && txt && REFUS.test(txt) && (turnDone() || Date.now() - t0 > 20000)) throw new Error('ChatGPT a refusé l\'image (filtre de sécurité) : ' + txt.replace(/\s+/g, ' ').slice(0, 160));
+        if (!b && txt && REFUS.test(txt) && (turnDone() || Date.now() - t0 > 20000)) throw refusalError(txt);
       }
       if (txt !== lastText) { lastText = txt; idle = 0; }
       if (!img && !b) { idle = idle || Date.now(); if (Date.now() - idle > 5 * 60000) return null; } else idle = 0;
@@ -891,46 +936,85 @@
     const old = JSON.parse(sessionStorage.getItem(ACTIVE_KEY) || 'null');
     if (old && old.id && !pending()) recoveryBlocked = old;
   } catch (_) {}
-  async function recoverAfterReload() {
-    if (!recoveryBlocked) return false;
-    const job = recoveryBlocked;
-    // Le résultat peut déjà avoir été correctement remis au pont juste avant
-    // le rechargement. Dans ce cas, ne pas reconstituer une image une seconde fois.
+  // Une réponse explicite de refus est un échec définitif, PAS une image
+  // « incertaine ». La signaler au Studio rend la file disponible à nouveau.
+  // Jamais d'effacement de résultat, jamais de ré-envoi du même prompt.
+  let recoveringNow = false;
+  async function recoverAfterReload(manual = false) {
+    if (!recoveryBlocked || recoveringNow) return !!recoveryBlocked;
+    recoveringNow = true;
     try {
-      const state = await call('GET', withWorker('/bridge/status?id=' + encodeURIComponent(job.id)));
+      const j = recoveryBlocked;
+      let state;
+      try { state = await call('GET', withWorker('/bridge/status?id=' + encodeURIComponent(j.id))); }
+      catch (e) { say('Récupération : pont temporairement inaccessible, travail conservé.'); return true; }
+      // Autre onglet prioritaire : ne toucher à AUCUN état de son travail.
+      if (state.worker && state.worker !== WORKER && state.st === 'en cours') {
+        say('Autre onglet ChatGPT propriétaire de ce travail : rien ne sera renvoyé.');
+        return true;
+      }
       if (state.st === 'fini' && state.data) {
-        recoveryBlocked = null;
-        sessionStorage.removeItem(ACTIVE_KEY);
-        say('Image déjà enregistrée dans le pont ; YakFlow va la récupérer automatiquement.');
+        recoveryBlocked = null; sessionStorage.removeItem(ACTIVE_KEY);
+        say('Image conservée dans le pont ; attente de récupération par YakFlow.');
         return true;
       }
-      if (!state.st || state.st === 'oublie') {
-        recoveryBlocked = null;
-        sessionStorage.removeItem(ACTIVE_KEY);
-        say('Travail clôturé ; retour à la file YakFlow.');
+      if (!state.st || ['oublie', 'recu', 'echec', 'incertain'].includes(state.st)) {
+        recoveryBlocked = null; sessionStorage.removeItem(ACTIVE_KEY);
+        if (state.st === 'incertain') lastErr = 'Ancien résultat incertain : à vérifier dans YakFlow, pas de nouvelle génération automatique.';
+        else if (state.st === 'echec') lastErr = 'Ancien travail en échec : vérifie la scène dans YakFlow avant de la relancer.';
+        say('Ancien travail terminé côté pont · contrôle de la prochaine tâche.');
         return true;
       }
-    } catch (_) { /* le pont réessaiera lors du prochain passage */ }
-    sentPrompt = job.prompt || '';
-    const anchor = userItem();
-    if (!anchor) { say('Récupération automatique : attente du message ChatGPT de « ' + job.nom + ' »'); return true; }
-    const candidates = generatedImages().filter(img => !anchor.contains(img) &&
-      !!(anchor.compareDocumentPosition(img) & Node.DOCUMENT_POSITION_FOLLOWING));
-    const last = candidates[candidates.length - 1];
-    if (!last || generating()) { say('Récupération automatique : ChatGPT termine « ' + job.nom + ' »'); return true; }
-    // Check the image shape, without guessing the association using a generic gallery.
-    let reason = '';
-    try { reason = await checkResult(await fetchBlob(imgSrc(last)), { prompt: job.prompt || '' }, []); }
-    catch (e) { reason = 'résultat non lisible : ' + e.message; }
-    if (reason) { lastErr = 'Image retrouvée non attribuée (' + reason + ')'; return true; }
-    busy = true;
-    try {
-      const data = await blobToJpegDataUrl(await fetchBlob(imgSrc(last)));
-      await deliverSavedResult({ id: job.id, data });
-      recoveryBlocked = null; lastErr = ''; say('Image récupérée automatiquement après actualisation : ' + job.nom);
-    } catch (e) { lastErr = 'Récupération automatique : ' + e.message; }
-    finally { busy = false; }
-    return true;
+      if (pending()) return true;
+      sentPrompt = j.prompt || '';
+      const anchor = userItem();
+      const answer = lastAssistantText().trim();
+      const refusal = !generating() && REFUS.test(answer);
+      const matchedRefusal = refusal && refusalMatchesJob(j, answer, anchor);
+      // En l'absence d'association sûre, seul un clic utilisateur + confirmation
+      // peut classer cette réponse comme refus du travail actif.
+      if (refusal && (matchedRefusal || (manual && window.confirm(
+          'ChatGPT affiche ce refus :\n\n' + answer.slice(0, 240) +
+          '\n\nConfirmer qu’il concerne « ' + j.nom + ' » ?\nCela marquera ce travail en échec, SANS le relancer.')))) {
+        if (state.st !== 'en cours') { say('Refus détecté, mais tâche plus en cours : état préservé.'); return true; }
+        const why = prettyRefusal(answer);
+        // La livraison d'un éventuel résultat n'est jamais remplacée : state
+        // est relu immédiatement avant la modification et le hub contrôle le worker.
+        const fresh = await call('GET', withWorker('/bridge/status?id=' + encodeURIComponent(j.id)));
+        if (fresh.st !== 'en cours' || (fresh.worker && fresh.worker !== WORKER)) return true;
+        await call('POST', withWorker('/bridge/result'), { id: j.id, error: why, incertain: false });
+        recoveryBlocked = null; sessionStorage.removeItem(ACTIVE_KEY);
+        lastErr = why + ' · tâche classée en échec (aucun renvoi automatique).';
+        say('Refus reconnu · file libérée. Corrige la référence dans YakFlow.');
+        return true;
+      }
+      if (refusal && !matchedRefusal) {
+        say('Refus affiché, attribution incertaine. Clique « Forcer la reprise » pour le confirmer.');
+        return true;
+      }
+      if (!anchor) {
+        if (state.detachedAt) say('Ancien travail retiré par YakFlow ; résultat encore protégé. Aucun doublon.');
+        else say('Récupération : message d’origine introuvable pour « ' + j.nom + ' ». Aucun renvoi automatique.');
+        return true;
+      }
+      const before = new Set(j.before || []);
+      const candidates = generatedImages().filter(img => !before.has(imgSrc(img)) &&
+        !anchor.contains(img) && !!(anchor.compareDocumentPosition(img) & Node.DOCUMENT_POSITION_FOLLOWING));
+      const last = candidates[candidates.length - 1];
+      if (!last || generating()) { say('Récupération : attente du résultat de « ' + j.nom + ' »'); return true; }
+      let reason = '';
+      try { reason = await checkResult(await fetchBlob(imgSrc(last)), { prompt: j.prompt || '' }, []); }
+      catch (e) { reason = 'résultat non lisible : ' + e.message; }
+      if (reason) { lastErr = 'Image retrouvée mais non attribuée (' + reason + ')'; return true; }
+      busy = true;
+      try {
+        const data = await blobToJpegDataUrl(await fetchBlob(imgSrc(last)));
+        await deliverSavedResult({ id: j.id, data });
+        recoveryBlocked = null; lastErr = ''; say('Image récupérée automatiquement : ' + j.nom);
+      } catch (e) { lastErr = 'Récupération : ' + e.message; }
+      finally { busy = false; }
+      return true;
+    } finally { recoveringNow = false; }
   }
   GM_registerMenuCommand('YakFlow Connect · récupérer une image après rechargement', async () => {
     if (!recoveryBlocked) return alert('Aucune génération interrompue à récupérer.');
@@ -983,13 +1067,15 @@
     'background:#141619;color:#f3f0e9;border:1px solid rgba(255,178,36,.5);border-radius:10px;padding:8px 11px;box-shadow:0 10px 30px rgba(0,0,0,.4);' +
     'cursor:pointer;max-width:300px;user-select:none';
   badge.title = 'Cliquer pour mettre le pont en pause ou le relancer';
-  badge.onclick = () => { GM_setValue(K_ON, !GM_getValue(K_ON, true)); draw(); };
+  // La mise en pause reste accessible en cliquant hors des boutons, comme avant.
+  badge.onclick = (e) => { if (e.target.closest('button')) return; GM_setValue(K_ON, !GM_getValue(K_ON, true)); draw(); };
   document.body.appendChild(badge);
   function draw() {
     const on = GM_getValue(K_ON, true);
     badge.innerHTML = '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#ffb224;margin-right:6px;vertical-align:1px"></span>Pont YakFlow <span style="opacity:.6">v' + CONNECT_VERSION + '</span> · ' + (on ? '' : '<b>en pause</b> · ') + info.replace(/[<>&]/g, '') +
       (lastErr ? '<div style="color:#ff9188;font-weight:500;margin-top:3px">' + lastErr.replace(/[<>&]/g, '') + '</div>' : '') +
       (awake() ? '' : '<div style="color:#ffc757;font-weight:500;margin-top:3px">Clique une fois dans cet onglet pour qu’il continue en arrière-plan.</div>');
+    if (typeof forceBtn !== 'undefined') badge.appendChild(forceBtn);
     if (typeof dbtn !== 'undefined') badge.appendChild(dbtn);
   }
   function say(t) { info = t; draw(); }
@@ -1001,7 +1087,7 @@
     const turns = [...document.querySelectorAll(ITEM_SEL + ', [data-conversation-role]')].slice(-8).map((e) => ({ el: brief(e), text: (e.innerText || '').replace(/\s+/g, ' ').slice(0, 120), buttons: [...e.querySelectorAll('button')].slice(0, 10).map(brief) }));
     const buttons = [...document.querySelectorAll('main button, form button')].filter(isVisible).slice(-14).map(brief);
     const asst = lastAssistant();
-    return JSON.stringify({ version: VERSION, url: location.pathname, info, lastErr, busy, pendingImage: !!pending(), activeJob: sessionStorage.getItem(ACTIVE_KEY)?.slice(0,300), late: late ? late.nom : null,
+    return JSON.stringify({ version: VERSION, url: location.pathname, info, lastErr, busy, pendingImage: !!pending(), activeJob: sessionStorage.getItem(ACTIVE_KEY)?.slice(0,300), late: late ? late.nom : null, owner: get('bridge:single-worker-v1'), bridgeQueue: waiting('bridge').length, recovering: !!recoveryBlocked,
       state: { loadingUi: loadingUi(), hasConversation: hasConversation(), userItemFound: !!userItem(), generating: generating(), stopButton: chatgptBusy(), turnDone: turnDone(), foundImage: !!findGeneratedImage(), generatedImages: generatedImages().length },
       lastAssistantHtmlHead: asst ? asst.outerHTML.slice(0, 600) : null, imgs, turns, buttons, shimmer: [...document.querySelectorAll('[class*="shimmer" i], [aria-busy="true"], [data-testid*="image" i]')].slice(0, 8).map((e) => brief(e) + ' .' + String(e.className).slice(0, 60)) }, null, 1);
   }
@@ -1016,6 +1102,71 @@
     catch (err) { const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); dbtn.textContent = 'Diagnostic copié (méthode 2)'; }
     setTimeout(() => { dbtn.textContent = 'Copier le diagnostic'; }, 6000);
   };
+
+  // V3.3.2 : bouton de réveil manuel. Aucune tâche 'en cours' n'est libérée,
+  // aucun résultat n'est effacé et aucune soumission ChatGPT n'est rejouée.
+  let wakeLoop = null, forceRequested = false, waitingForResume = false;
+  const forceBtn = document.createElement('button');
+  forceBtn.id = 'yf-force-resume';
+  forceBtn.type = 'button';
+  forceBtn.textContent = '↻ Forcer la reprise';
+  forceBtn.title = 'Réveille immédiatement YakFlow et vérifie la file ChatGPT sans créer de doublon';
+  forceBtn.style.cssText = 'display:block;margin-top:9px;width:100%;border:1px solid rgba(255,178,36,.65);' +
+    'background:rgba(255,178,36,.14);color:#ffd17b;border-radius:7px;padding:8px 10px;' +
+    'font:700 12px/1.2 -apple-system,system-ui,sans-serif;cursor:pointer;text-align:center';
+  const forceLabel = (v) => { forceBtn.textContent = v; };
+  const isOtherWorker = () => {
+    const owner = get('bridge:single-worker-v1');
+    return owner && owner.worker !== WORKER && Date.now() - owner.seenAt < 120000;
+  };
+  async function forceResume() {
+    if (waitingForResume) return;
+    waitingForResume = true;
+    GM_setValue(K_ON, true);
+    const token = WORKER + ':' + Date.now() + ':' + Math.random().toString(36).slice(2);
+    forceLabel('↻ Réveil de YakFlow…');
+    say('Reprise demandée : liaison avec le Studio…');
+    const otherTab = isOtherWorker();
+    // Le propriétaire d'une génération déjà partie n'est jamais modifié.
+    if (!otherTab && recoveryBlocked && !pending() && !generating()) await recoverAfterReload(true);
+    set(RESUME_REQUEST_KEY, { token, at: now(), worker: WORKER });
+    forceRequested = true;
+    if (wakeLoop) wakeLoop();
+    try { await call('POST', withWorker('/bridge/hello')); } catch (_) {}
+    // Attendre un accusé réel du Studio, sans supposer qu'il a répondu.
+    let ack = null;
+    for (let i = 0; i < 24; i++) {
+      const cur = get(RESUME_ACK_KEY);
+      if (cur && cur.token === token && now() - cur.at < 15000) { ack = cur; break; }
+      await sleep(250);
+    }
+    if (!ack) {
+      say('Connect réveillé ; YakFlow ne confirme pas la reprise immédiate. Garde YakFlow ouvert sur le Mac.');
+      forceLabel('↻ Connect réveillé');
+    } else if (ack.error) {
+      say('Reprise refusée par YakFlow : ' + ack.error);
+      forceLabel('⚠ Reprise impossible');
+    } else if (otherTab) {
+      say('Studio réveillé ; un autre onglet ChatGPT possède la file. Ferme l’autre onglet.');
+      forceLabel('⚠ Autre onglet actif');
+    } else if (busy || pending() || recoveryBlocked || late || generating()) {
+      say('Studio réveillé ; génération/récupération existante conservée sans doublon.');
+      forceLabel('✓ Reprise vérifiée');
+    } else {
+      const q = waiting('bridge').length;
+      const more = ack.imagesWaiting ? ' · ' + ack.imagesWaiting + ' image(s) en attente dans YakFlow' : '';
+      say(q ? 'Studio réveillé · ' + q + ' tâche(s) ChatGPT en file' :
+        'Studio réveillé · aucune tâche déposée pour le moment' + more);
+      forceLabel('✓ Studio réveillé');
+    }
+    waitingForResume = false;
+    setTimeout(() => { if (!waitingForResume) forceLabel('↻ Forcer la reprise'); }, 7000);
+  }
+  forceBtn.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    forceResume().catch((err) => { waitingForResume = false; lastErr = 'Reprise : ' + err.message; draw(); });
+  });
+  GM_registerMenuCommand('YakFlow Connect · forcer la reprise', () => forceResume());
 
   /* ---------- boucle ---------- */
   async function doJob(job) {
@@ -1056,7 +1207,7 @@
     const img = await waitNewImage(before, 15 * 60000, 'ChatGPT dessine : ' + job.nom, validate);
     if (!img) {
       if (limitReached()) throw new Error('limite ChatGPT atteinte');
-      late = { id: job.id, nom: job.nom, before, t: Date.now(), validate };
+      late = { id: job.id, nom: job.nom, prompt: job.prompt, before, t: Date.now(), validate };
       throw new Error('aucune image reçue (je la récupère si elle arrive en retard)');
     }
     say('image détectée · conversion et transfert : ' + job.nom);
@@ -1070,7 +1221,10 @@
     let pauseUntil = 0, genSince = 0, serverReady = false, idle = 0;
     for (;;) {
       // YAKFLOW_POLL_V16 : 4 s quand il y a du travail, puis on ralentit jusqu'à 30 s quand il n'y a rien à faire
-      await sleep(Math.min(10000, 3000 + idle * 1000));   // file locale : interroger souvent ne coûte rien
+      // Le bouton interrompt l'attente, pas une génération en cours.
+      await Promise.race([sleep(Math.min(10000, 3000 + idle * 1000)), new Promise((r) => { wakeLoop = r; })]);
+      wakeLoop = null;
+      if (forceRequested) { idle = 0; forceRequested = false; }
       draw();
       if (!serverReady) {
         try {
@@ -1099,6 +1253,24 @@
       }
       if (recoveryBlocked) { say('Récupération automatique en cours : ' + recoveryBlocked.nom); continue; }
       if (late) {
+        // Réponse textuelle arrivée APRES le timeout initial : elle ne doit pas
+        // bloquer toute la file. Vérification d'attribution, pas de nouvelle image.
+        const answer = lastAssistantText().trim();
+        sentPrompt = late.prompt || '';
+        if (!generating() && REFUS.test(answer) && refusalMatchesJob(late, answer, userItem())) {
+          const j = await call('GET', withWorker('/bridge/status?id=' + encodeURIComponent(late.id))).catch(() => null);
+          if (j?.st === 'en cours' && (!j.worker || j.worker === WORKER) && !pending()) {
+            await call('POST', withWorker('/bridge/result'), { id: late.id, error: prettyRefusal(answer), incertain: false }).catch(() => {});
+            // Toujours vérifier le retour avant de nettoyer ACTIVE_KEY.
+            const check = await call('GET', withWorker('/bridge/status?id=' + encodeURIComponent(late.id))).catch(() => null);
+            if (check?.st === 'echec') {
+              sessionStorage.removeItem(ACTIVE_KEY); late = null;
+              lastErr = prettyRefusal(answer) + ' · échec signalé à YakFlow.';
+              say('Refus tardif reconnu · file libérée sans deuxième envoi.');
+              continue;
+            }
+          }
+        }
         let img = !generating() && newImage(late.before);
         if (img && late.validate) { const why = await late.validate(img).catch(() => ''); if (why) { late.before.add(imgSrc(img)); img = null; } }
         if (img) {
@@ -1146,8 +1318,8 @@
           if (taken) await call('POST', withWorker('/bridge/release'), { id: job.id, until: e.attachUntil }).catch(() => {});
           say('Import bloqué jusqu’à ' + new Date(e.attachUntil).toLocaleTimeString('fr-FR') + ' ; autres scènes sans nouvelles pièces jointes autorisées.');
         } else if (taken && !(late && late.id === job.id) && !pending()) {
-          await call('POST', withWorker('/bridge/result'), { id: job.id, error: job.submitted ? 'Génération incertaine : ' + e.message : e.message, incertain: !!job.submitted }).catch(() => {});
-          if (!job.submitted) { try { sessionStorage.removeItem(ACTIVE_KEY); } catch (_) {} }
+          await call('POST', withWorker('/bridge/result'), { id: job.id, error: job.submitted && !e.refused ? 'Génération incertaine : ' + e.message : e.message, incertain: !!job.submitted && !e.refused }).catch(() => {});
+          if (!job.submitted || e.refused) { try { sessionStorage.removeItem(ACTIVE_KEY); } catch (_) {} }
         }
         if (!job.submitted && /limite (?:de g[ée]n[ée]ration|d.images)|image generation limit/i.test(e.message)) { pauseUntil = Date.now() + 20 * 60000; say('quota de génération ChatGPT atteint'); }
       } finally { busy = false; }
