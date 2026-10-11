@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.3.0
+// @version      3.3.1
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -32,7 +32,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.2.4';
+  const CONNECT_VERSION = '3.3.1';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -405,7 +405,7 @@
   }
 
   function runChatGPT() {
-  const VERSION = '2.1.2';
+  const VERSION = '2.1.3';
   // Un identifiant par chargement d'onglet : les conversations restent indépendantes.
   // YAKFLOW_CONNECT_303 : identifiant stable par onglet (survit au rechargement entre deux images) : un onglet = un worker
   const WORKER = sessionStorage.getItem('yakflowChatWorker') || ('chat-' + (crypto.randomUUID ? crypto.randomUUID() : Date.now() + '-' + Math.random()));
@@ -540,6 +540,74 @@
     const imgs = [...form.querySelectorAll('img, [style*="background-image"]')].filter((i) => { const r = i.getBoundingClientRect(); return r.width > 16 && r.height > 16; }).length;
     const removes = form.querySelectorAll('button[aria-label*="Remove" i], button[aria-label*="Supprimer" i], button[aria-label*="Retirer" i], [data-testid*="attachment" i]').length;
     return Math.max(imgs, removes);
+  }
+  /* YAKFLOW_DRAFT_AUTOHEAL_331
+     Le brouillon ChatGPT peut garder des vignettes YakFlow après un import partiel.
+     Les boutons sont dans [data-composer-attachments], pas dans l'historique.
+     Ne retirer QUE nos fichiers `ref-<n>-...`, pas les pièces jointes personnelles.
+     Ne JAMAIS agir pendant l'envoi, la génération ou la récupération d'une image.
+  */
+  const YF_DRAFT_REF = /^(?:supprimer|remove|retirer|delete)\s+ref-\d+-/i;
+  const draftRepair = { failures: 0, retryAt: 0, removed: 0 };
+  function composerAttachmentControls() {
+    // La nouvelle interface place les boutons "Supprimer ref-1-..." dans ce conteneur.
+    // Restriction au COMPOSER : n'effacer aucune image de l'historique.
+    const f = findPromptField();
+    const form = f?.closest('form') || null;
+    const containers = [...document.querySelectorAll('[data-composer-attachments]')]
+      .filter(el => !form || form.contains(el));
+    if (!containers.length && form) containers.push(form);
+    const found = new Set();
+    for (const parent of containers) for (const b of parent.querySelectorAll('button[aria-label]')) {
+      if (!isVisible(b)) continue;
+      const name = b.getAttribute('aria-label') || '';
+      if (/^(?:supprimer|remove|retirer|delete)\s+/i.test(name)) found.add(b);
+    }
+    return [...found];
+  }
+  function yakFlowDraftButtons() {
+    return composerAttachmentControls().filter(b => YF_DRAFT_REF.test(b.getAttribute('aria-label') || ''));
+  }
+  async function clearYakFlowDraft() {
+    if (busy || generating() || chatgptBusy()) return false;
+    if (Date.now() < draftRepair.retryAt) return false;
+    const controls = composerAttachmentControls();
+    const ours = controls.filter(b => YF_DRAFT_REF.test(b.getAttribute('aria-label') || ''));
+    if (!ours.length) return false; // Aucune preuve que les autres fichiers viennent de YakFlow.
+    // Ne jamais nettoyer des fichiers pendant qu'une génération / un envoi est actif.
+    // Le verrou local empêche une deuxième opération du pont pendant la réparation.
+    busy = true;
+    try {
+      say('Nettoyage automatique des références YakFlow bloquées…');
+      let removed = 0;
+      // Prendre à nouveau les boutons après chaque clic : React peut reconstruire le DOM.
+      for (let n = 0; n < 20; n++) {
+        if (chatgptBusy() || generating()) throw new Error('ChatGPT a repris une génération ; nettoyage suspendu');
+        const b = yakFlowDraftButtons()[0];
+        if (!b) break;
+        if (b.disabled) throw new Error('Bouton de suppression indisponible');
+        const label = b.getAttribute('aria-label') || '';
+        b.click();
+        const gone = await waitFor(() => !b.isConnected || !yakFlowDraftButtons().some(x => x === b), 7000, 250);
+        if (!gone) throw new Error('La vignette « ' + label.slice(0, 70) + ' » reste dans le brouillon');
+        removed++;
+        await sleep(350);
+      }
+      if (yakFlowDraftButtons().length) throw new Error('Trop de références résiduelles');
+      draftRepair.removed += removed;
+      draftRepair.failures = 0;
+      draftRepair.retryAt = 0;
+      lastErr = '';
+      say('Brouillon YakFlow nettoyé (' + removed + ' référence(s)) · reprise automatique');
+      dbg('brouillon automatiquement nettoyé', { removed, total: draftRepair.removed });
+      return removed > 0;
+    } catch (e) {
+      draftRepair.failures++;
+      draftRepair.retryAt = Date.now() + Math.min(5 * 60000, 10000 * 2 ** Math.min(draftRepair.failures - 1, 5));
+      lastErr = 'Nettoyage automatique réessaiera : ' + (e.message || String(e));
+      say('Brouillon bloqué · nouvelle tentative automatique');
+      return false;
+    } finally { busy = false; }
   }
   async function attachAndCheck(files, field) {
     const before = attachedCount(), want = before + files.length;
@@ -1018,10 +1086,16 @@
       if (busy || !GM_getValue(K_ON, true) || Date.now() < pauseUntil) continue;
       if (await recoverSavedResult()) continue;
       if (await recoverAfterReload()) continue;
-      // Refus d'import partiel = anciennes pièces jointes potentiellement coincées au brouillon.
-      // Ne jamais envoyer une autre scène avec ces fichiers résiduels.
+      // V3.3.1 : après un upload interrompu, retirer automatiquement les seules
+      // références nommées `ref-N-...` par YakFlow avant la prochaine scène.
+      // Aucun clic manuel requis ; conserver et attendre si des fichiers personnels subsistent.
       if (!recoveryBlocked && !late && attachedCount() > 0) {
-        say('Pièces jointes restées dans le brouillon ChatGPT : retire-les avant de continuer.'); continue;
+        await clearYakFlowDraft();
+        if (attachedCount() > 0) {
+          if (!yakFlowDraftButtons().length) say('Brouillon avec pièce(s) jointe(s) non YakFlow : je les préserve.');
+          continue;
+        }
+        // Une fois nettoyé, la boucle poursuit et reprend la file toute seule.
       }
       if (recoveryBlocked) { say('Récupération automatique en cours : ' + recoveryBlocked.nom); continue; }
       if (late) {

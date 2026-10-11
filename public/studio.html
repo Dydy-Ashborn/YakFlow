@@ -625,6 +625,32 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
 .side>.card:first-child .plist{max-height:min(52vh,560px)}
 .phead>div:first-child{flex:1 1 420px!important}
 #agnesPubEditor input[type=date]{width:150px}#agnesPubEditor input[type=time]{width:100px}
+
+/* Prompts offerts : rail compact et modale intégrée, aucune navigation hors du Studio */
+.yfRail button.yfFreePromptLink{color:#f2bc57;min-height:63px}
+.yfRail button.yfFreePromptLink i{font-size:18px}
+.yfRail button.yfFreePromptLink span{display:block;font-size:10px;line-height:1.25;text-align:center;max-width:100%;overflow-wrap:anywhere}
+#yfFreePromptsDlg{border:1px solid rgba(255,192,87,.22);border-radius:22px;padding:0;color:var(--text);background:linear-gradient(155deg,#1d1f24,#111317 70%);width:min(740px,calc(100vw - 28px));max-height:90dvh;box-shadow:0 24px 90px #000b}
+#yfFreePromptsDlg::backdrop{background:rgba(4,5,9,.76);backdrop-filter:blur(5px)}
+.yfPromptIntro{padding:25px 26px 4px;color:var(--text-2);font-size:14px;line-height:1.6}
+.yfPromptGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;padding:18px 24px 24px}
+.yfPromptCard{border:1px solid rgba(255,255,255,.1);background:linear-gradient(155deg,#24272c,#181b20);border-radius:16px;padding:20px;min-width:0}
+.yfPromptIcon{height:44px;width:44px;display:grid;place-items:center;border-radius:13px;background:#ffb22422;color:#ffbb4e;font-size:20px}
+.yfPromptCard h4{margin:16px 0 7px;font-size:17px;color:var(--text)}
+.yfPromptCard p{font-size:13px;color:var(--text-2);line-height:1.55;min-height:62px;margin:0 0 16px}
+.yfPromptCard .row{display:flex;flex-wrap:wrap;gap:8px}
+.yfPromptCard button{flex:1;min-width:110px;justify-content:center}
+.yfPromptLocked{margin:0 24px 24px;border-radius:12px;padding:16px;background:rgba(255,178,36,.09);border:1px solid rgba(255,178,36,.22);color:#f6cd75}
+.yfPromptStatus{color:var(--text-2);font-size:12px;padding:0 24px 15px;min-height:30px}
+@media(max-width:620px){.yfPromptGrid{grid-template-columns:1fr}.yfPromptCard p{min-height:0}.yfPromptIntro{padding:18px 17px 0}.yfPromptGrid{padding:15px}.yfPromptLocked{margin:0 15px 15px}}
+/* Sélecteur de vraie fiche canonique P1 */
+#yfCanonPickerDlg{border-radius:20px;padding:0;width:min(850px,calc(100vw - 28px));max-height:88dvh;overflow:auto;background:#15181d;border:1px solid #383a3e;color:var(--text);box-shadow:0 20px 70px #000a}
+#yfCanonPickerDlg::backdrop{background:#050508bb}
+.yfCanonSources{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;padding:17px 20px}
+.yfCanonChoice{background:#22252c;border:1px solid #4b4b50;border-radius:13px;text-align:left;color:#eee;padding:12px;cursor:pointer}
+.yfCanonChoice:focus-visible,.yfCanonChoice:hover{outline:2px solid #ffc15b;border-color:#ffc15b}
+.yfCanonChoice img{width:100%;height:140px;object-fit:contain;background:#aaa;border-radius:8px;margin-bottom:9px}
+.yfCanonChoice b{display:block;font-size:13px}.yfCanonChoice small{display:block;color:#bababa;font-size:11px;margin-top:4px}
 </style>
 <style>
 /* YAKFLOW_ACTIVATION_UI_V7 */
@@ -738,7 +764,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
     <button type="button" data-nav="report" class="rail-desk"><i class="fa-solid fa-chart-line"></i><span>Rapport</span></button>
     <button type="button" data-nav="settings" class="rail-desk"><i class="fa-solid fa-sliders"></i><span>Réglages</span></button>
     <button type="button" data-nav="guide" class="rail-desk"><i class="fa-regular fa-circle-question"></i><span>Guide</span></button>
-    <a href="/mes-prompts.html" id="yfFreePromptLink" style="display:flex;align-items:center;gap:10px;padding:10px 12px;color:#ffc757;text-decoration:none;font-weight:700;font-size:13px"><i class="fa-solid fa-gift"></i><span>Mes prompts gratuits</span></a>
+    <button type="button" id="yfFreePromptLink" class="yfFreePromptLink" title="Mes deux prompts gratuits"><i class="fa-solid fa-gift"></i><span>Prompts offerts</span></button>
   </nav>
   <aside class="side">
     <section class="card">
@@ -948,6 +974,23 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
   <div class="foot"><button class="btn ghost" type="button" data-yf-modal="cancel" id="yfModalCancel">Annuler</button><button class="btn primary" type="button" data-yf-modal="ok" id="yfModalOk">Confirmer</button></div>
 </dialog>
 
+
+<dialog id="yfFreePromptsDlg" aria-labelledby="yfFreePromptsTitle">
+  <div class="mh"><div class="mi"><i class="fa-solid fa-gift"></i></div><div class="mt"><h3 id="yfFreePromptsTitle">Tes prompts gratuits</h3><p>Deux ressources offertes à vie après ton essai de 24 heures</p></div><button type="button" class="mx" data-free-close aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button></div>
+  <div class="yfPromptIntro">Copie-les dans ton IA ou télécharge-les en texte. Ils restent à toi, même une fois ton essai terminé.</div>
+  <div class="yfPromptGrid">
+   <section class="yfPromptCard"><div class="yfPromptIcon"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h4>Coach YakFlow</h4><p>Un assistant pour imaginer ton histoire, écrire les scènes et préparer la production.</p><div class="row"><button class="btn primary" type="button" data-free-action="copy" data-free-file="/prompt-debutant.txt"><i class="fa-regular fa-copy"></i> Copier</button><button class="btn" type="button" data-free-action="download" data-free-file="/prompt-debutant.txt"><i class="fa-solid fa-download"></i> Télécharger</button></div></section>
+   <section class="yfPromptCard"><div class="yfPromptIcon"><i class="fa-solid fa-code"></i></div><h4>Format YakFlow</h4><p>Les règles JSON pour créer des projets compatibles avec YakFlow depuis une IA.</p><div class="row"><button class="btn primary" type="button" data-free-action="copy" data-free-file="/format-yakflow.txt"><i class="fa-regular fa-copy"></i> Copier</button><button class="btn" type="button" data-free-action="download" data-free-file="/format-yakflow.txt"><i class="fa-solid fa-download"></i> Télécharger</button></div></section>
+  </div>
+  <div class="yfPromptLocked" id="yfFreePromptLock" hidden><i class="fa-solid fa-lock"></i> Active d’abord ton essai gratuit 24 h pour recevoir ces prompts. Ils resteront accessibles gratuitement ensuite.</div>
+  <div class="yfPromptStatus" id="yfFreePromptStatus" role="status"></div>
+</dialog>
+<dialog id="yfCanonPickerDlg" aria-labelledby="yfCanonPickerTitle">
+ <div class="mh"><div class="mi"><i class="fa-solid fa-link"></i></div><div class="mt"><h3 id="yfCanonPickerTitle">Relier une fiche à la P1</h3><p>Choisis visuellement l'identité originale déjà approuvée, sans régénérer.</p></div><button class="mx" type="button" data-canon-close aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button></div>
+ <p class="hint" style="padding:15px 20px 0;margin:0">Seules les fiches avec une image enregistrée dans ce navigateur sont proposées. Vérifie le visage avant de sélectionner.</p>
+ <div id="yfCanonSources" class="yfCanonSources"></div>
+ <div class="foot"><button type="button" class="btn" data-canon-close>Annuler</button></div>
+</dialog>
 <input type="file" id="fileOne" accept="image/*,video/mp4" hidden>
 <input type="file" id="fileMany" accept="image/*,video/mp4" multiple hidden>
 <div class="toasts" id="toasts" aria-live="polite"></div>
@@ -1060,6 +1103,8 @@ const ficheMeta = {}; // id -> prompt de la fiche en mémoire
 /* YAKFLOW_CANON_IDENTITY_V1 : images d'identité réellement conservées en IndexedDB.
    Toute nouvelle tenue part d'une image canonique approuvée, et jamais d'un seul texte. */
 const isSharedFicheId = (id) => /^fiche-serie-[a-z0-9][a-z0-9-]*$/.test(String(id || ''));
+const priorCanonRequired = (s) => s && s.type === 'fiche' && /REFERENCE POLICY:\s*Reuse existing P1 canonical image/i.test(s.promptImage || '');
+
 function canonicalRefs(p, s) {
   const raw = Array.isArray(s.joindre) ? s.joindre : [];
   // Une fiche tenue reçoit toujours EN PREMIER la vraie image du visage P1.
@@ -1160,7 +1205,7 @@ function normStep(e, i) {
     id: String(e.id || ('etape-' + (i + 1))), type, nom: e.nom || e.id || ('Étape ' + (i + 1)),
     joindre: Array.isArray(e.joindre) ? e.joindre.map(String) : [],
     identiteDe: type === 'fiche' ? String(e.identiteDe || '') : '',
-    verrouIdentite: type === 'fiche' && !!e.verrouIdentite,
+    verrouIdentite: type === 'fiche' && (!!e.verrouIdentite || /REFERENCE POLICY:\s*Reuse existing P1 canonical image/i.test(e.promptImage || '')),
     promptImage: e.promptImage || e.prompt || '',
     promptVideoAgnes: type === 'scene' ? (e.promptVideoAgnes || e.promptAgnes || e.promptVideo || e.promptAnimation || '') : '',
     promptVideoGrok: type === 'scene' ? (e.promptVideoGrok || e.promptGrok || e.promptVideo || e.promptAnimation || '') : '',
@@ -1254,9 +1299,31 @@ async function importProjects(list, montageOnly) {
 /* une fiche de série déjà fabriquée (dans n'importe quel projet) est réutilisée, comme dans la Régie */
 async function syncFiches() {
   for (const p of projects) for (const s of p.etapes) {
+    if (priorCanonRequired(s) && s.img.st !== 'fini') { s.verrouIdentite = true; if (s.img.st === 'calcul') s.img = { st: 'attente', msg: 'Identité P1 à relier avant génération' }; }
     if (!/^fiche-serie-/.test(s.id) || s.img.st === 'fini') continue;
-    const m = await mGet('fiche:' + s.id);
-    if (m) { s.img = { st: 'fini', src: 'mémoire', msg: 'Fiche déjà en mémoire, réutilisée' }; s.ok = true; }
+    let m = await mGet('fiche:' + s.id);
+    if (!m && priorCanonRequired(s)) {
+      // Première recherche : une fiche P1 déjà approuvée peut avoir un ID ancien différent de la P2.
+      const match = s.id.match(/-(sam|lou|brutus|animateur)$/i);
+      const role = match && match[1].toLowerCase();
+      if (role) {
+        const candidates = [];
+        for (const q of projects) {
+          if (q.id === p.id || !/cagnotte/i.test(q.id + ' ' + q.titre) || !/(?:^|[-_ ])(?:1|p1|partie.?1)(?:$|[-_ ])|cagnotte.?(?:0?1)/i.test(q.id + ' ' + q.titre)) continue;
+          for (const t of q.etapes) {
+            if (t.type !== 'fiche' || t.img?.st !== 'fini') continue;
+            if (!new RegExp('(?:^|[-_\\s])' + role + '(?:$|[-_\\s])','i').test(t.nom + ' ' + t.id)) continue;
+            const d = await mGet(imgKey(q,t)); if (d) candidates.push({ q, t, d });
+          }
+        }
+        if (candidates.length === 1) {
+          const c=candidates[0];m=c.d;await mPut('fiche:' + s.id,m);
+          await kvPut('canon-meta:'+s.id,{id:s.id,sourceProjet:c.q.id,sourceFiche:c.t.id,date:new Date().toISOString()});
+          log('Fiche P1 retrouvée automatiquement : '+c.t.nom+' → '+s.id);
+        }
+      }
+    }
+    if (m) { s.img = { st: 'fini', src: 'mémoire', msg: 'Fiche P1 approuvée retrouvée et réutilisée' }; s.ok = true; }
   }
   for (const p of projects) for (const s of p.etapes) if (/^fiche-serie-/.test(s.id) && s.img.st === 'fini' && s.img.prompt) ficheMeta[s.id] = s.img.prompt;
 }
@@ -1623,6 +1690,7 @@ function chatPromptSig(value) {
   return h.toString(36) + str.length.toString(36);
 }
 async function genChatGPT(p, s) {
+  if (priorCanonRequired(s)) return { err: 'Fiche originale P1 obligatoire : clique sur « Relier P1 » dans YakFlow. Ne recrée pas ce personnage.', noRetry: true };
   // Un verrou sémantique empêche de prendre la fiche P3 comme identité P1.
   // L'image canonique doit d'abord être mémorisée dans la vraie P1.
   if (s.type === 'fiche' && s.identiteDe === 'fiche-serie-money-farm-leo') {
@@ -2609,6 +2677,62 @@ window.addEventListener('beforeunload', (e) => { if (running || montBusy) { e.pr
    ===================================================================== */
 /* YAKFLOW_PREMIERE_APPARITION_V1 : aucune image de référence requise lors de la première apparition réelle.
    Ne déverrouiller que la fiche explicitement choisie, sans réimport ni perte des scènes existantes. */
+
+/* YAKFLOW_CANON_RELIER_P1_V1 : importer la véritable fiche originale provenant des projets locaux.
+   Le JSON d'une suite ne contient PAS les images P1. Des IDs différents ne prouvent donc pas une identité identique. */
+async function linkCanonFromP1(p, s) {
+  if (s.type !== 'fiche') return;
+  const dlg=document.getElementById('yfCanonPickerDlg');
+  const zone=document.getElementById('yfCanonSources');
+  const canonCandidates=[];
+  const isSameSeries=(q)=>/cagnotte/i.test(p.titre+' '+p.id) ? /cagnotte/i.test(q.titre+' '+q.id) : (q.id!==p.id);
+  for (const q of projects) {
+    if(q.id===p.id || !isSameSeries(q))continue;
+    for(const t of q.etapes){
+      if(t.type!=='fiche'||t.img?.st!=='fini')continue;
+      const data=await mGet(imgKey(q,t));
+      if(!data)continue;
+      canonCandidates.push({q,t,data});
+    }
+  }
+  if(!canonCandidates.length){
+    await yfAlert({title:'Fiche P1 introuvable ici',message:'Aucune fiche précédente de la série n’est enregistrée dans ce navigateur. Ouvre la P1 dans ce même Studio, vérifie ses fiches approuvées et recommence. Si l’animateur n’existe pas dans la P1, utilise « Première apparition » sans inventer de canon.',icon:'fa-triangle-exclamation'});
+    return;
+  }
+  const escCan=(v)=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const activeUrls=[];
+  zone.innerHTML='';
+  const normalize=(s)=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const role=normalize(s.nom+' '+s.id);
+  canonCandidates.sort((a,b)=>Number(normalize(b.t.nom+' '+b.t.id).includes(role.includes('sam')?'sam':role.includes('lou')?'lou':role.includes('brutus')?'brutus':role.includes('animateur')?'animateur':'####'))-Number(normalize(a.t.nom+' '+a.t.id).includes(role.includes('sam')?'sam':role.includes('lou')?'lou':role.includes('brutus')?'brutus':role.includes('animateur')?'animateur':'####')));
+  for(const item of canonCandidates){
+    const b=document.createElement('button');b.type='button';b.className='yfCanonChoice';
+    const title=document.createElement('b');title.textContent=item.t.nom;
+    const desc=document.createElement('small');desc.textContent=item.q.titre+' · '+item.t.id;
+    let u='';
+    if(typeof item.data==='string'&&item.data.startsWith('data:image/'))u=item.data;
+    else if(item.data instanceof Blob||item.data instanceof ArrayBuffer){u=URL.createObjectURL(item.data instanceof Blob?item.data:new Blob([item.data],{type:'image/jpeg'}));activeUrls.push(u)}
+    if(u){const im=document.createElement('img');im.src=u;im.alt='Fiche de '+item.t.nom;b.append(im)}
+    b.append(title,desc);
+    b.onclick=async()=>{
+      if(!await yfConfirm({title:'Utiliser cette identité P1 ?',message:'Tu sélectionnes : « '+item.t.nom+' » ('+item.q.titre+'). Vérifie que ce personnage correspond bien à « '+s.nom+' ». Sa vraie image sera utilisée, sans génération.',okLabel:'Relier cette fiche',icon:'fa-link'}))return;
+      const old=await mGet(imgKey(p,s));
+      if(old && old!==item.data && !await yfConfirm({title:'Remplacer une fiche existante ?',message:'Une image est déjà enregistrée pour cette identité. La remplacer peut nécessiter de régénérer des scènes qui l’utilisent.',okLabel:'Remplacer',danger:true}))return;
+      await mPut(imgKey(p,s),item.data);
+      s.img={st:'fini',src:'mémoire',msg:'Identité P1 reliée : '+item.q.titre+' / '+item.t.nom,prompt:s.promptImage};
+      s.ok=true;s.verrouIdentite=true;
+      await kvPut('canon-meta:'+s.id,{id:s.id,sourceProjet:item.q.id,sourceFiche:item.t.id,date:new Date().toISOString()});
+      for(const q of projects)for(const t of q.etapes)if(t!==s && t.id===s.id){t.img=Object.assign({},s.img);t.ok=true;t.verrouIdentite=true}
+      if(old&&old!==item.data)await invalidateCharacterDependents(s.id,'Fiche officielle P1 reliée : vérifier images et clips dépendants');
+      await kvPut('projects',projects);saveProjects();dlg.close();render();toast('Fiche P1 reliée à '+s.nom,'ok');
+    };
+    zone.append(b);
+  }
+  dlg.querySelectorAll('[data-canon-close]').forEach(b=>{b.onclick=()=>dlg.close()});
+  dlg.addEventListener('close',()=>{for(const u of activeUrls)URL.revokeObjectURL(u)},{once:true});
+  dlg.showModal();
+}
+
 async function unlockFirstAppearance(p, s) {
   if (s.type !== 'fiche' || !s.verrouIdentite || s.img.st === 'fini') return;
   if (/^fiche-serie-/.test(s.id) && await mGet('fiche:' + s.id)) {
@@ -2962,7 +3086,8 @@ function stepCard(p, s, i) {
       '<div class="acts">' +
         (sc && S.gate && s.img.st === 'fini' && !s.ok ? '<button class="btn sm primary" data-act="ok"><i class="fa-solid fa-check"></i>Valider</button>' : '') +
         '<button class="btn sm" data-act="edit" title="Modifier les prompts"><i class="fa-solid fa-pen"></i>Prompts</button>' +
-        (s.type === 'fiche' && s.verrouIdentite && s.img.st !== 'fini' ? '<button class="btn sm primary" data-act="firstAppearance" title="Créer la fiche officielle à la première apparition"><i class="fa-solid fa-unlock"></i>Première apparition</button>' : '') +
+        (s.type === 'fiche' && (s.verrouIdentite || priorCanonRequired(s)) && s.img.st !== 'fini' ? '<button class="btn sm" data-act="linkCanon" title="Retrouver une fiche P1 validée dans ce navigateur"><i class="fa-solid fa-link"></i>Relier P1</button>' : '') +
+        (s.type === 'fiche' && s.verrouIdentite && !priorCanonRequired(s) && s.img.st !== 'fini' ? '<button class="btn sm primary" data-act="firstAppearance" title="Créer la fiche officielle à la première apparition"><i class="fa-solid fa-unlock"></i>Première apparition</button>' : '') +
         (s.type === 'fiche' && s.img.st === 'fini' && !/^(decor|fin-)/i.test(s.id) ? '<button class="btn sm" data-act="canon" title="Sauvegarder le visage officiel pour tous les épisodes"><i class="fa-solid fa-lock"></i>Canoniser</button>' : '') +
         (s.promptImage && !s.imageDe && !s.verrouIdentite ? '<button class="btn sm" data-act="redoImg"><i class="fa-solid fa-rotate-right"></i>' + (s.img.st === 'fini' ? 'Refaire img' : 'Relancer img') + '</button>' : '') +
         (sc && s.img.st === 'fini' ? '<button class="btn sm" data-act="redoClip"><i class="fa-solid fa-rotate-right"></i>' + (s.clip.st === 'fini' ? 'Refaire clip' : 'Relancer clip') + '</button>' : '') +
@@ -3061,6 +3186,7 @@ async function render() {
       else if (a === 'edit') openEdit(p, s); else if (a === 'redoImg') redoImage(p, s); else if (a === 'redoClip') redoClip(p, s);
       else if (a === 'canon') memorizeIdentity(p, s);
       else if (a === 'firstAppearance') unlockFirstAppearance(p, s);
+      else if (a === 'linkCanon') linkCanonFromP1(p, s);
       else if (a === 'fileImg') pickFile(p, s, 'image');
       else if (a === 'fileClip') pickFile(p, s, 'clip');
       else if (a === 'file') pickFile(p, s, 'image');
@@ -4063,6 +4189,39 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
     if (loaded && prev && prev !== loaded) setTimeout(() => { badge(loaded); log && log('YakFlow mis à jour : version ' + short(loaded) + '. ' + NOTES); }, 2500);
     if (loaded) try { localStorage.setItem('yf_build', loaded); } catch (_) {}
   })();
+})();
+</script>
+
+<script>
+/* YAKFLOW_PROMPTS_MODAL_V2 — aucune navigation : évite beforeunload durant la fabrication. */
+(function(){
+  const dlg=document.getElementById('yfFreePromptsDlg');
+  const btn=document.getElementById('yfFreePromptLink');
+  const lock=document.getElementById('yfFreePromptLock');
+  const msg=document.getElementById('yfFreePromptStatus');
+  function allowed(){try{return localStorage.getItem('yfFreePromptsUnlocked')==='1'}catch(_){return false}}
+  function update(){const ok=allowed();lock.hidden=ok;dlg.querySelectorAll('[data-free-action]').forEach(b=>{b.disabled=!ok;b.title=ok?'':'Active ton essai gratuit'});return ok}
+  if(btn) btn.addEventListener('click',()=>{msg.textContent='';update();dlg.showModal()});
+  dlg.querySelectorAll('[data-free-close]').forEach(b=>b.addEventListener('click',()=>dlg.close()));
+  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+  dlg.querySelectorAll('[data-free-action]').forEach(b=>b.addEventListener('click',async()=>{
+    if(!update())return;
+    const url=b.dataset.freeFile, name=url.split('/').pop();
+    const original=b.innerHTML;b.disabled=true;msg.textContent='Chargement du prompt…';
+    try{
+      const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
+      const t=await r.text();if(!t.trim())throw Error('Fichier vide');
+      if(b.dataset.freeAction==='copy'){
+        try{await navigator.clipboard.writeText(t);msg.textContent='Prompt copié : colle-le dans ton IA.'}
+        catch(_){if(window.yfCopyModal)await window.yfCopyModal('Copier '+name,t);else throw Error('Copie impossible dans ce navigateur')}
+      }else{
+        const a=document.createElement('a'),obj=URL.createObjectURL(new Blob([t],{type:'text/plain;charset=utf-8'}));
+        a.href=obj;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(obj),3000);
+        msg.textContent='Téléchargement demandé : '+name;
+      }
+    }catch(e){msg.textContent='Impossible de charger le prompt : '+e.message+'. Vérifie que '+url+' est bien déployé.'}
+    finally{b.disabled=false;b.innerHTML=original}
+  }));
 })();
 </script>
 </body>
