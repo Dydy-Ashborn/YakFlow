@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.1.0
+// @version      3.2.0
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -32,7 +32,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.1.0';
+  const CONNECT_VERSION = '3.2.0';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -319,17 +319,20 @@
   const dbg = (m, o) => { try { console.log('[Pont]', m, o || ''); } catch (e) { /* rien */ } };
   // YAKFLOW_CONNECT_REFS_V1 : une conversation peut produire plusieurs images.
   // Les fiches identiques déjà jointes dans CE chat n'ont plus besoin d'être téléversées.
-  const REF_SESSION_KEY = 'yf-connect-refs-v1';
+  const REF_SESSION_KEY = 'yf-connect-refs-v2'; // Mémoire versionnée : anciennes associations non vérifiées ignorées.
   const ACTIVE_KEY = 'yf-connect-active-v1';
   const PENDING_IMAGE_KEY = 'yf-connect-image-to-deliver-v1';
   const ECONOMY_KEY = 'yf-connect-reuse-approved-character-references';
+  const QUALITY_KEY = 'yf-connect-quality-first-v320';
+  const REFRESH_AFTER_TURNS = 3; // Réattacher une fiche après trois images intermédiaires.
+  const isFaceCritical = (job) => /\b(?:gros plan|close[ -]?up|close portrait|portrait|visage en gros plan|face in close|tight shot|close shot|extreme close|tête et épaules|tete et epaules)\b/i.test(String(job?.prompt || '').slice(0, 1700));
   function loadRefSession() {
     let c; try { c = JSON.parse(sessionStorage.getItem(REF_SESSION_KEY) || 'null'); } catch (_) {}
-    if (!c || !c.refs || !Array.isArray(c.refs)) c = { path: '', refs: [], sent: 0 };
+    if (!c || !c.refs || !Array.isArray(c.refs)) c = { path: '', refs: [], sent: 0, uploaded: 0, reused: 0 };
     const path = location.pathname;
     const inChat = /^\/(?:c|g)\//.test(path);
     if ((inChat && c.path && c.path !== path) || (!inChat && c.path && !hasConversation()))
-      c = { path: '', refs: [], sent: 0 };
+      c = { path: '', refs: [], sent: 0, uploaded: 0, reused: 0 };
     if (inChat && !c.path) c.path = path;
     try { sessionStorage.setItem(REF_SESSION_KEY, JSON.stringify(c)); } catch (_) {}
     return c;
@@ -337,20 +340,34 @@
   function saveRefSession(c) { try { if (/^\/(?:c|g)\//.test(location.pathname)) c.path = location.pathname; sessionStorage.setItem(REF_SESSION_KEY, JSON.stringify(c)); } catch (_) {} }
   const isPersistentSheet = (r) => /^(?:ref-\d+-)?fiche(?:-serie)?-/i.test(String(r.name || ''));
   const refFingerprint = (r) => fnv(String(r.data || ''));
-  function refPlan(refs) {
+  // QUALITÉ PRIORITAIRE : les gros plans reçoivent TOUJOURS la fiche en pièce jointe.
+  // Sur les plans courants, la réutilisation est limitée à un petit nombre de messages.
+  // La référence de scène / image de fin est TOUJOURS jointe séparément.
+  function refPlan(refs, job) {
     const mem = loadRefSession(), reuseOn = GM_getValue(ECONOMY_KEY, true);
+    const qualityOn = GM_getValue(QUALITY_KEY, true);
+    const importantFace = qualityOn && isFaceCritical(job);
     const uploads = [], mapping = [], newly = [];
     for (let i = 0; i < refs.length; i++) {
-      const r = refs[i], hash = refFingerprint(r), old = reuseOn && isPersistentSheet(r) && mem.refs.find(x => x.hash === hash);
-      if (old) mapping.push('RÉFÉRENCE ' + (i + 1) + ' = fiche ' + r.name + ' DÉJÀ JOINTE dans cette conversation, message YakFlow ' + old.job + '. REPRENDRE exactement cette image antérieure, pas une image générée ensuite.');
-      else { uploads.push(r); newly.push({ hash, name: r.name }); mapping.push('RÉFÉRENCE ' + (i + 1) + ' = fichier ' + r.name + ' joint à CE message.'); }
+      const r = refs[i], hash = refFingerprint(r);
+      const old = reuseOn && isPersistentSheet(r) && mem.refs.find(x => x.hash === hash);
+      const isFresh = old && Number.isInteger(old.attachedAt) && (mem.sent - old.attachedAt) <= REFRESH_AFTER_TURNS;
+      const canReuse = !!old && !importantFace && (!qualityOn || isFresh);
+      if (canReuse) {
+        mapping.push('RÉFÉRENCE ' + (i + 1) + ' = fiche canonique ' + old.name + ' déjà jointe dans cette conversation (message YakFlow ' + old.job + '). UTILISER cette image EXACTE ; ne jamais substituer une autre version du personnage.');
+      } else {
+        uploads.push(r);
+        newly.push({ hash, name: r.name });
+        mapping.push('RÉFÉRENCE ' + (i + 1) + ' = fichier ' + r.name + ' joint DIRECTEMENT à CE message.');
+      }
     }
-    const suffix = refs.length ? '\n\nYAKFLOW — ORDRE IMMUTABLE DES RÉFÉRENCES POUR CETTE DEMANDE :\n' + mapping.join('\n') + '\nInterpréter FIRST / SECOND reference du prompt en suivant ces NUMÉROS, même lorsque la référence est attachée dans un message ANTÉRIEUR. Conserver strictement l’identité de la fiche approuvée. Les images déjà GÉNÉRÉES dans ce chat ne sont pas des références sauf mention explicite.' : '';
-    return { uploads, newly, suffix, mem, original: refs };
+    const suffix = refs.length ? '\n\nYAKFLOW — ORDRE IMMUTABLE DES RÉFÉRENCES :\n' + mapping.join('\n') + '\nFIRST/SECOND désignent ces numéros. Les personnages conservent STRICTEMENT la structure de visage, museau, oreilles et proportions de leur fiche canonique. Les images produites antérieurement ne doivent jamais remplacer ces références.' : '';
+    return { uploads, newly, suffix, mem, original: refs, importantFace, qualityOn };
   }
   GM_registerMenuCommand('YakFlow Connect · réutilisation des fiches (ON/OFF)', () => { const v = !GM_getValue(ECONOMY_KEY, true); GM_setValue(ECONOMY_KEY, v); alert('Réutilisation des fiches approuvées : ' + (v ? 'ON' : 'OFF')); });
+  GM_registerMenuCommand('YakFlow Connect · QUALITÉ PRIORITAIRE (ON/OFF)', () => { const v = !GM_getValue(QUALITY_KEY, true); GM_setValue(QUALITY_KEY, v); alert('Qualité prioritaire : ' + (v ? 'ON (gros plans : références directes ; autres : réinsertion fréquente)' : 'OFF (économie maximale, davantage de risque de dérive)')); });
   GM_registerMenuCommand('YakFlow Connect · effacer les références de ce chat', () => { sessionStorage.removeItem(REF_SESSION_KEY); alert('Références locales effacées ; prochaine demande : envoi des fichiers.' ); });
-  GM_registerMenuCommand('YakFlow Connect · état des pièces jointes', () => { const c = loadRefSession(); alert(c.refs.length + ' fiches distinctes retenues ; ' + c.sent + ' images envoyées depuis ce chat. Seules les fiches répétées sont réutilisées.'); });
+  GM_registerMenuCommand('YakFlow Connect · état des pièces jointes', () => { const c = loadRefSession(); const total = (c.uploaded || 0) + (c.reused || 0); const pct = total ? Math.round((c.reused || 0) * 100 / total) : 0; alert(c.sent + ' images demandées dans ce chat.\n' + (c.uploaded || 0) + ' fichiers joints ; ' + (c.reused || 0) + ' références réutilisées (' + pct + '% économisées).\n' + c.refs.length + ' fiches mémorisées.\nQualité prioritaire : ' + (GM_getValue(QUALITY_KEY, true) ? 'ON' : 'OFF') + '.'); });
   const K_ON = 'pont_actif', K_PID = 'pont_pid';
   let busy = false, info = 'en attente', lastErr = '';
 
@@ -371,7 +388,7 @@
     const bmp = await createImageBitmap(blob), c = document.createElement('canvas');
     const scale = Math.min(1, 2048 / Math.max(bmp.width, bmp.height));
     c.width = Math.round(bmp.width * scale); c.height = Math.round(bmp.height * scale); c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
-    return c.toDataURL('image/jpeg', 0.86);
+    return c.toDataURL('image/jpeg', 0.95); // Qualité vidéo : moins d'artefacts JPEG, mêmes dimensions.
   }
   function gmFetchBlob(url) {
     return new Promise((res, rej) => GM_xmlhttpRequest({ method: 'GET', url, responseType: 'blob',
@@ -710,7 +727,7 @@
     if (!field) throw new Error('zone de texte ChatGPT introuvable');
     sentPrompt = job.prompt;
     const before = new Set(generatedImages().map(imgSrc));
-    const rp = refPlan(job.refs || []);
+    const rp = refPlan(job.refs || [], job);
     const files = rp.uploads.map((r) => dataUrlToFile(r.data, r.name));
     const refHashes = [];
     for (const r of job.refs || []) { try { refHashes.push(hashOf(await bitmapOf(r.data))); } catch (e) { /* tant pis */ } }
@@ -732,8 +749,13 @@
     job.submitted = true;
     send.click();
     // Les pièces jointes sont maintenant présentes dans cette conversation, y compris si la génération échoue.
-    const c = rp.mem; for (const r of rp.newly) if (isPersistentSheet({name:r.name}) && !c.refs.some(x => x.hash === r.hash)) c.refs.push({...r,job:job.id});
-    c.sent++; c.refs = c.refs.slice(-75); saveRefSession(c);
+    const c = rp.mem; c.sent++; c.uploaded = (c.uploaded || 0) + rp.uploads.length; c.reused = (c.reused || 0) + (rp.original.length - rp.uploads.length);
+    for (const r of rp.newly) if (isPersistentSheet({name:r.name})) {
+      const old = c.refs.find(x => x.hash === r.hash);
+      if (old) Object.assign(old, { job: job.id, attachedAt: c.sent, name: r.name });
+      else c.refs.push({ ...r, job: job.id, attachedAt: c.sent });
+    }
+    c.refs = c.refs.slice(-75); saveRefSession(c);
     const img = await waitNewImage(before, 15 * 60000, 'ChatGPT dessine : ' + job.nom, validate);
     if (!img) {
       if (limitReached()) throw new Error('limite ChatGPT atteinte');
