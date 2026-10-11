@@ -48,8 +48,10 @@ window.yfMedia=async function(url){
 window.yfCheckSig=async function(t){try{const [b,s]=String(t||'').split('.');if(!b||!s)return null;const u=x=>Uint8Array.from(atob(x.replace(/-/g,'+').replace(/_/g,'/')+'='.repeat((4-x.length%4)%4)),c=>c.charCodeAt(0));
   const k=await crypto.subtle.importKey('jwk',{kty:'EC',crv:'P-256',x:'HHa1M8_6PFwWynyMX96HgfOGhWCK1Uktq0Vcjn7HcKM',y:'rMI-Y3kGNf8wSuOTHaQDpWpbMGHnfy838ogn8kEARRk'},{name:'ECDSA',namedCurve:'P-256'},false,['verify']);
   if(!(await crypto.subtle.verify({name:'ECDSA',hash:'SHA-256'},k,u(s),u(b))))return null;const p=JSON.parse(new TextDecoder().decode(u(b)));return p&&p.u&&Date.now()<p.u+3*864e5?p:null}catch(_){return null}};
-window.hubCall=function(kind,method,path,body){if(!YFC.ready){var e=new Error('YakFlow Connect n’est pas installé : installe-le dans Tampermonkey (Réglages > Ponts).');e.status=0;e.noConnect=true;return Promise.reject(e)}
- return new Promise(function(res,rej){var rid=++YFC.n;var t=setTimeout(function(){YFC.pend.delete(rid);rej(new Error('YakFlow Connect ne répond pas'))},60000);YFC.pend.set(rid,function(d){clearTimeout(t);res(d)});postMessage({__yf:'req',rid:rid,kind:kind,method:method,path:path,body:body},'*')})};
+/* YAKFLOW_CONNECT_WAIT_V1 : au chargement, Connect répond après la page. On attend son « hello » (8 s max) au lieu d'échouer tout de suite. */
+window.yfConnectReady=function(ms){if(YFC.ready)return Promise.resolve(true);return new Promise(function(res){var t0=Date.now();(function w(){if(YFC.ready)return res(true);if(Date.now()-t0>(ms||8000))return res(false);postMessage({__yf:'ping'},'*');setTimeout(w,500)})()})};
+window.hubCall=function(kind,method,path,body){return yfConnectReady(8000).then(function(ok){if(!ok){var e=new Error('YakFlow Connect n’est pas installé : installe-le dans Tampermonkey (Réglages > Ponts).');e.status=0;e.noConnect=true;throw e}
+ return new Promise(function(res,rej){var rid=++YFC.n;var t=setTimeout(function(){YFC.pend.delete(rid);rej(new Error('YakFlow Connect ne répond pas'))},60000);YFC.pend.set(rid,function(d){clearTimeout(t);res(d)});postMessage({__yf:'req',rid:rid,kind:kind,method:method,path:path,body:body},'*')})})};
 </script>
 
 <style>
@@ -1707,7 +1709,9 @@ async function genChatGPT(p, s) {
     refs.push({ name: 'ref-' + (refs.length + 1) + '-' + id + '.jpg', data: (await toJpeg(d, PROXY ? 1536 : 1024)).data });
   }
   const id = p.id + '|' + s.id, job = { id, pid: p.id, nom: s.nom, titre: p.titre, prompt: imagePrompt(s), refs };
-  await bridge('POST', 'push', job);
+  // YAKFLOW_CONNECT_WAIT_V1 : si Connect n'est pas relié, RIEN n'est parti vers ChatGPT : l'image reste en attente, pas en échec.
+  try { await bridge('POST', 'push', job); }
+  catch (e) { if (e && e.noConnect) return { notSent: true, err: e.message }; throw e; }
   let lastMsg = '';
   for (;;) {
     await sleep(6000);   // YAKFLOW_POLL_V16 : une image ChatGPT prend ~4 min, inutile de demander toutes les 3 s
@@ -2128,6 +2132,7 @@ async function doImage(p, s, lane) {
     const out = source === 'chatgpt' ? await genChatGPT(p, s) : await genImage(p, s, lane);
     if (!projects.some(q => q === p && q.etapes.includes(s)) || s.img.st !== 'calcul' || s.img.runId !== runId) { log('Image modifiée pendant la génération : résultat ignoré pour ' + s.nom); return; }
     if (out.cancel) { log('Image annulée (importée ou changée entre-temps) : ' + s.nom); return; }
+    if (out.notSent) { setImg(p, s, { st: 'attente', msg: 'En attente de YakFlow Connect (rien envoyé à ChatGPT)' }); log('Image remise en attente, Connect pas encore relié : ' + s.nom); return; }
     if (out.data) {
       await mPut(imgKey(p, s), out.data.data);
       setImg(p, s, { st: 'fini', msg: 'Image faite en ' + fmtDur(Math.max(1000, now() - s.img.sent)) + ' (' + out.data.w + '×' + out.data.h + (out.refs ? ', ' + out.refs + ' réf.' : '') + ')', src: 'agnes', prompt: s.promptImage });
