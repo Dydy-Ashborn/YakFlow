@@ -713,7 +713,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
         <p>Tout est débloqué tout de suite, sans carte bancaire.</p>
         <input id="yfTrialEmail" type="email" autocomplete="email" placeholder="ton@email.com" aria-label="Ton email">
         <button id="yfTrialBtn" class="yfA-btn primary" type="button"><i class="fa-solid fa-play"></i>Lancer mon essai gratuit</button>
-        <small>Un essai par navigateur et par email.</small>
+        <small>Un essai par navigateur et par email. Essai déjà commencé ? Entre le même email pour le retrouver.</small>
       </div>
       <div class="yfA-sep"><span>ou</span></div>
       <div class="yfA-code">
@@ -3718,7 +3718,7 @@ setInterval(agnesPushRemoteStatus, 3000);
   tb.disabled=true;show('Création de ton essai…','');
   const {status:st,d}=await post('trial',{email,machine:device(),version:'web-2'});
   tb.disabled=false;
-  if(st===200&&d.ok&&d.token){keep(d.code,d.token);show('Essai activé pour 24 h. Bonne création !','ok');setTimeout(()=>location.reload(),800);return}
+  if(st===200&&d.ok&&d.token){keep(d.code,d.token);show(d.resumed?'Bon retour : ton essai continue jusqu’à '+new Date(d.until).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})+'.':'Essai activé pour 24 h. Bonne création !','ok');setTimeout(()=>location.reload(),900);return}
   show(d.message||'Essai refusé.','err')}
  async function boot(){
   const link=norm(new URLSearchParams(location.search).get('code'));if(link){input.value=link;const u=new URL(location.href);u.searchParams.delete('code');history.replaceState(null,'',u.pathname+u.search+u.hash)}

@@ -31,6 +31,21 @@ function canonicalEmail(email) {
   return user + '@' + domain;
 }
 
+async function resumeTrial(email, prev, machine, now) {
+  try {
+    let doc = null;
+    if (prev && prev.id) { const s = await licenses().doc(prev.id).get(); if (s.exists) doc = s; }
+    if (!doc) { const q = await licenses().where('email', '==', email).where('type', '==', 'trial').limit(5).get(); doc = q.docs.find((d) => d.data().active !== false) || q.docs[0] || null; }
+    if (!doc) return null;
+    const lic = doc.data(), until = Date.parse(lic.expiresAt || 0);
+    if (lic.email !== email) return null;
+    if (lic.active === false || !(until > now)) return { ok: false, expired: true, message: 'Ton essai gratuit de 24 h avec cet email est terminé. Abonne-toi pour continuer à créer.' };
+    await doc.ref.update({ machine, machineBoundAt: new Date(now).toISOString(), resumedAt: new Date(now).toISOString() });
+    const token = signLicense({ v: 1, id: doc.id, m: machine, t: 'trial', u: until, i: now, e: email });
+    return { ok: true, resumed: true, token, type: 'trial', until, message: 'Bon retour : ton essai continue.' };
+  } catch (error) { console.error('trial resume:', error.message); return null; }
+}
+
 export default async function handler(request, context) {
   if (request.method !== 'POST') return json({ ok: false, message: 'Méthode refusée.' }, 405);
   let body;
@@ -50,15 +65,20 @@ export default async function handler(request, context) {
       try {
         const out = await db.runTransaction(async (tx) => {
           const [m, e, i] = await Promise.all([tx.get(byMachine), tx.get(byEmail), byIp ? tx.get(byIp) : null]);
-          if (m.exists || e.exists) return { used: true };
+          if (m.exists || e.exists) return { used: true, prev: e.exists ? e.data() : null };
           if (i && i.exists && now - Date.parse(i.data().at || 0) < IP_WINDOW) return { used: true };
           tx.create(licenses().doc(id), { type: 'trial', email, active: true, createdAt: new Date(now).toISOString(), expiresAt, machine, machineBoundAt: new Date(now).toISOString(), note: 'Essai libre-service' });
-          tx.create(byMachine, { email, at: new Date(now).toISOString() });
-          tx.create(byEmail, { machine, at: new Date(now).toISOString() });
+          tx.create(byMachine, { email, id, at: new Date(now).toISOString() });
+          tx.create(byEmail, { machine, id, at: new Date(now).toISOString() });
           if (byIp) tx.set(byIp, { at: new Date(now).toISOString() });
           return { used: false };
         });
-        if (out.used) return json({ ok: false, message: 'L’essai gratuit a déjà été utilisé sur ce navigateur, avec cet email ou depuis cette connexion Internet. Abonne-toi pour continuer.' }, 409);
+        if (out.used) {
+          // YAKFLOW_TRIAL_RESUME_V1 : même email, essai encore en cours → on le rouvre (nouveau navigateur, données effacées…)
+          const back = await resumeTrial(email, out.prev, machine, now);
+          if (back) return json(back);
+          return json({ ok: false, message: 'L’essai gratuit a déjà été utilisé sur ce navigateur, avec cet email ou depuis cette connexion Internet. Abonne-toi pour continuer.' }, 409);
+        }
         const until = now + DAY;
         const token = signLicense({ v: 1, id, m: machine, t: 'trial', u: until, i: now, e: email });
         return json({ ok: true, code, token, type: 'trial', until });
