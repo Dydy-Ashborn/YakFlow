@@ -1,0 +1,355 @@
+{
+  "id": "la-cagnotte-2",
+  "titre": "La Cagnotte #2 — La chambre 4",
+  "accroche": "Ils n’ont jamais ouvert leur porte.",
+  "description": "Huit joueurs, une cagnotte de dix millions. Cinq n’ont jamais ouvert leur porte, et ce soir, ils votent. Toi, tu lui dois une voix ou pas ?",
+  "hashtags": [
+    "#LaCagnotte",
+    "#Animation3D",
+    "#Suspense",
+    "#HuisClos",
+    "#YakFilms"
+  ],
+  "commentaire": "Il l’a sauvé, ou il l’a acheté ?",
+  "datePublication": "2026-10-12",
+  "heurePublication": "20:00",
+  "etapes": [
+    {
+      "id": "fiche-serie-cagnotte-sam",
+      "type": "fiche",
+      "nom": "Fiche — Sam (RELIE CANON P1)",
+      "joindre": [],
+      "promptImage": "CANONICAL P1 IDENTITY TRANSFER — the true approved P1 media is the ONLY identity source: fiche-cagnotte-sam. Sam: slim young adult tan-brown pangolin, burgundy plain zip tracksuit, white sneakers, gentle dark eyes. This P2 step is a PLACEHOLDER to RELINK/IMPORT the original approved sheet from P1, not to invent a new character. Only use the approved original P1 image through YakFlow \"Relier P1\". Do not generate a replacement portrait from text. Keep the same exact face, markings, outfit, proportions, color, shoes and age in every P2 scene."
+    },
+    {
+      "id": "fiche-serie-cagnotte-lou",
+      "type": "fiche",
+      "nom": "Fiche — Lou (RELIE CANON P1)",
+      "joindre": [],
+      "promptImage": "CANONICAL P1 IDENTITY TRANSFER — the true approved P1 media is the ONLY identity source: fiche-cagnotte-lou. Lou: grey-white goat, burgundy plain zip tracksuit, worn beige blanket over shoulders, matching P1. This P2 step is a PLACEHOLDER to RELINK/IMPORT the original approved sheet from P1, not to invent a new character. Only use the approved original P1 image through YakFlow \"Relier P1\". Do not generate a replacement portrait from text. Keep the same exact face, markings, outfit, proportions, color, shoes and age in every P2 scene."
+    },
+    {
+      "id": "fiche-serie-cagnotte-brutus",
+      "type": "fiche",
+      "nom": "Fiche — Brutus (RELIE CANON P1)",
+      "joindre": [],
+      "promptImage": "CANONICAL P1 IDENTITY TRANSFER — the true approved P1 media is the ONLY identity source: fiche-cagnotte-brutus. Brutus: huge brown bull, short curved horns, gold nose ring, burgundy tracksuit, black slides. This P2 step is a PLACEHOLDER to RELINK/IMPORT the original approved sheet from P1, not to invent a new character. Only use the approved original P1 image through YakFlow \"Relier P1\". Do not generate a replacement portrait from text. Keep the same exact face, markings, outfit, proportions, color, shoes and age in every P2 scene."
+    },
+    {
+      "id": "fiche-serie-cagnotte-renard",
+      "type": "fiche",
+      "nom": "Fiche — Léopard des neiges, chef de l’alliance (PREMIÈRE APPARITION P2)",
+      "joindre": [],
+      "promptImage": "NEW ORIGINAL CHARACTER — FIRST APPEARANCE LA CAGNOTTE P2. NO P1 IMAGE REQUIRED. Original adult male anthropomorphic SNOW LEOPARD 35, tall elegant body, silver-grey and cream fur, distinctive charcoal rosettes, rounded ears, short broad feline muzzle, icy blue eyes, thick spotted tail, restrained warm smile hiding a manipulative temperament. P2 visual identity is based on the approved snow leopard character reference if one has already been made; never recreate a differently shaped face. IN-GAME COSTUME: identical burgundy-red plain zip tracksuit and discreet trainers worn by all P1 contestants. If an approved snow leopard reference exists in midnight blue suit, use that reference solely to preserve the face and fur markings, then change CLOTHES ONLY to match the established P1 contestant uniform. REFERENCE SHEET three EXACT SAME VIEWS: left full body front, center full body 3/4, right face and shoulders. Neutral light grey studio background. Original premium stylized 3D adult animated feature style, soft appealing non-realistic fur. Vertical 9:16, no titles, text, numbers or props. Generate a FIRST APPEARANCE identity only if no approved snow leopard image already exists; otherwise edit the wardrobe of that image and canonize the game-uniform version."
+    },
+    {
+      "id": "decor-cagnotte-salon",
+      "type": "fiche",
+      "nom": "Décor — hall P1 (ancien ID conservé, PAS un salon de vote)",
+      "joindre": [],
+      "promptImage": "ENVIRONMENT RELINK — this is precisely the approved P1 decor-cagnotte-hall, NOT a new lounge. EXACT SAME P1 BURGUNDY HOTEL HALL: worn red carpet, aged cream wallpaper with gold mouldings, dusty UNLIT chandelier, tall windows barred by closed iron shutters; ONE monumental black electronic scoreboard on BACK WALL; ONE glowing vending machine on LEFT wall; numbered wooden room doors 1 through 8 on RIGHT wall, doors 4–8 shut; no new room, no throne, no urn, no ballots, no paper votes, no counting table.  Use original approved P1 hall image as exact geometry, floor plan, decorative architecture, screen and vending machine. EMPTY establishing still, no characters, no legible display text. Vertical 9:16. Do not create a new room if the actual P1 canonical still is unavailable; link the approved existing P1 hall."
+    },
+    {
+      "id": "scene-1",
+      "type": "scene",
+      "nom": "1. Voix du jeu : « Derrière ces portes… ils votent »",
+      "joindre": [
+        "decor-cagnotte-salon"
+      ],
+      "promptImage": "Wide shot of the empty hall, slightly low angle, the giant scoreboard on the back wall large in the upper half of the frame, the closed doors 4 to 8 on the right. The scoreboard shows exactly two lines in glowing red letters: \"VOTE · 8 CHAMBRES\" and \"CHAMBRES 4 À 8 : ?\". Night. The faded luxury hotel hall from the reference: worn red carpet, aged cream wallpaper with gold mouldings, dusty unlit chandelier, tall windows closed by iron shutters, a monumental black electronic scoreboard on the back wall, a glowing vending machine on the left wall, numbered dark wooden room doors 1 to 8 on the right wall with brass digits, doors 4 to 8 firmly shut. Cold red light from the scoreboard, dim amber hall light. No character in the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The empty hall at night. Nothing moves except the light of the scoreboard pulsing once. Camera: a fast, steady dolly-in toward the scoreboard, the closed doors staying visible on the right. End exactly on the provided last frame. Cold red scoreboard light on the dim amber hall; low electric hum. A deep electronic tone as the vote opens. No music. Only an off-screen voice speaks, in French, with exactly the same voice as in all its other clips: an off-screen woman, smooth polite voice, cold and perfectly even, like a luxury hotel announcement: \"Derrière ces portes, des joueurs que personne n’a jamais vus. Ils voient tout, et ce soir, ils votent.\" It speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 7. Nobody is on screen and nobody appears. The scoreboard text stays exact, sharp and readable. Do not add new text or subtitles.",
+      "secondes": 8,
+      "garder": "0-7.5 s",
+      "transition": "cut",
+      "imageFin": "fin-scene-1"
+    },
+    {
+      "id": "fin-scene-1",
+      "type": "fiche",
+      "nom": "Image de fin — 1",
+      "joindre": [
+        "scene-1"
+      ],
+      "promptImage": "This is the LAST FRAME of a fast dolly-in on the attached first image: same place, same moment a second later, camera now closer to the scoreboard, which fills the upper two thirds of the frame and still reads exactly \"VOTE · 8 CHAMBRES\" and \"CHAMBRES 4 À 8 : ?\"; the edge of the closed doors 4 to 8 still visible on the right. Same light, no character. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-2",
+      "type": "scene",
+      "nom": "2. Sam : « Deux voix contre moi »",
+      "joindre": [
+        "fiche-serie-cagnotte-sam",
+        "decor-cagnotte-salon"
+      ],
+      "promptImage": "Over-the-shoulder shot from behind Sam, a slim young adult tan-brown pangolin with overlapping scales and gentle dark eyes, plain burgundy zip tracksuit, white sneakers, standing upright in the lower left of the frame, seen from behind and slightly from the side, looking up at the scoreboard. The scoreboard reads exactly \"SAM : 2 VOIX\" in glowing red. Doors 4 to 8 shut on the right. Night. The faded luxury hotel hall from the reference: worn red carpet, aged cream wallpaper with gold mouldings, dusty unlit chandelier, tall windows closed by iron shutters, a monumental black electronic scoreboard on the back wall, a glowing vending machine on the left wall, numbered dark wooden room doors 1 to 8 on the right wall with brass digits, doors 4 to 8 firmly shut. Cold red light from the scoreboard, dim amber hall light. No other character in the frame; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Sam stands still, seen from behind, looking up at his two votes; his shoulders tighten and his head drops a little. Camera: locked over-the-shoulder shot, no movement. Cold red scoreboard light on the dim amber hall; low electric hum. No music. Only Sam speaks, in French, with exactly the same voice as in all his other clips: a young adult man, light clear mid-range voice with a slight grain, gentle and sincere, never deep, never childish: \"Deux voix contre moi. Une de plus, et je sors sans rien.\" Tense, the voice low and tight, weight on « sans rien ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He talks to himself, not to the camera. No other character in the frame; no animal enters the frame. The scoreboard text stays exact, sharp and readable. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-3",
+      "type": "scene",
+      "nom": "3. Chambre 5 → Brutus",
+      "joindre": [
+        "decor-cagnotte-salon"
+      ],
+      "promptImage": "Close shot of the giant scoreboard on the back wall of the hall, filling the frame, glowing red letters on black, reading exactly two lines: \"SAM : 2 VOIX\" and \"BRUTUS : 0 VOIX\". Night, cold red glow. No character. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The scoreboard: a new line lights up and the count for Brutus rises, exactly as in the last frame. Camera: locked on the scoreboard, no movement. End exactly on the provided last frame. One sharp electronic beep. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The scoreboard text stays exact, sharp and readable. Do not add new text or subtitles.",
+      "secondes": 4,
+      "garder": "0-3.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-3"
+    },
+    {
+      "id": "fin-scene-3",
+      "type": "fiche",
+      "nom": "Image de fin — 3",
+      "joindre": [
+        "scene-3"
+      ],
+      "promptImage": "This is the LAST FRAME of the attached first image: same framing, same scoreboard, now reading exactly three lines: \"CHAMBRE 5 → BRUTUS\", \"BRUTUS : 1 VOIX\" and \"SAM : 2 VOIX\". Same light, no character. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-4",
+      "type": "scene",
+      "nom": "4. Brutus : « Vous votez sans même ouvrir votre porte »",
+      "joindre": [
+        "fiche-serie-cagnotte-brutus",
+        "decor-cagnotte-salon"
+      ],
+      "promptImage": "Low-angle medium shot of Brutus, a huge brown bull with short curved horns and a gold nose ring, tight burgundy tracksuit, black slides, standing upright on the left of the frame, in three-quarter profile, facing the closed numbered doors on the right, chin up, a mocking grin, hands empty at his sides. Doors 4 to 8 clearly shut. Night. The faded luxury hotel hall from the reference: worn red carpet, aged cream wallpaper with gold mouldings, dusty unlit chandelier, tall windows closed by iron shutters, a monumental black electronic scoreboard on the back wall, a glowing vending machine on the left wall, numbered dark wooden room doors 1 to 8 on the right wall with brass digits, doors 4 to 8 firmly shut. Cold red light from the scoreboard, dim amber hall light. No other character in the frame; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Brutus stands in place and throws his line at the closed doors on the right, chin high, mocking. Camera: locked low-angle shot, no movement. Cold red scoreboard light on the dim amber hall; low electric hum. No music. Only Brutus speaks, in French, with exactly the same voice as in all his other clips: a big mature man, very deep, loud, resonant chest voice, rough and boastful, never high, never soft: \"Vous votez sans même ouvrir votre porte, bande de lâches.\" Loud and mocking, a sneer on « lâches ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at the closed doors on the right, never into the lens. The doors stay shut. No other character in the frame; no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-5",
+      "type": "scene",
+      "nom": "5. Lou baisse les yeux",
+      "joindre": [
+        "fiche-serie-cagnotte-lou",
+        "fiche-serie-cagnotte-sam"
+      ],
+      "promptImage": "Medium close-up of Lou, a young adult grey-white goat, plain burgundy zip tracksuit, a worn beige wool blanket over her shoulders in the right foreground, in three-quarter profile, looking toward Sam, a slim young adult tan-brown pangolin with overlapping scales and gentle dark eyes, plain burgundy zip tracksuit, white sneakers, who stands blurred in the left background with his back half turned. Her hand holds the edge of the blanket. Night, red scoreboard glow on her face. No other character in the frame; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Lou looks at Sam, her fingers tighten on the blanket, and she lowers her eyes to the floor. Sam stays blurred and still. Camera: locked medium close-up, no movement. Cold red scoreboard light on the dim amber hall; low electric hum. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. No other character in the frame; no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 4,
+      "garder": "0-3.5 s",
+      "transition": "cut",
+      "muet": true
+    },
+    {
+      "id": "scene-6",
+      "type": "scene",
+      "nom": "6. Chambres 6 et 7 → Brutus",
+      "joindre": [
+        "decor-cagnotte-salon"
+      ],
+      "promptImage": "Close shot of the giant scoreboard, filling the frame, glowing red on black, reading exactly two lines: \"BRUTUS : 1 VOIX\" and \"SAM : 2 VOIX\". Night. No character. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The scoreboard: two beeps, and the line for Brutus changes exactly as in the last frame. Camera: locked on the scoreboard, no movement. End exactly on the provided last frame. Two sharp electronic beeps. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The scoreboard text stays exact, sharp and readable. Do not add new text or subtitles.",
+      "secondes": 4,
+      "garder": "0-3.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-6"
+    },
+    {
+      "id": "fin-scene-6",
+      "type": "fiche",
+      "nom": "Image de fin — 6",
+      "joindre": [
+        "scene-6"
+      ],
+      "promptImage": "This is the LAST FRAME of the attached first image: same framing, same scoreboard, now reading exactly three lines: \"CHAMBRES 6 ET 7 → BRUTUS\", \"BRUTUS : 3 VOIX\" and \"SAM : 2 VOIX\". Same light, no character. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-7",
+      "type": "scene",
+      "nom": "7. Brutus fonce au distributeur",
+      "joindre": [
+        "fiche-serie-cagnotte-brutus",
+        "decor-cagnotte-salon"
+      ],
+      "promptImage": "Medium shot of Brutus, a huge brown bull with short curved horns and a gold nose ring, tight burgundy tracksuit, black slides in the middle of the hall, standing upright, turned toward the glowing vending machine on the left wall, his face furious, fists clenched. Night. The faded luxury hotel hall from the reference: worn red carpet, aged cream wallpaper with gold mouldings, dusty unlit chandelier, tall windows closed by iron shutters, a monumental black electronic scoreboard on the back wall, a glowing vending machine on the left wall, numbered dark wooden room doors 1 to 8 on the right wall with brass digits, doors 4 to 8 firmly shut. Cold red light from the scoreboard, dim amber hall light. No other character in the frame; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Brutus strides upright across the carpet to the vending machine and slams his finger on one button. Camera: handheld camera following him from the side, settling at the machine. End exactly on the provided last frame. Cold red scoreboard light on the dim amber hall; low electric hum. Heavy footsteps, a hard button press. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. He walks on two legs. No other character in the frame; no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-7"
+    },
+    {
+      "id": "fin-scene-7",
+      "type": "fiche",
+      "nom": "Image de fin — 7",
+      "joindre": [
+        "scene-7"
+      ],
+      "promptImage": "This is the LAST FRAME of the attached first image: same hall, a second later, camera now at the vending machine on the left wall. Brutus, a huge brown bull with short curved horns and a gold nose ring, tight burgundy tracksuit, black slides stands upright at the machine, his right index finger pressed on a lit button; the machine screen reads exactly \"CHAMPAGNE · 1 000 000 €\". His face furious. Same light, no other character. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-8",
+      "type": "scene",
+      "nom": "8. La cagnotte perd un million",
+      "joindre": [
+        "decor-cagnotte-salon"
+      ],
+      "promptImage": "Close shot of the giant scoreboard, filling the frame, glowing on black, one large line reading exactly \"CAGNOTTE : 9 890 000 €\". Night. No character. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The scoreboard flashes red once and the pot amount drops, exactly as in the last frame. A red glow washes over the frame. Camera: locked on the scoreboard, no movement. End exactly on the provided last frame. A harsh cash-register siren, then a dull low note. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The scoreboard text stays exact, sharp and readable. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-8"
+    },
+    {
+      "id": "fin-scene-8",
+      "type": "fiche",
+      "nom": "Image de fin — 8",
+      "joindre": [
+        "scene-8"
+      ],
+      "promptImage": "This is the LAST FRAME of the attached first image: same framing, same scoreboard, the large line now reads exactly \"CAGNOTTE : 8 890 000 €\" in alarm red, with a smaller line below: \"CHAMPAGNE · BRUTUS\". No character. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-9",
+      "type": "scene",
+      "nom": "9. Brutus : « Vous perdez un million avec moi »",
+      "joindre": [
+        "fiche-serie-cagnotte-brutus",
+        "decor-cagnotte-salon"
+      ],
+      "promptImage": "Medium close-up of Brutus, a huge brown bull with short curved horns and a gold nose ring, tight burgundy tracksuit, black slides, standing upright beside the vending machine, in three-quarter profile, facing the closed doors off to the right, holding a big gold champagne bottle in his right hand at his side, a bitter defiant grin. Night. No other character in the frame; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Brutus lifts the champagne bottle a little toward the closed doors on the right and speaks, defiant. Camera: locked medium close-up, no movement. Cold red scoreboard light on the dim amber hall; low electric hum. No music. Only Brutus speaks, in French, with exactly the same voice as in all his other clips: a big mature man, very deep, loud, resonant chest voice, rough and boastful, never high, never soft: \"Si je sors, vous perdez un million avec moi.\" Furious and defiant, loud attack on « un million ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks toward the closed doors on the right, never into the lens. The bottle stays rigid and closed. No other character in the frame; no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-10",
+      "type": "scene",
+      "nom": "10. Voix du jeu : « Brutus est éliminé »",
+      "joindre": [
+        "decor-cagnotte-salon"
+      ],
+      "promptImage": "Close shot of the giant scoreboard, filling the frame, glowing red on black, reading exactly two lines: \"BRUTUS : 3 VOIX\" and \"SAM : 2 VOIX\". Night. No character. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The scoreboard: the last votes land and the line for Brutus changes exactly as in the last frame. Camera: locked on the scoreboard, no movement. End exactly on the provided last frame. Two beeps, then one long buzzer. No music. Only an off-screen voice speaks, in French, with exactly the same voice as in all its other clips: an off-screen woman, smooth polite voice, cold and perfectly even, like a luxury hotel announcement: \"Chambre huit, chambre quatre. Brutus est éliminé, il repart sans rien.\" It speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. Nobody is on screen. The scoreboard text stays exact, sharp and readable. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut",
+      "imageFin": "fin-scene-10"
+    },
+    {
+      "id": "fin-scene-10",
+      "type": "fiche",
+      "nom": "Image de fin — 10",
+      "joindre": [
+        "scene-10"
+      ],
+      "promptImage": "This is the LAST FRAME of the attached first image: same framing, same scoreboard, now reading exactly two lines: \"BRUTUS : 5 VOIX · ÉLIMINÉ\" and \"SAM : 2 VOIX\". Same light, no character. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-11",
+      "type": "scene",
+      "nom": "11. Brutus : « Ceux qui t'ont sauvé ne sont pas tes amis »",
+      "joindre": [
+        "fiche-serie-cagnotte-brutus",
+        "fiche-serie-cagnotte-sam"
+      ],
+      "promptImage": "Side two-shot in the hall: Brutus, a huge brown bull with short curved horns and a gold nose ring, tight burgundy tracksuit, black slides on the right, in profile, leaning slightly toward Sam, a slim young adult tan-brown pangolin with overlapping scales and gentle dark eyes, plain burgundy zip tracksuit, white sneakers on the left, in profile; Brutus holds the gold champagne bottle low at his side; Sam looks up at him, uneasy. Their eyes locked on each other; neither looks at the camera. Night, red light. No other character in the frame; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Brutus leans a little toward Sam and says his line with a bitter smile. Sam stays still. Camera: locked side two-shot, no movement. Cold red scoreboard light on the dim amber hall; low electric hum. No music. Only Brutus speaks, in French, with exactly the same voice as in all his other clips: a big mature man, very deep, loud, resonant chest voice, rough and boastful, never high, never soft: \"Profite, le pangolin. Ceux qui t’ont sauvé ne sont pas tes amis.\" Low and bitter, a warning more than an insult. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Sam, never into the lens. Sam keeps his mouth closed. No other character in the frame; no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-12",
+      "type": "scene",
+      "nom": "12. La poignée de la porte 4",
+      "joindre": [
+        "decor-cagnotte-salon"
+      ],
+      "promptImage": "Close-up of the brass handle of the dark wooden hotel door clearly numbered \"4\" in brass digits, the door shut, a thin line of warm light under the door. Night, red glow from the hall. No character visible. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The handle of door 4 turns down from inside and the door opens a few centimetres; warm light spills through the gap. Camera: locked close-up, no movement. End exactly on the provided last frame. A sharp lock click, the creak of old hinges, then silence. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Nobody is visible in the gap. Do not add new text or subtitles.",
+      "secondes": 4,
+      "garder": "0-3.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-12"
+    },
+    {
+      "id": "fin-scene-12",
+      "type": "fiche",
+      "nom": "Image de fin — 12",
+      "joindre": [
+        "scene-12"
+      ],
+      "promptImage": "This is the LAST FRAME of the attached first image: same close framing, the handle of door \"4\" turned down, the door ajar by a few centimetres, warm light spilling through the gap onto the red carpet, nobody visible in the gap. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-13",
+      "type": "scene",
+      "nom": "13. Le léopard sort de la chambre 4",
+      "joindre": [
+        "fiche-serie-cagnotte-sam",
+        "decor-cagnotte-salon"
+      ],
+      "promptImage": "Medium-wide shot of the hall: Sam, a slim young adult tan-brown pangolin with overlapping scales and gentle dark eyes, plain burgundy zip tracksuit, white sneakers stands upright in the left foreground in three-quarter back view, turned toward door 4 on the right; door 4, clearly numbered, is ajar with warm light spilling out; doors 5 to 8 shut. Night. The faded luxury hotel hall from the reference: worn red carpet, aged cream wallpaper with gold mouldings, dusty unlit chandelier, tall windows closed by iron shutters, a monumental black electronic scoreboard on the back wall, a glowing vending machine on the left wall, numbered dark wooden room doors 1 to 8 on the right wall with brass digits, doors 4 to 8 firmly shut. Cold red light from the scoreboard, dim amber hall light. No other character in the frame; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Door 4 swings open and the snow leopard steps out upright onto the carpet, calm, and stops in the doorway, looking at Sam. Sam stays still, frozen. Camera: a slow pull-back revealing the doorway. End exactly on the provided last frame. Cold red scoreboard light on the dim amber hall; low electric hum. Hinges creak, soft footsteps on carpet. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Doors 5 to 8 stay shut. Only the snow leopard comes out; nobody else appears. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-13"
+    },
+    {
+      "id": "fin-scene-13",
+      "type": "fiche",
+      "nom": "Image de fin — 13",
+      "joindre": [
+        "scene-13"
+      ],
+      "promptImage": "This is the LAST FRAME of a slow pull-back on the attached first image: same hall, a second later. Door 4 is wide open; the snow leopard, a tall adult male snow leopard with silver-grey and cream fur, charcoal rosettes, icy blue eyes, rounded ears, a thick spotted tail, plain burgundy zip tracksuit and discreet trainers stands upright in the doorway, a calm polite smile, eyes on Sam. Sam stands in the left foreground, seen in three-quarter back view, frozen. Doors 5 to 8 still shut. Same light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-14",
+      "type": "scene",
+      "nom": "14. Léopard : « Tu me dois une voix »",
+      "joindre": [
+        "fiche-serie-cagnotte-renard",
+        "fiche-serie-cagnotte-sam"
+      ],
+      "promptImage": "Close side two-shot in the hall: the snow leopard, a tall adult male snow leopard with silver-grey and cream fur, charcoal rosettes, icy blue eyes, rounded ears, a thick spotted tail, plain burgundy zip tracksuit and discreet trainers on the right, in profile, standing close in front of Sam, a slim young adult tan-brown pangolin with overlapping scales and gentle dark eyes, plain burgundy zip tracksuit, white sneakers on the left, in profile; the leopard smiles calmly, Sam looks up at him, uneasy. Their eyes locked on each other; neither looks at the camera. Night, red light. No other character in the frame; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The snow leopard says his line with a calm, friendly smile while his eyes stay cold. Sam stays still. Camera: locked close side two-shot, no movement. Cold red scoreboard light on the dim amber hall; low electric hum. No music. Only the snow leopard speaks, in French, with exactly the same voice as in all his other clips: a man of thirty-five, smooth velvety baritone, polished and precise, polite on the surface with a cold edge, never rough, never loud: \"C’est moi qui t’ai sauvé, Sam. Tu me dois une voix.\" Soft and friendly on the surface, a cold weight on « tu me dois ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Sam, never into the lens. Sam keeps his mouth closed. Nobody touches. No other character in the frame; no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-15",
+      "type": "scene",
+      "nom": "15. Fin — « Chambre 4 · 5 voix contre Brutus »",
+      "joindre": [
+        "fiche-serie-cagnotte-sam",
+        "fiche-serie-cagnotte-renard",
+        "decor-cagnotte-salon"
+      ],
+      "promptImage": "Medium shot from slightly behind Sam, a slim young adult tan-brown pangolin with overlapping scales and gentle dark eyes, plain burgundy zip tracksuit, white sneakers and the snow leopard, a tall adult male snow leopard with silver-grey and cream fur, charcoal rosettes, icy blue eyes, rounded ears, a thick spotted tail, plain burgundy zip tracksuit and discreet trainers, standing upright side by side in the hall, both seen in three-quarter back view facing the back wall; the giant scoreboard above them reads exactly two lines: \"CHAMBRE 4\" and \"5 VOIX CONTRE BRUTUS\"; door 4 open behind them on the right, doors 5 to 8 shut. Night, cold red light. No other character in the frame; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and scales, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Sam turns his head from the scoreboard to the snow leopard beside him; the leopard keeps looking at the scoreboard, smiling. Nothing else moves. Camera: a very slow push-in toward the scoreboard, both characters staying in frame. Cold red scoreboard light on the dim amber hall; low electric hum. The hum fades to silence. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Doors 5 to 8 stay shut. The scoreboard text stays exact, sharp and readable. No other character in the frame; no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut",
+      "muet": true
+    },
+    {
+      "id": "couverture",
+      "type": "couverture",
+      "nom": "Couverture — La Cagnotte #2",
+      "joindre": [
+        "fiche-serie-cagnotte-sam"
+      ],
+      "promptImage": "Vertical 9:16 TikTok series cover, high-end stylized 3D animated feature-film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized scales, NOT photorealistic. Use the attached character sheet as the only identity reference for Sam: a slim young adult tan-brown pangolin in a plain burgundy zip tracksuit and white sneakers. He stands upright alone in the lower half of the frame, three-quarter view, tense and alert, hands empty. Behind him, the faded luxury hotel hall: worn red carpet, cream wallpaper with gold mouldings, dusty chandelier, numbered wooden doors on the right, and a huge black electronic scoreboard on the back wall reading exactly \"10 000 000 €\" in glowing red digits. Dramatic red and amber light. In the middle of the image, large and perfectly readable, the title \"LA CAGNOTTE\" in heavy embossed gold letters with a dark red bevel, like an old casino sign; directly to the right of it, in the same gold style and slightly smaller, exactly \"#2\". The whole title block sits between 15% and 60% of the image height. No other text, no subtitle, no logo, no other numbers."
+    }
+  ]
+}

@@ -2659,9 +2659,21 @@ async function tick() {
       // alerte si rien n'avance pendant 45 min (hors file pleine)
       const stuck = now() - lastProgress > 45 * 60000 && !projects.some((p) => p.etapes.some((s) => s.clip.st === 'file' || s.img.st === 'file'));
       // YAKFLOW_CHAT_HEAL_V1 : rien n'avance depuis 20 min alors que des images ChatGPT attendent → on recharge les onglets ChatGPT
+<<<<<<< HEAD
       if (S.imgSrc === 'chatgpt' && now() - lastProgress > 20 * 60000 && now() - lastChatHeal > 25 * 60000 && chatPauseUntil < now() && (!chatAlive || chatInFlight === 0) &&
           projects.some((p) => p.actif && p.etapes.some((s) => s.promptImage && ['attente', 'calcul'].includes(s.img.st)))) {
         lastChatHeal = now(); bridge('POST', 'reload').then(() => log('Aucune image depuis 20 min : je recharge les onglets ChatGPT.')).catch(() => {});
+=======
+      // YAKFLOW_CHAT_UNSTICK_V1 : d'abord débloquer une image coincée « en cours » depuis plus de 20 min (sans recharger) ;
+      // on ne recharge l'onglet ChatGPT que s'il ne répond plus ou si aucune image n'est en route.
+      if (S.imgSrc === 'chatgpt' && now() - lastProgress > 20 * 60000 && now() - lastChatHeal > 25 * 60000 && chatPauseUntil < now() &&
+          projects.some((p) => p.actif && p.etapes.some((s) => s.promptImage && ['attente', 'calcul', 'echec'].includes(s.img.st)))) {
+        lastChatHeal = now();
+        chatUnstick(20 * 60000).then((n) => {
+          if (n) return;
+          if (!chatAlive || chatInFlight === 0) bridge('POST', 'reload').then(() => log('Aucune image depuis 20 min : je recharge les onglets ChatGPT.')).catch(() => {});
+        }).catch(() => {});
+>>>>>>> c9f81dd507a5a628379d264ff32f5443795bad43
       }
       if (stuck && !stuckSent) { stuckSent = true; phone('Production bloquée', 'Aucune étape n’a avancé depuis 45 min.\nOuvre YakFlow pour vérifier le journal.', 5); log('Rien n\'a avancé depuis 45 min.'); }
       if (!stuck) stuckSent = false;
@@ -2669,10 +2681,36 @@ async function tick() {
   } catch (e) { log('Erreur interne : ' + e.message); }
   finally { ticking = false; renderStatus(); }
 }
+// YAKFLOW_CHAT_UNSTICK_V1 : une image ChatGPT restée « en cours » trop longtemps (onglet rechargé, conversation perdue)
+// est déclarée perdue dans le pont : l'onglet ChatGPT reprend la file (même avec un ancien Connect) et l'image est relancée une fois.
+async function chatUnstick(minAgeMs) {
+  if (!YFC.ready || S.imgSrc !== 'chatgpt') return 0;
+  let n = 0;
+  for (const p of projects) {
+    if (!p.actif) continue;
+    for (const s of p.etapes) {
+      if (!s.promptImage || s.img.st === 'fini') continue;
+      const id = p.id + '|' + s.id;
+      let st; try { st = await bridge('GET', 'status?id=' + encodeURIComponent(id)); } catch (_) { continue; }
+      if (st.st !== 'en cours' || !st.worker || now() - (st.claimedAt || 0) < minAgeMs) continue;
+      try {
+        await bridge('POST', 'result?worker=' + encodeURIComponent(st.worker), { id, error: 'Conversation perdue : image bloquée trop longtemps, débloquée par YakFlow.', incertain: true });
+        n++; log('Image ChatGPT débloquée (bloquée depuis ' + fmtDur(now() - (st.claimedAt || now())) + ') : ' + p.titre + ' · ' + s.nom);
+        if (s.img.st !== 'calcul' && (s.img.tries || 0) < 3) {   // pas de boucle d'attente active : on la remet en file une fois
+          await bridge('POST', 'forget?id=' + encodeURIComponent(id)).catch(() => {});
+          setImg(p, s, { st: 'attente', msg: 'Image débloquée, relancée automatiquement' });
+        }
+      } catch (e) { log('Déblocage impossible pour ' + s.nom + ' : ' + e.message); }
+    }
+  }
+  if (n) saveProjects();
+  return n;
+}
 function start() {
   if (!apiKeys().length) { toast('Ajoute d\'abord ta clé API dans les réglages.', 'warn'); openSettings(); return; }
   if (!projects.some((p) => p.actif)) { toast('Coche au moins un projet.', 'warn'); return; }
   running = true; lastProgress = now(); log('Fabrication lancée.'); renderStatus(); tick();
+  chatUnstick(15 * 60000).catch(() => {});
 }
 function stop() { running = false; renderStatus(); }
 $('#btnRun').onclick = () => { if (running) { stop(); log('Fabrication en pause.'); } else start(); };

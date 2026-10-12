@@ -1,0 +1,364 @@
+{
+  "id": "money-farm-4",
+  "titre": "Money Farm #4 — Bois de chauffage",
+  "accroche": "Tout le monde croit qu’il a 20 €.",
+  "description": "Il affiche vingt euros, mais il voit la vraie valeur de tout. Soixante mille pour lui, ou l’atelier d’un père et son fils. Toi, tu aurais choisi quoi ?",
+  "hashtags": [
+    "#MoneyFarm",
+    "#Animation3D",
+    "#Systeme",
+    "#Histoire",
+    "#YakFilms"
+  ],
+  "commentaire": "Soixante mille pour toi ou l’atelier de Noé : tu choisis quoi ?",
+  "datePublication": "2026-10-13",
+  "heurePublication": "20:00",
+  "etapes": [
+    {
+      "id": "fiche-serie-money-farm-leo-tenue-p4",
+      "type": "fiche",
+      "nom": "Fiche partagée — Léo P1, tenue marine P4–P6",
+      "joindre": [],
+      "promptImage": "CHARACTER IDENTITY REFERENCE — FIRST ATTACH THE APPROVED MONEY FARM PART 1 LÉO CHARACTER SHEET AS VISUAL INPUT. Keep his EXACT P1 head, mature narrow muzzle, almond eyes, nose, tall ears, distinctive swept forelock, fur markings, facial proportions and slender adult silhouette; never copy the rounder/younger face from P3. Only change clothes. Léo: same canonical MONEY FARM PART 1 red fox identity (not the younger rounder P3 redesign): slim twenty-four-year-old adult, elongated narrow fox muzzle, mature lean head, almond-shaped amber eyes, tall tapered ears, distinctive long asymmetrical swept copper-red forelock, tapered athletic/slim build. NEW P4 COSTUME ALWAYS: dark navy collared jacket with NO hood, cream/off-white crewneck T-shirt, fitted black jeans, gently worn white sneakers. THREE CLEAR VIEWS of ONE IDENTICAL CHARACTER on a plain neutral LIGHT-GREY studio background: LEFT full-body front, CENTER full-body 3/4, RIGHT chest-up portrait; natural neutral stance, empty hands, no labels, no text, no accessories; same facial landmarks, ears, fur markings, build and clothes in every view; no cropped ears or feet. Clean original stylized 3D computer animation, expressive but not excessively oversized eyes, polished simplified fur. Vertical 9:16.",
+      "identiteDe": "fiche-serie-money-farm-leo"
+    },
+    {
+      "id": "fiche-serie-money-farm-noe",
+      "type": "fiche",
+      "nom": "Fiche partagée — Noe",
+      "joindre": [],
+      "promptImage": "ORIGINAL CHARACTER SHEET. Noé: original nineteen-year-old son beaver, noticeably younger and slimmer than Marius, medium warm brown fur, pale tan cheeks and muzzle, soft hazel eyes, small prominent incisors, broad flat beaver tail, short messy forehead tuft, navy work T-shirt, ochre canvas carpenter vest, dark work trousers, safety shoes. THREE CLEAR VIEWS of ONE IDENTICAL CHARACTER on a plain neutral LIGHT-GREY studio background: LEFT full-body front, CENTER full-body 3/4, RIGHT chest-up portrait; natural neutral stance, empty hands, no labels, no text, no accessories; same facial landmarks, ears, fur markings, build and clothes in every view; no cropped ears or feet. Clean original stylized 3D computer animation, expressive but not excessively oversized eyes, polished simplified fur. Vertical 9:16."
+    },
+    {
+      "id": "fiche-serie-money-farm-marius",
+      "type": "fiche",
+      "nom": "Fiche partagée — Marius",
+      "joindre": [],
+      "promptImage": "ORIGINAL CHARACTER SHEET. Marius: original anthropomorphic father beaver aged fifty-five, solid broad working-artisan shoulders, warm dark-brown fur with greying muzzle, prominent short beaver incisors, flat scaly beaver tail, gentle weary hazel eyes, olive work shirt with sleeves rolled, tan leather carpenter apron, indigo work trousers, sturdy boots. THREE CLEAR VIEWS of ONE IDENTICAL CHARACTER on a plain neutral LIGHT-GREY studio background: LEFT full-body front, CENTER full-body 3/4, RIGHT chest-up portrait; natural neutral stance, empty hands, no labels, no text, no accessories; same facial landmarks, ears, fur markings, build and clothes in every view; no cropped ears or feet. Clean original stylized 3D computer animation, expressive but not excessively oversized eyes, polished simplified fur. Vertical 9:16."
+    },
+    {
+      "id": "fiche-serie-money-farm-krass",
+      "type": "fiche",
+      "nom": "Identité verrouillée — Krass (image approuvée à importer)",
+      "joindre": [],
+      "promptImage": "Character reference sheet on a plain neutral light grey background, three views of the SAME original character: 1) full body facing camera, 2) full body three-quarter view, 3) close-up of the face with shoulders visible. Krass, tall anthropomorphic spotted hyena property developer, predatory grin, flashy purple suit, black shirt, gold rings and a gold watch. Standing upright on two legs, hands empty, holding nothing, neutral expression. No label, no text. Identical identity, colours, proportions and outfit in the three views. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no realistic textures, no live-action look. Vertical 9:16 full-bleed. Young-adult and adult anthropomorphic animal characters with stylized human anatomy and furry hands, always standing or sitting upright like humans. No humans.",
+      "verrouIdentite": true
+    },
+    {
+      "id": "decor-mf4-rue",
+      "type": "fiche",
+      "nom": "Décor — Rue commerçante (continuité P3)",
+      "joindre": [],
+      "promptImage": "EMPTY ESTABLISHING ENVIRONMENT REFERENCE for Money Farm P4. No characters, no foreground people, no graphic tags, no interface overlays, no signage other than explicitly specified practical set dressing. Same French modest neighbourhood shopping street from Money Farm P3, old restored wooden-front bakery beside modern phone store, cobbled pavement, varied adjoining modest independent shops, believable spatial consistency with P3. Daylight morning. The bakery must match the APPROVED P3 background; attach it as visual reference when generating this set. VISUAL SERIES LOCK: identical premium ORIGINAL stylized 3D animated-film universe as Money Farm P1–P3; softly sculpted expressive animal faces, polished smooth fur, saturated warm/cyan cinematic lighting, clearly animation, NOT photorealism or live action. All animals anthropomorphic, youthful/adult human-like anatomy, standing and walking upright on two legs with furry hands. Vertical 9:16 full-bleed, cinematic environmental reference, not a poster: no title or logo, no burned-in subtitles, no human beings. Maintain exact character identities and outfits of their attached approved character sheets. "
+    },
+    {
+      "id": "decor-mf4-menuiserie",
+      "type": "fiche",
+      "nom": "Décor — Menuiserie de Marius et Noé",
+      "joindre": [],
+      "promptImage": "EMPTY ESTABLISHING ENVIRONMENT REFERENCE for Money Farm P4. No characters, no foreground people, no graphic tags, no interface overlays, no signage other than explicitly specified practical set dressing. Modest authentic French artisanal carpentry workshop, sawdust, wooden rafters, long oak workbenches, fixed safe machinery, stacked boards, clamped incomplete oak wardrobe and bed frames, oak shelves, office ledger on workbench, loading roll-up door screen RIGHT, high morning windows screen LEFT, functional clear floor and human-scale furniture. Same space all workshop scenes. VISUAL SERIES LOCK: identical premium ORIGINAL stylized 3D animated-film universe as Money Farm P1–P3; softly sculpted expressive animal faces, polished smooth fur, saturated warm/cyan cinematic lighting, clearly animation, NOT photorealism or live action. All animals anthropomorphic, youthful/adult human-like anatomy, standing and walking upright on two legs with furry hands. Vertical 9:16 full-bleed, cinematic environmental reference, not a poster: no title or logo, no burned-in subtitles, no human beings. Maintain exact character identities and outfits of their attached approved character sheets. "
+    },
+    {
+      "id": "decor-mf4-depot",
+      "type": "fiche",
+      "nom": "Décor — Dépôt de Gérard",
+      "joindre": [],
+      "promptImage": "EMPTY SET REFERENCE, no characters, no tags, no interface. Inside a cluttered second-hand depot and junkyard shed: old furniture, rusty tools, stacks of grey weathered wooden beams, dusty daylight through a high window, in a modest French neighbourhood. A big stack of grey weathered beams in the middle. Daylight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-1",
+      "type": "scene",
+      "nom": "1. Hook — Léo : « Tout le monde croit que j'ai vingt euros »",
+      "joindre": [
+        "fiche-serie-money-farm-leo-tenue-p4",
+        "decor-mf4-rue"
+      ],
+      "promptImage": "Morning, the shopping street, in front of a modest carpentry workshop with an old wooden façade. Medium shot of Léo, a slim young adult red fox of twenty-four with an elongated narrow muzzle, almond-shaped eyes glowing electric blue, tall ears and a long swept copper-red forelock, dark navy collared jacket with no hood, cream T-shirt, black jeans, worn white sneakers, alone, standing upright in three-quarter view, looking at the workshop on the right, determined; a small slate-blue translucent cyan-outlined money tag floating just above Léo's head, reading exactly \"20 €\". Beside him floats a translucent electric-blue system glass panel with thin corner brackets, white bold capital letters inside square brackets, large, perfectly still, sharp and readable in the upper two thirds of the frame, visible only to Léo, reading exactly, from top to bottom: \"[SAUVER LA MENUISERIE]\", \"[TEMPS : 24:00:00]\". No other character in the frame; nobody and no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Léo stands still in front of the workshop, his blue eyes on its façade; his jaw sets. Camera: a fast, steady dolly-in from the medium shot to a close-up of Léo, the panel staying in frame. End exactly on the provided last frame. Morning street ambience, one soft system tone. No music. Only Léo speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty-four, warm light tenor with a slight breathy edge, bright clear articulation, never deep, never childish: \"Tout le monde croit que j’ai vingt euros. J’ai vingt quatre heures pour sauver cet atelier.\" Quick and determined, a confident edge on « vingt quatre heures ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 7. He talks to himself, not to the camera. Tags and panel text stay exact, sharp and readable. No other character in the frame; nobody and no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 8,
+      "garder": "0-7.5 s",
+      "transition": "cut",
+      "imageFin": "fin-scene-1"
+    },
+    {
+      "id": "fin-scene-1",
+      "type": "fiche",
+      "nom": "Image de fin — 1",
+      "joindre": [
+        "scene-1"
+      ],
+      "promptImage": "This is the LAST FRAME of a fast dolly-in on the attached first image: same place, same moment a second later, camera now in a close-up on Léo's face, eyes glowing blue, the money tag \"20 €\" above his head and the panel \"[SAUVER LA MENUISERIE]\", \"[TEMPS : 24:00:00]\" still sharp in the upper part of the frame. Same outfit, same light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-2",
+      "type": "scene",
+      "nom": "2. Marius : « Demain midi, je vends tout à Krass »",
+      "joindre": [
+        "fiche-serie-money-farm-marius",
+        "fiche-serie-money-farm-noe",
+        "decor-mf4-menuiserie"
+      ],
+      "promptImage": "Inside the carpentry workshop of the reference: sawdust, wooden rafters, long oak workbenches, stacked boards, a roll-up loading door on the right, high windows on the left. Medium shot of Marius, a fifty-five-year-old father beaver with dark-brown fur, a greying muzzle, short beaver incisors, a flat beaver tail, olive work shirt with rolled sleeves, tan leather carpenter apron, standing upright in three-quarter profile on the left, looking at someone off-screen right, weary; behind him a hand-painted sign on the workbench reads exactly \"À VENDRE · DEMAIN MIDI\". Noé, a slim nineteen-year-old beaver with warm brown fur, pale tan cheeks, small incisors, a flat beaver tail, navy work T-shirt and ochre canvas carpenter vest stands blurred in the background, head lowered. Léo stays off-screen and never appears. No other character; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Marius speaks to Léo off-screen right, one hand resting on the workbench. Noé stays still in the background, head lowered. Camera: locked medium shot, no movement. Quiet workshop, a faint creak of wood. No music. Only Marius speaks, in French, with exactly the same voice as in all his other clips: a man of fifty-five, warm deep weary voice, gentle and plain-spoken, never high, never rough: \"Sans la commande de l’hôtel, demain midi, je vends tout à Krass.\" Tired and honest, a heavy weight on « Krass ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks off-screen right, never into the lens. Noé keeps his mouth closed. Léo stays off-screen and never appears; nobody and no animal enters the frame. The sign text stays exact. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-3",
+      "type": "scene",
+      "nom": "3. Noé : « Krass a fait annuler notre bois »",
+      "joindre": [
+        "fiche-serie-money-farm-noe",
+        "decor-mf4-menuiserie"
+      ],
+      "promptImage": "Inside the carpentry workshop of the reference: sawdust, wooden rafters, long oak workbenches, stacked boards, a roll-up loading door on the right, high windows on the left. Medium close-up of Noé, a slim nineteen-year-old beaver with warm brown fur, pale tan cheeks, small incisors, a flat beaver tail, navy work T-shirt and ochre canvas carpenter vest, standing upright in three-quarter profile beside completely EMPTY wooden storage racks, looking at someone off-screen left, angry and lost. Léo stays off-screen and never appears. No other character; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Noé slaps one hand on the empty rack and speaks to Léo off-screen left. Camera: locked medium close-up, no movement. Quiet workshop, a dull wooden knock. No music. Only Noé speaks, in French, with exactly the same voice as in all his other clips: a young man of nineteen, bright slightly higher voice, earnest and clear, never deep: \"Krass a fait annuler notre bois. Sans chêne, on perd la commande.\" Angry and lost, fast, strong attack on « Krass ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks off-screen left, never into the lens. Léo stays off-screen and never appears; nobody and no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-3b",
+      "type": "scene",
+      "nom": "3b. Système : « Quête d'urgence »",
+      "joindre": [
+        "fiche-serie-money-farm-leo-tenue-p4",
+        "decor-mf4-rue"
+      ],
+      "promptImage": "In front of the carpentry workshop on the shopping street, morning. Medium close-up of Léo, a slim young adult red fox of twenty-four with an elongated narrow muzzle, almond-shaped amber eyes, tall ears and a long swept copper-red forelock, dark navy collared jacket with no hood, cream T-shirt, black jeans, worn white sneakers, alone, standing upright, looking at a panel that has just opened in front of him; a translucent electric-blue system glass panel with thin corner brackets, white bold capital letters inside square brackets, large, perfectly still, sharp and readable in the upper two thirds of the frame, visible only to Léo, reading exactly, from top to bottom: \"[QUÊTE D’URGENCE]\", \"[DU CHÊNE AVANT MIDI]\", \"[RADAR DÉBLOQUÉ]\"; a small slate-blue translucent cyan-outlined money tag floating just above Léo's head, reading exactly \"20 €\". No other character in the frame; nobody and no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Léo stands still, reading the panel; his ears lift and his eyes widen. Camera: locked medium close-up, no movement. Street ambience, an urgent double system chime. No music. Only an off-screen voice speaks, in French, with exactly the same voice as in all its other clips: an off-screen female voice of the System, neutral, clear and slightly synthetic, calm and precise, never emotional: \"Quête d’urgence. Du chêne avant midi. Radar débloqué.\" It speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. Léo keeps his mouth closed the whole time; nobody on screen speaks. Tags and panel text stay exact, sharp and readable. No other character in the frame; nobody and no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-3c",
+      "type": "scene",
+      "nom": "3c. Le radar trouve une bonne affaire",
+      "joindre": [
+        "fiche-serie-money-farm-leo-tenue-p4",
+        "decor-mf4-rue"
+      ],
+      "promptImage": "The shopping street, morning. Medium shot of Léo, a slim young adult red fox of twenty-four with an elongated narrow muzzle, almond-shaped eyes glowing electric blue, tall ears and a long swept copper-red forelock, dark navy collared jacket with no hood, cream T-shirt, black jeans, worn white sneakers, alone, standing upright in three-quarter view; in front of him floats a translucent electric-blue system glass panel with thin corner brackets, white bold capital letters inside square brackets, large, perfectly still, sharp and readable in the upper two thirds of the frame, visible only to Léo, reading exactly, from top to bottom: \"[RADAR : 1 BONNE AFFAIRE]\", \"[600 M]\" with a glowing cyan arrow pointing to the right, down the street; a small slate-blue translucent cyan-outlined money tag floating just above Léo's head, reading exactly \"20 €\". No other character in the frame; nobody and no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The cyan arrow on the panel pulses and points down the street; Léo turns his head to follow it, a small determined smile. Camera: locked medium shot, no movement. End exactly on the provided last frame. A radar ping repeating twice, street ambience. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Tags and panel text stay exact, sharp and readable. No other character in the frame; nobody and no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-3c"
+    },
+    {
+      "id": "fin-scene-3c",
+      "type": "fiche",
+      "nom": "Image de fin — 3c",
+      "joindre": [
+        "scene-3c"
+      ],
+      "promptImage": "This is the LAST FRAME of the attached first image: same framing a second later, Léo's head turned to the right following the glowing cyan arrow, determined; the panel \"[RADAR : 1 BONNE AFFAIRE]\", \"[600 M]\" and the tag \"20 €\" still sharp. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-4",
+      "type": "scene",
+      "nom": "4. Le bois de chauffage de Gérard",
+      "joindre": [
+        "fiche-serie-money-farm-leo-tenue-p4",
+        "decor-mf4-depot"
+      ],
+      "promptImage": "Inside a cluttered second-hand depot and junkyard shed: old furniture, rusty tools, stacks of grey weathered wooden beams, dusty daylight through a high window. A big stack of grey weathered wooden beams in the foreground with a cardboard sign reading exactly \"BOIS DE CHAUFFAGE · 900 €\"; Léo, a slim young adult red fox of twenty-four with an elongated narrow muzzle, almond-shaped amber eyes, tall ears and a long swept copper-red forelock, dark navy collared jacket with no hood, cream T-shirt, black jeans, worn white sneakers stands upright beside the stack, in three-quarter profile, looking down at the beams; a faint cyan radar outline glows around the grey beams. No other character in the frame; nobody and no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Léo follows the cyan radar outline along the grey beams and runs his fingertips over the rough wood. The beams stay rigid. Camera: a slow lateral glide along the stack toward Léo. End exactly on the provided last frame. Dusty depot silence, a faint scrape on the wood. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The sign text stays exact. No other character in the frame; nobody and no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 4,
+      "garder": "0-3.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-4"
+    },
+    {
+      "id": "fin-scene-4",
+      "type": "fiche",
+      "nom": "Image de fin — 4",
+      "joindre": [
+        "scene-4"
+      ],
+      "promptImage": "This is the LAST FRAME of a slow lateral glide on the attached first image: same depot, a second later, camera now closer to Léo, his hand resting on a grey beam, the sign \"BOIS DE CHAUFFAGE · 900 €\" still readable in the foreground. Same outfit, same light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-5",
+      "type": "scene",
+      "nom": "5. Système : « Chêne centenaire, soixante mille crédits »",
+      "joindre": [
+        "fiche-serie-money-farm-leo-tenue-p4",
+        "decor-mf4-depot"
+      ],
+      "promptImage": "Inside a cluttered second-hand depot and junkyard shed: old furniture, rusty tools, stacks of grey weathered wooden beams, dusty daylight through a high window. Medium close-up of Léo, a slim young adult red fox of twenty-four with an elongated narrow muzzle, almond-shaped amber eyes, tall ears and a long swept copper-red forelock, dark navy collared jacket with no hood, cream T-shirt, black jeans, worn white sneakers, alone beside the grey beams, his eyes still amber, looking at the wood. Beside him floats a translucent electric-blue system glass panel with thin corner brackets, white bold capital letters inside square brackets, large, perfectly still, sharp and readable in the upper two thirds of the frame, visible only to Léo, reading exactly, from top to bottom: \"[CHÊNE CENTENAIRE]\", \"[VALEUR SYSTÈME : 60 000 CRÉDITS]\"; a small slate-blue translucent cyan-outlined money tag floating just above Léo's head, reading exactly \"20 €\". No other character in the frame; nobody and no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Léo's eyes turn from amber to glowing electric blue as he looks at the beams; a thin golden shimmer runs along the grey wood under his gaze. Camera: a slow push-in toward his eyes, the panel staying in frame. End exactly on the provided last frame. A thin scanning sweep, one crystal ping. No music. Only an off-screen voice speaks, in French, with exactly the same voice as in all its other clips: an off-screen female voice of the System, neutral, clear and slightly synthetic, calm and precise, never emotional: \"Chêne centenaire. Valeur système, soixante mille crédits.\" It speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. Léo keeps his mouth closed the whole time; nobody on screen speaks. Tags and panel text stay exact, sharp and readable. No other character in the frame; nobody and no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut",
+      "imageFin": "fin-scene-5"
+    },
+    {
+      "id": "fin-scene-5",
+      "type": "fiche",
+      "nom": "Image de fin — 5",
+      "joindre": [
+        "scene-5"
+      ],
+      "promptImage": "This is the LAST FRAME of a slow push-in on the attached first image: same moment a second later, closer on Léo, his eyes now glowing electric blue, a faint golden shimmer on the beams, the panel \"[CHÊNE CENTENAIRE]\", \"[VALEUR SYSTÈME : 60 000 CRÉDITS]\" still sharp. Same outfit. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-7",
+      "type": "scene",
+      "nom": "7. Virement caché : 900 €",
+      "joindre": [
+        "fiche-serie-money-farm-leo-tenue-p4",
+        "decor-mf4-depot"
+      ],
+      "promptImage": "Inside a cluttered second-hand depot and junkyard shed: old furniture, rusty tools, stacks of grey weathered wooden beams, dusty daylight through a high window, hidden behind tall shelves of old furniture. Medium close-up of Léo, a slim young adult red fox of twenty-four with an elongated narrow muzzle, almond-shaped amber eyes, tall ears and a long swept copper-red forelock, dark navy collared jacket with no hood, cream T-shirt, black jeans, worn white sneakers, alone, his right index finger raised toward a translucent electric-blue system glass panel with thin corner brackets, white bold capital letters inside square brackets, large, perfectly still, sharp and readable in the upper two thirds of the frame, visible only to Léo, reading exactly, from top to bottom: \"[VIREMENT : 900 €]\"; a small slate-blue translucent cyan-outlined money tag floating just above Léo's head, reading exactly \"20 €\". No other character in the frame; nobody and no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Léo taps the panel once. Only his money tag changes, from the first value to the value of the last frame. Camera: locked medium close-up, no movement. End exactly on the provided last frame. One finger tap, a soft rising transfer ping. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Tags and panel text stay exact, sharp and readable. No other character in the frame; nobody and no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 4,
+      "garder": "0-3.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-7"
+    },
+    {
+      "id": "fin-scene-7",
+      "type": "fiche",
+      "nom": "Image de fin — 7",
+      "joindre": [
+        "scene-7"
+      ],
+      "promptImage": "This is the LAST FRAME of the attached first image: same framing, same moment a second later; Léo's money tag now reads exactly \"920 €\"; the panel still reads \"[VIREMENT : 900 €]\". Léo calm and alone. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-8",
+      "type": "scene",
+      "nom": "8. Léo : « Soixante mille pour moi, ou l'atelier de Noé »",
+      "joindre": [
+        "fiche-serie-money-farm-leo-tenue-p4",
+        "decor-mf4-depot"
+      ],
+      "promptImage": "Inside a cluttered second-hand depot and junkyard shed: old furniture, rusty tools, stacks of grey weathered wooden beams, dusty daylight through a high window. Medium shot of Léo, a slim young adult red fox of twenty-four with an elongated narrow muzzle, almond-shaped eyes glowing electric blue, tall ears and a long swept copper-red forelock, dark navy collared jacket with no hood, cream T-shirt, black jeans, worn white sneakers, alone, one hand resting on the stack of now-purchased beams, torn; beside him floats a translucent electric-blue system glass panel with thin corner brackets, white bold capital letters inside square brackets, large, perfectly still, sharp and readable in the upper two thirds of the frame, visible only to Léo, reading exactly, from top to bottom: \"[VENDRE AU SYSTÈME : +60 000]\"; a small slate-blue translucent cyan-outlined money tag floating just above Léo's head, reading exactly \"20 €\". No other character in the frame; nobody and no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Léo keeps his hand on the beams, torn, his eyes going from the panel to the wood. Camera: a slow push-in toward his eyes. End exactly on the provided last frame. A heavy, muffled heartbeat. No music. Only Léo speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty-four, warm light tenor with a slight breathy edge, bright clear articulation, never deep, never childish: \"Soixante mille pour moi, ou l’atelier de Noé.\" Torn, the voice tight, a pause of a breath before « ou ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He talks to himself, not to the camera. Tags and panel text stay exact, sharp and readable. No other character in the frame; nobody and no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut",
+      "imageFin": "fin-scene-8"
+    },
+    {
+      "id": "fin-scene-8",
+      "type": "fiche",
+      "nom": "Image de fin — 8",
+      "joindre": [
+        "scene-8"
+      ],
+      "promptImage": "This is the LAST FRAME of a slow push-in on the attached first image: same moment a second later, close-up on Léo's blue eyes, decided, his hand still on the beams, the panel \"[VENDRE AU SYSTÈME : +60 000]\" and the tag \"20 €\" still readable. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-9",
+      "type": "scene",
+      "nom": "9. Le chêne sauve la commande",
+      "joindre": [
+        "fiche-serie-money-farm-noe",
+        "fiche-serie-money-farm-marius",
+        "decor-mf4-menuiserie"
+      ],
+      "promptImage": "Inside the carpentry workshop of the reference: sawdust, wooden rafters, long oak workbenches, stacked boards, a roll-up loading door on the right, high windows on the left, the roll-up door open on a waiting delivery van. Noé, a slim nineteen-year-old beaver with warm brown fur, pale tan cheeks, small incisors, a flat beaver tail, navy work T-shirt and ochre canvas carpenter vest and Marius, a fifty-five-year-old father beaver with dark-brown fur, a greying muzzle, short beaver incisors, a flat beaver tail, olive work shirt with rolled sleeves, tan leather carpenter apron, both standing upright, finish a large wardrobe of glowing golden oak; a wall clock above them reads exactly 11:58. No other character; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Noé and Marius plane and polish the golden oak wardrobe together, fast and focused; the clock hand moves forward. Camera: a lateral tracking shot along the workbench. End exactly on the provided last frame. Planes on wood, a hammer, the ticking clock. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Nobody else enters the frame. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-9"
+    },
+    {
+      "id": "fin-scene-9",
+      "type": "fiche",
+      "nom": "Image de fin — 9",
+      "joindre": [
+        "scene-9"
+      ],
+      "promptImage": "This is the LAST FRAME of a lateral tracking shot on the attached first image: same workshop a few seconds later, the golden oak wardrobe finished, Noé and Marius lifting it toward the open roll-up door and the waiting van, the wall clock reading exactly 11:59. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-10",
+      "type": "scene",
+      "nom": "10. Carte — Quête réussie : +100 000 crédits",
+      "joindre": [
+        "fiche-serie-money-farm-leo-tenue-p4",
+        "decor-mf4-rue"
+      ],
+      "promptImage": "Noon, the shopping street. Medium close-up of Léo, a slim young adult red fox of twenty-four with an elongated narrow muzzle, almond-shaped eyes glowing electric blue, tall ears and a long swept copper-red forelock, dark navy collared jacket with no hood, cream T-shirt, black jeans, worn white sneakers, alone, standing upright, a golden glow on his fur; in front of him floats a translucent electric-blue system glass panel with thin corner brackets, white bold capital letters inside square brackets, large, perfectly still, sharp and readable in the upper two thirds of the frame, visible only to Léo, reading exactly, from top to bottom: \"[QUÊTE RÉUSSIE]\", \"[+100 000 CRÉDITS]\"; a small slate-blue translucent cyan-outlined money tag floating just above Léo's head, reading exactly \"20 €\". No other character in the frame; nobody and no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "A golden wave ripples over Léo's fur from the panel; his breath catches and a smile breaks. Camera: locked medium close-up, no movement. A crystal chime and a soft golden swell. No music. Only an off-screen voice speaks, in French, with exactly the same voice as in all its other clips: an off-screen female voice of the System, neutral, clear and slightly synthetic, calm and precise, never emotional: \"Quête réussie. Cent mille crédits.\" It speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. Léo keeps his mouth closed; he only breathes in and smiles. Tags and panel text stay exact, sharp and readable. No other character in the frame; nobody and no animal enters the frame. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-11",
+      "type": "scene",
+      "nom": "11. Marius serre Noé dans ses bras",
+      "joindre": [
+        "fiche-serie-money-farm-marius",
+        "fiche-serie-money-farm-noe",
+        "decor-mf4-rue"
+      ],
+      "promptImage": "Noon, in front of the carpentry workshop on the shopping street. Marius, a fifty-five-year-old father beaver with dark-brown fur, a greying muzzle, short beaver incisors, a flat beaver tail, olive work shirt with rolled sleeves, tan leather carpenter apron hugs Noé, a slim nineteen-year-old beaver with warm brown fur, pale tan cheeks, small incisors, a flat beaver tail, navy work T-shirt and ochre canvas carpenter vest, both standing upright, eyes closed, relieved; on the pavement at their feet lies the torn sign \"À VENDRE\". No other character; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Marius holds Noé tight and pats his back once. Everything else stays still. Camera: locked medium shot, no movement. Street ambience, a relieved laugh without words. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Nobody else enters the frame. Do not add new text or subtitles.",
+      "secondes": 4,
+      "garder": "0-3.5 s",
+      "transition": "cut",
+      "muet": true
+    },
+    {
+      "id": "scene-12",
+      "type": "scene",
+      "nom": "12. Krass : « Un gamin à vingt euros qui sauve deux commerces »",
+      "joindre": [
+        "fiche-serie-money-farm-krass",
+        "fiche-serie-money-farm-leo-tenue-p4",
+        "fiche-serie-money-farm-noe"
+      ],
+      "promptImage": "Noon, the shopping street in front of the workshop. Low-angle medium shot of Krass, a tall spotted hyena in a flashy purple suit, black shirt, gold rings and a gold watch, standing upright on the right in three-quarter profile, a small slate-blue translucent cyan-outlined money tag floating just above Krass's head, reading exactly \"900 000 €\", staring at Léo, a slim young adult red fox of twenty-four with an elongated narrow muzzle, almond-shaped amber eyes, tall ears and a long swept copper-red forelock, dark navy collared jacket with no hood, cream T-shirt, black jeans, worn white sneakers on the left beside Noé, a slim nineteen-year-old beaver with warm brown fur, pale tan cheeks, small incisors, a flat beaver tail, navy work T-shirt and ochre canvas carpenter vest; Léo's tag reads exactly \"20 €\". Krass's eyes locked on Léo; nobody looks at the camera. No other character; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Krass stares at Léo with narrowed eyes and a cold half-smile. Léo and Noé stay still. Camera: locked low-angle shot on Krass, no movement. Street ambience fading. No music. Only Krass speaks, in French, with exactly the same voice as in all his other clips: a man in his forties, velvety dark baritone with a faint rasp, crisp superior consonants, never high: \"Un gamin à vingt euros qui sauve deux commerces.\" Low and suspicious, almost amused. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Léo, never into the lens. Léo and Noé keep their mouths closed. Tags and panel text stay exact, sharp and readable. Nobody else enters the frame. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-13",
+      "type": "scene",
+      "nom": "13. Fin — Krass fixe l'étiquette de Léo",
+      "joindre": [
+        "fiche-serie-money-farm-krass",
+        "fiche-serie-money-farm-leo-tenue-p4"
+      ],
+      "promptImage": "Close-up of Krass, a tall spotted hyena in a flashy purple suit, black shirt, gold rings and a gold watch's narrowed eyes on the right, looking toward Léo; in the left foreground, slightly out of focus, Léo's head and his money tag reading exactly \"20 €\". Noon light. No other character; no animal enters the frame. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Krass's eyes narrow a little more on Léo's tag; nothing else moves. Camera: a slow push-in toward Krass's eyes. End exactly on the provided last frame. The street sound drops to silence. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Tags and panel text stay exact, sharp and readable. Nobody else enters the frame. Do not add new text or subtitles.",
+      "secondes": 4,
+      "garder": "0-3.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-13"
+    },
+    {
+      "id": "fin-scene-13",
+      "type": "fiche",
+      "nom": "Image de fin — 13",
+      "joindre": [
+        "scene-13"
+      ],
+      "promptImage": "This is the LAST FRAME of a slow push-in on the attached first image: a second later, tighter on Krass's narrowed suspicious eyes, Léo's \"20 €\" tag still readable, soft, in the left foreground. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "couverture",
+      "type": "couverture",
+      "nom": "Couverture — Money Farm #4",
+      "joindre": [
+        "fiche-serie-money-farm-leo-tenue-p4"
+      ],
+      "promptImage": "Vertical 9:16 TikTok series cover, high-end stylized 3D animated feature-film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic. Use the attached character sheet as the only identity reference for Léo: a slim young adult red fox, amber eyes, navy collared jacket over a cream T-shirt. He stands upright in the lower half of the frame, three-quarter view, hands in his pockets, a confident half-smile, eyes toward the viewer. Above his head floats a small cyan glass money tag reading exactly \"20 €\". Behind him, softly blurred, a warm French shopping street at dusk with faint electric-cyan light streaks. In the middle of the image, large and perfectly readable, the title on two lines: \"MONEY\" in chunky extruded metallic orange-gold 3D letters, and below it \"FARM\" in bright icy-white extruded 3D letters with a glowing cyan outline; directly to the right of \"FARM\", in the same white-and-cyan style and slightly smaller, exactly \"#4\". The whole title block sits between 15% and 60% of the image height. No other text, no subtitle, no logo, no other numbers."
+    }
+  ]
+}
