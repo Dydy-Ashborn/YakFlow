@@ -67,6 +67,20 @@ async function handle(request) {
       await ref.update({ machine: FieldValue.delete(), machineBoundAt: FieldValue.delete(), machineResetAt: new Date().toISOString() });
       return json({ id, email: snap.data().email, reset: true });
     }
+    // YAKFLOW_EXTEND_TRIAL_V1 : prolonger un essai (client qui n'a pas pu tester)
+    if (action === 'extend-trial') {
+      const id = String(body.id ?? ''), hours = Math.max(1, Math.min(24 * 30, Number(body.hours) || 24));
+      if (!/^[a-f0-9]{64}$/.test(id)) return json({ message: 'Identifiant invalide.' }, 400);
+      const ref = store.doc(id), snap = await ref.get();
+      if (!snap.exists) return json({ message: 'Code introuvable.' }, 404);
+      const lic = snap.data();
+      if (lic.type !== 'trial') return json({ message: 'Ce code n’est pas un essai.' }, 400);
+      const from = Math.max(Date.now(), Date.parse(lic.expiresAt || 0) || 0);
+      const expiresAt = new Date(from + hours * 3600000).toISOString();
+      await ref.update({ expiresAt, active: true, deactivatedAt: null, extendedAt: new Date().toISOString(), extendedHours: (lic.extendedHours || 0) + hours });
+      await forgetLicense(id);
+      return json({ id, email: lic.email, expiresAt });
+    }
     if (action === 'deactivate-id' || action === 'reactivate-id') {
       const id = String(body.id ?? '');
       if (!/^[a-f0-9]{64}$/.test(id)) return json({ message: 'Identifiant invalide.' }, 400);
