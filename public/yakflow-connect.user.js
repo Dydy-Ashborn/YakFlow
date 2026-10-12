@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.3.3
+// @version      3.3.4
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -33,7 +33,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.3.3';
+  const CONNECT_VERSION = '3.3.4';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -993,8 +993,23 @@
         return true;
       }
       if (!anchor) {
+        // YAKFLOW_CONV_URL_V1 : retourner dans la conversation du travail (2 essais)
+        if (j.url && location.pathname !== j.url && (j.navTries || 0) < 2) {
+          j.navTries = (j.navTries || 0) + 1;
+          try { sessionStorage.setItem(ACTIVE_KEY, JSON.stringify(j)); } catch (_) {}
+          say('Récupération : retour à la conversation de « ' + j.nom + ' »');
+          await sleep(800); location.assign(j.url); return true;
+        }
+        // Conversation introuvable : au bout de 2 min, signaler « incertain » pour libérer la file
+        // (jamais de blocage infini ; YakFlow relance l'image une fois, sans risque de doublon livré).
+        if (Date.now() - PAGE_T0 > 2 * 60000 && state.st === 'en cours' && (!state.worker || state.worker === WORKER) && !pending()) {
+          await call('POST', withWorker('/bridge/result'), { id: j.id, error: 'Conversation perdue après rechargement : aucune image retrouvée.', incertain: true }).catch(() => {});
+          recoveryBlocked = null; sessionStorage.removeItem(ACTIVE_KEY);
+          say('Conversation perdue pour « ' + j.nom + ' » : file libérée.');
+          return true;
+        }
         if (state.detachedAt) say('Ancien travail retiré par YakFlow ; résultat encore protégé. Aucun doublon.');
-        else say('Récupération : message d’origine introuvable pour « ' + j.nom + ' ». Aucun renvoi automatique.');
+        else say('Récupération : message d’origine introuvable pour « ' + j.nom + ' ». Libération de la file dans 2 min.');
         return true;
       }
       const before = new Set(j.before || []);
@@ -1196,6 +1211,8 @@
     try { sessionStorage.setItem(ACTIVE_KEY, JSON.stringify({id:job.id,nom:job.nom,prompt:job.prompt,t:Date.now(),before:[...before]})); } catch (_) {}
     job.submitted = true;
     send.click();
+    // YAKFLOW_CONV_URL_V1 : mémoriser la conversation de ce travail pour la retrouver après un rechargement
+    (async () => { for (let i = 0; i < 90; i++) { await sleep(1000); if (/^\/c\//.test(location.pathname)) { try { const a = JSON.parse(sessionStorage.getItem(ACTIVE_KEY) || 'null'); if (a && a.id === job.id && !a.url) { a.url = location.pathname; sessionStorage.setItem(ACTIVE_KEY, JSON.stringify(a)); } } catch (_) {} return; } } })();
     // Les pièces jointes sont maintenant présentes dans cette conversation, y compris si la génération échoue.
     const c = rp.mem; c.sent++; c.uploaded = (c.uploaded || 0) + rp.uploads.length; c.reused = (c.reused || 0) + (rp.original.length - rp.uploads.length);
     for (const r of rp.newly) if (isPersistentSheet({name:r.name})) {
@@ -1236,7 +1253,7 @@
         } catch (e) { say('studio non joignable'); lastErr = 'Lance serveur.py (Agnes Studio).'; continue; }
       }
       // YAKFLOW_CHAT_HEAL_V1 : le studio demande une relance (rien n'avance) → on recharge l'onglet, sauf s'il dessine depuis moins de 20 min
-      { const ra = get('bridge:reloadAt', 0); if (ra > PAGE_T0 && (!busy || Date.now() - busySince > 20 * 60000)) { say('relance demandée par le studio'); await sleep(500); location.reload(); return; } }
+      { const ra = get('bridge:reloadAt', 0); if (ra > PAGE_T0 && !late && !recoveryBlocked && !pending() && !generating() && (!busy || Date.now() - busySince > 20 * 60000)) { say('relance demandée par le studio'); await sleep(500); location.reload(); return; } }
       if (busy || !GM_getValue(K_ON, true) || Date.now() < pauseUntil) continue;
       if (await recoverSavedResult()) continue;
       if (await recoverAfterReload()) continue;
