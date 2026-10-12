@@ -1,0 +1,337 @@
+{
+  "id": "la-cabine",
+  "titre": "La Cabine",
+  "accroche": "Six places. Ils sont sept.",
+  "description": "Une cabine bloquée au-dessus des nuages, six places, sept passagers. Quelqu'un doit sortir. Toi, tu aurais ouvert la trappe ?",
+  "hashtags": [
+    "#LaCabine",
+    "#Animation3D",
+    "#FinOuverte",
+    "#Suspense",
+    "#YakFilms"
+  ],
+  "commentaire": "Ils sont enfin en paix… mais alors c'est qui le 1 à bord ?",
+  "datePublication": "2026-10-14",
+  "heurePublication": "20:00",
+  "etapes": [
+    {
+      "id": "fiche-cabine-pere",
+      "type": "fiche",
+      "nom": "Fiche — le père (ours)",
+      "joindre": [],
+      "promptImage": "REFERENCE SHEET with three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props, no text. Character: the father bear, a big adult brown bear about forty, broad shoulders, warm dark-brown fur, small round ears, kind tired brown eyes, dark green mountain-guide parka with reflective strips, grey wool beanie, sturdy hiking boots. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "fiche-cabine-fils",
+      "type": "fiche",
+      "nom": "Fiche — l'ourson (9 ans)",
+      "joindre": [],
+      "promptImage": "REFERENCE SHEET with three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props, no text. Character: the bear cub, a nine-year-old brown bear cub, rounder and much smaller than his father, same warm dark-brown fur, big worried brown eyes, red beanie with a white pompom, yellow puffer jacket, small snow boots. He is a child: small, round, about half the height of an adult. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "fiche-cabine-marmotte",
+      "type": "fiche",
+      "nom": "Fiche — la cabinière (marmotte)",
+      "joindre": [],
+      "promptImage": "REFERENCE SHEET with three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props, no text. Character: the cable-car operator, a stocky middle-aged marmot woman with golden-brown fur and a pale muzzle, red cable-car company uniform jacket with a plain white badge, red cap, a black handheld radio on her belt. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "fiche-cabine-sanglier",
+      "type": "fiche",
+      "nom": "Fiche — le sanglier",
+      "joindre": [],
+      "promptImage": "REFERENCE SHEET with three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props, no text. Character: the wild boar, a huge heavy wild boar man in his fifties, coarse dark-grey bristly fur, short pale tusks, small hard eyes, black puffer jacket, ski trousers. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "fiche-cabine-chouette",
+      "type": "fiche",
+      "nom": "Fiche — la vieille chouette",
+      "joindre": [],
+      "promptImage": "REFERENCE SHEET with three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props, no text. Character: the old owl, a small elderly tawny owl woman, soft brown and cream mottled feathers, large round amber eyes, feathered humanlike hands, long grey wool coat, burgundy knitted scarf. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "fiche-cabine-biche",
+      "type": "fiche",
+      "nom": "Fiche — la jeune biche",
+      "joindre": [],
+      "promptImage": "REFERENCE SHEET with three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props, no text. Character: the young doe, a slender young adult doe woman, light fawn fur with a white throat, large dark eyes, white ski jacket, pastel blue beanie. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "fiche-cabine-renard",
+      "type": "fiche",
+      "nom": "Fiche — le jeune renard",
+      "joindre": [],
+      "promptImage": "REFERENCE SHEET with three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props, no text. Character: the young fox, a skinny sixteen-year-old red fox boy, orange fur with a white chest and black-tipped ears, frightened amber eyes, worn grey hoodie with the hood up, faded jeans, old trainers. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "decor-cabine-interieur",
+      "type": "fiche",
+      "nom": "Décor — intérieur de la cabine (vide, nuit)",
+      "joindre": [],
+      "promptImage": "EMPTY ESTABLISHING SHOT, no character at all. Inside the small red cable car at night: brushed metal floor with a square emergency hatch in the middle, vertical steel grab poles, panoramic windows all around showing a sea of moonlit clouds below and black mountain peaks, a small digital screen above the sliding doors, cold blue moonlight mixed with weak flickering white ceiling light. The metal plate above the sliding doors reads exactly \"CAPACITÉ MAX : 6 PERSONNES\"; the small screen below it is dark. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "decor-cabine-gare",
+      "type": "fiche",
+      "nom": "Décor — gare d'arrivée à l'aube (vide)",
+      "joindre": [],
+      "promptImage": "EMPTY ESTABLISHING SHOT, no character at all. A small mountain cable-car arrival station at dawn: concrete platform, steel rails and big wheels of the cable machinery, large windows full of golden sunrise over snowy peaks and a sea of clouds, stone wall with a dark bronze plaque, the red cable car docked with its doors open. Warm golden light, long soft shadows. No readable text. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-1",
+      "type": "scene",
+      "nom": "1. La cabine s'arrête au-dessus des nuages",
+      "joindre": [],
+      "promptImage": "Night, exterior, wide shot: a small red cable car hangs from a thick steel cable high above a sea of silver moonlit clouds, black jagged mountain peaks under a full moon, the lit windows of the cabin glowing warm, the cable stretching up toward a distant lit station on a rocky summit. The cabin is small in the lower middle of the frame, sky and clouds huge around it. No readable text. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The red cable car glides along the cable, then jerks to a sudden stop and swings back and forth in the void; its lights flicker once. Camera: locked wide shot with a short violent camera shake at the moment of the stop, then still. A long metallic screech, the heavy clunk of the brake, the wind, the cabin creaking as it swings. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut",
+      "muet": true
+    },
+    {
+      "id": "scene-2",
+      "type": "scene",
+      "nom": "2. Ourson : « C'est écrit pas plus de six. On est sept. »",
+      "joindre": [
+        "fiche-cabine-fils",
+        "fiche-cabine-pere",
+        "decor-cabine-interieur"
+      ],
+      "promptImage": "Inside the cabin, medium close shot: the bear cub, a nine-year-old brown bear cub, rounder and much smaller than his father, same warm dark-brown fur, big worried brown eyes, red beanie with a white pompom, yellow puffer jacket, small snow boots in the lower left foreground, three-quarter view, pointing up at the sign and screen above the doors; the father bear, a big adult brown bear about forty, broad shoulders, warm dark-brown fur, small round ears, kind tired brown eyes, dark green mountain-guide parka with reflective strips, grey wool beanie, sturdy hiking boots just behind him, looking up too. Above the sliding doors, a metal plate reads exactly \"CAPACITÉ MAX : 6 PERSONNES\" and the small digital screen below it reads exactly \"7 À BORD · SURCHARGE\" in red. Other passengers only as soft out-of-focus shoulders at the edges. Inside the small red cable car at night: brushed metal floor with a square emergency hatch in the middle, vertical steel grab poles, panoramic windows all around showing a sea of moonlit clouds below and black mountain peaks, a small digital screen above the sliding doors, cold blue moonlight mixed with weak flickering white ceiling light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The bear cub tugs his father's sleeve, points up at the sign and the red screen, and speaks; the father keeps looking up, frozen. Camera: locked medium close shot, no movement. Wind howling against the cabin, metal creaking, the cable hums. No music. No music. Only the bear cub speaks, in French, with exactly the same voice as in all his other clips: a young boy about nine, bright soft child's voice, sincere and worried, never adult: \"Papa, c'est écrit pas plus de six. On est sept.\" Worried, a small shaking voice, weight on « sept ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at his father, never into the lens. The father keeps his mouth closed. The screen and sign texts stay exact, sharp and readable. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-3",
+      "type": "scene",
+      "nom": "3. Marmotte : « Gare du Midi, ici cabine deux »",
+      "joindre": [
+        "fiche-cabine-marmotte",
+        "decor-cabine-interieur"
+      ],
+      "promptImage": "Inside the cabin, medium shot of the cable-car operator, a stocky middle-aged marmot woman with golden-brown fur and a pale muzzle, red cable-car company uniform jacket with a plain white badge, red cap, a black handheld radio on her belt, standing upright by the doors in three-quarter view, the black radio held close to her mouth, other passengers crowded behind her as soft out-of-focus passengers. Inside the small red cable car at night: brushed metal floor with a square emergency hatch in the middle, vertical steel grab poles, panoramic windows all around showing a sea of moonlit clouds below and black mountain peaks, a small digital screen above the sliding doors, cold blue moonlight mixed with weak flickering white ceiling light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The marmot presses the radio button and speaks into it, her eyes on the frozen screen above the doors. Camera: a slow handheld drift closer to her. Wind howling against the cabin, metal creaking, the cable hums. No music. A radio click. No music. Only the marmot speaks, in French, with exactly the same voice as in all her other clips: a woman in her fifties, firm professional voice, a little hoarse, trying to stay in control: \"Gare du Midi, ici cabine deux. Bloqués, sept à bord, on ne repart pas.\" Professional but tense, clipped words. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 6. She speaks into the radio, never into the lens. Nobody else speaks. Do not add new text or subtitles.",
+      "secondes": 7,
+      "garder": "0-6.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-4",
+      "type": "scene",
+      "nom": "4. Radio : « Aucune cabine n'est en service ce soir »",
+      "joindre": [
+        "fiche-cabine-marmotte",
+        "decor-cabine-interieur"
+      ],
+      "promptImage": "Close-up of the black handheld radio in the fur-covered hand of the cable-car operator, a stocky middle-aged marmot woman with golden-brown fur and a pale muzzle, red cable-car company uniform jacket with a plain white badge, red cap, a black handheld radio on her belt, its small red light on, her shocked face sharp just behind it. In the background, blurred passengers turning their heads toward her. Inside the small red cable car at night: brushed metal floor with a square emergency hatch in the middle, vertical steel grab poles, panoramic windows all around showing a sea of moonlit clouds below and black mountain peaks, a small digital screen above the sliding doors, cold blue moonlight mixed with weak flickering white ceiling light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The radio crackles; the marmot freezes, her eyes widen, and she lowers the radio a little. Camera: locked close-up, then a very small push toward her eyes at the end. Wind howling against the cabin, metal creaking, the cable hums. No music. Heavy radio static. No music. Only an off-screen voice speaks, in French, with exactly the same voice as in all its other clips: a tired man's voice heard through a crackling handheld radio, flat and distant: \"Cabine deux. Aucune cabine n'est en service ce soir.\" It speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. The marmot keeps her mouth closed the whole time; the voice comes only from the radio. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-5",
+      "type": "scene",
+      "nom": "5. Sanglier : « On est un de trop. Il sort. »",
+      "joindre": [
+        "fiche-cabine-sanglier",
+        "fiche-cabine-renard",
+        "decor-cabine-interieur"
+      ],
+      "promptImage": "Inside the cabin, low-angle medium shot: the wild boar, a huge heavy wild boar man in his fifties, coarse dark-grey bristly fur, short pale tusks, small hard eyes, black puffer jacket, ski trousers looms in the left foreground, in three-quarter view, his arm stretched out, pointing at the young fox, a skinny sixteen-year-old red fox boy, orange fur with a white chest and black-tipped ears, frightened amber eyes, worn grey hoodie with the hood up, faded jeans, old trainers, curled up in the right corner by the window, hood up, staring back. Moonlight on the boar's tusks. Inside the small red cable car at night: brushed metal floor with a square emergency hatch in the middle, vertical steel grab poles, panoramic windows all around showing a sea of moonlit clouds below and black mountain peaks, a small digital screen above the sliding doors, cold blue moonlight mixed with weak flickering white ceiling light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The wild boar points hard at the young fox and speaks; the fox shrinks back against the window without a word. Camera: locked low-angle shot on the boar, no movement. Wind howling against the cabin, metal creaking, the cable hums. No music. No music. Only the wild boar speaks, in French, with exactly the same voice as in all his other clips: a big man in his fifties, very deep, rough, loud chest voice, never high, never soft: \"On est un de trop. Le dernier monté, c'est lui. Il sort.\" Loud, cold and decided, hammering « il sort ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at the fox, never into the lens. The fox keeps his mouth closed. Only these two characters are sharp; nobody else enters the frame. Do not add new text or subtitles.",
+      "secondes": 7,
+      "garder": "0-6.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-6",
+      "type": "scene",
+      "nom": "6. Panique dans la cabine",
+      "joindre": [
+        "fiche-cabine-pere",
+        "fiche-cabine-fils",
+        "fiche-cabine-biche"
+      ],
+      "promptImage": "Inside the crowded cabin, handheld medium-wide shot: the young doe, a slender young adult doe woman, light fawn fur with a white throat, large dark eyes, white ski jacket, pastel blue beanie with both hands over her muzzle in fear; the cable-car operator, a stocky middle-aged marmot woman with golden-brown fur and a pale muzzle, red cable-car company uniform jacket with a plain white badge, red cap, a black handheld radio on her belt backing against the doors; the bear cub, a nine-year-old brown bear cub, rounder and much smaller than his father, same warm dark-brown fur, big worried brown eyes, red beanie with a white pompom, yellow puffer jacket, small snow boots hiding behind the father bear, a big adult brown bear about forty, broad shoulders, warm dark-brown fur, small round ears, kind tired brown eyes, dark green mountain-guide parka with reflective strips, grey wool beanie, sturdy hiking boots, who spreads an arm to shield him; in the back, the old owl, a small elderly tawny owl woman, soft brown and cream mottled feathers, large round amber eyes, feathered humanlike hands, long grey wool coat, burgundy knitted scarf sits perfectly still, looking at the floor hatch. Flickering ceiling light. Inside the small red cable car at night: brushed metal floor with a square emergency hatch in the middle, vertical steel grab poles, panoramic windows all around showing a sea of moonlit clouds below and black mountain peaks, a small digital screen above the sliding doors, cold blue moonlight mixed with weak flickering white ceiling light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Panic: the doe gasps and steps back, the marmot presses against the doors, the cub hides behind his father; only the old owl does not move at all. Camera: shaky handheld camera, quick small movements. Panicked overlapping gasps and frightened cries with no intelligible words; nobody says a full sentence. Wind howling against the cabin, metal creaking, the cable hums. No music. No music. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut",
+      "muet": true
+    },
+    {
+      "id": "scene-7",
+      "type": "scene",
+      "nom": "7. Le sanglier ouvre la trappe",
+      "joindre": [
+        "fiche-cabine-sanglier",
+        "fiche-cabine-renard",
+        "decor-cabine-interieur"
+      ],
+      "promptImage": "Inside the cabin, high-angle shot from the ceiling: the wild boar, a huge heavy wild boar man in his fifties, coarse dark-grey bristly fur, short pale tusks, small hard eyes, black puffer jacket, ski trousers crouches over the square emergency hatch in the metal floor, both hands on its handle, the hatch still shut; the young fox, a skinny sixteen-year-old red fox boy, orange fur with a white chest and black-tipped ears, frightened amber eyes, worn grey hoodie with the hood up, faded jeans, old trainers pressed against the window just beside him. Inside the small red cable car at night: brushed metal floor with a square emergency hatch in the middle, vertical steel grab poles, panoramic windows all around showing a sea of moonlit clouds below and black mountain peaks, a small digital screen above the sliding doors, cold blue moonlight mixed with weak flickering white ceiling light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The wild boar yanks the hatch open; freezing wind and swirling snow burst in, the black void and clouds appear below; he grabs the young fox by the hood. Camera: locked high-angle shot, the camera shaken by the gust. End exactly on the provided last frame. A violent rush of icy wind, snow hissing in, the hatch banging open. No music. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-7"
+    },
+    {
+      "id": "fin-scene-7",
+      "type": "fiche",
+      "nom": "Image de fin — 7",
+      "joindre": [
+        "scene-7"
+      ],
+      "promptImage": "This is the LAST FRAME of the attached first image: same high-angle shot a second later. The square hatch is wide open on a black void with clouds far below, snow swirling in; the wild boar, a huge heavy wild boar man in his fifties, coarse dark-grey bristly fur, short pale tusks, small hard eyes, black puffer jacket, ski trousers stands over it, one fist clenched on the hood of the young fox, a skinny sixteen-year-old red fox boy, orange fur with a white chest and black-tipped ears, frightened amber eyes, worn grey hoodie with the hood up, faded jeans, old trainers, pulling him toward the hole. Inside the small red cable car at night: brushed metal floor with a square emergency hatch in the middle, vertical steel grab poles, panoramic windows all around showing a sea of moonlit clouds below and black mountain peaks, a small digital screen above the sliding doors, cold blue moonlight mixed with weak flickering white ceiling light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-8",
+      "type": "scene",
+      "nom": "8. Renard : « Je veux juste rentrer chez moi »",
+      "joindre": [
+        "fiche-cabine-renard",
+        "decor-cabine-interieur"
+      ],
+      "promptImage": "Close-up of the young fox, a skinny sixteen-year-old red fox boy, orange fur with a white chest and black-tipped ears, frightened amber eyes, worn grey hoodie with the hood up, faded jeans, old trainers, his hood pulled back off his head by a huge fist at the edge of the frame, snow in his fur, wide frightened eyes, the dark open hatch glowing below. He is just a frightened kid. Inside the small red cable car at night: brushed metal floor with a square emergency hatch in the middle, vertical steel grab poles, panoramic windows all around showing a sea of moonlit clouds below and black mountain peaks, a small digital screen above the sliding doors, cold blue moonlight mixed with weak flickering white ceiling light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The young fox, held by his collar, looks up at the boar off-screen and speaks, his voice breaking. Camera: locked close-up, slight shake from the wind. Icy wind roaring through the open hatch. No music. No music. Only the young fox speaks, in French, with exactly the same voice as in all his other clips: a teenage boy about sixteen, soft breaking voice, out of breath with fear, never deep: \"Je veux juste rentrer chez moi.\" Breaking, pleading, barely holding back a sob. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks up off-screen at the boar, never into the lens. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-9",
+      "type": "scene",
+      "nom": "9. Chouette : « La dernière fois aussi, on a ouvert »",
+      "joindre": [
+        "fiche-cabine-chouette",
+        "decor-cabine-interieur"
+      ],
+      "promptImage": "Medium close-up of the old owl, a small elderly tawny owl woman, soft brown and cream mottled feathers, large round amber eyes, feathered humanlike hands, long grey wool coat, burgundy knitted scarf, sitting perfectly still on the cabin bench, her large amber eyes fixed on the open hatch off-screen, snow drifting past her. Everything around her is blurred and shaking; she alone is calm and sharp. Inside the small red cable car at night: brushed metal floor with a square emergency hatch in the middle, vertical steel grab poles, panoramic windows all around showing a sea of moonlit clouds below and black mountain peaks, a small digital screen above the sliding doors, cold blue moonlight mixed with weak flickering white ceiling light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The old owl speaks without moving her body, her eyes fixed on the hatch; snowflakes drift past her face. Camera: a smooth steady dolly-in toward her eyes. The wind drops to a low whistle; a single heartbeat thump. No music. No music. Only the old owl speaks, in French, with exactly the same voice as in all her other clips: an old woman in her eighties, soft, even and strangely serene voice, almost tender: \"La dernière fois aussi, on a ouvert.\" Soft and even, almost tender, as if remembering. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks at the hatch, never into the lens. Nobody else speaks. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-10",
+      "type": "scene",
+      "nom": "10. L'ours referme la trappe",
+      "joindre": [
+        "fiche-cabine-pere",
+        "fiche-cabine-sanglier",
+        "fiche-cabine-renard"
+      ],
+      "promptImage": "Inside the cabin, medium-wide shot: the floor hatch wide open on the void, snow swirling; the wild boar, a huge heavy wild boar man in his fifties, coarse dark-grey bristly fur, short pale tusks, small hard eyes, black puffer jacket, ski trousers holds the young fox, a skinny sixteen-year-old red fox boy, orange fur with a white chest and black-tipped ears, frightened amber eyes, worn grey hoodie with the hood up, faded jeans, old trainers by the hood over the hole; the father bear, a big adult brown bear about forty, broad shoulders, warm dark-brown fur, small round ears, kind tired brown eyes, dark green mountain-guide parka with reflective strips, grey wool beanie, sturdy hiking boots strides in from the left, one big hand already reaching for the hatch door. Inside the small red cable car at night: brushed metal floor with a square emergency hatch in the middle, vertical steel grab poles, panoramic windows all around showing a sea of moonlit clouds below and black mountain peaks, a small digital screen above the sliding doors, cold blue moonlight mixed with weak flickering white ceiling light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The father bear slams the hatch shut with one hard push of his hand and steps between the boar and the young fox; the wind stops at once. Camera: a fast push-in on the father as the hatch slams. End exactly on the provided last frame. A loud metal bang, then sudden silence; only the creak of the cabin. No music. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-10"
+    },
+    {
+      "id": "fin-scene-10",
+      "type": "fiche",
+      "nom": "Image de fin — 10",
+      "joindre": [
+        "scene-10"
+      ],
+      "promptImage": "This is the LAST FRAME of the attached first image: same cabin a second later, camera closer. The hatch is shut. the father bear, a big adult brown bear about forty, broad shoulders, warm dark-brown fur, small round ears, kind tired brown eyes, dark green mountain-guide parka with reflective strips, grey wool beanie, sturdy hiking boots stands upright between the wild boar, a huge heavy wild boar man in his fifties, coarse dark-grey bristly fur, short pale tusks, small hard eyes, black puffer jacket, ski trousers on the left, who has let go, stunned, and the young fox, a skinny sixteen-year-old red fox boy, orange fur with a white chest and black-tipped ears, frightened amber eyes, worn grey hoodie with the hood up, faded jeans, old trainers on the right behind the bear's arm. Calm cold light. Inside the small red cable car at night: brushed metal floor with a square emergency hatch in the middle, vertical steel grab poles, panoramic windows all around showing a sea of moonlit clouds below and black mountain peaks, a small digital screen above the sliding doors, cold blue moonlight mixed with weak flickering white ceiling light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-11",
+      "type": "scene",
+      "nom": "11. Ours : « On redescend tous ensemble »",
+      "joindre": [
+        "fiche-cabine-pere",
+        "fiche-cabine-renard",
+        "fiche-cabine-fils"
+      ],
+      "promptImage": "Inside the cabin, side two-shot at eye level: the father bear, a big adult brown bear about forty, broad shoulders, warm dark-brown fur, small round ears, kind tired brown eyes, dark green mountain-guide parka with reflective strips, grey wool beanie, sturdy hiking boots on the left in profile, holding out his open hand to the young fox, a skinny sixteen-year-old red fox boy, orange fur with a white chest and black-tipped ears, frightened amber eyes, worn grey hoodie with the hood up, faded jeans, old trainers on the right in profile; the bear cub, a nine-year-old brown bear cub, rounder and much smaller than his father, same warm dark-brown fur, big worried brown eyes, red beanie with a white pompom, yellow puffer jacket, small snow boots beside his father, holding his other hand. Their eyes on each other; nobody looks at the camera. Inside the small red cable car at night: brushed metal floor with a square emergency hatch in the middle, vertical steel grab poles, panoramic windows all around showing a sea of moonlit clouds below and black mountain peaks, a small digital screen above the sliding doors, cold blue moonlight mixed with weak flickering white ceiling light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The father bear holds out his hand and speaks; the young fox looks at the hand and takes it at the end of the line. Camera: locked side two-shot, no movement. The cabin creaks softly; the wind has stopped. No music. No music. Only the father bear speaks, in French, with exactly the same voice as in all his other clips: a man of forty, deep warm steady voice, protective and firm, never shouting: \"Il a peur, comme nous. On redescend tous ensemble.\" Low, warm and firm, no anger. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at the fox, never into the lens. The fox and the cub keep their mouths closed. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut"
+    },
+    {
+      "id": "scene-12",
+      "type": "scene",
+      "nom": "12. Carte A — SURCHARGE → DÉPART",
+      "joindre": [
+        "decor-cabine-interieur"
+      ],
+      "promptImage": "Close-up of the small digital screen above the cabin's sliding doors, filling the frame, reading exactly \"7 À BORD · SURCHARGE\" in red letters; the metal plate \"CAPACITÉ MAX : 6 PERSONNES\" just above it. Night light. No character. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The red text on the screen flickers, goes dark, and the screen changes exactly as in the last frame; the cabin jolts into motion. Camera: locked on the screen, a small jolt when the cabin starts. End exactly on the provided last frame. An electronic chime, then the deep hum of the cable starting again. No music. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The screen and sign texts stay exact, sharp and readable. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut",
+      "muet": true,
+      "imageFin": "fin-scene-12"
+    },
+    {
+      "id": "fin-scene-12",
+      "type": "fiche",
+      "nom": "Image de fin — 12",
+      "joindre": [
+        "scene-12"
+      ],
+      "promptImage": "This is the LAST FRAME of the attached first image: same close framing, the screen now reads exactly \"DÉPART\" in soft green letters, the plate \"CAPACITÉ MAX : 6 PERSONNES\" unchanged above it; faint pink dawn light on the metal. No character. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands."
+    },
+    {
+      "id": "scene-13",
+      "type": "scene",
+      "nom": "13. L'arrivée à l'aube",
+      "joindre": [
+        "fiche-cabine-pere",
+        "fiche-cabine-fils",
+        "fiche-cabine-renard"
+      ],
+      "promptImage": "Dawn at the empty mountain arrival station: the red cable car docked, its doors open onto the concrete platform. Golden sunrise light floods in through the big windows. Stepping out onto the platform toward the light: the father bear, a big adult brown bear about forty, broad shoulders, warm dark-brown fur, small round ears, kind tired brown eyes, dark green mountain-guide parka with reflective strips, grey wool beanie, sturdy hiking boots holding the bear cub, a nine-year-old brown bear cub, rounder and much smaller than his father, same warm dark-brown fur, big worried brown eyes, red beanie with a white pompom, yellow puffer jacket, small snow boots by the hand, the young fox, a skinny sixteen-year-old red fox boy, orange fur with a white chest and black-tipped ears, frightened amber eyes, worn grey hoodie with the hood up, faded jeans, old trainers beside them, the young doe, a slender young adult doe woman, light fawn fur with a white throat, large dark eyes, white ski jacket, pastel blue beanie, the cable-car operator, a stocky middle-aged marmot woman with golden-brown fur and a pale muzzle, red cable-car company uniform jacket with a plain white badge, red cap, a black handheld radio on her belt and the old owl, a small elderly tawny owl woman, soft brown and cream mottled feathers, large round amber eyes, feathered humanlike hands, long grey wool coat, burgundy knitted scarf. Deep inside the dark cabin, behind them, the wild boar, a huge heavy wild boar man in his fifties, coarse dark-grey bristly fur, short pale tusks, small hard eyes, black puffer jacket, ski trousers stays seated in the shadow, not moving. Wide shot from the platform. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "Six passengers walk peacefully onto the platform into the golden light, which grows brighter around them until they become softly translucent and glowing; deep inside the cabin, the wild boar stays seated in the shadow and does not move. Camera: a slow crane up and back, keeping the open cabin visible. Soft wind, distant birds at dawn, a deep peaceful hum. No music. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut",
+      "muet": true
+    },
+    {
+      "id": "scene-14",
+      "type": "scene",
+      "nom": "14. La plaque « En mémoire des 7 passagers »",
+      "joindre": [
+        "decor-cabine-gare"
+      ],
+      "promptImage": "Close shot of a dark bronze memorial plaque on the stone wall of the mountain station, lit by golden dawn light, reading exactly three engraved lines: \"EN MÉMOIRE DES 7 PASSAGERS\", \"CABINE 2\" and \"14 OCTOBRE 2006\". No faces, no photos, no other text. A small bunch of dry edelweiss below it. No character. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The dawn light slides gently across the plaque; nothing else moves. Camera: a slow lateral track along the plaque. Soft mountain wind, a single distant bell. No music. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The screen and sign texts stay exact, sharp and readable. Do not add new text or subtitles.",
+      "secondes": 5,
+      "garder": "0-4.5 s",
+      "transition": "cut",
+      "muet": true
+    },
+    {
+      "id": "scene-15",
+      "type": "scene",
+      "nom": "15. Fin — « 1 À BORD »",
+      "joindre": [
+        "decor-cabine-gare"
+      ],
+      "promptImage": "The red cable car docked at the empty dawn platform, seen from the platform, its sliding doors open on the dark empty interior; through the open doors, the small digital screen inside above the far doors reads exactly \"1 À BORD\" in red. The inside of the cabin is in deep shadow; nobody visible. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur and feathers, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands.",
+      "promptVideoAgnes": "The sliding doors close by themselves; through the glass, the red screen still reads \"1 À BORD\". The cabin starts gliding back up into the mist of the clouds. Camera: locked shot from the platform, no movement. The doors thud shut, the cable hums, a faint metallic creak. No music. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The screen and sign texts stay exact, sharp and readable. Nobody is visible inside the cabin. Do not add new text or subtitles.",
+      "secondes": 6,
+      "garder": "0-5.5 s",
+      "transition": "cut",
+      "muet": true
+    },
+    {
+      "id": "couverture",
+      "type": "couverture",
+      "nom": "Couverture — La Cabine",
+      "joindre": [],
+      "promptImage": "Vertical 9:16 TikTok cover, high-end stylized 3D animated feature-film look, original design not based on any existing film, studio or character, NOT photorealistic. Night: a small red cable car hangs alone from a steel cable high above a sea of moonlit clouds, black mountain peaks, full moon, its windows glowing; inside the lit windows, the blurred heads of anthropomorphic animal passengers pressed together. Cold blue and warm red light. In the middle of the image, large and perfectly readable, the title \"LA CABINE\" in heavy white letters with a thin red glow. The title block sits between 15% and 55% of the image height. No other text, no subtitle, no logo, no numbers."
+    }
+  ]
+}
