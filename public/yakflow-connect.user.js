@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YakFlow Connect
 // @namespace    https://yakflow.netlify.app/
-// @version      3.3.4
+// @version      3.3.5
 // @description  Un seul script pour YakFlow : relie l'onglet YakFlow à ChatGPT (images) et à Grok Imagine (animation), directement dans ton navigateur.
 // @author       YakFlow
 // @updateURL    https://yakflow.netlify.app/yakflow-connect.user.js
@@ -33,7 +33,7 @@
 
 (function () {
   'use strict';
-  const CONNECT_VERSION = '3.3.4';
+  const CONNECT_VERSION = '3.3.5';
   /* =====================================================================
      HUB : la file de travail des ponts, dans le navigateur (stockage Tampermonkey partagé entre onglets).
      Remplace le serveur : l'onglet YakFlow dépose les images/clips à faire, les onglets ChatGPT/Grok
@@ -750,7 +750,14 @@
       if (candidate && (candidate.matches('[data-message-author-role="user"], [data-turn="user"]') ||
           /user/i.test(candidate.querySelector('h4[data-conversation-role]')?.getAttribute('data-conversation-role') || ''))) hit = candidate;
     }
-    return hit;
+    if (hit) return hit;
+    // YAKFLOW_ANCHOR_V2 : interface sans rôle lisible → le bloc qui contient le prompt et qui n'est pas une réponse
+    const loose = [...root.querySelectorAll(ITEM_SEL)].filter(el => !el.closest('form') &&
+      !el.matches('[data-message-author-role="assistant"], [data-turn="assistant"]') &&
+      !/assistant/i.test(el.querySelector('h4[data-conversation-role]')?.getAttribute('data-conversation-role') || '') &&
+      !el.querySelector('[data-message-author-role="assistant"], [data-turn="assistant"]') &&
+      norm(el.innerText || el.textContent).includes(snip.slice(0, 30)));
+    return loose.length ? loose[loose.length - 1] : null;
   }
   function findGeneratedImage() {
     const all = generatedImages();
@@ -829,7 +836,25 @@
     // Stable historical choice: final generated image in the newest assistant turn.
     return (gallery.length ? gallery : fresh).slice(-1)[0];
   };
-  const REFUS = /syst[eè]me de s[eé]curit[eé]|bloqu[eé] la g[eé]n[eé]ration|ne (?:peux|pouvons) pas (?:g[eé]n[eé]rer|cr[eé]er|t'aider|vous aider)|politique de contenu|r[eè]gles de contenu|enfreint|n'est pas autoris[eé]|content polic|violat|can[’']?t (?:help|create|generate|make|produce)|cannot (?:help|create|generate|make|produce)|unable to (?:create|generate|make|produce)|not able to (?:create|generate)|safety system|i (?:can[’']?t|cannot) generate this/i;
+  const REFUS = /syst[eè]me de s[eé]curit[eé]|bloqu[eé] la g[eé]n[eé]ration|ne (?:peux|pouvons) pas (?:g[eé]n[eé]rer|cr[eé]er|t'aider|vous aider)|politique de contenu|r[eè]gles de contenu|enfrein(?:t|dre)|similarit[eé]s? avec des contenus tiers|contenus? tiers|nous sommes d[eé]sol[eé]s, mais l.image|n'est pas autoris[eé]|third[- ]party content|similarity to|guardrails|may (?:violate|not comply)|we.re sorry,? but (?:the|this) image|content polic|violat|can[’']?t (?:help|create|generate|make|produce)|cannot (?:help|create|generate|make|produce)|unable to (?:create|generate|make|produce)|not able to (?:create|generate)|safety system|i (?:can[’']?t|cannot) generate this/i;
+  // YAKFLOW_REFUS_V2 : le refus « contenus tiers » s'affiche parfois dans une carte d'erreur
+  // qui n'est pas un message assistant. On lit tout ce qui suit le message USER du travail.
+  function textAfter(anchor) {
+    if (!anchor) return '';
+    const root = document.querySelector('main') || document.body;
+    return [...root.querySelectorAll(ITEM_SEL + ', [role="alert"]')]
+      .filter(el => el !== anchor && !anchor.contains(el) && !el.contains(anchor) && !el.closest('form') &&
+        !!(anchor.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING) &&
+        !el.parentElement?.closest(ITEM_SEL))
+      .map(el => el.innerText || '').join(' ').replace(/\s+/g, ' ').trim();
+  }
+  function replyText() {
+    const anchor = userItem(), after = textAfter(anchor), a = lastAssistantText();
+    if (anchor) return REFUS.test(after) ? after : (after || a);
+    if (REFUS.test(a)) return a;
+    const items = document.querySelectorAll(ITEM_SEL);
+    return items.length ? (items[items.length - 1].innerText || '') : a;
+  }
   const prettyRefusal = (txt) => 'ChatGPT a refusé cette image : ' + String(txt || '').replace(/\s+/g, ' ').slice(0, 240);
   const refusalError = (txt) => { const e = new Error(prettyRefusal(txt)); e.refused = true; return e; };
   // Sans message USER identifiable, n'associer un refus à l'ancien travail que
@@ -839,7 +864,7 @@
     if (!REFUS.test(text) || generating()) return false;
     const reply = lastAssistant();
     if (anchor && reply && !!(anchor.compareDocumentPosition(reply) & Node.DOCUMENT_POSITION_FOLLOWING)) return true;
-    if (anchor) return false;
+    if (anchor) return REFUS.test(textAfter(anchor));
     const normalize = (v) => String(v || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
     const tokens = [...new Set(normalize(j?.nom || '').match(/[a-z0-9]{2,}/g) || [])]
       .filter(w => !/^(de|du|des|le|la|les|une|un|et|en|image|fin|scene|fiche|nouveau|nouvelle|ancien|conserve|pas|salon|vote|pour|avec)$/.test(w));
@@ -853,7 +878,7 @@
     const t0 = Date.now(); let last = null, stable = 0, idle = 0, lastText = '';
     while (Date.now() - t0 < timeout) {
       await sleep(3000);
-      const b = generating(), img = newImage(before), src = img ? imgSrc(img) : null, txt = lastAssistantText();
+      const b = generating(), img = newImage(before), src = img ? imgSrc(img) : null, txt = replyText();
       say((label || 'ChatGPT dessine') + ' · ' + Math.round((Date.now() - t0) / 1000) + ' s');
       if (Math.round((Date.now() - t0) / 1000) % 30 < 3) dbg('attente image', { generating: b, turnDone: turnDone(), image: !!img, stable });
       if (img) {
@@ -868,7 +893,7 @@
       } else {
         stable = 0; last = null;
         // refus de sécurité de ChatGPT : on le dit tout de suite au studio au lieu d'attendre 5 min pour rien
-        if (!b && txt && REFUS.test(txt) && (turnDone() || Date.now() - t0 > 20000)) throw refusalError(txt);
+        if (!b && txt && REFUS.test(txt) && (turnDone() || Date.now() - t0 > 8000)) throw refusalError(txt);
       }
       if (txt !== lastText) { lastText = txt; idle = 0; }
       if (!img && !b) { idle = idle || Date.now(); if (Date.now() - idle > 5 * 60000) return null; } else idle = 0;
@@ -968,7 +993,7 @@
       if (pending()) return true;
       sentPrompt = j.prompt || '';
       const anchor = userItem();
-      const answer = lastAssistantText().trim();
+      const answer = replyText().trim();
       const refusal = !generating() && REFUS.test(answer);
       const matchedRefusal = refusal && refusalMatchesJob(j, answer, anchor);
       // En l'absence d'association sûre, seul un clic utilisateur + confirmation
@@ -1272,8 +1297,8 @@
       if (late) {
         // Réponse textuelle arrivée APRES le timeout initial : elle ne doit pas
         // bloquer toute la file. Vérification d'attribution, pas de nouvelle image.
-        const answer = lastAssistantText().trim();
         sentPrompt = late.prompt || '';
+        const answer = replyText().trim();
         if (!generating() && REFUS.test(answer) && refusalMatchesJob(late, answer, userItem())) {
           const j = await call('GET', withWorker('/bridge/status?id=' + encodeURIComponent(late.id))).catch(() => null);
           if (j?.st === 'en cours' && (!j.worker || j.worker === WORKER) && !pending()) {
@@ -1299,6 +1324,17 @@
         }
         // Une image retardée n'entraîne plus d'échec automatique ni de nouveau rendu.
         // Continuer à surveiller le résultat existant, même après 10 minutes.
+        // YAKFLOW_LATE_WATCHDOG_V1 : rien ne dessine, ni image ni refus depuis 10 min → on libère la file
+        // (résultat « incertain » : YakFlow le signale, aucune regénération en double).
+        if (!generating() && Date.now() - late.t > 10 * 60000 && !pending()) {
+          const j = await call('GET', withWorker('/bridge/status?id=' + encodeURIComponent(late.id))).catch(() => null);
+          if (j?.st === 'en cours' && (!j.worker || j.worker === WORKER)) {
+            await call('POST', withWorker('/bridge/result'), { id: late.id, error: 'Aucune image ni refus lisible 15 min après l’envoi : file libérée.', incertain: true }).catch(() => {});
+          }
+          try { sessionStorage.removeItem(ACTIVE_KEY); } catch (_) {}
+          lastErr = late.nom + ' : aucune image reçue, file libérée.'; late = null;
+          continue;
+        }
         say("Récupération automatique de l'image en retard : " + late.nom);
         continue;
 

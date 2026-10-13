@@ -1738,6 +1738,12 @@ async function genChatGPT(p, s) {
       // Le nettoyage est réservé à l'ACK après enregistrement définitif.
       // YAKFLOW_CONV_URL_V1 : conversation perdue → relance unique (aucune image n'existe à livrer)
       if (st.st === 'incertain' && /conversation perdue/i.test(st.error || '') && (s.img.tries || 0) < 2) { await bridge('POST', 'forget?id=' + encodeURIComponent(id)).catch(() => {}); return { notSent: true, err: 'Conversation ChatGPT perdue : image relancée une fois' }; }
+      // YAKFLOW_REFUS_TIERS_V1 : refus « similarités avec des contenus tiers » = faux positif fréquent,
+      // ChatGPT dit lui-même de réessayer → jusqu'à 3 essais automatiques, puis échec + notification.
+      if (st.st === 'echec' && /contenus? tiers|similarit|third[- ]party|guardrail|enfrein/i.test(st.error || '') && (s.img.tries || 0) < 3) {
+        await bridge('POST', 'forget?id=' + encodeURIComponent(id)).catch(() => {});
+        return { notSent: true, retryRefus: true, err: st.error };
+      }
       if (st.st === 'incertain') return { err: st.error, noRetry: true };
       if (/limite|limit|quota|pièces jointes/i.test(st.error || '')) return { err: 'Quota ChatGPT : ' + st.error, noRetry: true };
       return { err: 'ChatGPT : ' + st.error };
@@ -2134,6 +2140,7 @@ async function doImage(p, s, lane) {
     const out = source === 'chatgpt' ? await genChatGPT(p, s) : await genImage(p, s, lane);
     if (!projects.some(q => q === p && q.etapes.includes(s)) || s.img.st !== 'calcul' || s.img.runId !== runId) { log('Image modifiée pendant la génération : résultat ignoré pour ' + s.nom); return; }
     if (out.cancel) { log('Image annulée (importée ou changée entre-temps) : ' + s.nom); return; }
+    if (out.retryRefus) { setImg(p, s, { st: 'attente', msg: 'Refus ChatGPT « contenus tiers » : nouvel essai automatique (' + tries + '/3)' }); log('Refus contenus tiers, image remise en file : ' + s.nom + ' (essai ' + tries + '/3)'); return; }
     if (out.notSent) { setImg(p, s, { st: 'attente', msg: 'En attente de YakFlow Connect (rien envoyé à ChatGPT)' }); log('Image remise en attente, Connect pas encore relié : ' + s.nom); return; }
     if (out.data) {
       await mPut(imgKey(p, s), out.data.data);
@@ -2157,7 +2164,12 @@ async function doImage(p, s, lane) {
     const r = out.r || {};
     // YakFlow anti-gaspillage : aucun essai automatique ChatGPT après échec ou résultat incertain.
     // Vérifier le pont et la conversation avant de relancer MANUELLEMENT.
-    if (out.err) { stat.fail('image', s.nom, out.err); setImg(p, s, { st: 'echec', msg: out.err }); log('Image ratée : ' + s.nom + ' → ' + out.err); return; }
+    if (out.err) {
+      stat.fail('image', s.nom, out.err); setImg(p, s, { st: 'echec', msg: out.err }); log('Image ratée : ' + s.nom + ' → ' + out.err);
+      // YAKFLOW_NOTIF_ECHEC_V1 : toujours prévenir le téléphone quand une image ChatGPT échoue
+      phone(/refus/i.test(out.err) ? 'Image refusée' : 'Image ratée', 'Projet : ' + p.titre + '\nÉtape : ' + s.nom + '\nMotif : ' + String(out.err).slice(0, 160) + '\nLes autres images continuent.', 4);
+      return;
+    }
     if (isAuth(r)) { setImg(p, s, { st: 'echec', msg: 'Accès image refusé : vérifie les clés et le modèle.' }); return; }
     if (isBusy(r)) { const retryAt = out.retryAt || now() + 60000; setImg(p, s, { st: 'file', retryAt, msg: 'Clés Agnes occupées, nouvel essai à ' + fmtT(retryAt) + ' (essai ' + tries + ')' }); return; }
     if (/sensitive|safety|moderation|content/i.test(errText(r)) && tries < 2) { setImg(p, s, { st: 'file', retryAt: now() + 5000, msg: 'Refus de contenu, je réessaie une fois' }); return; }
