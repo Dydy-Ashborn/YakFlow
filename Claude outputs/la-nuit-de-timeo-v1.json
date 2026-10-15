@@ -1,0 +1,431 @@
+{
+ "id": "la-nuit-de-timeo",
+ "titre": "La nuit de Timéo",
+ "realisateur": "Le Tendre",
+ "version": 1,
+ "typePublication": "one-shot",
+ "recommendedVideoEngine": "agnes",
+ "accroche": "Il dort en classe. La nuit, il devient son père.",
+ "description": "Timéo s'endort tous les jours en classe. Sa maîtresse décide de passer chez lui le soir, et découvre pourquoi. Il savait, le grand-père, ou pas ?",
+ "hashtags": [
+  "#LaNuitDeTimeo",
+  "#Animation3D",
+  "#Emotion",
+  "#GrandPere",
+  "#YakFilms"
+ ],
+ "commentaire": "« Bonne nuit, Timéo. » Il a toujours su, ou il l'a reconnu juste ce soir-là ?",
+ "datePublication": "2026-10-21",
+ "heurePublication": "20:00",
+ "etapes": [
+  {
+   "id": "fiche-la-nuit-de-timeo-timeo",
+   "type": "fiche",
+   "nom": "Fiche — Timéo",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-la-nuit-de-timeo-albert",
+   "type": "fiche",
+   "nom": "Fiche — grand-père Albert",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: an eighty-year-old Brittany spaniel man, orange-and-white fur turned pale with age, long wavy ears gone grey, gentle clouded brown eyes, beige knitted cardigan over a checked shirt, brown corduroy trousers, felt slippers. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-la-nuit-de-timeo-ferrand",
+   "type": "fiche",
+   "nom": "Fiche — Madame Ferrand",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a forty-five-year-old Persian cat woman, long fluffy cream-grey fur, flat round face, amber eyes, reading glasses on a chain, burgundy cardigan over a white blouse, long grey skirt, flat shoes. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-la-nuit-de-timeo-classe",
+   "type": "fiche",
+   "nom": "Décor — la salle de classe",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A primary school classroom in Nantes on an autumn afternoon: wooden desks in rows, a green chalkboard with simple sums, children's drawings on the walls, tall windows on the RIGHT with rain and orange autumn trees outside, soft grey daylight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-la-nuit-de-timeo-maison",
+   "type": "fiche",
+   "nom": "Décor — la maison d'Albert le soir",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A small old terraced house in Nantes in the evening: a little kitchen-living room with a round wooden table and a lamp on the LEFT, an old armchair, the front door on the RIGHT, a wall calendar clearly reading \"OCTOBRE 1986\" next to the door, a coat hook with a small faded red child's anorak from the eighties, warm yellow lamplight, rain against the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-la-nuit-de-timeo-chambre",
+   "type": "fiche",
+   "nom": "Décor — la chambre d'Albert",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A small old bedroom at night: a single bed with a patchwork quilt against the LEFT wall, a bedside lamp with a warm glow, a wooden chair beside the bed, a framed photo of a young Brittany spaniel father with a little Jack Russell puppy on the wall, rain on the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-1",
+   "type": "scene",
+   "nom": "1. Hook — Madame Ferrand : « Troisième fois cette semaine que tu dors en classe, Timéo. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-ferrand",
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-classe"
+   ],
+   "promptImage": "Classroom, medium shot: Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers on the RIGHT, asleep with his head on his arms on his desk; Madame Ferrand, a forty-five-year-old Persian cat woman, long fluffy cream-grey fur, flat round face, amber eyes, reading glasses on a chain, burgundy cardigan over a white blouse, long grey skirt, flat shoes on the LEFT, leaning over his desk, looking down at him toward the RIGHT; other pupils in the background (a rabbit girl, a piglet boy, a duckling) keep their mouths closed and stare. A primary school classroom in Nantes on an autumn afternoon: wooden desks in rows, a green chalkboard with simple sums, children's drawings on the walls, tall windows on the RIGHT with rain and orange autumn trees outside, soft grey daylight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Madame Ferrand taps her finger twice on Timéo's desk while she speaks; he stays asleep. Camera: push-in from the classroom to the sleeping Timéo. Rain on the windows, a clock ticking, a pupil giggling. No music. Only Madame Ferrand speaks, in French, with exactly the same voice as in all her other clips: a woman of forty-five, clear firm voice, strict on the surface and warm underneath: \"Troisième fois cette semaine que tu dors en classe, Timéo.\". Firm, a little worried underneath. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. She looks down at Timéo on the right, never into the lens. The pupils keep their mouths closed. Nobody new enters the classroom. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-2",
+   "type": "scene",
+   "nom": "2. Timéo : « Pardon, madame. Je dors mal, c'est tout. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-timeo",
+    "fiche-la-nuit-de-timeo-ferrand",
+    "decor-la-nuit-de-timeo-classe"
+   ],
+   "promptImage": "Over-the-shoulder close-up: Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers fills the RIGHT half of the frame, just woken, sitting up, eyes puffy, looking toward the LEFT at his teacher; in the foreground at frame LEFT, the blurred cream-grey fur and burgundy cardigan of Madame Ferrand, a forty-five-year-old Persian cat woman, long fluffy cream-grey fur, flat round face, amber eyes, reading glasses on a chain, burgundy cardigan over a white blouse, long grey skirt, flat shoes. A primary school classroom in Nantes on an autumn afternoon: wooden desks in rows, a green chalkboard with simple sums, children's drawings on the walls, tall windows on the RIGHT with rain and orange autumn trees outside, soft grey daylight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Timéo rubs one eye with the back of his hand while he speaks. Camera: locked close-up. Rain, the clock ticking. No music. Only Timéo speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, bright small voice, tired, sincere, never babyish: \"Pardon, madame. Je dors mal, c'est tout.\". Embarrassed, quick, avoiding the truth. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Madame Ferrand on the left, never into the lens. She keeps her mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-3",
+   "type": "scene",
+   "nom": "3. Madame Ferrand : « Ce soir, je passe voir tes parents. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-ferrand",
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-classe"
+   ],
+   "promptImage": "Reverse over-the-shoulder close-up, same axis: Madame Ferrand, a forty-five-year-old Persian cat woman, long fluffy cream-grey fur, flat round face, amber eyes, reading glasses on a chain, burgundy cardigan over a white blouse, long grey skirt, flat shoes on the LEFT half of the frame, glasses down her nose, looking toward the RIGHT at Timéo; in the foreground at frame RIGHT, the blurred white-and-tan ear of Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers. A primary school classroom in Nantes on an autumn afternoon: wooden desks in rows, a green chalkboard with simple sums, children's drawings on the walls, tall windows on the RIGHT with rain and orange autumn trees outside, soft grey daylight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Madame Ferrand takes off her reading glasses and lets them hang on their chain. Camera: rack focus from Timéo's ear to Madame Ferrand's face. Chalk dust in the light, the clock. No music. Only Madame Ferrand speaks, in French, with exactly the same voice as in all her other clips: a woman of forty-five, clear firm voice, strict on the surface and warm underneath: \"Ce soir, je passe voir tes parents.\". Calm and decided, not angry. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks at Timéo on the right, never into the lens. Timéo keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-4",
+   "type": "scene",
+   "nom": "4. Timéo : « Non, madame. Pas ce soir. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-classe"
+   ],
+   "promptImage": "Close-up: Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers on the RIGHT, panic in his eyes, ears flattened, looking toward the LEFT at his teacher off-screen. A primary school classroom in Nantes on an autumn afternoon: wooden desks in rows, a green chalkboard with simple sums, children's drawings on the walls, tall windows on the RIGHT with rain and orange autumn trees outside, soft grey daylight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Timéo's ears flatten and he grips the edge of his desk. Camera: snap zoom on his frightened eyes. The school bell ringing loudly. No music. Only Timéo speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, bright small voice, tired, sincere, never babyish: \"Non, madame. Pas ce soir.\". Too fast, alarmed. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. Madame Ferrand stays off-screen on the LEFT and never appears; nobody enters the frame. He looks toward the left, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-4b",
+   "type": "scene",
+   "nom": "4b. Madame Ferrand : « Si. À ce soir, Timéo. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-ferrand",
+    "decor-la-nuit-de-timeo-classe"
+   ],
+   "promptImage": "Close-up: Madame Ferrand, a forty-five-year-old Persian cat woman, long fluffy cream-grey fur, flat round face, amber eyes, reading glasses on a chain, burgundy cardigan over a white blouse, long grey skirt, flat shoes on the LEFT, glasses hanging on their chain, looking toward the RIGHT at Timéo off-screen, a calm firm look, the green chalkboard behind her. A primary school classroom in Nantes on an autumn afternoon: wooden desks in rows, a green chalkboard with simple sums, children's drawings on the walls, tall windows on the RIGHT with rain and orange autumn trees outside, soft grey daylight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Madame Ferrand picks up her bag from the desk while she speaks. Camera: tilt up from her bag to her face. Pupils' chairs scraping, the bell fading. No music. Only Madame Ferrand speaks, in French, with exactly the same voice as in all her other clips: a woman of forty-five, clear firm voice, strict on the surface and warm underneath: \"Si. À ce soir, Timéo.\". Gentle but final. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. Timéo stays off-screen on the RIGHT and never appears; nobody enters the frame. She looks toward the right, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-5",
+   "type": "scene",
+   "nom": "5. Albert : « Il est neuf heures et Michel est pas rentré de l'école. » (fondu au noir avant)",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-albert",
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-maison"
+   ],
+   "promptImage": "Evening in the small house, medium shot: grand-père Albert, an eighty-year-old Brittany spaniel man, orange-and-white fur turned pale with age, long wavy ears gone grey, gentle clouded brown eyes, beige knitted cardigan over a checked shirt, brown corduroy trousers, felt slippers on the LEFT, standing at the rainy window, agitated, looking toward the RIGHT at Timéo; on the wall by the door, the calendar clearly reads \"OCTOBRE 1986\"; Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers on the RIGHT at the table with a pot of soup. A small old terraced house in Nantes in the evening: a little kitchen-living room with a round wooden table and a lamp on the LEFT, an old armchair, the front door on the RIGHT, a wall calendar clearly reading \"OCTOBRE 1986\" next to the door, a coat hook with a small faded red child's anorak from the eighties, warm yellow lamplight, rain against the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Albert turns from the window toward Timéo, wringing his hands. Camera: push-in toward Albert, the calendar \"OCTOBRE 1986\" passing in the frame. End exactly on the provided last frame. Rain on the window, a ticking clock, soup bubbling. No music. Only grand-père Albert speaks, in French, with exactly the same voice as in all his other clips: an old man of eighty, soft hoarse warm voice, sometimes lost, never shrill: \"Il est neuf heures et Michel est pas rentré de l'école.\". Anxious, voice breaking, lost. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Timéo on the right, never into the lens. Timéo keeps his mouth closed. The calendar text stays exact and readable. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "noir",
+   "imageFin": "fin-scene-5"
+  },
+  {
+   "id": "fin-scene-5",
+   "type": "fiche",
+   "nom": "Image de fin — 5",
+   "joindre": [
+    "scene-5"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Albert has turned fully toward the right, hands clasped, frightened eyes; the calendar \"OCTOBRE 1986\" still sharp by the door. A small old terraced house in Nantes in the evening: a little kitchen-living room with a round wooden table and a lamp on the LEFT, an old armchair, the front door on the RIGHT, a wall calendar clearly reading \"OCTOBRE 1986\" next to the door, a coat hook with a small faded red child's anorak from the eighties, warm yellow lamplight, rain against the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-6",
+   "type": "scene",
+   "nom": "6. Timéo : « Mon père rentrera plus, papi. Ça fait deux ans. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-maison"
+   ],
+   "promptImage": "Close-up: Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers on the RIGHT, holding a soup ladle over the pot, looking toward the LEFT at his grandfather off-screen, eyes tired and sad. A small old terraced house in Nantes in the evening: a little kitchen-living room with a round wooden table and a lamp on the LEFT, an old armchair, the front door on the RIGHT, a wall calendar clearly reading \"OCTOBRE 1986\" next to the door, a coat hook with a small faded red child's anorak from the eighties, warm yellow lamplight, rain against the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Timéo puts the ladle down in the pot and lowers his eyes. Camera: rack focus from the steaming pot to Timéo's face. Soup bubbling, rain, the clock. No music. Only Timéo speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, bright small voice, tired, sincere, never babyish: \"Mon père rentrera plus, papi. Ça fait deux ans.\". Very low, to himself, so his grandfather does not hear; an inner thought said out loud. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. Albert stays off-screen on the LEFT and never appears; nobody enters the frame. He looks toward the left, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-7",
+   "type": "scene",
+   "nom": "7. Timéo : « Allez, Timéo. Encore une fois. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-maison"
+   ],
+   "promptImage": "Medium shot by the front door: Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers on the RIGHT, taking the small faded red child's anorak from the eighties off the coat hook; the calendar \"OCTOBRE 1986\" on the wall beside him. A small old terraced house in Nantes in the evening: a little kitchen-living room with a round wooden table and a lamp on the LEFT, an old armchair, the front door on the RIGHT, a wall calendar clearly reading \"OCTOBRE 1986\" next to the door, a coat hook with a small faded red child's anorak from the eighties, warm yellow lamplight, rain against the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Timéo slips on the small red anorak and zips it up. Camera: lateral tracking shot along the hallway to the door. End exactly on the provided last frame. The zip, rain against the door. No music. Only Timéo speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, bright small voice, tired, sincere, never babyish: \"Allez, Timéo. Encore une fois.\". Low, giving himself courage; an inner thought said out loud. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at the anorak, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-7"
+  },
+  {
+   "id": "fin-scene-7",
+   "type": "fiche",
+   "nom": "Image de fin — 7",
+   "joindre": [
+    "scene-7"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers, wearing a small faded red child's anorak from the eighties over his hoodie, a little too big for him, standing at the front door on the right, hand on the handle. A small old terraced house in Nantes in the evening: a little kitchen-living room with a round wooden table and a lamp on the LEFT, an old armchair, the front door on the RIGHT, a wall calendar clearly reading \"OCTOBRE 1986\" next to the door, a coat hook with a small faded red child's anorak from the eighties, warm yellow lamplight, rain against the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-8",
+   "type": "scene",
+   "nom": "8. Timéo : « Je suis rentré, papa. Pardon, j'ai joué au foot. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-timeo",
+    "fiche-la-nuit-de-timeo-albert",
+    "decor-la-nuit-de-timeo-maison"
+   ],
+   "promptImage": "Medium shot from inside: Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers, wearing a small faded red child's anorak from the eighties over his hoodie, a little too big for him, on the RIGHT, stepping in from the front door with rain on his fur, looking toward the LEFT at his grandfather, putting on a bright smile. A small old terraced house in Nantes in the evening: a little kitchen-living room with a round wooden table and a lamp on the LEFT, an old armchair, the front door on the RIGHT, a wall calendar clearly reading \"OCTOBRE 1986\" next to the door, a coat hook with a small faded red child's anorak from the eighties, warm yellow lamplight, rain against the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Timéo steps in through the door, shaking the rain off, and smiles toward the left. Camera: steady push-in on Timéo. The door closing, rain outside. No music. Only Timéo speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, bright small voice, tired, sincere, never babyish: \"Je suis rentré, papa. Pardon, j'ai joué au foot.\". Bright and cheerful, playing a part, a little too loud. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at his grandfather on the left, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-9",
+   "type": "scene",
+   "nom": "9. Albert : « Mon Michel. Tu m'as fait peur, mon grand. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-albert",
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-maison"
+   ],
+   "promptImage": "Two-shot, the shared gesture: grand-père Albert, an eighty-year-old Brittany spaniel man, orange-and-white fur turned pale with age, long wavy ears gone grey, gentle clouded brown eyes, beige knitted cardigan over a checked shirt, brown corduroy trousers, felt slippers on the LEFT, hugging Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers, wearing a small faded red child's anorak from the eighties over his hoodie, a little too big for him, on the RIGHT against his cardigan; Albert's eyes closed with relief, Timéo's eyes open, tired, over his grandfather's shoulder. A small old terraced house in Nantes in the evening: a little kitchen-living room with a round wooden table and a lamp on the LEFT, an old armchair, the front door on the RIGHT, a wall calendar clearly reading \"OCTOBRE 1986\" next to the door, a coat hook with a small faded red child's anorak from the eighties, warm yellow lamplight, rain against the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Albert hugs Timéo tight and rocks him gently while he speaks. Camera: small arc around the hug, never crossing the axis. Rain, the clock, a sigh of relief. No music. Only grand-père Albert speaks, in French, with exactly the same voice as in all his other clips: an old man of eighty, soft hoarse warm voice, sometimes lost, never shrill: \"Mon Michel. Tu m'as fait peur, mon grand.\". Relieved, warm, voice shaking with love. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He holds Timéo, never looking into the lens. Timéo keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-10",
+   "type": "scene",
+   "nom": "10. Madame Ferrand : « Mon Dieu. Il fait ça tous les soirs. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-ferrand",
+    "decor-la-nuit-de-timeo-maison"
+   ],
+   "promptImage": "Exterior at night in the rain: Madame Ferrand, a forty-five-year-old Persian cat woman, long fluffy cream-grey fur, flat round face, amber eyes, reading glasses on a chain, burgundy cardigan over a white blouse, long grey skirt, flat shoes on the LEFT under a black umbrella, standing at the lit window of the little house, looking toward the RIGHT through the glass, where inside, small and warm, the old spaniel hugs the puppy boy in the red anorak. A small old terraced house in Nantes in the evening: a little kitchen-living room with a round wooden table and a lamp on the LEFT, an old armchair, the front door on the RIGHT, a wall calendar clearly reading \"OCTOBRE 1986\" next to the door, a coat hook with a small faded red child's anorak from the eighties, warm yellow lamplight, rain against the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Madame Ferrand lowers her umbrella a little, her hand to her mouth. Camera: push-in through the rain toward her face. Rain drumming on the umbrella, a car passing far away. No music. Only Madame Ferrand speaks, in French, with exactly the same voice as in all her other clips: a woman of forty-five, clear firm voice, strict on the surface and warm underneath: \"Mon Dieu. Il fait ça tous les soirs.\". Shaken, low, to herself; an inner thought said out loud. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks toward the window on the right, never into the lens. The two inside keep their mouths closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-11",
+   "type": "scene",
+   "nom": "11. Timéo borde son grand-père et s'endort par terre",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-albert",
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-chambre"
+   ],
+   "promptImage": "Bedroom at night, wide high shot: grand-père Albert, an eighty-year-old Brittany spaniel man, orange-and-white fur turned pale with age, long wavy ears gone grey, gentle clouded brown eyes, beige knitted cardigan over a checked shirt, brown corduroy trousers, felt slippers asleep in the bed against the LEFT wall under the patchwork quilt; Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers, wearing a small faded red child's anorak from the eighties over his hoodie, a little too big for him, sitting on the floor against the bed with a school book open on his knees, his head nodding with sleep. A small old bedroom at night: a single bed with a patchwork quilt against the LEFT wall, a bedside lamp with a warm glow, a wooden chair beside the bed, a framed photo of a young Brittany spaniel father with a little Jack Russell puppy on the wall, rain on the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Timéo pulls the quilt up to his grandfather's chin, sits down against the bed and his head drops with sleep. Camera: crane down from the ceiling lamp to Timéo. Rain on the window, the old man's soft breathing. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Albert lies motionless the whole time and never moves. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "scene-12",
+   "type": "scene",
+   "nom": "12. Madame Ferrand : « Laissez-le dormir. Il a beaucoup travaillé. » (fondu au noir avant)",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-ferrand",
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-classe"
+   ],
+   "promptImage": "Classroom the next day, medium shot: Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers on the RIGHT asleep on his desk; Madame Ferrand, a forty-five-year-old Persian cat woman, long fluffy cream-grey fur, flat round face, amber eyes, reading glasses on a chain, burgundy cardigan over a white blouse, long grey skirt, flat shoes on the LEFT gently laying her burgundy cardigan over his shoulders, now in her white blouse, looking toward the RIGHT at him. A primary school classroom in Nantes on an autumn afternoon: wooden desks in rows, a green chalkboard with simple sums, children's drawings on the walls, tall windows on the RIGHT with rain and orange autumn trees outside, soft grey daylight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Madame Ferrand drapes her cardigan over the sleeping Timéo and raises one finger to her lips toward the class. Camera: tilt up from the cardigan to her face. End exactly on the provided last frame. Rain, the clock, the class going silent. No music. Only Madame Ferrand speaks, in French, with exactly the same voice as in all her other clips: a woman of forty-five, clear firm voice, strict on the surface and warm underneath: \"Laissez-le dormir. Il a beaucoup travaillé.\". Soft and protective, low but clear. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. She looks at the class, never into the lens. The pupils keep their mouths closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "noir",
+   "imageFin": "fin-scene-12"
+  },
+  {
+   "id": "fin-scene-12",
+   "type": "fiche",
+   "nom": "Image de fin — 12",
+   "joindre": [
+    "scene-12"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Timéo on the right sleeping peacefully under the burgundy cardigan, Madame Ferrand on the left in her white blouse, smiling softly down at him. A primary school classroom in Nantes on an autumn afternoon: wooden desks in rows, a green chalkboard with simple sums, children's drawings on the walls, tall windows on the RIGHT with rain and orange autumn trees outside, soft grey daylight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-13",
+   "type": "scene",
+   "nom": "13. Madame Ferrand : « Bonsoir, monsieur. Je suis la maîtresse de Michel. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-ferrand",
+    "fiche-la-nuit-de-timeo-albert",
+    "decor-la-nuit-de-timeo-maison"
+   ],
+   "promptImage": "Evening at the front door of the little house: Madame Ferrand, a forty-five-year-old Persian cat woman, long fluffy cream-grey fur, flat round face, amber eyes, reading glasses on a chain, burgundy cardigan over a white blouse, long grey skirt, flat shoes on the RIGHT, in her white blouse and a raincoat, holding a covered casserole dish, smiling, looking toward the LEFT at grand-père Albert, an eighty-year-old Brittany spaniel man, orange-and-white fur turned pale with age, long wavy ears gone grey, gentle clouded brown eyes, beige knitted cardigan over a checked shirt, brown corduroy trousers, felt slippers, who has opened the door; the calendar \"OCTOBRE 1986\" by the door. A small old terraced house in Nantes in the evening: a little kitchen-living room with a round wooden table and a lamp on the LEFT, an old armchair, the front door on the RIGHT, a wall calendar clearly reading \"OCTOBRE 1986\" next to the door, a coat hook with a small faded red child's anorak from the eighties, warm yellow lamplight, rain against the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Madame Ferrand lifts the casserole dish a little and smiles warmly. Camera: push-in on Madame Ferrand at the doorway. Rain behind her, the door creaking open. No music. Only Madame Ferrand speaks, in French, with exactly the same voice as in all her other clips: a woman of forty-five, clear firm voice, strict on the surface and warm underneath: \"Bonsoir, monsieur. Je suis la maîtresse de Michel.\". Warm, playing along perfectly, a twinkle in her eye. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks at Albert on the left, never into the lens. Albert keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-14",
+   "type": "scene",
+   "nom": "14. Albert : « Entrez, entrez. Michel parle de vous tout le temps. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-albert",
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-maison"
+   ],
+   "promptImage": "Reverse close-up: grand-père Albert, an eighty-year-old Brittany spaniel man, orange-and-white fur turned pale with age, long wavy ears gone grey, gentle clouded brown eyes, beige knitted cardigan over a checked shirt, brown corduroy trousers, felt slippers on the LEFT, delighted, opening the door wide, looking toward the RIGHT at the teacher; behind him in the warm room, Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers, wearing a small faded red child's anorak from the eighties over his hoodie, a little too big for him, frozen by the table, astonished. A small old terraced house in Nantes in the evening: a little kitchen-living room with a round wooden table and a lamp on the LEFT, an old armchair, the front door on the RIGHT, a wall calendar clearly reading \"OCTOBRE 1986\" next to the door, a coat hook with a small faded red child's anorak from the eighties, warm yellow lamplight, rain against the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Albert opens the door wide with a welcoming gesture. Camera: lateral tracking shot as the door swings open. Rain, a happy chuckle. No music. Only grand-père Albert speaks, in French, with exactly the same voice as in all his other clips: an old man of eighty, soft hoarse warm voice, sometimes lost, never shrill: \"Entrez, entrez. Michel parle de vous tout le temps.\". Joyful, proud, hospitable. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Madame Ferrand on the right, never into the lens. Timéo keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-15",
+   "type": "scene",
+   "nom": "15. Timéo : « Merci, madame. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-maison"
+   ],
+   "promptImage": "Close-up at the round table under the lamp: Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers, wearing a small faded red child's anorak from the eighties over his hoodie, a little too big for him, on the RIGHT, a bowl of soup in front of him, looking toward the LEFT at Madame Ferrand off-screen, his eyes shining. A small old terraced house in Nantes in the evening: a little kitchen-living room with a round wooden table and a lamp on the LEFT, an old armchair, the front door on the RIGHT, a wall calendar clearly reading \"OCTOBRE 1986\" next to the door, a coat hook with a small faded red child's anorak from the eighties, warm yellow lamplight, rain against the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Timéo smiles for the first time, a real smile. Camera: steady push-in on his face. Spoons on bowls, rain, the clock. No music. Only Timéo speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, bright small voice, tired, sincere, never babyish: \"Merci, madame.\". Barely voiced, full of gratitude. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. Madame Ferrand stays off-screen on the LEFT and never appears; nobody enters the frame. He looks toward the left, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-16",
+   "type": "scene",
+   "nom": "16. Timéo : « Il me reste les fractions, et après je dors. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-timeo",
+    "fiche-la-nuit-de-timeo-albert",
+    "decor-la-nuit-de-timeo-chambre"
+   ],
+   "promptImage": "Bedroom at night: Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers, wearing a small faded red child's anorak from the eighties over his hoodie, a little too big for him, on the RIGHT sitting on the chair by the bed, a school book open on his knees under the bedside lamp; grand-père Albert, an eighty-year-old Brittany spaniel man, orange-and-white fur turned pale with age, long wavy ears gone grey, gentle clouded brown eyes, beige knitted cardigan over a checked shirt, brown corduroy trousers, felt slippers in bed on the LEFT, eyes half open, watching him. A small old bedroom at night: a single bed with a patchwork quilt against the LEFT wall, a bedside lamp with a warm glow, a wooden chair beside the bed, a framed photo of a young Brittany spaniel father with a little Jack Russell puppy on the wall, rain on the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Timéo turns a page of his book and yawns. Camera: push-in past Albert toward Timéo. Page turning, rain, the clock. No music. Only Timéo speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, bright small voice, tired, sincere, never babyish: \"Il me reste les fractions, et après je dors.\". Sleepy, quiet, to himself. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at his book, never into the lens. Albert keeps his mouth closed. Albert lies in bed the whole time and never stands up. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-17",
+   "type": "scene",
+   "nom": "17. Albert : « T'as les yeux de ton père. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-albert",
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-chambre"
+   ],
+   "promptImage": "Close two-shot, shared gesture: grand-père Albert, an eighty-year-old Brittany spaniel man, orange-and-white fur turned pale with age, long wavy ears gone grey, gentle clouded brown eyes, beige knitted cardigan over a checked shirt, brown corduroy trousers, felt slippers on the LEFT, lying in bed, one hand raised to Timéo's cheek, palm against the boy's face, clear eyes for the first time; Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers, wearing a small faded red child's anorak from the eighties over his hoodie, a little too big for him, on the RIGHT, leaning toward him. A small old bedroom at night: a single bed with a patchwork quilt against the LEFT wall, a bedside lamp with a warm glow, a wooden chair beside the bed, a framed photo of a young Brittany spaniel father with a little Jack Russell puppy on the wall, rain on the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Albert lays his palm on Timéo's cheek and looks deep into his eyes. Camera: steady push-in on Albert's face. Rain fading, the lamp humming softly. No music. Only grand-père Albert speaks, in French, with exactly the same voice as in all his other clips: an old man of eighty, soft hoarse warm voice, sometimes lost, never shrill: \"T'as les yeux de ton père.\". Clear, gentle, perfectly lucid. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at Timéo on the right, never into the lens. Timéo keeps his mouth closed. Albert stays lying in bed and never stands up. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-18",
+   "type": "scene",
+   "nom": "18. Albert : « Bonne nuit, Timéo. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-albert",
+    "decor-la-nuit-de-timeo-chambre"
+   ],
+   "promptImage": "Close-up: grand-père Albert, an eighty-year-old Brittany spaniel man, orange-and-white fur turned pale with age, long wavy ears gone grey, gentle clouded brown eyes, beige knitted cardigan over a checked shirt, brown corduroy trousers, felt slippers on the LEFT, lying on his pillow, his hand still on the boy's cheek at the RIGHT edge of the frame, a soft smile, eyes closing. A small old bedroom at night: a single bed with a patchwork quilt against the LEFT wall, a bedside lamp with a warm glow, a wooden chair beside the bed, a framed photo of a young Brittany spaniel father with a little Jack Russell puppy on the wall, rain on the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Albert closes his eyes with a peaceful smile, his hand still on the boy's cheek. Camera: locked close-up. Silence, the clock. No music. Only grand-père Albert speaks, in French, with exactly the same voice as in all his other clips: an old man of eighty, soft hoarse warm voice, sometimes lost, never shrill: \"Bonne nuit, Timéo.\". Tender, certain, weight on « Timéo ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at Timéo on the right, never into the lens. Albert stays lying in bed and never stands up. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-19",
+   "type": "scene",
+   "nom": "19. Timéo : « Bonne nuit, papi. »",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-chambre"
+   ],
+   "promptImage": "Close-up: Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers, wearing a small faded red child's anorak from the eighties over his hoodie, a little too big for him, on the RIGHT, frozen, eyes brimming with water, one wet streak down his cheek, a soft smile, looking toward the LEFT at his grandfather. A small old bedroom at night: a single bed with a patchwork quilt against the LEFT wall, a bedside lamp with a warm glow, a wooden chair beside the bed, a framed photo of a young Brittany spaniel father with a little Jack Russell puppy on the wall, rain on the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Timéo places his own hand over his grandfather's hand on his cheek. Camera: push-in on his eyes. The clock, a sniff. No music. Only Timéo speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, bright small voice, tired, sincere, never babyish: \"Bonne nuit, papi.\". Overwhelmed, voice breaking with joy. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at his grandfather on the left, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-20",
+   "type": "scene",
+   "nom": "20. Fin — ils dorment, main dans la main",
+   "joindre": [
+    "fiche-la-nuit-de-timeo-albert",
+    "fiche-la-nuit-de-timeo-timeo",
+    "decor-la-nuit-de-timeo-chambre"
+   ],
+   "promptImage": "High wide shot of the bedroom at night: grand-père Albert, an eighty-year-old Brittany spaniel man, orange-and-white fur turned pale with age, long wavy ears gone grey, gentle clouded brown eyes, beige knitted cardigan over a checked shirt, brown corduroy trousers, felt slippers asleep in the bed on the LEFT with a peaceful smile; Timéo, a ten-year-old Jack Russell terrier puppy boy, white fur with tan patches over the ears and around the eyes, small folded triangle ears, big tired brown eyes with dark circles, green school hoodie, jeans, worn sneakers, wearing a small faded red child's anorak from the eighties over his hoodie, a little too big for him, asleep on the chair beside the bed, his head resting on the quilt, their hands joined; the framed photo of a young spaniel father with a little puppy on the wall above them. A small old bedroom at night: a single bed with a patchwork quilt against the LEFT wall, a bedside lamp with a warm glow, a wooden chair beside the bed, a framed photo of a young Brittany spaniel father with a little Jack Russell puppy on the wall, rain on the window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The lamp light softens as the rain on the window calms; the two sleep, hands joined. Camera: high crane pull-back revealing the whole little room. Rain stopping, soft breathing. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Both sleep motionless and never move. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "couverture",
+   "type": "couverture",
+   "nom": "Couverture — La nuit de Timéo",
+   "joindre": [],
+   "promptImage": "Vertical 9:16 TikTok cover, high-end stylized 3D animated feature-film look, original design not based on any existing film, studio or character, NOT photorealistic. Night, a small warm bedroom: a ten-year-old Jack Russell puppy boy in a faded red child's anorak too big for him sits by the bed of an old Brittany spaniel grandfather, holding his hand under a lamp; rain on the window. Warm amber light, deep blue night outside. In the middle of the image, large and perfectly readable, the title \"LA NUIT DE TIMÉO\" in heavy white letters with a soft warm glow. The title block sits between 15% and 55% of the image height. No other text, no subtitle, no logo, no numbers."
+  }
+ ]
+}

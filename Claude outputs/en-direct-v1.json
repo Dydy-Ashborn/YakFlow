@@ -1,0 +1,446 @@
+{
+ "id": "en-direct",
+ "titre": "En direct",
+ "realisateur": "Le Merveilleux",
+ "version": 1,
+ "typePublication": "one-shot",
+ "recommendedVideoEngine": "agnes",
+ "accroche": "Sa vie est en direct. Et ça cartonne.",
+ "description": "Basile voit un compteur de spectateurs dans le ciel : plus sa vie va mal, plus il monte. À zéro, il disparaît. Toi, tu aurais choisi les vues ou le vieux monsieur ?",
+ "hashtags": [
+  "#EnDirect",
+  "#Animation3D",
+  "#Twist",
+  "#FinOuverte",
+  "#YakFilms"
+ ],
+ "commentaire": "Le « 1 » qui reste à la fin… c'est qui, d'après vous ?",
+ "datePublication": "2026-10-24",
+ "heurePublication": "20:00",
+ "etapes": [
+  {
+   "id": "fiche-en-direct-basile",
+   "type": "fiche",
+   "nom": "Fiche — Basile",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-en-direct-clara",
+   "type": "fiche",
+   "nom": "Fiche — Clara",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a twenty-five-year-old shiba inu woman, red-and-cream fur, curled tail, sharp dark eyes, a khaki green parka over a white sweater, jeans, white sneakers. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-en-direct-bako",
+   "type": "fiche",
+   "nom": "Fiche — Monsieur Bako",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a huge forty-five-year-old gorilla man, black fur with a silver back, heavy brow, a black polo shirt with a small courier logo, a headset around his neck. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-en-direct-robert",
+   "type": "fiche",
+   "nom": "Fiche — Monsieur Robert",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a seventy-five-year-old French bulldog man, fawn wrinkled fur, bat ears, round kind dark eyes, a brown flat cap, a brown knitted cardigan, grey trousers. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-en-direct-rue",
+   "type": "fiche",
+   "nom": "Décor — la rue de la Croix-Rousse",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A steep cobbled street on the slopes of La Croix-Rousse in Lyon in autumn: tall ochre buildings with green shutters, fallen orange plane-tree foliage on the cobbles, overcast sky, and high in the sky above the rooftops a huge translucent red broadcast banner floating in the air with a white glowing dot. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-en-direct-hub",
+   "type": "fiche",
+   "nom": "Décor — l'entrepôt des livreurs",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A delivery hub warehouse in Lyon: stacked yellow insulated delivery bags on metal shelves, parked bikes, a big skylight in the roof showing a grey sky, cold neon light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-en-direct-appart",
+   "type": "fiche",
+   "nom": "Décor — le petit appartement",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A small attic apartment in Lyon in the evening: a slanted roof with a skylight window on the LEFT showing the night sky, a bed, a small table, the front door on the RIGHT, a warm lamp. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-en-direct-escaliers",
+   "type": "fiche",
+   "nom": "Décor — les escaliers de la Croix-Rousse",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: The long stone public staircase of La Croix-Rousse in Lyon in late afternoon: worn steps rising between ochre buildings, an iron handrail, orange autumn foliage, golden light, the sky above the rooftops. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-1",
+   "type": "scene",
+   "nom": "1. Hook — Basile : « Y a un chiffre dans le ciel. Et il monte quand je tombe. »",
+   "joindre": [
+    "fiche-en-direct-basile",
+    "decor-en-direct-rue"
+   ],
+   "promptImage": "Low-angle shot in the steep cobbled street: Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap on the LEFT, sitting on the cobbles next to his fallen bike and a spilled yellow delivery bag, looking up toward the sky at the RIGHT where a huge translucent red live broadcast banner floating high in the sky, with a white glowing dot, reading exactly \"EN DIRECT · 3\" and below it, smaller, \"À ZÉRO : FIN DE L'ÉMISSION\". A steep cobbled street on the slopes of La Croix-Rousse in Lyon in autumn: tall ochre buildings with green shutters, fallen orange plane-tree foliage on the cobbles, overcast sky, and high in the sky above the rooftops a huge translucent red broadcast banner floating in the air with a white glowing dot. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Basile stares up at the sky while the number on the red banner rolls up; a delivery box tumbles down the cobbles. Camera: crane up from Basile to the red banner in the sky. End exactly on the provided last frame. Bike wheel ticking, a box tumbling, a crystal chime from the sky. No music. Only Basile speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-five, lively warm voice, a bit cocky, never shouting: \"Y a un chiffre dans le ciel. Et il monte quand je tombe.\". Stunned, half laughing in disbelief. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 6. He looks up at the sky on the right, never into the lens. The banner text stays exact and readable. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the red live banner floating in the sky, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 7,
+   "garder": "0-6.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "imageFin": "fin-scene-1"
+  },
+  {
+   "id": "fin-scene-1",
+   "type": "fiche",
+   "nom": "Image de fin — 1",
+   "joindre": [
+    "scene-1"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: same framing, the banner now reads exactly \"EN DIRECT · 2 000\" with \"À ZÉRO : FIN DE L'ÉMISSION\" below, glowing brighter; Basile still on the cobbles looking up. A steep cobbled street on the slopes of La Croix-Rousse in Lyon in autumn: tall ochre buildings with green shutters, fallen orange plane-tree foliage on the cobbles, overcast sky, and high in the sky above the rooftops a huge translucent red broadcast banner floating in the air with a white glowing dot. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-2",
+   "type": "scene",
+   "nom": "2. Basile : « À zéro, fin de l'émission. Quelle émission. »",
+   "joindre": [
+    "fiche-en-direct-basile",
+    "decor-en-direct-rue"
+   ],
+   "promptImage": "Close-up from below: Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap on the LEFT, cap pushed back, squinting up toward the RIGHT at the sky, where a huge translucent red live broadcast banner floating high in the sky, with a white glowing dot, reading exactly \"EN DIRECT · 2 000\" and below it, smaller, \"À ZÉRO : FIN DE L'ÉMISSION\" glows above the rooftops. A steep cobbled street on the slopes of La Croix-Rousse in Lyon in autumn: tall ochre buildings with green shutters, fallen orange plane-tree foliage on the cobbles, overcast sky, and high in the sky above the rooftops a huge translucent red broadcast banner floating in the air with a white glowing dot. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Basile shades his eyes with one paw, palm down, staring at the banner; particles of red light drift from it. Camera: rack focus from Basile's face to the banner in the sky. City hum, wind, a faint electric buzz from the banner. No music. Only Basile speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-five, lively warm voice, a bit cocky, never shouting: \"À zéro, fin de l'émission. Quelle émission.\". Puzzled, the intonation of a question. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at the sky on the right, never into the lens. The banner text stays exact and readable. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the red live banner floating in the sky, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-3",
+   "type": "scene",
+   "nom": "3. Monsieur Bako : « Encore en retard, Basile. Tu rends ta veste, t'es viré. »",
+   "joindre": [
+    "fiche-en-direct-bako",
+    "fiche-en-direct-basile",
+    "decor-en-direct-hub"
+   ],
+   "promptImage": "Inside the delivery hub, over-the-shoulder close-up: Monsieur Bako, a huge forty-five-year-old gorilla man, black fur with a silver back, heavy brow, a black polo shirt with a small courier logo, a headset around his neck fills the LEFT half of the frame, towering, looking down toward the RIGHT at Basile; in the foreground at frame RIGHT, the blurred orange jacket shoulder and pointed ear of Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap. A delivery hub warehouse in Lyon: stacked yellow insulated delivery bags on metal shelves, parked bikes, a big skylight in the roof showing a grey sky, cold neon light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Monsieur Bako holds out one huge open paw for the jacket. Camera: low-angle push-in on Monsieur Bako. Neon buzzing, bikes rattling, a phone ringing. No music. Only Monsieur Bako speaks, in French, with exactly the same voice as in all his other clips: a man of forty-five, booming deep voice, impatient, never screaming: \"Encore en retard, Basile. Tu rends ta veste, t'es viré.\". Booming and final. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Basile on the right, never into the lens. Basile keeps his mouth closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-4",
+   "type": "scene",
+   "nom": "4. Basile : « Je suis tombé, chef. Le vélo est cassé. »",
+   "joindre": [
+    "fiche-en-direct-basile",
+    "fiche-en-direct-bako",
+    "decor-en-direct-hub"
+   ],
+   "promptImage": "Reverse over-the-shoulder close-up, same axis: Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap on the RIGHT half of the frame, ears down, looking up toward the LEFT at the boss; in the foreground at frame LEFT, the blurred black fur and silver back of Monsieur Bako, a huge forty-five-year-old gorilla man, black fur with a silver back, heavy brow, a black polo shirt with a small courier logo, a headset around his neck. A delivery hub warehouse in Lyon: stacked yellow insulated delivery bags on metal shelves, parked bikes, a big skylight in the roof showing a grey sky, cold neon light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Basile unzips his orange jacket with a heavy sigh. Camera: handheld close-up. Neon buzzing, the zip. No music. Only Basile speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-five, lively warm voice, a bit cocky, never shouting: \"Je suis tombé, chef. Le vélo est cassé.\". Pleading, quick. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at the boss on the left, never into the lens. Monsieur Bako keeps his mouth closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-5",
+   "type": "scene",
+   "nom": "5. Basile : « Ils regardent. Plus ça va mal, plus ils regardent. »",
+   "joindre": [
+    "fiche-en-direct-basile",
+    "decor-en-direct-hub"
+   ],
+   "promptImage": "Close-up: Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap on the LEFT, without his orange jacket now, in a grey T-shirt, looking up toward the RIGHT through the big skylight, where a huge translucent red live broadcast banner floating high in the sky, with a white glowing dot, reading exactly \"EN DIRECT · 40 000\" glows in the grey sky. A delivery hub warehouse in Lyon: stacked yellow insulated delivery bags on metal shelves, parked bikes, a big skylight in the roof showing a grey sky, cold neon light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Basile looks up at the skylight as the number glows brighter and sparks of red light fall like snow. Camera: tilt up from Basile to the skylight banner. A crystal chime, neon buzzing. No music. Only Basile speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-five, lively warm voice, a bit cocky, never shouting: \"Ils regardent. Plus ça va mal, plus ils regardent.\". Low, realizing, a bitter laugh. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks up at the skylight on the right, never into the lens. The banner text stays exact and readable. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the red live banner floating in the sky, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-6",
+   "type": "scene",
+   "nom": "6. Clara : « Je pars, Basile. T'as plus de boulot, plus rien. » (fondu au noir avant)",
+   "joindre": [
+    "fiche-en-direct-clara",
+    "fiche-en-direct-basile",
+    "decor-en-direct-appart"
+   ],
+   "promptImage": "Evening in the attic apartment, over-the-shoulder close-up: Clara, a twenty-five-year-old shiba inu woman, red-and-cream fur, curled tail, sharp dark eyes, a khaki green parka over a white sweater, jeans, white sneakers fills the RIGHT half of the frame by the front door, a packed suitcase beside her, looking toward the LEFT at Basile; in the foreground at frame LEFT, the blurred grey-and-white shoulder of Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap. A small attic apartment in Lyon in the evening: a slanted roof with a skylight window on the LEFT showing the night sky, a bed, a small table, the front door on the RIGHT, a warm lamp. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Clara pulls up the handle of her suitcase while she speaks. Camera: steady push-in on Clara. Rain on the skylight, the suitcase handle clicking. No music. Only Clara speaks, in French, with exactly the same voice as in all her other clips: a woman of twenty-five, clear tired voice, decided, never shrill: \"Je pars, Basile. T'as plus de boulot, plus rien.\". Tired and decided, no anger. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks at Basile on the left, never into the lens. Basile keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "noir"
+  },
+  {
+   "id": "scene-7",
+   "type": "scene",
+   "nom": "7. Basile : « Reste. Je vais trouver autre chose, je te jure. »",
+   "joindre": [
+    "fiche-en-direct-basile",
+    "fiche-en-direct-clara",
+    "decor-en-direct-appart"
+   ],
+   "promptImage": "Reverse over-the-shoulder close-up, same axis: Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap on the LEFT half of the frame, in his grey T-shirt, looking toward the RIGHT at Clara; in the foreground at frame RIGHT, the blurred red-and-cream fur and green parka of Clara, a twenty-five-year-old shiba inu woman, red-and-cream fur, curled tail, sharp dark eyes, a khaki green parka over a white sweater, jeans, white sneakers. A small attic apartment in Lyon in the evening: a slanted roof with a skylight window on the LEFT showing the night sky, a bed, a small table, the front door on the RIGHT, a warm lamp. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Basile takes one step toward her, paws open. Camera: small arc around Basile, never crossing the axis. Rain, the lamp humming. No music. Only Basile speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-five, lively warm voice, a bit cocky, never shouting: \"Reste. Je vais trouver autre chose, je te jure.\". Pleading, voice breaking. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Clara on the right, never into the lens. Clara keeps her mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-8",
+   "type": "scene",
+   "nom": "8. Clara : « Tu dis ça depuis un an. »",
+   "joindre": [
+    "fiche-en-direct-clara",
+    "decor-en-direct-appart"
+   ],
+   "promptImage": "Medium shot at the front door on the RIGHT: Clara, a twenty-five-year-old shiba inu woman, red-and-cream fur, curled tail, sharp dark eyes, a khaki green parka over a white sweater, jeans, white sneakers opening the door, her suitcase in one paw, looking back toward the LEFT at Basile one last time. A small attic apartment in Lyon in the evening: a slanted roof with a skylight window on the LEFT showing the night sky, a bed, a small table, the front door on the RIGHT, a warm lamp. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Clara steps out and pulls the door shut behind her. Camera: locked medium shot. End exactly on the provided last frame. The door closing, rain. No music. Only Clara speaks, in French, with exactly the same voice as in all her other clips: a woman of twenty-five, clear tired voice, decided, never shrill: \"Tu dis ça depuis un an.\". Flat, sad, final. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. She looks at Basile on the left, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-8"
+  },
+  {
+   "id": "fin-scene-8",
+   "type": "fiche",
+   "nom": "Image de fin — 8",
+   "joindre": [
+    "scene-8"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: the front door on the right is closed, nobody in the doorway; the lamp light on the empty floor. A small attic apartment in Lyon in the evening: a slanted roof with a skylight window on the LEFT showing the night sky, a bed, a small table, the front door on the RIGHT, a warm lamp. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-9",
+   "type": "scene",
+   "nom": "9. Basile : « Neuf cent mille. Ils adorent me voir couler. »",
+   "joindre": [
+    "fiche-en-direct-basile",
+    "decor-en-direct-appart"
+   ],
+   "promptImage": "Close-up: Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap alone on the LEFT, sitting on the bed, looking up toward the RIGHT through the skylight, where a huge translucent red live broadcast banner floating high in the sky, with a white glowing dot, reading exactly \"EN DIRECT · 900 000\" blazes in the night sky, red light on his face. A small attic apartment in Lyon in the evening: a slanted roof with a skylight window on the LEFT showing the night sky, a bed, a small table, the front door on the RIGHT, a warm lamp. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Basile stares at the blazing banner; red particles drift down through the skylight onto him. Camera: push-in on his face lit in red. Rain, a loud crystal chime, distant applause-like rumble. No music. Only Basile speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-five, lively warm voice, a bit cocky, never shouting: \"Neuf cent mille. Ils adorent me voir couler.\". Hollow, bitter. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks up at the skylight on the right, never into the lens. The banner text stays exact and readable. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the red live banner floating in the sky, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-10",
+   "type": "scene",
+   "nom": "10. Il sourit à une photo : le chiffre baisse, sa patte s'efface",
+   "joindre": [
+    "fiche-en-direct-basile",
+    "decor-en-direct-appart"
+   ],
+   "promptImage": "Close shot: Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap on the LEFT on the bed, smiling softly at an old photo of himself laughing as a child, held in his paw; through the skylight on the RIGHT, a huge translucent red live broadcast banner floating high in the sky, with a white glowing dot, reading exactly \"EN DIRECT · 900 000\". A small attic apartment in Lyon in the evening: a slanted roof with a skylight window on the LEFT showing the night sky, a bed, a small table, the front door on the RIGHT, a warm lamp. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Basile smiles at the photo; the number on the banner rolls down and his paw holding the photo becomes faintly translucent. Camera: rack focus from the photo to the banner through the skylight. End exactly on the provided last frame. A descending crystal tone, rain. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the red live banner floating in the sky, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "muet": true,
+   "imageFin": "fin-scene-10"
+  },
+  {
+   "id": "fin-scene-10",
+   "type": "fiche",
+   "nom": "Image de fin — 10",
+   "joindre": [
+    "scene-10"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: the banner through the skylight now reads exactly \"EN DIRECT · 700 000\"; Basile's paw holding the photo is faintly see-through, glowing at the edges, and he stares at it, his smile gone. A small attic apartment in Lyon in the evening: a slanted roof with a skylight window on the LEFT showing the night sky, a bed, a small table, the front door on the RIGHT, a warm lamp. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-11",
+   "type": "scene",
+   "nom": "11. Basile : « Si je suis heureux, ils partent. Et moi, je m'efface. »",
+   "joindre": [
+    "fiche-en-direct-basile",
+    "decor-en-direct-appart"
+   ],
+   "promptImage": "Close-up: Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap on the LEFT, holding up his faintly translucent paw in front of his face, palm toward his own eyes, the back of the paw on the camera side, the red banner light from the RIGHT on his face. A small attic apartment in Lyon in the evening: a slanted roof with a skylight window on the LEFT showing the night sky, a bed, a small table, the front door on the RIGHT, a warm lamp. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Basile turns his see-through paw in front of his eyes. Camera: snap zoom on his eyes behind the translucent paw. A thin electric hum, rain. No music. Only Basile speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-five, lively warm voice, a bit cocky, never shouting: \"Si je suis heureux, ils partent. Et moi, je m'efface.\". Frightened realization, low. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at his paw, never into the lens. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the red live banner floating in the sky, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-12",
+   "type": "scene",
+   "nom": "12. Basile : « Si je me moque de lui, ça remonte. Tout le monde adore ça. » (fondu au noir avant)",
+   "joindre": [
+    "fiche-en-direct-basile",
+    "fiche-en-direct-robert",
+    "decor-en-direct-escaliers"
+   ],
+   "promptImage": "The Croix-Rousse stairs in golden afternoon light, medium shot: Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap on the LEFT at the bottom of the steps, his paws faintly translucent, looking toward the RIGHT and up at Monsieur Robert, a seventy-five-year-old French bulldog man, fawn wrinkled fur, bat ears, round kind dark eyes, a brown flat cap, a brown knitted cardigan, grey trousers, who struggles up the stairs with two heavy shopping bags, oranges about to fall; in the sky, a huge translucent red live broadcast banner floating high in the sky, with a white glowing dot, reading exactly \"EN DIRECT · 700 000\". The long stone public staircase of La Croix-Rousse in Lyon in late afternoon: worn steps rising between ochre buildings, an iron handrail, orange autumn foliage, golden light, the sky above the rooftops. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Basile watches the old bulldog stumble on a step; one orange rolls down the stairs toward him. Camera: lateral tracking shot following the rolling orange to Basile's feet. The orange bouncing down the steps, pigeons, the old man panting. No music. Only Basile speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-five, lively warm voice, a bit cocky, never shouting: \"Si je me moque de lui, ça remonte. Tout le monde adore ça.\". Low, tempted, an inner thought said out loud. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 6. He looks at the old man on the right, never into the lens. Monsieur Robert keeps his mouth closed. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the red live banner floating in the sky, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 7,
+   "garder": "0-6.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "noir"
+  },
+  {
+   "id": "scene-13",
+   "type": "scene",
+   "nom": "13. Monsieur Robert : « Petit, tu peux m'aider à monter mes courses. »",
+   "joindre": [
+    "fiche-en-direct-robert",
+    "fiche-en-direct-basile",
+    "decor-en-direct-escaliers"
+   ],
+   "promptImage": "Over-the-shoulder close-up on the stairs: Monsieur Robert, a seventy-five-year-old French bulldog man, fawn wrinkled fur, bat ears, round kind dark eyes, a brown flat cap, a brown knitted cardigan, grey trousers on the RIGHT half of the frame, a few steps up, out of breath, holding out one shopping bag toward the LEFT at Basile; in the foreground at frame LEFT, the blurred grey-and-white shoulder of Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap. The long stone public staircase of La Croix-Rousse in Lyon in late afternoon: worn steps rising between ochre buildings, an iron handrail, orange autumn foliage, golden light, the sky above the rooftops. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Monsieur Robert holds out the heavy bag toward Basile with a hopeful look. Camera: steady push-in on Monsieur Robert. Pigeons, his wheezing breath, distant church bells. No music. Only Monsieur Robert speaks, in French, with exactly the same voice as in all his other clips: an old man of seventy-five, gravelly warm voice, gentle, a Lyon accent: \"Petit, tu peux m'aider à monter mes courses.\". Gentle, a bit ashamed to ask, the intonation of a question. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Basile on the left, never into the lens. Basile keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-14",
+   "type": "scene",
+   "nom": "14. Basile : « Tant pis pour l'émission. »",
+   "joindre": [
+    "fiche-en-direct-basile",
+    "decor-en-direct-escaliers"
+   ],
+   "promptImage": "Close-up: Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap on the LEFT, looking from his translucent paw to the old man toward the RIGHT, a decision in his ice-blue eyes; the red banner glowing in the sky behind him. The long stone public staircase of La Croix-Rousse in Lyon in late afternoon: worn steps rising between ochre buildings, an iron handrail, orange autumn foliage, golden light, the sky above the rooftops. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Basile takes the shopping bag from the old man's paw. Camera: low-angle push-in on his face. A heartbeat, pigeons taking off. No music. Only Basile speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-five, lively warm voice, a bit cocky, never shouting: \"Tant pis pour l'émission.\". Calm, decided, a small smile. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at the old man on the right, never into the lens. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the red live banner floating in the sky, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-15",
+   "type": "scene",
+   "nom": "15. Ils montent ensemble ; le compteur s'effondre",
+   "joindre": [
+    "fiche-en-direct-basile",
+    "fiche-en-direct-robert",
+    "decor-en-direct-escaliers"
+   ],
+   "promptImage": "Wide high shot of the stairs: Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap, almost transparent now, carrying both shopping bags, and Monsieur Robert, a seventy-five-year-old French bulldog man, fawn wrinkled fur, bat ears, round kind dark eyes, a brown flat cap, a brown knitted cardigan, grey trousers beside him, walking up the steps side by side and laughing; high in the sky, a huge translucent red live broadcast banner floating high in the sky, with a white glowing dot, reading exactly \"EN DIRECT · 12\". The long stone public staircase of La Croix-Rousse in Lyon in late afternoon: worn steps rising between ochre buildings, an iron handrail, orange autumn foliage, golden light, the sky above the rooftops. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Basile and the old bulldog walk up the steps together; the banner number rolls down and Basile fades a little more. Camera: crane up along the stairs toward the banner. End exactly on the provided last frame. Their laughter, steps on stone, a descending crystal tone. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the red live banner floating in the sky, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "muet": true,
+   "imageFin": "fin-scene-15"
+  },
+  {
+   "id": "fin-scene-15",
+   "type": "fiche",
+   "nom": "Image de fin — 15",
+   "joindre": [
+    "scene-15"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Basile and Monsieur Robert at the top of the stairs, Basile nearly transparent with glowing edges; the banner in the sky now reads exactly \"EN DIRECT · 1\". The long stone public staircase of La Croix-Rousse in Lyon in late afternoon: worn steps rising between ochre buildings, an iron handrail, orange autumn foliage, golden light, the sky above the rooftops. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-16",
+   "type": "scene",
+   "nom": "16. Monsieur Robert : « Merci, mon grand. Ça fait des années qu'on m'a pas aidé. »",
+   "joindre": [
+    "fiche-en-direct-robert",
+    "decor-en-direct-escaliers"
+   ],
+   "promptImage": "At the old man's front door at the top of the stairs, close-up: Monsieur Robert, a seventy-five-year-old French bulldog man, fawn wrinkled fur, bat ears, round kind dark eyes, a brown flat cap, a brown knitted cardigan, grey trousers on the RIGHT, eyes shining, looking toward the LEFT at Basile, one paw on Basile's arm. The long stone public staircase of La Croix-Rousse in Lyon in late afternoon: worn steps rising between ochre buildings, an iron handrail, orange autumn foliage, golden light, the sky above the rooftops. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Monsieur Robert pats Basile's arm warmly. Camera: steady push-in on his face. Church bells, pigeons. No music. Only Monsieur Robert speaks, in French, with exactly the same voice as in all his other clips: an old man of seventy-five, gravelly warm voice, gentle, a Lyon accent: \"Merci, mon grand. Ça fait des années qu'on m'a pas aidé.\". Moved, warm. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Basile on the left, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-17",
+   "type": "scene",
+   "nom": "17. Monsieur Robert : « Entre boire un café. Moi aussi, je suis tout seul. »",
+   "joindre": [
+    "fiche-en-direct-robert",
+    "fiche-en-direct-basile",
+    "decor-en-direct-escaliers"
+   ],
+   "promptImage": "Medium shot: Monsieur Robert, a seventy-five-year-old French bulldog man, fawn wrinkled fur, bat ears, round kind dark eyes, a brown flat cap, a brown knitted cardigan, grey trousers on the RIGHT opening his front door wide, smiling, looking toward the LEFT at Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap, who is almost transparent, holding the shopping bags. The long stone public staircase of La Croix-Rousse in Lyon in late afternoon: worn steps rising between ochre buildings, an iron handrail, orange autumn foliage, golden light, the sky above the rooftops. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Monsieur Robert opens his door wide with a welcoming gesture. Camera: pan from the old man to the open door. Door creaking, a kettle whistling inside. No music. Only Monsieur Robert speaks, in French, with exactly the same voice as in all his other clips: an old man of seventy-five, gravelly warm voice, gentle, a Lyon accent: \"Entre boire un café. Moi aussi, je suis tout seul.\". Shy and hopeful. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Basile on the left, never into the lens. Basile keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-18",
+   "type": "scene",
+   "nom": "18. Basile : « Un. Il en reste un. »",
+   "joindre": [
+    "fiche-en-direct-basile",
+    "decor-en-direct-escaliers"
+   ],
+   "promptImage": "Close-up from below: Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap on the LEFT, almost transparent, looking up toward the RIGHT at the sky, where a huge translucent red live broadcast banner floating high in the sky, with a white glowing dot, reading exactly \"EN DIRECT · 1\" and below it, smaller, \"À ZÉRO : FIN DE L'ÉMISSION\", glowing softly. The long stone public staircase of La Croix-Rousse in Lyon in late afternoon: worn steps rising between ochre buildings, an iron handrail, orange autumn foliage, golden light, the sky above the rooftops. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Basile looks up at the banner; his body stops fading. Camera: tilt up from Basile to the banner. A single soft crystal chime. No music. Only Basile speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-five, lively warm voice, a bit cocky, never shouting: \"Un. Il en reste un.\". Astonished, a breath of relief. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks up at the sky on the right, never into the lens. The banner text stays exact and readable. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the red live banner floating in the sky, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-19",
+   "type": "scene",
+   "nom": "19. Basile, face caméra : « Un seul. Ça me suffit. »",
+   "joindre": [
+    "fiche-en-direct-basile",
+    "decor-en-direct-escaliers"
+   ],
+   "promptImage": "Close-up, frontal: Basile, a twenty-five-year-old Siberian husky man, grey-and-white fur, striking ice-blue eyes, pointed ears, an orange food-delivery courier jacket, black jeans, sneakers, a black cap looking straight into the camera for the first time, the colour returning to his grey-and-white fur from the edges, a warm smile, the red banner glowing behind him. The long stone public staircase of La Croix-Rousse in Lyon in late afternoon: worn steps rising between ochre buildings, an iron handrail, orange autumn foliage, golden light, the sky above the rooftops. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Basile looks straight into the lens and smiles; his fur becomes fully solid and coloured again. Camera: push-in on his face. End exactly on the provided last frame. The city sounds coming back, a warm tone. No music. Only Basile speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-five, lively warm voice, a bit cocky, never shouting: \"Un seul. Ça me suffit.\". Warm, intimate, as if to a friend. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He speaks to the audience, looking straight into the lens. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the red live banner floating in the sky, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "imageFin": "fin-scene-19"
+  },
+  {
+   "id": "fin-scene-19",
+   "type": "fiche",
+   "nom": "Image de fin — 19",
+   "joindre": [
+    "scene-19"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Basile fully solid and coloured again, smiling into the lens, ice-blue eyes bright. The long stone public staircase of La Croix-Rousse in Lyon in late afternoon: worn steps rising between ochre buildings, an iron handrail, orange autumn foliage, golden light, the sky above the rooftops. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-20",
+   "type": "scene",
+   "nom": "20. Fin — au-dessus de Monsieur Robert, un chiffre apparaît",
+   "joindre": [
+    "fiche-en-direct-robert",
+    "decor-en-direct-escaliers"
+   ],
+   "promptImage": "Medium shot in the old man's doorway: Monsieur Robert, a seventy-five-year-old French bulldog man, fawn wrinkled fur, bat ears, round kind dark eyes, a brown flat cap, a brown knitted cardigan, grey trousers on the RIGHT, holding a coffee cup, looking up above his own head in wonder, where a small translucent red banner floats in the air reading exactly \"EN DIRECT · 1\". The long stone public staircase of La Croix-Rousse in Lyon in late afternoon: worn steps rising between ochre buildings, an iron handrail, orange autumn foliage, golden light, the sky above the rooftops. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "A small red live banner pops up above the old man's head; he looks up at it, astonished. Camera: advancing push-in on the old man and the small banner. A soft crystal chime, a kettle whistling. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The banner text stays exact and readable. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the red live banner floating in the sky, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "couverture",
+   "type": "couverture",
+   "nom": "Couverture — En direct",
+   "joindre": [],
+   "promptImage": "Vertical 9:16 TikTok cover, high-end stylized 3D animated feature-film look, original design not based on any existing film, studio or character, NOT photorealistic. A Siberian husky courier in an orange delivery jacket stands on a steep cobbled street in Lyon, looking up at a huge translucent red live broadcast banner floating in the sky with a white glowing dot, red light on his face. Autumn colours, overcast sky. In the middle of the image, large and perfectly readable, the title \"EN DIRECT\" in heavy white letters with a thin red glow. The title block sits between 15% and 55% of the image height. No other text, no subtitle, no logo, no numbers."
+  }
+ ]
+}

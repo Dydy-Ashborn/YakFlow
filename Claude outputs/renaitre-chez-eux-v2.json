@@ -1,0 +1,491 @@
+{
+ "id": "renaitre-chez-eux",
+ "titre": "Renaître chez eux",
+ "realisateur": "L'Inquiétant",
+ "version": 2,
+ "typePublication": "one-shot",
+ "recommendedVideoEngine": "agnes",
+ "accroche": "Ils l'ont fait tomber. Il renaît chez eux.",
+ "description": "Yvan découvre le secret des Delcroix et ne redescend jamais du toit. Il se réveille vingt ans plus tôt, dans le corps de leur petit-fils. Toi, tu aurais choisi la vengeance ou te sauver toi-même ?",
+ "hashtags": [
+  "#RenaitreChezEux",
+  "#Animation3D",
+  "#Vengeance",
+  "#Twist",
+  "#YakFilms"
+ ],
+ "commentaire": "Yvan va-t-il comprendre un jour qui l'a sauvé sur ce toit ?",
+ "datePublication": "2026-10-25",
+ "heurePublication": "20:00",
+ "etapes": [
+  {
+   "id": "fiche-renaitre-chez-eux-yvan",
+   "type": "fiche",
+   "nom": "Fiche — Yvan",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a forty-five-year-old beagle man, tricolor fur (brown, black and white), long soft ears, honest brown eyes behind thin glasses, a slightly worn grey suit, a loosened blue tie. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-renaitre-chez-eux-bertrand",
+   "type": "fiche",
+   "nom": "Fiche — Bertrand Delcroix",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a fifty-year-old black Great Dane man, very tall, sleek black fur with a few grey hairs on the muzzle, natural floppy ears, cold yellow eyes, a black tailored suit, a gold signet ring. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-renaitre-chez-eux-bertrand-jeune",
+   "type": "fiche",
+   "nom": "Fiche — Bertrand Delcroix jeune",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a thirty-year-old black Great Dane man, very tall, sleek glossy black fur, natural floppy ears, arrogant yellow eyes, an expensive navy suit, open white collar, a gold signet ring. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-renaitre-chez-eux-henri",
+   "type": "fiche",
+   "nom": "Fiche — Henri Delcroix",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a seventy-year-old black Great Dane patriarch, very tall, black fur with a grey muzzle and grey eyebrows, heavy natural ears, sharp amber eyes, a dark three-piece suit with a watch chain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-renaitre-chez-eux-henri-vieux",
+   "type": "fiche",
+   "nom": "Fiche — Henri Delcroix âgé",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a ninety-year-old black Great Dane patriarch, thin and bent, fur mostly white on the muzzle and around the eyes, sharp amber eyes, a dark three-piece suit, a black walking stick. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-renaitre-chez-eux-lucas",
+   "type": "fiche",
+   "nom": "Fiche — Lucas",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a nine-year-old black Great Dane puppy boy, lanky, glossy black fur with a small white star on his chest, big floppy ears, intense brown eyes far too serious for his age, navy blue pyjamas. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-renaitre-chez-eux-lucas-adulte",
+   "type": "fiche",
+   "nom": "Fiche — Lucas adulte",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a twenty-nine-year-old black Great Dane man, very tall, glossy black fur with a small white star on his chest, natural floppy ears, calm intense brown eyes, a charcoal suit with a black turtleneck. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-renaitre-chez-eux-mere",
+   "type": "fiche",
+   "nom": "Fiche — la mère d'Yvan",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a fifty-five-year-old beagle woman, tricolor fur turning pale on the muzzle, long soft ears, tired kind brown eyes, a beige cardigan over a flowered dress, slippers. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-renaitre-chez-eux-toit",
+   "type": "fiche",
+   "nom": "Décor — le toit de la tour à La Défense",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: The flat rooftop of a glass office tower at La Défense, Paris, at night: a low concrete parapet at the edge on the RIGHT, a metal stair door with a lit sign on the LEFT, air-conditioning units, the lit skyline of Paris and the Eiffel Tower far away, wind, cold blue night light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-renaitre-chez-eux-chambre",
+   "type": "fiche",
+   "nom": "Décor — la chambre de Lucas",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A huge luxurious child's bedroom in a mansion in Neuilly in the morning: a canopy bed, expensive toys untouched on shelves, a tall mirror on a wardrobe door on the RIGHT, a wall calendar reading \"MARS 2006\", pale morning light through silk curtains. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-renaitre-chez-eux-salle",
+   "type": "fiche",
+   "nom": "Décor — la salle à manger Delcroix",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A grand dining room in a Neuilly mansion in the evening: a very long polished table with silver candlesticks, the head of the table on the LEFT, oil portraits of black Great Dane ancestors on the walls, a crystal chandelier, warm golden candlelight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-renaitre-chez-eux-pavillon",
+   "type": "fiche",
+   "nom": "Décor — le pavillon de la mère d'Yvan",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A small modest suburban house in Bobigny in 2006 on a grey spring afternoon: a front door with peeling paint and a white official notice taped on it reading \"SAISIE\", a little garden gate, a quiet street. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-renaitre-chez-eux-conseil",
+   "type": "fiche",
+   "nom": "Décor — la salle du conseil Delcroix",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A dark modern boardroom at the top of a tower at night: a long black glass table, leather chairs, the head of the table on the LEFT, floor-to-ceiling windows on the Paris skyline, a screen on the wall reading \"GROUPE DELCROIX\". Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-1",
+   "type": "scene",
+   "nom": "1. Hook — Bertrand : « T'as trouvé le dossier, Yvan. Dommage pour toi. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-bertrand",
+    "fiche-renaitre-chez-eux-yvan",
+    "decor-renaitre-chez-eux-toit"
+   ],
+   "promptImage": "Rooftop at night, medium two-shot near the parapet: Bertrand Delcroix, a fifty-year-old black Great Dane man, very tall, sleek black fur with a few grey hairs on the muzzle, natural floppy ears, cold yellow eyes, a black tailored suit, a gold signet ring on the LEFT, one heavy paw resting on the shoulder of Yvan, a forty-five-year-old beagle man, tricolor fur (brown, black and white), long soft ears, honest brown eyes behind thin glasses, a slightly worn grey suit, a loosened blue tie on the RIGHT, who clutches a thick folder marked \"DOSSIER DELCROIX\" against his chest, his back close to the low parapet; the Paris skyline behind. The flat rooftop of a glass office tower at La Défense, Paris, at night: a low concrete parapet at the edge on the RIGHT, a metal stair door with a lit sign on the LEFT, air-conditioning units, the lit skyline of Paris and the Eiffel Tower far away, wind, cold blue night light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Bertrand tightens his paw on Yvan's shoulder while he speaks; Yvan's ears flatten. Camera: advancing push-in toward the two near the parapet. Wind howling, distant city traffic, the stair door banging. No music. Only Bertrand Delcroix speaks, in French, with exactly the same voice as in all his other clips: a man of fifty, silky cold low voice, menacing, never shouting: \"T'as trouvé le dossier, Yvan. Dommage pour toi.\". Silky, almost gentle, terrifyingly calm. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Yvan on the right, never into the lens. Yvan keeps his mouth closed. The folder text stays exact and readable. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-2",
+   "type": "scene",
+   "nom": "2. Yvan : « Monsieur Delcroix, j'ai une famille. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-yvan",
+    "fiche-renaitre-chez-eux-bertrand",
+    "decor-renaitre-chez-eux-toit"
+   ],
+   "promptImage": "Reverse over-the-shoulder close-up, high angle, cold blue night: Yvan, a forty-five-year-old beagle man, tricolor fur (brown, black and white), long soft ears, honest brown eyes behind thin glasses, a slightly worn grey suit, a loosened blue tie small on the RIGHT half of the frame, glasses fogged by the cold, the folder held tight, looking up toward the LEFT at Bertrand, the black void of the drop behind him; in the foreground at frame LEFT, towering above him, the blurred black shoulder and floppy ear of Bertrand Delcroix, a fifty-year-old black Great Dane man, very tall, sleek black fur with a few grey hairs on the muzzle, natural floppy ears, cold yellow eyes, a black tailored suit, a gold signet ring. The flat rooftop of a glass office tower at La Défense, Paris, at night: a low concrete parapet at the edge on the RIGHT, a metal stair door with a lit sign on the LEFT, air-conditioning units, the lit skyline of Paris and the Eiffel Tower far away, wind, cold blue night light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Yvan shakes his head, pleading, holding the folder tighter. Camera: handheld close-up. Wind, a heartbeat, the parapet gravel crunching. No music. Only Yvan speaks, in French, with exactly the same voice as in all his other clips: a man of forty-five, soft precise voice, honest, never loud: \"Monsieur Delcroix, j'ai une famille.\". Frightened, pleading, voice cracking. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks up at Bertrand on the left, never into the lens. Bertrand keeps his mouth closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-3",
+   "type": "scene",
+   "nom": "3. Lucas : « C'est pas mon visage. » (fondu au noir avant)",
+   "joindre": [
+    "fiche-renaitre-chez-eux-lucas",
+    "decor-renaitre-chez-eux-chambre"
+   ],
+   "promptImage": "Morning in the luxurious bedroom: Lucas, a nine-year-old black Great Dane puppy boy, lanky, glossy black fur with a small white star on his chest, big floppy ears, intense brown eyes far too serious for his age, navy blue pyjamas on the LEFT in front of the tall mirror on the RIGHT, touching his own muzzle with both paws, his reflection staring back, eyes wide with shock. A huge luxurious child's bedroom in a mansion in Neuilly in the morning: a canopy bed, expensive toys untouched on shelves, a tall mirror on a wardrobe door on the RIGHT, a wall calendar reading \"MARS 2006\", pale morning light through silk curtains. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Lucas touches his own black muzzle and ears in front of the mirror. Camera: advancing push-in over his shoulder toward the reflection. End exactly on the provided last frame. Birds outside, the silence of a big house, a clock. No music. Only Lucas speaks, in French, with exactly the same voice as in all his other clips: a boy of nine with a child's voice but the calm, precise and adult way of speaking of a grown man: \"C'est pas mon visage.\". Stunned, low, an adult's fear in a child's voice. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at his reflection on the right, never into the lens. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "noir",
+   "imageFin": "fin-scene-3"
+  },
+  {
+   "id": "fin-scene-3",
+   "type": "fiche",
+   "nom": "Image de fin — 3",
+   "joindre": [
+    "scene-3"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: closer on the mirror, the black Great Dane puppy reflection with the white star on his chest staring back, paws on his cheeks. A huge luxurious child's bedroom in a mansion in Neuilly in the morning: a canopy bed, expensive toys untouched on shelves, a tall mirror on a wardrobe door on the RIGHT, a wall calendar reading \"MARS 2006\", pale morning light through silk curtains. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-4",
+   "type": "scene",
+   "nom": "4. Lucas : « Deux mille six. Je suis le petit-fils Delcroix. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-lucas",
+    "decor-renaitre-chez-eux-chambre"
+   ],
+   "promptImage": "Medium shot: Lucas, a nine-year-old black Great Dane puppy boy, lanky, glossy black fur with a small white star on his chest, big floppy ears, intense brown eyes far too serious for his age, navy blue pyjamas on the LEFT, turned toward the wall calendar clearly reading \"MARS 2006\" on the RIGHT, a school notebook in his paw with the name \"LUCAS DELCROIX\" written on the cover. A huge luxurious child's bedroom in a mansion in Neuilly in the morning: a canopy bed, expensive toys untouched on shelves, a tall mirror on a wardrobe door on the RIGHT, a wall calendar reading \"MARS 2006\", pale morning light through silk curtains. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Lucas lowers the notebook and stares at the calendar. Camera: rack focus from the notebook to the calendar \"MARS 2006\". A clock ticking, a car in the gravel driveway. No music. Only Lucas speaks, in French, with exactly the same voice as in all his other clips: a boy of nine with a child's voice but the calm, precise and adult way of speaking of a grown man: \"Deux mille six. Je suis le petit-fils Delcroix.\". Low, piecing it together. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at the calendar on the right, never into the lens. The calendar and notebook texts stay exact and readable. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-5",
+   "type": "scene",
+   "nom": "5. Lucas : « Celui qu'ils ont toujours oublié. Ils vont s'en souvenir. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-lucas",
+    "fiche-renaitre-chez-eux-bertrand-jeune",
+    "decor-renaitre-chez-eux-chambre"
+   ],
+   "promptImage": "Two-shot in depth: in the foreground on the LEFT, Lucas, a nine-year-old black Great Dane puppy boy, lanky, glossy black fur with a small white star on his chest, big floppy ears, intense brown eyes far too serious for his age, navy blue pyjamas, his face hardening, his small paw closing on the notebook; in the background on the RIGHT, framed by the half-open bedroom door, Bertrand Delcroix jeune, a thirty-year-old black Great Dane man, very tall, sleek glossy black fur, natural floppy ears, arrogant yellow eyes, an expensive navy suit, open white collar, a gold signet ring walking past in the corridor, talking into a flip phone, not even glancing at the boy. A huge luxurious child's bedroom in a mansion in Neuilly in the morning: a canopy bed, expensive toys untouched on shelves, a tall mirror on a wardrobe door on the RIGHT, a wall calendar reading \"MARS 2006\", pale morning light through silk curtains. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Lucas closes his paw on the notebook, his eyes narrowing; in the background Bertrand walks past the open door without a look and disappears to the right. Camera: rack focus from the uncle in the corridor to Lucas's face. End exactly on the provided last frame. The clock, footsteps in the corridor, a door closing downstairs. No music. Only Lucas speaks, in French, with exactly the same voice as in all his other clips: a boy of nine with a child's voice but the calm, precise and adult way of speaking of a grown man: \"Celui qu'ils ont toujours oublié. Ils vont s'en souvenir.\". Cold and calm, an inner thought said out loud. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks toward the door on the right, never into the lens. Bertrand in the corridor keeps his mouth closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut",
+   "imageFin": "fin-scene-5"
+  },
+  {
+   "id": "fin-scene-5",
+   "type": "fiche",
+   "nom": "Image de fin — 5",
+   "joindre": [
+    "scene-5"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: the corridor behind the door is empty; Lucas sharp in the foreground on the left, cold eyes on the door. A huge luxurious child's bedroom in a mansion in Neuilly in the morning: a canopy bed, expensive toys untouched on shelves, a tall mirror on a wardrobe door on the RIGHT, a wall calendar reading \"MARS 2006\", pale morning light through silk curtains. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-6",
+   "type": "scene",
+   "nom": "6. Henri : « Si je vous donnais cent mille euros, vous en feriez quoi. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-henri",
+    "fiche-renaitre-chez-eux-bertrand-jeune",
+    "fiche-renaitre-chez-eux-lucas"
+   ],
+   "promptImage": "Evening dinner, wide shot down the long table: Henri Delcroix, a seventy-year-old black Great Dane patriarch, very tall, black fur with a grey muzzle and grey eyebrows, heavy natural ears, sharp amber eyes, a dark three-piece suit with a watch chain at the head of the table on the LEFT, a glass in his paw, looking down the table toward the RIGHT; Bertrand Delcroix jeune, a thirty-year-old black Great Dane man, very tall, sleek glossy black fur, natural floppy ears, arrogant yellow eyes, an expensive navy suit, open white collar, a gold signet ring sitting near him, smirking; at the far right end of the table, small, Lucas, a nine-year-old black Great Dane puppy boy, lanky, glossy black fur with a small white star on his chest, big floppy ears, intense brown eyes far too serious for his age, navy blue pyjamas in a little navy blazer. A grand dining room in a Neuilly mansion in the evening: a very long polished table with silver candlesticks, the head of the table on the LEFT, oil portraits of black Great Dane ancestors on the walls, a crystal chandelier, warm golden candlelight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Henri lifts his glass and looks down the table at his family. Camera: crane down from the chandelier toward the head of the table. Silverware clinking, candles crackling. No music. Only Henri Delcroix speaks, in French, with exactly the same voice as in all his other clips: a man of seventy, deep grave authoritative voice, dry humour, never shouting: \"Si je vous donnais cent mille euros, vous en feriez quoi.\". Grave, amused, the intonation of a question. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks down the table to the right, never into the lens. Everyone else keeps their mouth closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-7",
+   "type": "scene",
+   "nom": "7. Bertrand : « Demande pas à Lucas, papa. Il sait même pas compter. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-bertrand-jeune",
+    "fiche-renaitre-chez-eux-lucas",
+    "decor-renaitre-chez-eux-salle"
+   ],
+   "promptImage": "Two-shot in depth down the long table, warm golden candlelight: in the foreground on the LEFT, Bertrand Delcroix jeune, a thirty-year-old black Great Dane man, very tall, sleek glossy black fur, natural floppy ears, arrogant yellow eyes, an expensive navy suit, open white collar, a gold signet ring, leaning back in his chair, smirking, looking toward the RIGHT; in the background on the RIGHT, small but sharp at the far end of the table, Lucas, a nine-year-old black Great Dane puppy boy, lanky, glossy black fur with a small white star on his chest, big floppy ears, intense brown eyes far too serious for his age, navy blue pyjamas in a little navy blazer, sitting very straight. A grand dining room in a Neuilly mansion in the evening: a very long polished table with silver candlesticks, the head of the table on the LEFT, oil portraits of black Great Dane ancestors on the walls, a crystal chandelier, warm golden candlelight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Bertrand points his fork lazily toward the end of the table and laughs. Camera: pan from Bertrand's fork to his smirk. A short laugh around the table. No music. Only Bertrand Delcroix jeune speaks, in French, with exactly the same voice as in all his other clips: a man of thirty, silky arrogant voice, mocking, never shouting: \"Demande pas à Lucas, papa. Il sait même pas compter.\". Mocking, lazy, cruel. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Lucas on the right, never into the lens. Lucas keeps his mouth closed and does not blink. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-8",
+   "type": "scene",
+   "nom": "8. Lucas : « J'achète les terrains vides de Saint Denis. Une gare va y être construite. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-lucas",
+    "fiche-renaitre-chez-eux-henri",
+    "decor-renaitre-chez-eux-salle"
+   ],
+   "promptImage": "Reverse two-shot in depth, same axis: in the foreground on the RIGHT, Lucas, a nine-year-old black Great Dane puppy boy, lanky, glossy black fur with a small white star on his chest, big floppy ears, intense brown eyes far too serious for his age, navy blue pyjamas at the end of the table, in a little navy blazer, sitting very straight, big in the frame now, looking toward the LEFT at his grandfather, perfectly calm; in the background on the LEFT, small but sharp at the head of the table, Henri Delcroix, a seventy-year-old black Great Dane patriarch, very tall, black fur with a grey muzzle and grey eyebrows, heavy natural ears, sharp amber eyes, a dark three-piece suit with a watch chain, glass in paw, turning his head toward him. A grand dining room in a Neuilly mansion in the evening: a very long polished table with silver candlesticks, the head of the table on the LEFT, oil portraits of black Great Dane ancestors on the walls, a crystal chandelier, warm golden candlelight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Lucas puts down his fork and folds his small paws on the table. Camera: steady push-in on the boy. Silence falling at the table, a candle hissing. No music. Only Lucas speaks, in French, with exactly the same voice as in all his other clips: a boy of nine with a child's voice but the calm, precise and adult way of speaking of a grown man: \"J'achète les terrains vides de Saint Denis. Une gare va y être construite.\". Calm, adult, absolutely certain. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 6. He looks at his grandfather on the left, never into the lens. Henri keeps his mouth closed, his eyebrows rising. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 7,
+   "garder": "0-6.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-9",
+   "type": "scene",
+   "nom": "9. Henri : « Une gare. À neuf ans. Très bien, l'argent est à toi. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-henri",
+    "decor-renaitre-chez-eux-salle"
+   ],
+   "promptImage": "Close-up: Henri Delcroix, a seventy-year-old black Great Dane patriarch, very tall, black fur with a grey muzzle and grey eyebrows, heavy natural ears, sharp amber eyes, a dark three-piece suit with a watch chain on the LEFT at the head of the table, eyebrows raised, a slow smile of interest, looking toward the RIGHT down the table at Lucas. A grand dining room in a Neuilly mansion in the evening: a very long polished table with silver candlesticks, the head of the table on the LEFT, oil portraits of black Great Dane ancestors on the walls, a crystal chandelier, warm golden candlelight. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Henri sets his glass down and leans forward on his elbows. Camera: rack focus from the glass to Henri's face. The glass set down, total silence. No music. Only Henri Delcroix speaks, in French, with exactly the same voice as in all his other clips: a man of seventy, deep grave authoritative voice, dry humour, never shouting: \"Une gare. À neuf ans. Très bien, l'argent est à toi.\". Intrigued, a dry chuckle. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Lucas on the right, never into the lens. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-10",
+   "type": "scene",
+   "nom": "10. La mère d'Yvan : « Vingt mille euros. Mais qui t'envoie, petit. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-mere",
+    "fiche-renaitre-chez-eux-lucas",
+    "decor-renaitre-chez-eux-pavillon"
+   ],
+   "promptImage": "Grey afternoon at the door of the small house: la mère d'Yvan, a fifty-five-year-old beagle woman, tricolor fur turning pale on the muzzle, long soft ears, tired kind brown eyes, a beige cardigan over a flowered dress, slippers on the LEFT in her doorway, the notice \"SAISIE\" on the door, holding a thick envelope full of banknotes, looking down toward the RIGHT at Lucas, a nine-year-old black Great Dane puppy boy, lanky, glossy black fur with a small white star on his chest, big floppy ears, intense brown eyes far too serious for his age, navy blue pyjamas, who stands on the step in a little coat. A small modest suburban house in Bobigny in 2006 on a grey spring afternoon: a front door with peeling paint and a white official notice taped on it reading \"SAISIE\", a little garden gate, a quiet street. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Yvan's mother opens the envelope and stares at the banknotes, then at the boy. Camera: small arc around the doorway, never crossing the axis. Wind, a dog barking far away, paper rustling. No music. Only la mère d'Yvan speaks, in French, with exactly the same voice as in all her other clips: a woman of fifty-five, warm tired voice, a little husky, never shrill: \"Vingt mille euros. Mais qui t'envoie, petit.\". Stunned, a real question in the voice. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks at Lucas on the right, never into the lens. Lucas keeps his mouth closed. The text \"SAISIE\" stays exact and readable. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-11",
+   "type": "scene",
+   "nom": "11. Lucas : « Quelqu'un qui vous aime beaucoup, madame. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-lucas",
+    "fiche-renaitre-chez-eux-mere",
+    "decor-renaitre-chez-eux-pavillon"
+   ],
+   "promptImage": "Reverse over-the-shoulder close-up, same axis: Lucas, a nine-year-old black Great Dane puppy boy, lanky, glossy black fur with a small white star on his chest, big floppy ears, intense brown eyes far too serious for his age, navy blue pyjamas on the RIGHT half of the frame on the doorstep, in a little coat, looking up toward the LEFT at the beagle woman, his eyes brimming with water, holding it in; in the foreground at frame LEFT, the blurred long tricolor ear and beige cardigan of la mère d'Yvan, a fifty-five-year-old beagle woman, tricolor fur turning pale on the muzzle, long soft ears, tired kind brown eyes, a beige cardigan over a flowered dress, slippers. A small modest suburban house in Bobigny in 2006 on a grey spring afternoon: a front door with peeling paint and a white official notice taped on it reading \"SAISIE\", a little garden gate, a quiet street. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Lucas swallows hard and smiles at her. Camera: steady push-in on his face. Wind, a far train. No music. Only Lucas speaks, in French, with exactly the same voice as in all his other clips: a boy of nine with a child's voice but the calm, precise and adult way of speaking of a grown man: \"Quelqu'un qui vous aime beaucoup, madame.\". Barely holding back, very soft. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks up at her on the left, never into the lens. She keeps her mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-12",
+   "type": "scene",
+   "nom": "12. Lucas s'éloigne, elle serre l'enveloppe contre elle",
+   "joindre": [
+    "fiche-renaitre-chez-eux-lucas",
+    "fiche-renaitre-chez-eux-mere",
+    "decor-renaitre-chez-eux-pavillon"
+   ],
+   "promptImage": "Wide shot of the quiet street: Lucas, a nine-year-old black Great Dane puppy boy, lanky, glossy black fur with a small white star on his chest, big floppy ears, intense brown eyes far too serious for his age, navy blue pyjamas walking away down the pavement toward the RIGHT, turning his head back once; la mère d'Yvan, a fifty-five-year-old beagle woman, tricolor fur turning pale on the muzzle, long soft ears, tired kind brown eyes, a beige cardigan over a flowered dress, slippers on the LEFT in her doorway, holding the envelope against her heart. A small modest suburban house in Bobigny in 2006 on a grey spring afternoon: a front door with peeling paint and a white official notice taped on it reading \"SAISIE\", a little garden gate, a quiet street. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Lucas walks away and glances back once; she presses the envelope to her heart. Camera: pull-back down the street. Footsteps, wind, a gate creaking. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "scene-13",
+   "type": "scene",
+   "nom": "13. Henri : « Dix fois la mise. La maison Delcroix est à toi, Lucas. » (fondu au noir avant)",
+   "joindre": [
+    "fiche-renaitre-chez-eux-henri-vieux",
+    "fiche-renaitre-chez-eux-lucas-adulte",
+    "fiche-renaitre-chez-eux-bertrand"
+   ],
+   "promptImage": "Night in the boardroom, medium shot: Henri Delcroix âgé, a ninety-year-old black Great Dane patriarch, thin and bent, fur mostly white on the muzzle and around the eyes, sharp amber eyes, a dark three-piece suit, a black walking stick standing at the head of the black glass table on the LEFT, leaning on his walking stick, looking toward the RIGHT at Lucas adulte, a twenty-nine-year-old black Great Dane man, very tall, glossy black fur with a small white star on his chest, natural floppy ears, calm intense brown eyes, a charcoal suit with a black turtleneck, who stands calm by the window; at the table, Bertrand Delcroix, a fifty-year-old black Great Dane man, very tall, sleek black fur with a few grey hairs on the muzzle, natural floppy ears, cold yellow eyes, a black tailored suit, a gold signet ring, rigid. A dark modern boardroom at the top of a tower at night: a long black glass table, leather chairs, the head of the table on the LEFT, floor-to-ceiling windows on the Paris skyline, a screen on the wall reading \"GROUPE DELCROIX\". Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Henri raises his walking stick toward Lucas while he speaks. Camera: dolly along the table toward Henri. City hum through the glass, a chair creaking. No music. Only Henri Delcroix âgé speaks, in French, with exactly the same voice as in all his other clips: a man of ninety, deep hoarse voice, weak but clear and authoritative: \"Dix fois la mise. La maison Delcroix est à toi, Lucas.\". Grave and proud. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Lucas on the right, never into the lens. Everyone else keeps their mouth closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "noir"
+  },
+  {
+   "id": "scene-14",
+   "type": "scene",
+   "nom": "14. Bertrand : « Ce gamin a toujours eu de la chance. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-bertrand",
+    "fiche-renaitre-chez-eux-lucas-adulte",
+    "decor-renaitre-chez-eux-conseil"
+   ],
+   "promptImage": "Two-shot in depth: in the foreground on the LEFT, Bertrand Delcroix, a fifty-year-old black Great Dane man, very tall, sleek black fur with a few grey hairs on the muzzle, natural floppy ears, cold yellow eyes, a black tailored suit, a gold signet ring, seated, jaw clenched, his signet ring tapping the glass table, looking toward the RIGHT with hatred; in the background on the RIGHT, sharp, Lucas adulte, a twenty-nine-year-old black Great Dane man, very tall, glossy black fur with a small white star on his chest, natural floppy ears, calm intense brown eyes, a charcoal suit with a black turtleneck, calm by the window, the Paris skyline behind him. A dark modern boardroom at the top of a tower at night: a long black glass table, leather chairs, the head of the table on the LEFT, floor-to-ceiling windows on the Paris skyline, a screen on the wall reading \"GROUPE DELCROIX\". Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Bertrand stops tapping his ring and rises from his chair. Camera: low-angle tilt up as he rises. The ring tapping glass, then silence. No music. Only Bertrand Delcroix speaks, in French, with exactly the same voice as in all his other clips: a man of fifty, silky cold low voice, menacing, never shouting: \"Ce gamin a toujours eu de la chance.\". Low, venomous. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Lucas on the right, never into the lens. Lucas keeps his mouth closed, a faint smile. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-15",
+   "type": "scene",
+   "nom": "15. Lucas : « Lâchez-le, Bertrand. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-bertrand",
+    "fiche-renaitre-chez-eux-yvan",
+    "fiche-renaitre-chez-eux-lucas-adulte",
+    "decor-renaitre-chez-eux-toit"
+   ],
+   "promptImage": "Rooftop at night by the low parapet: Bertrand Delcroix, a fifty-year-old black Great Dane man, very tall, sleek black fur with a few grey hairs on the muzzle, natural floppy ears, cold yellow eyes, a black tailored suit, a gold signet ring on the LEFT near the parapet, his paw on the shoulder of Yvan, a forty-five-year-old beagle man, tricolor fur (brown, black and white), long soft ears, honest brown eyes behind thin glasses, a slightly worn grey suit, a loosened blue tie on the RIGHT, who clutches the folder \"DOSSIER DELCROIX\"; in the lit doorway of the stair door far on the LEFT, Lucas adulte, a twenty-nine-year-old black Great Dane man, very tall, glossy black fur with a small white star on his chest, natural floppy ears, calm intense brown eyes, a charcoal suit with a black turtleneck steps out onto the roof. The flat rooftop of a glass office tower at La Défense, Paris, at night: a low concrete parapet at the edge on the RIGHT, a metal stair door with a lit sign on the LEFT, air-conditioning units, the lit skyline of Paris and the Eiffel Tower far away, wind, cold blue night light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Lucas walks out of the stair door onto the roof toward them. Camera: fast tracking shot following Lucas across the roof. End exactly on the provided last frame. The stair door slamming, wind, his steps on gravel. No music. Only Lucas adulte speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-nine, calm deep precise voice, controlled, never shouting: \"Lâchez-le, Bertrand.\". Calm and cutting. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at Bertrand ahead on the right, never into the lens. The others keep their mouths closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "imageFin": "fin-scene-15"
+  },
+  {
+   "id": "fin-scene-15",
+   "type": "fiche",
+   "nom": "Image de fin — 15",
+   "joindre": [
+    "scene-15"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Lucas a few steps from the two, facing them; Bertrand has turned his head toward him, his paw still on Yvan's shoulder. The flat rooftop of a glass office tower at La Défense, Paris, at night: a low concrete parapet at the edge on the RIGHT, a metal stair door with a lit sign on the LEFT, air-conditioning units, the lit skyline of Paris and the Eiffel Tower far away, wind, cold blue night light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-16",
+   "type": "scene",
+   "nom": "16. Bertrand : « Lucas. Qu'est-ce que tu fais là. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-bertrand",
+    "fiche-renaitre-chez-eux-yvan",
+    "decor-renaitre-chez-eux-toit"
+   ],
+   "promptImage": "Close shot: Bertrand Delcroix, a fifty-year-old black Great Dane man, very tall, sleek black fur with a few grey hairs on the muzzle, natural floppy ears, cold yellow eyes, a black tailored suit, a gold signet ring on the RIGHT, his paw still on the shoulder of Yvan, a forty-five-year-old beagle man, tricolor fur (brown, black and white), long soft ears, honest brown eyes behind thin glasses, a slightly worn grey suit, a loosened blue tie, who stands at the RIGHT edge of the frame by the parapet, both turning their heads toward the LEFT at Lucas; Bertrand surprised and wary, Yvan lost. The flat rooftop of a glass office tower at La Défense, Paris, at night: a low concrete parapet at the edge on the RIGHT, a metal stair door with a lit sign on the LEFT, air-conditioning units, the lit skyline of Paris and the Eiffel Tower far away, wind, cold blue night light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Bertrand narrows his eyes at Lucas. Camera: rack focus from Yvan's shoulder to Bertrand's face. Wind, distant sirens beginning. No music. Only Bertrand Delcroix speaks, in French, with exactly the same voice as in all his other clips: a man of fifty, silky cold low voice, menacing, never shouting: \"Lucas. Qu'est-ce que tu fais là.\". Wary, a question. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at Lucas on the left, never into the lens. Yvan keeps his mouth closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-17",
+   "type": "scene",
+   "nom": "17. Lucas : « Le comptable du onzième étage, cette fois, il rentre chez lui. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-lucas-adulte",
+    "fiche-renaitre-chez-eux-bertrand",
+    "decor-renaitre-chez-eux-toit"
+   ],
+   "promptImage": "Over-the-shoulder close-up: Lucas adulte, a twenty-nine-year-old black Great Dane man, very tall, glossy black fur with a small white star on his chest, natural floppy ears, calm intense brown eyes, a charcoal suit with a black turtleneck fills the LEFT half of the frame, calm, looking toward the RIGHT at Bertrand; in the foreground at frame RIGHT, the blurred black shoulder and floppy ear of Bertrand Delcroix, a fifty-year-old black Great Dane man, very tall, sleek black fur with a few grey hairs on the muzzle, natural floppy ears, cold yellow eyes, a black tailored suit, a gold signet ring. The flat rooftop of a glass office tower at La Défense, Paris, at night: a low concrete parapet at the edge on the RIGHT, a metal stair door with a lit sign on the LEFT, air-conditioning units, the lit skyline of Paris and the Eiffel Tower far away, wind, cold blue night light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Lucas holds up a thick copy of the folder marked \"DOSSIER DELCROIX\" at chest height. Camera: advancing push-in on Lucas. Sirens growing, wind. No music. Only Lucas adulte speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-nine, calm deep precise voice, controlled, never shouting: \"Le comptable du onzième étage, cette fois, il rentre chez lui.\". Quiet, absolute, weight on « cette fois ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Bertrand on the right, never into the lens. Bertrand keeps his mouth closed. The folder text stays exact and readable. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-18",
+   "type": "scene",
+   "nom": "18. Les gyrophares balaient le toit, Bertrand lâche Yvan",
+   "joindre": [
+    "fiche-renaitre-chez-eux-bertrand",
+    "fiche-renaitre-chez-eux-yvan",
+    "fiche-renaitre-chez-eux-lucas-adulte",
+    "decor-renaitre-chez-eux-toit"
+   ],
+   "promptImage": "Wide shot of the rooftop: blue police lights sweep across it; from the stair door on the LEFT, two police officers, German shepherd dogs in dark police uniforms, walk toward Bertrand Delcroix, a fifty-year-old black Great Dane man, very tall, sleek black fur with a few grey hairs on the muzzle, natural floppy ears, cold yellow eyes, a black tailored suit, a gold signet ring, who lets go of Yvan, a forty-five-year-old beagle man, tricolor fur (brown, black and white), long soft ears, honest brown eyes behind thin glasses, a slightly worn grey suit, a loosened blue tie's shoulder and raises both paws; Lucas adulte, a twenty-nine-year-old black Great Dane man, very tall, glossy black fur with a small white star on his chest, natural floppy ears, calm intense brown eyes, a charcoal suit with a black turtleneck stands still in the middle. The flat rooftop of a glass office tower at La Défense, Paris, at night: a low concrete parapet at the edge on the RIGHT, a metal stair door with a lit sign on the LEFT, air-conditioning units, the lit skyline of Paris and the Eiffel Tower far away, wind, cold blue night light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Bertrand takes his paw off Yvan's shoulder and lifts both paws while the officers approach. Camera: crane up above the rooftop. End exactly on the provided last frame. Sirens, radio chatter, wind. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The officers keep their mouths closed. Nobody else enters. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "muet": true,
+   "imageFin": "fin-scene-18"
+  },
+  {
+   "id": "fin-scene-18",
+   "type": "fiche",
+   "nom": "Image de fin — 18",
+   "joindre": [
+    "scene-18"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: the two German shepherd officers holding Bertrand's arms near the stair door on the left; Yvan alone near the parapet on the right, the folder against his chest; Lucas in the middle. The flat rooftop of a glass office tower at La Défense, Paris, at night: a low concrete parapet at the edge on the RIGHT, a metal stair door with a lit sign on the LEFT, air-conditioning units, the lit skyline of Paris and the Eiffel Tower far away, wind, cold blue night light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-19",
+   "type": "scene",
+   "nom": "19. Yvan : « On se connaît, monsieur. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-yvan",
+    "fiche-renaitre-chez-eux-lucas-adulte",
+    "decor-renaitre-chez-eux-toit"
+   ],
+   "promptImage": "Reverse over-the-shoulder close-up, same axis: Yvan, a forty-five-year-old beagle man, tricolor fur (brown, black and white), long soft ears, honest brown eyes behind thin glasses, a slightly worn grey suit, a loosened blue tie on the RIGHT half of the frame, glasses fogged, the folder against his chest, looking toward the LEFT at Lucas, puzzled, blue lights on his face; in the foreground at frame LEFT, the blurred glossy black shoulder and floppy ear of Lucas adulte, a twenty-nine-year-old black Great Dane man, very tall, glossy black fur with a small white star on his chest, natural floppy ears, calm intense brown eyes, a charcoal suit with a black turtleneck. The flat rooftop of a glass office tower at La Défense, Paris, at night: a low concrete parapet at the edge on the RIGHT, a metal stair door with a lit sign on the LEFT, air-conditioning units, the lit skyline of Paris and the Eiffel Tower far away, wind, cold blue night light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Yvan takes off his fogged glasses to look at Lucas better. Camera: locked close-up. Sirens fading, wind. No music. Only Yvan speaks, in French, with exactly the same voice as in all his other clips: a man of forty-five, soft precise voice, honest, never loud: \"On se connaît, monsieur.\". Puzzled, soft, a question. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at Lucas on the left, never into the lens. Lucas keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-20",
+   "type": "scene",
+   "nom": "20. Fin — Lucas : « Depuis toujours, Yvan. »",
+   "joindre": [
+    "fiche-renaitre-chez-eux-lucas-adulte",
+    "fiche-renaitre-chez-eux-yvan",
+    "decor-renaitre-chez-eux-toit"
+   ],
+   "promptImage": "Two-shot by the parapet, the Paris skyline behind: Lucas adulte, a twenty-nine-year-old black Great Dane man, very tall, glossy black fur with a small white star on his chest, natural floppy ears, calm intense brown eyes, a charcoal suit with a black turtleneck on the LEFT, smiling, resting one paw on the shoulder of Yvan, a forty-five-year-old beagle man, tricolor fur (brown, black and white), long soft ears, honest brown eyes behind thin glasses, a slightly worn grey suit, a loosened blue tie on the RIGHT, exactly where Bertrand's paw was at the beginning; blue police lights fading. The flat rooftop of a glass office tower at La Défense, Paris, at night: a low concrete parapet at the edge on the RIGHT, a metal stair door with a lit sign on the LEFT, air-conditioning units, the lit skyline of Paris and the Eiffel Tower far away, wind, cold blue night light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Lucas lays his paw on Yvan's shoulder, gently, and smiles. Camera: high crane pull-back over the rooftop and the city. End exactly on the provided last frame. Wind, the city, a single bell far away. No music. Only Lucas adulte speaks, in French, with exactly the same voice as in all his other clips: a man of twenty-nine, calm deep precise voice, controlled, never shouting: \"Depuis toujours, Yvan.\". Warm, moved, mysterious. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at Yvan on the right, never into the lens. Yvan keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-20"
+  },
+  {
+   "id": "fin-scene-20",
+   "type": "fiche",
+   "nom": "Image de fin — 20",
+   "joindre": [
+    "scene-20"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: high wide view of the rooftop, the two small characters, the Great Dane and the beagle by the parapet, the lit Paris skyline around them. The flat rooftop of a glass office tower at La Défense, Paris, at night: a low concrete parapet at the edge on the RIGHT, a metal stair door with a lit sign on the LEFT, air-conditioning units, the lit skyline of Paris and the Eiffel Tower far away, wind, cold blue night light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "couverture",
+   "type": "couverture",
+   "nom": "Couverture — Renaître chez eux",
+   "joindre": [],
+   "promptImage": "Vertical 9:16 TikTok cover, high-end stylized 3D animated feature-film look, original design not based on any existing film, studio or character, NOT photorealistic. A nine-year-old black Great Dane puppy boy with a small white star on his chest stares at his own reflection in a tall mirror in a luxurious bedroom, and in the mirror the reflection is a forty-five-year-old beagle man in glasses and a grey suit. Cold morning light, gold details. In the middle of the image, large and perfectly readable, the title \"RENAÎTRE CHEZ EUX\" in heavy white letters with a thin gold glow. The title block sits between 15% and 55% of the image height. No other text, no subtitle, no logo, no numbers."
+  }
+ ]
+}

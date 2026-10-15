@@ -1,0 +1,448 @@
+{
+ "id": "la-derniere-descente",
+ "titre": "La Dernière Descente",
+ "realisateur": "L'Inquiétant",
+ "version": 1,
+ "typePublication": "one-shot",
+ "recommendedVideoEngine": "agnes",
+ "accroche": "Les caméras sont vides. Pourtant, elle est là.",
+ "description": "Station fermée, tempête sur le glacier, et une fille seule en haut de la piste. Il remonte la chercher. Toi, tu serais remonté ?",
+ "hashtags": [
+  "#LaDerniereDescente",
+  "#Animation3D",
+  "#Halloween",
+  "#FinOuverte",
+  "#YakFilms"
+ ],
+ "commentaire": "La croix a une ombre. Antoine, non. Alors, qui était le fantôme cette nuit-là ?",
+ "datePublication": "2026-10-20",
+ "heurePublication": "20:00",
+ "etapes": [
+  {
+   "id": "fiche-la-derniere-descente-antoine",
+   "type": "fiche",
+   "nom": "Fiche — Antoine",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-la-derniere-descente-lisa",
+   "type": "fiche",
+   "nom": "Fiche — Lisa",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a slender twenty-year-old chamois young woman, tawny-beige fur, white cheeks with dark stripes from the eyes to the muzzle, short curved black horns, big dark gentle eyes, a bright pink and turquoise one-piece ski suit from the nineteen eighties, old white leather ski boots, bare head with frost on her fur. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-la-derniere-descente-sommet",
+   "type": "fiche",
+   "nom": "Décor — le sommet du glacier",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: The top of a glacier ski run above Tignes at nightfall in an autumn snowstorm: a small lit wooden lift hut with a big window on the LEFT, the cable and pylons of a drag lift disappearing into the fog, a wide white slope going down on the RIGHT, swirling snow, cold blue light, and on the hut wall a small brass plaque reading \"AVALANCHE DU 14 FÉVRIER 1987\". Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-la-derniere-descente-piste",
+   "type": "fiche",
+   "nom": "Décor — la piste dans le brouillard",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-la-derniere-descente-matin",
+   "type": "fiche",
+   "nom": "Décor — la piste au lever du soleil",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: The same glacier ski run at sunrise after the storm: brilliant fresh snow, a pure blue sky, low golden sun raking across the slope and casting long blue shadows, orange marker poles, and at the edge of the run a small old wooden cross half buried in the snow. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-1",
+   "type": "scene",
+   "nom": "1. Hook — Antoine : « Fabrice, j'ai fermé la station, mais y a encore une fille sur la piste. »",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "fiche-la-derniere-descente-lisa",
+    "decor-la-derniere-descente-sommet"
+   ],
+   "promptImage": "Exterior at nightfall, medium shot by the lift hut: Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie on the LEFT, three-quarter view, a walkie-talkie held to his muzzle, staring toward the RIGHT where, far down the slope in the fog, stands Lisa, a slender twenty-year-old chamois young woman, tawny-beige fur, white cheeks with dark stripes from the eyes to the muzzle, short curved black horns, big dark gentle eyes, a bright pink and turquoise one-piece ski suit from the nineteen eighties, old white leather ski boots, bare head with frost on her fur, small and alone. The brass plaque \"AVALANCHE DU 14 FÉVRIER 1987\" on the hut wall behind him. The top of a glacier ski run above Tignes at nightfall in an autumn snowstorm: a small lit wooden lift hut with a big window on the LEFT, the cable and pylons of a drag lift disappearing into the fog, a wide white slope going down on the RIGHT, swirling snow, cold blue light, and on the hut wall a small brass plaque reading \"AVALANCHE DU 14 FÉVRIER 1987\". Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Antoine lowers the walkie-talkie a little and narrows his eyes at the girl in the fog on the right. Camera: advancing push-in past Antoine's shoulder toward the girl in the fog. End exactly on the provided last frame. Howling wind, the lift cable creaking, radio static. No music. Only Antoine speaks, in French, with exactly the same voice as in all his other clips: a man of thirty, warm deep steady voice, a little rough from the cold, never shouting: \"Fabrice, j'ai fermé la station, mais y a encore une fille sur la piste.\". Worried, firm, raising his voice over the wind. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 6. He looks toward the slope on the right, never into the lens. The girl stays far away and keeps her mouth closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 7,
+   "garder": "0-6.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut",
+   "imageFin": "fin-scene-1"
+  },
+  {
+   "id": "fin-scene-1",
+   "type": "fiche",
+   "nom": "Image de fin — 1",
+   "joindre": [
+    "scene-1"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: closer over Antoine's left shoulder, the small pink-suited chamois girl still far in the fog on the right, motionless, facing him. The top of a glacier ski run above Tignes at nightfall in an autumn snowstorm: a small lit wooden lift hut with a big window on the LEFT, the cable and pylons of a drag lift disappearing into the fog, a wide white slope going down on the RIGHT, swirling snow, cold blue light, and on the hut wall a small brass plaque reading \"AVALANCHE DU 14 FÉVRIER 1987\". Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-2",
+   "type": "scene",
+   "nom": "2. Radio : « Grande Motte, les caméras sont vides. Y a personne. Ferme et descends. »",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "decor-la-derniere-descente-sommet"
+   ],
+   "promptImage": "Inside the lift hut, close shot: three small surveillance monitors on a desk showing the snowy slope in grey night-vision, completely empty; the walkie-talkie lying on the desk, its red light blinking; the reflection of Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie in the dark window on the LEFT. The top of a glacier ski run above Tignes at nightfall in an autumn snowstorm: a small lit wooden lift hut with a big window on the LEFT, the cable and pylons of a drag lift disappearing into the fog, a wide white slope going down on the RIGHT, swirling snow, cold blue light, and on the hut wall a small brass plaque reading \"AVALANCHE DU 14 FÉVRIER 1987\". Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The monitors flicker with static on the empty white slope; the red light of the walkie-talkie blinks. Camera: tilt down from the monitors to the blinking walkie-talkie. Radio crackle, the electric hum of the monitors, the wind outside. No music. Only the off-screen radio voice speaks, in French, with exactly the same voice as in all its other clips: a man in his forties, gruff mountain voice heard through a crackly walkie-talkie: \"Grande Motte, les caméras sont vides. Y a personne. Ferme et descends.\". Tired and gruff, matter-of-fact. The voice speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. Every character on screen keeps their mouth closed, zero lip-sync. The monitors show only snow, no character. The radio sound comes from the walkie-talkie at the left of the frame. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-3",
+   "type": "scene",
+   "nom": "3. Antoine : « Je la vois, je te dis. Une fille en combinaison rose. »",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "decor-la-derniere-descente-sommet"
+   ],
+   "promptImage": "Close shot in the lit doorway of the hut: Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie on the LEFT, walkie-talkie at his muzzle, looking toward the RIGHT at the slope outside, snow blowing into the hut. The top of a glacier ski run above Tignes at nightfall in an autumn snowstorm: a small lit wooden lift hut with a big window on the LEFT, the cable and pylons of a drag lift disappearing into the fog, a wide white slope going down on the RIGHT, swirling snow, cold blue light, and on the hut wall a small brass plaque reading \"AVALANCHE DU 14 FÉVRIER 1987\". Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Antoine zips up his red jacket with his free hand while he speaks, eyes on the slope. Camera: handheld close-up, slightly unsteady in the wind. Wind slamming the door, static. No music. Only Antoine speaks, in French, with exactly the same voice as in all his other clips: a man of thirty, warm deep steady voice, a little rough from the cold, never shouting: \"Je la vois, je te dis. Une fille en combinaison rose.\". Insistent, a little irritated. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks toward the slope on the right, never into the lens. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-4",
+   "type": "scene",
+   "nom": "4. Antoine part dans la tempête",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "fiche-la-derniere-descente-lisa",
+    "decor-la-derniere-descente-piste"
+   ],
+   "promptImage": "Back view, wide shot: Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie, a Bernese mountain dog man and not a human, seen from behind: long black fur on his neck, floppy ears under the orange beanie, fluffy black tail under the jacket, his headlamp beam cutting the fog, walking down the slope toward Lisa, a slender twenty-year-old chamois young woman, tawny-beige fur, white cheeks with dark stripes from the eyes to the muzzle, short curved black horns, big dark gentle eyes, a bright pink and turquoise one-piece ski suit from the nineteen eighties, old white leather ski boots, bare head with frost on her fur, a small chamois girl with short curved black horns standing far below. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Antoine walks down through the deep snow toward the girl, his headlamp beam swinging. Camera: tracking shot following Antoine from behind. End exactly on the provided last frame. Boots crunching deep snow, the wind roaring. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut",
+   "muet": true,
+   "imageFin": "fin-scene-4"
+  },
+  {
+   "id": "fin-scene-4",
+   "type": "fiche",
+   "nom": "Image de fin — 4",
+   "joindre": [
+    "scene-4"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Antoine, seen from behind, much closer to the girl, the headlamp beam now lighting her pink and turquoise suit. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-5",
+   "type": "scene",
+   "nom": "5. Lisa : « Je trouve plus la piste. Ça fait longtemps que j'attends. »",
+   "joindre": [
+    "fiche-la-derniere-descente-lisa",
+    "fiche-la-derniere-descente-antoine",
+    "decor-la-derniere-descente-piste"
+   ],
+   "promptImage": "Over-the-shoulder close-up in the fog: Lisa, a slender twenty-year-old chamois young woman, tawny-beige fur, white cheeks with dark stripes from the eyes to the muzzle, short curved black horns, big dark gentle eyes, a bright pink and turquoise one-piece ski suit from the nineteen eighties, old white leather ski boots, bare head with frost on her fur fills the RIGHT half of the frame, frost on her fur, looking toward the LEFT at Antoine; in the foreground at frame LEFT, the blurred black-furred shoulder and orange beanie of Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie, his headlamp lighting her face. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Lisa hugs herself against the cold while she speaks, eyes on Antoine. Camera: advancing push-in on Lisa's face. Wind, falling snow hissing, a distant crack of ice. No music. Only Lisa speaks, in French, with exactly the same voice as in all her other clips: a young woman of twenty, light clear soft voice, a little distant and old-fashioned, never childish: \"Je trouve plus la piste. Ça fait longtemps que j'attends.\". Soft and strangely calm, a little lost. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. She looks at Antoine on the left, never into the lens. Antoine keeps his mouth closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-6",
+   "type": "scene",
+   "nom": "6. Antoine : « T'es gelée. Prends mon bonnet, je te ramène en bas. »",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "fiche-la-derniere-descente-lisa",
+    "decor-la-derniere-descente-piste"
+   ],
+   "promptImage": "Side two-shot in the fog: Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie on the LEFT in profile, taking off his orange beanie with the headlamp; Lisa, a slender twenty-year-old chamois young woman, tawny-beige fur, white cheeks with dark stripes from the eyes to the muzzle, short curved black horns, big dark gentle eyes, a bright pink and turquoise one-piece ski suit from the nineteen eighties, old white leather ski boots, bare head with frost on her fur on the RIGHT in profile, looking up at him. Their eyes on each other; nobody looks at the camera. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Antoine pulls the orange beanie with its headlamp off his head and puts it gently on Lisa's head. Camera: small arc of a few degrees around the two, never crossing the axis. End exactly on the provided last frame. Wind softening, snowflakes falling. No music. Only Antoine speaks, in French, with exactly the same voice as in all his other clips: a man of thirty, warm deep steady voice, a little rough from the cold, never shouting: \"T'es gelée. Prends mon bonnet, je te ramène en bas.\". Warm and protective, a small smile. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Lisa on the right, never into the lens. Lisa keeps her mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-6"
+  },
+  {
+   "id": "fin-scene-6",
+   "type": "fiche",
+   "nom": "Image de fin — 6",
+   "joindre": [
+    "scene-6"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Antoine on the left, now without his beanie and headlamp, his black-furred head bare; Lisa on the right wearing Antoine's bright orange wool beanie, the headlamp glowing on her forehead, both in profile looking at each other. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-7",
+   "type": "scene",
+   "nom": "7. Lisa : « Il est chaud. Personne m'avait rien prêté depuis longtemps. »",
+   "joindre": [
+    "fiche-la-derniere-descente-lisa",
+    "decor-la-derniere-descente-piste"
+   ],
+   "promptImage": "Close-up: Lisa, a slender twenty-year-old chamois young woman, tawny-beige fur, white cheeks with dark stripes from the eyes to the muzzle, short curved black horns, big dark gentle eyes, a bright pink and turquoise one-piece ski suit from the nineteen eighties, old white leather ski boots, bare head with frost on her fur on the RIGHT, wearing Antoine's bright orange wool beanie, touching the wool with her fingertips, looking toward the LEFT at Antoine off-screen, a faint smile. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Lisa touches the orange beanie with her fingertips and smiles a little. Camera: steady push-in on her face. End exactly on the provided last frame. Wind, falling snow, a soft creak of ice. No music. Only Lisa speaks, in French, with exactly the same voice as in all her other clips: a young woman of twenty, light clear soft voice, a little distant and old-fashioned, never childish: \"Il est chaud. Personne m'avait rien prêté depuis longtemps.\". Moved, quiet, a breath of happiness. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. Antoine stays off-screen on the LEFT and never appears; nobody enters the frame. She looks toward the left, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-7"
+  },
+  {
+   "id": "fin-scene-7",
+   "type": "fiche",
+   "nom": "Image de fin — 7",
+   "joindre": [
+    "scene-7"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Lisa on the right, wearing Antoine's bright orange wool beanie, hands lowered, smiling toward the left; same framing. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-8",
+   "type": "scene",
+   "nom": "8. Lisa : « La dernière fois, personne est venu me chercher. »",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "fiche-la-derniere-descente-lisa",
+    "decor-la-derniere-descente-piste"
+   ],
+   "promptImage": "Medium shot from the front, walking down the foggy run: Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie on the LEFT, now without his beanie and headlamp, his black-furred head bare, and Lisa, a slender twenty-year-old chamois young woman, tawny-beige fur, white cheeks with dark stripes from the eyes to the muzzle, short curved black horns, big dark gentle eyes, a bright pink and turquoise one-piece ski suit from the nineteen eighties, old white leather ski boots, bare head with frost on her fur on the RIGHT, wearing Antoine's bright orange wool beanie, walking side by side toward the camera through deep snow, Lisa looking ahead, Antoine glancing at her. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "They walk down side by side through the snow; Lisa speaks without looking at him. Camera: backward tracking shot in front of them. Boots in deep snow, wind, the headlamp buzzing. No music. Only Lisa speaks, in French, with exactly the same voice as in all her other clips: a young woman of twenty, light clear soft voice, a little distant and old-fashioned, never childish: \"La dernière fois, personne est venu me chercher.\". Flat and distant, chilling in its calm. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks ahead, never into the lens. Antoine keeps his mouth closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-9",
+   "type": "scene",
+   "nom": "9. Antoine : « Ce soir, moi je suis là. On descend ensemble. »",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "decor-la-derniere-descente-piste"
+   ],
+   "promptImage": "Close shot: Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie on the LEFT, now without his beanie and headlamp, his black-furred head bare, snow in his fur, looking toward the RIGHT at Lisa beside him, reassuring. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Antoine nods toward Lisa while he walks. Camera: lateral tracking shot alongside Antoine. Wind, snow crunching. No music. Only Antoine speaks, in French, with exactly the same voice as in all his other clips: a man of thirty, warm deep steady voice, a little rough from the cold, never shouting: \"Ce soir, moi je suis là. On descend ensemble.\". Gentle and steady. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. Lisa stays off-screen on the RIGHT and never appears; nobody enters the frame. He looks toward the right, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-10",
+   "type": "scene",
+   "nom": "10. Les traces : celles d'Antoine, aucune pour elle",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "fiche-la-derniere-descente-lisa",
+    "decor-la-derniere-descente-piste"
+   ],
+   "promptImage": "High angle on the snow behind them, the headlamp light from the RIGHT: one deep line of big boot prints leading down the slope, and beside it, perfectly smooth untouched snow; far down in the fog, the backs of Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie and Lisa, a slender twenty-year-old chamois young woman, tawny-beige fur, white cheeks with dark stripes from the eyes to the muzzle, short curved black horns, big dark gentle eyes, a bright pink and turquoise one-piece ski suit from the nineteen eighties, old white leather ski boots, bare head with frost on her fur, small. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The camera reveals the single line of footprints; snow falls on the smooth untouched snow beside it. Camera: crane up from the footprints to the two walkers in the fog. A low gust of wind, one sharp crack of ice far above. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "scene-11",
+   "type": "scene",
+   "nom": "11. Radio : « Antoine, ça décroche au sommet. Sors de la piste, vite. »",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "fiche-la-derniere-descente-lisa",
+    "decor-la-derniere-descente-piste"
+   ],
+   "promptImage": "Wide shot looking up the slope: far above Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie and Lisa, a slender twenty-year-old chamois young woman, tawny-beige fur, white cheeks with dark stripes from the eyes to the muzzle, short curved black horns, big dark gentle eyes, a bright pink and turquoise one-piece ski suit from the nineteen eighties, old white leather ski boots, bare head with frost on her fur, small in the fog, the snowpack cracks open in a long dark line and a white wave starts to rush down; Antoine on the LEFT turning his head up toward it. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The snow slab breaks and the white wave rushes down the slope toward them. Camera: fast handheld tilt up toward the rushing snow. A deep rumble growing, radio static. No music. Only the off-screen radio voice speaks, in French, with exactly the same voice as in all its other clips: a man in his forties, gruff mountain voice heard through a crackly walkie-talkie: \"Antoine, ça décroche au sommet. Sors de la piste, vite.\". Urgent, almost shouting over the rumble. The voice speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. Every character on screen keeps their mouth closed, zero lip-sync. The radio sound comes from the walkie-talkie on Antoine's belt, at the left of the frame. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-12",
+   "type": "scene",
+   "nom": "12. Antoine protège Lisa face à la vague blanche",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "fiche-la-derniere-descente-lisa",
+    "decor-la-derniere-descente-piste"
+   ],
+   "promptImage": "Close two-shot: Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie on the LEFT pulls Lisa, a slender twenty-year-old chamois young woman, tawny-beige fur, white cheeks with dark stripes from the eyes to the muzzle, short curved black horns, big dark gentle eyes, a bright pink and turquoise one-piece ski suit from the nineteen eighties, old white leather ski boots, bare head with frost on her fur against his chest and turns his back to the rushing white snow cloud coming from the upper left; her face hidden against his jacket. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Antoine wraps both arms around Lisa and turns his back to the snow; the white cloud swallows the frame. Camera: handheld shot shaking with the rumble, white wave filling the frame. End exactly on the provided last frame. A roaring rumble, wind blast. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "muet": true,
+   "imageFin": "fin-scene-12"
+  },
+  {
+   "id": "fin-scene-12",
+   "type": "fiche",
+   "nom": "Image de fin — 12",
+   "joindre": [
+    "scene-12"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: almost everything is white swirling snow, only the dim shapes of Antoine's red jacket and Lisa's orange beanie inside the cloud. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-13",
+   "type": "scene",
+   "nom": "13. Lisa : « Merci, Antoine. Maintenant, je peux rentrer. »",
+   "joindre": [
+    "fiche-la-derniere-descente-lisa",
+    "decor-la-derniere-descente-piste"
+   ],
+   "promptImage": "Close-up after the storm, sudden total calm: Lisa, a slender twenty-year-old chamois young woman, tawny-beige fur, white cheeks with dark stripes from the eyes to the muzzle, short curved black horns, big dark gentle eyes, a bright pink and turquoise one-piece ski suit from the nineteen eighties, old white leather ski boots, bare head with frost on her fur on the RIGHT, wearing Antoine's bright orange wool beanie, a soft warm golden light glowing around her, stars visible above, looking toward the LEFT at Antoine off-screen, peaceful smile. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Snow sparkles fall around Lisa as the warm golden light grows around her. Camera: gentle push-in on her serene face. End exactly on the provided last frame. Absolute silence, a crystal shimmer. No music. Only Lisa speaks, in French, with exactly the same voice as in all her other clips: a young woman of twenty, light clear soft voice, a little distant and old-fashioned, never childish: \"Merci, Antoine. Maintenant, je peux rentrer.\". Peaceful, grateful, luminous. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. Antoine stays off-screen on the LEFT and never appears; nobody enters the frame. She looks toward the left, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-13"
+  },
+  {
+   "id": "fin-scene-13",
+   "type": "fiche",
+   "nom": "Image de fin — 13",
+   "joindre": [
+    "scene-13"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: the golden light around Lisa is brighter, she is turning away toward the right into the fog, the orange beanie still on her head. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-14",
+   "type": "scene",
+   "nom": "14. Antoine : « Lisa. Attends, Lisa. »",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "decor-la-derniere-descente-piste"
+   ],
+   "promptImage": "Medium shot: Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie, now without his beanie and headlamp, his black-furred head bare, on the LEFT, alone in the fog, one hand reaching toward the RIGHT where nothing is left but swirling snow. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Antoine takes one step toward the right and stops, his hand still reaching. Camera: pull-back revealing Antoine alone on the vast white slope. Wind returning, his breath. No music. Only Antoine speaks, in French, with exactly the same voice as in all his other clips: a man of thirty, warm deep steady voice, a little rough from the cold, never shouting: \"Lisa. Attends, Lisa.\". Calling, worried, voice cracking. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks toward the right, never into the lens. Nobody else is in the frame. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-15",
+   "type": "scene",
+   "nom": "15. La lumière s'éteint",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "decor-la-derniere-descente-piste"
+   ],
+   "promptImage": "Close shot: Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie, now without his beanie and headlamp, his black-furred head bare, on the LEFT, standing in the dark fog, the last faint glow of a light on the snow at the RIGHT edge fading out; darkness falls on his face. A steep glacier ski run at night in thick fog and falling snow, orange marker poles fading into the white, deep fresh powder, only a cold blue glow and the darkness of the mountain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The faint glow on the snow flickers and goes out; Antoine's face sinks into darkness. Camera: locked close-up. Silence, one sharp click, the wind falling silent. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "scene-16",
+   "type": "scene",
+   "nom": "16. Antoine : « Elle m'a jamais dit d'où elle venait. » (fondu au noir avant)",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "decor-la-derniere-descente-matin"
+   ],
+   "promptImage": "Morning, wide shot on the bright glacier run: Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie, now without his beanie and headlamp, his black-furred head bare, walking down the slope in the low golden sun, looking around, alone. The same glacier ski run at sunrise after the storm: brilliant fresh snow, a pure blue sky, low golden sun raking across the slope and casting long blue shadows, orange marker poles, and at the edge of the run a small old wooden cross half buried in the snow. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Antoine walks down the bright slope, scanning the snow. Camera: drifting lateral tracking shot. End exactly on the provided last frame. Morning stillness, birds far away, snow crunching. No music. Only Antoine speaks, in French, with exactly the same voice as in all his other clips: a man of thirty, warm deep steady voice, a little rough from the cold, never shouting: \"Elle m'a jamais dit d'où elle venait.\". Thoughtful, to himself; an inner thought said out loud. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at the slope, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "noir",
+   "imageFin": "fin-scene-16"
+  },
+  {
+   "id": "fin-scene-16",
+   "type": "fiche",
+   "nom": "Image de fin — 16",
+   "joindre": [
+    "scene-16"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Antoine has stopped, turned toward the edge of the run on the RIGHT, where a small old wooden cross stands half buried in the snow. The same glacier ski run at sunrise after the storm: brilliant fresh snow, a pure blue sky, low golden sun raking across the slope and casting long blue shadows, orange marker poles, and at the edge of the run a small old wooden cross half buried in the snow. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-17",
+   "type": "scene",
+   "nom": "17. Antoine : « Lisa. Quatorze février, mille neuf cent quatre vingt sept. »",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "decor-la-derniere-descente-matin"
+   ],
+   "promptImage": "Close shot on a small old wooden cross half buried in the snow at the edge of the run: Antoine's bright orange wool beanie with its headlamp sits on top of it; a small metal plaque reads \"LISA · 14 FÉVRIER 1987\"; Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie, now without his beanie and headlamp, his black-furred head bare, on the LEFT, leaning toward it, reading. The same glacier ski run at sunrise after the storm: brilliant fresh snow, a pure blue sky, low golden sun raking across the slope and casting long blue shadows, orange marker poles, and at the edge of the run a small old wooden cross half buried in the snow. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Antoine leans closer to read the plaque. Camera: rack focus from Antoine's face to the plaque. Silence, a gust of wind lifting powder. No music. Only Antoine speaks, in French, with exactly the same voice as in all his other clips: a man of thirty, warm deep steady voice, a little rough from the cold, never shouting: \"Lisa. Quatorze février, mille neuf cent quatre vingt sept.\". Barely voiced, stunned. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at the plaque, never into the lens. The plaque text stays exact and readable. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-18",
+   "type": "scene",
+   "nom": "18. Antoine : « C'est elle. C'est la même combinaison. »",
+   "joindre": [
+    "fiche-la-derniere-descente-lisa",
+    "fiche-la-derniere-descente-antoine",
+    "decor-la-derniere-descente-matin"
+   ],
+   "promptImage": "Insert: a small faded old photo screwed on the wooden cross under glass, showing Lisa, a slender twenty-year-old chamois young woman, tawny-beige fur, white cheeks with dark stripes from the eyes to the muzzle, short curved black horns, big dark gentle eyes, a bright pink and turquoise one-piece ski suit from the nineteen eighties, old white leather ski boots, bare head with frost on her fur smiling in her pink and turquoise one-piece ski suit; the photo is a still image; Antoine's black-furred fingers at the LEFT edge, near it. The same glacier ski run at sunrise after the storm: brilliant fresh snow, a pure blue sky, low golden sun raking across the slope and casting long blue shadows, orange marker poles, and at the edge of the run a small old wooden cross half buried in the snow. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Antoine's fingers brush the frost off the glass of the photo. Camera: snap zoom on the faded photo. Frost cracking, a sharp intake of breath. No music. Only Antoine speaks, in French, with exactly the same voice as in all his other clips: a man of thirty, warm deep steady voice, a little rough from the cold, never shouting: \"C'est elle. C'est la même combinaison.\". Low and hushed, shaken. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. The photo stays still and silent. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-19",
+   "type": "scene",
+   "nom": "19. Antoine : « Bonne descente, Lisa. »",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "decor-la-derniere-descente-matin"
+   ],
+   "promptImage": "Close-up: Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie, now without his beanie and headlamp, his black-furred head bare, on the LEFT, one hand resting on the orange beanie on top of the cross on the RIGHT, eyes bright with water, a soft smile. The same glacier ski run at sunrise after the storm: brilliant fresh snow, a pure blue sky, low golden sun raking across the slope and casting long blue shadows, orange marker poles, and at the edge of the run a small old wooden cross half buried in the snow. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Antoine rests his hand on the beanie and smiles sadly. Camera: steady push-in on his face. Morning wind, a far bird call. No music. Only Antoine speaks, in French, with exactly the same voice as in all his other clips: a man of thirty, warm deep steady voice, a little rough from the cold, never shouting: \"Bonne descente, Lisa.\". Tender, warm, a little broken. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at the cross, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-20",
+   "type": "scene",
+   "nom": "20. Fin — la croix a une ombre, Antoine non",
+   "joindre": [
+    "fiche-la-derniere-descente-antoine",
+    "decor-la-derniere-descente-matin"
+   ],
+   "promptImage": "High wide shot of the sunlit slope: the small wooden cross with the orange beanie casts a long sharp blue shadow across the snow in the low morning sun; Antoine, a sturdy thirty-year-old Bernese mountain dog man, long black fur with rust-brown cheeks and eyebrows and a white blaze on the muzzle and chest, floppy ears, kind brown eyes, red ski-lift staff jacket with reflective strips, black ski trousers, heavy snow boots, bright orange wool beanie, a small headlamp on the beanie, now without his beanie and headlamp, his black-furred head bare, stands right beside it in the same sunlight and casts NO shadow at all on the snow, the only thing on the slope without a shadow. The same glacier ski run at sunrise after the storm: brilliant fresh snow, a pure blue sky, low golden sun raking across the slope and casting long blue shadows, orange marker poles, and at the edge of the run a small old wooden cross half buried in the snow. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Antoine stands still beside the cross while the long shadow of the cross stretches on the snow; a little powder drifts in the wind. Camera: high crane pull-back revealing the whole bright slope. Wind, silence. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Antoine never casts a shadow at any moment of the clip. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "couverture",
+   "type": "couverture",
+   "nom": "Couverture — La Dernière Descente",
+   "joindre": [],
+   "promptImage": "Vertical 9:16 TikTok cover, high-end stylized 3D animated feature-film look, original design not based on any existing film, studio or character, NOT photorealistic. Night snowstorm on a glacier ski run: a slender chamois young woman in a bright pink and turquoise nineteen-eighties ski suit, wearing an orange beanie with a small headlamp, stands alone in the fog, a soft eerie glow around her; far behind, a small lit wooden lift hut. Cold blue light, one warm glow. In the middle of the image, large and perfectly readable, the title \"LA DERNIÈRE DESCENTE\" in heavy white letters with a thin icy-blue glow. The title block sits between 15% and 55% of the image height. No other text, no subtitle, no logo, no numbers."
+  }
+ ]
+}

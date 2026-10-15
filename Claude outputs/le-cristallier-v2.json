@@ -1,0 +1,480 @@
+{
+ "id": "le-cristallier",
+ "titre": "Le Cristallier",
+ "realisateur": "Le Tendre",
+ "version": 2,
+ "typePublication": "one-shot",
+ "recommendedVideoEngine": "agnes",
+ "accroche": "Elle l'a quitté pour ses « cailloux ».",
+ "description": "Elle est partie avec le riche de l'hôtel parce qu'il « cherchait des cailloux ». Avec son fils, il a continué à grimper. Elle méritait qu'ils la regardent, à la fin ?",
+ "hashtags": [
+  "#LeCristallier",
+  "#Animation3D",
+  "#Revanche",
+  "#PereFils",
+  "#YakFilms"
+ ],
+ "commentaire": "Tom a failli tourner la tête vers elle. Vous, vous l'auriez regardée ?",
+ "datePublication": "2026-10-22",
+ "heurePublication": "20:00",
+ "etapes": [
+  {
+   "id": "fiche-le-cristallier-pierrot",
+   "type": "fiche",
+   "nom": "Fiche — Pierrot",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-le-cristallier-tom",
+   "type": "fiche",
+   "nom": "Fiche — Tom",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a ten-year-old Saint Bernard puppy boy, round and fluffy, brown-and-white fur, droopy ears, big trusting brown eyes, small red mountain jacket, blue wool beanie, little hiking boots. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-le-cristallier-sandrine",
+   "type": "fiche",
+   "nom": "Fiche — Sandrine",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: an elegant thirty-eight-year-old white spitz woman, fluffy snow-white fur, pointed ears, sharp blue eyes, cream wool coat with a fur collar, pearl earrings, high-heeled ankle boots. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-le-cristallier-brissac",
+   "type": "fiche",
+   "nom": "Fiche — Édouard Brissac",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a fifty-year-old silver Weimaraner man, sleek short silver-grey fur, long ears, pale amber eyes, smug smile, navy cashmere overcoat over a white shirt, a heavy gold watch. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-le-cristallier-chalet",
+   "type": "fiche",
+   "nom": "Décor — le chalet de Pierrot",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A modest old wooden chalet at the edge of Bourg-d'Oisans in autumn, in the French Alps: the wooden front door with a small porch on the LEFT, a gravel driveway on the RIGHT where a shiny black luxury car waits, golden autumn larches and steep rocky mountains behind, low autumn sun. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-le-cristallier-hotel",
+   "type": "fiche",
+   "nom": "Décor — la terrasse de l'hôtel",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: The sunny terrace of a luxury mountain hotel at L'Alpe d'Huez in autumn: teak loungers, a glass balustrade, champagne buckets, a big gilded sign \"HÔTEL BRISSAC\" on the facade behind, a panoramic view of rocky peaks. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-le-cristallier-montagne",
+   "type": "fiche",
+   "nom": "Décor — l'arête rocheuse",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A steep rocky ridge high above the Oisans valley: grey granite slabs, narrow ledges, patches of old snow, thin clouds below, wind, cold bright light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-le-cristallier-grotte",
+   "type": "fiche",
+   "nom": "Décor — la grotte de cristal",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A narrow cave hidden in the granite of the mountain, its walls covered with huge clear quartz crystals as tall as a man, some smoky brown, pointing in every direction, lit only by the white beams of headlamps that sparkle and reflect inside the crystals, no other light source. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-le-cristallier-rue",
+   "type": "fiche",
+   "nom": "Décor — la rue du village au printemps",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: The main street of Bourg-d'Oisans in spring: old stone houses with colorful shutters, flower boxes, a new little shop on the LEFT with a wooden sign reading \"CRISTAUX PÈRE & FILS\" and a big clear crystal glowing in its window, a wooden bench on the RIGHT side of the street, green mountains and blue sky. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-1",
+   "type": "scene",
+   "nom": "1. Hook — Sandrine : « J'ai pas épousé un chercheur de cailloux, Pierrot. »",
+   "joindre": [
+    "fiche-le-cristallier-sandrine",
+    "fiche-le-cristallier-brissac",
+    "fiche-le-cristallier-pierrot"
+   ],
+   "promptImage": "Wide shot from the porch, behind the ones who stay, low autumn sun: in the foreground on the LEFT, seen from behind, Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots, a big Saint Bernard dog and not a human, thick brown-and-white fur on his neck, droopy ears under his grey wool cap, fluffy tail, and beside him Tom, a ten-year-old Saint Bernard puppy boy, round and fluffy, brown-and-white fur, droopy ears, big trusting brown eyes, small red mountain jacket, blue wool beanie, little hiking boots, a small Saint Bernard puppy dog and not a human, round fluffy brown-and-white head and droopy ears under his blue beanie; in the middle of the gravel driveway, Sandrine, an elegant thirty-eight-year-old white spitz woman, fluffy snow-white fur, pointed ears, sharp blue eyes, cream wool coat with a fur collar, pearl earrings, high-heeled ankle boots with a suitcase, half turned back toward them over her shoulder; on the RIGHT, Édouard Brissac, a fifty-year-old silver Weimaraner man, sleek short silver-grey fur, long ears, pale amber eyes, smug smile, navy cashmere overcoat over a white shirt, a heavy gold watch leaning on the black luxury car, holding its door open. A modest old wooden chalet at the edge of Bourg-d'Oisans in autumn, in the French Alps: the wooden front door with a small porch on the LEFT, a gravel driveway on the RIGHT where a shiny black luxury car waits, golden autumn larches and steep rocky mountains behind, low autumn sun. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Sandrine turns her back on the porch and pulls her suitcase toward the car on the right while she speaks over her shoulder. Camera: push-in between the backs of father and son toward Sandrine as she walks away. End exactly on the provided last frame. Gravel under the wheels of the suitcase, wind in the larches. No music. Only Sandrine speaks, in French, with exactly the same voice as in all her other clips: a woman of thirty-eight, polished cool medium voice, a little haughty, never shrill: \"J'ai pas épousé un chercheur de cailloux, Pierrot.\". Cold, contemptuous, weight on « cailloux ». She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She glances back over her shoulder toward Pierrot on the left, never into the lens. Pierrot and Tom stay still, seen from behind, mouths closed; Brissac keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-1"
+  },
+  {
+   "id": "fin-scene-1",
+   "type": "fiche",
+   "nom": "Image de fin — 1",
+   "joindre": [
+    "scene-1"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Sandrine near the black car on the right, Brissac taking her suitcase; the backs of Pierrot and Tom still in the foreground on the left, Tom's small paw gripping his father's jacket. A modest old wooden chalet at the edge of Bourg-d'Oisans in autumn, in the French Alps: the wooden front door with a small porch on the LEFT, a gravel driveway on the RIGHT where a shiny black luxury car waits, golden autumn larches and steep rocky mountains behind, low autumn sun. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-2",
+   "type": "scene",
+   "nom": "2. Brissac : « Viens, chérie. Chez moi, les cailloux, c'est des diamants. »",
+   "joindre": [
+    "fiche-le-cristallier-brissac",
+    "fiche-le-cristallier-sandrine",
+    "decor-le-cristallier-chalet"
+   ],
+   "promptImage": "Medium shot by the car: Édouard Brissac, a fifty-year-old silver Weimaraner man, sleek short silver-grey fur, long ears, pale amber eyes, smug smile, navy cashmere overcoat over a white shirt, a heavy gold watch on the RIGHT, smug, lifting his wrist so his gold watch catches the sun, looking toward the LEFT at Pierrot on the porch; Sandrine, an elegant thirty-eight-year-old white spitz woman, fluffy snow-white fur, pointed ears, sharp blue eyes, cream wool coat with a fur collar, pearl earrings, high-heeled ankle boots beside him getting into the car. A modest old wooden chalet at the edge of Bourg-d'Oisans in autumn, in the French Alps: the wooden front door with a small porch on the LEFT, a gravel driveway on the RIGHT where a shiny black luxury car waits, golden autumn larches and steep rocky mountains behind, low autumn sun. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Brissac shows off his gold watch with a smirk and opens the car door wider for Sandrine. Camera: low-angle tilt up to Brissac's smirk. Car door clicking, a bird, the wind. No music. Only Édouard Brissac speaks, in French, with exactly the same voice as in all his other clips: a man of fifty, smooth self-satisfied baritone, mocking, never loud: \"Viens, chérie. Chez moi, les cailloux, c'est des diamants.\". Mocking, honey-smooth, enjoying himself. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks toward Pierrot on the left, never into the lens. Sandrine keeps her mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-3",
+   "type": "scene",
+   "nom": "3. Tom : « Papa, elle va revenir. »",
+   "joindre": [
+    "fiche-le-cristallier-tom",
+    "fiche-le-cristallier-pierrot",
+    "decor-le-cristallier-chalet"
+   ],
+   "promptImage": "Close-up on the porch: Tom, a ten-year-old Saint Bernard puppy boy, round and fluffy, brown-and-white fur, droopy ears, big trusting brown eyes, small red mountain jacket, blue wool beanie, little hiking boots on the RIGHT, holding his father's jacket, looking up toward the LEFT at Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots, whose big paw rests on his shoulder. A modest old wooden chalet at the edge of Bourg-d'Oisans in autumn, in the French Alps: the wooden front door with a small porch on the LEFT, a gravel driveway on the RIGHT where a shiny black luxury car waits, golden autumn larches and steep rocky mountains behind, low autumn sun. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Tom tugs his father's jacket and looks up at him. Camera: locked close-up. The black car driving away on gravel, the engine fading. No music. Only Tom speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, clear high voice, lively and sincere, never babyish: \"Papa, elle va revenir.\". Hopeful and unsure, the intonation of a question. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks up at his father on the left, never into the lens. Pierrot keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-4",
+   "type": "scene",
+   "nom": "4. Pierrot : « On a pas besoin d'elle. On va trouver le plus beau cristal de la montagne. »",
+   "joindre": [
+    "fiche-le-cristallier-pierrot",
+    "fiche-le-cristallier-tom",
+    "decor-le-cristallier-chalet"
+   ],
+   "promptImage": "Reverse close-up, same axis: Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots on the LEFT half of the frame, looking down toward the RIGHT at Tom, jaw set, the rocky mountains behind him. A modest old wooden chalet at the edge of Bourg-d'Oisans in autumn, in the French Alps: the wooden front door with a small porch on the LEFT, a gravel driveway on the RIGHT where a shiny black luxury car waits, golden autumn larches and steep rocky mountains behind, low autumn sun. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Pierrot crouches to Tom's height and puts both paws on the boy's shoulders. Camera: crane down with Pierrot to Tom's eye level. End exactly on the provided last frame. Wind in the larches, a cowbell far away. No music. Only Pierrot speaks, in French, with exactly the same voice as in all his other clips: a man of forty, deep calm rumbling voice, few words, never shouting: \"On a pas besoin d'elle. On va trouver le plus beau cristal de la montagne.\". Calm, a promise, weight on « le plus beau ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 6. He looks at Tom on the right, never into the lens. Tom keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 7,
+   "garder": "0-6.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-4"
+  },
+  {
+   "id": "fin-scene-4",
+   "type": "fiche",
+   "nom": "Image de fin — 4",
+   "joindre": [
+    "scene-4"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Pierrot crouched at Tom's eye level on the left, both paws on the boy's shoulders, Tom on the right nodding. A modest old wooden chalet at the edge of Bourg-d'Oisans in autumn, in the French Alps: the wooden front door with a small porch on the LEFT, a gravel driveway on the RIGHT where a shiny black luxury car waits, golden autumn larches and steep rocky mountains behind, low autumn sun. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-5",
+   "type": "scene",
+   "nom": "5. Le père et le fils montent à l'aube",
+   "joindre": [
+    "fiche-le-cristallier-pierrot",
+    "fiche-le-cristallier-tom",
+    "decor-le-cristallier-montagne"
+   ],
+   "promptImage": "Wide shot at dawn on the ridge: Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots in front on the LEFT and Tom, a ten-year-old Saint Bernard puppy boy, round and fluffy, brown-and-white fur, droopy ears, big trusting brown eyes, small red mountain jacket, blue wool beanie, little hiking boots behind him, both with small hammers on their belts and a coiled rope, walking up the granite ridge toward the RIGHT, golden light on the peaks. A steep rocky ridge high above the Oisans valley: grey granite slabs, narrow ledges, patches of old snow, thin clouds below, wind, cold bright light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Father and son walk up the ridge step by step, the boy following his father's tracks. Camera: lateral tracking shot along the ridge. Wind, stones rolling, their breathing. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "scene-6",
+   "type": "scene",
+   "nom": "6. Sandrine : « Il trouvera jamais rien. Il a jamais rien trouvé. »",
+   "joindre": [
+    "fiche-le-cristallier-sandrine",
+    "fiche-le-cristallier-brissac",
+    "decor-le-cristallier-hotel"
+   ],
+   "promptImage": "Hotel terrace in the sun, medium shot: Sandrine, an elegant thirty-eight-year-old white spitz woman, fluffy snow-white fur, pointed ears, sharp blue eyes, cream wool coat with a fur collar, pearl earrings, high-heeled ankle boots on the LEFT on a lounger in sunglasses, a glass of champagne in her hand, looking toward the RIGHT at Édouard Brissac, a fifty-year-old silver Weimaraner man, sleek short silver-grey fur, long ears, pale amber eyes, smug smile, navy cashmere overcoat over a white shirt, a heavy gold watch, who stands at the balustrade looking at the mountains through small binoculars. The sunny terrace of a luxury mountain hotel at L'Alpe d'Huez in autumn: teak loungers, a glass balustrade, champagne buckets, a big gilded sign \"HÔTEL BRISSAC\" on the facade behind, a panoramic view of rocky peaks. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Sandrine raises her glass and laughs. Camera: drifting dolly along the terrace toward Sandrine. Champagne fizzing, ice in the bucket, light terrace chatter. No music. Only Sandrine speaks, in French, with exactly the same voice as in all her other clips: a woman of thirty-eight, polished cool medium voice, a little haughty, never shrill: \"Il trouvera jamais rien. Il a jamais rien trouvé.\". Amused and cruel, a short laugh. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks at Brissac on the right, never into the lens. Brissac keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-7",
+   "type": "scene",
+   "nom": "7. Brissac : « Il gratte sa montagne pendant que tu bois mon champagne. »",
+   "joindre": [
+    "fiche-le-cristallier-brissac",
+    "fiche-le-cristallier-sandrine",
+    "decor-le-cristallier-hotel"
+   ],
+   "promptImage": "Reverse over-the-shoulder close-up, same axis: Édouard Brissac, a fifty-year-old silver Weimaraner man, sleek short silver-grey fur, long ears, pale amber eyes, smug smile, navy cashmere overcoat over a white shirt, a heavy gold watch on the RIGHT half of the frame, lowering the binoculars, smirking, looking toward the LEFT at Sandrine; the rocky peaks far behind him; in the foreground at frame LEFT, the blurred snow-white fluffy ear of Sandrine, an elegant thirty-eight-year-old white spitz woman, fluffy snow-white fur, pointed ears, sharp blue eyes, cream wool coat with a fur collar, pearl earrings, high-heeled ankle boots and her raised champagne glass. The sunny terrace of a luxury mountain hotel at L'Alpe d'Huez in autumn: teak loungers, a glass balustrade, champagne buckets, a big gilded sign \"HÔTEL BRISSAC\" on the facade behind, a panoramic view of rocky peaks. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Brissac lowers his binoculars and smirks toward Sandrine. Camera: rack focus from the distant peaks to Brissac's face. Wind on the terrace, glasses clinking. No music. Only Édouard Brissac speaks, in French, with exactly the same voice as in all his other clips: a man of fifty, smooth self-satisfied baritone, mocking, never loud: \"Il gratte sa montagne pendant que tu bois mon champagne.\". Smug and satisfied. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Sandrine on the left, never into the lens. Sandrine keeps her mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-8",
+   "type": "scene",
+   "nom": "8. Tom : « Papa, on a encore rien trouvé aujourd'hui. »",
+   "joindre": [
+    "fiche-le-cristallier-tom",
+    "fiche-le-cristallier-pierrot",
+    "decor-le-cristallier-montagne"
+   ],
+   "promptImage": "On the ridge in cold grey drizzle, two-shot in depth: in the foreground on the RIGHT, Tom, a ten-year-old Saint Bernard puppy boy, round and fluffy, brown-and-white fur, droopy ears, big trusting brown eyes, small red mountain jacket, blue wool beanie, little hiking boots, wet fur, sitting on a rock, an empty canvas bag on his knees, looking toward the LEFT at his father; in the background on the LEFT, sharp, Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots still tapping the granite with his small hammer, his back bent. A steep rocky ridge high above the Oisans valley: grey granite slabs, narrow ledges, patches of old snow, thin clouds below, wind, cold bright light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Tom turns the empty bag upside down; nothing falls out; in the background Pierrot stops hammering and lowers his head. Camera: push-in on Tom's tired face. Drizzle on the rock, wind, a far rumble of thunder. No music. Only Tom speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, clear high voice, lively and sincere, never babyish: \"Papa, on a encore rien trouvé aujourd'hui.\". Discouraged, small voice. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at his father on the left, never into the lens. Pierrot keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-9",
+   "type": "scene",
+   "nom": "9. Pierrot : « Demain, on monte plus haut. Là où personne va. »",
+   "joindre": [
+    "fiche-le-cristallier-pierrot",
+    "decor-le-cristallier-montagne"
+   ],
+   "promptImage": "Close-up: Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots on the LEFT, wet fur, looking up toward the RIGHT at the highest peak in the clouds, determined. A steep rocky ridge high above the Oisans valley: grey granite slabs, narrow ledges, patches of old snow, thin clouds below, wind, cold bright light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Pierrot lifts his eyes from Tom to the high peak. Camera: tilt up from Pierrot to the high peak in the clouds. Drizzle, the wind rising. No music. Only Pierrot speaks, in French, with exactly the same voice as in all his other clips: a man of forty, deep calm rumbling voice, few words, never shouting: \"Demain, on monte plus haut. Là où personne va.\". Low, stubborn, a hint of worry. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at the peak on the right, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-10",
+   "type": "scene",
+   "nom": "10. Pierrot : « Tiens ma main, Tom. Je te lâche pas. »",
+   "joindre": [
+    "fiche-le-cristallier-pierrot",
+    "fiche-le-cristallier-tom",
+    "decor-le-cristallier-montagne"
+   ],
+   "promptImage": "High on a narrow ledge, tense two-shot: Tom, a ten-year-old Saint Bernard puppy boy, round and fluffy, brown-and-white fur, droopy ears, big trusting brown eyes, small red mountain jacket, blue wool beanie, little hiking boots on the RIGHT, one boot slipping on loose stones at the edge, gripping the hand of Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots on the LEFT, who holds him firmly with one paw and the rock with the other; a gaping drop below with clouds. A steep rocky ridge high above the Oisans valley: grey granite slabs, narrow ledges, patches of old snow, thin clouds below, wind, cold bright light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Pierrot pulls Tom back onto the ledge in one strong move; loose stones fall into the void. Camera: handheld shot shaking with the falling stones. End exactly on the provided last frame. Stones clattering down, wind, a sharp breath. No music. Only Pierrot speaks, in French, with exactly the same voice as in all his other clips: a man of forty, deep calm rumbling voice, few words, never shouting: \"Tiens ma main, Tom. Je te lâche pas.\". Firm and urgent, never shouting. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Tom on the right, never into the lens. Tom keeps his mouth closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "imageFin": "fin-scene-10"
+  },
+  {
+   "id": "fin-scene-10",
+   "type": "fiche",
+   "nom": "Image de fin — 10",
+   "joindre": [
+    "scene-10"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Tom safe on the ledge against his father on the left; where Tom's boot slipped, the broken rock on the right reveals a dark crack. A steep rocky ridge high above the Oisans valley: grey granite slabs, narrow ledges, patches of old snow, thin clouds below, wind, cold bright light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-11",
+   "type": "scene",
+   "nom": "11. Tom : « Papa, regarde. Ça brille, derrière la roche. »",
+   "joindre": [
+    "fiche-le-cristallier-tom",
+    "fiche-le-cristallier-pierrot",
+    "decor-le-cristallier-montagne"
+   ],
+   "promptImage": "Close shot on the dark crack in the granite: a faint sparkle of clear crystal behind the broken rock, caught in the beam of a headlamp; Tom, a ten-year-old Saint Bernard puppy boy, round and fluffy, brown-and-white fur, droopy ears, big trusting brown eyes, small red mountain jacket, blue wool beanie, little hiking boots on the RIGHT, his headlamp on, his small paw stretched toward the crack, eyes wide, glancing toward the LEFT at his father; in the foreground at frame LEFT, the blurred brown-and-white shoulder and grey wool cap of Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots, leaning in. A steep rocky ridge high above the Oisans valley: grey granite slabs, narrow ledges, patches of old snow, thin clouds below, wind, cold bright light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Tom leans toward the crack and the headlamp beam catches a sparkle inside. Camera: snap zoom into the sparkling crack. Wind, a tiny crystalline tinkle. No music. Only Tom speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, clear high voice, lively and sincere, never babyish: \"Papa, regarde. Ça brille, derrière la roche.\". Breathless, amazed. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks from the crack to his father on the left, never into the lens. Pierrot keeps his mouth closed. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the headlamps reflected in the clear crystals, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-12",
+   "type": "scene",
+   "nom": "12. Ils entrent dans la grotte de cristal",
+   "joindre": [
+    "fiche-le-cristallier-pierrot",
+    "fiche-le-cristallier-tom",
+    "decor-le-cristallier-grotte"
+   ],
+   "promptImage": "Inside the crystal cave, wide shot: Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots on the LEFT and Tom, a ten-year-old Saint Bernard puppy boy, round and fluffy, brown-and-white fur, droopy ears, big trusting brown eyes, small red mountain jacket, blue wool beanie, little hiking boots on the RIGHT, headlamps on, stepping inside, their beams bouncing off huge clear quartz crystals all around them, faces lit with wonder. A narrow cave hidden in the granite of the mountain, its walls covered with huge clear quartz crystals as tall as a man, some smoky brown, pointing in every direction, lit only by the white beams of headlamps that sparkle and reflect inside the crystals, no other light source. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Father and son step into the cave and turn their heads, their headlamp beams sweeping over the giant crystals. Camera: continuous orbit around the two in the crystal cave. Dripping water, their echoing breath, a crystalline resonance. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The crystals never glow by themselves; all light comes from the headlamps. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the headlamps reflected in the clear crystals, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "scene-13",
+   "type": "scene",
+   "nom": "13. Pierrot : « Ta mère avait raison. C'est pas des cailloux. »",
+   "joindre": [
+    "fiche-le-cristallier-pierrot",
+    "fiche-le-cristallier-tom",
+    "decor-le-cristallier-grotte"
+   ],
+   "promptImage": "Two-shot in depth in the cave: in the foreground on the LEFT, Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots, his headlamp lighting a giant clear crystal beside him, a smile spreading under his jowls, looking toward the RIGHT at Tom; in the background on the RIGHT, sharp, Tom, a ten-year-old Saint Bernard puppy boy, round and fluffy, brown-and-white fur, droopy ears, big trusting brown eyes, small red mountain jacket, blue wool beanie, little hiking boots, both small paws on a crystal taller than him, laughing silently, his headlamp sparkling in it. A narrow cave hidden in the granite of the mountain, its walls covered with huge clear quartz crystals as tall as a man, some smoky brown, pointing in every direction, lit only by the white beams of headlamps that sparkle and reflect inside the crystals, no other light source. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Pierrot lays his big paw flat on the giant crystal and smiles. Camera: rack focus from the crystal to Pierrot's smile. Dripping water, a soft echo. No music. Only Pierrot speaks, in French, with exactly the same voice as in all his other clips: a man of forty, deep calm rumbling voice, few words, never shouting: \"Ta mère avait raison. C'est pas des cailloux.\". Low, ironic and moved, a little laugh in the voice. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Tom on the right, never into the lens. Tom keeps his mouth closed, beaming. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the headlamps reflected in the clear crystals, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-14",
+   "type": "scene",
+   "nom": "14. Brissac : « Pas de neige, pas de clients. La banque prend tout. » (fondu au noir avant)",
+   "joindre": [
+    "fiche-le-cristallier-brissac",
+    "fiche-le-cristallier-sandrine",
+    "decor-le-cristallier-hotel"
+   ],
+   "promptImage": "Winter without snow at the hotel, cold grey light: the terrace is empty, loungers stacked, brown bare slopes behind instead of snow; in the foreground on the RIGHT, Édouard Brissac, a fifty-year-old silver Weimaraner man, sleek short silver-grey fur, long ears, pale amber eyes, smug smile, navy cashmere overcoat over a white shirt, a heavy gold watch in his navy coat, a letter crumpled in his paw, looking toward the LEFT; in the background on the LEFT, sharp, Sandrine, an elegant thirty-eight-year-old white spitz woman, fluffy snow-white fur, pointed ears, sharp blue eyes, cream wool coat with a fur collar, pearl earrings, high-heeled ankle boots by the glass balustrade, champagne glass lowered, staring at him; a big red banner \"VENDU\" hangs across the gilded \"HÔTEL BRISSAC\" sign. The sunny terrace of a luxury mountain hotel at L'Alpe d'Huez in autumn: teak loungers, a glass balustrade, champagne buckets, a big gilded sign \"HÔTEL BRISSAC\" on the facade behind, a panoramic view of rocky peaks. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Brissac crumples the bank letter in his paw while he speaks. Camera: pull-back revealing the empty terrace and the banner \"VENDU\". Cold wind, a loose shutter banging. No music. Only Édouard Brissac speaks, in French, with exactly the same voice as in all his other clips: a man of fifty, smooth self-satisfied baritone, mocking, never loud: \"Pas de neige, pas de clients. La banque prend tout.\". Bitter, all his charm gone. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Sandrine on the left, never into the lens. Sandrine keeps her mouth closed. The texts stay exact and readable. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "noir"
+  },
+  {
+   "id": "scene-15",
+   "type": "scene",
+   "nom": "15. Sandrine : « Tu m'avais promis la belle vie, Édouard. »",
+   "joindre": [
+    "fiche-le-cristallier-sandrine",
+    "decor-le-cristallier-hotel"
+   ],
+   "promptImage": "Close-up: Sandrine, an elegant thirty-eight-year-old white spitz woman, fluffy snow-white fur, pointed ears, sharp blue eyes, cream wool coat with a fur collar, pearl earrings, high-heeled ankle boots on the LEFT, no sunglasses now, her cream coat on, a suitcase at her feet, looking toward the RIGHT at Brissac, stunned. The sunny terrace of a luxury mountain hotel at L'Alpe d'Huez in autumn: teak loungers, a glass balustrade, champagne buckets, a big gilded sign \"HÔTEL BRISSAC\" on the facade behind, a panoramic view of rocky peaks. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Sandrine grips the handle of her suitcase. Camera: steady push-in on her face. Wind, the banner flapping. No music. Only Sandrine speaks, in French, with exactly the same voice as in all her other clips: a woman of thirty-eight, polished cool medium voice, a little haughty, never shrill: \"Tu m'avais promis la belle vie, Édouard.\". Shocked, voice cracking. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. Brissac stays off-screen on the RIGHT and never appears; nobody enters the frame. She looks toward the right, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-16",
+   "type": "scene",
+   "nom": "16. Brissac : « Tu fais tes valises, Sandrine. L'hôtel est vendu. »",
+   "joindre": [
+    "fiche-le-cristallier-brissac",
+    "fiche-le-cristallier-sandrine",
+    "decor-le-cristallier-hotel"
+   ],
+   "promptImage": "Medium shot at the hotel door: Édouard Brissac, a fifty-year-old silver Weimaraner man, sleek short silver-grey fur, long ears, pale amber eyes, smug smile, navy cashmere overcoat over a white shirt, a heavy gold watch on the RIGHT, closing the glass door in Sandrine's face; Sandrine, an elegant thirty-eight-year-old white spitz woman, fluffy snow-white fur, pointed ears, sharp blue eyes, cream wool coat with a fur collar, pearl earrings, high-heeled ankle boots on the LEFT outside with her suitcase; the red banner \"VENDU\" above. The sunny terrace of a luxury mountain hotel at L'Alpe d'Huez in autumn: teak loungers, a glass balustrade, champagne buckets, a big gilded sign \"HÔTEL BRISSAC\" on the facade behind, a panoramic view of rocky peaks. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Brissac pushes the glass door shut between them. Camera: locked medium shot. End exactly on the provided last frame. The door slamming, a lock clicking. No music. Only Édouard Brissac speaks, in French, with exactly the same voice as in all his other clips: a man of fifty, smooth self-satisfied baritone, mocking, never loud: \"Tu fais tes valises, Sandrine. L'hôtel est vendu.\". Flat and cold. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Sandrine on the left, never into the lens. Sandrine keeps her mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-16"
+  },
+  {
+   "id": "fin-scene-16",
+   "type": "fiche",
+   "nom": "Image de fin — 16",
+   "joindre": [
+    "scene-16"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: the glass door closed, Brissac a blurred shape behind it; Sandrine alone outside on the left with her suitcase, the banner \"VENDU\" above. The sunny terrace of a luxury mountain hotel at L'Alpe d'Huez in autumn: teak loungers, a glass balustrade, champagne buckets, a big gilded sign \"HÔTEL BRISSAC\" on the facade behind, a panoramic view of rocky peaks. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-17",
+   "type": "scene",
+   "nom": "17. Sandrine seule sur la route, la valise à la main",
+   "joindre": [
+    "fiche-le-cristallier-sandrine",
+    "decor-le-cristallier-hotel"
+   ],
+   "promptImage": "High wide shot in grey drizzle: Sandrine, an elegant thirty-eight-year-old white spitz woman, fluffy snow-white fur, pointed ears, sharp blue eyes, cream wool coat with a fur collar, pearl earrings, high-heeled ankle boots walking alone down the empty mountain road on the RIGHT, pulling her suitcase, her cream coat dark with rain; the closed hotel with the red banner \"VENDU\" small on the LEFT behind her. The sunny terrace of a luxury mountain hotel at L'Alpe d'Huez in autumn: teak loungers, a glass balustrade, champagne buckets, a big gilded sign \"HÔTEL BRISSAC\" on the facade behind, a panoramic view of rocky peaks. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Sandrine walks away down the road dragging her suitcase in the drizzle. Camera: crane up and back as she walks away. Drizzle, suitcase wheels on wet asphalt. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "scene-18",
+   "type": "scene",
+   "nom": "18. Tom : « Papa, on l'a vraiment fait. » (fondu au noir avant)",
+   "joindre": [
+    "fiche-le-cristallier-tom",
+    "fiche-le-cristallier-pierrot",
+    "decor-le-cristallier-rue"
+   ],
+   "promptImage": "Spring, in front of the new shop on the LEFT with its wooden sign \"CRISTAUX PÈRE & FILS\" and a big clear crystal in the window: Tom, a ten-year-old Saint Bernard puppy boy, round and fluffy, brown-and-white fur, droopy ears, big trusting brown eyes, small red mountain jacket, blue wool beanie, little hiking boots on the RIGHT, in a light spring jacket, looking up toward the LEFT at Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots, proud. The main street of Bourg-d'Oisans in spring: old stone houses with colorful shutters, flower boxes, a new little shop on the LEFT with a wooden sign reading \"CRISTAUX PÈRE & FILS\" and a big clear crystal glowing in its window, a wooden bench on the RIGHT side of the street, green mountains and blue sky. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Tom grins up at his father and points at the sign. Camera: tilt down from the wooden sign to Tom's grin. Birds, village chatter, a church bell. No music. Only Tom speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, clear high voice, lively and sincere, never babyish: \"Papa, on l'a vraiment fait.\". Bursting with pride. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at his father on the left, never into the lens. Pierrot keeps his mouth closed. The sign text stays exact and readable. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "noir"
+  },
+  {
+   "id": "scene-19",
+   "type": "scene",
+   "nom": "19. Pierrot : « On l'a fait ensemble, mon grand. »",
+   "joindre": [
+    "fiche-le-cristallier-pierrot",
+    "fiche-le-cristallier-tom",
+    "decor-le-cristallier-rue"
+   ],
+   "promptImage": "Reverse over-the-shoulder close-up, same axis: Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots on the LEFT half of the frame, in a clean new jacket, smiling down toward the RIGHT at Tom, spring sunlight on his fur; in the foreground at frame RIGHT, the blurred blue beanie and droopy ear of Tom, a ten-year-old Saint Bernard puppy boy, round and fluffy, brown-and-white fur, droopy ears, big trusting brown eyes, small red mountain jacket, blue wool beanie, little hiking boots. The main street of Bourg-d'Oisans in spring: old stone houses with colorful shutters, flower boxes, a new little shop on the LEFT with a wooden sign reading \"CRISTAUX PÈRE & FILS\" and a big clear crystal glowing in its window, a wooden bench on the RIGHT side of the street, green mountains and blue sky. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Pierrot ruffles Tom's beanie with his big paw. Camera: steady push-in on Pierrot's smile. Birds, a church bell. No music. Only Pierrot speaks, in French, with exactly the same voice as in all his other clips: a man of forty, deep calm rumbling voice, few words, never shouting: \"On l'a fait ensemble, mon grand.\". Warm and proud, deep. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at Tom on the right, never into the lens. Tom keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-20",
+   "type": "scene",
+   "nom": "20. Sandrine : « Pierrot. Tom. C'est moi. »",
+   "joindre": [
+    "fiche-le-cristallier-sandrine",
+    "fiche-le-cristallier-pierrot",
+    "fiche-le-cristallier-tom",
+    "decor-le-cristallier-rue"
+   ],
+   "promptImage": "Across the street, two-shot in depth: in the foreground on the RIGHT, Sandrine, an elegant thirty-eight-year-old white spitz woman, fluffy snow-white fur, pointed ears, sharp blue eyes, cream wool coat with a fur collar, pearl earrings, high-heeled ankle boots, sitting on the wooden bench, her cream coat worn and stained, no pearls, looking toward the LEFT, half rising; in the background on the LEFT, sharp, in front of the shop, Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots and Tom, a ten-year-old Saint Bernard puppy boy, round and fluffy, brown-and-white fur, droopy ears, big trusting brown eyes, small red mountain jacket, blue wool beanie, little hiking boots laughing together, not seeing her. The main street of Bourg-d'Oisans in spring: old stone houses with colorful shutters, flower boxes, a new little shop on the LEFT with a wooden sign reading \"CRISTAUX PÈRE & FILS\" and a big clear crystal glowing in its window, a wooden bench on the RIGHT side of the street, green mountains and blue sky. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Sandrine half rises from the bench and lifts one paw toward them. Camera: rack focus from the shop in the background to Sandrine's face. Village noise, a bicycle bell. No music. Only Sandrine speaks, in French, with exactly the same voice as in all her other clips: a woman of thirty-eight, polished cool medium voice, a little haughty, never shrill: \"Pierrot. Tom. C'est moi.\". Small, pleading voice. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. She looks toward Pierrot and Tom on the left, never into the lens. Pierrot and Tom keep their mouths closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-21",
+   "type": "scene",
+   "nom": "21. Fin — Pierrot : « Viens, Tom. On a une montagne à monter. »",
+   "joindre": [
+    "fiche-le-cristallier-pierrot",
+    "fiche-le-cristallier-tom",
+    "fiche-le-cristallier-sandrine",
+    "decor-le-cristallier-rue"
+   ],
+   "promptImage": "High wide shot of the spring street: Pierrot, a big forty-year-old Saint Bernard man, thick brown-and-white fur, droopy jowls, heavy kind brown eyes, a patched mustard mountain jacket, grey wool cap, canvas trousers, worn mountain boots and Tom, a ten-year-old Saint Bernard puppy boy, round and fluffy, brown-and-white fur, droopy ears, big trusting brown eyes, small red mountain jacket, blue wool beanie, little hiking boots walking side by side up the street toward the mountains, a coiled rope on Pierrot's shoulder, passing the bench where Sandrine, an elegant thirty-eight-year-old white spitz woman, fluffy snow-white fur, pointed ears, sharp blue eyes, cream wool coat with a fur collar, pearl earrings, high-heeled ankle boots sits on the RIGHT; neither looks at her; the shop sign \"CRISTAUX PÈRE & FILS\" on the LEFT. The main street of Bourg-d'Oisans in spring: old stone houses with colorful shutters, flower boxes, a new little shop on the LEFT with a wooden sign reading \"CRISTAUX PÈRE & FILS\" and a big clear crystal glowing in its window, a wooden bench on the RIGHT side of the street, green mountains and blue sky. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Pierrot and Tom walk past the bench without turning their heads; Sandrine sinks back onto the bench. Camera: high crane pull-back revealing the street and the mountains. End exactly on the provided last frame. Birds, their steps, a church bell. No music. Only Pierrot speaks, in French, with exactly the same voice as in all his other clips: a man of forty, deep calm rumbling voice, few words, never shouting: \"Viens, Tom. On a une montagne à monter.\". Light and happy, looking ahead. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks ahead toward the mountains, never into the lens. Tom and Sandrine keep their mouths closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-21"
+  },
+  {
+   "id": "fin-scene-21",
+   "type": "fiche",
+   "nom": "Image de fin — 21",
+   "joindre": [
+    "scene-21"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: father and son further up the street toward the mountains, small; Sandrine alone on the bench on the right, head down. The main street of Bourg-d'Oisans in spring: old stone houses with colorful shutters, flower boxes, a new little shop on the LEFT with a wooden sign reading \"CRISTAUX PÈRE & FILS\" and a big clear crystal glowing in its window, a wooden bench on the RIGHT side of the street, green mountains and blue sky. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "couverture",
+   "type": "couverture",
+   "nom": "Couverture — Le Cristallier",
+   "joindre": [],
+   "promptImage": "Vertical 9:16 TikTok cover, high-end stylized 3D animated feature-film look, original design not based on any existing film, studio or character, NOT photorealistic. Inside a cave covered with huge clear quartz crystals lit only by white headlamp beams: a big Saint Bernard father in a mustard mountain jacket and his little Saint Bernard puppy son in a red jacket and blue beanie stand side by side, faces lit with wonder. Cold sparkling reflections. In the middle of the image, large and perfectly readable, the title \"LE CRISTALLIER\" in heavy white letters with a thin icy glow. The title block sits between 15% and 55% of the image height. No other text, no subtitle, no logo, no numbers."
+  }
+ ]
+}

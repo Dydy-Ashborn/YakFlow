@@ -1,0 +1,418 @@
+{
+ "id": "le-voleur-d-annees",
+ "titre": "Le Voleur d'années",
+ "realisateur": "Le Nerveux",
+ "version": 1,
+ "typePublication": "one-shot",
+ "recommendedVideoEngine": "agnes",
+ "accroche": "Une poignée de main. Il lui reste un jour.",
+ "description": "Dans ce monde, les années qu'il te reste sont écrites dans ta paume. Un vieux monsieur serre la main de Yanis et lui vole tout. Toi, tu aurais pris les années des autres aussi ?",
+ "hashtags": [
+  "#LeVoleurDAnnees",
+  "#Animation3D",
+  "#Fantastique",
+  "#Twist",
+  "#YakFilms"
+ ],
+ "commentaire": "312 ans dans la paume de la pharmacienne. Gardienne ou voleuse, d'après vous ?",
+ "datePublication": "2026-10-16",
+ "heurePublication": "20:00",
+ "etapes": [
+  {
+   "id": "fiche-le-voleur-d-annees-yanis",
+   "type": "fiche",
+   "nom": "Fiche — Yanis",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-le-voleur-d-annees-vasseur",
+   "type": "fiche",
+   "nom": "Fiche — Monsieur Vasseur",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a very old toad man, bumpy olive-green skin, heavy wrinkles, wide mouth, golden eyes, many gold rings, a black velvet suit, a cane with a gold knob. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-le-voleur-d-annees-vasseur-jeune",
+   "type": "fiche",
+   "nom": "Fiche — Monsieur Vasseur rajeuni",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a toad man who now looks about thirty, smooth shiny olive-green skin, standing tall, wide smug smile, golden eyes, many gold rings, a black velvet suit, a cane with a gold knob held for style. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-le-voleur-d-annees-prune",
+   "type": "fiche",
+   "nom": "Fiche — Madame Prune",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: an elderly white stork woman pharmacist, long orange beak, small round glasses, white feathers, a crisp white pharmacist coat, thin white cotton gloves. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-le-voleur-d-annees-arret",
+   "type": "fiche",
+   "nom": "Décor — l'arrêt de tram à Bordeaux",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A tram stop in Bordeaux at night in autumn rain: glass shelter, wet cobblestones shining, a modern tram line, old pale stone buildings, warm streetlights, fallen plane-tree foliage. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-le-voleur-d-annees-pharmacie",
+   "type": "fiche",
+   "nom": "Décor — la petite pharmacie",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A small old pharmacy in Bordeaux at night: wooden shelves with glass jars, a green cross glowing outside the window, a wooden counter in the middle, the door on the RIGHT, warm yellow light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-le-voleur-d-annees-hotel",
+   "type": "fiche",
+   "nom": "Décor — l'hôtel particulier des Chartrons",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A luxurious private mansion in the Chartrons district of Bordeaux at night: a grand salon with chandeliers, gilded mirrors, guests of various animal species in evening clothes, and behind a velvet curtain a hidden room full of glass bell jars, each holding a glowing golden thread. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-1",
+   "type": "scene",
+   "nom": "1. Hook — Vasseur : « Merci, mon garçon. Tu as une très belle main. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-vasseur",
+    "fiche-le-voleur-d-annees-yanis",
+    "decor-le-voleur-d-annees-arret"
+   ],
+   "promptImage": "Tram stop in the rain, medium two-shot: Monsieur Vasseur, a very old toad man, bumpy olive-green skin, heavy wrinkles, wide mouth, golden eyes, many gold rings, a black velvet suit, a cane with a gold knob on the LEFT, shaking hands with Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers on the RIGHT, who has just handed him back his cane; on Yanis's free palm, turned up toward his own eyes, a small number glowing softly on his open palm reading exactly \"61 ANS\". A tram stop in Bordeaux at night in autumn rain: glass shelter, wet cobblestones shining, a modern tram line, old pale stone buildings, warm streetlights, fallen plane-tree foliage. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Monsieur Vasseur holds Yanis's hand a little too long and squeezes it, smiling. Camera: advancing push-in on the joined hands. Rain on the glass shelter, a tram bell far away. No music. Only Monsieur Vasseur speaks, in French, with exactly the same voice as in all his other clips: an old man, wet croaking voice, polite and greedy, never shouting: \"Merci, mon garçon. Tu as une très belle main.\". Polite, sticky, a strange hunger in the voice. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Yanis on the right, never into the lens. Yanis keeps his mouth closed. The palm text stays exact and readable. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-2",
+   "type": "scene",
+   "nom": "2. Yanis : « De rien, monsieur. Faites attention, ça glisse. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-yanis",
+    "decor-le-voleur-d-annees-arret"
+   ],
+   "promptImage": "Close-up: Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers on the RIGHT, smiling politely, looking toward the LEFT at the old toad, his hand still caught in the toad's ringed grip at the LEFT edge. A tram stop in Bordeaux at night in autumn rain: glass shelter, wet cobblestones shining, a modern tram line, old pale stone buildings, warm streetlights, fallen plane-tree foliage. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Yanis pulls his hand back; a faint golden glow flows from his fingers into the toad's hand. Camera: handheld close-up. Rain, a faint electric hum. No music. Only Yanis speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty-two, quick clear voice, determined, never shouting: \"De rien, monsieur. Faites attention, ça glisse.\". Friendly, a little surprised by the grip. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. Monsieur Vasseur stays off-screen on the LEFT and never appears; nobody enters the frame. He looks toward the left, never into the lens. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-3",
+   "type": "scene",
+   "nom": "3. Yanis : « Y avait soixante et un. Maintenant, y a écrit un jour. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-yanis",
+    "decor-le-voleur-d-annees-arret"
+   ],
+   "promptImage": "Close shot: Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers on the RIGHT, staring at his own open palm held toward his eyes, palm toward his face, the back of his paw on the camera side, a small number glowing softly on his open palm reading exactly \"61 ANS\". A tram stop in Bordeaux at night in autumn rain: glass shelter, wet cobblestones shining, a modern tram line, old pale stone buildings, warm streetlights, fallen plane-tree foliage. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The number on Yanis's palm flickers and rolls down; his eyes widen. Camera: snap zoom on the palm. End exactly on the provided last frame. A sharp descending tone, rain. No music. Only Yanis speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty-two, quick clear voice, determined, never shouting: \"Y avait soixante et un. Maintenant, y a écrit un jour.\". Panicked, breathless. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at his palm, never into the lens. The palm text stays exact and readable. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the golden thread of years glowing from his palm, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "imageFin": "fin-scene-3"
+  },
+  {
+   "id": "fin-scene-3",
+   "type": "fiche",
+   "nom": "Image de fin — 3",
+   "joindre": [
+    "scene-3"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: same framing, the glowing number on Yanis's palm now reads exactly \"1 JOUR\", glowing red; his face frozen in shock. A tram stop in Bordeaux at night in autumn rain: glass shelter, wet cobblestones shining, a modern tram line, old pale stone buildings, warm streetlights, fallen plane-tree foliage. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-4",
+   "type": "scene",
+   "nom": "4. Vasseur : « Soixante années toutes neuves. Quelle jeunesse. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-vasseur",
+    "decor-le-voleur-d-annees-arret"
+   ],
+   "promptImage": "Medium shot: Monsieur Vasseur, a very old toad man, bumpy olive-green skin, heavy wrinkles, wide mouth, golden eyes, many gold rings, a black velvet suit, a cane with a gold knob on the LEFT walking away under the rain toward the tram, standing straighter with every step, his wrinkles smoothing, looking at his own glowing palm with delight. A tram stop in Bordeaux at night in autumn rain: glass shelter, wet cobblestones shining, a modern tram line, old pale stone buildings, warm streetlights, fallen plane-tree foliage. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Monsieur Vasseur walks away, straightening up, his skin becoming smoother as he goes. Camera: tracking shot following him from the side. Rain, his cane tapping, a tram arriving. No music. Only Monsieur Vasseur speaks, in French, with exactly the same voice as in all his other clips: an old man, wet croaking voice, polite and greedy, never shouting: \"Soixante années toutes neuves. Quelle jeunesse.\". Delighted, a wet chuckle; an inner thought said out loud. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at his palm, never into the lens. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-5",
+   "type": "scene",
+   "nom": "5. Le tram passe, le vieux a disparu",
+   "joindre": [
+    "fiche-le-voleur-d-annees-yanis",
+    "decor-le-voleur-d-annees-arret"
+   ],
+   "promptImage": "Wide shot: Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers running from the RIGHT toward the tram tracks in the rain; a long modern tram slides between him and the other platform, where the old toad was standing. A tram stop in Bordeaux at night in autumn rain: glass shelter, wet cobblestones shining, a modern tram line, old pale stone buildings, warm streetlights, fallen plane-tree foliage. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Yanis sprints toward the tracks and stops short as the tram rushes past; the other platform is now empty. Camera: fast lateral tracking shot alongside Yanis. End exactly on the provided last frame. The tram bell, the roar of the tram, splashing steps. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "muet": true,
+   "imageFin": "fin-scene-5"
+  },
+  {
+   "id": "fin-scene-5",
+   "type": "fiche",
+   "nom": "Image de fin — 5",
+   "joindre": [
+    "scene-5"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: the tram has passed; Yanis alone at the edge of the tracks, soaked, the opposite platform empty. A tram stop in Bordeaux at night in autumn rain: glass shelter, wet cobblestones shining, a modern tram line, old pale stone buildings, warm streetlights, fallen plane-tree foliage. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-6",
+   "type": "scene",
+   "nom": "6. Madame Prune : « Ta main. Il t'a serré la main, c'est ça. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-prune",
+    "fiche-le-voleur-d-annees-yanis",
+    "decor-le-voleur-d-annees-pharmacie"
+   ],
+   "promptImage": "Inside the pharmacy, over-the-shoulder close-up: Madame Prune, an elderly white stork woman pharmacist, long orange beak, small round glasses, white feathers, a crisp white pharmacist coat, thin white cotton gloves fills the LEFT half of the frame behind the counter, peering over her glasses toward the RIGHT at Yanis's glowing red palm; in the foreground at frame RIGHT, the blurred fawn shoulder of Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers. A small old pharmacy in Bordeaux at night: wooden shelves with glass jars, a green cross glowing outside the window, a wooden counter in the middle, the door on the RIGHT, warm yellow light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Madame Prune takes Yanis's wrist in her gloved fingers and turns his palm toward the light. Camera: advancing push-in on Madame Prune. The door bell still ringing, rain against the window. No music. Only Madame Prune speaks, in French, with exactly the same voice as in all her other clips: an old woman, calm precise slightly hoarse voice, mysterious, never shrill: \"Ta main. Il t'a serré la main, c'est ça.\". Calm, knowing, a real question. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks at Yanis's palm on the right, never into the lens. Yanis keeps his mouth closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-7",
+   "type": "scene",
+   "nom": "7. Yanis : « Un vieux crapaud. Il m'a pris mes années. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-yanis",
+    "fiche-le-voleur-d-annees-prune",
+    "decor-le-voleur-d-annees-pharmacie"
+   ],
+   "promptImage": "Reverse over-the-shoulder close-up, same axis: Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers on the RIGHT half of the frame, wet fur, looking toward the LEFT at the stork, his palm glowing red \"1 JOUR\"; in the foreground at frame LEFT, the blurred white feathers of Madame Prune, an elderly white stork woman pharmacist, long orange beak, small round glasses, white feathers, a crisp white pharmacist coat, thin white cotton gloves. A small old pharmacy in Bordeaux at night: wooden shelves with glass jars, a green cross glowing outside the window, a wooden counter in the middle, the door on the RIGHT, warm yellow light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Yanis shows his palm, his hand shaking. Camera: handheld close-up. Rain, a clock ticking loudly. No music. Only Yanis speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty-two, quick clear voice, determined, never shouting: \"Un vieux crapaud. Il m'a pris mes années.\". Frightened and angry. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Madame Prune on the left, never into the lens. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-8",
+   "type": "scene",
+   "nom": "8. Madame Prune : « Serre-lui la main avant minuit, et tout revient. Après, c'est fini. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-prune",
+    "decor-le-voleur-d-annees-pharmacie"
+   ],
+   "promptImage": "Close-up: Madame Prune, an elderly white stork woman pharmacist, long orange beak, small round glasses, white feathers, a crisp white pharmacist coat, thin white cotton gloves on the LEFT, taking off her glasses, grave, looking toward the RIGHT at Yanis; behind her, a wall clock reading 22:40. A small old pharmacy in Bordeaux at night: wooden shelves with glass jars, a green cross glowing outside the window, a wooden counter in the middle, the door on the RIGHT, warm yellow light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Madame Prune folds her glasses and points her long beak at the clock behind her. Camera: rack focus from the clock to her face. The clock ticking, rain. No music. Only Madame Prune speaks, in French, with exactly the same voice as in all her other clips: an old woman, calm precise slightly hoarse voice, mysterious, never shrill: \"Serre-lui la main avant minuit, et tout revient. Après, c'est fini.\". Grave, every word weighed. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. She looks at Yanis on the right, never into the lens. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-9",
+   "type": "scene",
+   "nom": "9. Madame Prune : « Regarde ta paume. Le fil te mène à lui. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-yanis",
+    "fiche-le-voleur-d-annees-prune",
+    "decor-le-voleur-d-annees-pharmacie"
+   ],
+   "promptImage": "Medium shot: Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers on the RIGHT holding up his open palm toward his own eyes; a thin glowing golden thread now rises from the center of his palm and stretches out through the pharmacy door on the RIGHT into the rainy night; Madame Prune, an elderly white stork woman pharmacist, long orange beak, small round glasses, white feathers, a crisp white pharmacist coat, thin white cotton gloves on the LEFT watching. A small old pharmacy in Bordeaux at night: wooden shelves with glass jars, a green cross glowing outside the window, a wooden counter in the middle, the door on the RIGHT, warm yellow light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "A thin golden thread unspools from Yanis's palm and stretches out through the door into the night, glowing. Camera: continuous orbit around Yanis and the golden thread. A crystal hum, golden particles crackling. No music. Only Madame Prune speaks, in French, with exactly the same voice as in all her other clips: an old woman, calm precise slightly hoarse voice, mysterious, never shrill: \"Regarde ta paume. Le fil te mène à lui.\". Low and mysterious. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks at Yanis on the right, never into the lens. Yanis keeps his mouth closed. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the golden thread of years glowing from his palm, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-10",
+   "type": "scene",
+   "nom": "10. Yanis court dans Bordeaux en suivant le fil d'or",
+   "joindre": [
+    "fiche-le-voleur-d-annees-yanis"
+   ],
+   "promptImage": "Night exterior, wide shot: Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers running across the wet stones of the Place de la Bourse in Bordeaux, its shallow water mirror reflecting the lit palace facades, the thin golden thread from his palm stretching ahead of him through the rain. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Yanis runs across the water mirror, splashing, following the golden thread. Camera: fast tracking shot following Yanis. Splashing steps, rain, his panting breath. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "scene-11",
+   "type": "scene",
+   "nom": "11. Vasseur : « Ce soir, je fête mes trente ans. Pour la cinquième fois. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-vasseur-jeune",
+    "decor-le-voleur-d-annees-hotel"
+   ],
+   "promptImage": "Grand salon of the mansion, medium shot: Monsieur Vasseur rajeuni, a toad man who now looks about thirty, smooth shiny olive-green skin, standing tall, wide smug smile, golden eyes, many gold rings, a black velvet suit, a cane with a gold knob held for style on the LEFT, a glass of champagne raised, surrounded by laughing guests of various animal species in evening clothes, his golden eyes shining. A luxurious private mansion in the Chartrons district of Bordeaux at night: a grand salon with chandeliers, gilded mirrors, guests of various animal species in evening clothes, and behind a velvet curtain a hidden room full of glass bell jars, each holding a glowing golden thread. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Monsieur Vasseur raises his glass and the guests laugh and applaud. Camera: crane down from the chandelier to Vasseur. Glasses clinking, laughter, a string quartet in the room. No music. Only Monsieur Vasseur rajeuni speaks, in French, with exactly the same voice as in all his other clips: a man of thirty, smooth croaking voice, smug, never shouting: \"Ce soir, je fête mes trente ans. Pour la cinquième fois.\". Smug, charming, a private joke. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at his guests, never into the lens. The guests keep their mouths closed. The guests stay in place. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-12",
+   "type": "scene",
+   "nom": "12. Yanis : « Onze heures quarante. Il me reste vingt minutes. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-yanis",
+    "decor-le-voleur-d-annees-hotel"
+   ],
+   "promptImage": "Close shot behind a velvet curtain on the RIGHT side of the salon: Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers, wearing a waiter's white jacket over his hoodie, a tray in one paw, glancing toward the LEFT at Vasseur, the golden thread from his palm leading behind the curtain. A luxurious private mansion in the Chartrons district of Bordeaux at night: a grand salon with chandeliers, gilded mirrors, guests of various animal species in evening clothes, and behind a velvet curtain a hidden room full of glass bell jars, each holding a glowing golden thread. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Yanis puts down his tray and slips behind the velvet curtain, following the thread. Camera: lateral tracking shot following him behind the curtain. The party muffled, a clock chiming the three-quarters. No music. Only Yanis speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty-two, quick clear voice, determined, never shouting: \"Onze heures quarante. Il me reste vingt minutes.\". Low, tense, to himself. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks toward the left, never into the lens. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-13",
+   "type": "scene",
+   "nom": "13. Yanis : « Tous ces fils. Il a volé des dizaines de gens. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-yanis",
+    "decor-le-voleur-d-annees-hotel"
+   ],
+   "promptImage": "Hidden room: Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers on the LEFT, stunned, facing rows of glass bell jars on shelves on the RIGHT, each holding a glowing golden thread and a small paper label with a name; his own thread ends in one jar labelled \"YANIS\". A luxurious private mansion in the Chartrons district of Bordeaux at night: a grand salon with chandeliers, gilded mirrors, guests of various animal species in evening clothes, and behind a velvet curtain a hidden room full of glass bell jars, each holding a glowing golden thread. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Yanis walks along the shelves, the golden light of the jars on his face. Camera: push-in along the shelves of glowing jars. A soft choir of crystal hums. No music. Only Yanis speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty-two, quick clear voice, determined, never shouting: \"Tous ces fils. Il a volé des dizaines de gens.\". Horrified, low. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at the jars, never into the lens. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the golden thread of years glowing from his palm, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-14",
+   "type": "scene",
+   "nom": "14. Vasseur : « Prends-en autant que tu veux, petit. Et oublie-moi. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-vasseur-jeune",
+    "fiche-le-voleur-d-annees-yanis",
+    "decor-le-voleur-d-annees-hotel"
+   ],
+   "promptImage": "Over-the-shoulder close-up: Monsieur Vasseur rajeuni, a toad man who now looks about thirty, smooth shiny olive-green skin, standing tall, wide smug smile, golden eyes, many gold rings, a black velvet suit, a cane with a gold knob held for style fills the RIGHT half of the frame in the doorway of the hidden room, smiling, one ringed hand open toward the jars, looking toward the LEFT at Yanis; in the foreground at frame LEFT, the blurred black-tipped ear of Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers. A luxurious private mansion in the Chartrons district of Bordeaux at night: a grand salon with chandeliers, gilded mirrors, guests of various animal species in evening clothes, and behind a velvet curtain a hidden room full of glass bell jars, each holding a glowing golden thread. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Monsieur Vasseur gestures generously toward the shelves of glowing jars. Camera: advancing push-in on Vasseur's smile. The party muffled, the door closing behind him. No music. Only Monsieur Vasseur rajeuni speaks, in French, with exactly the same voice as in all his other clips: a man of thirty, smooth croaking voice, smug, never shouting: \"Prends-en autant que tu veux, petit. Et oublie-moi.\". Silky, tempting. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Yanis on the left, never into the lens. Yanis keeps his mouth closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-15",
+   "type": "scene",
+   "nom": "15. Yanis : « Je veux juste ma main. Et la leur. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-yanis",
+    "decor-le-voleur-d-annees-hotel"
+   ],
+   "promptImage": "Reverse close-up: Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers on the LEFT, jaw set, looking toward the RIGHT at Vasseur, holding out his open hand as if to shake, palm glowing red \"1 JOUR\". A luxurious private mansion in the Chartrons district of Bordeaux at night: a grand salon with chandeliers, gilded mirrors, guests of various animal species in evening clothes, and behind a velvet curtain a hidden room full of glass bell jars, each holding a glowing golden thread. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Yanis steps forward and holds out his hand for a handshake. Camera: low-angle push-in on Yanis. A clock starting to strike midnight far away. No music. Only Yanis speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty-two, quick clear voice, determined, never shouting: \"Je veux juste ma main. Et la leur.\". Firm and calm, weight on « la leur ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Vasseur on the right, never into the lens. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-16",
+   "type": "scene",
+   "nom": "16. La poignée de main : tous les fils s'envolent",
+   "joindre": [
+    "fiche-le-voleur-d-annees-yanis",
+    "fiche-le-voleur-d-annees-vasseur-jeune",
+    "decor-le-voleur-d-annees-hotel"
+   ],
+   "promptImage": "Two-shot: Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers on the LEFT grabbing the ringed hand of Monsieur Vasseur rajeuni, a toad man who now looks about thirty, smooth shiny olive-green skin, standing tall, wide smug smile, golden eyes, many gold rings, a black velvet suit, a cane with a gold knob held for style on the RIGHT in a firm handshake; golden light explodes from their joined hands; every glass bell jar on the shelves bursts open and golden threads stream out toward the window. A luxurious private mansion in the Chartrons district of Bordeaux at night: a grand salon with chandeliers, gilded mirrors, guests of various animal species in evening clothes, and behind a velvet curtain a hidden room full of glass bell jars, each holding a glowing golden thread. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Yanis seizes the toad's hand; a shockwave of golden light bursts from their joined hands and all the threads fly out of the jars. Camera: handheld shot shaking with the shockwave. End exactly on the provided last frame. Glass bursting, a roaring crystal chord, midnight striking. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "muet": true,
+   "imageFin": "fin-scene-16"
+  },
+  {
+   "id": "fin-scene-16",
+   "type": "fiche",
+   "nom": "Image de fin — 16",
+   "joindre": [
+    "scene-16"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: golden threads streaming out of the open window into the night; Yanis on the left still gripping the hand of the toad, who now has heavy wrinkles again. A luxurious private mansion in the Chartrons district of Bordeaux at night: a grand salon with chandeliers, gilded mirrors, guests of various animal species in evening clothes, and behind a velvet curtain a hidden room full of glass bell jars, each holding a glowing golden thread. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-17",
+   "type": "scene",
+   "nom": "17. Vasseur : « Non. Mes années. Mes belles années. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-vasseur",
+    "decor-le-voleur-d-annees-hotel"
+   ],
+   "promptImage": "Close-up: Monsieur Vasseur, a very old toad man, bumpy olive-green skin, heavy wrinkles, wide mouth, golden eyes, many gold rings, a black velvet suit, a cane with a gold knob on the RIGHT, very old again, sinking into a velvet armchair, staring at his own palm glowing red \"1 JOUR\", his gold rings now too big for his thin fingers. A luxurious private mansion in the Chartrons district of Bordeaux at night: a grand salon with chandeliers, gilded mirrors, guests of various animal species in evening clothes, and behind a velvet curtain a hidden room full of glass bell jars, each holding a glowing golden thread. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Monsieur Vasseur slumps back into the armchair, his rings sliding loose on his fingers. Camera: pull-back from his face. Midnight finishing striking, a ring falling on the floor. No music. Only Monsieur Vasseur speaks, in French, with exactly the same voice as in all his other clips: an old man, wet croaking voice, polite and greedy, never shouting: \"Non. Mes années. Mes belles années.\". Croaking, broken. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at his palm, never into the lens. He stays seated in the armchair and never stands up. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-18",
+   "type": "scene",
+   "nom": "18. Yanis : « Vous allez enfin avoir votre âge. »",
+   "joindre": [
+    "fiche-le-voleur-d-annees-yanis",
+    "decor-le-voleur-d-annees-hotel"
+   ],
+   "promptImage": "Close-up: Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers on the LEFT, looking down toward the RIGHT at the old toad in the armchair, calm, his own palm glowing gold \"61 ANS\" again. A luxurious private mansion in the Chartrons district of Bordeaux at night: a grand salon with chandeliers, gilded mirrors, guests of various animal species in evening clothes, and behind a velvet curtain a hidden room full of glass bell jars, each holding a glowing golden thread. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Yanis closes his glowing palm into a fist. Camera: steady push-in on Yanis. Silence after the last stroke of midnight. No music. Only Yanis speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty-two, quick clear voice, determined, never shouting: \"Vous allez enfin avoir votre âge.\". Cold and calm. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at Vasseur on the right, never into the lens. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the golden thread of years glowing from his palm, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-19",
+   "type": "scene",
+   "nom": "19. Yanis : « Merci, madame. Sans vous, j'étais fini. » (fondu au noir avant)",
+   "joindre": [
+    "fiche-le-voleur-d-annees-yanis",
+    "fiche-le-voleur-d-annees-prune",
+    "decor-le-voleur-d-annees-pharmacie"
+   ],
+   "promptImage": "Dawn in the pharmacy: Yanis, a twenty-two-year-old Belgian Malinois man, short fawn fur with a black mask on the muzzle and black-tipped upright ears, alert brown eyes, a black bomber jacket over a grey hoodie, dark jeans, white sneakers on the RIGHT, exhausted but smiling, leaning on the counter, looking toward the LEFT at Madame Prune, an elderly white stork woman pharmacist, long orange beak, small round glasses, white feathers, a crisp white pharmacist coat, thin white cotton gloves, who stands behind it. A small old pharmacy in Bordeaux at night: wooden shelves with glass jars, a green cross glowing outside the window, a wooden counter in the middle, the door on the RIGHT, warm yellow light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Yanis lays his open palm on the counter, showing the glowing \"61 ANS\". Camera: lateral tracking shot along the counter. Morning birds, the first tram of the day. No music. Only Yanis speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty-two, quick clear voice, determined, never shouting: \"Merci, madame. Sans vous, j'étais fini.\". Grateful, tired, warm. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at Madame Prune on the left, never into the lens. She keeps her beak closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "noir"
+  },
+  {
+   "id": "scene-20",
+   "type": "scene",
+   "nom": "20. Fin — dans la paume de Madame Prune : 312 ans",
+   "joindre": [
+    "fiche-le-voleur-d-annees-prune",
+    "decor-le-voleur-d-annees-pharmacie"
+   ],
+   "promptImage": "Close shot behind the counter after Yanis has left: Madame Prune, an elderly white stork woman pharmacist, long orange beak, small round glasses, white feathers, a crisp white pharmacist coat, thin white cotton gloves on the LEFT, pulling off one thin white cotton glove, a small smile; on her open palm, a small number glowing gold reads exactly \"312 ANS\". A small old pharmacy in Bordeaux at night: wooden shelves with glass jars, a green cross glowing outside the window, a wooden counter in the middle, the door on the RIGHT, warm yellow light. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Madame Prune pulls off her glove and looks at the glowing number in her palm with a small smile. Camera: advancing push-in on her palm. The door bell tinkling, silence. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The palm text stays exact and readable. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "couverture",
+   "type": "couverture",
+   "nom": "Couverture — Le Voleur d'années",
+   "joindre": [],
+   "promptImage": "Vertical 9:16 TikTok cover, high-end stylized 3D animated feature-film look, original design not based on any existing film, studio or character, NOT photorealistic. Night, rain, a Bordeaux tram stop: a young Belgian Malinois man in a black bomber jacket stares at his open palm where a small number glows red, while an old toad man in a black velvet suit walks away into the rain, golden light in his hand. Cold blue rain, warm gold glow. In the middle of the image, large and perfectly readable, the title \"LE VOLEUR D'ANNÉES\" in heavy white letters with a thin gold glow. The title block sits between 15% and 55% of the image height. No other text, no subtitle, no logo, no numbers."
+  }
+ ]
+}

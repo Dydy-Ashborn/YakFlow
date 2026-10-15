@@ -1,0 +1,471 @@
+{
+ "id": "la-plongeuse",
+ "titre": "La Plongeuse",
+ "realisateur": "Le Nerveux",
+ "version": 1,
+ "typePublication": "one-shot",
+ "recommendedVideoEngine": "agnes",
+ "accroche": "Le chef l'humilie. Il ignore qui elle est.",
+ "description": "Il l'a traitée comme une moins que rien pendant trois ans. Ce soir, l'inspecteur goûte son plat. Toi, tu l'aurais reconnue ?",
+ "hashtags": [
+  "#LaPlongeuse",
+  "#Animation3D",
+  "#Revanche",
+  "#Cuisine",
+  "#YakFilms"
+ ],
+ "commentaire": "Léon aurait pu garder le mérite et sauver sa place. Vous auriez dit la vérité, vous ?",
+ "datePublication": "2026-10-19",
+ "heurePublication": "20:00",
+ "etapes": [
+  {
+   "id": "fiche-la-plongeuse-rose",
+   "type": "fiche",
+   "nom": "Fiche — Rose",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a small plump fawn pug woman in her fifties, round flat dark muzzle, big dark kind eyes, short beige fur, curly tail, white kitchen-porter tunic with rolled sleeves, long grey apron, white hair net cap, black non-slip shoes. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-la-plongeuse-verac",
+   "type": "fiche",
+   "nom": "Fiche — Chef Vérac",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a tall proud peacock man in his fifties, iridescent blue-green feathers on head and neck, small crest, sharp yellow beak, cold narrow eyes, immaculate white double-breasted chef jacket with the name VÉRAC embroidered in blue, tall white toque, black trousers. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-la-plongeuse-leon",
+   "type": "fiche",
+   "nom": "Fiche — Léon",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a lanky twenty-year-old dalmatian young man, white fur with black spots, floppy ears, big nervous dark eyes, white cook jacket slightly too big for him, black apron, small white cook cap. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-la-plongeuse-inspecteur",
+   "type": "fiche",
+   "nom": "Fiche — the inspector",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a thin elegant grey heron gentleman in his sixties, long neck, long pale-yellow beak, small round gold glasses, charcoal three-piece suit, burgundy tie. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-la-plongeuse-cuisine",
+   "type": "fiche",
+   "nom": "Décor — la cuisine du palace",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-la-plongeuse-salle",
+   "type": "fiche",
+   "nom": "Décor — la salle du palace",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-1",
+   "type": "scene",
+   "nom": "1. Hook — Vérac : « Une plongeuse, ça lave. Ça cuisine pas. »",
+   "joindre": [
+    "fiche-la-plongeuse-verac",
+    "fiche-la-plongeuse-rose",
+    "decor-la-plongeuse-cuisine"
+   ],
+   "promptImage": "Medium two-shot at the stove, eye level. On the RIGHT, Rose, a small plump fawn pug woman in her fifties, round flat dark muzzle, big dark kind eyes, short beige fur, curly tail, white kitchen-porter tunic with rolled sleeves, long grey apron, white hair net cap, black non-slip shoes, three-quarter view, holding a small tasting spoon above a copper saucepan, caught in the act. Entering from the LEFT, Chef Vérac, a tall proud peacock man in his fifties, iridescent blue-green feathers on head and neck, small crest, sharp yellow beak, cold narrow eyes, immaculate white double-breasted chef jacket with the name VÉRAC embroidered in blue, tall white toque, black trousers, leaning toward her, his hand closing on the spoon, eyes locked on her face. Neither looks at the camera. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Chef Vérac pulls the tasting spoon out of Rose's hand and throws it into the sink on the right; Rose's empty hand stays in the air, she lowers her head. Everything else stays still. Camera: fast push-in from the two-shot to Rose's lowered face. End exactly on the provided last frame. Sizzling pans, a clatter of the spoon in the steel sink, extractor hum. No music. Only Chef Vérac speaks, in French, with exactly the same voice as in all his other clips: a man in his fifties, sharp nasal arrogant baritone, cutting and precise, never hoarse: \"Une plongeuse, ça lave. Ça cuisine pas.\". Contemptuous and sharp, weight on « lave ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Rose on the right, never into the lens. Rose keeps her mouth closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "imageFin": "fin-scene-1"
+  },
+  {
+   "id": "fin-scene-1",
+   "type": "fiche",
+   "nom": "Image de fin — 1",
+   "joindre": [
+    "scene-1"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: closer framing on Rose on the right, empty hand lowered, head bowed, ears down; Vérac's white sleeve at the left edge of the frame; the spoon is gone from her hand. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-2",
+   "type": "scene",
+   "nom": "2. Rose : « Trois ans que je lave ses casseroles, et il m'a jamais reconnue. »",
+   "joindre": [
+    "fiche-la-plongeuse-rose",
+    "decor-la-plongeuse-cuisine"
+   ],
+   "promptImage": "Close shot at the sink: Rose, a small plump fawn pug woman in her fifties, round flat dark muzzle, big dark kind eyes, short beige fur, curly tail, white kitchen-porter tunic with rolled sleeves, long grey apron, white hair net cap, black non-slip shoes on the RIGHT, hands in the soapy water, looking toward the LEFT at the glass office in the background, where a glass frame on the wall holds a small worn handwritten notebook marked \"R.M. 2006\", slightly out of focus. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Rose keeps her hands in the water and stares at the framed notebook on the left; the focus shifts from her face to the frame. Camera: rack focus from Rose's face to the framed notebook \"R.M. 2006\" in the background. End exactly on the provided last frame. Water sloshing, plates clinking, distant orders shouted. No music. Only Rose speaks, in French, with exactly the same voice as in all her other clips: a woman in her fifties, warm slightly husky medium-low voice, plain and direct, Parisian, never shrill: \"Trois ans que je lave ses casseroles, et il m'a jamais reconnue.\". Low, bitter and steady, to herself; it is an inner thought said out loud. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. She looks at the frame on the left, never into the lens. The text \"R.M. 2006\" stays exact and readable. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-2"
+  },
+  {
+   "id": "fin-scene-2",
+   "type": "fiche",
+   "nom": "Image de fin — 2",
+   "joindre": [
+    "scene-2"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: the framed notebook \"R.M. 2006\" is now sharp in the background, Rose on the right soft in the foreground, still looking at it. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-3",
+   "type": "scene",
+   "nom": "3. Vérac : « L'inspecteur du guide mange ici ce soir. Une erreur, et vous êtes tous dehors. »",
+   "joindre": [
+    "fiche-la-plongeuse-verac",
+    "fiche-la-plongeuse-leon",
+    "decor-la-plongeuse-cuisine"
+   ],
+   "promptImage": "Low-angle medium shot at the pass under the heat lamps: Chef Vérac, a tall proud peacock man in his fifties, iridescent blue-green feathers on head and neck, small crest, sharp yellow beak, cold narrow eyes, immaculate white double-breasted chef jacket with the name VÉRAC embroidered in blue, tall white toque, black trousers on the LEFT, chin up, looking toward the RIGHT at his kitchen brigade; at the right edge, Léon, a lanky twenty-year-old dalmatian young man, white fur with black spots, floppy ears, big nervous dark eyes, white cook jacket slightly too big for him, black apron, small white cook cap holding a tray, frozen, with a badger cook and a stork cook in white jackets behind him. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Chef Vérac slams his flat hand on the steel pass once while he speaks; the cooks on the right straighten up. Camera: low-angle dolly-in toward Vérac's face. The slam of his hand on the steel, heat lamps buzzing, a pan hissing. No music. Only Chef Vérac speaks, in French, with exactly the same voice as in all his other clips: a man in his fifties, sharp nasal arrogant baritone, cutting and precise, never hoarse: \"L'inspecteur du guide mange ici ce soir. Une erreur, et vous êtes tous dehors.\". Commanding and cold, weight on « dehors ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 6. He looks at the brigade on the right, never into the lens. The other cooks keep their mouths closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 7,
+   "garder": "0-6.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-4",
+   "type": "scene",
+   "nom": "4. Léon : « Chef, votre sauce, elle tranche. »",
+   "joindre": [
+    "fiche-la-plongeuse-leon",
+    "decor-la-plongeuse-cuisine"
+   ],
+   "promptImage": "Close shot over a copper saucepan on the stove: a golden butter sauce breaking into grainy separated drops; behind it, Léon, a lanky twenty-year-old dalmatian young man, white fur with black spots, floppy ears, big nervous dark eyes, white cook jacket slightly too big for him, black apron, small white cook cap on the RIGHT, wooden spoon in hand, eyes wide, turned toward the LEFT where the chef stands off-screen. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The sauce splits further into oily drops; Léon looks up from the pan toward the left edge of the frame. Camera: snap zoom from the sauce to Léon's face. End exactly on the provided last frame. A sharp sizzle, the spoon tapping the copper. No music. Only Léon speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty, light nervous tenor, quick and sincere, never childish: \"Chef, votre sauce, elle tranche.\". Alarmed, quick, voice cracking slightly. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. Chef Vérac stays off-screen on the LEFT and never appears; nobody enters the frame. Léon looks toward the left, never into the lens. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "imageFin": "scene-5"
+  },
+  {
+   "id": "scene-5",
+   "type": "scene",
+   "nom": "5. Vérac : « C'est toi qui l'as ratée. Après le service, tu rends ton tablier. »",
+   "joindre": [
+    "fiche-la-plongeuse-verac",
+    "fiche-la-plongeuse-leon",
+    "decor-la-plongeuse-cuisine"
+   ],
+   "promptImage": "Over-the-shoulder close-up, same axis: Chef Vérac, a tall proud peacock man in his fifties, iridescent blue-green feathers on head and neck, small crest, sharp yellow beak, cold narrow eyes, immaculate white double-breasted chef jacket with the name VÉRAC embroidered in blue, tall white toque, black trousers fills the LEFT half of the frame from chest up, looking toward the RIGHT at Léon; in the foreground at frame RIGHT, the blurred spotted shoulder and floppy ear of Léon, a lanky twenty-year-old dalmatian young man, white fur with black spots, floppy ears, big nervous dark eyes, white cook jacket slightly too big for him, black apron, small white cook cap. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Chef Vérac leans toward Léon and taps the black apron on Léon's chest with one finger while he speaks. Camera: handheld close-up, slight push toward Vérac's face. Pans hissing, the brigade going quiet. No music. Only Chef Vérac speaks, in French, with exactly the same voice as in all his other clips: a man in his fifties, sharp nasal arrogant baritone, cutting and precise, never hoarse: \"C'est toi qui l'as ratée. Après le service, tu rends ton tablier.\". Icy and final, no shouting. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Léon on the right, never into the lens. Léon keeps his mouth closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-6",
+   "type": "scene",
+   "nom": "6. Léon : « Ma mère a vendu sa voiture pour payer mon école. »",
+   "joindre": [
+    "fiche-la-plongeuse-leon",
+    "fiche-la-plongeuse-rose",
+    "decor-la-plongeuse-cuisine"
+   ],
+   "promptImage": "At the sink, over-the-shoulder close-up: Léon, a lanky twenty-year-old dalmatian young man, white fur with black spots, floppy ears, big nervous dark eyes, white cook jacket slightly too big for him, black apron, small white cook cap on the LEFT half of the frame, ears down, looking toward the RIGHT at Rose; in the foreground at frame RIGHT, the blurred fawn shoulder and white hair net of Rose, a small plump fawn pug woman in her fifties, round flat dark muzzle, big dark kind eyes, short beige fur, curly tail, white kitchen-porter tunic with rolled sleeves, long grey apron, white hair net cap, black non-slip shoes. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Léon pulls off his small cook cap and twists it in his hands while he speaks. Camera: steady push-in toward Léon's face. Water running in the sink, muffled kitchen noise. No music. Only Léon speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty, light nervous tenor, quick and sincere, never childish: \"Ma mère a vendu sa voiture pour payer mon école.\". Breaking voice, ashamed, weight on « voiture ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Rose on the right, never into the lens. Rose keeps her mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-7",
+   "type": "scene",
+   "nom": "7. Rose : « S'il me voit, je suis virée. Donne-moi ta casserole. »",
+   "joindre": [
+    "fiche-la-plongeuse-rose",
+    "fiche-la-plongeuse-leon",
+    "decor-la-plongeuse-cuisine"
+   ],
+   "promptImage": "Reverse over-the-shoulder close-up, same axis: Rose, a small plump fawn pug woman in her fifties, round flat dark muzzle, big dark kind eyes, short beige fur, curly tail, white kitchen-porter tunic with rolled sleeves, long grey apron, white hair net cap, black non-slip shoes on the RIGHT half of the frame, looking first toward the glass office in the background, her eyes now on Léon toward the LEFT; in the foreground at frame LEFT, the blurred spotted shoulder of Léon, a lanky twenty-year-old dalmatian young man, white fur with black spots, floppy ears, big nervous dark eyes, white cook jacket slightly too big for him, black apron, small white cook cap. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Rose dries her hands on her apron and holds out one open hand toward Léon, palm up. Camera: small arc of a few degrees around Rose, never crossing the axis. End exactly on the provided last frame. A heartbeat-like thump of a closing fridge, water dripping. No music. Only Rose speaks, in French, with exactly the same voice as in all her other clips: a woman in her fifties, warm slightly husky medium-low voice, plain and direct, Parisian, never shrill: \"S'il me voit, je suis virée. Donne-moi ta casserole.\". Low, decided, a short breath on « virée ». She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks at Léon on the left, never into the lens. Léon keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-7"
+  },
+  {
+   "id": "fin-scene-7",
+   "type": "fiche",
+   "nom": "Image de fin — 7",
+   "joindre": [
+    "scene-7"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Rose on the right holds out her open hand toward the left, palm up, fingers relaxed, determined eyes; same framing. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-8",
+   "type": "scene",
+   "nom": "8. Léon : « Où vous avez appris à cuisiner comme ça »",
+   "joindre": [
+    "fiche-la-plongeuse-rose",
+    "fiche-la-plongeuse-leon",
+    "decor-la-plongeuse-cuisine"
+   ],
+   "promptImage": "At a back stove, three-quarter medium shot: Rose, a small plump fawn pug woman in her fifties, round flat dark muzzle, big dark kind eyes, short beige fur, curly tail, white kitchen-porter tunic with rolled sleeves, long grey apron, white hair net cap, black non-slip shoes on the RIGHT, whisking a golden sauce in a copper pan with quick sure gestures, a warm glow rising from the pan with sparkling steam; Léon, a lanky twenty-year-old dalmatian young man, white fur with black spots, floppy ears, big nervous dark eyes, white cook jacket slightly too big for him, black apron, small white cook cap on the LEFT, amazed, watching the pan. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Rose whisks and the sauce turns glossy and smooth, golden light rising from the pan. Camera: continuous orbit around the copper pan, staying on the same side. End exactly on the provided last frame. Whisk on copper, butter melting, a soft crystal shimmer. No music. Only Léon speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty, light nervous tenor, quick and sincere, never childish: \"Où vous avez appris à cuisiner comme ça\". Amazed, almost laughing, the intonation of a question. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Rose on the right, never into the lens. Rose keeps her mouth closed. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the copper pan, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "imageFin": "fin-scene-8"
+  },
+  {
+   "id": "fin-scene-8",
+   "type": "fiche",
+   "nom": "Image de fin — 8",
+   "joindre": [
+    "scene-8"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: the sauce in the pan is perfectly smooth and glossy, golden glow, Rose on the right lifting the whisk, Léon on the left leaning closer. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-9",
+   "type": "scene",
+   "nom": "9. Rose : « J'avais un restaurant, avant lui. Va servir, et dis rien. »",
+   "joindre": [
+    "fiche-la-plongeuse-rose",
+    "fiche-la-plongeuse-leon",
+    "decor-la-plongeuse-cuisine"
+   ],
+   "promptImage": "Medium shot: Rose, a small plump fawn pug woman in her fifties, round flat dark muzzle, big dark kind eyes, short beige fur, curly tail, white kitchen-porter tunic with rolled sleeves, long grey apron, white hair net cap, black non-slip shoes on the RIGHT plating the dish on a white plate, a perfect golden sauce, and pushing the plate toward Léon, a lanky twenty-year-old dalmatian young man, white fur with black spots, floppy ears, big nervous dark eyes, white cook jacket slightly too big for him, black apron, small white cook cap on the LEFT, eyes on him. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Rose slides the finished plate across the steel toward Léon's hands. Camera: lateral tracking shot following the plate from Rose to Léon. End exactly on the provided last frame. The plate sliding on steel, the heat lamps buzzing. No music. Only Rose speaks, in French, with exactly the same voice as in all her other clips: a woman in her fifties, warm slightly husky medium-low voice, plain and direct, Parisian, never shrill: \"J'avais un restaurant, avant lui. Va servir, et dis rien.\". Plain, a little proud, weight on « avant lui ». She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. She looks at Léon on the left, never into the lens. Léon keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-9"
+  },
+  {
+   "id": "fin-scene-9",
+   "type": "fiche",
+   "nom": "Image de fin — 9",
+   "joindre": [
+    "scene-9"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Léon on the left holds the plate with both hands, Rose on the right already turned back toward the sink. Inside the huge kitchen of a luxury palace restaurant in Paris during evening service: on the LEFT, a long stainless-steel pass under warm heat lamps; in the middle, stoves with copper pans and rising steam; on the RIGHT, the dish-washing corner with a deep steel sink and towers of white plates; behind, a glass-walled office whose back wall shows a glass frame holding a small worn handwritten notebook marked \"R.M. 2006\"; white tiles, warm golden light, steam in the air. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-10",
+   "type": "scene",
+   "nom": "10. Léon traverse la salle avec l'assiette",
+   "joindre": [
+    "fiche-la-plongeuse-leon",
+    "decor-la-plongeuse-salle"
+   ],
+   "promptImage": "Inside the dining room, medium-wide shot: Léon, a lanky twenty-year-old dalmatian young man, white fur with black spots, floppy ears, big nervous dark eyes, white cook jacket slightly too big for him, black apron, small white cook cap walking from the RIGHT toward the LEFT between the tables, carrying the plate with both hands; elegant diners of various animal species (a stag, a swan lady, a bulldog gentleman) at the tables keep their mouths closed. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Léon walks across the dining room toward a table on the left, carefully carrying the plate. Camera: tracking shot following Léon from right to left. Cutlery tinkling, a low hum of conversation, his steps on the parquet. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The diners stay seated and nobody new enters. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "scene-11",
+   "type": "scene",
+   "nom": "11. L'inspecteur : « Ce plat, je l'ai mangé une seule fois. En deux mille six. »",
+   "joindre": [
+    "fiche-la-plongeuse-inspecteur",
+    "decor-la-plongeuse-salle"
+   ],
+   "promptImage": "Close shot at a table: the inspector, a thin elegant grey heron gentleman in his sixties, long neck, long pale-yellow beak, small round gold glasses, charcoal three-piece suit, burgundy tie on the LEFT, seated, a fork lifted from the plate, frozen, eyes wide behind his small round glasses, a soft golden glow rising from the plate. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The inspector tastes, freezes, and puts the fork down on the plate. Camera: push-in from the plate to the inspector's face. End exactly on the provided last frame. The fork set down on porcelain, the dining room falling silent, a crystal shimmer. No music. Only the inspector speaks, in French, with exactly the same voice as in all his other clips: a man in his sixties, dry precise soft baritone, very articulate, never loud: \"Ce plat, je l'ai mangé une seule fois. En deux mille six.\". Stunned and moved, weight on « une seule fois ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at the plate, never into the lens. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the copper pan, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "imageFin": "fin-scene-11"
+  },
+  {
+   "id": "fin-scene-11",
+   "type": "fiche",
+   "nom": "Image de fin — 11",
+   "joindre": [
+    "scene-11"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: tighter on the inspector on the left, fork resting on the plate, eyes lifted toward the RIGHT edge of the frame where the waiter stands. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-12",
+   "type": "scene",
+   "nom": "12. L'inspecteur : « Chez une certaine Rose Marchal. Qui a cuisiné ça, ce soir. »",
+   "joindre": [
+    "fiche-la-plongeuse-inspecteur",
+    "fiche-la-plongeuse-leon",
+    "decor-la-plongeuse-salle"
+   ],
+   "promptImage": "Over-the-shoulder close-up: the inspector, a thin elegant grey heron gentleman in his sixties, long neck, long pale-yellow beak, small round gold glasses, charcoal three-piece suit, burgundy tie on the LEFT half of the frame, seated, looking up toward the RIGHT at Léon; in the foreground at frame RIGHT, the blurred spotted shoulder of Léon, a lanky twenty-year-old dalmatian young man, white fur with black spots, floppy ears, big nervous dark eyes, white cook jacket slightly too big for him, black apron, small white cook cap, standing. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The inspector takes off his small glasses while he speaks, eyes on Léon. Camera: locked close-up. Chandeliers tinkling, total silence in the room. No music. Only the inspector speaks, in French, with exactly the same voice as in all his other clips: a man in his sixties, dry precise soft baritone, very articulate, never loud: \"Chez une certaine Rose Marchal. Qui a cuisiné ça, ce soir.\". Quiet, intense, a real question in the voice. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Léon on the right, never into the lens. Léon keeps his mouth closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-13",
+   "type": "scene",
+   "nom": "13. Vérac : « C'est moi, monsieur. Mon plat signature depuis vingt ans. »",
+   "joindre": [
+    "fiche-la-plongeuse-verac",
+    "fiche-la-plongeuse-leon",
+    "decor-la-plongeuse-salle"
+   ],
+   "promptImage": "Medium shot: Chef Vérac, a tall proud peacock man in his fifties, iridescent blue-green feathers on head and neck, small crest, sharp yellow beak, cold narrow eyes, immaculate white double-breasted chef jacket with the name VÉRAC embroidered in blue, tall white toque, black trousers arriving on the LEFT side of the table, chest out, a smug smile, a hand on his heart, looking toward the RIGHT at the inspector's table; Léon, a lanky twenty-year-old dalmatian young man, white fur with black spots, floppy ears, big nervous dark eyes, white cook jacket slightly too big for him, black apron, small white cook cap at the right edge, small and tense. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Chef Vérac stops beside the table and bows slightly with a hand on his heart. Camera: crane down from the chandelier to Vérac's smug face. His shoes on the parquet, a polite cough in the room. No music. Only Chef Vérac speaks, in French, with exactly the same voice as in all his other clips: a man in his fifties, sharp nasal arrogant baritone, cutting and precise, never hoarse: \"C'est moi, monsieur. Mon plat signature depuis vingt ans.\". Smooth, self-satisfied, charming. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at the inspector on the right, never into the lens. Léon keeps his mouth closed. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-14",
+   "type": "scene",
+   "nom": "14. Léon : « C'est pas lui. C'est la plongeuse. »",
+   "joindre": [
+    "fiche-la-plongeuse-leon",
+    "decor-la-plongeuse-salle"
+   ],
+   "promptImage": "Close shot: Léon, a lanky twenty-year-old dalmatian young man, white fur with black spots, floppy ears, big nervous dark eyes, white cook jacket slightly too big for him, black apron, small white cook cap on the RIGHT, standing straight for the first time, looking toward the LEFT at the inspector, jaw set; behind him, out of focus, the swinging kitchen door with its round window. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Léon lifts his chin and speaks; behind him the kitchen door starts to swing open. Camera: snap zoom on Léon's eyes. One gasp in the dining room, the kitchen door creaking. No music. Only Léon speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty, light nervous tenor, quick and sincere, never childish: \"C'est pas lui. C'est la plongeuse.\". Firm, voice steady for the first time. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at the inspector on the left, never into the lens. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-15",
+   "type": "scene",
+   "nom": "15. Rose entre dans la salle et retire sa charlotte",
+   "joindre": [
+    "fiche-la-plongeuse-rose",
+    "decor-la-plongeuse-salle"
+   ],
+   "promptImage": "Wide shot of the dining room from the tables: Rose, a small plump fawn pug woman in her fifties, round flat dark muzzle, big dark kind eyes, short beige fur, curly tail, white kitchen-porter tunic with rolled sleeves, long grey apron, white hair net cap, black non-slip shoes pushing through the swinging kitchen door on the RIGHT, stepping into the golden light, taking off her white hair net; diners of various animal species turn their heads toward her, mouths closed. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Rose steps through the door into the dining room and pulls off her hair net, standing tall. Camera: crane up revealing the whole silent dining room turning toward Rose. End exactly on the provided last frame. The door swinging behind her, a hush, one fork falling on a plate. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The diners stay seated, nobody new enters. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "muet": true,
+   "imageFin": "fin-scene-15"
+  },
+  {
+   "id": "fin-scene-15",
+   "type": "fiche",
+   "nom": "Image de fin — 15",
+   "joindre": [
+    "scene-15"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Rose stands just inside the dining room on the right, hair net in her hand, head high; every diner looks at her. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-16",
+   "type": "scene",
+   "nom": "16. Vérac : « Rose. C'est pas possible. »",
+   "joindre": [
+    "fiche-la-plongeuse-verac",
+    "decor-la-plongeuse-salle"
+   ],
+   "promptImage": "Close-up: Chef Vérac, a tall proud peacock man in his fifties, iridescent blue-green feathers on head and neck, small crest, sharp yellow beak, cold narrow eyes, immaculate white double-breasted chef jacket with the name VÉRAC embroidered in blue, tall white toque, black trousers on the LEFT, his smug smile gone, beak half open, looking toward the RIGHT where Rose stands off-screen; his toque slightly askew. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Chef Vérac's face drains; he takes one step back. Camera: fast dolly-out from his face. End exactly on the provided last frame. A glass set down too hard somewhere, the chandelier tinkling. No music. Only Chef Vérac speaks, in French, with exactly the same voice as in all his other clips: a man in his fifties, sharp nasal arrogant baritone, cutting and precise, never hoarse: \"Rose. C'est pas possible.\". Choked, losing all his arrogance. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. Rose stays off-screen on the RIGHT and never appears; nobody enters the frame. He looks toward the right, never into the lens. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "imageFin": "fin-scene-16"
+  },
+  {
+   "id": "fin-scene-16",
+   "type": "fiche",
+   "nom": "Image de fin — 16",
+   "joindre": [
+    "scene-16"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Vérac one step further back, wider framing, hand on the back of a chair, still looking toward the right. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-17",
+   "type": "scene",
+   "nom": "17. Rose : « Tu as gardé mon carnet, Augustin. Moi, j'ai gardé la recette. »",
+   "joindre": [
+    "fiche-la-plongeuse-rose",
+    "fiche-la-plongeuse-verac",
+    "decor-la-plongeuse-salle"
+   ],
+   "promptImage": "Over-the-shoulder close-up: Rose, a small plump fawn pug woman in her fifties, round flat dark muzzle, big dark kind eyes, short beige fur, curly tail, white kitchen-porter tunic with rolled sleeves, long grey apron, white hair net cap, black non-slip shoes fills the RIGHT half of the frame from chest up, calm, looking toward the LEFT at Vérac; in the foreground at frame LEFT, the blurred blue-green feathered neck and white toque of Chef Vérac, a tall proud peacock man in his fifties, iridescent blue-green feathers on head and neck, small crest, sharp yellow beak, cold narrow eyes, immaculate white double-breasted chef jacket with the name VÉRAC embroidered in blue, tall white toque, black trousers. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Rose folds her hair net in her hand while she speaks, eyes never leaving Vérac. Camera: steady push-in on Rose's face. Total silence, the faint hum of the chandeliers. No music. Only Rose speaks, in French, with exactly the same voice as in all her other clips: a woman in her fifties, warm slightly husky medium-low voice, plain and direct, Parisian, never shrill: \"Tu as gardé mon carnet, Augustin. Moi, j'ai gardé la recette.\". Calm and cutting, weight on « la recette ». She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. She looks at Vérac on the left, never into the lens. Vérac keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-18",
+   "type": "scene",
+   "nom": "18. L'inspecteur : « Madame Marchal, ça fait vingt ans que je cherche ce goût. »",
+   "joindre": [
+    "fiche-la-plongeuse-inspecteur",
+    "decor-la-plongeuse-salle"
+   ],
+   "promptImage": "Medium shot: the inspector, a thin elegant grey heron gentleman in his sixties, long neck, long pale-yellow beak, small round gold glasses, charcoal three-piece suit, burgundy tie on the LEFT rising from his chair, glasses in hand, looking toward the RIGHT at Rose with deep respect; diners around stay seated. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The inspector stands up from his chair and bows his head toward Rose. Camera: low-angle tilt up as he rises. End exactly on the provided last frame. His chair sliding back, a few diners starting to clap. No music. Only the inspector speaks, in French, with exactly the same voice as in all his other clips: a man in his sixties, dry precise soft baritone, very articulate, never loud: \"Madame Marchal, ça fait vingt ans que je cherche ce goût.\". Warm and moved, respectful. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Rose on the right, never into the lens. Everyone else keeps their mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-18"
+  },
+  {
+   "id": "fin-scene-18",
+   "type": "fiche",
+   "nom": "Image de fin — 18",
+   "joindre": [
+    "scene-18"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: the inspector standing tall on the left, head bowed toward the right, diners in the background starting to applaud. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-19",
+   "type": "scene",
+   "nom": "19. Fin — Léon : « On reprend le service, Chef. »",
+   "joindre": [
+    "fiche-la-plongeuse-rose",
+    "fiche-la-plongeuse-verac",
+    "fiche-la-plongeuse-leon",
+    "decor-la-plongeuse-salle"
+   ],
+   "promptImage": "High wide shot of the dining room: Rose, a small plump fawn pug woman in her fifties, round flat dark muzzle, big dark kind eyes, short beige fur, curly tail, white kitchen-porter tunic with rolled sleeves, long grey apron, white hair net cap, black non-slip shoes in the center walking toward the kitchen door on the RIGHT without a glance at Chef Vérac, a tall proud peacock man in his fifties, iridescent blue-green feathers on head and neck, small crest, sharp yellow beak, cold narrow eyes, immaculate white double-breasted chef jacket with the name VÉRAC embroidered in blue, tall white toque, black trousers, who stays alone on the LEFT holding his toque in his hands; Léon, a lanky twenty-year-old dalmatian young man, white fur with black spots, floppy ears, big nervous dark eyes, white cook jacket slightly too big for him, black apron, small white cook cap following Rose, smiling; diners of various animal species applauding. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Rose walks past Chef Vérac toward the kitchen door without looking at him; Léon follows her. Camera: high crane pull-back revealing the whole room. End exactly on the provided last frame. Applause filling the room, the kitchen door swinging. No music. Only Léon speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty, light nervous tenor, quick and sincere, never childish: \"On reprend le service, Chef.\". Proud and joyful, weight on « Chef ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at Rose, never into the lens. Rose and Vérac keep their mouths closed. Vérac stays alone on the left the whole time. The diners stay seated. Everyone stays upright on two legs. Energetic direction: fast, snappy, highly dynamic animation from the very first frame, real-time speed, never slow motion, no idle pause, every visible body keeps moving. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Nerveux",
+   "transition": "cut",
+   "imageFin": "fin-scene-19"
+  },
+  {
+   "id": "fin-scene-19",
+   "type": "fiche",
+   "nom": "Image de fin — 19",
+   "joindre": [
+    "scene-19"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Rose at the kitchen door on the right, Léon just behind her, Vérac alone and small on the left, toque in his hands, applause around. Inside the dining room of a luxury Paris palace at night: crystal chandeliers, round tables with white tablecloths, gilded mirrors, tall windows showing the lit Eiffel Tower; on the RIGHT, a swinging kitchen door with a round window. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "couverture",
+   "type": "couverture",
+   "nom": "Couverture — La Plongeuse",
+   "joindre": [],
+   "promptImage": "Vertical 9:16 TikTok cover, high-end stylized 3D animated feature-film look, original design not based on any existing film, studio or character, NOT photorealistic. In a steamy golden palace kitchen at night, a small plump fawn pug woman in a white kitchen-porter tunic and white hair net stands at a steel sink, looking up with quiet determination; behind her, out of focus, a tall proud peacock chef in a white toque turns his back. Warm golden light, steam. In the middle of the image, large and perfectly readable, the title \"LA PLONGEUSE\" in heavy white letters with a thin golden glow. The title block sits between 15% and 55% of the image height. No other text, no subtitle, no logo, no numbers."
+  }
+ ]
+}

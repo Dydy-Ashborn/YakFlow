@@ -1,0 +1,431 @@
+{
+ "id": "le-sourire",
+ "titre": "Le Sourire",
+ "realisateur": "L'Inquiétant",
+ "version": 1,
+ "typePublication": "one-shot",
+ "recommendedVideoEngine": "agnes",
+ "accroche": "Il sourit. Il n'arrive plus à s'arrêter.",
+ "description": "Son petit frère rentre du tram avec un sourire qu'il ne peut plus arrêter. La voisine dit de fermer les yeux jusqu'au jour. Toi, tu aurais tenu toute la nuit ?",
+ "hashtags": [
+  "#LeSourire",
+  "#Animation3D",
+  "#Halloween",
+  "#Frissons",
+  "#YakFilms"
+ ],
+ "commentaire": "Regardez bien le foulard d'Inès quand la voix dit « regarde-moi ». Elle a ouvert les yeux, oui ou non ?",
+ "datePublication": "2026-10-23",
+ "heurePublication": "20:00",
+ "etapes": [
+  {
+   "id": "fiche-le-sourire-ines",
+   "type": "fiche",
+   "nom": "Fiche — Inès",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-le-sourire-nathan",
+   "type": "fiche",
+   "nom": "Fiche — Nathan",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a nine-year-old border collie puppy boy, fluffy black-and-white fur, floppy ears, big round brown eyes, a yellow raincoat over a blue hoodie, small rain boots. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-le-sourire-lucienne",
+   "type": "fiche",
+   "nom": "Fiche — Madame Lucienne",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a very old ewe woman of eighty, curly white wool, small round glasses, long narrow face, a plum dressing gown and a crocheted shawl, felt slippers. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-le-sourire-femme",
+   "type": "fiche",
+   "nom": "Fiche — the smiling woman",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a very tall thin hairless sphynx cat woman, pale grey skin, a long neck, huge pale unblinking eyes, an enormous fixed smile showing small even teeth, a long black dress. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-le-sourire-salon",
+   "type": "fiche",
+   "nom": "Décor — le salon de l'appartement",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-le-sourire-rue",
+   "type": "fiche",
+   "nom": "Décor — la rue sous la pluie",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A narrow empty street in Belleville at night seen from a third-floor window, rain falling, wet cobblestones shining, one old lamppost casting a cone of yellow light, closed shop shutters. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-le-sourire-sdb",
+   "type": "fiche",
+   "nom": "Décor — la salle de bains au matin",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A tiny old bathroom at sunrise: a white sink, a round mirror above it, pale yellow morning light through a small frosted window, a towel on a hook. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-1",
+   "type": "scene",
+   "nom": "1. Hook — Nathan : « Inès, j'arrive plus à arrêter de sourire. »",
+   "joindre": [
+    "fiche-le-sourire-nathan",
+    "fiche-le-sourire-ines",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "In the doorway of the dark apartment, medium shot: Nathan, a nine-year-old border collie puppy boy, fluffy black-and-white fur, floppy ears, big round brown eyes, a yellow raincoat over a blue hoodie, small rain boots on the RIGHT, dripping with rain, his mouth stretched in an unnaturally wide fixed smile, his eyes wide open and never blinking, looking toward the LEFT at Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks, who stands frozen by the sofa. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Nathan steps inside, water dripping from his raincoat, his frozen smile never moving. Camera: advancing push-in on Nathan's smiling face. End exactly on the provided last frame. Rain outside, the door creaking, water dripping on the floor. No music. Only Nathan speaks, in French, with exactly the same voice as in all his other clips: a boy of nine, small high voice, frightened, never babyish: \"Inès, j'arrive plus à arrêter de sourire.\". Frightened, the words forced through the frozen smile. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Inès on the left, never into the lens. Inès keeps her mouth closed. Nathan's smile never moves and he never blinks. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut",
+   "imageFin": "fin-scene-1"
+  },
+  {
+   "id": "fin-scene-1",
+   "type": "fiche",
+   "nom": "Image de fin — 1",
+   "joindre": [
+    "scene-1"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: closer on Nathan on the right, his mouth stretched in an unnaturally wide fixed smile, his eyes wide open and never blinking, the door closed behind him, a puddle at his boots. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-2",
+   "type": "scene",
+   "nom": "2. Inès : « Arrête, c'est pas drôle. Cligne des yeux, Nathan. »",
+   "joindre": [
+    "fiche-le-sourire-ines",
+    "fiche-le-sourire-nathan",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Over-the-shoulder close-up: Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks fills the LEFT half of the frame, frowning, half laughing, looking toward the RIGHT at Nathan; in the foreground at frame RIGHT, the blurred yellow raincoat and floppy ear of Nathan, a nine-year-old border collie puppy boy, fluffy black-and-white fur, floppy ears, big round brown eyes, a yellow raincoat over a blue hoodie, small rain boots. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Inès crouches to her brother's height and holds his raincoat sleeves. Camera: handheld close-up, slightly unsteady. Rain, the fridge humming. No music. Only Inès speaks, in French, with exactly the same voice as in all her other clips: a girl of seventeen, clear quick voice, protective, a little rough, never shrill: \"Arrête, c'est pas drôle. Cligne des yeux, Nathan.\". Half annoyed, half worried. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks at Nathan on the right, never into the lens. Nathan keeps his smiling mouth still. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-3",
+   "type": "scene",
+   "nom": "3. Nathan : « J'y arrive pas. La dame du tram m'a souri. »",
+   "joindre": [
+    "fiche-le-sourire-nathan",
+    "fiche-le-sourire-ines",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Reverse over-the-shoulder close-up, same axis: Nathan, a nine-year-old border collie puppy boy, fluffy black-and-white fur, floppy ears, big round brown eyes, a yellow raincoat over a blue hoodie, small rain boots on the RIGHT half of the frame, his mouth stretched in an unnaturally wide fixed smile, his eyes wide open and never blinking, one wet streak down his cheek, looking toward the LEFT at Inès; in the foreground at frame LEFT, the blurred black-and-white shoulder of Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Nathan's eyes stay open and staring while his voice breaks. Camera: locked close-up. Rain, a distant tram bell. No music. Only Nathan speaks, in French, with exactly the same voice as in all his other clips: a boy of nine, small high voice, frightened, never babyish: \"J'y arrive pas. La dame du tram m'a souri.\". Breaking voice, panic rising. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Inès on the left, never into the lens. His smile never moves and he never blinks. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-4",
+   "type": "scene",
+   "nom": "4. Sous le réverbère, la femme qui sourit regarde leur fenêtre",
+   "joindre": [
+    "fiche-le-sourire-femme",
+    "decor-le-sourire-rue"
+   ],
+   "promptImage": "View through the rainy window down to the empty street: under the lamppost stands the smiling woman, a very tall thin hairless sphynx cat woman, pale grey skin, a long neck, huge pale unblinking eyes, an enormous fixed smile showing small even teeth, a long black dress, small in the distance, motionless in the rain, her pale face tilted up toward the window, smiling. A narrow empty street in Belleville at night seen from a third-floor window, rain falling, wet cobblestones shining, one old lamppost casting a cone of yellow light, closed shop shutters. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The smiling woman stays perfectly still under the lamppost; only the rain moves. Camera: advancing zoom through the glass toward the lamppost. Rain on the glass, one sharp creak of the floor. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. She never moves. No other character in the street. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "scene-5",
+   "type": "scene",
+   "nom": "5. Madame Lucienne : « Ferme tes rideaux, petite. Elle est revenue dans le quartier. »",
+   "joindre": [
+    "fiche-le-sourire-lucienne",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "At the half-open front door, medium close shot: Madame Lucienne, a very old ewe woman of eighty, curly white wool, small round glasses, long narrow face, a plum dressing gown and a crocheted shawl, felt slippers on the RIGHT on the dark landing, holding her shawl closed, looking toward the LEFT at Inès with grave eyes; the chain of the door still on. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Madame Lucienne leans to the gap of the chained door while she speaks. Camera: advancing push-in toward the gap of the door. The door chain rattling, the hallway light buzzing. No music. Only Madame Lucienne speaks, in French, with exactly the same voice as in all her other clips: an old woman of eighty, thin raspy grave voice, never shouting: \"Ferme tes rideaux, petite. Elle est revenue dans le quartier.\". Low and grave, urgent. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. She looks at Inès on the left, never into the lens. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-6",
+   "type": "scene",
+   "nom": "6. Inès : « Qui ça, elle. Mon frère arrête pas de sourire. »",
+   "joindre": [
+    "fiche-le-sourire-ines",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Close-up: Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks on the LEFT, by the chained door, looking toward the RIGHT at the old neighbor, tense, glancing back at her brother. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Inès grips the door edge while she speaks. Camera: rack focus from the door chain to Inès's face. Hallway light buzzing, rain. No music. Only Inès speaks, in French, with exactly the same voice as in all her other clips: a girl of seventeen, clear quick voice, protective, a little rough, never shrill: \"Qui ça, elle. Mon frère arrête pas de sourire.\". Tense, the intonation of a question. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. Madame Lucienne stays off-screen on the RIGHT and never appears; nobody enters the frame. She looks toward the right, never into the lens. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-7",
+   "type": "scene",
+   "nom": "7. Madame Lucienne : « Elle entre par les yeux. Si vous la regardez avant le jour, elle vous prend. »",
+   "joindre": [
+    "fiche-le-sourire-lucienne",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Tighter close-up: Madame Lucienne, a very old ewe woman of eighty, curly white wool, small round glasses, long narrow face, a plum dressing gown and a crocheted shawl, felt slippers on the RIGHT, the hallway light flickering above her, her glasses reflecting it, looking toward the LEFT at Inès. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Madame Lucienne takes off her glasses while she speaks; the hallway light flickers. Camera: locked close-up. The hallway light flickering and buzzing. No music. Only Madame Lucienne speaks, in French, with exactly the same voice as in all her other clips: an old woman of eighty, thin raspy grave voice, never shouting: \"Elle entre par les yeux. Si vous la regardez avant le jour, elle vous prend.\". Grave, every word weighed. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 6. She looks at Inès on the left, never into the lens. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 7,
+   "garder": "0-6.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-8",
+   "type": "scene",
+   "nom": "8. Madame Lucienne : « Fermez les yeux jusqu'au lever du soleil. Et ouvrez à personne. »",
+   "joindre": [
+    "fiche-le-sourire-lucienne",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Medium shot: Madame Lucienne, a very old ewe woman of eighty, curly white wool, small round glasses, long narrow face, a plum dressing gown and a crocheted shawl, felt slippers on the RIGHT, already turning back toward her own door across the dark landing, looking back over her shoulder toward the LEFT at Inès. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Madame Lucienne turns toward her own door across the landing, still looking back. Camera: pull-back from the door gap. End exactly on the provided last frame. Her slippers on the floor, the light buzzing. No music. Only Madame Lucienne speaks, in French, with exactly the same voice as in all her other clips: an old woman of eighty, thin raspy grave voice, never shouting: \"Fermez les yeux jusqu'au lever du soleil. Et ouvrez à personne.\". Firm, a warning. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. She looks back at Inès on the left, never into the lens. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut",
+   "imageFin": "fin-scene-8"
+  },
+  {
+   "id": "fin-scene-8",
+   "type": "fiche",
+   "nom": "Image de fin — 8",
+   "joindre": [
+    "scene-8"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: the landing is empty, only the dim buzzing light; the door chain hangs in the foreground. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-9",
+   "type": "scene",
+   "nom": "9. Inès : « On ferme les yeux, et on bouge plus jusqu'au matin. »",
+   "joindre": [
+    "fiche-le-sourire-ines",
+    "fiche-le-sourire-nathan",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "On the sofa, two-shot, shared gesture: Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks on the LEFT tying a dark red scarf over the eyes of Nathan, a nine-year-old border collie puppy boy, fluffy black-and-white fur, floppy ears, big round brown eyes, a yellow raincoat over a blue hoodie, small rain boots on the RIGHT, who still smiles; a black scarf already hangs around her own neck. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Inès ties the dark red scarf over Nathan's eyes and knots it gently. Camera: small arc around the two on the sofa, never crossing the axis. End exactly on the provided last frame. Rain, the clock ticking. No music. Only Inès speaks, in French, with exactly the same voice as in all her other clips: a girl of seventeen, clear quick voice, protective, a little rough, never shrill: \"On ferme les yeux, et on bouge plus jusqu'au matin.\". Calm on the surface, for her brother. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. She looks at Nathan on the right, never into the lens. Nathan keeps his smiling mouth still. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-9"
+  },
+  {
+   "id": "fin-scene-9",
+   "type": "fiche",
+   "nom": "Image de fin — 9",
+   "joindre": [
+    "scene-9"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: Inès on the left now with a black scarf tied over her eyes, Nathan on the right with a dark red scarf tied over his eyes, sitting side by side on the sofa, holding hands. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-10",
+   "type": "scene",
+   "nom": "10. 3 h 12 : une ombre passe sur le mur",
+   "joindre": [
+    "fiche-le-sourire-ines",
+    "fiche-le-sourire-nathan",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Wide shot of the dark living room: Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks with a black scarf tied over her eyes and Nathan, a nine-year-old border collie puppy boy, fluffy black-and-white fur, floppy ears, big round brown eyes, a yellow raincoat over a blue hoodie, small rain boots with a dark red scarf tied over his eyes sit motionless on the sofa, holding hands; the clock on the shelf reads \"03:12\"; on the wall behind them, a very tall thin shadow glides across from the window. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The tall shadow slides along the wall behind the sofa; the two siblings do not move. Camera: advancing dolly toward the sofa. Total silence, one floorboard creaking. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The siblings never move and keep their scarves on. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "scene-11",
+   "type": "scene",
+   "nom": "11. La voix derrière la porte : « Inès, c'est maman. J'ai oublié mes clés, ouvre-moi. »",
+   "joindre": [
+    "fiche-le-sourire-ines",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Close shot on the front door on the RIGHT: the peephole glowing faintly, the handle turning a little by itself; Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks with a black scarf tied over her eyes on the LEFT edge of the frame, head turned toward the door. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The door handle turns a little and stops; Inès freezes. Camera: advancing push-in on the door handle. Three soft knocks, rain. No music. Only the off-screen voice behind the door speaks, in French, with exactly the same voice as in all its other clips: a woman of forty-five, warm tired motherly voice, a little too smooth: \"Inès, c'est maman. J'ai oublié mes clés, ouvre-moi.\". Warm and tired, perfectly normal. The voice speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. Every character on screen keeps their mouth closed, zero lip-sync. The voice comes from behind the door on the right of the frame. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-12",
+   "type": "scene",
+   "nom": "12. Nathan : « C'est maman, Inès. Va ouvrir. »",
+   "joindre": [
+    "fiche-le-sourire-nathan",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Close-up: Nathan, a nine-year-old border collie puppy boy, fluffy black-and-white fur, floppy ears, big round brown eyes, a yellow raincoat over a blue hoodie, small rain boots on the RIGHT, a dark red scarf tied over his eyes, his frozen wide smile under the scarf, turning his head toward the door, gripping his sister's hand at the LEFT edge. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Nathan tugs his sister's hand toward the door. Camera: handheld close-up. Rain, silence behind the door. No music. Only Nathan speaks, in French, with exactly the same voice as in all his other clips: a boy of nine, small high voice, frightened, never babyish: \"C'est maman, Inès. Va ouvrir.\". Eager, a strange flat joy. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He turns toward the door on the right, never into the lens. His smile never moves. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-13",
+   "type": "scene",
+   "nom": "13. Inès : « Notre mère est de garde à l'hôpital jusqu'au matin. »",
+   "joindre": [
+    "fiche-le-sourire-ines",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Close-up: Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks on the LEFT, a black scarf tied over her eyes, jaw clenched, pulling her brother's hand back, head turned toward the door on the RIGHT. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Inès pulls Nathan's hand back against her. Camera: rack focus from the door to Inès's face. The handle rattling once. No music. Only Inès speaks, in French, with exactly the same voice as in all her other clips: a girl of seventeen, clear quick voice, protective, a little rough, never shrill: \"Notre mère est de garde à l'hôpital jusqu'au matin.\". Low, hard, holding back her fear. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She keeps her face toward the door on the right, never into the lens. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-14",
+   "type": "scene",
+   "nom": "14. La voix, tout près : « Ouvre les yeux, ma chérie. Regarde-moi. »",
+   "joindre": [
+    "fiche-le-sourire-ines",
+    "fiche-le-sourire-femme",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Extreme close-up on Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks, a black scarf tied over her eyes, on the LEFT; the scarf has slipped a little, a thin gap showing one eyelid; behind her right shoulder, very close and out of focus, a pale hairless grey face with an enormous smile leans in from the RIGHT. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The pale smiling face behind Inès leans a little closer; Inès's ear twitches. Camera: locked extreme close-up. Breathing very close, the clock ticking. No music. Only the off-screen voice in the room speaks, in French, with exactly the same voice as in all its other clips: a woman of forty-five, warm tired motherly voice, a little too smooth, now very close: \"Ouvre les yeux, ma chérie. Regarde-moi.\". Sweet and soft, almost tender. The voice speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. Every character on screen keeps their mouth closed, zero lip-sync. The voice comes from just behind Inès on the right of the frame. The pale face never comes into focus. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-15",
+   "type": "scene",
+   "nom": "15. Inès : « Non. Tu es pas ma mère. »",
+   "joindre": [
+    "fiche-le-sourire-ines",
+    "fiche-le-sourire-nathan",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Close-up: Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks on the LEFT, a black scarf tied over her eyes pushed back into place by her hand, squeezing her eyes shut beneath it, holding Nathan tight against her. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Inès presses the scarf back over her eyes with her free hand and hugs her brother harder. Camera: push-in on her face. One sharp crack of the floor, then nothing. No music. Only Inès speaks, in French, with exactly the same voice as in all her other clips: a girl of seventeen, clear quick voice, protective, a little rough, never shrill: \"Non. Tu es pas ma mère.\". Shaking with fury, weight on « pas ». She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. She keeps her eyes covered, never looking anywhere, never into the lens. Nathan keeps his mouth still. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-16",
+   "type": "scene",
+   "nom": "16. Le soleil se lève, le sourire de Nathan s'efface",
+   "joindre": [
+    "fiche-le-sourire-ines",
+    "fiche-le-sourire-nathan",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Wide shot of the living room at dawn: golden morning light pours through the window on the LEFT across the sofa where Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks with a black scarf tied over her eyes and Nathan, a nine-year-old border collie puppy boy, fluffy black-and-white fur, floppy ears, big round brown eyes, a yellow raincoat over a blue hoodie, small rain boots with a dark red scarf tied over his eyes sit hugging; the clock reads \"07:43\". A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Sunlight sweeps across the room onto the two siblings; Nathan's stretched smile relaxes and fades away. Camera: crane down from the window into the light on the sofa. End exactly on the provided last frame. Birds, the city waking, the rain gone. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "muet": true,
+   "imageFin": "fin-scene-16"
+  },
+  {
+   "id": "fin-scene-16",
+   "type": "fiche",
+   "nom": "Image de fin — 16",
+   "joindre": [
+    "scene-16"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: sunlight on the sofa, Nathan, a nine-year-old border collie puppy boy, fluffy black-and-white fur, floppy ears, big round brown eyes, a yellow raincoat over a blue hoodie, small rain boots on the right with the scarf pulled down to his neck, his mouth normal and calm, blinking; Inès on the left still blindfolded. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-17",
+   "type": "scene",
+   "nom": "17. Nathan : « Inès, je cligne. Je cligne des yeux. »",
+   "joindre": [
+    "fiche-le-sourire-nathan",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Close-up in the morning light: Nathan, a nine-year-old border collie puppy boy, fluffy black-and-white fur, floppy ears, big round brown eyes, a yellow raincoat over a blue hoodie, small rain boots on the RIGHT, the dark red scarf around his neck, blinking again and again, a normal mouth, eyes brimming with water, looking toward the LEFT at his sister. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Nathan blinks several times and laughs with relief. Camera: steady push-in on his face. Birds outside, a sob of relief. No music. Only Nathan speaks, in French, with exactly the same voice as in all his other clips: a boy of nine, small high voice, frightened, never babyish: \"Inès, je cligne. Je cligne des yeux.\". Laughing and crying at once. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Inès on the left, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-18",
+   "type": "scene",
+   "nom": "18. Inès : « C'est fini. Le soleil est levé. »",
+   "joindre": [
+    "fiche-le-sourire-ines",
+    "fiche-le-sourire-nathan",
+    "decor-le-sourire-salon"
+   ],
+   "promptImage": "Two-shot, shared gesture: Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks on the LEFT pulling the black scarf off her eyes, blinking at the light, hugging Nathan, a nine-year-old border collie puppy boy, fluffy black-and-white fur, floppy ears, big round brown eyes, a yellow raincoat over a blue hoodie, small rain boots on the RIGHT. A small Paris apartment in Belleville at night: on the LEFT, a tall window with thin curtains over a rainy street; in the center, an old sofa with cushions; on the RIGHT, the front door with a peephole and a coat rack; a digital clock on a shelf; a single standing lamp giving warm light, deep shadows in the corners. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Inès pulls off her scarf and hugs her brother tightly. Camera: small arc around the hug, never crossing the axis. Birds, morning traffic far away. No music. Only Inès speaks, in French, with exactly the same voice as in all her other clips: a girl of seventeen, clear quick voice, protective, a little rough, never shrill: \"C'est fini. Le soleil est levé.\". Exhausted, relieved, tender. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. She holds Nathan, never looking into the lens. Nathan keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-19",
+   "type": "scene",
+   "nom": "19. Inès : « On a tenu. On a tenu toute la nuit. »",
+   "joindre": [
+    "fiche-le-sourire-ines",
+    "decor-le-sourire-sdb"
+   ],
+   "promptImage": "Bathroom, medium shot: Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks on the LEFT in profile, leaning over the sink, splashing water on her face, the round mirror on the RIGHT showing her reflection from the side. A tiny old bathroom at sunrise: a white sink, a round mirror above it, pale yellow morning light through a small frosted window, a towel on a hook. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Inès splashes water on her face and breathes out. Camera: lateral tracking shot along the sink toward the mirror. Running water, a deep breath. No music. Only Inès speaks, in French, with exactly the same voice as in all her other clips: a girl of seventeen, clear quick voice, protective, a little rough, never shrill: \"On a tenu. On a tenu toute la nuit.\". Exhausted, a tired little laugh, to herself. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks down at the sink, never into the lens. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-20",
+   "type": "scene",
+   "nom": "20. Fin — dans le miroir, son reflet sourit",
+   "joindre": [
+    "fiche-le-sourire-ines",
+    "decor-le-sourire-sdb"
+   ],
+   "promptImage": "Close shot: Inès, a seventeen-year-old border collie girl, black-and-white fur, a white blaze down her face, sharp intelligent brown eyes, oversized grey knitted sweater, black leggings, thick socks on the LEFT in profile, water dripping from her face, looking at the round mirror on the RIGHT, her own mouth calm and closed; in the mirror, her reflection has an enormous fixed smile and wide unblinking eyes. A tiny old bathroom at sunrise: a white sink, a round mirror above it, pale yellow morning light through a small frosted window, a towel on a hook. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Inès stays still, looking at the mirror; her reflection keeps smiling and never blinks. Camera: advancing push-in toward the mirror. The tap dripping, silence. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. The real Inès never smiles; only the reflection smiles. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "couverture",
+   "type": "couverture",
+   "nom": "Couverture — Le Sourire",
+   "joindre": [],
+   "promptImage": "Vertical 9:16 TikTok cover, high-end stylized 3D animated feature-film look, original design not based on any existing film, studio or character, NOT photorealistic. Night in a dark Paris apartment: a nine-year-old border collie puppy boy in a yellow raincoat stands in the doorway with an unnaturally wide fixed smile and wide open eyes; behind the rainy window, far away under a lamppost, a tall thin pale figure of a hairless cat woman. Cold blue light, one warm lamp. In the middle of the image, large and perfectly readable, the title \"LE SOURIRE\" in heavy white letters with a thin pale glow. The title block sits between 15% and 55% of the image height. No other text, no subtitle, no logo, no numbers."
+  }
+ ]
+}

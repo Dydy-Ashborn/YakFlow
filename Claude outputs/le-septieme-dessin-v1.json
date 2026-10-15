@@ -1,0 +1,426 @@
+{
+ "id": "le-septieme-dessin",
+ "titre": "Le Septième Dessin",
+ "realisateur": "Le Merveilleux",
+ "version": 1,
+ "typePublication": "one-shot",
+ "recommendedVideoEngine": "agnes",
+ "accroche": "Tout ce qu'il dessine devient réel. Sept fois.",
+ "description": "Un vieux crayon : tout ce que Malo dessine devient réel, mais il ne reste que sept traits. Le propriétaire veut le dernier pour cinquante mille euros. Toi, tu aurais dessiné quoi ?",
+ "hashtags": [
+  "#LeSeptiemeDessin",
+  "#Animation3D",
+  "#Magie",
+  "#Emotion",
+  "#YakFilms"
+ ],
+ "commentaire": "Le crayon s'est rechargé. Vous dessineriez quoi avec sept nouveaux traits ?",
+ "datePublication": "2026-10-15",
+ "heurePublication": "20:00",
+ "etapes": [
+  {
+   "id": "fiche-le-septieme-dessin-malo",
+   "type": "fiche",
+   "nom": "Fiche — Malo",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a twenty-year-old Pembroke corgi man, red-and-white fur, big upright ears, warm brown eyes, a mustard hoodie with pencil smudges, grey cargo trousers, worn sneakers. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-le-septieme-dessin-tim",
+   "type": "fiche",
+   "nom": "Fiche — Tim",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a ten-year-old Pembroke corgi puppy boy, fluffy red-and-white fur, very big ears, round brown eyes, a blue striped sweater, jeans, little sneakers. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-le-septieme-dessin-garnier",
+   "type": "fiche",
+   "nom": "Fiche — Monsieur Garnier",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a tall sixty-year-old vulture man, bald pinkish head, grey neck ruff, hooked yellow beak, small cold eyes, a long brown overcoat, a grey scarf, black leather gloves. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "fiche-le-septieme-dessin-nadia",
+   "type": "fiche",
+   "nom": "Fiche — Nadia",
+   "joindre": [],
+   "promptImage": "CHARACTER TURNAROUND, three views of the SAME character side by side: left, full body front view; center, full body three-quarter view; right, face and shoulders close-up, neutral readable expression. Full bodies from the top of the head down to the feet, nothing cropped. Plain light grey studio background, no scenery, no props in the hands, no text. Character: a forty-five-year-old Pembroke corgi woman, red-and-white fur with a few pale hairs on the muzzle, big ears, kind tired eyes, a long camel coat over a nurse's light blue uniform. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-le-septieme-dessin-appart",
+   "type": "fiche",
+   "nom": "Décor — le petit appartement d'Angoulême",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "decor-le-septieme-dessin-palier",
+   "type": "fiche",
+   "nom": "Décor — le palier",
+   "joindre": [],
+   "promptImage": "EMPTY ESTABLISHING SHOT, no character at all: A narrow old stairwell landing in an Angoulême building at night: worn wooden floor, a dim ceiling bulb, the open apartment door on the LEFT, the stairs going down on the RIGHT. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-1",
+   "type": "scene",
+   "nom": "1. Hook — Malo : « Tout ce que je dessine avec ce crayon devient réel. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-malo",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Close shot at the table under the lamp: Malo, a twenty-year-old Pembroke corgi man, red-and-white fur, big upright ears, warm brown eyes, a mustard hoodie with pencil smudges, grey cargo trousers, worn sneakers on the LEFT, holding an old wooden pencil with exactly seven small notches carved along its side, 7 of them glowing gold and the others dark, staring at his sketchbook where a drawn croissant is lifting off the page and becoming a real golden croissant, sparkles of gold dust around it. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The pencil drawing of a croissant peels off the paper and becomes a real warm croissant on the page; one notch on the pencil goes dark. Camera: push-in from the sketchbook to Malo's stunned face. End exactly on the provided last frame. A soft crystal chime, paper rustling, rain on the window. No music. Only Malo speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty, warm lively voice, a bit tired, never childish: \"Tout ce que je dessine avec ce crayon devient réel.\". Breathless, amazed, half laughing. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at the croissant, never into the lens. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the glowing golden notches of the old pencil, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "imageFin": "fin-scene-1"
+  },
+  {
+   "id": "fin-scene-1",
+   "type": "fiche",
+   "nom": "Image de fin — 1",
+   "joindre": [
+    "scene-1"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: a real golden croissant sits on the page; Malo holds an old wooden pencil with exactly seven small notches carved along its side, 6 of them glowing gold and the others dark, staring at it with his mouth open. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-2",
+   "type": "scene",
+   "nom": "2. Tim : « Je peux le manger, le croissant. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-tim",
+    "fiche-le-septieme-dessin-malo",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Over-the-shoulder close-up: Tim, a ten-year-old Pembroke corgi puppy boy, fluffy red-and-white fur, very big ears, round brown eyes, a blue striped sweater, jeans, little sneakers on the RIGHT, peeking over the edge of the table at the croissant, eyes huge, looking toward the LEFT at his big brother; in the foreground at frame LEFT, the blurred red-and-white shoulder of Malo, a twenty-year-old Pembroke corgi man, red-and-white fur, big upright ears, warm brown eyes, a mustard hoodie with pencil smudges, grey cargo trousers, worn sneakers. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Tim reaches toward the croissant with one small paw. Camera: rack focus from the croissant to Tim's face. His stomach growling, rain. No music. Only Tim speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, small bright voice, sincere, never babyish: \"Je peux le manger, le croissant.\". Hungry and hopeful, the intonation of a question. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at Malo on the left, never into the lens. Malo keeps his mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-3",
+   "type": "scene",
+   "nom": "3. Malo : « Il reste six traits. On les garde pour les vrais problèmes. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-malo",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Reverse close-up, same axis: Malo, a twenty-year-old Pembroke corgi man, red-and-white fur, big upright ears, warm brown eyes, a mustard hoodie with pencil smudges, grey cargo trousers, worn sneakers on the LEFT, holding up an old wooden pencil with exactly seven small notches carved along its side, 6 of them glowing gold and the others dark at chest height between him and Tim, looking toward the RIGHT at his little brother, serious and tender. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Malo slides the croissant toward Tim and turns the pencil so the notches catch the light. Camera: macro push-in on the glowing notches. A faint golden hum from the pencil. No music. Only Malo speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty, warm lively voice, a bit tired, never childish: \"Il reste six traits. On les garde pour les vrais problèmes.\". Calm, big-brother voice. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Tim on the right, never into the lens. The notches stay exactly as described: six glowing, one dark. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the glowing golden notches of the old pencil, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-4",
+   "type": "scene",
+   "nom": "4. Montage : le loyer, les chaussures de Tim, le frigo plein",
+   "joindre": [
+    "fiche-le-septieme-dessin-malo",
+    "fiche-le-septieme-dessin-tim",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Medium shot at the table: Malo, a twenty-year-old Pembroke corgi man, red-and-white fur, big upright ears, warm brown eyes, a mustard hoodie with pencil smudges, grey cargo trousers, worn sneakers on the LEFT drawing fast; on the table on the RIGHT, a stack of euro banknotes, a pair of new small sneakers and a full grocery bag become real one after the other in bursts of gold dust; Tim, a ten-year-old Pembroke corgi puppy boy, fluffy red-and-white fur, very big ears, round brown eyes, a blue striped sweater, jeans, little sneakers beside him, laughing. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Three drawings become real objects one after the other in bursts of gold particles; the notches on the pencil go dark one by one. Camera: continuous orbit around the table. End exactly on the provided last frame. Three crystal chimes, Tim laughing, paper tearing softly. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the glowing golden notches of the old pencil, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "muet": true,
+   "imageFin": "fin-scene-4"
+  },
+  {
+   "id": "fin-scene-4",
+   "type": "fiche",
+   "nom": "Image de fin — 4",
+   "joindre": [
+    "scene-4"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: on the table a stack of banknotes, new small sneakers and a full grocery bag; Malo holds an old wooden pencil with exactly seven small notches carved along its side, 3 of them glowing gold and the others dark; Tim hugs the sneakers. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-4b",
+   "type": "scene",
+   "nom": "4b. Tim : « On a des baskets neuves et un frigo plein. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-tim",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Close-up: Tim, a ten-year-old Pembroke corgi puppy boy, fluffy red-and-white fur, very big ears, round brown eyes, a blue striped sweater, jeans, little sneakers on the RIGHT, hugging a pair of brand-new small sneakers against his chest, laughing, looking toward the LEFT at his brother; gold dust still floating in the lamp light. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Tim hugs the new sneakers and bounces on his heels with joy. Camera: lateral tracking shot following Tim's bounce. Tim laughing, rain, gold dust tinkling. No music. Only Tim speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, small bright voice, sincere, never babyish: \"On a des baskets neuves et un frigo plein.\". Overjoyed, laughing. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. Malo stays off-screen on the LEFT and never appears; nobody enters the frame. He looks toward the left, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-5",
+   "type": "scene",
+   "nom": "5. Garnier : « Le loyer en billets tout neufs. D'où ça sort, cet argent. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-garnier",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "At the open front door on the RIGHT: Monsieur Garnier, a tall sixty-year-old vulture man, bald pinkish head, grey neck ruff, hooked yellow beak, small cold eyes, a long brown overcoat, a grey scarf, black leather gloves standing in the doorway, a crisp banknote held between two gloved fingers, eyes narrowed, looking toward the LEFT at Malo at the table. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Monsieur Garnier rubs the new banknote between his gloved fingers and sniffs it. Camera: advancing push-in on Garnier's suspicious face. The door creaking, the ceiling bulb on the landing buzzing. No music. Only Monsieur Garnier speaks, in French, with exactly the same voice as in all his other clips: a man of sixty, dry nasal greedy voice, cold, never shouting: \"Le loyer en billets tout neufs. D'où ça sort, cet argent.\". Suspicious and greedy, a real question. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Malo on the left, never into the lens. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-6",
+   "type": "scene",
+   "nom": "6. Malo : « Je l'ai gagné, monsieur Garnier. C'est tout. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-malo",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Close-up: Malo, a twenty-year-old Pembroke corgi man, red-and-white fur, big upright ears, warm brown eyes, a mustard hoodie with pencil smudges, grey cargo trousers, worn sneakers on the LEFT at the table, hiding the pencil behind his back with one paw, looking toward the RIGHT at the landlord, forcing a smile. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Malo slips the pencil into the back pocket of his trousers. Camera: handheld close-up. Rain, the clock. No music. Only Malo speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty, warm lively voice, a bit tired, never childish: \"Je l'ai gagné, monsieur Garnier. C'est tout.\". Too quick, nervous. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. Monsieur Garnier stays off-screen on the RIGHT and never appears; nobody enters the frame. He looks toward the right, never into the lens. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the glowing golden notches of the old pencil, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-7",
+   "type": "scene",
+   "nom": "7. Tim : « Le crayon, il marchera encore pour maman. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-tim",
+    "fiche-le-septieme-dessin-malo",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Later that night, close two-shot on the sofa bed: Tim, a ten-year-old Pembroke corgi puppy boy, fluffy red-and-white fur, very big ears, round brown eyes, a blue striped sweater, jeans, little sneakers on the RIGHT, in pyjamas, holding a small framed photo of a corgi mother in a nurse's uniform, looking toward the LEFT at Malo, a twenty-year-old Pembroke corgi man, red-and-white fur, big upright ears, warm brown eyes, a mustard hoodie with pencil smudges, grey cargo trousers, worn sneakers, who sits beside him. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Tim holds the framed photo against his chest. Camera: steady push-in on Tim. Rain, the radiator ticking. No music. Only Tim speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, small bright voice, sincere, never babyish: \"Le crayon, il marchera encore pour maman.\". Small voice, hopeful, the intonation of a question. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Malo on the left, never into the lens. Malo keeps his mouth closed. The photo is a still image. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-8",
+   "type": "scene",
+   "nom": "8. Malo : « Elle travaille au Canada pour nous. Le billet coûte trop cher. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-malo",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Reverse close-up: Malo, a twenty-year-old Pembroke corgi man, red-and-white fur, big upright ears, warm brown eyes, a mustard hoodie with pencil smudges, grey cargo trousers, worn sneakers on the LEFT, looking toward the RIGHT at Tim, then down at an old wooden pencil with exactly seven small notches carved along its side, 3 of them glowing gold and the others dark in his paws. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Malo turns the pencil in his fingers, thinking. Camera: rack focus from the pencil to Malo's face. Rain, a far siren. No music. Only Malo speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty, warm lively voice, a bit tired, never childish: \"Elle travaille au Canada pour nous. Le billet coûte trop cher.\". Low, sad, protective. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Tim on the right, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-9",
+   "type": "scene",
+   "nom": "9. Le crayon sur la table : il ne reste qu'un trait",
+   "joindre": [
+    "fiche-le-septieme-dessin-malo",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Macro shot on the table at night: an old wooden pencil with exactly seven small notches carved along its side, 1 of them glowing gold and the others dark, a single gold notch pulsing; on the sketchbook next to it, two finished drawings already peeled off, empty outlines left on the paper; the desk lamp flickering. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The last gold notch pulses like a heartbeat while the lamp flickers. Camera: macro push-in on the last glowing notch. A low golden hum, rain, the lamp crackling. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the glowing golden notches of the old pencil, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "scene-10",
+   "type": "scene",
+   "nom": "10. Garnier : « Je t'ai vu par la porte. Dessine-moi cinquante mille euros. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-garnier",
+    "fiche-le-septieme-dessin-malo",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "The front door on the RIGHT bursts open: Monsieur Garnier, a tall sixty-year-old vulture man, bald pinkish head, grey neck ruff, hooked yellow beak, small cold eyes, a long brown overcoat, a grey scarf, black leather gloves steps in, a gloved finger pointed at the pencil on the table, looking toward the LEFT at Malo, who jumps up. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Monsieur Garnier steps into the apartment and points at the pencil. Camera: low-angle tilt up as Garnier enters. The door slamming against the wall, rain. No music. Only Monsieur Garnier speaks, in French, with exactly the same voice as in all his other clips: a man of sixty, dry nasal greedy voice, cold, never shouting: \"Je t'ai vu par la porte. Dessine-moi cinquante mille euros.\". Cold, hungry, every word clipped. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Malo on the left, never into the lens. Malo keeps his mouth closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-11",
+   "type": "scene",
+   "nom": "11. Garnier : « Sinon, demain matin, toi et ton frère, vous êtes à la rue. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-garnier",
+    "fiche-le-septieme-dessin-malo",
+    "fiche-le-septieme-dessin-tim",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Over-the-shoulder close-up: Monsieur Garnier, a tall sixty-year-old vulture man, bald pinkish head, grey neck ruff, hooked yellow beak, small cold eyes, a long brown overcoat, a grey scarf, black leather gloves fills the RIGHT half of the frame, leaning down, beak close, looking toward the LEFT at Malo; in the foreground at frame LEFT, the blurred red-and-white ear of Malo, a twenty-year-old Pembroke corgi man, red-and-white fur, big upright ears, warm brown eyes, a mustard hoodie with pencil smudges, grey cargo trousers, worn sneakers; Tim, a ten-year-old Pembroke corgi puppy boy, fluffy red-and-white fur, very big ears, round brown eyes, a blue striped sweater, jeans, little sneakers frozen in the background on the sofa. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Monsieur Garnier leans closer, his gloved fingers drumming on the table. Camera: advancing push-in on Garnier's eyes. Gloved fingers drumming, rain hammering. No music. Only Monsieur Garnier speaks, in French, with exactly the same voice as in all his other clips: a man of sixty, dry nasal greedy voice, cold, never shouting: \"Sinon, demain matin, toi et ton frère, vous êtes à la rue.\". Low, threatening, satisfied. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 5. He looks at Malo on the left, never into the lens. Malo and Tim keep their mouths closed. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 6,
+   "garder": "0-5.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-11b",
+   "type": "scene",
+   "nom": "11b. Tim : « Malo, j'ai peur. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-tim",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Close-up on the sofa in the background: Tim, a ten-year-old Pembroke corgi puppy boy, fluffy red-and-white fur, very big ears, round brown eyes, a blue striped sweater, jeans, little sneakers on the RIGHT, clutching a cushion, ears flat, looking toward the LEFT at his brother and the landlord off-screen. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Tim pulls the cushion tighter against him. Camera: handheld close-up. Rain hammering, gloved fingers drumming far away. No music. Only Tim speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, small bright voice, sincere, never babyish: \"Malo, j'ai peur.\". Tiny frightened voice. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. Malo and Monsieur Garnier stay off-screen on the LEFT and never appear; nobody enters the frame. He looks toward the left, never into the lens. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-12",
+   "type": "scene",
+   "nom": "12. Malo dessine le billet d'avion",
+   "joindre": [
+    "fiche-le-septieme-dessin-malo",
+    "fiche-le-septieme-dessin-garnier",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Close shot at the table: Malo, a twenty-year-old Pembroke corgi man, red-and-white fur, big upright ears, warm brown eyes, a mustard hoodie with pencil smudges, grey cargo trousers, worn sneakers on the LEFT, jaw set, drawing fast with an old wooden pencil with exactly seven small notches carved along its side, 1 of them glowing gold and the others dark on the sketchbook; on the paper a plane ticket takes shape, golden light rising from the lines; Monsieur Garnier, a tall sixty-year-old vulture man, bald pinkish head, grey neck ruff, hooked yellow beak, small cold eyes, a long brown overcoat, a grey scarf, black leather gloves on the RIGHT, leaning in greedily, not yet seeing what it is. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Malo draws quickly; the drawing on the page starts to glow gold. Camera: snap zoom on the glowing drawing. The pencil scratching fast, a rising crystal tone. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the glowing golden notches of the old pencil, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "muet": true
+  },
+  {
+   "id": "scene-13",
+   "type": "scene",
+   "nom": "13. Garnier : « Un billet d'avion. T'as gâché le dernier trait, imbécile. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-garnier",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Close-up: Monsieur Garnier, a tall sixty-year-old vulture man, bald pinkish head, grey neck ruff, hooked yellow beak, small cold eyes, a long brown overcoat, a grey scarf, black leather gloves on the RIGHT, recoiling, staring at the sketchbook, where a real paper plane ticket lies on the page reading exactly \"MONTRÉAL → PARIS · NADIA\"; the pencil in Malo's paw at the LEFT edge, all notches dark. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Monsieur Garnier snatches up the plane ticket and reads it, furious. Camera: rack focus from the ticket to Garnier's face. Paper rustling, his angry breath. No music. Only Monsieur Garnier speaks, in French, with exactly the same voice as in all his other clips: a man of sixty, dry nasal greedy voice, cold, never shouting: \"Un billet d'avion. T'as gâché le dernier trait, imbécile.\". Furious, spitting the words. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at the ticket, never into the lens. The ticket text stays exact and readable. Everyone stays upright on two legs. Tense, eerie direction: single light source, deep shadows, near silence and one sharp sound, camera advancing at real speed, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "L'Inquiétant",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-14",
+   "type": "scene",
+   "nom": "14. Malo : « Pas gâché. C'était le seul vrai problème. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-malo",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Close-up: Malo, a twenty-year-old Pembroke corgi man, red-and-white fur, big upright ears, warm brown eyes, a mustard hoodie with pencil smudges, grey cargo trousers, worn sneakers on the LEFT, standing tall, calm, looking toward the RIGHT at Garnier, holding the pencil with all its notches dark. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Malo takes the ticket back from the landlord's glove. Camera: steady push-in on Malo. Rain softening. No music. Only Malo speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty, warm lively voice, a bit tired, never childish: \"Pas gâché. C'était le seul vrai problème.\". Calm, proud, weight on « seul ». He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He looks at Garnier on the right, never into the lens. Garnier keeps his beak closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-15",
+   "type": "scene",
+   "nom": "15. Les sept encoches se rallument une par une",
+   "joindre": [
+    "fiche-le-septieme-dessin-malo",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Macro shot: the old wooden pencil in Malo's open palm, palm up, its seven carved notches all dark; the light of the lamp on it. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "The seven notches light up gold one after the other, bursting with tiny sparks. Camera: macro orbit around the pencil. End exactly on the provided last frame. Seven crystal chimes rising in pitch. No music. Nobody speaks: no voice, no narrator, every mouth stays closed. Everyone stays upright on two legs. Wonder direction: continuous camera at real speed, magical light born from the glowing golden notches of the old pencil, particles in the air, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Merveilleux",
+   "transition": "cut",
+   "muet": true,
+   "imageFin": "fin-scene-15"
+  },
+  {
+   "id": "fin-scene-15",
+   "type": "fiche",
+   "nom": "Image de fin — 15",
+   "joindre": [
+    "scene-15"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: an old wooden pencil with exactly seven small notches carved along its side, 7 of them glowing gold and the others dark, glowing bright in Malo's open palm, golden particles floating around it. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "scene-16",
+   "type": "scene",
+   "nom": "16. Tim : « Malo, regarde. Il s'est rechargé. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-tim",
+    "fiche-le-septieme-dessin-malo",
+    "fiche-le-septieme-dessin-garnier",
+    "decor-le-septieme-dessin-appart"
+   ],
+   "promptImage": "Close two-shot: Tim, a ten-year-old Pembroke corgi puppy boy, fluffy red-and-white fur, very big ears, round brown eyes, a blue striped sweater, jeans, little sneakers on the RIGHT pressed against his brother's side, pointing at the glowing pencil, eyes wide; Malo, a twenty-year-old Pembroke corgi man, red-and-white fur, big upright ears, warm brown eyes, a mustard hoodie with pencil smudges, grey cargo trousers, worn sneakers on the LEFT, astonished, gold light on both faces; Monsieur Garnier, a tall sixty-year-old vulture man, bald pinkish head, grey neck ruff, hooked yellow beak, small cold eyes, a long brown overcoat, a grey scarf, black leather gloves blurred in the background, backing toward the door. A tiny attic apartment in Angoulême on an autumn evening: a small wooden table with a sketchbook under a desk lamp on the LEFT, a narrow window with rain and the old town rooftops, a sofa bed, the front door on the RIGHT with a peeling poster of a comics festival, warm lamp light, cold blue outside. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Tim grabs his brother's arm and points at the glowing pencil. Camera: crane down onto the two brothers. A warm crystal hum, the door creaking as Garnier backs away. No music. Only Tim speaks, in French, with exactly the same voice as in all his other clips: a boy of ten, small bright voice, sincere, never babyish: \"Malo, regarde. Il s'est rechargé.\". Ecstatic, breathless. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 3. He looks at Malo on the left, never into the lens. Everyone else keeps their mouth closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 4,
+   "garder": "0-3.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut"
+  },
+  {
+   "id": "scene-17",
+   "type": "scene",
+   "nom": "17. Nadia : « Mes garçons. Quelqu'un m'a offert un billet. » (fondu au noir avant)",
+   "joindre": [
+    "fiche-le-septieme-dessin-nadia",
+    "decor-le-septieme-dessin-palier"
+   ],
+   "promptImage": "Two days later, morning, on the stairwell landing: Nadia, a forty-five-year-old Pembroke corgi woman, red-and-white fur with a few pale hairs on the muzzle, big ears, kind tired eyes, a long camel coat over a nurse's light blue uniform on the RIGHT with a suitcase at the top of the stairs, eyes brimming with water, opening her arms, looking toward the LEFT at the open apartment door where her sons stand. A narrow old stairwell landing in an Angoulême building at night: worn wooden floor, a dim ceiling bulb, the open apartment door on the LEFT, the stairs going down on the RIGHT. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Nadia lets go of her suitcase and opens her arms wide. Camera: pull-back from Nadia to reveal the landing. Footsteps running, a door banging open, a laugh. No music. Only Nadia speaks, in French, with exactly the same voice as in all her other clips: a woman of forty-five, warm soft voice, moved, never shrill: \"Mes garçons. Quelqu'un m'a offert un billet.\". Overwhelmed with joy, laughing and crying. She speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. She looks at her sons on the left, never into the lens. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "noir"
+  },
+  {
+   "id": "scene-18",
+   "type": "scene",
+   "nom": "18. Malo : « Je sais. Et il nous reste sept dessins, maman. »",
+   "joindre": [
+    "fiche-le-septieme-dessin-nadia",
+    "fiche-le-septieme-dessin-malo",
+    "fiche-le-septieme-dessin-tim",
+    "decor-le-septieme-dessin-palier"
+   ],
+   "promptImage": "Group hug on the landing: Nadia, a forty-five-year-old Pembroke corgi woman, red-and-white fur with a few pale hairs on the muzzle, big ears, kind tired eyes, a long camel coat over a nurse's light blue uniform in the middle hugging Tim, a ten-year-old Pembroke corgi puppy boy, fluffy red-and-white fur, very big ears, round brown eyes, a blue striped sweater, jeans, little sneakers and Malo, a twenty-year-old Pembroke corgi man, red-and-white fur, big upright ears, warm brown eyes, a mustard hoodie with pencil smudges, grey cargo trousers, worn sneakers; Malo on the LEFT, over his mother's shoulder, smiling, an old wooden pencil with exactly seven small notches carved along its side, 7 of them glowing gold and the others dark glowing in his paw behind her back. A narrow old stairwell landing in an Angoulême building at night: worn wooden floor, a dim ceiling bulb, the open apartment door on the LEFT, the stairs going down on the RIGHT. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here.",
+   "promptVideoAgnes": "Malo hugs his mother and glances at the glowing pencil behind her back with a smile. Camera: high crane pull-back above the family on the landing. End exactly on the provided last frame. Laughter, the old building creaking, birds outside. No music. Only Malo speaks, in French, with exactly the same voice as in all his other clips: a young man of twenty, warm lively voice, a bit tired, never childish: \"Je sais. Et il nous reste sept dessins, maman.\". Warm, mischievous, full of joy. He speaks at a brisk, natural conversational French pace (about three words per second), with no long pauses, and finishes the line by second 4. He speaks over his mother's shoulder, never into the lens. Nadia and Tim keep their mouths closed. Everyone stays upright on two legs. Intimate, tender direction: steady continuous camera at real speed, warm soft light, the emotion carried by eyes and breath, real-time animation, no idle pause. Do not add new text or subtitles.",
+   "secondes": 5,
+   "garder": "0-4.5 s",
+   "realisateur": "Le Tendre",
+   "transition": "cut",
+   "imageFin": "fin-scene-18"
+  },
+  {
+   "id": "fin-scene-18",
+   "type": "fiche",
+   "nom": "Image de fin — 18",
+   "joindre": [
+    "scene-18"
+   ],
+   "promptImage": "This is the LAST FRAME of the attached first image a second later: high wide view of the family hugging on the landing, the golden glow of the pencil visible in Malo's paw. A narrow old stairwell landing in an Angoulême building at night: worn wooden floor, a dim ceiling bulb, the open apartment door on the LEFT, the stairs going down on the RIGHT. Stylized high-end 3D animated feature film look, original character design not based on any existing film, studio or character: soft rounded shapes, expressive stylized faces, clean stylized fur, NOT photorealistic, no live-action look. Native vertical 9:16, full bleed, single cinematic film still, not a poster, no title, no subtitles, no logo. All characters are anthropomorphic animals standing upright on two legs like humans, fur-covered humanlike hands. Generate the image directly now; do not ask any question, everything needed is described here."
+  },
+  {
+   "id": "couverture",
+   "type": "couverture",
+   "nom": "Couverture — Le Septième Dessin",
+   "joindre": [],
+   "promptImage": "Vertical 9:16 TikTok cover, high-end stylized 3D animated feature-film look, original design not based on any existing film, studio or character, NOT photorealistic. A young corgi man in a mustard hoodie at a desk under a lamp in an attic room, holding an old wooden pencil with seven glowing gold notches; a drawn croissant lifts off the sketchbook and becomes real in a burst of gold dust; rain on the window. Warm gold and cold blue. In the middle of the image, large and perfectly readable, the title \"LE SEPTIÈME DESSIN\" in heavy white letters with a thin gold glow. The title block sits between 15% and 55% of the image height. No other text, no subtitle, no logo, no numbers."
+  }
+ ]
+}
