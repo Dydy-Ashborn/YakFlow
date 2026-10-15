@@ -575,6 +575,8 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
 .pm-tabs button.on{background:var(--s3);color:var(--text);box-shadow:var(--sh-1)}
 .pm-tabs em{font-style:normal;font-size:10.5px;min-width:16px;padding:1px 5px;border-radius:var(--r-full);background:var(--s4);color:var(--text-2)}
 .pm-tabs button.on em{background:var(--brand-soft);color:var(--brand-2)}
+.pm-sort{display:flex;align-items:center;gap:8px;margin:0 0 10px;color:var(--text-3);font-size:11px;font-weight:600}
+.pm-sort select{flex:1;min-width:0;padding:6px 8px;border:1px solid var(--border);border-radius:var(--r-sm);background:var(--bg-2);color:var(--text);font:inherit}
 .pm-empty{text-align:center;color:var(--text-3);font-size:12.5px;line-height:1.5;padding:22px 8px}
 .pm-empty i{display:block;font-size:20px;margin-bottom:10px;opacity:.55}
 .pm-foot{display:flex;flex-direction:column;gap:8px;margin-top:10px}
@@ -779,6 +781,7 @@ body.is-dragging::after{content:"Dépose tes fichiers JSON pour les importer";po
         <button type="button" data-mode="ready">Montés <em>0</em></button>
         <button type="button" data-mode="archive" title="Archives" aria-label="Archives"><i class="fa-solid fa-box-archive"></i><em>0</em></button>
       </div>
+      <label class="pm-sort">Trier l’affichage <select id="yfProjectSort" aria-label="Trier les projets"><option value="manual">Ordre de fabrication</option><option value="name-asc">Nom A → Z</option><option value="name-desc">Nom Z → A</option><option value="added-desc">Ajout : récents d’abord</option><option value="added-asc">Ajout : anciens d’abord</option></select></label>
       <div class="yfProjectToolbar" aria-label="Réordonner le projet sélectionné">
         <span id="yfSelectedProject">Sélectionne un projet</span><span class="grow"></span>
         <button class="btn sm" id="yfMoveUp" title="Monter le projet sélectionné" aria-label="Monter"><i class="fa-solid fa-arrow-up"></i></button>
@@ -1105,6 +1108,7 @@ const ficheMeta = {}; // id -> prompt de la fiche en mémoire
 /* YAKFLOW_CANON_IDENTITY_V1 : images d'identité réellement conservées en IndexedDB.
    Toute nouvelle tenue part d'une image canonique approuvée, et jamais d'un seul texte. */
 const isSharedFicheId = (id) => /^fiche-serie-[a-z0-9][a-z0-9-]*$/.test(String(id || ''));
+const isDecorFicheId = (id) => /^(?:decor(?:-|$)|fiche-serie-[a-z0-9-]*-decor(?:-|$))/i.test(String(id || ''));
 const priorCanonRequired = (s) => s && s.type === 'fiche' && /REFERENCE POLICY:\s*Reuse existing P1 canonical image/i.test(s.promptImage || '');
 
 function canonicalRefs(p, s) {
@@ -1117,8 +1121,8 @@ function canonicalRefs(p, s) {
     const st = p.etapes.find((x) => x.id === id);
     if (st && st.type === 'fiche' && st.identiteDe) base.push(st.identiteDe);
   }
-  const people = raw.filter((id) => /^fiche/i.test(id));
-  const other = raw.filter((id) => !/^fiche/i.test(id));
+  const people = raw.filter((id) => /^fiche/i.test(id) && !isDecorFicheId(id));
+  const other = raw.filter((id) => !/^fiche/i.test(id) || isDecorFicheId(id));
   return [...new Set([...people, ...base, ...other])].slice(0, 3);
 }
 function referenceFile(p, id) {
@@ -1156,13 +1160,14 @@ async function memorizeIdentity(p, s) {
   if (s.type !== 'fiche' || s.img.st !== 'fini') { toast('Termine ou importe la fiche approuvée avant de la mémoriser.', 'warn'); return; }
   const src = await mGet(imgKey(p, s));
   if (!src) { toast('Fichier image absent. Réimporte la fiche officielle.', 'warn'); return; }
-  const guess = isSharedFicheId(s.id) ? s.id : (/l[eé]o/i.test(s.nom + ' ' + s.id) ? 'fiche-serie-money-farm-leo' : 'fiche-serie-' + String(p.id + '-' + s.id).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-'));
-  const id = prompt('ID IMMUTABLE du personnage (le même dans tous les épisodes).\nAttention : ne mémorise que sa vraie fiche approuvée, jamais un visage approximatif.', guess);
+  const decor = isDecorFicheId(s.id);
+  const guess = isSharedFicheId(s.id) ? s.id : (!decor && /l[eé]o/i.test(s.nom + ' ' + s.id) ? 'fiche-serie-money-farm-leo' : 'fiche-serie-' + String(p.id + '-' + s.id).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-'));
+  const id = prompt(decor ? 'ID IMMUTABLE du décor (le même dans tous les épisodes).\nCanonise uniquement son image de référence approuvée.' : 'ID IMMUTABLE du personnage (le même dans tous les épisodes).\nAttention : ne mémorise que sa vraie fiche approuvée, jamais un visage approximatif.', guess);
   if (id == null) return;
   if (!isSharedFicheId(id)) { toast('ID invalide : utilise fiche-serie- puis lettres, chiffres et tirets.', 'warn'); return; }
   if (s.identiteDe && id === s.identiteDe) { toast('Impossible : une nouvelle tenue ne peut pas écraser le visage original. Canonise-la avec son propre ID de tenue.', 'warn'); return; }
   const current = await mGet('fiche:' + id);
-  if (current && !confirm('Une identité existe déjà sous ' + id + '.\nLa remplacer change la référence pour TOUTE la série. Confirmer ?')) return;
+  if (current && !confirm((decor ? 'Un décor' : 'Une identité') + ' existe déjà sous ' + id + '.\n' + (decor ? 'Le' : 'La') + ' remplacer change la référence pour TOUTE la série. Confirmer ?')) return;
   await mPut('fiche:' + id, src);
   if (current && current !== src) {
     // Si l'image P1 approuvée change, les images dérivées doivent être revues.
@@ -1179,7 +1184,7 @@ async function memorizeIdentity(p, s) {
       }
       for (const t of q.etapes) if (affected.has(t.id) && t.id !== id) {
         await mDel(imgKey(q, t)); await mDel(clipKey(q, t));
-        t.img = { st: 'attente', msg: 'Identité canonique actualisée : image à régénérer' };
+        t.img = { st: 'attente', msg: (decor ? 'Décor' : 'Identité') + ' canonique actualisé' + (decor ? '' : 'e') + ' : image à régénérer' };
         if (t.type === 'scene') t.clip = { st: 'attente' };
         t.ok = false;
         q.montage = { st: 'attente' };
@@ -1187,8 +1192,8 @@ async function memorizeIdentity(p, s) {
     }
   }
   await kvPut('canon-meta:' + id, { id, sourceProjet: p.id, sourceFiche: s.id, date: new Date().toISOString() });
-  log('Identité canonique mémorisée : ' + id + ' ← ' + p.id + '/' + s.id);
-  toast('Identité protégée : ' + id, 'ok');
+  log((decor ? 'Décor' : 'Identité') + ' canonique mémorisé' + (decor ? '' : 'e') + ' : ' + id + ' ← ' + p.id + '/' + s.id);
+  toast((decor ? 'Décor protégé : ' : 'Identité protégée : ') + id, 'ok');
   await syncFiches(); saveProjects(); render();
 }
 
@@ -1202,7 +1207,7 @@ function saveProjects() { clearTimeout(saveTimer); saveTimer = setTimeout(() => 
 
 const clampSec = (v) => Math.max(4, Math.min(12, Math.round(+v || 10)));
 function normStep(e, i) {
-  const type = e.type || (/^fiche/.test(e.id) ? 'fiche' : /couverture/.test(e.id) ? 'couverture' : 'scene');
+  const type = e.type || (/^(fiche|decor-)/.test(e.id) ? 'fiche' : /couverture/.test(e.id) ? 'couverture' : 'scene');
   return {
     id: String(e.id || ('etape-' + (i + 1))), type, nom: e.nom || e.id || ('Étape ' + (i + 1)),
     joindre: Array.isArray(e.joindre) ? e.joindre.map(String) : [],
@@ -3048,6 +3053,19 @@ function renderStatus() {
 // YAKFLOW_PROJECT_MANAGER_V12 : recherche, filtres, archives et glisser-déposer
 let pmMode = (() => { try { return localStorage.getItem('yfPmMode') || 'all'; } catch (_) { return 'all'; } })();
 let pmQuery = '', pmDrag = null;
+let projectSort = (() => { try { return localStorage.getItem('yfProjectSort') || 'manual'; } catch (_) { return 'manual'; } })();
+function sortedProjectList(list) {
+  const added = (p) => Number(p.created) || Date.parse(p.created || '') || 0;
+  return list.map((p, i) => ({ p, i })).sort((a, b) => {
+    if (projectSort === 'name-asc' || projectSort === 'name-desc') {
+      const n = String(a.p.titre || '').localeCompare(String(b.p.titre || ''), 'fr', { sensitivity: 'base' });
+      return (projectSort === 'name-asc' ? n : -n) || a.i - b.i;
+    }
+    if (projectSort === 'added-desc') return added(b.p) - added(a.p) || a.i - b.i;
+    if (projectSort === 'added-asc') return added(a.p) - added(b.p) || a.i - b.i;
+    return a.i - b.i;
+  }).map((x) => x.p);
+}
 const pmReady = (p) => !!(p.montage && p.montage.st === 'fini');
 function pmVisible(p) {
   if (pmMode === 'archive') return !!p.archive;
@@ -3065,6 +3083,8 @@ function pmSetArchive(p, on) {
   toast(on ? '« ' + p.titre + ' » archivé.' : '« ' + p.titre + ' » restauré.', 'ok');
 }
 (function pmInit() {
+  const sort = $('#yfProjectSort');
+  if (sort) { sort.value = projectSort; sort.addEventListener('change', () => { projectSort = sort.value; try { localStorage.setItem('yfProjectSort', projectSort); } catch (_) {} renderList(); }); }
   const q = $('#yfPmSearch');
   if (q) q.addEventListener('input', () => { pmQuery = q.value || ''; $('#yfPmClear').hidden = !pmQuery; renderList(); });
   $('#yfPmClear')?.addEventListener('click', () => { q.value = ''; pmQuery = ''; $('#yfPmClear').hidden = true; renderList(); q.focus(); });
@@ -3082,7 +3102,7 @@ function renderList() {
   document.querySelectorAll('#yfPmTabs [data-mode]').forEach((b) => { b.classList.toggle('on', b.dataset.mode === pmMode); const n = b.querySelector('em'); if (n) n.textContent = c[b.dataset.mode]; });
   const ad = $('#yfPmArchiveDone'); if (ad) ad.disabled = !projects.some((p) => !p.archive && pmReady(p));
   if (!projects.length) { el.innerHTML = '<div class="pm-empty"><i class="fa-regular fa-folder-open"></i>Aucun projet pour l\'instant.<br>Importe le JSON d\'un épisode.</div>'; return; }
-  const list = projects.filter((p) => pmVisible(p) && pmMatches(p));
+  const list = sortedProjectList(projects.filter((p) => pmVisible(p) && pmMatches(p)));
   if (!list.length) {
     el.innerHTML = '<div class="pm-empty"><i class="fa-solid fa-' + (pmQuery ? 'magnifying-glass' : pmMode === 'archive' ? 'box-archive' : 'filter') + '"></i>' +
       (pmQuery ? 'Aucun projet ne correspond à « ' + esc(pmQuery) + ' ».' : ({ active: 'Aucun projet à produire.', ready: 'Aucun projet monté pour l\'instant.', archive: 'Aucune archive.', all: 'Tous tes projets sont archivés.' })[pmMode]) + '</div>';
@@ -3113,7 +3133,8 @@ function renderList() {
       }
       saveProjects(); renderList(); render();
     };
-    d.addEventListener('dragstart', (e) => { pmDrag = d.dataset.id; d.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; try { e.dataTransfer.setData('text/plain', pmDrag); } catch (_) {} });
+    d.draggable = projectSort === 'manual';
+    d.addEventListener('dragstart', (e) => { if (projectSort !== 'manual') { e.preventDefault(); return; } pmDrag = d.dataset.id; d.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; try { e.dataTransfer.setData('text/plain', pmDrag); } catch (_) {} });
     d.addEventListener('dragend', () => { pmDrag = null; el.querySelectorAll('.drop-before,.drop-after,.dragging').forEach((x) => x.classList.remove('drop-before', 'drop-after', 'dragging')); });
     d.addEventListener('dragover', (e) => {
       if (!pmDrag || pmDrag === d.dataset.id) return;
@@ -3162,7 +3183,7 @@ function stepCard(p, s, i) {
         '<button class="btn sm" data-act="edit" title="Modifier les prompts"><i class="fa-solid fa-pen"></i>Prompts</button>' +
         (s.type === 'fiche' && (s.verrouIdentite || priorCanonRequired(s)) && s.img.st !== 'fini' ? '<button class="btn sm" data-act="linkCanon" title="Retrouver une fiche P1 validée dans ce navigateur"><i class="fa-solid fa-link"></i>Relier P1</button>' : '') +
         (s.type === 'fiche' && s.verrouIdentite && (!priorCanonRequired(s) || s.id === 'fiche-serie-cagnotte-animateur') && s.img.st !== 'fini' ? '<button class="btn sm primary" data-act="firstAppearance" title="Créer la fiche officielle à la première apparition"><i class="fa-solid fa-unlock"></i>Première apparition</button>' : '') +
-        (s.type === 'fiche' && s.img.st === 'fini' && !/^(decor|fin-)/i.test(s.id) ? '<button class="btn sm" data-act="canon" title="Sauvegarder le visage officiel pour tous les épisodes"><i class="fa-solid fa-lock"></i>Canoniser</button>' : '') +
+        (s.type === 'fiche' && s.img.st === 'fini' && !/^fin-/i.test(s.id) ? '<button class="btn sm" data-act="canon" title="Sauvegarder ' + (isDecorFicheId(s.id) ? 'le décor' : 'le visage') + ' officiel pour tous les épisodes"><i class="fa-solid fa-lock"></i>Canoniser</button>' : '') +
         (s.promptImage && !s.imageDe && !s.verrouIdentite ? '<button class="btn sm" data-act="redoImg"><i class="fa-solid fa-rotate-right"></i>' + (s.img.st === 'fini' ? 'Refaire img' : 'Relancer img') + '</button>' : '') +
         (sc && s.img.st === 'fini' ? '<button class="btn sm" data-act="redoClip"><i class="fa-solid fa-rotate-right"></i>' + (s.clip.st === 'fini' ? 'Refaire clip' : 'Relancer clip') + '</button>' : '') +
         /* YAKFLOW_SAFE_MANUAL_CLIP_IMPORT_V14 */
@@ -3685,15 +3706,15 @@ setInterval(agnesPushRemoteStatus, 3000);
    const p=selected(),label=$y('yfSelectedProject'),up=$y('yfMoveUp'),down=$y('yfMoveDown'); if(!label||!up||!down)return;
    if(!p){label.textContent='Sélectionne un projet';up.disabled=true;down.disabled=true;return}
    label.textContent=p.titre||p.id;label.title=p.titre||p.id;
-   const i=projects.findIndex(x=>String(x.id)===String(p.id));up.disabled=i<=0;down.disabled=i<0||i>=projects.length-1;
+   const i=projects.findIndex(x=>String(x.id)===String(p.id));up.disabled=projectSort!=='manual'||i<=0;down.disabled=projectSort!=='manual'||i<0||i>=projects.length-1;
  }
  function move(delta){
-   const p=selected();if(!p)return;const i=projects.findIndex(x=>String(x.id)===String(p.id)),j=i+delta;
+   const p=selected();if(!p||projectSort!=='manual')return;const i=projects.findIndex(x=>String(x.id)===String(p.id)),j=i+delta;
    if(i<0||j<0||j>=projects.length)return;[projects[i],projects[j]]=[projects[j],projects[i]];saveProjects();render();update();
  }
  function boot(){
    $y('yfMoveUp')?.addEventListener('click',()=>move(-1));$y('yfMoveDown')?.addEventListener('click',()=>move(1));
-   $y('plist')?.addEventListener('click',()=>setTimeout(update,0));update();
+   $y('plist')?.addEventListener('click',()=>setTimeout(update,0));$y('yfProjectSort')?.addEventListener('change',update);update();
    const list=$y('plist');if(list&&!window.__yfMoverObserver){window.__yfMoverObserver=new MutationObserver(update);window.__yfMoverObserver.observe(list,{childList:true,subtree:true,attributes:true})}
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();

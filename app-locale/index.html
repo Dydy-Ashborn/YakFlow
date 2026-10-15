@@ -266,6 +266,8 @@
 .agnesPmHidden{display:none!important}
 .agnesPmDropBefore{border-top:2px solid #ffb224!important}
 #agnesPmArchiveDone{margin-left:auto;border:1px solid #343941;background:#171a1f;color:#ccc;border-radius:8px;padding:5px 8px;font-size:11px;cursor:pointer}
+.pm-sort{display:flex;align-items:center;gap:8px;margin:8px 0;color:var(--dim);font-size:11px;font-weight:600}
+.pm-sort select{flex:1;min-width:0;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);font:inherit}
 
 
 /* AGNES_PUBLICATION_EDITOR_V1 */
@@ -488,6 +490,7 @@ dialog{border-radius:18px!important;box-shadow:0 30px 90px rgba(0,0,0,.45)!impor
     <section class="card">
       <h2><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h7l2 2h7v14H4z"/></svg>Projets<span class="grow"></span>
         <button class="btn sm primary" id="btnImport">+ Importer</button></h2>
+      <label class="pm-sort">Trier l’affichage <select id="yfProjectSort" aria-label="Trier les projets"><option value="manual">Ordre de fabrication</option><option value="name-asc">Nom A → Z</option><option value="name-desc">Nom Z → A</option><option value="added-desc">Ajout : récents d’abord</option><option value="added-asc">Ajout : anciens d’abord</option></select></label>
       <div class="yfProjectToolbar" aria-label="Réordonner le projet sélectionné">
         <span id="yfSelectedProject">Sélectionne un projet</span><span class="grow"></span>
         <button class="btn sm" id="yfMoveUp" title="Monter le projet sélectionné">↑</button>
@@ -897,6 +900,7 @@ const ficheMeta = {}; // id -> prompt de la fiche en mémoire
 /* YAKFLOW_CANON_IDENTITY_V1 : images d'identité réellement conservées en IndexedDB.
    Toute nouvelle tenue part d'une image canonique approuvée, et jamais d'un seul texte. */
 const isSharedFicheId = (id) => /^fiche-serie-[a-z0-9][a-z0-9-]*$/.test(String(id || ''));
+const isDecorFicheId = (id) => /^(?:decor(?:-|$)|fiche-serie-[a-z0-9-]*-decor(?:-|$))/i.test(String(id || ''));
 function canonicalRefs(p, s) {
   const raw = Array.isArray(s.joindre) ? s.joindre : [];
   // Une fiche tenue reçoit toujours EN PREMIER la vraie image du visage P1.
@@ -907,8 +911,8 @@ function canonicalRefs(p, s) {
     const st = p.etapes.find((x) => x.id === id);
     if (st && st.type === 'fiche' && st.identiteDe) base.push(st.identiteDe);
   }
-  const people = raw.filter((id) => /^fiche/i.test(id));
-  const other = raw.filter((id) => !/^fiche/i.test(id));
+  const people = raw.filter((id) => /^fiche/i.test(id) && !isDecorFicheId(id));
+  const other = raw.filter((id) => !/^fiche/i.test(id) || isDecorFicheId(id));
   return [...new Set([...people, ...base, ...other])].slice(0, 3);
 }
 function referenceFile(p, id) {
@@ -918,12 +922,13 @@ async function memorizeIdentity(p, s) {
   if (s.type !== 'fiche' || s.img.st !== 'fini') { toast('Termine ou importe la fiche approuvée avant de la mémoriser.', 'warn'); return; }
   const src = await mGet(imgKey(p, s));
   if (!src) { toast('Fichier image absent. Réimporte la fiche officielle.', 'warn'); return; }
-  const guess = /l[eé]o/i.test(s.nom + ' ' + s.id) ? 'fiche-serie-money-farm-leo' : 'fiche-serie-' + String(p.id + '-' + s.id).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-  const id = prompt('ID IMMUTABLE du personnage (le même dans tous les épisodes).\nAttention : ne mémorise que sa vraie fiche approuvée, jamais un visage approximatif.', guess);
+  const decor = isDecorFicheId(s.id);
+  const guess = isSharedFicheId(s.id) ? s.id : (!decor && /l[eé]o/i.test(s.nom + ' ' + s.id) ? 'fiche-serie-money-farm-leo' : 'fiche-serie-' + String(p.id + '-' + s.id).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''));
+  const id = prompt(decor ? 'ID IMMUTABLE du décor (le même dans tous les épisodes).\nCanonise uniquement son image de référence approuvée.' : 'ID IMMUTABLE du personnage (le même dans tous les épisodes).\nAttention : ne mémorise que sa vraie fiche approuvée, jamais un visage approximatif.', guess);
   if (id == null) return;
   if (!isSharedFicheId(id)) { toast('ID invalide : utilise fiche-serie- puis lettres, chiffres et tirets.', 'warn'); return; }
   const current = await mGet('fiche:' + id);
-  if (current && !confirm('Une identité existe déjà sous ' + id + '.\nLa remplacer change la référence pour TOUTE la série. Confirmer ?')) return;
+  if (current && !confirm((decor ? 'Un décor' : 'Une identité') + ' existe déjà sous ' + id + '.\n' + (decor ? 'Le' : 'La') + ' remplacer change la référence pour TOUTE la série. Confirmer ?')) return;
   await mPut('fiche:' + id, src);
   if (current && current !== src) {
     // Si l'image P1 approuvée change, les images dérivées doivent être revues.
@@ -940,7 +945,7 @@ async function memorizeIdentity(p, s) {
       }
       for (const t of q.etapes) if (affected.has(t.id) && t.id !== id) {
         await mDel(imgKey(q, t)); await mDel(clipKey(q, t));
-        t.img = { st: 'attente', msg: 'Identité canonique actualisée : image à régénérer' };
+        t.img = { st: 'attente', msg: (decor ? 'Décor' : 'Identité') + ' canonique actualisé' + (decor ? '' : 'e') + ' : image à régénérer' };
         if (t.type === 'scene') t.clip = { st: 'attente' };
         t.ok = false;
         q.montage = { st: 'attente' };
@@ -948,8 +953,8 @@ async function memorizeIdentity(p, s) {
     }
   }
   await kvPut('canon-meta:' + id, { id, sourceProjet: p.id, sourceFiche: s.id, date: new Date().toISOString() });
-  log('Identité canonique mémorisée : ' + id + ' ← ' + p.id + '/' + s.id);
-  toast('Identité protégée : ' + id, 'ok');
+  log((decor ? 'Décor' : 'Identité') + ' canonique mémorisé' + (decor ? '' : 'e') + ' : ' + id + ' ← ' + p.id + '/' + s.id);
+  toast((decor ? 'Décor protégé : ' : 'Identité protégée : ') + id, 'ok');
   await syncFiches(); saveProjects(); render();
 }
 
@@ -963,7 +968,7 @@ function saveProjects() { clearTimeout(saveTimer); saveTimer = setTimeout(() => 
 
 const clampSec = (v) => Math.max(4, Math.min(12, Math.round(+v || 10)));
 function normStep(e, i) {
-  const type = e.type || (/^fiche/.test(e.id) ? 'fiche' : /couverture/.test(e.id) ? 'couverture' : 'scene');
+  const type = e.type || (/^(fiche|decor-)/.test(e.id) ? 'fiche' : /couverture/.test(e.id) ? 'couverture' : 'scene');
   return {
     id: String(e.id || ('etape-' + (i + 1))), type, nom: e.nom || e.id || ('Étape ' + (i + 1)),
     joindre: Array.isArray(e.joindre) ? e.joindre.map(String) : [],
@@ -2597,10 +2602,33 @@ function agnesPmAfterRender(){
   agnesPmApplyFilter();
 }
 
+let projectSort = (() => { try { return localStorage.getItem('yfProjectSort') || 'manual'; } catch (_) { return 'manual'; } })();
+function sortedProjectList(list) {
+  const added = (p) => Number(p.created) || Date.parse(p.created || '') || 0;
+  return list.map((p, i) => ({ p, i })).sort((a, b) => {
+    if (projectSort === 'name-asc' || projectSort === 'name-desc') {
+      const n = String(a.p.titre || '').localeCompare(String(b.p.titre || ''), 'fr', { sensitivity: 'base' });
+      return (projectSort === 'name-asc' ? n : -n) || a.i - b.i;
+    }
+    if (projectSort === 'added-desc') return added(b.p) - added(a.p) || a.i - b.i;
+    if (projectSort === 'added-asc') return added(a.p) - added(b.p) || a.i - b.i;
+    return a.i - b.i;
+  }).map((x) => x.p);
+}
+const projectSortSelect = $('#yfProjectSort');
+if (projectSortSelect) {
+  projectSortSelect.value = projectSort;
+  projectSortSelect.addEventListener('change', () => {
+    projectSort = projectSortSelect.value;
+    try { localStorage.setItem('yfProjectSort', projectSort); } catch (_) {}
+    renderList();
+  });
+}
+
 function renderList() {
   const el = $('#plist');
   if (!projects.length) { el.innerHTML = '<p class="hint" style="margin:0">Aucun projet. Importe le JSON d\'un épisode.</p>'; return; }
-  el.innerHTML = projects.map((p) => {
+  el.innerHTML = sortedProjectList(projects).map((p) => {
     const c = counts(p), tot = c.ni + c.nc + 1, done = c.i + c.c + (p.montage.st === 'fini' ? 1 : 0);
     return '<div class="pitem' + (p.id === curId ? ' on' : '') + '" data-id="' + esc(p.id) + '">' +
       '<span class="pt">' + esc(p.titre) + '</span><span class="pact"><input type="checkbox" title="À fabriquer" ' + (p.actif ? 'checked' : '') + '></span>' +
@@ -2645,7 +2673,7 @@ function stepCard(p, s, i) {
       '<div class="acts">' +
         (sc && S.gate && s.img.st === 'fini' && !s.ok ? '<button class="btn sm primary" data-act="ok">Valider</button>' : '') +
         '<button class="btn sm" data-act="edit">Prompts</button>' +
-        (s.type === 'fiche' && s.img.st === 'fini' && !/^(decor|fin-)/i.test(s.id) ? '<button class="btn sm" data-act="canon" title="Sauvegarder le visage officiel pour tous les épisodes">Canoniser</button>' : '') +
+        (s.type === 'fiche' && s.img.st === 'fini' && !/^fin-/i.test(s.id) ? '<button class="btn sm" data-act="canon" title="Sauvegarder ' + (isDecorFicheId(s.id) ? 'le décor' : 'le visage') + ' officiel pour tous les épisodes">Canoniser</button>' : '') +
         (s.promptImage && !s.imageDe ? '<button class="btn sm" data-act="redoImg">' + (s.img.st === 'fini' ? 'Refaire img' : 'Relancer img') + '</button>' : '') +
         (sc && s.img.st === 'fini' ? '<button class="btn sm" data-act="redoClip">' + (s.clip.st === 'fini' ? 'Refaire clip' : 'Relancer clip') + '</button>' : '') +
         /* YAKFLOW_SAFE_MANUAL_CLIP_IMPORT_V14 */
@@ -3143,15 +3171,15 @@ setInterval(agnesPushRemoteStatus, 3000);
    const p=selected(),label=$y('yfSelectedProject'),up=$y('yfMoveUp'),down=$y('yfMoveDown'); if(!label||!up||!down)return;
    if(!p){label.textContent='Sélectionne un projet';up.disabled=true;down.disabled=true;return}
    label.textContent=p.titre||p.id;label.title=p.titre||p.id;
-   const i=projects.findIndex(x=>String(x.id)===String(p.id));up.disabled=i<=0;down.disabled=i<0||i>=projects.length-1;
+   const i=projects.findIndex(x=>String(x.id)===String(p.id));up.disabled=projectSort!=='manual'||i<=0;down.disabled=projectSort!=='manual'||i<0||i>=projects.length-1;
  }
  function move(delta){
-   const p=selected();if(!p)return;const i=projects.findIndex(x=>String(x.id)===String(p.id)),j=i+delta;
+   const p=selected();if(!p||projectSort!=='manual')return;const i=projects.findIndex(x=>String(x.id)===String(p.id)),j=i+delta;
    if(i<0||j<0||j>=projects.length)return;[projects[i],projects[j]]=[projects[j],projects[i]];saveProjects();render();update();
  }
  function boot(){
    $y('yfMoveUp')?.addEventListener('click',()=>move(-1));$y('yfMoveDown')?.addEventListener('click',()=>move(1));
-   $y('plist')?.addEventListener('click',()=>setTimeout(update,0));update();
+   $y('plist')?.addEventListener('click',()=>setTimeout(update,0));$y('yfProjectSort')?.addEventListener('change',update);update();
    const list=$y('plist');if(list&&!window.__yfMoverObserver){window.__yfMoverObserver=new MutationObserver(update);window.__yfMoverObserver.observe(list,{childList:true,subtree:true,attributes:true})}
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
